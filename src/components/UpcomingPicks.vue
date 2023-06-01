@@ -14,8 +14,6 @@
               :key="card._id"
               :tip="card.tip"
               :status="card.status"
-              :formationA="card.formationA"
-              :formationB="card.formationB"
               :leagueIcon="card.leagueIcon"
               :teamAIcon="card.teamAIcon"
               :teamBIcon="card.teamBIcon"

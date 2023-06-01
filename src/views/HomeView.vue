@@ -84,12 +84,7 @@ import HeroComponent from '../components/HeroComponent.vue'
 import OtherComponent from '../components/OtherComponent.vue'
 
 const currentDate = ref('')
-const formationA = ref(['l', 'w', 'l', 'w', 'l'])
-const formationB = ref(['l', 'w', 'l', 'w', 'l'])
 const router = useRouter()
-const teamAScore = ref(1)
-const teamBScore = ref(0)
-const tip = ref(1)
 
 const showCard = (cardID) => {
   router.push({ name: 'Tips', params: { id: cardID } })
