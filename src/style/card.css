@@ -1,0 +1,259 @@
+@media screen {
+.card-container {
+    width: 100%;
+    display: flex;
+    padding: 10px;
+    cursor: pointer;
+	border-radius: 8px;
+    flex-direction: column;
+    text-transform: capitalize;
+    justify-content: space-between;
+    box-shadow: rgba(60, 64, 67, 0.3) 0px 1px 2px 0px, rgba(60, 64, 67, 0.15) 0px 1px 3px 1px;
+}
+
+.card-container:hover {
+    box-shadow: rgba(17, 17, 26, 0.05) 0px 4px 16px, rgba(17, 17, 26, 0.05) 0px 8px 32px;
+}
+.card-title {
+    display: flex;
+    padding: 10px 0;
+    font-size: .8rem;
+    align-items: center;
+    justify-content: space-between;
+    border-bottom: 1px solid var(--fade-color) ;
+}
+
+.card-status {
+    gap: 5px;
+    display: flex;
+    font-weight: 600;
+    font-size: .8rem;
+    padding: 2px 10px;
+    border-radius: 4px;
+    align-items: center;
+    color: var(--primary-color);
+    background-color:var(--fade-color);
+}
+
+.card-status span {
+    width: 5px;
+    height: 5px;
+    border-radius: 360%;
+    background-color: var(--primary-color);
+}
+
+.title-m {
+    gap: 10px;
+    display: flex;
+    font-weight: 600;
+    align-items: center;
+}
+
+.league-c-img {
+    width:20px;
+    height:20px;
+    object-fit: cover;
+    object-position: center center;
+}
+
+.Tip {
+    font-weight: 600;
+    display: flex;
+    gap: 10px;
+}
+
+.card-center {
+    display: flex;
+    padding: 10px;
+    align-items: center;
+    justify-content: space-around;
+}
+
+.card-a {
+    gap: 10px;
+    display: flex;
+    font-size: .6rem;
+    align-items: center;
+    flex-direction: column;
+}
+
+.card-fade {
+    padding: 10px;
+    display: flex;
+    align-items: center;
+    border-radius: 360%;
+    justify-content: center;
+    background-color: var(--fade-color);
+}
+
+.card-inner {
+    padding: 12px;
+    display: flex;
+    align-items: center;
+    border-radius: 360%;
+    justify-content: center;
+    background-color: var(--background-color);
+    box-shadow: rgba(141, 168, 196, 0.102) 0px 3px 12px;
+}
+
+.Tcard-inner {
+    width: 70px;
+    height: 70px;
+    background-size: cover;
+    background-repeat: no-repeat;
+}
+
+.card-img {
+    height: 30px;
+    width: 30px;
+    object-fit: contain;
+    object-position: center;
+}
+
+
+.card-in {
+    gap: 5px;
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+}
+
+.card-in-s {
+    gap: 2px;
+    display: flex;
+    font-weight: 400;
+    color: var(--light-color);
+
+}
+
+.card-score {
+    width: 100%;
+        display: flex;
+    font-weight: 600;
+    font-size: 1.8rem;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.card-p {
+    font-weight: 400;
+}
+
+.card-s {
+    color: var(--secondary-color);
+}
+
+.card-footer{
+    display: flex;
+    padding: 10px 0;
+    align-items: center;
+    justify-content: space-between;
+    border-top: 1px solid var(--fade-color) ;
+}
+
+.tfooter {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.card-f {
+    gap: 10px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.card-fi {
+    font-weight: 400;
+    font-size: .8rem;
+}
+
+.card-f span {
+    padding: 5px;
+    font-size: .7rem;
+    border-radius: 4px;
+    color: var(--background-color);
+    background-color: var(--secondary-color);
+}
+
+.card-f .loose {
+    background-color: var(--red-color);
+}
+
+.card-f .win {
+    background-color: var(--primary-color);
+}
+
+.card-f .draw {
+    background-color: var(--secondary-color);
+}
+}
+/* using it as global style for larger devices  */
+@media only screen and (min-width: 48em) {
+    .card-container {
+        width:500px;
+        height: 300px;
+        padding: 20px;
+        min-width: 500px;
+        min-height: 300px;
+    }
+    
+
+    .card-title {
+        font-size: 1rem;
+    }
+    
+    .card-status {
+        gap: 5px;
+        font-weight: 600;
+        font-size: .8rem;
+        padding: 2px 10px;
+        border-radius: 4px;
+        color: var(--primary-color);
+    }
+
+    .card-center {
+        padding: 20px;
+        justify-content: space-between;
+    }
+    
+    
+    .card-fade {
+        padding: 12px;
+    }
+    
+    .card-inner {
+        padding: 15px;
+        background-color: var(--background-color);
+    }
+    
+    .card-img {
+        height: 40px;
+        width: 40px;
+    }
+    
+    .card-in {
+        gap: 5px;
+    }
+    
+    .card-in-s {
+        gap: 2px;
+    
+    }
+    
+    .card-score {
+        font-size: 2rem;
+    }
+    
+    
+    .card-fi {
+        font-size: .9rem;
+    }
+    
+    .card-f span {
+        font-size: .8rem;
+        padding: 5px 10px;
+    }
+
+}

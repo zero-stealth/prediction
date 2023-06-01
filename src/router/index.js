@@ -1,0 +1,133 @@
+import { createRouter, createWebHistory } from 'vue-router'
+import HomeView from '../views/HomeView.vue'
+import { useAuthStore } from '../stores/auth'
+
+const router = createRouter({
+  history: createWebHistory(import.meta.env.BASE_URL),
+  routes: [
+    {
+      path: '/',
+      name: 'Home',
+      component: HomeView
+    },
+    {
+      path: '/admin-panel',
+      name: 'Panel',
+      component: () => import('../views/PanelView.vue'),
+      meta: {
+        isAdmin: true
+      }
+    },
+    {
+      path: '/admin-login',
+      name: 'AdminLogin',
+      component: () => import('../views/AdminLoginView.vue')
+    },
+    {
+      path: '/admin-signin',
+      name: 'AdminSignin',
+      component: () => import('../views/AdminSigninView.vue')
+    },
+    {
+      path: '/login',
+      name: 'Login',
+      component: () => import('../views/LoginView.vue')
+    },
+    {
+      path: '/signin',
+      name: 'Signin',
+      component: () => import('../views/SignInView.vue')
+    },
+    {
+      path: '/tips-of-the-day/:id',
+      name: 'Tips',
+      component: () => import('../views/TipsView.vue'),
+      props: true
+    },
+    {
+      path: '/predictions/:id',
+      name: 'Predictions',
+      component: () => import('../views/predictionView.vue')
+    },
+    {
+      path: '/vip',
+      name: 'Vip',
+      component: () => import('../views/VipView.vue'),
+      meta: { auth: true }
+    },
+    {
+      path: '/news/:id',
+      name: 'News',
+      component: () => import('../views/NewsView.vue')
+    },
+    {
+      path: '/banker-tip',
+      name: 'Banker',
+      component: () => import('../views/BankerView.vue')
+    },
+    {
+      path: '/bet/:betName',
+      name: 'Bet',
+      component: () => import('../views/BetView.vue'),
+      props: true
+    },
+    {
+      path: '/basketball',
+      name: 'Basketball',
+      component: () => import('../views/BasketballView.vue')
+    },
+    {
+      path: '/tennis',
+      name: 'Tennis',
+      component: () => import('../views/TennisView.vue')
+    },
+    {
+      path: '/how-to-pay',
+      name: 'Pay',
+      component: () => import('../views/PayView.vue')
+    }
+    // {
+    //   path: '/about',
+    //   name: 'about',
+    //   // this generates a separate chunk (About.[hash].js) for this route
+    //   // which is lazy-loaded when the route is visited.
+    //   component: () => import('../views/AboutView.vue')
+    // }
+  ]
+})
+
+const currentUser = () => {
+  const token = localStorage.getItem('token');
+  return !!token; // Return true if token exists, false otherwise
+}
+
+const isAdmin = () => {
+  const admin = localStorage.getItem('admin');
+  return admin === 'true'; // Return true if admin is 'true', false otherwise
+}
+
+router.beforeEach(async (to, from, next) => {
+  if (to.matched.some((record) => record.meta.isAdmin)) {
+    if (isAdmin()) {
+      next();
+    } else {
+      next('/');
+    }
+  } else {
+    next();
+  }
+})
+
+router.beforeEach(async (to, from, next) => {
+  if (to.matched.some((record) => record.meta.auth)) {
+    if (currentUser()) {
+      next();
+    } else {
+      next('/login');
+    }
+  } else {
+    next();
+  }
+})
+
+export default router
