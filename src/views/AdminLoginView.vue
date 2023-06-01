@@ -109,20 +109,22 @@ const resetAuth = async () => {
     reset()
   }
 }
-
 const useGoogle = async () => {
   try {
-    const response = await axios.get('https://predictions-server.onrender.com/auth/auth/google')
+    const response = await axios.get('https://predictions-server.onrender.com/auth/auth/google');
 
     // Handle the response from the server
-    // You may redirect the user to the returned URL or perform other operations based on the response
-    console.log(response.data)
-    router.push({ name: 'Home' })
+    if (response.data && response.data.redirectTo) {
+      router.push({ path: response.data.redirectTo });
+    } else {
+      console.error('Invalid response from server');
+    }
   } catch (error) {
     // Handle the error
-    console.error(error)
+    console.error(error);
   }
-}
+};
+
 </script>
 
 <style>
