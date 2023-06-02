@@ -69,7 +69,7 @@
             <span>Other sports</span>
             <ArrowIcon class="drop-icon" />
           </div>
-          <div class="drop-down-panel" :class="[isDrpOpen ? 'showDrp' : 'hideDrp']">
+          <div class="drop-down-panel drp-down-panel" :class="[isDrpOpen ? 'showDrp' : 'hideDrp']">
             <span @click="goBasketball()">Basketball</span>
             <span @click="goTennis()"> Tennis</span>
           </div>
@@ -102,7 +102,7 @@
         </button>
       </div>
       <div class="mobile-btn-container"  v-else>
-        <button @click="logOut" class="mobile-btn btn-l">
+        <button @click="logOut" class="mobile-btn btn-l btn-logout">
           <LogoutIcon class="icon-nav l-icon" />
           log out
         </button>
@@ -143,6 +143,11 @@ const showMenu = () => {
 const showDrop = () => {
   isDropOpen.value = !isDropOpen.value
 }
+
+const showDrp = () => {
+  isDrpOpen.value = !isDrpOpen.value
+}
+
 
 const logOut = () => {
   localStorage.removeItem('token')

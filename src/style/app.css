@@ -9,8 +9,20 @@
     overflow-y: auto;
 }
 
+.app-nav-m {
+    top: 0;
+    width: 100%;
+    position: fixed;
+}
+
+
 }
 /* using it as global style for larger devices  */
 @media only screen and (min-width: 48em) {
+.app-nav-m {
+    top: 0;
+    width: 99%;
+    position: fixed;
+}
 
 }

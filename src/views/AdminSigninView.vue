@@ -42,7 +42,6 @@ import SportBg from '../assets/sport-bg.png'
 import GoogleIcon from '../icons/googleIcon.vue'
 import countriesData from '../components/countries.json'
 
-
 const selectedCountry = ref('')
 const router = useRouter()
 const username = ref('')
@@ -65,7 +64,8 @@ const create = async () => {
       const response = await axios.post('https://predictions-server.onrender.com/auth/register-admin', {
         username: username.value,
         email: email.value,
-        password: password.value
+        password: password.value,
+        selectedCountry: selectedCountry.value
       })
       console.log(response.data) // Handle the response data as needed
       const token = response.data.token
@@ -82,15 +82,15 @@ const create = async () => {
 
 const useGoogle = async () => {
   try {
-    const response = await axios.get('https://predictions-server.onrender.com/auth/auth/google');
+    const response = await axios.get('https://predictions-server.onrender.com/auth/auth/google')
 
     // Handle the response from the server
     // You may redirect the user to the returned URL or perform other operations based on the response
-    console.log(response.data);
+    console.log(response.data)
     router.push({ name: 'Home' })
   } catch (error) {
     // Handle the error
-    console.error(error);
+    console.error(error)
   }
 }
 

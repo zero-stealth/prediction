@@ -57,9 +57,9 @@ const login = async () => {
       console.log(response.data) // Handle the response data as needed
       const isAdmin = response.data.isAdmin
       if (isAdmin) {
-        const token = response.data.token
+        const token = response.data.token 
         const admin = response.data.isAdmin
-
+   
         localStorage.setItem('admin', admin)
         localStorage.setItem('token', JSON.stringify(token))
         

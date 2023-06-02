@@ -29,9 +29,14 @@
             <span> Free tips </span>
             <ArrowIcon class="icon-panel ap" />
           </button>
-          <button @click="setActivePage(OtherGames)" :class="getButtonClass(OtherGames)">
-            <footballIcon class="icon-panel" />
-            <span> Other Games </span>
+          <button @click="setActivePage(BasketballGames)" :class="getButtonClass(OtherGames)">
+            <basketballIcon class="icon-panel" />
+            <span> Basketball </span>
+            <ArrowIcon class="icon-panel ap" />
+          </button>
+          <button @click="setActivePage(TennisGames)" :class="getButtonClass(OtherGames)">
+            <tennisIcon class="icon-panel" />
+            <span>Tennis </span>
             <ArrowIcon class="icon-panel ap" />
           </button>
           <button @click="Logout(Logout)" :class="getButtonClass(Logout)">
@@ -51,7 +56,8 @@
   </div>
 </template>
 <script setup>
-import footballIcon from '../icons/footballIcon.vue'
+import basketballIcon from '../icons/basketballIcon.vue'
+import tennisIcon from '../icons/tennisIcon.vue'
 import LogoutIcon from '../icons/logoutIcon.vue'
 import GroupIcon from '../icons/GroupIcon.vue'
 import ArrowIcon from '../icons/ArrowIcon.vue'
@@ -72,7 +78,8 @@ const showMenu = () => {
 }
 // pages
 import AccountManagement from '../components/AccountManagement.vue'
-import OtherGames from '../components/OtherGames.vue'
+import BasketballGames from '../components/BasketballGames.vue'
+import TennisGames from '../components/TennisGames.vue'
 import VipGames from '../components/VipGames.vue'
 import Freetips from '../components/Freetips.vue'
 

@@ -3,10 +3,10 @@
     class="auth-container"
     :style="{
       backgroundImage: `linear-gradient(
-      110deg,
-      rgba(3, 30, 60, 0.8),
-      rgba(3, 30, 60, 0.7)
-    ), url(${SportBg})`
+        110deg,
+        rgba(3, 30, 60, 0.8),
+        rgba(3, 30, 60, 0.7)
+      ), url(${SportBg})`
     }"
   >
     <div class="form-l-wrapper">
@@ -72,11 +72,12 @@ const create = async () => {
       const response = await axios.post('https://predictions-server.onrender.com/auth/register', {
         username: username.value,
         email: email.value,
-        password: password.value
+        password: password.value,
+        selectedCountry: selectedCountry.value
       })
       const token = response.data.token
       const isPaid = response.data.paid
-      localStorage.setItem('token', JSON.stringify(token))
+      localStorage.setItem('token', token)
       localStorage.setItem('isPaid', isPaid)
       console.log(response.data) // Handle the response data as needed
       router.push({ name: 'Home' })
