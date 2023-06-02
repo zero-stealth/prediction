@@ -1,7 +1,8 @@
 @media screen {
   .nav-main {
+    width: 100%;
+    position: fixed;
     height: fit-content;
-
   }
 
   .nav-container {
@@ -219,7 +220,7 @@
 
   .hero-section {
     gap: 20px;
-    padding: 10px;
+    padding: 0;
     display: flex;
     flex-direction: column;
     background-size: cover;

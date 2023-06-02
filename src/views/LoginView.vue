@@ -1,15 +1,18 @@
 <template>
-  <div class="auth-container" :style="{
-    backgroundImage: `linear-gradient(
+  <div
+    class="auth-container"
+    :style="{
+      backgroundImage: `linear-gradient(
       110deg,
       rgba(3, 30, 60, 0.8),
       rgba(3, 30, 60, 0.7)
     ), url(${SportBg})`
-  }">
+    }"
+  >
     <div class="form-l-wrapper">
       <h1>{{ title }}</h1>
-      <form @submit.prevent="login" class="l-form" v-if="resetPage === false">
-        <input type="text" class="input-l" placeholder="Email Address" v-model="email" />
+      <form @submit.prevent="login" class="l-form" v-if="!resetPage">
+        <input type="email" class="input-l" placeholder="Email Address" v-model="email" />
         <input type="password" class="input-l" placeholder="Password" v-model="password" />
         <p>{{ errMsg }}</p>
         <button class="btn-f" type="submit">Login</button>
@@ -28,15 +31,10 @@
           <googleIcon class="alt-icon" />
           Login with Google
         </button>
-        <button class="alt-btn" @click="useGuest">
-          <guestIcon class="alt-icon" />
-          Login as a guest
-        </button>
       </div>
     </div>
   </div>
 </template>
-
 <script setup>
 import { ref } from 'vue'
 import axios from 'axios'
@@ -100,20 +98,19 @@ const resetAuth = async () => {
       console.log(response.data) // Handle the response data as needed
       resetPage.value = !resetPage.value
     } catch (error) {
-      errMsg.value = error;
+      errMsg.value = error
     }
   } else {
     errMsg.value = 'Write something'
     reset()
   }
 }
-
 const useGoogle = async () => {
   try {
     const response = await axios.get('https://predictions-server.onrender.com/auth/auth/google');
 
     // Handle the response from the server
-    if (response.data && response.data.redirectTo) {
+    if (response.data.redirectTo) {
       router.push({ path: response.data.redirectTo });
     } else {
       console.error('Invalid response from server');
@@ -123,12 +120,9 @@ const useGoogle = async () => {
     console.error(error);
   }
 };
-
-
 const useGuest = () => {
   router.push({ name: 'Home' })
 }
-
 </script>
 
 <style>

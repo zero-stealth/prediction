@@ -42,17 +42,10 @@ import googleIcon from '../icons/googleIcon.vue'
 
 const resetPage = ref(false)
 const router = useRouter()
-const username = ref('')
 const password = ref('')
 const title = ref('Login')
 const errMsg = ref('')
 const email = ref('')
-
-const reset = () => {
-  password.value = ''
-  username.value = ''
-  email.value = ''
-}
 
 const login = async () => {
   if (email.value !== '' && password.value !== '') {
@@ -109,6 +102,7 @@ const resetAuth = async () => {
     reset()
   }
 }
+
 const useGoogle = async () => {
   try {
     const response = await axios.get('https://predictions-server.onrender.com/auth/auth/google');
@@ -124,7 +118,6 @@ const useGoogle = async () => {
     console.error(error);
   }
 };
-
 </script>
 
 <style>
