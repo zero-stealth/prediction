@@ -24,12 +24,12 @@
               v-for="(card, index) in item"
               :key="card._id"
               :tip="card.tip"
-              :status="card.status"
-              :playerAIcon="card.playerAIcon"
-              :playerBIcon="card.playerBIcon"
+              :status="card.gamePrediction"
+              :playerAIcon="card.playerALogo"
+              :playerBIcon="card.playerBLogo"
               :playerA="card.playerA"
               :playerB="card.playerB"
-              :title="card.title"
+              :title="card.league"
               :time="card.time"
               @click="showCard(card._id)"
             />
@@ -63,48 +63,25 @@ const showCard = (cardID) => {
 
 const cardData = ref([])
 
-// async function getPrediction() {
-//   try {
-//     const response = await axios.get('https://predictions-server.onrender.com/predictions')
-//     console.log(response.data)
-//     cardData.value.push(response.data)
-//     console.log(cardData.value)
-//   } catch (err) {
-//     console.log(err)
-//   }
-// }
+async function getPrediction() {
+  const token = JSON.parse(localStorage.getItem('token'))
 
-// Dummy data for TCard
-cardData.value = [
-  [
-    {
-      _id: 1,
-      status: 'Status 1',
-      playerAIcon: lebron,
-      playerBIcon: lebron,
-      playerA: 'lebron ',
-      playerB: 'lebron  ',
-      title: 'Basketball league',
-      time: '12.01',
-      status: 'lebron wins the game'
-    },
-    {
-      _id: 2,
-      status: 'Status 1',
-      playerAIcon: lebron,
-      playerBIcon: lebron,
-      playerA: 'lebron',
-      playerB: 'lebron  ',
-      title: 'Basketball league',
-      time: '11.01',
-      status: 'lebron wins the game'
-    },
-  ]
-]
-
-// onMounted(() => {
-//   getPrediction()
-// })
+  try {
+    const response = await axios.get('https://predictions-server.onrender.com/sports/sport/Basketball',{
+      headers: {
+        Authorization: `Bearer ${token}`
+      }
+    })
+    console.log(response.data)
+    cardData.value.push(response.data)
+    console.log(cardData.value)
+  } catch (err) {
+    console.log(err)
+  }
+}
+onMounted(() => {
+  getPrediction()
+})
 
 const offset = ref(0)
 

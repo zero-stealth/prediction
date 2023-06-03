@@ -24,12 +24,12 @@
               v-for="(card, index) in item"
               :key="card._id"
               :tip="card.tip"
-              :status="card.status"
-              :playerAIcon="card.playerAIcon"
-              :playerBIcon="card.playerBIcon"
+              :status="card.gamePrediction"
+              :playerAIcon="card.playerALogo"
+              :playerBIcon="card.playerBLogo"
               :playerA="card.playerA"
               :playerB="card.playerB"
-              :title="card.title"
+              :title="card.league"
               :time="card.time"
               @click="showCard(card._id)"
             />
@@ -63,48 +63,26 @@ const showCard = (cardID) => {
 
 const cardData = ref([])
 
-// async function getPrediction() {
-//   try {
-//     const response = await axios.get('https://predictions-server.onrender.com/predictions')
-//     console.log(response.data)
-//     cardData.value.push(response.data)
-//     console.log(cardData.value)
-//   } catch (err) {
-//     console.log(err)
-//   }
-// }
+async function getPrediction() {
+  const token = JSON.parse(localStorage.getItem('token'))
+  try {
+    const response = await axios.get('https://predictions-server.onrender.com/sports/sport/Tennis',{
+      headers: {
+        Authorization: `Bearer ${token}`
+      }
+    })
+    console.log(response.data)
+    cardData.value.push(response.data)
+    console.log(cardData.value)
+  } catch (err) {
+    console.log(err)
+  }
+}
 
-// Dummy data for TCard
-cardData.value = [
-  [
-    {
-      _id: 1,
-      status: 'Status 1',
-      playerAIcon: serena,
-      playerBIcon: serena,
-      playerA: 'serena ',
-      playerB: 'serena  ',
-      title: 'Tennis league',
-      time: '12.01',
-      status: 'serena wins the game'
-    },
-    {
-      _id: 2,
-      status: 'Status 1',
-      playerAIcon: serena,
-      playerBIcon: serena,
-      playerA: 'serena',
-      playerB: 'serena  ',
-      title: 'Tennis league',
-      time: '11.01',
-      status: 'serena wins the game'
-    },
-  ]
-]
+onMounted(() => {
+  getPrediction()
+})
 
-// onMounted(() => {
-//   getPrediction()
-// })
 
 const offset = ref(0)
 
@@ -114,7 +92,7 @@ const previousDay = () => {
 }
 
 const nextDay = () => {
-  offset.value++
+  offset.value++  
   updateCurrentDate()
 }
 

@@ -19,19 +19,19 @@
           accept="image/*"
         />
       </div>
-      <div class="form-group">
-        <label for="playerALeague">League:</label>
-        <input v-model="playerALeague" type="text" class="form-g-input" placeholder="Basketball League" id="playerALeague" />
-      </div>
-      <div class="form-group">
-        <label for="playerATime">Basketball Time:</label>
-        <input v-model="playerATime" type="time" class="form-g-input" placeholder="12.00pm" id="playerATime" />
-      </div>
     </div>
     <div class="form-wrapper">
       <div class="form-group">
-        <label for="playerAPrediction">Basketball Prediction:</label>
-        <input v-model="playerAPrediction" type="text" class="form-g-input" placeholder="Lebron wins the game" id="playerAPrediction" />
+        <div class="form-group">
+        <label for="playerBTime">Basketball Time:</label>
+        <input v-model="Time" type="time" class="form-g-input" placeholder="12.00pm" id="playerBTime" />
+      </div>
+        <label for="playerALeague">League:</label>
+        <input v-model="League" type="text" class="form-g-input" placeholder="Basketball League" id="playerALeague" />
+      </div>
+      <div class="form-group">
+        <label for="gamePrediction">Basketball Prediction:</label>
+        <input v-model="gamePrediction" type="text" class="form-g-input" placeholder="Lebron wins the game" id="gamePrediction" />
       </div>
       <button type="submit" class="btn-f-f f-desktop">Submit</button>
     </div>
@@ -51,39 +51,27 @@
           accept="image/*"
         />
       </div>
-      <div class="form-group">
-        <label for="playerBLeague">League:</label>
-        <input v-model="playerBLeague" type="text" class="form-g-input" placeholder="Basketball League" id="playerBLeague" />
-      </div>
-      <div class="form-group">
-        <label for="playerBTime">Basketball Time:</label>
-        <input v-model="playerBTime" type="time" class="form-g-input" placeholder="12.00pm" id="playerBTime" />
-      </div>
     </div>
   </form>
 </template>
 
 <script setup>
 import { ref } from 'vue'
+import axios from 'axios'
 
+const League = ref('')
 const playerAName = ref('')
 const playerBName = ref('')
 const playerALogo = ref(null)
 const playerBLogo = ref(null)
-const playerALeague = ref('')
-const playerBLeague = ref('')
-const playerAPrediction = ref('')
-const playerATime = ref('')
-const playerBTime = ref('')
+const gamePrediction = ref('')
+const Time = ref('')
+const sport = ref('Basketball')
 
 function handleFileUpload(event, targetRef) {
   const file = event.target.files[0]
   if (file) {
-    const reader = new FileReader()
-    reader.onload = () => {
-      targetRef.value = reader.result
-    }
-    reader.readAsDataURL(file)
+    targetRef.value = file
   }
 }
 
@@ -95,27 +83,62 @@ function handlePlayerBLogo(event) {
   handleFileUpload(event, playerBLogo)
 }
 
-function handleSubmit() {
+const reset = () => {
+  playerAName.value = ''
+  playerALogo.value = null
+  playerBName.value = ''
+  playerBLogo.value = null
+  League.value = ''
+  gamePrediction.value = ''
+  Time.value = ''
+  sport.value = ''
+
+  alert('prediction posted successfully');
+}
+
+async function handleSubmit() {
   if (
     playerAName.value.trim() !== '' &&
     playerALogo.value !== null &&
     playerBName.value.trim() !== '' &&
     playerBLogo.value !== null &&
-    playerALeague.value.trim() !== '' &&
-    playerBLeague.value.trim() !== '' &&
-    playerAPrediction.value.trim() !== '' &&
-    playerATime.value.trim() !== '' &&
-    playerBTime.value.trim() !== ''
+    League.value.trim() !== '' &&
+    gamePrediction.value.trim() !== '' &&
+    Time.value.trim() !== '' &&
+    sport.value.trim() !== ''
   ) {
-    submitForm()
+    const user = JSON.parse(localStorage.getItem('token'))
+    try {
+      const formData = new FormData()
+      formData.append('playerA', playerAName.value)
+      formData.append('playerALogo', playerALogo.value)
+      formData.append('league', League.value)
+      formData.append('time', Time.value)
+      formData.append('playerB', playerBName.value)
+      formData.append('playerBLogo', playerBLogo.value)
+      formData.append('gamePrediction', gamePrediction.value)
+
+      const response = await axios.post(
+        'https://predictions-server.onrender.com/sports/create/Basketball',
+        formData, 
+        {
+          headers: {
+            'Content-Type': 'multipart/form-data',
+            Authorization: `Bearer ${user}`
+          }
+        }
+      )
+      console.log(response.data)
+      reset();
+    } catch (err) {
+      console.log(err)
+    }
   } else {
     alert('No empty fields allowed')
   }
 }
 
-function submitForm() {
-  // Submit form logic goes here
-}
+
 </script>
 
 <style>
