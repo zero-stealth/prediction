@@ -217,7 +217,7 @@ async function handleSubmit() {
       formData.append('status', status.value)
 
       const response = await axios.post(
-        'https://predictions-server.onrender.com/predictions/create',
+        'https://predictions-server.onrender.com/predictions/create/vip',
         formData,
         {
           headers: {

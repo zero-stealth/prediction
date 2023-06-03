@@ -7,7 +7,7 @@
       <div class="nav-link-container">
         <RouterLink :to="{ name: 'Home' }" class="nav-link"> Home </RouterLink>
         <div @click="openTelegram" class="nav-link">Telegram tips</div>
-        <RouterLink :to="{ name: 'Banker' }" class="nav-link"> Banker tips </RouterLink>
+        <RouterLink :to="{ name: 'Banker' }" class="nav-link"> Bet of the day  </RouterLink>
         <div class="drop-container">
           <div class="drop-down" @click="showDrop()">
             <span>Predictions</span>

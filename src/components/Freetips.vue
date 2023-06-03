@@ -6,30 +6,30 @@
       <div class="form-wrapper">
         <h1>Team A</h1>
         <div class="form-group">
-          <label for="teamAName">Name:</label>
-          <input v-model="teamAName" type="text" class="form-g-input" placeholder="Manchester" id="teamAName" />
+          <label for="teamA">Name:</label>
+          <input v-model="teamA" type="text" class="form-g-input" placeholder="Manchester" id="teamA" />
         </div>
         <div class="form-group">
-          <label for="teamALogo">Logo:</label>
+          <label for="teamAIcon">Logo:</label>
           <input
             @change="handleTeamALogo"
             type="file"
             class="form-g-input"
-            id="teamALogo"
+            id="teamAIcon"
             accept="image/*"
           />
         </div>
         <div class="form-group">
-          <label for="teamAFormation">Formation:</label>
-          <input v-model="teamAFormation" type="text" class="form-g-input" placeholder="4-2-0-4" id="teamAFormation" />
+          <label for="formationA">Formation:</label>
+          <input v-model="formationA" type="text" class="form-g-input" placeholder="4-2-0-4" id="formationA" />
         </div>
         <div class="form-group">
           <label for="teamAPosition">Position:</label>
           <input v-model="teamAPosition" type="text" class="form-g-input" placeholder="1" id="teamAPosition" />
         </div>
         <div class="form-group">
-          <label for="teamAScore">Score:</label>
-          <input v-model="teamAScore" type="text" class="form-g-input" placeholder="2" id="teamAScore" />
+          <label for="teamAscore">Score:</label>
+          <input v-model="teamAscore" type="text" class="form-g-input" placeholder="2" id="teamAscore" />
         </div>
       </div>
       <div class="form-wrapper">
@@ -39,17 +39,17 @@
             @change="handleLeagueLogo"
             type="file"
             class="form-g-input"
-          id="leagueLogo"
+          id="leagueIcon"
             accept="image/*"
           />
         </div>
         <div class="form-group">
-          <label for="matchTime">Match Time:</label>
-          <input v-model="matchTime" type="time" class="form-g-input" placeholder="12.00pm" id="matchTime" />
+          <label for="time">Match Time:</label>
+          <input v-model="time" type="time" class="form-g-input" placeholder="12.00pm" id="time" />
         </div>
         <div class="form-group">
-          <label for="matchStatus">Match Status:</label>
-          <select v-model="matchStatus" class="form-g-input" placeholder="Upcoming" id="matchStatus">
+          <label for="matchstatus">Match status:</label>
+          <select v-model="status" class="form-g-input" placeholder="Upcoming" id="matchstatus">
             <option disabled value="">Choose status</option>
             <option value="live">Live</option>
             <option value="past">Past</option>
@@ -61,30 +61,30 @@
       <div class="form-wrapper">
         <h1>Team B</h1>
         <div class="form-group">
-          <label for="teamBName">Name:</label>
-          <input v-model="teamBName" type="text" class="form-g-input" placeholder="Arsenal" id="teamBName" />
+          <label for="teamB">Name:</label>
+          <input v-model="teamB" type="text" class="form-g-input" placeholder="Arsenal" id="teamB" />
         </div>
         <div class="form-group">
-          <label for="teamBLogo">Logo:</label>
+          <label for="teamBIcon">Logo:</label>
           <input
             @change="handleTeamBLogo"
             type="file"
             class="form-g-input"
-            id="teamBLogo"
+            id="teamBIcon"
             accept="image/*"
           />
         </div>
         <div class="form-group">
-          <label for="teamBFormation">Formation:</label>
-          <input v-model="teamBFormation" type="text" class="form-g-input" placeholder="4-1-3-0" id="teamBFormation" />
+          <label for="formationB">Formation:</label>
+          <input v-model="formationB" type="text" class="form-g-input" placeholder="4-1-3-0" id="formationB" />
         </div>
         <div class="form-group">
           <label for="teamBPosition">Position:</label>
           <input v-model="teamBPosition" type="text" class="form-g-input" placeholder="2" id="teamBPosition" />
         </div>
         <div class="form-group">
-          <label for="teamBScore">Score:</label>
-          <input v-model="teamBScore" type="text" class="form-g-input" placeholder="5" id="teamBScore" />
+          <label for="teamBscore">Score:</label>
+          <input v-model="teamBscore" type="text" class="form-g-input" placeholder="5" id="teamBscore" />
         </div>
         <button type="submit" class="btn-f-f f-mobile">Submit</button>
       </div>
@@ -93,69 +93,92 @@
   
   <script setup>
   import { ref } from 'vue'
+  import axios from 'axios'
   
-  const teamAName = ref('')
-  const teamBName = ref('')
-  const teamALogo = ref(null)
-  const teamBLogo = ref(null)
-  const leagueLogo = ref(null)
-  const teamAFormation = ref('4-4-2')
-  const teamBFormation = ref('4-4-2')
+  const teamA = ref('')
+  const teamB = ref('')
+  const teamAIcon = ref(null)
+  const teamBIcon = ref(null)
+  const leagueIcon = ref(null)
+  const formationA = ref('4-4-2')
+  const formationB = ref('4-4-2')
   const teamAPosition = ref('')
   const teamBPosition = ref('')
-  const matchTime = ref('')
-  const teamAScore = ref(0)
-  const teamBScore = ref(0)
-  const matchStatus = ref('')
+  const time = ref('')
+  const teamAscore = ref(0)
+  const teamBscore = ref(0)
+  const status = ref('')
   
   function handleFileUpload(event, targetRef) {
-    const file = event.target.files[0]
-    if (file) {
-      const reader = new FileReader()
-      reader.onload = () => {
-        targetRef.value = reader.result
-      }
-      reader.readAsDataURL(file)
+  const file = event.target.files[0]
+  if (file) {
+    targetRef.value = file
+  }
+}
+
+function handleTeamALogo(event) {
+  handleFileUpload(event, teamAIcon)
+}
+
+function handleTeamBLogo(event) {
+  handleFileUpload(event, teamBIcon)
+}
+
+function handleLeagueLogo(event) {
+  handleFileUpload(event, leagueIcon)
+}
+
+async function handleSubmit() {
+  if (
+    teamA.value.trim() !== '' &&
+    teamAIcon.value !== null &&
+    leagueIcon.value !== null &&
+    formationA.value.trim() !== '' &&
+    teamAPosition.value.trim() !== '' &&
+    teamAscore.value !== null &&
+    teamB.value.trim() !== '' &&
+    teamBIcon.value !== null &&
+    formationB.value.trim() !== '' &&
+    teamBPosition.value.trim() !== '' &&
+    teamBscore.value !== null &&
+    time.value.trim() !== '' &&
+    status.value.trim() !== ''
+  ) {
+    const user = JSON.parse(localStorage.getItem('token'))
+    try {
+      const formData = new FormData()
+      formData.append('teamA', teamA.value)
+      formData.append('teamAIcon', teamAIcon.value)
+      formData.append('leagueIcon', leagueIcon.value)
+      formData.append('formationA', formationA.value)
+      formData.append('teamAPosition', teamAPosition.value)
+      formData.append('teamAscore', teamAscore.value)
+      formData.append('teamB', teamB.value)
+      formData.append('teamBIcon', teamBIcon.value)
+      formData.append('formationB', formationB.value)
+      formData.append('teamBPosition', teamBPosition.value)
+      formData.append('teamBscore', teamBscore.value)
+      formData.append('time', time.value)
+      formData.append('status', status.value)
+
+      const response = await axios.post(
+        'https://predictions-server.onrender.com/predictions/create/tip/freeTip',
+        formData,
+        {
+          headers: {
+            'Content-Type': 'multipart/form-data',
+            Authorization: `Bearer ${user}`
+          }
+        }
+      )
+      console.log(response.data)
+    } catch (err) {
+      console.log(err)
     }
+  } else {
+    alert('No empty fields allowed')
   }
-  
-  function handleTeamALogo(event) {
-    handleFileUpload(event, teamALogo)
-  }
-  
-  function handleTeamBLogo(event) {
-    handleFileUpload(event, teamBLogo)
-  }
-  
-  function handleLeagueLogo(event) {
-    handleFileUpload(event, leagueLogo)
-  }
-  
-  function handleSubmit() {
-    if (
-      teamAName.value.trim() !== '' &&
-      teamALogo.value !== null &&
-      leagueLogo.value !== null &&
-      teamAFormation.value.trim() !== '' &&
-      teamAPosition.value.trim() !== '' &&
-      teamAScore.value !== null &&
-      teamBName.value.trim() !== '' &&
-      teamBLogo.value !== null &&
-      teamBFormation.value.trim() !== '' &&
-      teamBPosition.value.trim() !== '' &&
-      teamBScore.value !== null &&
-      matchTime.value.trim() !== '' &&
-      matchStatus.value.trim() !== ''
-    ) {
-      submitForm()
-    } else {
-      alert('No empty fields allowed')
-    }
-  }
-  
-  function submitForm() {
-    // Submit form logic goes here
-  }
+}
   </script>
   
   <style>

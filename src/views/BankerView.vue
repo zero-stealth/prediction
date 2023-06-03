@@ -3,7 +3,7 @@
   <div class="main-h">
     <div class="main-header">
       <div class="header-info">
-        <h1>Banker tip {{ currentDate }}</h1>
+        <h1>Bet of the day {{ currentDate }}</h1>
       </div>
       <div class="header-btn">
         <button

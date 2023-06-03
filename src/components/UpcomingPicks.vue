@@ -56,7 +56,7 @@ const cardData = ref([])
 
 async function getPrediction() {
   try {
-    const response = await axios.get('https://predictions-server.onrender.com/predictions')
+    const response = await axios.get('https://predictions-server.onrender.com/predictions/tips/freeTip')
     console.log(response.data)
     cardData.value.push(response.data)
     console.log(cardData.value)

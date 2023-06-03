@@ -35,10 +35,7 @@ const openAndroid = () => {
 
 const book = () => {
   if (booknow.value !== '') {
-    window.open(
-      `https://wa.me/${phoneNumber.value}?text=*Message*: ${booknow.value}`,
-      '_blank'
-    )
+    window.open(`https://wa.me/${phoneNumber.value}?text=*Message*: ${booknow.value}`, '_blank')
   } else {
     errMessage.value = 'Write something'
   }
@@ -55,7 +52,9 @@ const reset = () => {
     <div class="contact-wrapper">
       <div class="contact-d1">
         <h1>Contact information</h1>
-        <p>For queries or help, please feel <span @click="goAlogin()">free</span>  to contact us on:</p>
+        <p>
+          For queries or help, please feel <span @click="goAlogin()">free</span> to contact us on:
+        </p>
         <div class="d1-contact">
           <div class="d1-icon">
             <phoneIcon class="icon-d1" />
@@ -80,15 +79,19 @@ const reset = () => {
         </div>
       </div>
       <div class="contact-d2">
-        <h1>Quick links</h1>
-        <RouterLink :to="{ name: 'Home' }" class="nav-link">Home</RouterLink>
-        <RouterLink :to="{ name: 'Banker' }" class="nav-link">Banker tips</RouterLink>
-        <RouterLink :to="{ name: 'Tennis' }" class="nav-link">Tennis</RouterLink>
-        <RouterLink :to="{ name: 'Basketball' }" class="nav-link">Basketball</RouterLink>
-        <a href="#" class="nav-link">DISCLAIMER</a>
-        <a href="#" class="nav-link">Policy</a>
-        <a href="#" class="nav-link">Refund policy</a>
-        <a href="#" class="nav-link">TERMS & CONDITIONS</a>
+        <div>
+          <h1>Quick links</h1>
+        </div>
+        <div class="d2-con">
+          <RouterLink :to="{ name: 'Home' }" class="nav-link">Home</RouterLink>
+          <RouterLink :to="{ name: 'Banker' }" class="nav-link">Banker tips</RouterLink>
+          <RouterLink :to="{ name: 'Tennis' }" class="nav-link">Tennis</RouterLink>
+          <RouterLink :to="{ name: 'Basketball' }" class="nav-link">Basketball</RouterLink>
+          <a href="#" class="nav-link">DISCLAIMER</a>
+          <a href="#" class="nav-link">Policy</a>
+          <a href="#" class="nav-link">Refund policy</a>
+          <a href="#" class="nav-link">TERMS & CONDITIONS</a>
+        </div>
       </div>
       <div class="contact-d3">
         <h1>Talk with us</h1>

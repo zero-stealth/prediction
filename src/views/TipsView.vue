@@ -22,7 +22,7 @@ const leagueIcon = ref("")
 const time = ref("")
 
 async function getTip(){
-  const response = await axios.get(`https://predictions-server.onrender.com/predictions/${props.id}`)
+  const response = await axios.get('https://predictions-server.onrender.com/predictions/tips/freeTip')
   console.log(response.data)
   teamA.value = response.data.teamA
   teamB.value = response.data.teamB
