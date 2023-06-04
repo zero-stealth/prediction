@@ -1,6 +1,6 @@
 <template>
   <div class="form-container-h">
-    <h1>Vip games</h1>
+    <h1>Upcoming tips</h1>
   </div>
   <form @submit.prevent="handleSubmit" enctype="multipart/form-data" class="form-container">
     <div class="form-wrapper">
@@ -146,8 +146,8 @@ const teamB = ref('')
 const teamAIcon = ref(null)
 const teamBIcon = ref(null)
 const leagueIcon = ref(null)
-const formationA = ref('4-4-2')
-const formationB = ref('4-4-2')
+const formationA = ref('l-d-w-d')
+const formationB = ref('l-d-w-d')
 const teamAPosition = ref('')
 const teamBPosition = ref('')
 const time = ref('')
@@ -213,7 +213,7 @@ async function handleSubmit() {
 
 
       const response = await axios.post(
-        'https://predictions-server.onrender.com/predictions/create/vip',
+        'https://predictions-server.onrender.com/predictions/create/upcoming',
         formData,
         {
           headers: {

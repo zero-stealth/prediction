@@ -1,5 +1,5 @@
 <template>
-  <ButtonComponent/>
+  <ButtonComponent />
   <div class="main-bet">
     <div class="main-header">
       <div class="header-info">
@@ -17,38 +17,36 @@
         </button>
       </div>
     </div>
-    <div class="match-table">
-      <table>
-        <thead>
-          <tr>
-            <th>Match</th>
-            <th>Prediction</th>
-            <th>Time</th>
-            <th>Result</th>
-          </tr>
-        </thead>
-        <tbody>
-          <template v-if="matches.length > 0">
-            <tr v-for="({ match, prediction, time, result }, index) in matches" :key="index">
-              <td>{{ match }}</td>
-              <td>{{ prediction }}</td>
-              <td>{{ time }}</td>
-              <td>{{ result }}</td>
-            </tr>
-          </template>
-          <template v-else>
-            <tr>
-              <td colspan="4">no predictions and tips today, check back tomorrow</td>
-            </tr>
-          </template>
-        </tbody>
-      </table>
-    </div>
+    <template v-if="cardData.length > 0">
+      <div v-for="item in cardData" class="main-h-card">
+        <Card
+          v-for="(card, index) in item"
+          :key="card._id"
+          :tip="card.tip"
+          :status="card.status"
+          :leagueIcon="card.leagueIcon"
+          :teamAIcon="card.teamAIcon"
+          :teamBIcon="card.teamBIcon"
+          :teamA="card.teamA"
+          :teamB="card.teamB"
+          :teamAscore="card.teamAscore"
+          :teamBscore="card.teamBscore"
+          :time="card.time"
+          @click="showCard(card._id)"
+        />
+      </div>
+    </template>
+    <template v-else>
+      <div class="home-freetip">
+        <h1>no predictions and tips today, check back tomorrow</h1>
+      </div>
+    </template>
   </div>
 </template>
 
 <script setup>
-import ButtonComponent from '../components/ButtonComponent.vue';
+import ButtonComponent from '../components/ButtonComponent.vue'
+import Card from '../components/CardComponent.vue'
 import { ref, watchEffect, onMounted } from 'vue'
 import { useRouter } from 'vue-router'
 import axios from 'axios'
@@ -62,6 +60,8 @@ const props = defineProps({
   betName: String
 })
 
+const cardData = ref([])
+
 const predictions = async() => {
   try {
     const token = localStorage.getItem('token')
@@ -72,6 +72,9 @@ const predictions = async() => {
     })
     //handle all predictions in the category of the button name e.g Over 2.5
     console.log(response.data);
+    cardData.value.push(response.data)
+    console.log(cardData.value)
+
   } catch (err) {
     console.log(err);
   }
@@ -104,45 +107,6 @@ watchEffect(() => {
 
 updateCurrentDate()
 
-const matches = [
-  {
-    match: 'GER RGN Rain / Lech vs FC Wurzburger Kickers',
-    prediction: '(1:0)2',
-    time: '13:00',
-    result: '? - ?'
-  },
-  {
-    match: 'GER RGN Rain / Lech vs FC Wurzburger Kickers',
-    prediction: '(1:0)2',
-    time: '13:00',
-    result: '? - ?'
-  },
-  
-  {
-    match: 'AUSLIA Canberra Olympic vs Woden Vellet',
-    prediction: '(0:1)1',
-    time: '06:00',
-    result: '? - ?'
-  },
-  {
-    match: 'GER Borussia Dortmund vs FSV Mainz 05',
-    prediction: '(0:1)1',
-    time: '14:30',
-    result: '? - ?'
-  },
-  {
-    match: 'GER Borussia Dortmund vs FSV Mainz 05',
-    prediction: '(0:1)1',
-    time: '14:30',
-    result: '? - ?'
-  },
-  {
-    match: 'FRA Lens vs Ajaccio',
-    prediction: '(0:1)1',
-    time: '20:00',
-    result: '? - ?'
-  }
-]
 </script>
 
 <style>

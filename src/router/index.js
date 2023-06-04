@@ -82,6 +82,26 @@ const router = createRouter({
       component: () => import('../views/TennisView.vue')
     },
     {
+      path: '/terms&condition',
+      name: 'Terms',
+      component: () => import('../components/Terms&Condition.vue')
+    },
+    {
+      path: '/refund-policy',
+      name: 'Refund',
+      component: () => import('../components/Refundpolicy.vue')
+    },
+    {
+      path: '/policy',
+      name: 'Policy',
+      component: () => import('../components/Policyinfo.vue')
+    },
+    {
+      path: '/disclaimer',
+      name: 'Disclaimer',
+      component: () => import('../components/Disclaimerinfo.vue')
+    },  
+    {
       path: '/how-to-pay',
       name: 'Pay',
       component: () => import('../views/PayView.vue')

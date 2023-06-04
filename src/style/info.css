@@ -1,60 +1,73 @@
 @media screen {
-    .abt-info-p {
-        gap: 30px;
-        display: flex;
-        padding: 20px;
-        flex-direction: column;
-    }
+  .abt-info-p {
+    gap: 30px;
+    display: flex;
+    padding: 20px;
+    flex-direction: column;
+  }
 
-    .abt-p-in {
-        gap: 10px;
-        display: flex;
-        align-items: start;
-        flex-direction: column;
-    }
+  .info-dn {
+    margin-top: 20%;
+    padding: 20px;
 
-    .abt-p-in li {
-        list-style: decimal;
-    }
+  }
 
-    .p-in li {
-        cursor: pointer;
-        list-style: square;
-    }
+  .abt-p-in {
+    gap: 10px;
+    display: flex;
+    align-items: start;
+    flex-direction: column;
+  }
 
-    .abt-info-p h1 {
-        text-align: center;
-        font-size: 1.2rem;
-        font-weight: 600;
+  .abt-p-in li {
+    list-style: decimal;
+  }
 
-    }
+  .p-in li {
+    cursor: pointer;
+    list-style: square;
+  }
 
-    .abt-info-p p {
-        font-weight: 300;
-        font-size: .9rem;
-        
-    }
+  .abt-info-p h1 {
+    text-align: center;
+    font-size: 1.2rem;
+    font-weight: 600;
+  }
 
+  .abt-info-p p {
+    font-weight: 300;
+    font-size: 0.9rem;
+  }
 }
 /* using it as global style for larger devices  */
 @media only screen and (min-width: 48em) {
-    .abt-info-p {
-        gap: 20px;
-        padding: 50px;
-        text-align: start;
-    }
+  .abt-info-p {
+    gap: 20px;
+    padding: 50px;
+    text-align: start;
+  }
 
-    .abt-info-p h1 {
-        text-align: start;
-    }
+  .info-dn {
+    padding: 70px;
+    margin-top: 5%;
+    border: 2px solid var(--fade-color);
 
-    .abt-info-p p {
-        font-size: .9rem;
+  }
 
-    }
+  .info-dn h1 {
+    text-decoration: underline;
+    text-transform: uppercase;
+  }
 
-    .abt-info-p li {
-        font-size: .9rem;
+  .abt-info-p h1 {
+    text-align: start;
+  }
 
-    }
+  .abt-info-p p {
+    font-size: 0.9rem;
+  }
+
+  .abt-info-p li {
+    font-size: 0.9rem;
+  }
 }

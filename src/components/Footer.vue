@@ -78,7 +78,8 @@ const reset = () => {
           ></div>
         </div>
       </div>
-      <div class="contact-d2">
+      <div class="contact-dp2">
+        <div class="contact-d2">
         <div>
           <h1>Quick links</h1>
         </div>
@@ -87,11 +88,19 @@ const reset = () => {
           <RouterLink :to="{ name: 'Banker' }" class="nav-link">Banker tips</RouterLink>
           <RouterLink :to="{ name: 'Tennis' }" class="nav-link">Tennis</RouterLink>
           <RouterLink :to="{ name: 'Basketball' }" class="nav-link">Basketball</RouterLink>
-          <a href="#" class="nav-link">DISCLAIMER</a>
-          <a href="#" class="nav-link">Policy</a>
-          <a href="#" class="nav-link">Refund policy</a>
-          <a href="#" class="nav-link">TERMS & CONDITIONS</a>
         </div>
+      </div>
+      <div class="contact-d2">
+        <div>
+          <h1>Information</h1>
+        </div>
+        <div class="d2-con">
+          <RouterLink :to="{ name: 'Disclaimer' }" class="nav-link">Disclaimer</RouterLink>
+          <RouterLink :to="{ name: 'Policy' }" class="nav-link">Policy</RouterLink>
+          <RouterLink :to="{ name: 'Refund' }" class="nav-link">Refund policy</RouterLink>
+          <RouterLink :to="{ name: 'Terms' }" class="nav-link">Terms & Condition</RouterLink>
+        </div>
+      </div>
       </div>
       <div class="contact-d3">
         <h1>Talk with us</h1>

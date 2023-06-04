@@ -29,6 +29,11 @@
             <span> Free tips </span>
             <ArrowIcon class="icon-panel ap" />
           </button>
+          <button @click="setActivePage(Upcomingtips)" :class="getButtonClass(Upcomingtips)">
+            <FileIcon class="icon-panel" />
+            <span> upcoming tips </span>
+            <ArrowIcon class="icon-panel ap" />
+          </button>
           <button @click="setActivePage(BasketballGames)" :class="getButtonClass(OtherGames)">
             <basketballIcon class="icon-panel" />
             <span> Basketball </span>
@@ -79,6 +84,7 @@ const showMenu = () => {
 // pages
 import AccountManagement from '../components/AccountManagement.vue'
 import BasketballGames from '../components/BasketballGames.vue'
+import Upcomingtips from '../components/UpcomingGames.vue'
 import TennisGames from '../components/TennisGames.vue'
 import VipGames from '../components/VipGames.vue'
 import Freetips from '../components/Freetips.vue'

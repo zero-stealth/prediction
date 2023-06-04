@@ -21,7 +21,7 @@
         </div>
         <div class="form-group">
           <label for="formationA">Formation:</label>
-          <input v-model="formationA" type="text" class="form-g-input" placeholder="4-2-0-4" id="formationA" />
+          <input v-model="formationA" type="text" class="form-g-input" placeholder="l-d-w-d" id="formationA" />
         </div>
         <div class="form-group">
           <label for="teamAPosition">Position:</label>
@@ -33,6 +33,10 @@
         </div>
       </div>
       <div class="form-wrapper">
+        <div class="form-group">
+          <label for="time">Match Tip:</label>
+          <input v-model="tip" type="text" class="form-g-input" placeholder="2" id="tip" />
+        </div>
         <div class="form-group">
           <label for="LeagueLogo">League logo</label>
           <input
@@ -76,7 +80,7 @@
         </div>
         <div class="form-group">
           <label for="formationB">Formation:</label>
-          <input v-model="formationB" type="text" class="form-g-input" placeholder="4-1-3-0" id="formationB" />
+          <input v-model="formationB" type="text" class="form-g-input" placeholder="l-d-w-d" id="formationB" />
         </div>
         <div class="form-group">
           <label for="teamBPosition">Position:</label>
@@ -100,14 +104,15 @@
   const teamAIcon = ref(null)
   const teamBIcon = ref(null)
   const leagueIcon = ref(null)
-  const formationA = ref('4-4-2')
-  const formationB = ref('4-4-2')
+  const formationA = ref('l-d-w-d')
+  const formationB = ref('l-d-w-d')
   const teamAPosition = ref('')
   const teamBPosition = ref('')
-  const time = ref('')
   const teamAscore = ref(0)
   const teamBscore = ref(0)
   const status = ref('')
+  const time = ref('')
+  const tip = ref('')
   
   function handleFileUpload(event, targetRef) {
   const file = event.target.files[0]
@@ -141,6 +146,7 @@ async function handleSubmit() {
     formationB.value.trim() !== '' &&
     teamBPosition.value.trim() !== '' &&
     teamBscore.value !== null &&
+    tip.value !== null &&
     time.value.trim() !== '' &&
     status.value.trim() !== ''
   ) {
@@ -160,6 +166,7 @@ async function handleSubmit() {
       formData.append('teamBscore', teamBscore.value)
       formData.append('time', time.value)
       formData.append('status', status.value)
+      formData.append('tip', tip.value)
 
       const response = await axios.post(
         'https://predictions-server.onrender.com/predictions/create/tip/freeTip',

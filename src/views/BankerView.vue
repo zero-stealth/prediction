@@ -63,13 +63,7 @@ import Banker from '../components/bankerinfo.vue';
 import OtherComponent from '../components/OtherComponent.vue'
 import ButtonComponent from '../components/ButtonComponent.vue';
 
-const formationA = ref(['l', 'w', 'l', 'w', 'l']);
-const formationB = ref(['l', 'w', 'l', 'w', 'l']);
 const router = useRouter();
-const teamAScore = ref(1);
-const teamBScore = ref(0);
-const tip = ref(1);
-
 const currentDate = ref('');
 const offset = ref(0);
 const cardData = ref([

@@ -30,7 +30,7 @@
           <div
             class="card-inner Tcard-inner"
             :style="{
-              backgroundImage: `url(${playerAIcon})`
+              backgroundImage: `url(${playerBIcon})`
             }"
           ></div>
         </div>

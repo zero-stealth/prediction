@@ -17,7 +17,7 @@
 
   .panel-bar {
     flex: 10%;
-    gap: 50px;
+    gap: 30px;
     height: 60%;
     width: 100%;
     display: flex;
@@ -214,8 +214,8 @@
 
   
     .panel-img {
-      width: 100px;
-      height: 100px;
+      width: 90px;
+      height: 90px;
     }
     
     .panel-btn {
