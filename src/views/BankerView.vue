@@ -1,126 +1,115 @@
 <template>
-   <ButtonComponent/>
-  <div class="main-h">
+  <ButtonComponent />
+  <div class="main-bet">
     <div class="main-header">
       <div class="header-info">
-        <h1>Bet of the day {{ currentDate }}</h1>
+        <h1> Bet of the day {{ currentDate }}</h1>
       </div>
       <div class="header-btn">
-        <button
-          class="btn-h"
-          :class="{'active-btn': offset === -1}"
-          @click="setOffset(-1)"
-        >
+        <button class="btn-h" :class="{ 'active-btn': offset === -1 }" @click="setOffset(-1)">
           Yesterday
         </button>
-        <button
-          class="btn-h"
-          :class="{'active-btn': offset === 0}"
-          @click="setOffset(0)"
-        >
+        <button class="btn-h" :class="{ 'active-btn': offset === 0 }" @click="setOffset(0)">
           Today
         </button>
-        <button 
-          class="btn-h"
-          :class="{'active-btn': offset === 1}"
-          @click="setOffset(1)"
-        >
+        <button class="btn-h" :class="{ 'active-btn': offset === 1 }" @click="setOffset(1)">
           Tomorrow
         </button>
       </div>
     </div>
-    <div class="main-h-card">
-      <Card
-        v-for="({ id, tip, status, formationA, formationB, leagueLogo, teamALogo, teamBLogo, teamAName, teamBName, teamAScore, teamBScore, matchTime }, index) in cardData"
-        :key="index"
-        :tip="tip"
-        :status="status"
-        :formationA="formationA"
-        :formationB="formationB"
-        :leagueLogo="leagueLogo"
-        :teamALogo="teamALogo"
-        :teamBLogo="teamBLogo"
-        :teamAName="teamAName"
-        :teamBName="teamBName"
-        :teamAScore="teamAScore"
-        :teamBScore="teamBScore"
-        :matchTime="matchTime"
-        @click="showCard(id)"
-      />
-    </div>
+    <template v-if="cardData.length > 0">
+      <div v-for="item in cardData" class="main-h-card">
+        <Card
+          v-for="(card, index) in item"
+          :key="card._id"
+          :tip="card.tip"
+          :status="card.status"
+          :leagueIcon="card.leagueIcon"
+          :teamAIcon="card.teamAIcon"
+          :teamBIcon="card.teamBIcon"
+          :teamA="card.teamA"
+          :teamB="card.teamB"
+          :teamAscore="card.teamAscore"
+          :teamBscore="card.teamBscore"
+          :time="card.time"
+          @click="showCard(card._id)"
+        />
+      </div>
+    </template>
+    <template v-else>
+      <div class="home-freetip">
+        <h1>no predictions and tips today, check back tomorrow</h1>
+      </div>
+    </template>
   </div>
-  <OtherComponent/>
-  <Banker/>
 </template>
 
 <script setup>
-import { ref } from 'vue';
-import { useRouter } from 'vue-router';
-import manchester from '../assets/man-logo.png';
-import argentina from '../assets/Arg-log.png';
-import Card from '../components/CardComponent.vue';
-import Banker from '../components/bankerinfo.vue';
-import OtherComponent from '../components/OtherComponent.vue'
-import ButtonComponent from '../components/ButtonComponent.vue';
+import ButtonComponent from '../components/ButtonComponent.vue'
+import Card from '../components/CardComponent.vue'
+import { ref, watchEffect, onMounted } from 'vue'
+import { useRouter } from 'vue-router'
+import axios from 'axios'
 
-const router = useRouter();
-const currentDate = ref('');
-const offset = ref(0);
-const cardData = ref([
-  {
-    id: 1,
-    formationA: formationA.value,
-    formationB: formationB.value,
-    leagueLogo: manchester,
-    teamALogo: manchester,
-    teamBLogo: argentina,
-    tip: tip.value,
-    teamAName: 'Team A',
-    teamBName: 'Team B',
-    teamAScore: teamAScore.value,
-    teamBScore: teamBScore.value,
-    matchTime: '20:00',
-    status: 'live',
-  },
-  {
-    id: 2,
-    formationA: formationA.value,
-    formationB: formationB.value,
-    leagueLogo: manchester,
-    teamALogo: argentina,
-    teamBLogo: manchester,
-    tip: tip.value,
-    teamAName: 'Team A',
-    teamBName: 'Team B',
-    teamAScore: teamAScore.value,
-    teamBScore: teamBScore.value,
-    matchTime: '20:00',
-    status: 'live',
+const router = useRouter()
+const currentDate = ref('')
+const offset = ref(0)
+const paramValue = ref('')
+
+const props = defineProps({
+  betName: String
+})
+
+const cardData = ref([])
+
+const predictions = async() => {
+  try {
+    const token = localStorage.getItem('token')
+    const response = await axios.get(`https://predictions-server.onrender.com/predictions/tips/freeTip`,{
+      headers: {
+        Authorization: `Bearer ${token}`
+      }
+    })
+    //handle all predictions in the category of the button name e.g Over 2.5
+    console.log(response.data);
+    cardData.value.push(response.data)
+    console.log(cardData.value)
+
+  } catch (err) {
+    console.log(err);
   }
-]);
+}
 
-const showCard = (cardID) => {
-  router.push({ name: 'Tips', params: { id: cardID } });
-};
+onMounted(() => {
+  predictions()
+  console.log(props.betName);
+})
 
 const setOffset = (value) => {
-  offset.value = value;
-  updateCurrentDate();
-};
+  offset.value = value
+  updateCurrentDate()
+}
 
 const getTimestamp = (offset) => {
-  const today = new Date();
-  today.setDate(today.getDate() + offset);
-  return today.toDateString();
-};
+  const today = new Date()
+  today.setDate(today.getDate() + offset)
+  return today.toDateString()
+}
 
 const updateCurrentDate = () => {
-  currentDate.value = getTimestamp(offset.value);
-};
+  currentDate.value = getTimestamp(offset.value)
+}
 
-updateCurrentDate(); 
+watchEffect(() => {
+  paramValue.value = router.currentRoute.value.params.betName
+  updateCurrentDate()
+})
+
+updateCurrentDate()
+
 </script>
 
 <style>
 @import '../style/Home.css';
+@import '../style/Bet.css';
 </style>
