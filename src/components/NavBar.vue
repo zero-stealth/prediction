@@ -91,7 +91,7 @@
           </div>
         </div>
       </div>
-      <div class="mobile-btn-container" v-if="!token">
+      <div class="mobile-btn-container" v-if="token != null">
         <button @click="goSignin" class="mobile-btn btn-r">
           <GroupIcon class="icon-nav r-icon" />
           sign up
@@ -116,7 +116,6 @@
 import MobileMenuIcon from '../icons/mobileMenuIcon.vue'
 import { RouterLink, useRouter } from 'vue-router'
 import { countries } from 'country-flags-svg'
-import { useAuthStore } from '../stores/auth'
 import ProfileIcon from '../icons/profileIcon.vue'
 import GroupIcon from '../icons/GroupIcon.vue'
 import ExitIcon from '../icons/ExitIcon.vue'
@@ -125,7 +124,6 @@ import ArrowIcon from '../icons/ArrowIcon.vue'
 import { ref, watchEffect } from 'vue'
 
 const router = useRouter()
-const authStore = useAuthStore()
 const isOpen = ref(false)
 const isDropOpen = ref(false)
 const isDrpOpen = ref(false)

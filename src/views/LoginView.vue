@@ -105,6 +105,7 @@ const resetAuth = async () => {
     reset()
   }
 }
+
 const useGoogle = async () => {
   try {
     const response = await axios.get('https://predictions-server.onrender.com/auth/auth/google');
@@ -120,6 +121,7 @@ const useGoogle = async () => {
     console.error(error);
   }
 };
+
 const useGuest = () => {
   router.push({ name: 'Home' })
 }

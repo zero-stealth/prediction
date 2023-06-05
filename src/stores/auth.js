@@ -1,5 +1,4 @@
 import { defineStore, acceptHMRUpdate } from "pinia";
-import axios from "axios";
 import { useRouter, useRoute } from "vue-router";
 import { inject } from "vue";
 

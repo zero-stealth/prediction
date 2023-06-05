@@ -1,7 +1,7 @@
 <template>
   <div class="Account-container">
     <div class="Account-header">
-      <h1><span>Welcome</span><br />penguin,</h1>
+      <h1><span>Welcome</span><br />{{ username }},</h1>
     </div>
     <div class="Account-info">
       <div class="Account-card" v-for="card in accountCards" :key="card.id">
@@ -25,15 +25,21 @@
           </tr>
         </thead>
         <tbody>
-          <tr v-for="account in accounts" :key="account.id">
+          <tr v-for="account in accountInfo" :key="account.id">
             <td>
               <div class="Account-tbl-img">
-                <img :src="account.imageUrl" alt="Account-p" class="Account-pi" />
+                <img :src="Profile" alt="Account-p" class="Account-pi" />
                 <span>{{ account.username }}</span>
               </div>
             </td>
-            <td>{{ account.vipStatus }}</td>
-            <td>{{ account.payment }}</td>
+            <td>{{ account.paid }}</td>
+            <td>{{ account.paid }}</td>
+            <td v-if="account.paid == true">
+              1 Month
+            </td>
+            <td v-else>
+              0 Month
+            </td>
             <td>{{ account.period }}</td>
             <td>
               <div class="Account-t-con">
@@ -53,8 +59,8 @@
               </div>
             </td>
           </tr>
-          <tr v-if="accounts.length === 0">
-            <td colspan="5">No predictions yet!</td>
+          <tr v-if="accountInfo.length === 0">
+            <td colspan="6">No accounts yet!</td>
           </tr>
         </tbody>
       </table>
@@ -63,7 +69,8 @@
 </template>
 
 <script setup>
-import { ref } from 'vue'
+import axios from 'axios'
+import { ref, watchEffect, onMounted } from 'vue'
 import NotPaid from '../icons/NotPaid.vue'
 import VipIcon from '../icons/VipIcon.vue'
 import Profile from '../assets/profile.jpg'
@@ -72,7 +79,30 @@ import AdminIcon from '../icons/AdminIcon.vue'
 import DeleteIcon from '../icons/DeleteIcon.vue'
 import ProfileIcon from '../icons/profileIcon.vue'
 
+const username = ref(null)
 const accountCards = ref([])
+const accountInfo = ref([])
+
+const accountsData = async() => {
+  try {
+    const token = localStorage.getItem('token')
+    const response = await axios.get(`https://predictions-server.onrender.com/auth/credentials`,{
+      headers: {
+        Authorization: `Bearer ${token}`
+      }
+    })
+    console.log(response.data);
+    cardData.value.push(response.data)
+    console.log(cardData.value)
+
+  } catch (err) {
+    console.log(err);
+  }
+}
+
+onMounted(() => {
+  accountsData()
+})
 
 // Simulated data for account cards
 accountCards.value = [
@@ -83,29 +113,9 @@ accountCards.value = [
   { id: 5, title: 'Administrator accounts', count: 100, icon: AdminIcon }
 ]
 
-const accounts = ref([])
-
-// Simulated data for accounts
-accounts.value = [
-  {
-    id: 1,
-    username: 'penguin',
-    imageUrl: Profile,
-    vipStatus: 'active',
-    payment: 'paid',
-    period: '1 month',
-    status: true
-  },
-  {
-    id: 2,
-    username: 'macmillian',
-    imageUrl: Profile,
-    vipStatus: 'inactive',
-    payment: 'not paid',
-    period: '3 months',
-    status: false
-  }
-]
+watchEffect(() => {
+  username.value = localStorage.getItem('username')
+})
 
 function toggleStatus(account) {
   account.status = !account.status

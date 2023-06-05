@@ -1,6 +1,6 @@
 <template>
   <div class="form-container-h">
-    <h1>Upcoming tips</h1>
+    <h1>Prediction picks</h1>
   </div>
   <form @submit.prevent="handleSubmit" enctype="multipart/form-data" class="form-container">
     <div class="form-wrapper">
@@ -84,6 +84,18 @@
           <option value="future">Upcoming</option>
         </select>
       </div>
+      <div class="form-group">
+        <label for="status">Prediction:</label>
+        <select v-model="category" class="form-g-input" placeholder="Upcoming" id="status">
+          <option disabled value="">Choose Prediction</option>
+          <option value="live">Double chance</option>
+          <option value="past">Over 2.5 Goal</option>
+          <option value="future">Over 1.5 Goals</option>
+          <option value="future">Both Team To Score</option>
+          <option value="future">Bet Of The Day</option>
+          <option value="future">Under 2.5 Goals</option>
+        </select>
+      </div>
       <button type="submit" class="btn-f-f f-desktop">Submit</button>
     </div>
     <div class="form-wrapper">
@@ -150,6 +162,7 @@ const formationA = ref('l-d-w-d')
 const formationB = ref('l-d-w-d')
 const teamAPosition = ref('')
 const teamBPosition = ref('')
+const category = ref('')
 const time = ref('')
 const teamAscore = ref(0)
 const teamBscore = ref(0)
@@ -189,6 +202,7 @@ async function handleSubmit() {
     formationB.value.trim() !== '' &&
     teamBPosition.value.trim() !== '' &&
     teamBscore.value !== null &&
+    category.value !== null &&
     time.value.trim() !== '' &&
     tip.value !== null &&
     status.value.trim() !== ''
@@ -202,6 +216,7 @@ async function handleSubmit() {
       formData.append('formationA', formationA.value)
       formData.append('teamAPosition', teamAPosition.value)
       formData.append('teamAscore', teamAscore.value)
+      formData.append('category', category.value)
       formData.append('teamB', teamB.value)
       formData.append('teamBIcon', teamBIcon.value)
       formData.append('formationB', formationB.value)
@@ -213,7 +228,7 @@ async function handleSubmit() {
 
 
       const response = await axios.post(
-        'https://predictions-server.onrender.com/predictions/create/upcoming/upcoming',
+        'https://predictions-server.onrender.com/predictions/create/bet/betOfTheDay',
         formData,
         {
           headers: {

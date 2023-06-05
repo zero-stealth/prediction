@@ -1,11 +1,14 @@
 <template>
-  <div class="auth-container" :style="{
-    backgroundImage: `linear-gradient(
+  <div
+    class="auth-container"
+    :style="{
+      backgroundImage: `linear-gradient(
       110deg,
       rgba(3, 30, 60, 0.8),
       rgba(3, 30, 60, 0.7)
     ), url(${SportBg})`
-  }">
+    }"
+  >
     <div class="form-l-wrapper">
       <h1>{{ title }}</h1>
       <form @submit.prevent="login" class="l-form" v-if="!resetPage">
@@ -57,12 +60,14 @@ const login = async () => {
       console.log(response.data) // Handle the response data as needed
       const isAdmin = response.data.isAdmin
       if (isAdmin) {
-        const token = response.data.token 
+        const token = response.data.token
         const admin = response.data.isAdmin
-   
+        const adminusername = response.data.username
+
         localStorage.setItem('admin', admin)
+        localStorage.setItem('username', adminusername)
         localStorage.setItem('token', JSON.stringify(token))
-        
+
         router.push({ name: 'Panel' })
       } else {
         errMsg.value = 'Invalid admin credentials'
@@ -105,19 +110,19 @@ const resetAuth = async () => {
 
 const useGoogle = async () => {
   try {
-    const response = await axios.get('https://predictions-server.onrender.com/auth/auth/google');
+    const response = await axios.get('https://predictions-server.onrender.com/auth/auth/google')
 
     // Handle the response from the server
-    if (response.data && response.data.redirectTo) {
-      router.push({ path: response.data.redirectTo });
+    if (response.data.redirectTo) {
+      router.push({ path: response.data.redirectTo })
     } else {
-      console.error('Invalid response from server');
+      console.error('Invalid response from server')
     }
   } catch (error) {
     // Handle the error
-    console.error(error);
+    console.error(error)
   }
-};
+}
 </script>
 
 <style>

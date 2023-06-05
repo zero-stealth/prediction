@@ -1,6 +1,6 @@
 <template>
   <div class="form-container-h">
-    <h1>Upcoming tips</h1>
+    <h1>Bet of the day</h1>
   </div>
   <form @submit.prevent="handleSubmit" enctype="multipart/form-data" class="form-container">
     <div class="form-wrapper">
@@ -213,7 +213,7 @@ async function handleSubmit() {
 
 
       const response = await axios.post(
-        'https://predictions-server.onrender.com/predictions/create/upcoming/upcoming',
+        'https://predictions-server.onrender.com/predictions/create/bet/betOfTheDay',
         formData,
         {
           headers: {

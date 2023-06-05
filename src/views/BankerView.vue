@@ -65,12 +65,11 @@ const cardData = ref([])
 const predictions = async() => {
   try {
     const token = localStorage.getItem('token')
-    const response = await axios.get(`https://predictions-server.onrender.com/predictions/tips/freeTip`,{
+    const response = await axios.get(`https://predictions-server.onrender.com/predictions/bet/betOfTheDay`,{
       headers: {
         Authorization: `Bearer ${token}`
       }
     })
-    //handle all predictions in the category of the button name e.g Over 2.5
     console.log(response.data);
     cardData.value.push(response.data)
     console.log(cardData.value)
