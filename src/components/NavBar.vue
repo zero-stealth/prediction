@@ -85,7 +85,7 @@
             <span @click="goTo('Double chance')">Double chance</span>
             <span @click="goTo('Over 2.5 Goals')">Over 2.5 Goals</span>
             <span @click="goTo('Over 1.5 Goals')">Over 1.5 Goals</span>
-            <span @click="goTo('Both Team To Score')">Both Team To Score</span>
+            <span @click="goTo('Both Team To Score')">Both Teams To Score</span>
             <span @click="goTo('Bet Of The Day')">Bet Of The Day</span>
             <span @click="goTo('Under 2.5 Goals')">Under 2.5 Goals</span>
           </div>

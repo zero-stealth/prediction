@@ -4,28 +4,28 @@
       <h1><span>Welcome</span><br />{{ username }},</h1>
     </div>
     <div class="Account-info">
-      <div class="Account-card" v-for="card in accountCards" :key="card.id">
-        <h5>{{ card.title }}</h5>
-        <div class="Account-card-icon">
-          <h1>{{ card.count }}</h1>
-          <component :is="card.icon" class="icon-acc" />
-        </div>
+    <div class="Account-card" v-for="card in accountCards" :key="card.id">
+      <h5>{{ card.title }}</h5>
+      <div class="Account-card-icon">
+        <h1>{{ getCount(card.id) }}</h1>
+        <component :is="card.icon" class="icon-acc" />
       </div>
     </div>
+  </div>
+
     <div class="acc-m">
       <table>
         <thead>
           <tr>
             <th>Account</th>
-            <th>Vip status</th>
             <th>Payment</th>
             <th>Period</th>
-            <th>Account active</th>
+            <th>Vip status</th>
             <th>Delete</th>
           </tr>
         </thead>
         <tbody>
-          <tr v-for="account in accountInfo" :key="account.id">
+          <tr v-for="account in accountData" :key="account.id">
             <td>
               <div class="Account-tbl-img">
                 <img :src="Profile" alt="Account-p" class="Account-pi" />
@@ -33,14 +33,8 @@
               </div>
             </td>
             <td>{{ account.paid }}</td>
-            <td>{{ account.paid }}</td>
-            <td v-if="account.paid == true">
-              1 Month
-            </td>
-            <td v-else>
-              0 Month
-            </td>
-            <td>{{ account.period }}</td>
+            <td v-if="account.paid">1 Month</td>
+            <td v-else>0 Month</td>
             <td>
               <div class="Account-t-con">
                 <div
@@ -54,12 +48,12 @@
               </div>
             </td>
             <td>
-              <div class="Account-delete">
+              <div class="Account-delete" @click="deleteAccount(account.id)">
                 <DeleteIcon class="icon-delete" />
               </div>
             </td>
           </tr>
-          <tr v-if="accountInfo.length === 0">
+          <tr v-if="accountData.length === 0">
             <td colspan="6">No accounts yet!</td>
           </tr>
         </tbody>
@@ -70,7 +64,7 @@
 
 <script setup>
 import axios from 'axios'
-import { ref, watchEffect, onMounted } from 'vue'
+import { ref, watchEffect, onMounted, computed } from 'vue'
 import NotPaid from '../icons/NotPaid.vue'
 import VipIcon from '../icons/VipIcon.vue'
 import Profile from '../assets/profile.jpg'
@@ -83,20 +77,19 @@ const username = ref(null)
 const accountCards = ref([])
 const accountInfo = ref([])
 
-const accountsData = async() => {
+const accountsData = async () => {
   try {
-    const token = localStorage.getItem('token')
-    const response = await axios.get(`https://predictions-server.onrender.com/auth/credentials`,{
+    const user = JSON.parse(localStorage.getItem('token'))
+    const response = await axios.get(`https://predictions-server.onrender.com/auth`, {
       headers: {
-        Authorization: `Bearer ${token}`
+        Authorization: `Bearer ${user}`
       }
     })
-    console.log(response.data);
-    cardData.value.push(response.data)
-    console.log(cardData.value)
-
+    console.log(response.data)
+    accountInfo.value.push(response.data)
+    console.log(accountInfo.value)
   } catch (err) {
-    console.log(err);
+    console.log(err)
   }
 }
 
@@ -104,14 +97,50 @@ onMounted(() => {
   accountsData()
 })
 
+const accountData = computed(() => {
+  return accountInfo.value.length > 0 ? accountInfo.value[0] : []
+})
+
+const deleteAccount = async (id) => {
+  // console.log(id)
+  alert('Account deleted')
+}
+
 // Simulated data for account cards
 accountCards.value = [
-  { id: 1, title: 'Account active', count: 100, icon: ProfileIcon },
-  { id: 2, title: 'Vip accounts', count: 100, icon: VipIcon },
-  { id: 3, title: 'Paid accounts', count: 100, icon: PaidIcon },
-  { id: 4, title: 'Not paid accounts', count: 100, icon: NotPaid },
-  { id: 5, title: 'Administrator accounts', count: 100, icon: AdminIcon }
+  { id: 1, title: 'Account active', icon: ProfileIcon },
+  { id: 2, title: 'Vip accounts', icon: VipIcon },
+  { id: 3, title: 'Paid accounts', icon: PaidIcon },
+  { id: 4, title: 'Not paid accounts', icon: NotPaid },
+  { id: 5, title: 'Administrator accounts', icon: AdminIcon }
 ]
+
+const getCount = (cardId) => {
+  let count = 0;
+
+  switch (cardId) {
+    case 1: // Account active
+      count = accountData.value.filter((account) => account._id).length;
+      break;
+    case 2: // Vip accounts
+      count = accountData.value.filter((account) => account.paid).length;
+      break;
+    case 3: // Paid accounts
+      count = accountData.value.filter((account) => account.paid).length;
+      break;
+    case 4: // Not paid accounts
+      count = accountData.value.filter((account) => !account.paid).length;
+      break;
+    case 5: // Administrator accounts
+      count = accountData.value.filter((account) => account.isAdmin).length;
+      break;
+    default:
+      count = 0;
+  }
+
+  return count;
+};
+
 
 watchEffect(() => {
   username.value = localStorage.getItem('username')

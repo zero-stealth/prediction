@@ -24,7 +24,11 @@
               :time="card.time"
               @click="showCard(card._id)"
             />
+            <div v-for="(card, index) in item" :key="card._id">
+            <button @click="deleteTip(card._id)">Delete</button>
           </div>
+          </div>
+          
         </template>
         <template v-else>
           <div class="home-freetip">
@@ -62,6 +66,14 @@ async function getPrediction() {
     console.log(cardData.value)
   } catch (err) {
     console.log(err)
+  }
+}
+
+async function deleteTip(id){
+  try {
+    const response = await axios.delete(`https://predictions-server.onrender.com/delete/${id}`)
+  } catch (err) {
+    console.log(err);
   }
 }
 

@@ -112,6 +112,13 @@ onMounted(() => {
 //     status: 'live'
 //   }
 // ])
+async function deleteTip(id){
+  try {
+    const response = await axios.delete(`https://predictions-server.onrender.com/delete/${id}`)
+  } catch (err) {
+    console.log(err);
+  }
+}
 
 </script>
 <template>
@@ -147,6 +154,7 @@ onMounted(() => {
     :time="card.time"
     @click="showCard(card._id)"
             />
+            <button @click="deleteTip(card._id)">Delete</button>
           </div>
 </div>
       </div>

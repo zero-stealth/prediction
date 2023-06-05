@@ -5,7 +5,7 @@
         <OtherPredictions buttonName="Double chance" />
         <OtherPredictions buttonName="Over 2.5 Goals" />
         <OtherPredictions buttonName="Over 1.5 Goals" />
-        <OtherPredictions buttonName="Both Team To Score" />
+        <OtherPredictions buttonName="Both Teams To Score" />
         <OtherPredictions buttonName="Bet Of The Day" />
         <OtherPredictions buttonName="Under 2.5 Goals" />
       </div>

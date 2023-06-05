@@ -1,7 +1,6 @@
 @media screen {
   .Account-container {
     gap: 30px;
-    height: 100%;
     display: flex;
     width: inherit;
     flex-direction: column;
@@ -69,6 +68,7 @@
 
   .acc-m {
     padding: 20px;
+    height: 100%;
     overflow: hidden;
     overflow-x: auto;
     overflow-y: auto;
@@ -92,12 +92,13 @@
     border-bottom: none;
     text-transform: capitalize;
     color: var(--background-color);
-    border-bottom: 3px solid var(--primary-color);
+    border: 3px solid var(--primary-color);
     background-color: var(--light-primary-color);
 
   }
 
   .acc-m th {
+    
     font-weight: 600;
     text-transform: uppercase;
     color: var(--light-color);
@@ -179,4 +180,8 @@
 
 /* using it as global style for larger devices  */
 @media only screen and (min-width: 48em) {
+.acc-m {
+  height: 428px;
+}
+
 }

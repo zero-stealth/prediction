@@ -85,8 +85,8 @@
         </select>
       </div>
       <div class="form-group">
-        <label for="status">Prediction:</label>
-        <select v-model="category" class="form-g-input" placeholder="Upcoming" id="status">
+        <label for="category">Prediction:</label>
+        <select v-model="category" class="form-g-input" placeholder="Upcoming" id="category">
           <option disabled value="">Choose Prediction</option>
           <option value="live">Double chance</option>
           <option value="past">Over 2.5 Goal</option>
@@ -228,8 +228,7 @@ async function handleSubmit() {
 
 
       const response = await axios.post(
-        'https://predictions-server.onrender.com/predictions/create/bet/betOfTheDay',
-        formData,
+        'https://predictions-server.onrender.com/predictions/create', formData,
         {
           headers: {
             'Content-Type': 'multipart/form-data',
