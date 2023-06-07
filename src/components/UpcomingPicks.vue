@@ -6,7 +6,7 @@
           <h1>Upcoming Picks</h1>
         </div>
       </div>
-      <div class="main-h-card">
+      <div class="main-h-c">
         <template v-if="cardData.length > 0">
           <div v-for="item in cardData" class="main-h-card">
             <Card
@@ -24,11 +24,7 @@
               :time="card.time"
               @click="showCard(card._id)"
             />
-            <div v-for="(card, index) in item" :key="card._id">
-            <button @click="deleteTip(card._id)">Delete</button>
           </div>
-          </div>
-          
         </template>
         <template v-else>
           <div class="home-freetip">
@@ -75,6 +71,7 @@ async function deleteTip(id){
   } catch (err) {
     console.log(err);
   }
+  console.log(id);
 }
 
 onMounted(() => {

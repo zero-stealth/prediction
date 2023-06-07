@@ -66,6 +66,11 @@
     transform: rotate(180deg);
   }
 
+  .main-h-c {
+    display: flex;
+    flex-direction: column;
+  }
+
   .main-h-card {
     gap: 25px;
     display: flex;
