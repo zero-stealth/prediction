@@ -1,19 +1,22 @@
 <script setup>
-import { ref, onMounted, watchEffect } from 'vue'
 import axios from 'axios'
 import { useRouter } from 'vue-router'
-import { useAuthStore } from '../stores/auth'
 import MoneyIcon from '../icons/payIcon.vue'
 import Card from '../components/CardComponent.vue'
 import ProfileIcon from '../icons/profileIcon.vue'
+import { ref, onMounted, watchEffect } from 'vue'
 
+const isPaid = ref(true)
 const router = useRouter()
-const authStore = useAuthStore()
-const isPaid = ref(false)
+const username = ref(null)
+const isAdmin = ref(false)
+const cardData = ref([])
 
 watchEffect(() => {
-  isPaid.value = authStore.isPaid
-})
+  isPaid.value = localStorage.getItem('isPaid') === 'true';
+  username.value = localStorage.getItem('username');
+  isAdmin.value = localStorage.getItem('admin');
+});
 
 const PayPage = () => {
   router.push({ name: 'Pay' })
@@ -26,8 +29,6 @@ const goLogin = () => {
 const showCard = (cardID) => {
   router.push({ name: 'Tips', params: { id: cardID } })
 }
-
-const cardData = ref([])
 
 async function getPrediction() {
   try {
@@ -50,20 +51,20 @@ onMounted(() => {
     <div class="vip-wrapper">
       <div class="vip-notpaid" v-if="!isPaid">
         <h1>Your vip account is inactive 🌵</h1>
-        <button class="vip-btn" @click="PayPage()" v-if="authStore.user">
+        <button class="vip-btn" @click="goLogin()" v-if="!username">
+          <ProfileIcon class="vip-pay-icon"/>
+          Log in
+        </button>
+        <button class="vip-btn" @click="PayPage()" v-else>
           <MoneyIcon class="vip-pay-icon" />
           Pay to activate
         </button>
-        <button class="vip-btn" @click="goLogin()" v-else>
-          <ProfileIcon class="vip-pay-icon" />
-          Log in
-        </button>
       </div>
-      <div class="vip-paid" v-else>
-        <div v-if="cardData.length > 0">
-          <div v-for="item in cardData" :key="item._id">
+      <div v-else>
+        <template v-if="cardData.length > 0">
+          <div v-for="item in cardData" class="main-h-card">
             <Card
-              v-for="(card, index) in item.cards"
+              v-for="(card, index) in item"
               :key="card._id"
               :tip="card.tip"
               :status="card.status"
@@ -79,7 +80,12 @@ onMounted(() => {
               @click="showCard(card._id)"
             />
           </div>
-        </div>
+        </template>
+        <template v-else>
+          <div class="home-freetip">
+            <h1>No predictions and tips today, check back tomorrow</h1>
+          </div>
+        </template>
       </div>
     </div>
   </div>

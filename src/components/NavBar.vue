@@ -7,7 +7,7 @@
       <div class="nav-link-container">
         <RouterLink :to="{ name: 'Home' }" class="nav-link"> Home </RouterLink>
         <div @click="openTelegram" class="nav-link">Telegram tips</div>
-        <RouterLink :to="{ name: 'Banker' }" class="nav-link"> Bet of the day  </RouterLink>
+        <RouterLink :to="{ name: 'Banker' }" class="nav-link"> Bet of the day </RouterLink>
         <div class="drop-container">
           <div class="drop-down" @click="showDrop()">
             <span>Predictions</span>
@@ -33,22 +33,22 @@
           </div>
         </div>
       </div>
-      <div class="nav-btn-container" v-if="!token">
-        <button @click="goSignin" class="nav-btn btn-r">
-          <GroupIcon class="icon-nav r-icon" />
-          sign up
-        </button>
-        <button @click="goLogin" class="nav-btn btn-l">
-          <ProfileIcon class="icon-nav l-icon" />
-          log in
-        </button>
-      </div>
-      <div class="nav-btn-container" v-else>
-        <button @click="logOut" class="nav-btn btn-l">
+      <div class="nav-btn-container" v-if="token !== null">
+        <button @click="logOut" class="nav-btn btn-l btn-logout">
           <LogoutIcon class="icon-nav l-icon" />
           log out
         </button>
       </div>
+      <div class="nav-btn-container" v-else>
+    <button @click="goSignin" class="nav-btn btn-r">
+      <GroupIcon class="icon-nav r-icon" />
+      sign up
+    </button>
+    <button @click="goLogin" class="nav-btn btn-l">
+      <ProfileIcon class="icon-nav l-icon" />
+      log in
+    </button>
+  </div>
       <div class="nav-menu" @click="showMenu()">
         <MobileMenuIcon class="menu-icon-nav" />
       </div>
@@ -91,7 +91,13 @@
           </div>
         </div>
       </div>
-      <div class="mobile-btn-container" v-if="token != null">
+      <div class="mobile-btn-container" v-if="token !== null">
+        <button @click="logOut" class="mobile-btn btn-l btn-logout">
+          <LogoutIcon class="icon-nav l-icon" />
+          log out
+        </button>
+      </div>
+      <div class="mobile-btn-container" v-else>
         <button @click="goSignin" class="mobile-btn btn-r">
           <GroupIcon class="icon-nav r-icon" />
           sign up
@@ -99,12 +105,6 @@
         <button @click="goLogin" class="mobile-btn btn-l">
           <ProfileIcon class="icon-nav l-icon" />
           log in
-        </button>
-      </div>
-      <div class="mobile-btn-container"  v-else>
-        <button @click="logOut" class="mobile-btn btn-l btn-logout">
-          <LogoutIcon class="icon-nav l-icon" />
-          log out
         </button>
       </div>
     </div>
@@ -146,9 +146,10 @@ const showDrp = () => {
   isDrpOpen.value = !isDrpOpen.value
 }
 
-
 const logOut = () => {
   localStorage.removeItem('token')
+  localStorage.removeItem('isPaid')
+  localStorage.removeItem('username')
   token.value = null
 }
 

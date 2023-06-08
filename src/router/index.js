@@ -52,7 +52,7 @@ const router = createRouter({
       path: '/vip',
       name: 'Vip',
       component: () => import('../views/VipView.vue'),
-      meta: { auth: true }
+      // meta: { auth: true }
     },
     {
       path: '/news/:id',
@@ -105,20 +105,14 @@ const router = createRouter({
       name: 'Pay',
       component: () => import('../views/PayView.vue')
     }
-    // {
-    //   path: '/about',
-    //   name: 'about',
-    //   // this generates a separate chunk (About.[hash].js) for this route
-    //   // which is lazy-loaded when the route is visited.
-    //   component: () => import('../views/AboutView.vue')
-    // }
+
   ]
 })
 
-const currentUser = () => {
-  const token = localStorage.getItem('token');
-  return !!token; // Return true if token exists, false otherwise
-}
+// const currentUser = () => {
+//   const token = localStorage.getItem('token');
+//   return !!token; // Return true if token exists, false otherwise
+// }
 
 const isAdmin = () => {
   const admin = localStorage.getItem('admin');
@@ -137,16 +131,16 @@ router.beforeEach(async (to, from, next) => {
   }
 })
 
-router.beforeEach(async (to, from, next) => {
-  if (to.matched.some((record) => record.meta.auth)) {
-    if (currentUser()) {
-      next();
-    } else {
-      next('/login');
-    }
-  } else {
-    next();
-  }
-})
+// router.beforeEach(async (to, from, next) => {
+//   if (to.matched.some((record) => record.meta.auth)) {
+//     if (currentUser()) {
+//       next();
+//     } else {
+//       next('/login');
+//     }
+//   } else {
+//     next();
+//   }
+// })
 
 export default router

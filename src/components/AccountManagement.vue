@@ -96,6 +96,10 @@ const accountsData = async () => {
   }
 };
 
+watchEffect(() => {
+  username.value = localStorage.getItem('username');
+});
+
 onMounted(() => {
   accountsData();
 });

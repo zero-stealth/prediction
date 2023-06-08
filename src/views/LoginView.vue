@@ -39,7 +39,6 @@
 import { ref } from 'vue'
 import axios from 'axios'
 import SportBg from '../assets/sport-bg.png'
-import guestIcon from '../icons/profileIcon.vue'
 import googleIcon from '../icons/googleIcon.vue'
 import { useRouter } from 'vue-router'
 
