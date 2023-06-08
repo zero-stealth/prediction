@@ -7,7 +7,7 @@
       </div>
       <div class="title-m">
         <img :src="leagueIcon" alt="league-img" class="league-c-img" />
-        <span>league</span>
+      <span>{{league}}</span>
       </div>
     </div>
     <div class="card-center">
@@ -48,7 +48,7 @@
       <div class="card-f" v-for="formationA in formationsA" :key="formationA">
         <span :class="[formationA === 'l' ? 'loose' : (formationA === 'w' ? 'win' : 'draw')]">{{ formationA }}</span>
       </div>
-      <div class="card-fi">formation </div>
+      <div class="card-fi">form</div>
       <div class="card-f" v-for="formationB in formationsB" :key="formationB">
         <span :class="[formationB === 'l' ? 'loose' : (formationB === 'w' ? 'win' : 'draw')]">{{ formationB }}</span>
       </div>
@@ -86,6 +86,11 @@ const props = defineProps({
   },
   status: {
     type: String
+  },
+  league: {
+    type: String,
+    required: true
+
   },
   teamA: {
     type: String,

@@ -1,5 +1,5 @@
 <template>
-  <ButtonComponent />
+  <ButtonComponent @change="handleBetNameChange" />
   <div class="main-bet">
     <div class="main-header">
       <div class="header-info">
@@ -29,6 +29,7 @@
           :teamBIcon="card.teamBIcon"
           :teamA="card.teamA"
           :teamB="card.teamB"
+          :league="card.league"
           :teamAscore="card.teamAscore"
           :teamBscore="card.teamBscore"
           :time="card.time"
@@ -43,7 +44,6 @@
     </template>
   </div>
 </template>
-
 <script setup>
 import ButtonComponent from '../components/ButtonComponent.vue'
 import Card from '../components/CardComponent.vue'
@@ -55,34 +55,40 @@ const router = useRouter()
 const currentDate = ref('')
 const offset = ref(0)
 const paramValue = ref('')
-
-const props = defineProps({
-  betName: String
-})
+const betName = ref('')
 
 const cardData = ref([])
 
-const predictions = async() => {
+const predictions = async () => {
   try {
     const token = localStorage.getItem('token')
-    const response = await axios.get(`https://predictions-server.onrender.com/predictions/prediction/${props.betName}`,{
-      headers: {
-        Authorization: `Bearer ${token}`
+    const response = await axios.get(
+      `https://predictions-server.onrender.com/predictions/prediction/${betName.value}`,
+      {
+        headers: {
+          Authorization: `Bearer ${token}`
+        }
       }
-    })
+    )
+
     //handle all predictions in the category of the button name e.g Over 2.5
-    console.log(response.data);
+    console.log(response.data)
     cardData.value.push(response.data)
     console.log(cardData.value)
-
   } catch (err) {
-    console.log(err);
+    console.log(err)
   }
 }
 
-onMounted(() => {
+const handleBetNameChange = (newBetName) => {
+  betName.value = newBetName
   predictions()
-  console.log(props.betName);
+}
+
+onMounted(() => {
+  watchEffect(() => {
+    predictions()
+  })
 })
 
 const setOffset = (value) => {
@@ -102,13 +108,12 @@ const updateCurrentDate = () => {
 
 watchEffect(() => {
   paramValue.value = router.currentRoute.value.params.betName
+  betName.value = paramValue.value
   updateCurrentDate()
 })
 
 updateCurrentDate()
-
 </script>
-
 <style>
 @import '../style/Home.css';
 @import '../style/Bet.css';

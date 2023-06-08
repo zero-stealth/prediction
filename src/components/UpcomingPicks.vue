@@ -19,6 +19,7 @@
               :teamBIcon="card.teamBIcon"
               :teamA="card.teamA"
               :teamB="card.teamB"
+              :league="card.league"
               :teamAscore="card.teamAscore"
               :teamBscore="card.teamBscore"
               :time="card.time"
@@ -41,12 +42,7 @@ import { useRouter } from 'vue-router'
 import Card from '../components/CardComponent.vue'
 import axios from 'axios'
 
-const formationA = ref(['l', 'w', 'l', 'w', 'l'])
-const formationB = ref(['l', 'w', 'l', 'w', 'l'])
 const router = useRouter()
-const teamAScore = ref(1)
-const teamBScore = ref(0)
-const tip = ref(1)
 
 const showCard = (cardID) => {
   router.push({ name: 'Tips', params: { id: cardID } })
@@ -56,7 +52,9 @@ const cardData = ref([])
 
 async function getPrediction() {
   try {
-    const response = await axios.get('https://predictions-server.onrender.com/predictions/upcomingPredictions/upcoming')
+    const response = await axios.get(
+      'https://predictions-server.onrender.com/predictions/upcomingPredictions/upcoming'
+    )
     console.log(response.data)
     cardData.value.push(response.data)
     console.log(cardData.value)
@@ -65,51 +63,20 @@ async function getPrediction() {
   }
 }
 
-async function deleteTip(id){
+async function deleteTip(id) {
   try {
-    const response = await axios.delete(`https://predictions-server.onrender.com/delete/${id}`)
+    const response = await axios.delete(
+      `https://predictions-server.onrender.com/predictions/delete/${id}`
+    )
   } catch (err) {
-    console.log(err);
+    console.log(err)
   }
-  console.log(id);
+  console.log(id)
 }
 
 onMounted(() => {
   getPrediction()
 })
-
-// const cardData = ref([
-//   {
-//     id: 1,
-//     formationA: formationA.value,
-//     formationB: formationB.value,
-//     leagueLogo: manchester,
-//     teamALogo: argentina,
-//     teamBLogo: argentina,
-//     tip: tip.value,
-//     teamAName: 'Team A',
-//     teamBName: 'Team B',
-//     teamAScore: teamAScore.value,
-//     teamBScore: teamBScore.value,
-//     matchTime: '20:00',
-//     status: 'live'
-//   },
-//   {
-//     id: 2,
-//     formationA: formationA.value,
-//     formationB: formationB.value,
-//     leagueLogo: manchester,
-//     teamALogo: argentina,
-//     teamBLogo: argentina,
-//     tip: tip.value,
-//     teamAName: 'Team A',
-//     teamBName: 'Team B',
-//     teamAScore: teamAScore.value,
-//     teamBScore: teamBScore.value,
-//     matchTime: '20:00',
-//     status: 'live'
-//   }
-// ])
 </script>
 
 <style>

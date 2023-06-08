@@ -69,6 +69,7 @@ const create = async () => {
       })
       console.log(response.data) // Handle the response data as needed
       const token = response.data.token
+      localStorage.setItem('username', username)
       localStorage.setItem('token', JSON.stringify(token))
       router.push({ name: 'Panel' })
     } catch (error) {

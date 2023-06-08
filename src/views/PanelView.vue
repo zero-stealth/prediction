@@ -44,12 +44,12 @@
             <span> upcoming tips </span>
             <ArrowIcon class="icon-panel ap" />
           </button>
-          <button @click="setActivePage(BasketballGames)" :class="getButtonClass(OtherGames)">
+          <button @click="setActivePage(BasketballGames)" :class="getButtonClass(BasketballGames)">
             <basketballIcon class="icon-panel" />
             <span> Basketball </span>
             <ArrowIcon class="icon-panel ap" />
           </button>
-          <button @click="setActivePage(TennisGames)" :class="getButtonClass(OtherGames)">
+          <button @click="setActivePage(TennisGames)" :class="getButtonClass(TennisGames  )">
             <tennisIcon class="icon-panel" />
             <span>Tennis </span>
             <ArrowIcon class="icon-panel ap" />

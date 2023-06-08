@@ -29,6 +29,7 @@
           :teamBIcon="card.teamBIcon"
           :teamA="card.teamA"
           :teamB="card.teamB"
+          :league="card.league"
           :teamAscore="card.teamAscore"
           :teamBscore="card.teamBscore"
           :time="card.time"

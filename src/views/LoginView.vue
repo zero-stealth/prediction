@@ -67,6 +67,9 @@ const login = async () => {
       console.log(response.data) // Handle the response data as needed
       const isPaid = response.data.paid
       const token = response.data.token
+      const username = response.data.username
+
+      localStorage.setItem('username', username)
       localStorage.setItem('token', JSON.stringify(token))
       localStorage.setItem('isPaid', isPaid)
       router.push({ name: 'Home' })

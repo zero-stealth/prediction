@@ -73,6 +73,8 @@ const create = async () => {
         username: username.value,
         email: email.value,
         password: password.value,
+        country: selectedCountry.value,
+        confirmPassword: confirmPassword.value,
         selectedCountry: selectedCountry.value
       })
       const token = response.data.token

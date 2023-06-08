@@ -1,6 +1,6 @@
 <template>
   <div>
-    <ButtonComponent/>
+    <ButtonComponent />
     <div class="home-main">
       <div class="main-h">
         <div class="main-header">
@@ -20,18 +20,20 @@
         </div>
         <template v-if="cardData.length > 0">
           <div v-for="item in cardData" class="main-h-card">
-            <TCard
+            <Card
               v-for="(card, index) in item"
               :key="card._id"
               :tip="card.tip"
-              :status="card.gamePrediction"
-              :playerAIcon="card.playerALogo"
-              :playerBIcon="card.playerBLogo"
-              :playerA="card.playerA"
-              :playerB="card.playerB"
-              :title="card.league"
+              :status="card.status"
+              :leagueIcon="card.leagueIcon"
+              :teamAIcon="card.teamAIcon"
+              :teamBIcon="card.teamBIcon"
+              :teamA="card.teamA"
+              :teamB="card.teamB"
+              :league="card.league"
+              :teamAscore="card.teamAscore"
+              :teamBscore="card.teamBscore"
               :time="card.time"
-              @click="showCard(card._id)"
             />
           </div>
         </template>
@@ -46,31 +48,27 @@
 </template>
 
 <script setup>
-import { ref, onMounted } from 'vue'
-import { useRouter } from 'vue-router'
 import axios from 'axios'
+import { ref, onMounted } from 'vue'
 import Arrow from '../icons/arrow.vue'
-import TCard from '../components/TCardComponent.vue'
-import ButtonComponent from '../components/ButtonComponent.vue';
-import serena from '../assets/serena.jpg'
+import Card from '../components/CardComponent.vue'
+import ButtonComponent from '../components/ButtonComponent.vue'
 
 const currentDate = ref('')
-const router = useRouter()
-
-const showCard = (cardID) => {
-  router.push({ name: 'Tips', params: { id: cardID } })
-}
-
 const cardData = ref([])
 
 async function getPrediction() {
   const token = JSON.parse(localStorage.getItem('token'))
+
   try {
-    const response = await axios.get('https://predictions-server.onrender.com/sports/sport/Tennis',{
-      headers: {
-        Authorization: `Bearer ${token}`
+    const response = await axios.get(
+      'https://predictions-server.onrender.com/sports/sport/Basketball',
+      {
+        headers: {
+          Authorization: `Bearer ${token}`
+        }
       }
-    })
+    )
     console.log(response.data)
     cardData.value.push(response.data)
     console.log(cardData.value)
@@ -78,11 +76,9 @@ async function getPrediction() {
     console.log(err)
   }
 }
-
 onMounted(() => {
   getPrediction()
 })
-
 
 const offset = ref(0)
 
@@ -92,7 +88,7 @@ const previousDay = () => {
 }
 
 const nextDay = () => {
-  offset.value++  
+  offset.value++
   updateCurrentDate()
 }
 

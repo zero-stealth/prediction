@@ -1,8 +1,9 @@
 <template>
+  <div>
     <div class="form-container-h">
-      <h1>Free Tips</h1>
+      <h1>freeTip</h1>
     </div>
-    <form @submit.prevent="handleSubmit" class="form-container">
+    <form @submit.prevent="handleSubmit" enctype="multipart/form-data" class="form-container">
       <div class="form-wrapper">
         <h1>Team A</h1>
         <div class="form-group">
@@ -11,17 +12,11 @@
         </div>
         <div class="form-group">
           <label for="teamAIcon">Logo:</label>
-          <input
-            @change="handleTeamALogo"
-            type="file"
-            class="form-g-input"
-            id="teamAIcon"
-            accept="image/*"
-          />
+          <input @change="handleTeamALogo" type="file" class="form-g-input" id="teamAIcon" accept="image/*" />
         </div>
         <div class="form-group">
           <label for="formationA">Formation:</label>
-          <input v-model="formationA" type="text" class="form-g-input" placeholder="l-d-w-d" id="formationA" />
+          <input v-model="formationA" type="text" class="form-g-input" placeholder="4-2-0-4" id="formationA" />
         </div>
         <div class="form-group">
           <label for="teamAPosition">Position:</label>
@@ -34,26 +29,24 @@
       </div>
       <div class="form-wrapper">
         <div class="form-group">
-          <label for="time">Match Tip:</label>
-          <input v-model="tip" type="text" class="form-g-input" placeholder="2" id="tip" />
+          <label for="tip">Match Tip:</label>
+          <input v-model="tip" type="text" class="form-g-input" placeholder="1" id="tip" />
         </div>
         <div class="form-group">
-          <label for="LeagueLogo">League logo</label>
-          <input
-            @change="handleLeagueLogo"
-            type="file"
-            class="form-g-input"
-          id="leagueIcon"
-            accept="image/*"
-          />
+          <label for="leagueIcon">League logo</label>
+          <input @change="handleLeagueLogo" type="file" class="form-g-input" id="leagueIcon" accept="image/*" />
+        </div>
+        <div class="form-group">
+          <label for="league">Match league:</label>
+          <input v-model="league" type="text" class="form-g-input" placeholder="team league" id="league" />
         </div>
         <div class="form-group">
           <label for="time">Match Time:</label>
-          <input v-model="time" type="time" class="form-g-input" placeholder="12.00pm" id="time" />
+          <input v-model="time" type="time" class="form-g-input" placeholder="12:00pm" id="time" />
         </div>
         <div class="form-group">
-          <label for="matchstatus">Match status:</label>
-          <select v-model="status" class="form-g-input" placeholder="Upcoming" id="matchstatus">
+          <label for="status">Match Status:</label>
+          <select v-model="status" class="form-g-input" id="status">
             <option disabled value="">Choose status</option>
             <option value="live">Live</option>
             <option value="past">Past</option>
@@ -70,17 +63,11 @@
         </div>
         <div class="form-group">
           <label for="teamBIcon">Logo:</label>
-          <input
-            @change="handleTeamBLogo"
-            type="file"
-            class="form-g-input"
-            id="teamBIcon"
-            accept="image/*"
-          />
+          <input @change="handleTeamBLogo" type="file" class="form-g-input" id="teamBIcon" accept="image/*" />
         </div>
         <div class="form-group">
           <label for="formationB">Formation:</label>
-          <input v-model="formationB" type="text" class="form-g-input" placeholder="l-d-w-d" id="formationB" />
+          <input v-model="formationB" type="text" class="form-g-input" placeholder="4-1-3-0" id="formationB" />
         </div>
         <div class="form-group">
           <label for="teamBPosition">Position:</label>
@@ -93,44 +80,46 @@
         <button type="submit" class="btn-f-f f-mobile">Submit</button>
       </div>
     </form>
-  </template>
-  
-  <script setup>
-  import { ref } from 'vue'
-  import axios from 'axios'
-  
-  const teamA = ref('')
-  const teamB = ref('')
-  const teamAIcon = ref(null)
-  const teamBIcon = ref(null)
-  const leagueIcon = ref(null)
-  const formationA = ref('l-d-w-d')
-  const formationB = ref('l-d-w-d')
-  const teamAPosition = ref('')
-  const teamBPosition = ref('')
-  const teamAscore = ref(0)
-  const teamBscore = ref(0)
-  const status = ref('')
-  const time = ref('')
-  const tip = ref('')
-  
-  function handleFileUpload(event, targetRef) {
-  const file = event.target.files[0]
+  </div>
+</template>
+
+<script setup>
+import { ref } from 'vue';
+import axios from 'axios';
+
+const teamA = ref('');
+const teamB = ref('');
+const teamAIcon = ref(null);
+const teamBIcon = ref(null);
+const leagueIcon = ref(null);
+const formationA = ref('l-d-w-d');
+const formationB = ref('l-d-w-d');
+const teamAPosition = ref('');
+const teamBPosition = ref('');
+const time = ref('');
+const league = ref('');
+const teamAscore = ref(0);
+const teamBscore = ref(0);
+const status = ref('');
+const tip = ref('');
+
+function handleFileUpload(event, targetRef) {
+  const file = event.target.files[0];
   if (file) {
-    targetRef.value = file
+    targetRef.value = file;
   }
 }
 
 function handleTeamALogo(event) {
-  handleFileUpload(event, teamAIcon)
+  handleFileUpload(event, teamAIcon);
 }
 
 function handleTeamBLogo(event) {
-  handleFileUpload(event, teamBIcon)
+  handleFileUpload(event, teamBIcon);
 }
 
 function handleLeagueLogo(event) {
-  handleFileUpload(event, leagueIcon)
+  handleFileUpload(event, leagueIcon);
 }
 
 async function handleSubmit() {
@@ -146,27 +135,29 @@ async function handleSubmit() {
     formationB.value.trim() !== '' &&
     teamBPosition.value.trim() !== '' &&
     teamBscore.value !== null &&
-    tip.value !== null &&
     time.value.trim() !== '' &&
+    tip.value !== null &&
+    league.value !== null &&
     status.value.trim() !== ''
   ) {
-    const user = JSON.parse(localStorage.getItem('token'))
+    const user = JSON.parse(localStorage.getItem('token'));
     try {
-      const formData = new FormData()
-      formData.append('teamA', teamA.value)
-      formData.append('teamAIcon', teamAIcon.value)
-      formData.append('leagueIcon', leagueIcon.value)
-      formData.append('formationA', formationA.value)
-      formData.append('teamAPosition', teamAPosition.value)
-      formData.append('teamAscore', teamAscore.value)
-      formData.append('teamB', teamB.value)
-      formData.append('teamBIcon', teamBIcon.value)
-      formData.append('formationB', formationB.value)
-      formData.append('teamBPosition', teamBPosition.value)
-      formData.append('teamBscore', teamBscore.value)
-      formData.append('time', time.value)
-      formData.append('status', status.value)
-      formData.append('tip', tip.value)
+      const formData = new FormData();
+      formData.append('teamA', teamA.value);
+      formData.append('teamAIcon', teamAIcon.value);
+      formData.append('leagueIcon', leagueIcon.value);
+      formData.append('formationA', formationA.value);
+      formData.append('teamAPosition', teamAPosition.value);
+      formData.append('teamAscore', teamAscore.value);
+      formData.append('teamB', teamB.value);
+      formData.append('teamBIcon', teamBIcon.value);
+      formData.append('formationB', formationB.value);
+      formData.append('teamBPosition', teamBPosition.value);
+      formData.append('teamBscore', teamBscore.value);
+      formData.append('time', time.value);
+      formData.append('league', league.value);
+      formData.append('status', status.value);
+      formData.append('tip', tip.value);
 
       const response = await axios.post(
         'https://predictions-server.onrender.com/predictions/create/tip/freeTip',
@@ -174,21 +165,20 @@ async function handleSubmit() {
         {
           headers: {
             'Content-Type': 'multipart/form-data',
-            Authorization: `Bearer ${user}`
-          }
+            Authorization: `Bearer ${user}`,
+          },
         }
-      )
-      console.log(response.data)
+      );
+      console.log(response.data);
     } catch (err) {
-      console.log(err)
+      console.log(err);
     }
   } else {
-    alert('No empty fields allowed')
+    alert('No empty fields allowed');
   }
 }
-  </script>
-  
-  <style>
-  @import '../style/games.css';
-  </style>
-  
+</script>
+
+<style>
+@import '../style/games.css';
+</style>

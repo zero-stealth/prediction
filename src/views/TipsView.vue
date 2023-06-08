@@ -2,9 +2,7 @@
 import {onMounted, ref} from 'vue'
 import { useRouter } from 'vue-router';
 import pic from '@/assets/news.png';
-import argentina from '../assets/Arg-log.png';
 import ArrowIcon from '@/icons/ArrowIcon.vue';
-import Manchester from '../assets/man-logo.png';
 import axios from 'axios';
 
 const router = useRouter();
