@@ -188,11 +188,12 @@
   }
 
   .card-f .win {
-    background-color: var(--secondary-color);
+    background-color:  var(--green-color);
   }
 
   .card-f .draw {
-    background-color: var(--primary-color);
+    background-color: var(--grey-color);
+   
   }
 }
 /* using it as global style for larger devices  */

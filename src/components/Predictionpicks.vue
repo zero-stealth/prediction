@@ -45,6 +45,17 @@
           <input v-model="time" type="time" class="form-g-input" placeholder="12:00pm" id="time" />
         </div>
         <div class="form-group">
+          <label for="status">Match category:</label>
+          <select v-model="category" class="form-g-input" id="status">
+            <option disabled value="">Choose category</option>
+            <option value="Double Chance">Double Chance</option>
+            <option value="Over 2.5 Goals ">Over 2.5 Goals </option>
+            <option value="Over 1.5 Goals">Over 1.5 Goals</option>
+            <option value="Both Team To Score">Both Team To Score</option>
+            <option value="Under 2.5 Goals">Under 2.5 Goals</option>
+          </select>
+        </div>
+        <div class="form-group">
           <label for="status">Match Status:</label>
           <select v-model="status" class="form-g-input" id="status">
             <option disabled value="">Choose status</option>
@@ -157,6 +168,7 @@ async function handleSubmit() {
       formData.append('time', time.value);
       formData.append('league', league.value);
       formData.append('status', status.value);
+      formData.append('category', category.value);
       formData.append('tip', tip.value);
 
       const response = await axios.post(
