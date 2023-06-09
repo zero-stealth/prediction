@@ -3,7 +3,7 @@
     <div class="abt-p-in">
       <h1>Banker Of The Day / Banker Tips</h1>
       <p>
-        Want to get familiar with the right football predictions? Victors Predict comes up with the
+        Want to get familiar with the right football predictions? Sportypredict comes up with the
         ideal football tips and also you can make the analysis that helps you to get accurate
         results. You can easily get access to Team Forms, Head to Head, League Table, Statistics,
         Line-ups, etc.

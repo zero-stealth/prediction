@@ -9,16 +9,17 @@
     }
     
     .details-wrapper {
-      height: 100%;
+      height: 100vh;
     }
   
     .details-image {
       gap: 50px;
-      height: 40%;
+      height: 50vh;
       display: flex;
       padding: 20px;
       flex-direction: column;
       background-size: cover;
+      background-position:center;
       backdrop-filter: blur(3px);
       background-repeat: no-repeat;
     }
@@ -137,9 +138,13 @@
         padding-bottom: 0;
       }
   
+        
+    .details-wrapper {
+      height: 90vh;
+    }
       .details-image {
       gap: 50px;
-      padding: 20px 50px;
+      padding: 40px 50px;
     }
     
   }

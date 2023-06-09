@@ -4,7 +4,7 @@
     <div class="abt-p-in">
       <p>
         The information provided is intended solely for individuals or entities who are above the
-        age of 18. prediction does not offer refunds for subscription payments and assumes no
+        age of 18. sportypredict does not offer refunds for subscription payments and assumes no
         liability for any financial losses or gains. It is advised that individuals from countries
         where betting is illegal refrain from subscribing to our plans. For further details about
         Victorspredict, please refer to our comprehensive Terms and Conditions.

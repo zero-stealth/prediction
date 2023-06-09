@@ -19,6 +19,13 @@
     text-transform: capitalize;
   }
 
+  .news-details-i a {
+    font-family: 1rem;
+    color: var(--red-color);
+    text-transform: capitalize;
+
+  }
+
 }
 
 /* using it as global style for larger devices  */

@@ -3,6 +3,7 @@
     gap: 30px;
     display: flex;
     padding: 20px;
+    text-align: center;
     flex-direction: column;
   }
 
@@ -15,13 +16,15 @@
   .abt-p-in {
     gap: 10px;
     display: flex;
-    align-items: start;
+    align-items: center;
     flex-direction: column;
   }
 
   .abt-p-in li {
     list-style: decimal;
+    text-align: start;
   }
+
 
   .p-in li {
     cursor: pointer;
@@ -70,4 +73,8 @@
   .abt-info-p li {
     font-size: 0.9rem;
   }
+
+  .abt-p-in {
+    align-items: start;
+}
 }

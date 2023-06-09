@@ -56,13 +56,12 @@
       </div>
       <div class="news-wrapper">
         <NewsCard
-          v-for="({ id, banner, title, description }, index) in newsData"
+          v-for="(newsItem, index) in newsData"
           :key="index"
-          :banner="banner"
-          @click="newsInfo(id)"
+          :banner="newsItem.Image"
+          @click="newsInfo(index)"
         >
-          <h2>{{ title }}</h2>
-          <p>{{ description }}</p>
+          <h2>{{ newsItem.Title }}</h2>
         </NewsCard>
       </div>
     </div>
@@ -76,7 +75,6 @@ import { ref, computed, onMounted } from 'vue'
 import { useRouter } from 'vue-router'
 import axios from 'axios'
 import Arrow from '../icons/arrow.vue'
-import news from '../assets/news.png'
 import NewsCard from '../components/NewsCard.vue'
 import Card from '../components/CardComponent.vue'
 import Upcoming from '../components/UpcomingPicks.vue'
@@ -86,6 +84,8 @@ import OtherComponent from '../components/OtherComponent.vue'
 
 const currentDate = ref('')
 const router = useRouter()
+const cardData = ref([])
+const newsData = ref([])
 
 const showCard = (cardID) => {
   router.push({ name: 'Tips', params: { id: cardID } })
@@ -95,7 +95,21 @@ const newsInfo = (newsID) => {
   router.push({ name: 'News', params: { id: newsID } })
 }
 
-const cardData = ref([])
+const getNews = async () => {
+  try {
+    const response = await axios.get('https://football98.p.rapidapi.com/premierleague/news', {
+      headers: {
+        'X-RapidAPI-Key': '324865d09cmsh592fb6c5fcae2abp189c83jsnf98e0d363d77',
+        'X-RapidAPI-Host': 'football98.p.rapidapi.com'
+      }
+    })
+    console.log(response.data)
+    newsData.value = response.data // Set the newsData to the response directly
+    console.log(newsData.value)
+  } catch (err) {
+    console.log(err)
+  }
+}
 
 async function getPrediction() {
   try {
@@ -112,6 +126,7 @@ async function getPrediction() {
 
 onMounted(() => {
   getPrediction()
+  getNews()
 })
 
 const offset = ref(0)
@@ -131,35 +146,6 @@ const updateCurrentDate = () => {
   today.setDate(today.getDate() + offset.value)
   currentDate.value = today.toDateString()
 }
-
-updateCurrentDate()
-
-const newsData = ref([
-  {
-    id: 1,
-    banner: news,
-    title: 'News 1',
-    description: 'Description for News 1'
-  },
-  {
-    id: 2,
-    banner: news,
-    title: 'News 2',
-    description: 'Description for News 2'
-  },
-  {
-    id: 3,
-    banner: news,
-    title: 'News 3',
-    description: 'Description for News 3'
-  },
-  {
-    id: 3,
-    banner: news,
-    title: 'News 3',
-    description: 'Description for News 3'
-  }
-])
 </script>
 
 <style>
