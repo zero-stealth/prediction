@@ -59,57 +59,44 @@
 <script setup>
 const props = defineProps({
   formationA: {
-    type: Array,
     required: true,
     default: () => ['l', 'w', 'd', 'l', 'w']
   },
   formationB: {
-    type: Array,
     required: true,
     default: () => ['l', 'w', 'd', 'l', 'w']
   },
   leagueIcon: {
-    type: String,
     required: true
   },
   teamAIcon: {
-    type: String,
     required: true
   },
   teamBIcon: {
-    type: String,
     required: true
   },
   tip: {
-    type: Number,
     default: '0'
   },
   status: {
-    type: String
   },
   league: {
-    type: String,
     required: true
 
   },
   teamA: {
-    type: String,
     required: true
   },
   teamB: {
-    type: String,
     required: true
   },
   teamAscore: {
-    type: Number,
     required: true
   },
   teamBscore: {
-    type: Number,
     required: true
   },
   time: {
-    type: String,
     required: true
   }
 });

@@ -13,10 +13,10 @@ const isAdmin = ref(false)
 const cardData = ref([])
 
 watchEffect(() => {
-  isPaid.value = localStorage.getItem('isPaid') === 'true';
-  username.value = localStorage.getItem('username');
-  isAdmin.value = localStorage.getItem('admin');
-});
+  isPaid.value = localStorage.getItem('isPaid') === 'true'
+  username.value = localStorage.getItem('username')
+  isAdmin.value = localStorage.getItem('admin')
+})
 
 const PayPage = () => {
   router.push({ name: 'Pay' })
@@ -52,7 +52,7 @@ onMounted(() => {
       <div class="vip-notpaid" v-if="!isPaid">
         <h1>Your vip account is inactive 🌵</h1>
         <button class="vip-btn" @click="goLogin()" v-if="!username">
-          <ProfileIcon class="vip-pay-icon"/>
+          <ProfileIcon class="vip-pay-icon" />
           Log in
         </button>
         <button class="vip-btn" @click="PayPage()" v-else>
@@ -76,6 +76,8 @@ onMounted(() => {
               :league="card.league"
               :teamAscore="card.teamAscore"
               :teamBscore="card.teamBscore"
+              :formationA="Array.isArray(card.formationA) ? card.formationA[0].split('-') : []"
+              :formationB="Array.isArray(card.formationB) ? card.formationB[0].split('-') : []"
               :time="card.time"
               @click="showCard(card._id)"
             />

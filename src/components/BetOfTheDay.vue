@@ -15,8 +15,8 @@
           <input @change="handleTeamALogo" type="file" class="form-g-input" id="teamAIcon" accept="image/*" />
         </div>
         <div class="form-group">
-          <label for="formationA">Formation:</label>
-          <input v-model="formationA" type="text" class="form-g-input" placeholder="4-2-0-4" id="formationA" />
+          <label for="formationA">Form:</label>
+          <input v-model="formationA" type="text" class="form-g-input" placeholder="l-w-d-w" id="formationA" />
         </div>
         <div class="form-group">
           <label for="teamAPosition">Position:</label>
@@ -66,8 +66,8 @@
           <input @change="handleTeamBLogo" type="file" class="form-g-input" id="teamBIcon" accept="image/*" />
         </div>
         <div class="form-group">
-          <label for="formationB">Formation:</label>
-          <input v-model="formationB" type="text" class="form-g-input" placeholder="4-1-3-0" id="formationB" />
+          <label for="formationB">Form:</label>
+          <input v-model="formationB" type="text" class="form-g-input" placeholder="l-w-d-w" id="formationB" />
         </div>
         <div class="form-group">
           <label for="teamBPosition">Position:</label>

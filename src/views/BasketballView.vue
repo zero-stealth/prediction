@@ -33,6 +33,8 @@
               :league="card.league"
               :teamAscore="card.teamAscore"
               :teamBscore="card.teamBscore"
+              :formationA="Array.isArray(card.formationA) ? card.formationA[0].split('-') : []"
+              :formationB="Array.isArray(card.formationB) ? card.formationB[0].split('-') : []"
               :time="card.time"
             />
           </div>

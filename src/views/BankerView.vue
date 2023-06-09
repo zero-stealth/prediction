@@ -3,7 +3,7 @@
   <div class="main-bet">
     <div class="main-header">
       <div class="header-info">
-        <h1> Bet of the day {{ currentDate }}</h1>
+        <h1>Bet of the day {{ currentDate }}</h1>
       </div>
       <div class="header-btn">
         <button class="btn-h" :class="{ 'active-btn': offset === -1 }" @click="setOffset(-1)">
@@ -32,8 +32,9 @@
           :league="card.league"
           :teamAscore="card.teamAscore"
           :teamBscore="card.teamBscore"
+          :formationA="Array.isArray(card.formationA) ? card.formationA[0].split('-') : []"
+          :formationB="Array.isArray(card.formationB) ? card.formationB[0].split('-') : []"
           :time="card.time"
-          @click="showCard(card._id)"
         />
       </div>
     </template>
@@ -63,26 +64,28 @@ const props = defineProps({
 
 const cardData = ref([])
 
-const predictions = async() => {
+const predictions = async () => {
   try {
     const token = localStorage.getItem('token')
-    const response = await axios.get(`https://predictions-server.onrender.com/predictions/bet/betOfTheDay`,{
-      headers: {
-        Authorization: `Bearer ${token}`
+    const response = await axios.get(
+      `https://predictions-server.onrender.com/predictions/bet/betOfTheDay`,
+      {
+        headers: {
+          Authorization: `Bearer ${token}`
+        }
       }
-    })
-    console.log(response.data);
+    )
+    console.log(response.data)
     cardData.value.push(response.data)
     console.log(cardData.value)
-
   } catch (err) {
-    console.log(err);
+    console.log(err)
   }
 }
 
 onMounted(() => {
   predictions()
-  console.log(props.betName);
+  console.log(props.betName)
 })
 
 const setOffset = (value) => {
@@ -106,7 +109,6 @@ watchEffect(() => {
 })
 
 updateCurrentDate()
-
 </script>
 
 <style>
