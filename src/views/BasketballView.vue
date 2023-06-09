@@ -15,6 +15,7 @@
             <button class="btn-h" :class="{ 'active-btn': offset < 0 }" @click="nextDay">
               Next
               <Arrow class="btn-icon icon-right" />
+              Next
             </button>
           </div>
         </div>
@@ -33,12 +34,13 @@
               :league="card.league"
               :teamAscore="card.teamAscore"
               :teamBscore="card.teamBscore"
-              :formationA="Array.isArray(card.formationA) ? card.formationA[0].split('-') : []"
-              :formationB="Array.isArray(card.formationB) ? card.formationB[0].split('-') : []"
+              :formationA="Array.isArray(card.formationA) ? card.formationA[0]?.split('-') : []"
+              :formationB="Array.isArray(card.formationB) ? card.formationB[0]?.split('-') : []"
               :time="card.time"
             />
           </div>
         </template>
+
         <template v-else>
           <div class="home-freetip">
             <h1>no predictions and tips today, check back tomorrow</h1>
