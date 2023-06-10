@@ -15,7 +15,7 @@ const goBack = () => {
 const getNews = async () => {
   try {
     const response = await axios.get(
-      'https://football98.p.rapidapi.com/premierleague/news',
+      'https://livescore-football.p.rapidapi.com/soccer/news-list',
       {
         headers: {
           'X-RapidAPI-Key': import.meta.env.VITE_RAPIDAPI_KEY,
@@ -23,8 +23,8 @@ const getNews = async () => {
         },
       }
     )
-    console.log(response.data)
-    newsData.value = response.data // Set the newsData to the response directly
+    console.log(response.data.data)
+    newsData.value = response.data.data // Set the newsData to the response directly
     console.log(newsData.value)
   } catch (err) {
     console.log(err)
@@ -37,30 +37,29 @@ onMounted(() => {
 
 const filteredNewsData = computed(() => {
   const newsID = router.currentRoute.value.params.id
-  const index = parseInt(newsID) - 1 // Subtract 1 to convert to array index
-  return index >= 0 && index < newsData.value.length ? [newsData.value[index]] : []
+  return newsData.value.filter(newsItem => newsItem.id === newsID)
 })
 </script>
 
 <template>
   <div class="details-container news-pin">
-    <div class="details-wrapper" v-for="newsItem in filteredNewsData" :key="newsItem._id">
+    <div v-for="newsItem in filteredNewsData" :key="newsItem.id" class="details-wrapper">
       <div
         class="details-image"
         :style="{
-          backgroundImage: `url(${newsItem.Image})`
+          backgroundImage: `url(${newsItem.image})`
         }"
       >
         <div class="details-h">
           <ArrowIcon class="details-arrow" @click="goBack()" />
-          <h2>{{ newsItem.PublisherName }}</h2>
+          <h2>Sport news</h2>
           <span></span>
         </div>
       </div>
       <div class="news-details-i">
-        <h1>{{ newsItem.Title }}</h1> 
-        <span>{{ newsItem.PublisherDate }}</span>
-        <a :href="newsItem.NewsLink">more info</a>
+        <h1>{{ newsItem.title }}</h1>
+        <span>{{ newsItem.caption }}</span>
+        <a :href="newsItem.url">more info</a>
       </div>
     </div>
   </div>

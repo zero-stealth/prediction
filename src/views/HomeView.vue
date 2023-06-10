@@ -32,9 +32,10 @@
             :league="card.league"
             :teamAscore="card.teamAscore"
             :teamBscore="card.teamBscore"
-            :formationA="Array.isArray(card.formationA) ? card.formationA[0].split('-') : []"
-            :formationB="Array.isArray(card.formationB) ? card.formationB[0].split('-') : []"
+            :formationA="formatFormation(card.formationA)"
+            :formationB="formatFormation(card.formationB)"
             :time="card.time"
+            @click="showCard(showCard.key)"
           />
         </div>
       </template>
@@ -59,10 +60,10 @@
         <NewsCard
           v-for="(newsItem, index) in newsData"
           :key="index"
-          :banner="newsItem.Image"
-          @click="newsInfo(index)"
+          :banner="newsItem.image"
+          @click="newsInfo(newsItem.id)"
         >
-          <h2>{{ newsItem.Title }}</h2>
+          <h2>{{ newsItem.caption }}</h2>
         </NewsCard>
       </div>
     </div>
@@ -71,6 +72,7 @@
     <AboutComponent />
   </div>
 </template>
+
 <script setup>
 import { ref, computed, onMounted } from 'vue'
 import { useRouter } from 'vue-router'
@@ -98,21 +100,21 @@ const newsInfo = (newsID) => {
 
 const getNews = async () => {
   try {
-    const response = await axios.get('https://football98.p.rapidapi.com/premierleague/news', {
+    const response = await axios.get('https://livescore-football.p.rapidapi.com/soccer/news-list', {
       headers: {
-        'X-RapidAPI-Key': '324865d09cmsh592fb6c5fcae2abp189c83jsnf98e0d363d77',
-        'X-RapidAPI-Host': 'football98.p.rapidapi.com'
+        'X-RapidAPI-Key': import.meta.env.VITE_RAPIDAPI_KEY,
+        'X-RapidAPI-Host': import.meta.env.VITE_RAPIDAPI_HOST
       }
     })
-    console.log(response.data)
-    newsData.value = response.data // Set the newsData to the response directly
+    console.log( response.data.data)
+    newsData.value = response.data.data // Set the newsData to the response directly
     console.log(newsData.value)
   } catch (err) {
     console.log(err)
   }
 }
 
-async function getPrediction() {
+const getPrediction = async () => {
   try {
     const response = await axios.get(
       'https://predictions-server.onrender.com/predictions/tips/freeTip'
@@ -146,6 +148,13 @@ const updateCurrentDate = () => {
   const today = new Date()
   today.setDate(today.getDate() + offset.value)
   currentDate.value = today.toDateString()
+}
+
+const formatFormation = (formation) => {
+  if (Array.isArray(formation)) {
+    return formation[0].split('-')
+  }
+  return []
 }
 </script>
 
