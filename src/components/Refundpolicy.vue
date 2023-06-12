@@ -7,7 +7,7 @@
         age of 18. sportypredict does not offer refunds for subscription payments and assumes no
         liability for any financial losses or gains. It is advised that individuals from countries
         where betting is illegal refrain from subscribing to our plans. For further details about
-        Victorspredict, please refer to our comprehensive Terms and Conditions.
+        SportyPredict, please refer to our comprehensive Terms and Conditions.
       </p>
     </div>
   </div>

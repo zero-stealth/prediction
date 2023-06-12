@@ -147,8 +147,11 @@ const nextDay = () => {
 const updateCurrentDate = () => {
   const today = new Date()
   today.setDate(today.getDate() + offset.value)
-  currentDate.value = today.toDateString()
+  const options = { weekday: 'long', year: 'numeric', month: 'long', day: 'numeric' }
+  currentDate.value = today.toLocaleDateString(undefined, options)
 }
+
+updateCurrentDate()
 
 const formatFormation = (formation) => {
   if (Array.isArray(formation)) {
