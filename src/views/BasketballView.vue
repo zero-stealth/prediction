@@ -18,8 +18,8 @@
             </button>
           </div>
         </div>
-        <template v-if="cardData.length > 0">
-          <div v-for="item in cardData" class="main-h-card">
+        <template v-if="filterData.length > 0">
+          <div v-for="item in filterData" class="main-h-card" :key="item">
             <Card
               v-for="(card, index) in item"
               :key="card._id"
@@ -42,7 +42,7 @@
 
         <template v-else>
           <div class="home-freetip">
-            <h1>no predictions yet check back tomorrow</h1>
+            <h1>no upcoming predictions yet! check back later</h1>
           </div>
         </template>
       </div>
@@ -52,13 +52,18 @@
 
 <script setup>
 import axios from 'axios'
-import { ref, onMounted } from 'vue'
 import Arrow from '../icons/arrow.vue'
 import Card from '../components/CardComponent.vue'
+import { ref, onMounted, watch } from 'vue'
 import ButtonComponent from '../components/ButtonComponent.vue'
 
-const currentDate = ref('')
+const currentDate = ref()
 const cardData = ref([])
+const filterData = ref([])
+
+watch(cardData, () => {
+  filterData.value = cardData.value.filter((d) => d.date && d.date.includes(currentDate.value));
+});
 
 async function getPrediction() {
   const token = JSON.parse(localStorage.getItem('token'))
@@ -72,13 +77,12 @@ async function getPrediction() {
         }
       }
     )
-    console.log(response.data)
     cardData.value.push(response.data)
-    console.log(cardData.value)
   } catch (err) {
     console.log(err)
   }
 }
+
 onMounted(() => {
   getPrediction()
 })
@@ -96,12 +100,22 @@ const nextDay = () => {
 }
 
 const updateCurrentDate = () => {
-  const today = new Date()
-  today.setDate(today.getDate() + offset.value)
-  currentDate.value = today.toDateString()
-}
+  const daysOfWeek = ['Sunday', 'Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday'];
+  const months = ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec'];
+
+  const today = new Date();
+  today.setDate(today.getDate() + offset.value);
+
+  const dayOfWeek = daysOfWeek[today.getDay()];
+  const month = months[today.getMonth()];
+  const date = today.getDate();
+  const year = today.getFullYear();
+
+  currentDate.value = `${dayOfWeek}, ${month} ${date}, ${year}`;
+};
 
 updateCurrentDate()
+
 </script>
 
 <style>

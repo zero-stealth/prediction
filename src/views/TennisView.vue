@@ -15,7 +15,6 @@
             <button class="btn-h" :class="{ 'active-btn': offset < 0 }" @click="nextDay">
               Next
               <Arrow class="btn-icon icon-right" />
-              Next
             </button>
           </div>
         </div>
@@ -43,7 +42,7 @@
 
         <template v-else>
           <div class="home-freetip">
-            <h1>no predictions yet check back tomorrow</h1>
+            <h1>no upcoming predictions yet! check back later</h1>
           </div>
         </template>
       </div>
