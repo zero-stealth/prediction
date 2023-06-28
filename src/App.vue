@@ -6,9 +6,9 @@ import { RouterView } from 'vue-router'
 <template>
   <div class="app-x">
     <div class="app-nav-m">
-      <NavBar />
     </div>
     <div class="app-main">
+      <NavBar />
       <RouterView />
     </div>
     <Footer />

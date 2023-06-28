@@ -12,6 +12,12 @@
     background-color: var(--primary-color);
   }
 
+
+  .logo-spp {
+    width: 60px;
+
+  }
+
   .nav-link-container {
     gap: 50px;
     display: none;
@@ -372,6 +378,11 @@
   .nav-container {
     padding: 25px 20px;
     flex-direction: row;
+
+  }
+
+  .logo-spp {
+    width: 60px;
 
   }
 

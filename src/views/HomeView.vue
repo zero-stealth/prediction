@@ -1,5 +1,5 @@
 <template>
-  <HeroComponent />
+    <HeroComponent />
   <div class="home-main">
     <div class="main-h">
       <div class="main-header">
@@ -106,7 +106,7 @@ const getNews = async () => {
         'X-RapidAPI-Host': import.meta.env.VITE_RAPIDAPI_HOST
       }
     })
-    console.log( response.data.data)
+    console.log(response.data.data)
     newsData.value = response.data.data // Set the newsData to the response directly
     console.log(newsData.value)
   } catch (err) {
@@ -117,10 +117,19 @@ const getNews = async () => {
 const getPrediction = async () => {
   try {
     const response = await axios.get(
-      'https://predictions-server.onrender.com/predictions/tips/freeTip'
+      'https://livescore-football.p.rapidapi.com/soccer/live-matches',
+      {
+        headers: {
+          'X-RapidAPI-Key': import.meta.env.VITE_RAPIDAPI_KEY,
+          'X-RapidAPI-Host': import.meta.env.VITE_RAPIDAPI_HOST
+        },
+        params: {
+          timezone_utc: '7:00'
+        }
+      }
     )
-    console.log(response.data)
-    cardData.value.push(response.data)
+    console.log(response.data.data.matches)
+    cardData.value.push(response.data.data.matches)
     console.log(cardData.value)
   } catch (err) {
     console.log(err)

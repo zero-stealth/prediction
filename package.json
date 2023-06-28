@@ -12,6 +12,7 @@
   "dependencies": {
     "axios": "^1.4.0",
     "country-flags-svg": "^1.1.8",
+    "moment": "^2.29.4",
     "pinia": "^2.0.36",
     "vue": "^3.3.2",
     "vue-router": "^4.2.0"
