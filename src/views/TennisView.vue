@@ -41,7 +41,7 @@
         </template>
         <template v-else>
           <div class="home-freetip">
-            <h1>No upcoming predictions yet! Check back later.</h1>
+            <h1>No predictions yet! Check back later.</h1>
           </div>
         </template>
       </div>
