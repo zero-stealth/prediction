@@ -25,7 +25,7 @@
           <span>[{{ time }}]</span>
           <span>{{ teamBscore }}</span>
         </div>
-        <div v-if="showscore" class="card-score">
+        <div  class="card-score">
           <span class="card-s">{{ teamAscore }}</span>
           <span class="card-p">:</span>
           <span class="card-s">{{ teamBscore }}</span>
@@ -99,14 +99,14 @@ const props = defineProps({
   time: {
     required: true
   },
-  showscore: {
-    default: false
-  }
+  // showscore: {
+  //   default: false
+  // }
 });
 
 const formationsA = props.formationA;
 const formationsB = props.formationB;
-const showscore = props.showscore;
+// const showscore = props.showscore;
 </script>
 
 <style scoped>
