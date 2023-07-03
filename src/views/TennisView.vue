@@ -62,7 +62,7 @@ const url = ref('');
 
 async function getPrediction() {
   const token = JSON.parse(localStorage.getItem('token'));
-  url.value = `https://predictions-server.onrender.com/sports/sport/Tennis/13-07-2023`;
+  url.value = `https://predictions-server.onrender.com/sports/sport/Tennis/${currentDate.value}`;
   console.log(url.value);
 
   try {

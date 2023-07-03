@@ -18,9 +18,9 @@
         </div>
       </div>
       <template v-if="cardData.length > 0">
-        <div v-for="item in cardData" class="main-h-card">
+        <div class="main-h-card">
           <Card
-            v-for="(card, index) in item"
+            v-for="(card, index) in cardData"
             :key="card._id"
             :tip="card.tip"
             :status="card.status"
@@ -116,13 +116,9 @@ const getPrediction = async () => {
   const token = JSON.parse(localStorage.getItem('token'))
   try {
     const response = await axios.get(
-      `https://predictions-server.onrender.com/predictions/tips/freeTip/${currentDate.value}`,
-      {
-        headers: {
-          Authorization: `Bearer ${token}`
-        }
-      }
+      `https://predictions-server.onrender.com/predictions/tips/freeTip/${currentDate.value}`
     )
+    console.log(response.data);
     cardData.value = response.data
   } catch (err) {
     console.log(err)

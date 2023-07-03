@@ -49,6 +49,17 @@
           <input v-model="date" type="text" class="form-g-input" placeholder="03-06-2023" id="date" />
         </div>
         <div class="form-group">
+          <label for="status">Match category:</label>
+          <select v-model="category" class="form-g-input" id="status">
+            <option disabled value="">Choose category</option>
+            <option value="Double Chance">Double Chance</option>
+            <option value="Over 2.5 Goals ">Over 2.5 Goals</option>
+            <option value="Over 1.5 Goals">Over 1.5 Goals</option>
+            <option value="Both Team To Score">Both Team To Score</option>
+            <option value="Under 2.5 Goals">Under 2.5 Goals</option>
+          </select>
+        </div>
+        <div class="form-group">
           <label for="status">Match Status:</label>
           <select v-model="status" class="form-g-input" id="status">
             <option disabled value="">Choose status</option>
@@ -101,6 +112,7 @@ const formationB = ref('l-d-w-d');
 const teamAPosition = ref('');
 const teamBPosition = ref('');
 const time = ref('');
+const category = ref('')
 const league = ref('');
 const teamAscore = ref(0);
 const teamBscore = ref(0);
@@ -161,6 +173,7 @@ async function handleSubmit() {
       formData.append('teamBPosition', teamBPosition.value);
       formData.append('teamBscore', teamBscore.value);
       formData.append('time', time.value);
+      formData.append('category', category.value);
       formData.append('league', league.value);
       formData.append('date', date.value)
       formData.append('status', status.value);
