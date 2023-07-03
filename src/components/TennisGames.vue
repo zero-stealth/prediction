@@ -45,6 +45,10 @@
           <input v-model="time" type="time" class="form-g-input" placeholder="12:00pm" id="time" />
         </div>
         <div class="form-group">
+          <label for="date">Match Date:</label>
+          <input v-model="date" type="text" class="form-g-input" placeholder="03-06-2023" id="date" />
+        </div>
+        <div class="form-group">
           <label for="status">Match Status:</label>
           <select v-model="status" class="form-g-input" id="status">
             <option disabled value="">Choose status</option>
@@ -98,6 +102,7 @@ const teamAPosition = ref('');
 const teamBPosition = ref('');
 const time = ref('');
 const league = ref('');
+const date = ref('');
 const teamAscore = ref(0);
 const teamBscore = ref(0);
 const status = ref('');
@@ -137,6 +142,7 @@ async function handleSubmit() {
     teamBscore.value !== null &&
     time.value.trim() !== '' &&
     tip.value !== null &&
+    date.value !== null &&
     league.value !== null &&
     status.value.trim() !== ''
   ) {
@@ -157,6 +163,7 @@ async function handleSubmit() {
       formData.append('time', time.value);
       formData.append('league', league.value);
       formData.append('status', status.value);
+      formData.append('date', date.value)
       formData.append('tip', tip.value);
 
       const response = await axios.post(

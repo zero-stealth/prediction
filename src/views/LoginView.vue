@@ -71,7 +71,7 @@ const login = async () => {
       localStorage.setItem('username', username)
       localStorage.setItem('token', JSON.stringify(token))
       localStorage.setItem('isPaid', isPaid)
-      router.push({ name: 'Home' })
+      router.push({ name: 'Vip' })
     } catch (error) {
       console.error(error)
     }

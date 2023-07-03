@@ -32,8 +32,8 @@
           :league="card.league"
           :teamAscore="card.teamAscore"
           :teamBscore="card.teamBscore"
-          :formationA="Array.isArray(card.formationA) ? card.formationA[0].split('-') : []"
-          :formationB="Array.isArray(card.formationB) ? card.formationB[0].split('-') : []"
+          :formationA="formatFormation(card.formationA) ? card.formationA[0].split('-') : []"
+          :formationB="formatFormation(card.formationB) ? card.formationB[0].split('-') : []"
           :time="card.time"
           @click="showCard(card._id)"
         />
@@ -41,11 +41,12 @@
     </template>
     <template v-else>
       <div class="home-freetip">
-        <h1>no upcoming predictions yet! check back later</h1>
+        <h1>No upcoming predictions yet! Check back later.</h1>
       </div>
     </template>
   </div>
 </template>
+
 <script setup>
 import ButtonComponent from '../components/ButtonComponent.vue'
 import Card from '../components/CardComponent.vue'
@@ -65,7 +66,7 @@ const predictions = async () => {
   try {
     const token = localStorage.getItem('token')
     const response = await axios.get(
-      `https://predictions-server.onrender.com/predictions/prediction/${betName.value}`,
+      `https://predictions-server.onrender.com/predictions/prediction/${betName.value}/${currentDate.value}`,
       {
         headers: {
           Authorization: `Bearer ${token}`
@@ -73,10 +74,7 @@ const predictions = async () => {
       }
     )
 
-    //handle all predictions in the category of the button name e.g Over 2.5
-    console.log(response.data)
-    cardData.value.push(response.data)
-    console.log(cardData.value)
+    cardData.value = response.data.length > 0 ? [response.data] : [];
   } catch (err) {
     console.log(err)
   }
@@ -84,7 +82,6 @@ const predictions = async () => {
 
 const handleBetNameChange = async (newBetName) => {
   betName.value = newBetName
-  // cardData.value = [] // Clear existing card data
   await predictions()
 }
 
@@ -99,15 +96,25 @@ const setOffset = (value) => {
   updateCurrentDate()
 }
 
-const getTimestamp = (offset) => {
+const getFormattedDate = (offset) => {
   const today = new Date()
   today.setDate(today.getDate() + offset)
-  return today.toDateString()
+  const day = String(today.getDate()).padStart(2, '0')
+  const month = String(today.getMonth() + 1).padStart(2, '0')
+  const year = today.getFullYear()
+  return `${day}-${month}-${year}`
 }
 
 const updateCurrentDate = () => {
-  currentDate.value = getTimestamp(offset.value)
+  currentDate.value = getFormattedDate(offset.value)
 }
+
+const formatFormation = (formation) => {
+  if (Array.isArray(formation)) {
+    return formation[0].split('-');
+  }
+  return [];
+};
 
 watchEffect(() => {
   paramValue.value = router.currentRoute.value.params.betName
@@ -117,6 +124,7 @@ watchEffect(() => {
 
 updateCurrentDate()
 </script>
+
 <style>
 @import '../style/Home.css';
 @import '../style/Bet.css';

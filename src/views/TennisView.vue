@@ -19,7 +19,7 @@
           </div>
         </div>
         <template v-if="cardData.length > 0">
-          <div v-for="item in cardData" class="main-h-card">
+          <div v-for="item in cardData" class="main-h-card" :key="item._id">
             <Card
               v-for="(card, index) in item"
               :key="card._id"
@@ -33,16 +33,15 @@
               :league="card.league"
               :teamAscore="card.teamAscore"
               :teamBscore="card.teamBscore"
-              :formationA="Array.isArray(card.formationA) ? card.formationA[0]?.split('-') : []"
-              :formationB="Array.isArray(card.formationB) ? card.formationB[0]?.split('-') : []"
+              :formationA="formatFormation(card.formationA) ? card.formationA[0]?.split('-') : []"
+              :formationB="formatFormation(card.formationB) ? card.formationB[0]?.split('-') : []"
               :time="card.time"
             />
           </div>
         </template>
-
         <template v-else>
           <div class="home-freetip">
-            <h1>no upcoming predictions yet! check back later</h1>
+            <h1>No upcoming predictions yet! Check back later.</h1>
           </div>
         </template>
       </div>
@@ -51,57 +50,70 @@
 </template>
 
 <script setup>
-import axios from 'axios'
-import { ref, onMounted } from 'vue'
-import Arrow from '../icons/arrow.vue'
-import Card from '../components/CardComponent.vue'
-import ButtonComponent from '../components/ButtonComponent.vue'
+import axios from 'axios';
+import { ref, onMounted, watch } from 'vue';
+import Arrow from '../icons/arrow.vue';
+import Card from '../components/CardComponent.vue';
+import ButtonComponent from '../components/ButtonComponent.vue';
 
-const currentDate = ref('')
-const cardData = ref([])
+const currentDate = ref('');
+const cardData = ref([]);
+const url = ref('');
 
 async function getPrediction() {
-  const token = JSON.parse(localStorage.getItem('token'))
+  const token = JSON.parse(localStorage.getItem('token'));
+  url.value = `https://predictions-server.onrender.com/sports/sport/Tennis/13-07-2023`;
+  console.log(url.value);
 
   try {
-    const response = await axios.get(
-      'https://predictions-server.onrender.com/sports/sport/Tennis',
-      {
-        headers: {
-          Authorization: `Bearer ${token}`
-        }
-      }
-    )
-    console.log(response.data)
-    cardData.value.push(response.data)
-    console.log(cardData.value)
+    const response = await axios.get(url.value);
+    console.log(response.data);
+    cardData.value = response.data.length > 0 ? [response.data] : []; // Set the data or an empty array
   } catch (err) {
-    console.log(err)
+    console.log(err);
   }
 }
-onMounted(() => {
-  getPrediction()
-})
 
-const offset = ref(0)
+onMounted(() => {
+  getPrediction();
+});
+
+const offset = ref(0);
 
 const previousDay = () => {
-  offset.value--
-  updateCurrentDate()
-}
+  offset.value--;
+  updateCurrentDate();
+};
 
 const nextDay = () => {
-  offset.value++
-  updateCurrentDate()
-}
+  if (offset.value < 1) {
+    offset.value++;
+    updateCurrentDate();
+  }
+};
 
 const updateCurrentDate = () => {
-  const today = new Date()
-  today.setDate(today.getDate() + offset.value)
-  currentDate.value = today.toDateString()
-}
+  const today = new Date();
+  today.setDate(today.getDate() + offset.value);
+  const month = today.getMonth() + 1;
+  const formattedMonth = month < 10 ? `0${month}` : month;
+  const day = today.getDate();
+  const formattedDay = day < 10 ? `0${day}` : day;
+  currentDate.value = `${formattedDay}-${formattedMonth}-${today.getFullYear()}`;
+};
 
-updateCurrentDate()
+updateCurrentDate();
+
+watch(currentDate, () => {
+  getPrediction();
+});
+
+const formatFormation = (formation) => {
+  if (Array.isArray(formation)) {
+    return formation[0].split('-');
+  }
+  return [];
+};
 </script>
 
 <style>

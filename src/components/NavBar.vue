@@ -3,16 +3,26 @@
     <div class="nav-container">
       <!-- <div class="language-drop-down">
       </div> -->
-      <div class="nav-logo">
         <img src="../assets/logo-spp.png" alt="logo" class="logo-spp">
-      </div>
       <div class="nav-link-container">
         <RouterLink :to="{ name: 'Home' }" class="nav-link"> Home </RouterLink>
-        <div @click="openTelegram" class="nav-link">Telegram tips</div>
+        <!-- <div @click="openTelegram" class="nav-link">Telegram tips</div> -->
         <RouterLink :to="{ name: 'Banker' }" class="nav-link"> Bet of the day </RouterLink>
-        <div class="drop-container">
+        <RouterLink :to="{ name: 'Basketball' }" class="nav-link"> Basketball </RouterLink>
+        <RouterLink :to="{ name: 'Tennis' }" class="nav-link"> Tennis </RouterLink>
+         <!-- <div class="drop-container">
+          <div class="drop-down" @click="showDrp()">
+            <span>Other sports</span>
+            <ArrowIcon class="drop-icon" />
+          </div>
+          <div class="drop-down-panel" :class="[isDrpOpen ? 'show' : 'hide']">
+            <span @click="goBasketballC()">Basketball</span>
+            <span @click="goTennisC()"> Tennis</span>
+          </div>
+        </div> -->
+         <div class="drop-container">
           <div class="drop-down" @click="showDrop()">
-            <span>Predictions</span>
+            <span>Other Predictions</span>
             <ArrowIcon class="drop-icon" />
           </div>
           <div class="drop-down-panel" :class="[isDropOpen ? 'show' : 'hide']">
@@ -22,16 +32,6 @@
             <span @click="goToC('Both Team To Score')">Both Team To Score</span>
             <!-- <span @click="goTo('Bet Of The Day')">Bet Of The Day</span> -->
             <span @click="goToC('Under 2.5 Goals')">Under 2.5 Goals</span>
-          </div>
-        </div>
-        <div class="drop-container">
-          <div class="drop-down" @click="showDrp()">
-            <span>Other sports</span>
-            <ArrowIcon class="drop-icon" />
-          </div>
-          <div class="drop-down-panel" :class="[isDrpOpen ? 'show' : 'hide']">
-            <span @click="goBasketballC()">Basketball</span>
-            <span @click="goTennisC()"> Tennis</span>
           </div>
         </div>
       </div>

@@ -1,5 +1,5 @@
 <template>
-    <HeroComponent />
+  <HeroComponent />
   <div class="home-main">
     <div class="main-h">
       <div class="main-header">
@@ -35,13 +35,13 @@
             :formationA="formatFormation(card.formationA)"
             :formationB="formatFormation(card.formationB)"
             :time="card.time"
-            @click="showCard(showCard.key)"
+            @click="showCard(card._id)"
           />
         </div>
       </template>
       <template v-else>
         <div class="home-freetip">
-          <h1>no predictions yet check back tomorrow</h1>
+          <h1>No predictions yet. Check back tomorrow.</h1>
         </div>
       </template>
     </div>
@@ -74,7 +74,7 @@
 </template>
 
 <script setup>
-import { ref, computed, onMounted } from 'vue'
+import { ref, computed, onMounted, watch } from 'vue'
 import { useRouter } from 'vue-router'
 import axios from 'axios'
 import Arrow from '../icons/arrow.vue'
@@ -106,31 +106,24 @@ const getNews = async () => {
         'X-RapidAPI-Host': import.meta.env.VITE_RAPIDAPI_HOST
       }
     })
-    console.log(response.data.data)
-    newsData.value = response.data.data // Set the newsData to the response directly
-    console.log(newsData.value)
+    newsData.value = response.data.data
   } catch (err) {
     console.log(err)
   }
 }
 
 const getPrediction = async () => {
+  const token = JSON.parse(localStorage.getItem('token'))
   try {
     const response = await axios.get(
-      'https://livescore-football.p.rapidapi.com/soccer/live-matches',
+      `https://predictions-server.onrender.com/predictions/tips/freeTip/${currentDate.value}`,
       {
         headers: {
-          'X-RapidAPI-Key': import.meta.env.VITE_RAPIDAPI_KEY,
-          'X-RapidAPI-Host': import.meta.env.VITE_RAPIDAPI_HOST
-        },
-        params: {
-          timezone_utc: '7:00'
+          Authorization: `Bearer ${token}`
         }
       }
     )
-    console.log(response.data.data.matches)
-    cardData.value.push(response.data.data.matches)
-    console.log(cardData.value)
+    cardData.value = response.data
   } catch (err) {
     console.log(err)
   }
@@ -149,15 +142,20 @@ const previousDay = () => {
 }
 
 const nextDay = () => {
-  offset.value++
-  updateCurrentDate()
+  if (offset.value < 1) {
+    offset.value++
+    updateCurrentDate()
+  }
 }
 
 const updateCurrentDate = () => {
   const today = new Date()
   today.setDate(today.getDate() + offset.value)
-  const options = { weekday: 'long', year: 'numeric', month: 'long', day: 'numeric' }
-  currentDate.value = today.toLocaleDateString(undefined, options)
+  const month = today.getMonth() + 1
+  const formattedMonth = month < 10 ? `0${month}` : month
+  const day = today.getDate()
+  const formattedDay = day < 10 ? `0${day}` : day
+  currentDate.value = `${formattedDay}-${formattedMonth}-${today.getFullYear()}`
 }
 
 updateCurrentDate()
@@ -168,6 +166,10 @@ const formatFormation = (formation) => {
   }
   return []
 }
+
+watch(currentDate, () => {
+  getPrediction()
+})
 </script>
 
 <style>

@@ -32,15 +32,15 @@
           :league="card.league"
           :teamAscore="card.teamAscore"
           :teamBscore="card.teamBscore"
-          :formationA="Array.isArray(card.formationA) ? card.formationA[0].split('-') : []"
-          :formationB="Array.isArray(card.formationB) ? card.formationB[0].split('-') : []"
+          :formationA="formatFormation(card.formationA) ? card.formationA[0].split('-') : []"
+          :formationB="formatFormation(card.formationB) ? card.formationB[0].split('-') : []"
           :time="card.time"
         />
       </div>
     </template>
     <template v-else>
       <div class="home-freetip">
-        <h1>no upcoming predictions yet! check back later</h1>
+        <h1>No upcoming predictions yet! Check back later.</h1>
       </div>
     </template>
   </div>
@@ -53,14 +53,8 @@ import { ref, watchEffect, onMounted } from 'vue'
 import { useRouter } from 'vue-router'
 import axios from 'axios'
 
-const router = useRouter()
 const currentDate = ref('')
 const offset = ref(0)
-const paramValue = ref('')
-
-const props = defineProps({
-  betName: String
-})
 
 const cardData = ref([])
 
@@ -68,47 +62,49 @@ const predictions = async () => {
   try {
     const token = localStorage.getItem('token')
     const response = await axios.get(
-      `https://predictions-server.onrender.com/predictions/bet/betOfTheDay`,
+      `https://predictions-server.onrender.com/predictions/bet/betOfTheDay/${currentDate.value}`,
       {
         headers: {
           Authorization: `Bearer ${token}`
         }
       }
     )
-    console.log(response.data)
-    cardData.value.push(response.data)
-    console.log(cardData.value)
+    cardData.value = response.data.length > 0 ? [response.data] : [];
   } catch (err) {
     console.log(err)
   }
 }
 
 onMounted(() => {
-  predictions()
-  console.log(props.betName)
-})
+  predictions();
+});
 
 const setOffset = (value) => {
-  offset.value = value
-  updateCurrentDate()
-}
-
-const getTimestamp = (offset) => {
-  const today = new Date()
-  today.setDate(today.getDate() + offset)
-  return today.toDateString()
+  offset.value = value;
+  updateCurrentDate();
 }
 
 const updateCurrentDate = () => {
-  currentDate.value = getTimestamp(offset.value)
-}
+  const today = new Date();
+  today.setDate(today.getDate() + offset.value);
+  const day = String(today.getDate()).padStart(2, '0');
+  const month = String(today.getMonth() + 1).padStart(2, '0');
+  const year = today.getFullYear();
+  currentDate.value = `${day}-${month}-${year}`;
+};
+
+updateCurrentDate();
+
+const formatFormation = (formation) => {
+  if (formatFormation(formation)) {
+    return formation[0].split('-');
+  }
+  return [];
+};
 
 watchEffect(() => {
-  paramValue.value = router.currentRoute.value.params.betName
-  updateCurrentDate()
-})
-
-updateCurrentDate()
+  predictions();
+});
 </script>
 
 <style>

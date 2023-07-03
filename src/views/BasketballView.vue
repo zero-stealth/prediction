@@ -1,65 +1,3 @@
-<script setup>
-import axios from 'axios'
-import moment from 'moment'
-import Arrow from '../icons/arrow.vue'
-import Card from '../components/CardComponent.vue'
-import { ref, onMounted, watchEffect } from 'vue'
-import ButtonComponent from '../components/ButtonComponent.vue'
-
-const currentDate = ref(moment().format('dddd, MMMM Do YYYY'))
-const cardData = ref([])
-
-async function getPrediction() {
-  const token = JSON.parse(localStorage.getItem('token'))
-
-  try {
-    const response = await axios.get(
-      'https://predictions-server.onrender.com/sports/sport/Basketball',
-      {
-        headers: {
-          Authorization: `Bearer ${token}`
-        }
-      }
-    )
-    cardData.value.push(response.data)
-  } catch (err) {
-    console.log(err)
-  }
-}
-
-onMounted(() => {
-  getPrediction()
-})
-
-const offset = ref(0)
-
-const previousDay = () => {
-  offset.value--
-  updateCurrentDate()
-}
-
-const nextDay = () => {
-  offset.value = 1
-  updateCurrentDate()
-}
-
-const updateCurrentDate = () => {
-  const today = moment().add(offset.value, 'days')
-  currentDate.value = today.format('dddd, MMMM Do YYYY')
-}
-
-const dateParam = ref(moment(currentDate.value, 'dddd, MMMM Do YYYY').toISOString())
-
-watchEffect(() => {
-  const isoDate = moment(currentDate.value, 'dddd, MMMM Do YYYY').toISOString()
-  dateParam.value = isoDate
-})
-
-console.log(dateParam.value)
-
-updateCurrentDate()
-</script>
-
 <template>
   <div>
     <ButtonComponent />
@@ -95,22 +33,94 @@ updateCurrentDate()
               :league="card.league"
               :teamAscore="card.teamAscore"
               :teamBscore="card.teamBscore"
-              :formationA="Array.isArray(card.formationA) ? card.formationA[0]?.split('-') : []"
-              :formationB="Array.isArray(card.formationB) ? card.formationB[0]?.split('-') : []"
+              :formationA="formatFormation(card.formationA) ? card.formationA[0]?.split('-') : []"
+              :formationB="formatFormation(card.formationB) ? card.formationB[0]?.split('-') : []"
               :time="card.time"
             />
           </div>
         </template>
-
         <template v-else>
           <div class="home-freetip">
-            <h1>no upcoming predictions yet! check back later</h1>
+            <h1>No upcoming predictions yet! Check back later.</h1>
           </div>
         </template>
       </div>
     </div>
   </div>
 </template>
+
+<script setup>
+import axios from 'axios';
+import Arrow from '../icons/arrow.vue';
+import Card from '../components/CardComponent.vue';
+import ButtonComponent from '../components/ButtonComponent.vue';
+import { ref, onMounted, watch } from 'vue';
+
+const upcomingDates = ref('');
+const currentDate = ref('');
+const cardData = ref([]);
+
+async function getPrediction() {
+  const token = JSON.parse(localStorage.getItem('token'));
+
+  try {
+    const response = await axios.get(
+      `https://predictions-server.onrender.com/sports/sport/Basketball/${currentDate.value}`,
+      {
+        headers: {
+          Authorization: `Bearer ${token}`
+        }
+      }
+    );
+    cardData.value = response.data.length > 0 ? [response.data] : []; // Set the data or an empty array
+    console.log(cardData.value);
+  } catch (err) {
+    console.log(err);
+  }
+}
+
+onMounted(() => {
+  getPrediction();
+});
+
+const offset = ref(0);
+
+const previousDay = () => {
+  offset.value--;
+  updateCurrentDate();
+};
+
+const nextDay = () => {
+  if (offset.value < 1) {
+    offset.value++;
+    updateCurrentDate();
+  }
+};
+
+const updateCurrentDate = () => {
+  const today = new Date();
+  today.setDate(today.getDate() + offset.value);
+  const month = today.getMonth() + 1;
+  const formattedMonth = month < 10 ? `0${month}` : month;
+  const day = today.getDate();
+  const formattedDay = day < 10 ? `0${day}` : day;
+  upcomingDates.value = `${formattedDay}-${formattedMonth}-${today.getFullYear()}`;
+  currentDate.value = `${formattedDay}-${formattedMonth}-${today.getFullYear()}`;
+};
+
+updateCurrentDate();
+
+const formatFormation = (formation) => {
+  if (Array.isArray(formation)) {
+    return formation[0].split('-');
+  }
+  return [];
+};
+
+watch(currentDate, () => {
+  getPrediction();
+});
+</script>
 
 <style>
 @import '../style/Home.css';

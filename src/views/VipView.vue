@@ -4,13 +4,15 @@ import { useRouter } from 'vue-router'
 import MoneyIcon from '../icons/payIcon.vue'
 import Card from '../components/CardComponent.vue'
 import ProfileIcon from '../icons/profileIcon.vue'
-import { ref, onMounted, watchEffect } from 'vue'
+import { ref, onMounted, watchEffect, watch } from 'vue'
 
 const isPaid = ref(true)
 const router = useRouter()
 const username = ref(null)
 const isAdmin = ref(false)
 const cardData = ref([])
+const currentDate = ref('');
+const offset = ref(0);
 
 watchEffect(() => {
   isPaid.value = localStorage.getItem('isPaid') === 'true'
@@ -31,9 +33,16 @@ const showCard = (cardID) => {
 }
 
 async function getPrediction() {
+  const token = JSON.parse(localStorage.getItem('token'))
+
   try {
     const response = await axios.get(
-      'https://predictions-server.onrender.com/predictions/vipPredictions/vip'
+      `https://predictions-server.onrender.com/predictions/vipPredictions/vip/${currentDate.value}`,
+      {
+        headers: {
+          Authorization: `Bearer ${token}`
+        }
+      }
     )
     cardData.value = response.data
   } catch (err) {
@@ -44,13 +53,48 @@ async function getPrediction() {
 onMounted(() => {
   getPrediction()
 })
+
+const previousDay = () => {
+  offset.value--;
+  updateCurrentDate();
+};
+
+const nextDay = () => {
+  if (offset.value < 1) {
+    offset.value++;
+    updateCurrentDate();
+  }
+};
+
+const updateCurrentDate = () => {
+  const today = new Date();
+  today.setDate(today.getDate() + offset.value);
+  const month = today.getMonth() + 1;
+  const formattedMonth = month < 10 ? `0${month}` : month;
+  const day = today.getDate();
+  const formattedDay = day < 10 ? `0${day}` : day;
+  currentDate.value = `${formattedDay}-${formattedMonth}-${today.getFullYear()}`;
+};
+
+updateCurrentDate();
+
+const formatFormation = (formation) => {
+  if (Array.isArray(formation)) {
+    return formation[0].split('-');
+  }
+  return [];
+};
+
+watch(currentDate, () => {
+  getPrediction();
+});
 </script>
 
 <template>
   <div class="vip-container">
     <div class="vip-wrapper">
       <div class="vip-notpaid" v-if="!isPaid">
-        <h1>Your vip account is inactive 🌵</h1>
+        <h1>Your VIP account is inactive 🌵</h1>
         <button class="vip-btn" @click="goLogin()" v-if="!username">
           <ProfileIcon class="vip-pay-icon" />
           Log in
@@ -61,8 +105,23 @@ onMounted(() => {
         </button>
       </div>
       <div v-else>
+        <div class="main-header">
+          <div class="header-info">
+            <h1>VIP tips {{ currentDate }}</h1>
+          </div>
+          <div class="header-btn">
+            <button class="btn-h" :class="{ 'active-btn': offset > 0 }" @click="previousDay">
+              <Arrow class="btn-icon icon-left" />
+              Previous
+            </button>
+            <button class="btn-h" :class="{ 'active-btn': offset < 0 }" @click="nextDay">
+              Next
+              <Arrow class="btn-icon icon-right" />
+            </button>
+          </div>
+        </div>  
         <template v-if="cardData.length > 0">
-          <div v-for="item in cardData" class="main-h-card">
+          <div v-for="item in cardData" class="main-h-card" :key="item._id">
             <Card
               v-for="(card, index) in item"
               :key="card._id"
@@ -76,8 +135,8 @@ onMounted(() => {
               :league="card.league"
               :teamAscore="card.teamAscore"
               :teamBscore="card.teamBscore"
-              :formationA="Array.isArray(card.formationA) ? card.formationA[0].split('-') : []"
-              :formationB="Array.isArray(card.formationB) ? card.formationB[0].split('-') : []"
+              :formationA="formatFormation(card.formationA) ? card.formationA[0].split('-') : []"
+              :formationB="formatFormation(card.formationB) ? card.formationB[0].split('-') : []"
               :time="card.time"
               @click="showCard(card._id)"
             />
@@ -85,13 +144,16 @@ onMounted(() => {
         </template>
         <template v-else>
           <div class="home-freetip">
-            <h1>no upcoming predictions yet! check back later</h1>
+            <h1>No upcoming predictions yet! Check back later.</h1>
           </div>
         </template>
       </div>
     </div>
   </div>
 </template>
+
 <style>
 @import '../style/vip.css';
+@import '../style/Home.css';
+
 </style>

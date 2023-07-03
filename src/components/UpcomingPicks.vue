@@ -38,30 +38,39 @@
     </div>
   </div>
 </template>
-<script setup>
-import { ref, computed, onMounted } from 'vue'
-import { useRouter } from 'vue-router'
-import Card from '../components/CardComponent.vue'
-import axios from 'axios'
 
-const router = useRouter()
+<script setup>
+import { ref, computed, onMounted } from 'vue';
+import { useRouter } from 'vue-router';
+import Card from '../components/CardComponent.vue';
+import axios from 'axios';
+
+const router = useRouter();
+const currentDate = ref('');
 
 const showCard = (cardID) => {
-  router.push({ name: 'Tips', params: { id: cardID } })
-}
+  router.push({ name: 'Tips', params: { id: cardID } });
+};
 
-const cardData = ref([])
+const cardData = ref([]);
 
 async function getPrediction() {
+  const token = JSON.parse(localStorage.getItem('token'));
+
   try {
     const response = await axios.get(
-      'https://predictions-server.onrender.com/predictions/upcomingPredictions/upcoming'
-    )
-    console.log(response.data)
-    cardData.value.push(response.data)
-    console.log(cardData.value)
+      `https://predictions-server.onrender.com/predictions/upcomingPredictions/upcoming/${currentDate.value}`,
+      {
+        headers: {
+          Authorization: `Bearer ${token}`
+        }
+      }
+    );
+    console.log(response.data);
+    cardData.value = response.data.length > 0 ? [response.data] : [];
+    console.log(cardData.value);
   } catch (err) {
-    console.log(err)
+    console.log(err);
   }
 }
 
@@ -69,16 +78,30 @@ async function deleteTip(id) {
   try {
     const response = await axios.delete(
       `https://predictions-server.onrender.com/predictions/delete/${id}`
-    )
+    );
   } catch (err) {
-    console.log(err)
+    console.log(err);
   }
-  console.log(id)
+  console.log(id);
 }
 
 onMounted(() => {
-  getPrediction()
-})
+  getPrediction();
+});
+
+const offset = ref(0);
+
+const updateCurrentDate = () => {
+  const today = new Date();
+  today.setDate(today.getDate() + offset.value);
+  const month = today.getMonth() + 1;
+  const formattedMonth = month < 10 ? `0${month}` : month;
+  const day = today.getDate();
+  const formattedDay = day < 10 ? `0${day}` : day;
+  currentDate.value = `${formattedDay}-${formattedMonth}-${today.getFullYear()}`;
+};
+
+updateCurrentDate();
 </script>
 
 <style>

@@ -2,12 +2,12 @@
   <div class="card-container">
     <div class="card-title">
       <div class="card-status">
-        <span></span>
-        <h4>{{ status }}</h4>
+        <!-- <span></span>
+        <h4>Gam</h4> -->
       </div>
       <div class="title-m">
         <img :src="leagueIcon" alt="league-img" class="league-c-img" />
-      <span>{{league}}</span>
+        <span>{{ league }}</span>
       </div>
     </div>
     <div class="card-center">
@@ -25,10 +25,10 @@
           <span>[{{ time }}]</span>
           <span>{{ teamBscore }}</span>
         </div>
-        <div class="card-score">
+        <div v-if="showscore" class="card-score">
           <span class="card-s">{{ teamAscore }}</span>
           <span class="card-p">:</span>
-          <span class="card-d">{{ teamBscore }}</span>
+          <span class="card-s">{{ teamBscore }}</span>
         </div>
         <div class="Tip">
           <h4>Tip:</h4>
@@ -57,6 +57,8 @@
 </template>
 
 <script setup>
+import { defineProps } from 'vue';
+
 const props = defineProps({
   formationA: {
     required: true,
@@ -78,11 +80,9 @@ const props = defineProps({
   tip: {
     default: '0'
   },
-  status: {
-  },
+  status: {},
   league: {
     required: true
-
   },
   teamA: {
     required: true
@@ -98,11 +98,15 @@ const props = defineProps({
   },
   time: {
     required: true
+  },
+  showscore: {
+    default: false
   }
 });
 
 const formationsA = props.formationA;
 const formationsB = props.formationB;
+const showscore = props.showscore;
 </script>
 
 <style scoped>

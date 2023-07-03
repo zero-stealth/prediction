@@ -82,7 +82,7 @@ const create = async () => {
       localStorage.setItem('token', token)
       localStorage.setItem('isPaid', isPaid)
       console.log(response.data) // Handle the response data as needed
-      router.push({ name: 'Home' })
+      router.push({ name: 'Vip' })
     } catch (error) {
       console.error(error)
     }
