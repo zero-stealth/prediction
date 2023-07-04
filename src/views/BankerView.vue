@@ -50,7 +50,6 @@
 import ButtonComponent from '../components/ButtonComponent.vue'
 import Card from '../components/CardComponent.vue'
 import { ref, watchEffect, onMounted } from 'vue'
-import { useRouter } from 'vue-router'
 import axios from 'axios'
 
 const currentDate = ref('')

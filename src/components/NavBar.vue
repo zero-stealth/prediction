@@ -3,14 +3,14 @@
     <div class="nav-container">
       <!-- <div class="language-drop-down">
       </div> -->
-        <img src="../assets/logo-spp.png" alt="logo" class="logo-spp">
+      <img src="../assets/logo-spp.png" alt="logo" class="logo-spp" />
       <div class="nav-link-container">
         <RouterLink :to="{ name: 'Home' }" class="nav-link"> Home </RouterLink>
         <!-- <div @click="openTelegram" class="nav-link">Telegram tips</div> -->
         <RouterLink :to="{ name: 'Banker' }" class="nav-link"> Bet of the day </RouterLink>
         <RouterLink :to="{ name: 'Basketball' }" class="nav-link"> Basketball </RouterLink>
         <RouterLink :to="{ name: 'Tennis' }" class="nav-link"> Tennis </RouterLink>
-         <!-- <div class="drop-container">
+        <!-- <div class="drop-container">
           <div class="drop-down" @click="showDrp()">
             <span>Other sports</span>
             <ArrowIcon class="drop-icon" />
@@ -20,7 +20,7 @@
             <span @click="goTennisC()"> Tennis</span>
           </div>
         </div> -->
-         <div class="drop-container">
+        <div class="drop-container">
           <div class="drop-down" @click="showDrop()">
             <span>Other Predictions</span>
             <ArrowIcon class="drop-icon" />
@@ -67,26 +67,28 @@
         <img src="../assets/logo-spp.png" alt="logo" class="logo-spp">
       </div> -->
       <div class="mobile-link-container">
-        <RouterLink :to="{ name: 'Home' }" @click="showMenu()" class="mobile-link"> Home </RouterLink>
+        <RouterLink :to="{ name: 'Home' }" @click="showMenu()" class="mobile-link">
+          Home
+        </RouterLink>
         <div class="drop-container">
-          <!-- <div class="drop-down" @click="showDrp()">
-            <span>Other sports</span>
-            <ArrowIcon class="drop-icon" />
-          </div> -->
-          <!-- <div class="drop-down-panel drp-down-panel" :class="[isDrpOpen ? 'showDrp' : 'hideDrp']">
-            <span @click="goBasketball()">Basketball</span>
-            <span @click="goTennis()"> Tennis</span>
-          </div> -->
+          <span @click="goTennis()" class="nav-link"> Tennis</span>
           <span @click="goBasketball()" class="nav-link">Basketball</span>
-            <span @click="goTennis()"  class="nav-link"> Tennis</span>
         </div>
         <div @click="openTelegramX" class="mobile-link">Telegram tips</div>
         <RouterLink :to="{ name: 'Banker' }" class="mobile-link"> Bet Of the day </RouterLink>
-        <span @click="goTo('Over 2.5 Goals')" class="nav-link">Over 2.5 Goals</span>
-        <span @click="goTo('Over 1.5 Goals')" class="nav-link">Over 1.5 Goals</span>
-        <span @click="goTo('Double chance')" class="nav-link">Double chance</span>
-        <span @click="goTo('Under 2.5 Goals')" class="nav-link">Under 2.5 Goals</span>
-        <span @click="goTo('Both Team To Score')" class="nav-link">Both Team To Score</span>
+        <div class="drop-container">
+        <div class="drop-down" @click="showDrp()">
+          <span>Predictions</span>
+          <ArrowIcon class="drop-icon" />
+        </div>
+        <div class="drop-down-panel" :class="[isDrpOpen == false ? 'hide': 'show']">
+          <span @click="goTo('Double chance')">Double chance</span>
+          <span @click="goTo('Over 2.5 Goals')">Over 2.5 Goals</span>
+          <span @click="goTo('Over 1.5 Goals')">Over 1.5 Goals</span>
+          <span @click="goTo('Both Team To Score')">Both Team To Score</span>
+          <span @click="goTo('Under 2.5 Goals')">Under 2.5 Goals</span>
+        </div>
+       </div>
         <!-- <span @click="goTo('Bet Of The Day')" class="nav-link">Bet Of The Day</span> -->
       </div>
       <div class="mobile-btn-container" v-if="token !== null">
@@ -149,37 +151,35 @@ const logOut = () => {
   localStorage.removeItem('isPaid')
   localStorage.removeItem('username')
   token.value = null
-  
 }
 
 const goToC = (betname) => {
   router.push({ name: 'Bet', params: { betName: betname } })
-  showDrop();
+  showDrop()
 }
 
 const goTo = (betname) => {
   router.push({ name: 'Bet', params: { betName: betname } })
-  showMenu();
+  showMenu()
+  showDrp()
 }
 
 const goTennis = () => {
   router.push({ name: 'Tennis' })
-  showMenu();
+  showMenu()
 }
 const goTennisC = () => {
   router.push({ name: 'Tennis' })
-  showDrp();
+  showDrp()
 }
-
 
 const goBasketballC = () => {
   router.push({ name: 'Basketball' })
-  showDrp();
+  showDrp()
 }
 const goBasketball = () => {
   router.push({ name: 'Basketball' })
-  showMenu();
-
+  showMenu()
 }
 
 const goLogin = () => {
@@ -198,7 +198,7 @@ const openTelegram = () => {
 
 const openTelegramX = () => {
   window.open('https://telegram.me/telegramUsername', '_blank')
-  showMenu();
+  showMenu()
 }
 </script>
 

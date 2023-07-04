@@ -11,6 +11,22 @@
           <component :is="card.icon" class="icon-acc" />
         </div>
       </div>
+      <div class="Account-card">
+        <h5>Score status</h5>
+        <div class="Account-card-icon">
+          <h1>T.</h1>
+          <div class="Account-t-con">
+            <div
+              class="Account-toggle"
+              @click="toggleScoreAccount"
+              :class="{ on: showscore, off: !showscore }"
+            >
+              <div class="Account-mode"></div>
+              <span>{{ showscore ? 'Score' : 'Not Score' }}</span>
+            </div>
+          </div>
+        </div>
+      </div>
     </div>
 
     <div class="acc-m">
@@ -63,7 +79,7 @@
 
 <script setup>
 import axios from 'axios';
-import { ref, watchEffect, onMounted, computed } from 'vue';
+import { ref, watchEffect, onMounted, computed, watch } from 'vue';
 import NotPaid from '../icons/NotPaid.vue';
 import VipIcon from '../icons/VipIcon.vue';
 import Profile from '../assets/profile.jpg';
@@ -112,7 +128,6 @@ const deleteAccount = async (id) => {
   try {
     const response = await axios.delete(`https://predictions-server.onrender.com/auth/delete/${id}`);
     message.value = response.message;
-    // Call accountsData() after the axios.delete request
     await accountsData();
   } catch (err) {
     message.value = err.message;
@@ -120,7 +135,6 @@ const deleteAccount = async (id) => {
   alert(message.value);
 };
 
-// Simulated data for account cards
 accountCards.value = [
   { id: 1, title: 'Account active', icon: ProfileIcon },
   { id: 2, title: 'Vip accounts', icon: VipIcon },
@@ -133,19 +147,19 @@ const getCount = (cardId) => {
   let count = 0;
 
   switch (cardId) {
-    case 1: // Account active
+    case 1:
       count = accountData.value.filter((account) => account._id).length;
       break;
-    case 2: // Vip accounts
+    case 2:
       count = accountData.value.filter((account) => account.paid).length;
       break;
-    case 3: // Paid accounts
+    case 3:
       count = accountData.value.filter((account) => account.paid).length;
       break;
-    case 4: // Not paid accounts
+    case 4:
       count = accountData.value.filter((account) => !account.paid).length;
       break;
-    case 5: // Administrator accounts
+    case 5:
       count = accountData.value.filter((account) => account.isAdmin).length;
       break;
     default:
@@ -155,6 +169,12 @@ const getCount = (cardId) => {
   return count;
 };
 
+const showscore = ref(localStorage.getItem('showscore') === 'true');
+
+watch(showscore, (value) => {
+  localStorage.setItem('showscore', value.toString());
+});
+
 async function toggleStatus(account) {
   account.status = !account.status;
 
@@ -163,11 +183,15 @@ async function toggleStatus(account) {
       paid: account.status,
     });
 
-    // Call accountsData() after the axios.put request
     await accountsData();
   } catch (err) {
     console.log(err);
   }
+}
+
+function toggleScoreAccount() {
+  showscore.value = !showscore.value;
+  localStorage.setItem('showscore', showscore.value.toString());
 }
 </script>
 

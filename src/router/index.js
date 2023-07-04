@@ -60,7 +60,7 @@ const router = createRouter({
       component: () => import('../views/NewsView.vue')
     },
     {
-      path: '/banker-tip',
+      path: '/bet-of-day',
       name: 'Banker',
       component: () => import('../views/BankerView.vue')
     },

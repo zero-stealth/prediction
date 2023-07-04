@@ -2,8 +2,7 @@
   <div class="card-container">
     <div class="card-title">
       <div class="card-status">
-        <!-- <span></span>
-        <h4>Gam</h4> -->
+        <span></span>
       </div>
       <div class="title-m">
         <img :src="leagueIcon" alt="league-img" class="league-c-img" />
@@ -25,12 +24,12 @@
           <span>[{{ time }}]</span>
           <span>{{ teamBscore }}</span>
         </div>
-        <div  class="card-score">
+        <div v-if="showscore" class="card-score">
           <span class="card-s">{{ teamAscore }}</span>
           <span class="card-p">:</span>
           <span class="card-s">{{ teamBscore }}</span>
         </div>
-        <div class="Tip">
+        <div v-if="showscore" class="Tip">
           <h4>Tip:</h4>
           <span>{{ tip }}</span>
         </div>
@@ -57,6 +56,7 @@
 </template>
 
 <script setup>
+import { ref, watch, computed } from 'vue';
 
 const props = defineProps({
   formationA: {
@@ -98,14 +98,19 @@ const props = defineProps({
   time: {
     required: true
   },
-  // showscore: {
-  //   default: false
-  // }
 });
 
 const formationsA = props.formationA;
 const formationsB = props.formationB;
-// const showscore = props.showscore;
+const showscore = ref(localStorage.getItem('showscore') === 'true');
+
+watch(showscore, (value) => {
+  localStorage.setItem('showscore', value.toString());
+});
+
+const shouldShowScore = computed(() => {
+  return showscore.value;
+});
 </script>
 
 <style scoped>
