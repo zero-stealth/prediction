@@ -1,5 +1,5 @@
 <script setup>
-import {onMounted, ref} from 'vue'
+import {onMounted, ref, watchEffect} from 'vue'
 import { useRouter } from 'vue-router';
 import pic from '@/assets/news.png';
 import ArrowIcon from '@/icons/ArrowIcon.vue';
@@ -12,6 +12,7 @@ const props  = defineProps({
 const teamA = ref("")
 const teamB = ref("")
 const teamAscore = ref("")
+
 const teamBscore = ref("")
 const teamAIcon = ref("")
 const teamBIcon = ref("")
@@ -20,7 +21,7 @@ const leagueIcon = ref("")
 const time = ref("")
 
 async function getTip(){
-  const response = await axios.get('https://predictions-server.onrender.com/predictions/tips/freeTip')
+  const response = await axios.get(`https://predictions-server.onrender.com/predictions/single/${props.id}`)
   console.log(response.data)
   teamA.value = response.data.teamA
   teamB.value = response.data.teamB
@@ -32,6 +33,7 @@ async function getTip(){
   leagueIcon.value = response.data.leagueIcon
   time.value = response.data.time
 }
+
 onMounted(() => {
   getTip()
 })

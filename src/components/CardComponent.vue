@@ -20,16 +20,16 @@
       </div>
       <div class="card-in">
         <div class="card-in-s">
-          <span>{{ teamAscore }}</span>
+          <!-- <span>{{ teamAscore }}</span> -->
           <span>[{{ time }}]</span>
-          <span>{{ teamBscore }}</span>
+          <!-- <span>{{ teamBscore }}</span> -->
         </div>
         <div v-if="showscore" class="card-score">
           <span class="card-s">{{ teamAscore }}</span>
           <span class="card-p">:</span>
           <span class="card-s">{{ teamBscore }}</span>
         </div>
-        <div v-if="showscore" class="Tip">
+        <div  class="Tip">
           <h4>Tip:</h4>
           <span>{{ tip }}</span>
         </div>

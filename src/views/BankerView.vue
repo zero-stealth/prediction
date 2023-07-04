@@ -61,13 +61,9 @@ const predictions = async () => {
   try {
     const token = localStorage.getItem('token')
     const response = await axios.get(
-      `https://predictions-server.onrender.com/predictions/bet/betOfTheDay/${currentDate.value}`,
-      {
-        headers: {
-          Authorization: `Bearer ${token}`
-        }
-      }
+      `https://predictions-server.onrender.com/predictions/bet/betOfTheDay/${currentDate.value}`
     )
+    console.log(response.data);
     cardData.value = response.data.length > 0 ? [response.data] : [];
   } catch (err) {
     console.log(err)
@@ -93,13 +89,13 @@ const updateCurrentDate = () => {
 };
 
 updateCurrentDate();
-
 const formatFormation = (formation) => {
-  if (formatFormation(formation)) {
+  if (formation && formation.length > 0) { // Check if formation exists and has at least one element
     return formation[0].split('-');
   }
   return [];
 };
+
 
 watchEffect(() => {
   predictions();
