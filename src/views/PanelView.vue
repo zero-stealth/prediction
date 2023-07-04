@@ -19,6 +19,14 @@
             <span>account management</span>
             <ArrowIcon class="icon-panel ap" />
           </button>
+          <button
+            @click="setActivePage(GameManagement)"
+            :class="getButtonClass(GameManagement)"
+          >
+            <FileIcon class="icon-panel" />
+            <span>Game management</span>
+            <ArrowIcon class="icon-panel ap" />
+          </button>
           <button @click="setActivePage(BetOfTheDay)" :class="getButtonClass(BetOfTheDay)">
             <FileIcon class="icon-panel" />
             <span> Bet of the day </span>
@@ -97,6 +105,7 @@ const showMenu = () => {
 }
 // pages
 import AccountManagement from '../components/AccountManagement.vue'
+import GameManagement from '../components/GameManagement.vue'
 import BasketballGames from '../components/BasketballGames.vue'
 import Predictionpicks from '../components/Predictionpicks.vue'
 import Upcomingtips from '../components/UpcomingGames.vue'

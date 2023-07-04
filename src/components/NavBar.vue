@@ -134,9 +134,9 @@ watchEffect(() => {
   token.value = localStorage.getItem('token')
 })
 
-const showMenu = () => {
-  isOpen.value = !isOpen.value
-}
+  const showMenu = () => {
+    isOpen.value = !isOpen.value
+  }
 
 const showDrop = () => {
   isDropOpen.value = !isDropOpen.value

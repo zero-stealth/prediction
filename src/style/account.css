@@ -22,6 +22,17 @@
     font-weight: 400;
   }
 
+  .Account-game-p {
+    padding: 10px;
+    gap: 20px;
+    display: flex;
+    height: inherit;
+    overflow: hidden;
+    overflow-x: scroll;
+    overflow-y: hidden;
+    background-color: var(--dark-primary-color);
+  }
+
   .Account-info {
     gap: 10px;
     display: flex;
@@ -69,11 +80,19 @@
   .acc-m {
     padding: 20px;
     height: 100%;
+    min-height: 100%;
+    min-width: 100%;
     overflow: hidden;
     overflow-x: auto;
     overflow-y: auto;
     border-radius: 8px;
     background-color: var(--dark-primary-color);
+  }
+
+  .gm-m {
+    overflow-x: hidden;
+    background-color: var(--dark-primary-color);
+
   }
 
   .acc-m thead {
@@ -178,6 +197,32 @@
   }
  
 }
+
+.game-edit {
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  display: none;
+  position: fixed;
+  overflow: hidden;
+  overflow-y: auto;
+  flex-direction: column;
+  background-color: var(--light-primary-color);
+}
+
+.mobile-exit {
+  cursor: pointer;
+}
+
+.showEdit {
+  display: flex;
+}
+
+.closeEdit {
+  display: none;
+}
+
 
 /* using it as global style for larger devices  */
 @media only screen and (min-width: 48em) {
