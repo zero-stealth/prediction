@@ -100,17 +100,23 @@ const newsInfo = (newsID) => {
 
 const getNews = async () => {
   try {
-    const response = await axios.get('https://livescore-football.p.rapidapi.com/soccer/news-list', {
-      headers: {
-        'X-RapidAPI-Key': import.meta.env.VITE_RAPIDAPI_KEY,
-        'X-RapidAPI-Host': import.meta.env.VITE_RAPIDAPI_HOST
+    const response = await axios.get(
+      'https://livescore-football.p.rapidapi.com/soccer/news-list',
+      {
+        headers: {
+          'X-RapidAPI-Key': import.meta.env.VITE_RAPIDAPI_KEY,
+          'X-RapidAPI-Host': import.meta.env.VITE_RAPIDAPI_HOST
+        },
       }
-    })
-    newsData.value = response.data.data
+    )
+    console.log(response.data.data)
+    newsData.value = response.data.data // Set the newsData to the response directly
+    console.log(newsData.value)
   } catch (err) {
     console.log(err)
   }
 }
+
 
 const getPrediction = async () => {
   const token = JSON.parse(localStorage.getItem('token'))
