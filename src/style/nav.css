@@ -1,17 +1,23 @@
 @media screen {
+  .nav-main {
+    position: sticky;
+    top: 0;
+    z-index: 100;
 
-
-  .nav-container {
-    display: flex;
-    font-size: 1rem;
-    padding: 15px 20px;
-    align-items: center;
-    /* flex-direction: row-reverse; */
-    color: var(--background-color);
-    justify-content: space-between;
-    background-color: var(--primary-color);
   }
-  
+
+  @media screen {
+    .nav-container {
+      display: flex;
+      font-size: 1rem;
+      padding: 15px 20px;
+      align-items: center;
+      color: var(--background-color);
+      justify-content: space-between;
+      background-color: var(--primary-color);
+    }
+    
+   
 
   .logo-spp {
     width: 80px;
@@ -451,4 +457,5 @@
     flex: 50%;
     height: 250px;
   }
+}
 }
