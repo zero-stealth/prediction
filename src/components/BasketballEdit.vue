@@ -30,8 +30,8 @@ import axios from 'axios';
 const emit = defineEmits('formSubmitSport')
 
 
-const teamAscore = ref(0);
-const teamBscore = ref(0);
+const teamAscore = ref();
+const teamBscore = ref();
 
 function handleFileUpload(event, targetRef) {
   const file = event.target.files[0];
@@ -45,22 +45,15 @@ async function handleSubmit() {
   if (
 
     teamAscore.value !== null &&
- 
-    teamBscore.value !== null
-
+    teamBscore.value !== null 
   ) {
-    const user = JSON.parse(localStorage.getItem('token'));
     try {
-      const formData = new FormData();
-      formData.append('teamAscore', teamAscore.value);
-      formData.append('teamBscore', teamBscore.value);
-
-      emit('formSubmitSport', formData)
+      emit('formSubmitSport', teamAscore.value, teamBscore.value)
     } catch (err) {
-      console.log(err);
+      console.log(err)
     }
   } else {
-    alert('No empty fields allowed');
+    alert('No empty fields allowed')
   }
 }
 </script>

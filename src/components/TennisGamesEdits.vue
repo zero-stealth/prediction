@@ -11,6 +11,7 @@
           <input v-model="teamAscore" type="text" class="form-g-input" placeholder="2" id="teamAscore" />
         </div>
       </div>
+      <button type="submit" class="btn-f-f f-desktop">Submit</button>
       <div class="form-wrapper">
         <h1>Team B</h1>
         <div class="form-group">
@@ -29,29 +30,23 @@ import axios from 'axios';
 const emit = defineEmits('formSubmitSport')
 
 
-const teamAscore = ref(0);
-const teamBscore = ref(0);
+const teamAscore = ref();
+const teamBscore = ref();
 
 
 async function handleSubmit() {
   if (
 
     teamAscore.value !== null &&
-
     teamBscore.value !== null 
-
   ) {
-    const user = JSON.parse(localStorage.getItem('token'));
     try {
-      const formData = new FormData();
-      formData.append('teamAscore', teamAscore.value);
-      formData.append('teamBscore', teamBscore.value);
-      emit('formSubmitSport', formData)
+      emit('formSubmitSport', teamAscore.value, teamBscore.value)
     } catch (err) {
-      console.log(err);
+      console.log(err)
     }
   } else {
-    alert('No empty fields allowed');
+    alert('No empty fields allowed')
   }
 }
 </script>

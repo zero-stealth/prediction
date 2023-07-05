@@ -12,7 +12,7 @@
             v-model="teamAscore"
             type="text"
             class="form-g-input"
-            placeholder="2"
+            placeholder="0"
             id="teamAscore"
           />
         </div>
@@ -26,7 +26,7 @@
             v-model="teamBscore"
             type="text"
             class="form-g-input"
-            placeholder="5"
+            placeholder="0"
             id="teamBscore"
           />
         </div>
@@ -41,17 +41,17 @@ import { ref } from 'vue'
 import axios from 'axios'
 const emit = defineEmits('formSubmit')
 
-const teamAscore = ref(0)
-const teamBscore = ref(0)
+const teamAscore = ref()
+const teamBscore = ref()
 
 async function handleSubmit() {
-  if (teamAscore.value !== null && teamBscore.value !== null) {
-    const user = JSON.parse(localStorage.getItem('token'))
-    try {
-      const formData = new FormData()
+  if (
 
-      formData.append('teamBscore', teamBscore.value)
-      emit('formSubmit', formData)
+    teamAscore.value !== null &&
+    teamBscore.value !== null 
+  ) {
+    try {
+      emit('formSubmit', teamAscore.value, teamBscore.value)
     } catch (err) {
       console.log(err)
     }

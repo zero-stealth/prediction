@@ -24,7 +24,7 @@
           <span>[{{ time }}]</span>
           <!-- <span>{{ teamBscore }}</span> -->
         </div>
-        <div v-if="showscore" class="card-score">
+        <div v-if="shouldShowScore" class="card-score">
           <span class="card-s">{{ teamAscore }}</span>
           <span class="card-p">:</span>
           <span class="card-s">{{ teamBscore }}</span>
@@ -100,7 +100,7 @@ const props = defineProps({
   },
 });
 
-const formationsA = props.formationA;
+const formationsA= props.formationA;
 const formationsB = props.formationB;
 const showscore = ref(localStorage.getItem('showscore') === 'true');
 
@@ -108,8 +108,19 @@ watch(showscore, (value) => {
   localStorage.setItem('showscore', value.toString());
 });
 
+const specifiedDate = new Date(); 
+
 const shouldShowScore = computed(() => {
-  return showscore.value;
+  const currentDate = new Date();
+
+  
+  const isSameDate = (
+    currentDate.getFullYear() === specifiedDate.getFullYear() &&
+    currentDate.getMonth() === specifiedDate.getMonth() &&
+    currentDate.getDate() === specifiedDate.getDate()
+  );
+
+  return !isSameDate ? true : showscore.value;
 });
 </script>
 

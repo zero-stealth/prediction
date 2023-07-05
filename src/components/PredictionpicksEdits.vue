@@ -3,7 +3,7 @@
     <div class="form-container-h">
       <h1>Prediction picks updates</h1>
     </div>
-    <form @submit.prevent="handleSubmit" enctype="multipart/form-data" class="form-container">
+    <form @submit.prevent="handleSubmit"  class="form-container">
       <div class="form-wrapper">
         <h1>Team A</h1>
         <div class="form-group">
@@ -12,7 +12,7 @@
             v-model="teamAscore"
             type="text"
             class="form-g-input"
-            placeholder="2"
+            placeholder="0"
             id="teamAscore"
           />
         </div>
@@ -26,7 +26,7 @@
             v-model="teamBscore"
             type="text"
             class="form-g-input"
-            placeholder="5"
+            placeholder="0"
             id="teamBscore"
           />
         </div>
@@ -41,8 +41,8 @@ import { ref } from 'vue'
 import axios from 'axios'
 const emit = defineEmits('formSubmit')
 
-const teamAscore = ref(0)
-const teamBscore = ref(0)
+const teamAscore = ref()
+const teamBscore = ref()
 
 
 async function handleSubmit() {
@@ -51,14 +51,8 @@ async function handleSubmit() {
     teamAscore.value !== null &&
     teamBscore.value !== null 
   ) {
-    const user = JSON.parse(localStorage.getItem('token'))
     try {
-      const formData = new FormData()
-      formData.append('teamAscore', teamAscore.value)
-      formData.append('teamBscore', teamBscore.value)
-  
-
-      emit('formSubmit', formData)
+      emit('formSubmit', teamAscore.value, teamBscore.value)
     } catch (err) {
       console.log(err)
     }

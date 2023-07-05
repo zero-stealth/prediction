@@ -8,7 +8,7 @@
         <h1>Team A</h1>
         <div class="form-group">
           <label for="teamAscore">Score:</label>
-          <input v-model="teamAscore" type="text" class="form-g-input" placeholder="2" id="teamAscore" />
+          <input v-model="teamAscore" type="text" class="form-g-input" placeholder="0" id="teamAscore" />
         </div>
       </div>
       <button type="submit" class="btn-f-f f-desktop">Submit</button>
@@ -16,7 +16,7 @@
         <h1>Team B</h1>
         <div class="form-group">
           <label for="teamBscore">Score:</label>
-          <input v-model="teamBscore" type="text" class="form-g-input" placeholder="5" id="teamBscore" />
+          <input v-model="teamBscore" type="text" class="form-g-input" placeholder="0" id="teamBscore" />
         </div>
         <button type="submit" class="btn-f-f f-mobile">Submit</button>
       </div>
@@ -29,27 +29,23 @@ import { ref } from 'vue';
 import axios from 'axios';
 const emit = defineEmits('formSubmit')
 
-const teamAscore = ref(0);
-const teamBscore = ref(0);
+const teamAscore = ref();
+const teamBscore = ref();
 
 
 async function handleSubmit() {
   if (
-    teamAscore.value !== null &&
-    teamBscore.value !== null
-  ) {
-    const user = JSON.parse(localStorage.getItem('token'));
-    try {
-      const formData = new FormData();
-      formData.append('teamAscore', teamAscore.value);
-      formData.append('teamBscore', teamBscore.value);
 
-      emit('formSubmit', formData)
+    teamAscore.value !== null &&
+    teamBscore.value !== null 
+  ) {
+    try {
+      emit('formSubmit', teamAscore.value, teamBscore.value)
     } catch (err) {
-      console.log(err);
+      console.log(err)
     }
   } else {
-    alert('No empty fields allowed');
+    alert('No empty fields allowed')
   }
 }
 </script>

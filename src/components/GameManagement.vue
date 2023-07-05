@@ -618,10 +618,10 @@ const editSport = (sport, id) => {
   showEdit();
 }
 
-async function updateGame(formData){
+async function updateGame(teamAscore, teamBscore){
   try {
     const token = JSON.parse(localStorage.getItem('token'));
-    const response = await axios.put(`https://predictions-server.onrender.com/predictions/update/${gameId.value}`, formData, {
+    const response = await axios.put(`https://predictions-server.onrender.com/predictions/update/${gameId.value}`, {teamAscore, teamBscore}, {
     headers: {
         Authorization: `Bearer ${token}`,
       },
@@ -632,10 +632,10 @@ async function updateGame(formData){
   }
 }
 
-async function updateSport(formData){
+async function updateSport(teamAscore, teamBscore){
   try {
     const token = JSON.parse(localStorage.getItem('token'));
-    const response = await axios.put(`https://predictions-server.onrender.com/sports/update/${sportId.value}`, formData, {
+    const response = await axios.put(`https://predictions-server.onrender.com/sports/update/${sportId.value}`, {teamAscore, teamBscore}, {
     headers: {
         Authorization: `Bearer ${token}`,
       },
@@ -728,7 +728,7 @@ const deleteSport = async (id) => {
     const response = await axios.delete(`https://predictions-server.onrender.com/sports/delete/${id}`,{
       headers: {Authorization: `Bearer ${token}`}
     });
-    message.value = response.message;
+    message.value = response.data.message;
     await tennisData();
     await basketBallData()
   } catch (err) {
