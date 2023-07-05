@@ -53,9 +53,9 @@
           <select v-model="category" class="form-g-input" id="status">
             <option disabled value="">Choose category</option>
             <option value="Double Chance">Double Chance</option>
-            <option value="Over 2.5 Goals ">Over 2.5 Goals</option>
+            <option value="Over 2.5 Goals">Over 2.5 Goals</option>
             <option value="Over 1.5 Goals">Over 1.5 Goals</option>
-            <option value="Both Team To Score">Both Team To Score</option>
+            <option value="Both Teams To Score">Both Team To Score</option>
             <option value="Under 2.5 Goals">Under 2.5 Goals</option>
           </select>
         </div>
@@ -101,6 +101,7 @@
 <script setup>
 import { ref } from 'vue';
 import axios from 'axios';
+const emit = defineEmits('formSubmit')
 
 const teamA = ref('');
 const teamB = ref('');
@@ -141,22 +142,22 @@ function handleLeagueLogo(event) {
 
 async function handleSubmit() {
   if (
-    teamA.value.trim() !== '' &&
-    teamAIcon.value !== null &&
-    leagueIcon.value !== null &&
-    formationA.value.trim() !== '' &&
-    teamAPosition.value.trim() !== '' &&
+    // teamA.value.trim() !== '' &&
+    // teamAIcon.value !== null &&
+    // leagueIcon.value !== null &&
+    // formationA.value.trim() !== '' &&
+    // teamAPosition.value.trim() !== '' &&
     teamAscore.value !== null &&
-    teamB.value.trim() !== '' &&
-    teamBIcon.value !== null &&
-    formationB.value.trim() !== '' &&
-    teamBPosition.value.trim() !== '' &&
-    teamBscore.value !== null &&
-    time.value.trim() !== '' &&
-    tip.value !== null &&
-    date.value !== null &&
-    league.value !== null &&
-    status.value.trim() !== ''
+    // teamB.value.trim() !== '' &&
+    // teamBIcon.value !== null &&
+    // formationB.value.trim() !== '' &&
+    // teamBPosition.value.trim() !== '' &&
+    teamBscore.value !== null
+    // time.value.trim() !== '' &&
+    // tip.value !== null &&
+    // date.value !== null &&
+    // league.value !== null &&
+    // status.value.trim() !== ''
   ) {
     const user = JSON.parse(localStorage.getItem('token'));
     try {
@@ -179,17 +180,7 @@ async function handleSubmit() {
       formData.append('status', status.value);
       formData.append('tip', tip.value);
 
-      const response = await axios.post(
-        'https://predictions-server.onrender.com/predictions/create/tip/freeTip',
-        formData,
-        {
-          headers: {
-            'Content-Type': 'multipart/form-data',
-            Authorization: `Bearer ${user}`,
-          },
-        }
-      );
-      console.log(response.data);
+      emit('formSubmit', formData)
     } catch (err) {
       console.log(err);
     }

@@ -16,7 +16,7 @@ const currentDate = ref('');
 const offset = ref(0);
 
 watchEffect(() => {
-  isPaid.value = localStorage.getItem('isPaid') === 'true'
+  isPaid.value = localStorage.getItem('paid') === 'true'
   username.value = localStorage.getItem('username')
   isAdmin.value = localStorage.getItem('admin')
 })
@@ -45,6 +45,7 @@ async function getPrediction() {
         }
       }
     )
+    console.log(response.data);
     cardData.value = response.data
   } catch (err) {
     console.log(err)
@@ -122,9 +123,9 @@ watch(currentDate, () => {
           </div>
         </div>  
         <template v-if="cardData.length > 0">
-          <div v-for="item in cardData" class="main-h-card" :key="item._id">
+          <div class="main-h-card">
             <Card
-              v-for="(card, index) in item"
+              v-for="(card, index) in cardData" 
               :key="card._id"
               :tip="card.tip"
               :status="card.status"

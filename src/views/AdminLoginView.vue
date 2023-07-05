@@ -62,11 +62,13 @@ const login = async () => {
       if (isAdmin) {
         const token = response.data.token
         const admin = response.data.isAdmin
+        const paid = response.data.paid
         const adminusername = response.data.username
 
         localStorage.setItem('admin', admin)
         localStorage.setItem('username', adminusername)
         localStorage.setItem('token', JSON.stringify(token))
+        localStorage.setItem('paid', paid)
 
         router.push({ name: 'Panel' })
       } else {

@@ -64,7 +64,7 @@ const cardData = ref([])
 
 const predictions = async () => {
   try {
-    const token = localStorage.getItem('token')
+    // const token = JSON.parse(localStorage.getItem('token'));
     const response = await axios.get(
       `https://predictions-server.onrender.com/predictions/prediction/${betName.value}/${currentDate.value}`
     )

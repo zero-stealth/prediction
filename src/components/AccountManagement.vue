@@ -126,7 +126,12 @@ const accountData = computed(() => {
 
 const deleteAccount = async (id) => {
   try {
-    const response = await axios.delete(`https://predictions-server.onrender.com/auth/delete/${id}`);
+    const token = JSON.parse(localStorage.getItem('token'));
+    const response = await axios.delete(`https://predictions-server.onrender.com/auth/delete/${id}`,{
+      headers:{
+        Authorization: `Bearer ${token}`
+      }
+    });
     message.value = response.message;
     await accountsData();
   } catch (err) {

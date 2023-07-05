@@ -69,6 +69,18 @@ async function getPrediction() {
   }
 }
 
+async function updateTip(id) {
+  try {
+    const response = await axios.put(
+      `https://predictions-server.onrender.com/predictions/update/${id}`
+    );
+    console.log(response.data);
+  } catch (err) {
+    console.log(err);
+  }
+  console.log(id);
+}
+
 async function deleteTip(id) {
   try {
     const response = await axios.delete(

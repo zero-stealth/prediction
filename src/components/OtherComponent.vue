@@ -2,7 +2,7 @@
       <div class="prediction-con">
       <h1>Other Predictions</h1>
       <div class="prediction-p">
-        <OtherPredictions buttonName="Double chance" />
+        <OtherPredictions buttonName="Double Chance" />
         <OtherPredictions buttonName="Over 2.5 Goals" />
         <OtherPredictions buttonName="Over 1.5 Goals" />
         <OtherPredictions buttonName="Both Teams To Score" />

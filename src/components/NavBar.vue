@@ -26,10 +26,10 @@
             <ArrowIcon class="drop-icon" />
           </div>
           <div class="drop-down-panel" :class="[isDropOpen ? 'show' : 'hide']">
-            <span @click="goToC('Double chance')">Double chance</span>
+            <span @click="goToC('Double Chance')">Double Chance</span>
             <span @click="goToC('Over 2.5 Goals')">Over 2.5 Goals</span>
             <span @click="goToC('Over 1.5 Goals')">Over 1.5 Goals</span>
-            <span @click="goToC('Both Team To Score')">Both Team To Score</span>
+            <span @click="goToC('Both Teams To Score')">Both Team To Score</span>
             <!-- <span @click="goTo('Bet Of The Day')">Bet Of The Day</span> -->
             <span @click="goToC('Under 2.5 Goals')">Under 2.5 Goals</span>
           </div>
