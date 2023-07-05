@@ -49,15 +49,6 @@
           <input v-model="date" type="text" class="form-g-input" placeholder="03-06-2023" id="date" />
         </div>
         <div class="form-group">
-          <label for="status">Match Status:</label>
-          <select v-model="status" class="form-g-input" id="status">
-            <option disabled value="">Choose status</option>
-            <option value="live">Live</option>
-            <option value="past">Past</option>
-            <option value="future">Upcoming</option>
-          </select>
-        </div>
-        <div class="form-group">
           <label for="status">Match category:</label>
           <select v-model="category" class="form-g-input" id="status">
             <option disabled value="">Choose category</option>
@@ -116,7 +107,6 @@ const category = ref('')
 const league = ref('');
 const teamAscore = ref(0);
 const teamBscore = ref(0);
-const status = ref('');
 const date = ref('');
 const tip = ref('');
 
@@ -155,8 +145,7 @@ async function handleSubmit() {
     time.value.trim() !== '' &&
     tip.value !== null &&
     league.value !== null &&
-    date.value !== null &&
-    status.value.trim() !== ''
+    date.value !== null 
   ) {
     const user = JSON.parse(localStorage.getItem('token'));
     try {
@@ -175,7 +164,6 @@ async function handleSubmit() {
       formData.append('time', time.value);
       formData.append('category', category.value)
       formData.append('league', league.value);
-      formData.append('status', status.value);
       formData.append('date', date.value);
       formData.append('tip', tip.value);
 

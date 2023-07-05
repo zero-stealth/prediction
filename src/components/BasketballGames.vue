@@ -48,15 +48,6 @@
           <label for="date">Match Date:</label>
           <input v-model="date" type="text" class="form-g-input" placeholder="03-06-2023" id="date" />
         </div>
-        <div class="form-group">
-          <label for="status">Match Status:</label>
-          <select v-model="status" class="form-g-input" id="status">
-            <option disabled value="">Choose status</option>
-            <option value="live">Live</option>
-            <option value="past">Past</option>
-            <option value="future">Upcoming</option>
-          </select>
-        </div>
         <button type="submit" class="btn-f-f f-desktop">Submit</button>
       </div>
       <div class="form-wrapper">
@@ -105,7 +96,6 @@ const time = ref('');
 const league = ref('');
 const teamAscore = ref(0);
 const teamBscore = ref(0);
-const status = ref('');
 const tip = ref('');
 
 function handleFileUpload(event, targetRef) {
@@ -143,8 +133,7 @@ async function handleSubmit() {
     time.value.trim() !== '' &&
     tip.value !== null &&
     league.value !== null &&
-    date.value !== null &&
-    status.value.trim() !== ''
+    date.value !== null 
   ) {
     const user = JSON.parse(localStorage.getItem('token'));
     try {
@@ -162,7 +151,6 @@ async function handleSubmit() {
       formData.append('teamBscore', teamBscore.value);
       formData.append('time', time.value);
       formData.append('league', league.value);
-      formData.append('status', status.value);
       formData.append('date', date.value)
       formData.append('tip', tip.value);
 

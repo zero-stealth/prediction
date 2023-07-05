@@ -101,15 +101,6 @@
             <option value="Under 2.5 Goals">Under 2.5 Goals</option>
           </select>
         </div>
-        <div class="form-group">
-          <label for="status">Match Status:</label>
-          <select v-model="status" class="form-g-input" id="status">
-            <option disabled value="">Choose status</option>
-            <option value="live">Live</option>
-            <option value="past">Past</option>
-            <option value="future">Upcoming</option>
-          </select>
-        </div>
         <button type="submit" class="btn-f-f f-desktop">Submit</button>
       </div>
       <div class="form-wrapper">
@@ -188,7 +179,6 @@ const category = ref('')
 const league = ref('')
 const teamAscore = ref(0)
 const teamBscore = ref(0)
-const status = ref('')
 const date = ref('');
 const tip = ref('')
 
@@ -227,8 +217,7 @@ async function handleSubmit() {
     time.value.trim() !== '' &&
     tip.value !== null &&
     league.value !== null &&
-    date.value !== null &&
-    status.value.trim() !== ''
+    date.value !== null 
   ) {
     const user = JSON.parse(localStorage.getItem('token'))
     try {
@@ -246,7 +235,6 @@ async function handleSubmit() {
       formData.append('teamBscore', teamBscore.value)
       formData.append('time', time.value)
       formData.append('league', league.value)
-      formData.append('status', status.value)
       formData.append('category', category.value)
       formData.append('date', date.value)
       formData.append('tip', tip.value)

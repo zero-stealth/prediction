@@ -132,7 +132,7 @@ const deleteAccount = async (id) => {
         Authorization: `Bearer ${token}`
       }
     });
-    message.value = response.message;
+    message.value = response.data.message;
     await accountsData();
   } catch (err) {
     message.value = err.message;

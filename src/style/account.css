@@ -90,7 +90,7 @@
   }
 
   .gm-m {
-    overflow-x: hidden;
+    overflow-x: auto;
     background-color: var(--dark-primary-color);
 
   }

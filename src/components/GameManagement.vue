@@ -710,7 +710,7 @@ const deletePrediction = async (id) => {
     const response = await axios.delete(`https://predictions-server.onrender.com/predictions/delete/${id}`,{
       headers: {Authorization: `Bearer ${token}`}
     });
-    message.value = response.message;
+    message.value = response.data.message;
     await cardData();
     await freeTipData()
     await upcomingData()
@@ -751,7 +751,7 @@ async function toggleStatus(account) {
       paid: account.status,
     });
 
-    await accountsData();
+    await accountData();
   } catch (err) {
     console.log(err);
   }
