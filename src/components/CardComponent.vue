@@ -24,6 +24,9 @@
           <span>[{{ time }}]</span>
           <!-- <span>{{ teamBscore }}</span> -->
         </div>
+        <div v-if="!shouldShowScore">
+         <span>vs</span>
+        </div>
         <div v-if="shouldShowScore" class="card-score">
           <span class="card-s">{{ teamAscore }}</span>
           <span class="card-p">:</span>

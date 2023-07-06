@@ -104,12 +104,12 @@
       <h1>All Football Betting Tips.</h1>
       <p>Explore our comprehensive range of free football predictions for major bet markets:</p>
       <ul>
-        <li  @click="goTo('Bet Of The Day tip')">Bet Of The Day tip</li>
-        <li  @click="goTo('Over 1.5 Goals tips')">Over 1.5 Goals tips</li>
-        <li  @click="goTo('Over 2.5 Goals tips')">Over 2.5 Goals tips</li>
-        <li  @click="goTo('Both Teams To Score tips')">Both Teams To Score tips</li>
-        <li  @click="goTo('Double Chance tips')">Double Chance tips</li>
-        <li  @click="goTo('Under 2.5 Goals tip')">Under 2.5 Goals tips</li>
+        <li  @click="goToB()">Bet Of The Day tip</li>
+        <li  @click="goTo('Over 1.5 Goals')">Over 1.5 Goals tips</li>
+        <li  @click="goTo('Over 2.5 Goals')">Over 2.5 Goals tips</li>
+        <li  @click="goTo('Both Teams To Score')">Both Teams To Score tips</li>
+        <li  @click="goTo('Double Chance')">Double Chance tips</li>
+        <li  @click="goTo('Under 2.5 Goals')">Under 2.5 Goals tips</li>
       </ul>
     </div>
     <div class="abt-p-in">
@@ -130,6 +130,10 @@ const router = useRouter();
 
 const goTo = (liName) => {
   router.push({ name: 'Bet', params: { betName: liName } })
+}
+
+const goToB = () => {
+  router.push({ name: 'Banker' })
 }
 
 </script>

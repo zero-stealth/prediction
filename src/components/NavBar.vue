@@ -82,10 +82,10 @@
           <ArrowIcon class="drop-icon" />
         </div>
         <div class="drop-down-panel" :class="[isDrpOpen == false ? 'hide': 'show']">
-          <span @click="goTo('Double chance')">Double chance</span>
+          <span @click="goTo('Double Chance')">Double chance</span>
           <span @click="goTo('Over 2.5 Goals')">Over 2.5 Goals</span>
           <span @click="goTo('Over 1.5 Goals')">Over 1.5 Goals</span>
-          <span @click="goTo('Both Team To Score')">Both Team To Score</span>
+          <span @click="goTo('Both Teams To Score')">Both Team To Score</span>
           <span @click="goTo('Under 2.5 Goals')">Under 2.5 Goals</span>
         </div>
        </div>
@@ -168,15 +168,7 @@ const goTennis = () => {
   router.push({ name: 'Tennis' })
   showMenu()
 }
-const goTennisC = () => {
-  router.push({ name: 'Tennis' })
-  showDrp()
-}
 
-const goBasketballC = () => {
-  router.push({ name: 'Basketball' })
-  showDrp()
-}
 const goBasketball = () => {
   router.push({ name: 'Basketball' })
   showMenu()
