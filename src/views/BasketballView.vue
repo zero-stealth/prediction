@@ -33,9 +33,11 @@
               :league="card.league"
               :teamAscore="card.teamAscore"
               :teamBscore="card.teamBscore"
+              :showScore="card.ShowScore"
               :formationA="formatFormation(card.formationA) ? card.formationA[0]?.split('-') : []"
               :formationB="formatFormation(card.formationB) ? card.formationB[0]?.split('-') : []"
               :time="card.time"
+      
             />
           </div>
         </template>

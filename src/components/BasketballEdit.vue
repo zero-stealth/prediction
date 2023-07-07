@@ -11,7 +11,13 @@
           <input v-model="teamAscore" type="text" class="form-g-input" placeholder="2" id="teamAscore" />
         </div>
       </div>
+      <div class="form-wrapper">
+        <div class="form-group">
+          <label for="score">Show score:</label>
+          <input v-model="ShowScore" type="text" class="form-g-input" placeholder="true" id="score" />
+        </div>
       <button type="submit" class="btn-f-f f-desktop">Submit</button>
+      </div>
       <div class="form-wrapper">
         <h1>Team B</h1>
         <div class="form-group">
@@ -26,29 +32,24 @@
 
 <script setup>
 import { ref } from 'vue';
-import axios from 'axios';
 const emit = defineEmits('formSubmitSport')
 
 
 const teamAscore = ref();
 const teamBscore = ref();
+const ShowScore = ref();
 
-function handleFileUpload(event, targetRef) {
-  const file = event.target.files[0];
-  if (file) {
-    targetRef.value = file;
-  }
-}
 
 
 async function handleSubmit() {
   if (
 
     teamAscore.value !== null &&
+    ShowScore.value !== null &&
     teamBscore.value !== null 
   ) {
     try {
-      emit('formSubmitSport', teamAscore.value, teamBscore.value)
+      emit('formSubmitSport', teamAscore.value, teamBscore.value, ShowScore.value)
     } catch (err) {
       console.log(err)
     }

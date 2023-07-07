@@ -20,19 +20,17 @@
       </div>
       <div class="card-in">
         <div class="card-in-s">
-          <!-- <span>{{ teamAscore }}</span> -->
           <span>[{{ time }}]</span>
-          <!-- <span>{{ teamBscore }}</span> -->
         </div>
-        <div v-if="!shouldShowScore">
-         <span>vs</span>
+        <div v-if="!showScore">
+          <span>vs</span>
         </div>
         <div v-if="shouldShowScore" class="card-score">
           <span class="card-s">{{ teamAscore }}</span>
           <span class="card-p">:</span>
           <span class="card-s">{{ teamBscore }}</span>
         </div>
-        <div  class="Tip">
+        <div class="Tip">
           <h4>Tip:</h4>
           <span>{{ tip }}</span>
         </div>
@@ -82,7 +80,6 @@ const props = defineProps({
   tip: {
     default: '0'
   },
-  status: {},
   league: {
     required: true
   },
@@ -101,30 +98,19 @@ const props = defineProps({
   time: {
     required: true
   },
+  showScore: {
+    type: Boolean,
+    default: false
+  }
 });
 
-const formationsA= props.formationA;
+const formationsA = props.formationA;
 const formationsB = props.formationB;
-const showscore = ref(localStorage.getItem('showscore') === 'true');
-
-watch(showscore, (value) => {
-  localStorage.setItem('showscore', value.toString());
-});
-
-const specifiedDate = new Date(); 
 
 const shouldShowScore = computed(() => {
-  const currentDate = new Date();
-
-  
-  const isSameDate = (
-    currentDate.getFullYear() === specifiedDate.getFullYear() &&
-    currentDate.getMonth() === specifiedDate.getMonth() &&
-    currentDate.getDate() === specifiedDate.getDate()
-  );
-
-  return !isSameDate ? true : showscore.value;
+  return props.showScore && props.teamAscore !== undefined && props.teamBscore !== undefined;
 });
+
 </script>
 
 <style scoped>

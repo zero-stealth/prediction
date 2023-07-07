@@ -11,22 +11,6 @@
           <component :is="card.icon" class="icon-acc" />
         </div>
       </div>
-      <div class="Account-card">
-        <h5>Score status</h5>
-        <div class="Account-card-icon">
-          <h1>T.</h1>
-          <div class="Account-t-con">
-            <div
-              class="Account-toggle"
-              @click="toggleScoreAccount"
-              :class="{ on: showscore, off: !showscore }"
-            >
-              <div class="Account-mode"></div>
-              <span>{{ showscore ? 'Score' : 'Not Score' }}</span>
-            </div>
-          </div>
-        </div>
-      </div>
     </div>
 
     <div class="acc-m">
@@ -174,11 +158,7 @@ const getCount = (cardId) => {
   return count;
 };
 
-const showscore = ref(localStorage.getItem('showscore') === 'true');
 
-watch(showscore, (value) => {
-  localStorage.setItem('showscore', value.toString());
-});
 
 async function toggleStatus(account) {
   account.status = !account.status;

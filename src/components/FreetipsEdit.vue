@@ -31,16 +31,17 @@ const emit = defineEmits('formSubmit')
 
 const teamAscore = ref();
 const teamBscore = ref();
-
+const ShowScore = ref();
 
 async function handleSubmit() {
   if (
 
     teamAscore.value !== null &&
+    ShowScore.value !== null &&
     teamBscore.value !== null 
   ) {
     try {
-      emit('formSubmit', teamAscore.value, teamBscore.value)
+      emit('formSubmit', teamAscore.value, teamBscore.value, ShowScore.value)
     } catch (err) {
       console.log(err)
     }

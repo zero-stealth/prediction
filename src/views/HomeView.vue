@@ -30,6 +30,7 @@
             :teamA="card.teamA"
             :teamB="card.teamB"
             :league="card.league"
+            :showScore="card.ShowScore"
             :teamAscore="card.teamAscore"
             :teamBscore="card.teamBscore"
             :formationA="formatFormation(card.formationA)"
