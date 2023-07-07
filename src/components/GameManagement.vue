@@ -7,22 +7,21 @@
       <!-- loop this  -->
       <div class="acc-m gm-m">
         <div class="main-header">
-      <div class="header-info">
-        <h1>{{ paramValue }} ({{ currentDate }})</h1>
-      </div>
-      <div class="header-btn">
-        <button class="btn-h" :class="{ 'active-btn': offset === -1 }" @click="setOffset(-1)">
-          Yesterday
-        </button>
-        <button class="btn-h" :class="{ 'active-btn': offset === 0 }" @click="setOffset(0)">
-          Today
-        </button>
-        <button class="btn-h" :class="{ 'active-btn': offset === 1 }" @click="setOffset(1)">
-          Tomorrow
-        </button>
-      </div>
-    </div>
-        <h2>Bet of the day</h2>
+          <div class="header-info">
+            <h1>Bet of the day  ({{ currentDate }})</h1>
+          </div>
+          <div class="header-btn">
+            <button class="btn-h" :class="{ 'active-btn': offset === -1 }" @click="setOffset(-1)">
+              Yesterday
+            </button>
+            <button class="btn-h" :class="{ 'active-btn': offset === 0 }" @click="setOffset(0)">
+              Today
+            </button>
+            <button class="btn-h" :class="{ 'active-btn': offset === 1 }" @click="setOffset(1)">
+              Tomorrow
+            </button>
+          </div>
+        </div>
         <table>
           <thead>
             <tr>
@@ -36,75 +35,71 @@
               <th>Delete</th>
             </tr>
           </thead>
-            <tbody v-for="item in cardData">
-            
+          <tbody v-for="item in cardData">
             <tr v-for="data in item" :key="data._id">
-            <td>
-              <div class="Account-tbl-img">
-                <img :src="data.leagueIcon" alt="Account-p" class="Account-pi" />
-                <span>{{ data.league }}</span>
-              </div>
-            </td>
-            <td>
-              <div class="Account-tbl-img">
-                <img :src="data.teamAIcon" alt="Account-p" class="Account-pi" />
-                <span>{{ data.teamA }}</span>
-              </div>
-            </td>
-            <td>
-              <div class="Account-tbl-img">
-                <img :src="data.teamBIcon" alt="Account-p" class="Account-pi" />
-                <span>{{ data.teamB }}</span>
-              </div>
-            </td>
-            <td>
-              <span>{{data.teamAscore}}</span>
-            </td>
-            <td>
-              <span>{{data.teamBscore}}</span>
-            </td>
-            <td>
-              <span>{{data.tip}}</span>
-            </td>
-            <td>
-              <div class="Account-delete" @click="editGame(BetOfTheDay, data._id)">
-                <FileIcon class="icon-delete" />
-              </div>
-            </td>
-            <td>
-              <div class="Account-delete" @click="deletePrediction(data._id)">
-                <DeleteIcon class="icon-delete" />
-              </div>
-            </td>
-          </tr>
-        
-          <tr v-if="cardData.length === 0">
-            <td colspan="8">No games yet!</td>
-          </tr>
-        </tbody>
-     
+              <td>
+                <div class="Account-tbl-img">
+                  <img :src="data.leagueIcon" alt="Account-p" class="Account-pi" />
+                  <span>{{ data.league }}</span>
+                </div>
+              </td>
+              <td>
+                <div class="Account-tbl-img">
+                  <img :src="data.teamAIcon" alt="Account-p" class="Account-pi" />
+                  <span>{{ data.teamA }}</span>
+                </div>
+              </td>
+              <td>
+                <div class="Account-tbl-img">
+                  <img :src="data.teamBIcon" alt="Account-p" class="Account-pi" />
+                  <span>{{ data.teamB }}</span>
+                </div>
+              </td>
+              <td>
+                <span>{{ data.teamAscore }}</span>
+              </td>
+              <td>
+                <span>{{ data.teamBscore }}</span>
+              </td>
+              <td>
+                <span>{{ data.tip }}</span>
+              </td>
+              <td>
+                <div class="Account-delete" @click="editGame(BetOfTheDay, data._id)">
+                  <FileIcon class="icon-delete" />
+                </div>
+              </td>
+              <td>
+                <div class="Account-delete" @click="deletePrediction(data._id)">
+                  <DeleteIcon class="icon-delete" />
+                </div>
+              </td>
+            </tr>
 
+            <tr v-if="cardData.length === 0">
+              <td colspan="8">No games yet!</td>
+            </tr>
+          </tbody>
         </table>
       </div>
       <!-- loop this  -->
       <div class="acc-m gm-m">
         <div class="main-header">
-      <div class="header-info">
-        <h1>{{ paramValue }} ({{ currentDate }})</h1>
-      </div>
-      <div class="header-btn">
-        <button class="btn-h" :class="{ 'active-btn': offset === -1 }" @click="setOffset(-1)">
-          Yesterday
-        </button>
-        <button class="btn-h" :class="{ 'active-btn': offset === 0 }" @click="setOffset(0)">
-          Today
-        </button>
-        <button class="btn-h" :class="{ 'active-btn': offset === 1 }" @click="setOffset(1)">
-          Tomorrow
-        </button>
-      </div>
-    </div>
-        <h2>Prediction picks</h2>
+          <div class="header-info">
+            <h1>Prediction picks ({{ currentDate }})</h1>
+          </div>
+          <div class="header-btn">
+            <button class="btn-h" :class="{ 'active-btn': offset === -1 }" @click="setOffset(-1)">
+              Yesterday
+            </button>
+            <button class="btn-h" :class="{ 'active-btn': offset === 0 }" @click="setOffset(0)">
+              Today
+            </button>
+            <button class="btn-h" :class="{ 'active-btn': offset === 1 }" @click="setOffset(1)">
+              Tomorrow
+            </button>
+          </div>
+        </div>
         <table>
           <thead>
             <tr>
@@ -142,7 +137,7 @@
                 <span>{{ data.teamAscore }}</span>
               </td>
               <td>
-                <span>{{data.teamBscore}}</span>
+                <span>{{ data.teamBscore }}</span>
               </td>
               <td>
                 <span>{{ data.tip }}</span>
@@ -167,22 +162,21 @@
 
       <div class="acc-m gm-m">
         <div class="main-header">
-      <div class="header-info">
-        <h1>{{ paramValue }} ({{ currentDate }})</h1>
-      </div>
-      <div class="header-btn">
-        <button class="btn-h" :class="{ 'active-btn': offset === -1 }" @click="setOffset(-1)">
-          Yesterday
-        </button>
-        <button class="btn-h" :class="{ 'active-btn': offset === 0 }" @click="setOffset(0)">
-          Today
-        </button>
-        <button class="btn-h" :class="{ 'active-btn': offset === 1 }" @click="setOffset(1)">
-          Tomorrow
-        </button>
-      </div>
-    </div>
-        <h2>Free tips</h2>
+          <div class="header-info">
+            <h1>Free tips ({{ currentDate }})</h1>
+          </div>
+          <div class="header-btn">
+            <button class="btn-h" :class="{ 'active-btn': offset === -1 }" @click="setOffset(-1)">
+              Yesterday
+            </button>
+            <button class="btn-h" :class="{ 'active-btn': offset === 0 }" @click="setOffset(0)">
+              Today
+            </button>
+            <button class="btn-h" :class="{ 'active-btn': offset === 1 }" @click="setOffset(1)">
+              Tomorrow
+            </button>
+          </div>
+        </div>
         <table>
           <thead>
             <tr>
@@ -246,21 +240,20 @@
       <div class="acc-m gm-m">
         <div class="main-header">
           <div class="header-info">
-        <h1>{{ paramValue }} ({{ currentDate }})</h1>
-      </div>
-      <div class="header-btn">
-        <button class="btn-h" :class="{ 'active-btn': offset === -1 }" @click="setOffset(-1)">
-          Yesterday
-        </button>
-        <button class="btn-h" :class="{ 'active-btn': offset === 0 }" @click="setOffset(0)">
-          Today
-        </button>
-        <button class="btn-h" :class="{ 'active-btn': offset === 1 }" @click="setOffset(1)">
-          Tomorrow
-        </button>
-      </div>
+            <h1>Upcoming games ({{ currentDate }})</h1>
+          </div>
+          <div class="header-btn">
+            <button class="btn-h" :class="{ 'active-btn': offset === -1 }" @click="setOffset(-1)">
+              Yesterday
+            </button>
+            <button class="btn-h" :class="{ 'active-btn': offset === 0 }" @click="setOffset(0)">
+              Today
+            </button>
+            <button class="btn-h" :class="{ 'active-btn': offset === 1 }" @click="setOffset(1)">
+              Tomorrow
+            </button>
+          </div>
         </div>
-        <h2>Upcoming games</h2>
         <table>
           <thead>
             <tr>
@@ -324,21 +317,20 @@
       <div class="acc-m gm-m">
         <div class="main-header">
           <div class="header-info">
-        <h1>{{ paramValue }} ({{ currentDate }})</h1>
-      </div>
-      <div class="header-btn">
-        <button class="btn-h" :class="{ 'active-btn': offset === -1 }" @click="setOffset(-1)">
-          Yesterday
-        </button>
-        <button class="btn-h" :class="{ 'active-btn': offset === 0 }" @click="setOffset(0)">
-          Today
-        </button>
-        <button class="btn-h" :class="{ 'active-btn': offset === 1 }" @click="setOffset(1)">
-          Tomorrow
-        </button>
-      </div>
+            <h1>Vip games ({{ currentDate }})</h1>
+          </div>
+          <div class="header-btn">
+            <button class="btn-h" :class="{ 'active-btn': offset === -1 }" @click="setOffset(-1)">
+              Yesterday
+            </button>
+            <button class="btn-h" :class="{ 'active-btn': offset === 0 }" @click="setOffset(0)">
+              Today
+            </button>
+            <button class="btn-h" :class="{ 'active-btn': offset === 1 }" @click="setOffset(1)">
+              Tomorrow
+            </button>
+          </div>
         </div>
-        <h2>Vip games</h2>
         <table>
           <thead>
             <tr>
@@ -402,21 +394,20 @@
       <div class="acc-m gm-m">
         <div class="main-header">
           <div class="header-info">
-        <h1>{{ paramValue }} ({{ currentDate }})</h1>
-      </div>
-      <div class="header-btn">
-        <button class="btn-h" :class="{ 'active-btn': offset === -1 }" @click="setOffset(-1)">
-          Yesterday
-        </button>
-        <button class="btn-h" :class="{ 'active-btn': offset === 0 }" @click="setOffset(0)">
-          Today
-        </button>
-        <button class="btn-h" :class="{ 'active-btn': offset === 1 }" @click="setOffset(1)">
-          Tomorrow
-        </button>
-      </div>
+            <h1>Tennis bets ({{ currentDate }})</h1>
+          </div>
+          <div class="header-btn">
+            <button class="btn-h" :class="{ 'active-btn': offset === -1 }" @click="setOffset(-1)">
+              Yesterday
+            </button>
+            <button class="btn-h" :class="{ 'active-btn': offset === 0 }" @click="setOffset(0)">
+              Today
+            </button>
+            <button class="btn-h" :class="{ 'active-btn': offset === 1 }" @click="setOffset(1)">
+              Tomorrow
+            </button>
+          </div>
         </div>
-        <h2>Tennis bets</h2>
         <table>
           <thead>
             <tr>
@@ -479,21 +470,20 @@
       <div class="acc-m gm-m">
         <div class="main-header">
           <div class="header-info">
-        <h1>{{ paramValue }} ({{ currentDate }})</h1>
-      </div>
-      <div class="header-btn">
-        <button class="btn-h" :class="{ 'active-btn': offset === -1 }" @click="setOffset(-1)">
-          Yesterday
-        </button>
-        <button class="btn-h" :class="{ 'active-btn': offset === 0 }" @click="setOffset(0)">
-          Today
-        </button>
-        <button class="btn-h" :class="{ 'active-btn': offset === 1 }" @click="setOffset(1)">
-          Tomorrow
-        </button>
-      </div>
+            <h1>Basketball bets ({{ currentDate }})</h1>
+          </div>
+          <div class="header-btn">
+            <button class="btn-h" :class="{ 'active-btn': offset === -1 }" @click="setOffset(-1)">
+              Yesterday
+            </button>
+            <button class="btn-h" :class="{ 'active-btn': offset === 0 }" @click="setOffset(0)">
+              Today
+            </button>
+            <button class="btn-h" :class="{ 'active-btn': offset === 1 }" @click="setOffset(1)">
+              Tomorrow
+            </button>
+          </div>
         </div>
-        <h2>Basketball bets</h2>
         <table>
           <thead>
             <tr>
@@ -556,39 +546,37 @@
     </div>
   </div>
   <Teleport to="body">
-  <div class="game-edit" :class="[isGameOpen ? 'showEdit' : 'closeEdit']">
-    <div class="mobile-exit">
-      <ExitIcon class="icon-exit" @click="showEdit()" />
+    <div class="game-edit" :class="[isGameOpen ? 'showEdit' : 'closeEdit']">
+      <div class="mobile-exit">
+        <ExitIcon class="icon-exit" @click="showEdit()" />
+      </div>
+      <div class="game-main-p">
+        <component @formSubmit="updateGame" @formSubmitSport="updateSport" :is="activePage" />
+      </div>
     </div>
-    <div class="game-main-p">
-      <component @formSubmit="updateGame" @formSubmitSport="updateSport" :is="activePage" />
-    </div>
-  </div>
-</Teleport>
+  </Teleport>
 </template>
 
 <script setup>
-import axios from 'axios';
-import { ref, watchEffect, onMounted, computed, watch, shallowRef } from 'vue';
-import Profile from '../assets/profile.jpg';
-import ExitIcon from '../icons/ExitIcon.vue';
-import FileIcon from '../icons/FileIcon.vue';
-import DeleteIcon from '../icons/DeleteIcon.vue';
-import BetOfTheDay from '../components/BetOfTheDayEdit.vue';
+import axios from 'axios'
+import { ref, watchEffect, onMounted, computed, watch, shallowRef } from 'vue'
+import ExitIcon from '../icons/ExitIcon.vue'
+import FileIcon from '../icons/FileIcon.vue'
+import DeleteIcon from '../icons/DeleteIcon.vue'
+import BetOfTheDay from '../components/BetOfTheDayEdit.vue'
 import Predictionpicks from '../components/PredictionpicksEdits.vue'
 import Freetips from '../components/FreetipsEdit.vue'
 import UpcomingGames from '../components/UpcomingGamesEdits.vue'
-import TennisGames from './TennisGamesEdits.vue';
-import BasketballGames from './BasketballEdit.vue';
-import VipGames from './VipGamesEdits.vue';
+import TennisGames from './TennisGamesEdits.vue'
+import BasketballGames from './BasketballEdit.vue'
+import VipGames from './VipGamesEdits.vue'
 
-const username = ref(null);
-const accountInfo = ref([]);
+const username = ref(null)
+const accountInfo = ref([])
 const currentDate = ref('')
-const paramValue = ref('')
 const offset = ref(0)
-const message = ref();
-const isGameOpen = ref(false);
+const message = ref()
+const isGameOpen = ref(false)
 
 const cardData = ref([])
 const vipData = ref([])
@@ -604,8 +592,8 @@ const getBetOfTheDay = async () => {
     const response = await axios.get(
       `https://predictions-server.onrender.com/predictions/bet/betOfTheDay/${currentDate.value}`
     )
-    console.log(response.data);
-    cardData.value = response.data.length > 0 ? [response.data] : [];
+    console.log(response.data)
+    cardData.value = response.data.length > 0 ? [response.data] : []
   } catch (err) {
     console.log(err)
   }
@@ -616,8 +604,8 @@ const getVipGames = async () => {
     const response = await axios.get(
       `https://predictions-server.onrender.com/predictions/vipPredictions/vip/${currentDate.value}`
     )
-    console.log(response.data);
-    vipData.value = response.data.length > 0 ? [response.data] : [];
+    console.log(response.data)
+    vipData.value = response.data.length > 0 ? [response.data] : []
   } catch (err) {
     console.log(err)
   }
@@ -629,8 +617,8 @@ const getPredictions = async () => {
     const response = await axios.get(
       `https://predictions-server.onrender.com/predictions/${currentDate.value}`
     )
-    console.log(response.data);
-    predictionData.value = response.data.length > 0 ? [response.data] : [];
+    console.log(response.data)
+    predictionData.value = response.data.length > 0 ? [response.data] : []
   } catch (err) {
     console.log(err)
   }
@@ -642,8 +630,8 @@ const getFreeTips = async () => {
     const response = await axios.get(
       `https://predictions-server.onrender.com/predictions/tips/freeTip/${currentDate.value}`
     )
-    console.log(response.data);
-    freeTipData.value = response.data.length > 0 ? [response.data] : [];
+    console.log(response.data)
+    freeTipData.value = response.data.length > 0 ? [response.data] : []
   } catch (err) {
     console.log(err)
   }
@@ -655,8 +643,8 @@ const getUpcoming = async () => {
     const response = await axios.get(
       `https://predictions-server.onrender.com/predictions/upcomingPredictions/upcoming/${currentDate.value}`
     )
-    console.log(response.data);
-    upcomingData.value = response.data.length > 0 ? [response.data] : [];
+    console.log(response.data)
+    upcomingData.value = response.data.length > 0 ? [response.data] : []
   } catch (err) {
     console.log(err)
   }
@@ -668,8 +656,8 @@ const getTennisBets = async () => {
     const response = await axios.get(
       `https://predictions-server.onrender.com/sports/sport/Tennis/${currentDate.value}`
     )
-    console.log(response.data);
-    tennisData.value = response.data.length > 0 ? [response.data] : [];
+    console.log(response.data)
+    tennisData.value = response.data.length > 0 ? [response.data] : []
   } catch (err) {
     console.log(err)
   }
@@ -681,64 +669,64 @@ const getBasketballBets = async () => {
     const response = await axios.get(
       `https://predictions-server.onrender.com/sports/sport/Basketball/${currentDate.value}`
     )
-    console.log(response.data);
-    basketBallData.value = response.data.length > 0 ? [response.data] : [];
+    console.log(response.data)
+    basketBallData.value = response.data.length > 0 ? [response.data] : []
   } catch (err) {
     console.log(err)
   }
 }
 
-
-
 const showEdit = () => {
-  isGameOpen.value = !isGameOpen.value;
-};
+  isGameOpen.value = !isGameOpen.value
+}
 
-const activePage = shallowRef(BetOfTheDay);
-const gameId = ref("")
-const sportId = ref("")
+const activePage = shallowRef(BetOfTheDay)
+const gameId = ref('')
+const sportId = ref('')
 
 const editGame = (game, id) => {
   activePage.value = game
   gameId.value = id
-  showEdit();
-};
+  showEdit()
+}
 
 const editSport = (sport, id) => {
   activePage.value = sport
   sportId.value = id
-  showEdit();
+  showEdit()
 }
 
-async function updateGame(teamAscore, teamBscore, showScore){
+async function updateGame(teamAscore, teamBscore, showScore) {
   try {
-    const token = JSON.parse(localStorage.getItem('token'));
-    const response = await axios.put(`https://predictions-server.onrender.com/predictions/update/${gameId.value}`, {teamAscore, teamBscore, showScore}, {
-    headers: {
-        Authorization: `Bearer ${token}`,
-      },
-  })
-  console.log(response.data)
-  } catch (error) {
-    
-  }
+    const token = JSON.parse(localStorage.getItem('token'))
+    const response = await axios.put(
+      `https://predictions-server.onrender.com/predictions/update/${gameId.value}`,
+      { teamAscore, teamBscore, showScore },
+      {
+        headers: {
+          Authorization: `Bearer ${token}`
+        }
+      }
+    )
+    console.log(response.data)
+  } catch (error) {}
 }
 
-async function updateSport(teamAscore, teamBscore, showScore){
+async function updateSport(teamAscore, teamBscore, showScore) {
   try {
-    const token = JSON.parse(localStorage.getItem('token'));
-    const response = await axios.put(`https://predictions-server.onrender.com/sports/update/${sportId.value}`, {teamAscore, teamBscore, showScore}, {
-    headers: {
-        Authorization: `Bearer ${token}`,
-      },
-  })
-  console.log(response.data)
-  } catch (error) {
-    
-  }
+    const token = JSON.parse(localStorage.getItem('token'))
+    const response = await axios.put(
+      `https://predictions-server.onrender.com/sports/update/${sportId.value}`,
+      { teamAscore, teamBscore, showScore },
+      {
+        headers: {
+          Authorization: `Bearer ${token}`
+        }
+      }
+    )
+    console.log(response.data)
+  } catch (error) {}
 }
-
-
 
 // const accountsData = async () => {
 //   try {
@@ -778,9 +766,9 @@ const updateCurrentDate = () => {
 }
 
 watchEffect(() => {
-  username.value = localStorage.getItem('username');
+  username.value = localStorage.getItem('username')
   updateCurrentDate()
-});
+})
 
 onMounted(() => {
   getBetOfTheDay()
@@ -790,65 +778,67 @@ onMounted(() => {
   getUpcoming()
   getTennisBets()
   getBasketballBets()
-});
+})
 
 const accountData = computed(() => {
-  return accountInfo.value;
-});
+  return accountInfo.value
+})
 
 const deletePrediction = async (id) => {
   try {
-    const token = JSON.parse(localStorage.getItem('token'));
+    const token = JSON.parse(localStorage.getItem('token'))
 
-    const response = await axios.delete(`https://predictions-server.onrender.com/predictions/delete/${id}`,{
-      headers: {Authorization: `Bearer ${token}`}
-    });
-    message.value = response.data.message;
-    await cardData();
+    const response = await axios.delete(
+      `https://predictions-server.onrender.com/predictions/delete/${id}`,
+      {
+        headers: { Authorization: `Bearer ${token}` }
+      }
+    )
+    message.value = response.data.message
+    await cardData()
     await freeTipData()
     await upcomingData()
     await predictionData()
   } catch (err) {
-    message.value = err.message;
+    message.value = err.message
   }
-  alert(message.value);
-};
+  alert(message.value)
+}
 
 const deleteSport = async (id) => {
   try {
-    const token = JSON.parse(localStorage.getItem('token'));
+    const token = JSON.parse(localStorage.getItem('token'))
 
-    const response = await axios.delete(`https://predictions-server.onrender.com/sports/delete/${id}`,{
-      headers: {Authorization: `Bearer ${token}`}
-    });
-    message.value = response.data.message;
-    await tennisData();
+    const response = await axios.delete(
+      `https://predictions-server.onrender.com/sports/delete/${id}`,
+      {
+        headers: { Authorization: `Bearer ${token}` }
+      }
+    )
+    message.value = response.data.message
+    await tennisData()
     await basketBallData()
   } catch (err) {
-    message.value = err.message;
+    message.value = err.message
   }
-  alert(message.value);
+  alert(message.value)
 }
 
-const showscore = ref(localStorage.getItem('showscore') === 'true');
+const showscore = ref(localStorage.getItem('showscore') === 'true')
 
 watch(showscore, (value) => {
-  localStorage.setItem('showscore', value.toString());
+  localStorage.setItem('showscore', value.toString())
+})
+
+watch(currentDate, () => {
+  getBetOfTheDay();
+  getVipGames();
+  getPredictions();
+  getFreeTips();
+  getUpcoming();
+  getTennisBets();
+  getBasketballBets();
 });
-
-async function toggleStatus(account) {
-  account.status = !account.status;
-
-  try {
-    const response = await axios.put(`https://predictions-server.onrender.com/auth/update/${account._id}`, {
-      paid: account.status,
-    });
-
-    await accountData();
-  } catch (err) {
-    console.log(err);
-  }
-}
 </script>
 
 <style>

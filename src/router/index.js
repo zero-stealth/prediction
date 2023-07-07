@@ -104,15 +104,18 @@ const router = createRouter({
       path: '/how-to-pay',
       name: 'Pay',
       component: () => import('../views/PayView.vue')
+    },
+    {
+      path: '/:catchAll(.*)',
+      name: 'NotFound',
+      component: () => import('../views/NotFoundView.vue')
     }
-
   ]
 })
-
-// const currentUser = () => {
-//   const token = localStorage.getItem('token');
-//   return !!token; // Return true if token exists, false otherwise
-// }
+const currentUser = () => {
+  const token = localStorage.getItem('token');
+  return !!token; // Return true if token exists, false otherwise
+}
 
 const isAdmin = () => {
   const admin = localStorage.getItem('admin');
@@ -126,21 +129,15 @@ router.beforeEach(async (to, from, next) => {
     } else {
       next('/');
     }
+  } else if (to.matched.some((record) => record.meta.auth)) {
+    if (currentUser()) {
+      next();
+    } else {
+      next('/login');
+    }
   } else {
     next();
   }
 })
-
-// router.beforeEach(async (to, from, next) => {
-//   if (to.matched.some((record) => record.meta.auth)) {
-//     if (currentUser()) {
-//       next();
-//     } else {
-//       next('/login');
-//     }
-//   } else {
-//     next();
-//   }
-// })
 
 export default router

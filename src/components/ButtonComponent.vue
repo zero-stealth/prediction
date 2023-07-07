@@ -1,6 +1,8 @@
 <script setup>
 import TelegramIcon from '../icons/telegram.vue'
+import basketball from '../assets/basketball.jpg'
 import banner from '../assets/banner.jpeg'
+import tennis from '../assets/tennis.jpg'
 import PayIcon from '../icons/payIcon.vue'
 import VipIcon from '../icons/VipIcon.vue'
 import { useRouter } from 'vue-router'
@@ -18,12 +20,23 @@ const goPay = () => {
 const openTelegram = () => {
   window.open('https://telegram.me/telegramUsername', '_blank')
 }
+
+const getBackgroundImage = () => {
+  if (router.currentRoute.value.name === 'Tennis') {
+    return `url(${tennis}), linear-gradient(rgb(17, 51, 86), rgb(17, 51, 86))`;
+  } else if (router.currentRoute.value.name === 'Basketball') {
+    // Update with the desired background for the Basketball route
+    return `url(${basketball}), linear-gradient(rgb(17, 51, 86), rgb(17, 51, 86))`;
+  } else {
+    return `url(${banner}), linear-gradient(rgb(17, 51, 86), rgb(17, 51, 86))`;
+  }
+}
 </script>
 <template>
   <div
     class="hero-section btn-view"
     :style="{
-      backgroundImage: `url(${banner}),  linear-gradient( rgb(17, 51, 86),rgb(17, 51, 86)`
+      backgroundImage: getBackgroundImage(),
     }"
   >
     <div class="nav-important">
@@ -42,6 +55,7 @@ const openTelegram = () => {
     </div>
   </div>
 </template>
+
 <style>
 @import '../style/nav.css';
 </style>

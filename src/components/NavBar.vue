@@ -146,11 +146,15 @@ const showDrp = () => {
   isDrpOpen.value = !isDrpOpen.value
 }
 
+
+
 const logOut = () => {
   localStorage.removeItem('token')
-  localStorage.removeItem('isPaid')
   localStorage.removeItem('username')
-  token.value = null
+  isPaid.value = false
+  username.value = null
+  isAdmin.value = false
+  window.location.reload()
 }
 
 const goToC = (betname) => {

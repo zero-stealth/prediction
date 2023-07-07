@@ -84,7 +84,7 @@ onMounted(() => {
   getPrediction();
 });
 
-const offset = ref(0);
+const offset = ref(1);
 
 const updateCurrentDate = () => {
   const today = new Date();

@@ -169,6 +169,7 @@ async function toggleStatus(account) {
     });
 
     await accountsData();
+    localStorage.setItem('paid', account.status.toString());
   } catch (err) {
     console.log(err);
   }

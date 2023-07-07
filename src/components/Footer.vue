@@ -124,7 +124,7 @@ const reset = () => {
       </div>
     </div>
     <div class="footer-x">
-      <span>prediction@2023</span>
+      <span>sportyPredict@2023</span>
       <span>FAQ Terms and Services Refund Policy</span>
     </div>
   </div>

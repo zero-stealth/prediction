@@ -62,7 +62,7 @@
             <span>Tennis </span>
             <ArrowIcon class="icon-panel ap" />
           </button>
-          <button @click="Logout(Logout)" :class="getButtonClass(Logout)">
+          <button @click="logout" :class="getButtonClass(Logout)">
             <LogoutIcon class="icon-panel" />
             <span>Logout </span>
             <ArrowIcon class="icon-panel ap" />
@@ -124,11 +124,11 @@ const getButtonClass = (page) => {
   return ['panel-btn', activePage.value === page ? 'active-cp' : 'inactive-cp']
 }
 
-const Logout = () => {
-  router.push({ name: 'Home' })
-}
+const logout = () => {
+  localStorage.removeItem('token');
+  router.push({ name: 'Home' });
+};
 </script>
-
 <style>
 @import '../style/panel.css';
 </style>
