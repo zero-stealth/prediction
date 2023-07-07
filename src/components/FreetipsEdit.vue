@@ -11,7 +11,14 @@
           <input v-model="teamAscore" type="text" class="form-g-input" placeholder="0" id="teamAscore" />
         </div>
       </div>
+      <!-- <button type="submit" class="btn-f-f f-desktop">Submit</button> -->
+      <div class="form-wrapper">
+        <div class="form-group">
+          <label for="score">Show score:</label>
+          <input v-model="ShowScore" type="text" class="form-g-input" placeholder="true" id="score" />
+        </div>
       <button type="submit" class="btn-f-f f-desktop">Submit</button>
+      </div>
       <div class="form-wrapper">
         <h1>Team B</h1>
         <div class="form-group">
