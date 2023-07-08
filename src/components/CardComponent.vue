@@ -42,7 +42,6 @@
           </div>
         </div>
         <h2>{{ teamB }}</h2>
-        <h2>{{ showScore }}</h2>
       </div>
     </div>
     <div class="card-footer">

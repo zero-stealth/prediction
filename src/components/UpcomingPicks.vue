@@ -3,7 +3,7 @@
     <div class="main-h">
       <div class="main-header home-up">
         <div class="header-info home-up">
-          <h1>Upcoming Picks for {{ currentDate }}</h1>
+          <h1>Upcoming Picks</h1>
         </div>
       </div>
       <div class="main-h-c">
