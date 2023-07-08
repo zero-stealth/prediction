@@ -90,7 +90,7 @@ import Arrow from '../icons/arrow.vue'
 import NewsCard from '../components/NewsCard.vue'
 import Card from '../components/CardComponent.vue'
 import Upcoming from '../components/UpcomingPicks.vue'
-import AboutComponent from '../components/AboutComponent.vue'
+import AboutComponent from '../components/aboutComponent.vue'
 import HeroComponent from '../components/HeroComponent.vue'
 import OtherComponent from '../components/OtherComponent.vue'
 

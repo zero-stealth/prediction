@@ -31,6 +31,7 @@
   .prediction-con h1 {
     font-weight: 600;
     font-size: 1.8rem;
+    text-align: center;
     text-transform: capitalize;
   }
 
