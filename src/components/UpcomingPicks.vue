@@ -3,14 +3,14 @@
     <div class="main-h">
       <div class="main-header home-up">
         <div class="header-info home-up">
-          <h1>Upcoming Picks</h1>
+          <h1>Upcoming Picks for {{ currentDate }}</h1>
         </div>
       </div>
       <div class="main-h-c">
         <template v-if="cardData.length > 0">
-          <div v-for="item in cardData" class="main-h-card">
+          <div v-for="item in cardData" :key="item.id" class="main-h-card">
             <Card
-              v-for="(card, index) in item"
+              v-for="(card, index) in item.cards"
               :key="card._id"
               :tip="card.tip"
               :status="card.status"
@@ -40,7 +40,7 @@
 </template>
 
 <script setup>
-import { ref, computed, onMounted } from 'vue';
+import { ref, onMounted } from 'vue';
 import { useRouter } from 'vue-router';
 import Card from '../components/CardComponent.vue';
 import axios from 'axios';
@@ -55,14 +55,12 @@ const showCard = (cardID) => {
 const cardData = ref([]);
 
 async function getPrediction() {
-  const token = JSON.parse(localStorage.getItem('token'));
-
   try {
     const response = await axios.get(
-      `https://predictions-server.onrender.com/predictions/upcomingPredictions/upcoming/${currentDate.value}`
+      `https://predictions-server.onrender.com/predictions/upcomingPredictions/upcoming/09-07-2023`
     );
     console.log(response.data);
-    cardData.value = response.data.length > 0 ? [response.data] : [];
+    cardData.value = response.data.length > 0 ? response.data : [];
     console.log(cardData.value);
   } catch (err) {
     console.log(err);
@@ -74,13 +72,14 @@ async function deleteTip(id) {
     const response = await axios.delete(
       `https://predictions-server.onrender.com/predictions/delete/${id}`
     );
+    console.log(response);
   } catch (err) {
     console.log(err);
   }
-  console.log(id);
 }
 
 onMounted(() => {
+  updateCurrentDate();
   getPrediction();
 });
 
@@ -95,8 +94,6 @@ const updateCurrentDate = () => {
   const formattedDay = day < 10 ? `0${day}` : day;
   currentDate.value = `${formattedDay}-${formattedMonth}-${today.getFullYear()}`;
 };
-
-updateCurrentDate();
 </script>
 
 <style>
