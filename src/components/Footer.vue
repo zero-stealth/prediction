@@ -62,7 +62,7 @@ const reset = () => {
           </div>
           <div class="d1-icon">
             <emailIcon class="icon-d1" />
-            <span>prediction@gmail.com</span>
+            <span>sportyPredict@gmail.com</span>
           </div>
         </div>
         <div class="app-d-link">

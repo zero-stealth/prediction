@@ -8,10 +8,7 @@
       height: 100%;
     }
     
-    .details-wrapper {
-      height: 100vh;
-    }
-  
+
     .details-image {
       gap: 50px;
       height: 50vh;
@@ -32,7 +29,7 @@
     }
   
     .details-h h2 {
-      font-size: 1.2rem;
+      font-size: 1.4rem;
       text-transform: capitalize;
     }
   
@@ -63,10 +60,12 @@
       display: flex;
       align-items: center;
       flex-direction: column;
+      
+      
     }
   
     .details-d  span {
-      font-size: .8rem;
+      font-size: 1rem;
       text-transform: capitalize;
     }
   
@@ -74,6 +73,7 @@
       height: 50px;
       object-fit: cover;
       object-position: center;
+      border-radius: 20%;
     }
   
     .details-score {
@@ -95,7 +95,7 @@
     }
     .score-p span {
       color: var(--background-color);
-      font-size: 1.5rem;
+      font-size: 1.9rem;
       font-weight: 600;
     }
   

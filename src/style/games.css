@@ -3,6 +3,7 @@
 .form-container-h {
   display: flex;
   padding: 30px 0;
+  text-align: center;
   align-items: center;
   justify-content: center;
   text-transform: capitalize;

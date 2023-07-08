@@ -233,7 +233,7 @@
   .hero-section {
     gap: 20px;
     display: flex;
-    padding-top: 80px;
+    padding-top: 40px;
     flex-direction: column;
     background-size: cover;
     background-position: center;
@@ -420,9 +420,8 @@
   }
 
   .hero-section {
-    height: 70%;
-    padding: 20px;
-    padding-top: 100px;
+    height: 50%;
+    padding-top: 50px;
 
   }
 

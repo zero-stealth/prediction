@@ -1,5 +1,5 @@
 <script setup>
-import {onMounted, ref, watchEffect} from 'vue'
+import {onMounted, ref} from 'vue'
 import { useRouter } from 'vue-router';
 import pic from '@/assets/news.png';
 import ArrowIcon from '@/icons/ArrowIcon.vue';
@@ -22,7 +22,6 @@ const time = ref("")
 
 async function getTip(){
   const response = await axios.get(`https://predictions-server.onrender.com/predictions/single/${props.id}`)
-  console.log(response.data)
   teamA.value = response.data.teamA
   teamB.value = response.data.teamB
   teamAIcon.value = response.data.teamAIcon
@@ -71,7 +70,7 @@ const goBack = () => {
           </div>
           <div class="details-d">
             <img :src="teamBIcon" alt="" class="details-d-img" />
-            <span>{{ teamA }}</span>
+            <span>{{ teamB }}</span>
           </div>
         </div>
       </div>

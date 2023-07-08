@@ -32,9 +32,10 @@
   }
 
   .formation-img {
-    width: 24px;
-    height: 24px;
+    width: 30px;
+    height: 30px;
     object-fit: cover;
+    border-radius: 5px;
     object-position: center;
   }
 
@@ -48,7 +49,7 @@
   }
 
   .formation-score span {
-    font-size: 0.7rem;
+    font-size: 0.8rem;
   }
 
   .team-form-a {
@@ -62,7 +63,7 @@
   }
 
   .team-header h1 {
-    font-size: 1rem;
+    font-size: 1.5rem;
     text-transform: capitalize;
   }
 
@@ -78,8 +79,8 @@
 
   td {
     padding: 8px;
+    font-size: 1rem;
     font-weight: 100;
-    font-size: 0.8rem;
     color: var(--background-color);
   }
 
