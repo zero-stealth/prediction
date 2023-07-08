@@ -567,8 +567,8 @@ import BetOfTheDay from '../components/BetOfTheDayEdit.vue'
 import Predictionpicks from '../components/PredictionpicksEdits.vue'
 import Freetips from '../components/FreetipsEdit.vue'
 import UpcomingGames from '../components/UpcomingGamesEdits.vue'
-import TennisGames from './TennisGamesEdits.vue'
-import BasketballGames from './BasketballEdit.vue'
+import TennisGames from '../components/TennisGamesEdits.vue'
+import BasketballGames from '../components/BasketballEdit.vue'
 import VipGames from './VipGamesEdits.vue'
 
 const username = ref(null)
@@ -795,10 +795,10 @@ const deletePrediction = async (id) => {
       }
     )
     message.value = response.data.message
-    await cardData()
-    await freeTipData()
-    await upcomingData()
-    await predictionData()
+    await getPredictions()
+    await getFreeTips()
+    await getUpcoming()
+    await getBetOfTheDay()
   } catch (err) {
     message.value = err.message
   }
@@ -816,14 +816,13 @@ const deleteSport = async (id) => {
       }
     )
     message.value = response.data.message
-    await tennisData()
-    await basketBallData()
+    await getTennisBets()
+    await getBasketballBets()
   } catch (err) {
     message.value = err.message
   }
   alert(message.value)
 }
-
 const showscore = ref(localStorage.getItem('showscore') === 'true')
 
 watch(showscore, (value) => {
