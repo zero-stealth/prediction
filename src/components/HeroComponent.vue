@@ -24,7 +24,7 @@ const goPay = () => {
 }
 
 const openTelegram = () => {
-  window.open('https://telegram.me/telegramUsername', '_blank')
+  window.open('https://t.me/sportypredict_tips', '_blank')
 }
 </script>
 <template>

@@ -33,7 +33,6 @@
 
 <script setup>
 import { ref } from 'vue';
-import axios from 'axios';
 const emit = defineEmits('formSubmit')
 
 const teamAscore = ref();

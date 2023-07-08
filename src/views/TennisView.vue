@@ -31,7 +31,7 @@
               :teamA="card.teamA"
               :teamB="card.teamB"
               :league="card.league"
-              :showScore="card.ShowScore"
+              :showScore="card.showScore"
               :teamAscore="card.teamAscore"
               :teamBscore="card.teamBscore"
               :formationA="formatFormation(card.formationA) ? card.formationA[0]?.split('-') : []"

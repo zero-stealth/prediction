@@ -189,11 +189,11 @@ const goSignin = () => {
 }
 
 const openTelegram = () => {
-  window.open('https://telegram.me/telegramUsername', '_blank')
+  window.open('https://t.me/sportypredict_tips', '_blank')
 }
 
 const openTelegramX = () => {
-  window.open('https://telegram.me/telegramUsername', '_blank')
+  window.open('https://t.me/sportypredict_tips', '_blank')
   showMenu()
 }
 </script>

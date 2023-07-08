@@ -7,11 +7,19 @@
           <h1>Free tips {{ currentDate }}</h1>
         </div>
         <div class="header-btn">
-          <button class="btn-h" :class="{ 'active-btn': offset > 0 }" @click="previousDay">
+          <button
+            class="btn-h"
+            :class="{ 'active-btn': offset > 0 }"
+            @click="previousDay"
+          >
             <Arrow class="btn-icon icon-left" />
             Previous
           </button>
-          <button class="btn-h" :class="{ 'active-btn': offset < 0 }" @click="nextDay">
+          <button
+            class="btn-h"
+            :class="{ 'active-btn': offset < 0 }"
+            @click="nextDay"
+          >
             Next
             <Arrow class="btn-icon icon-right" />
           </button>
@@ -30,7 +38,7 @@
             :teamA="card.teamA"
             :teamB="card.teamB"
             :league="card.league"
-            :showScore="card.ShowScore"
+            :showScore="card.showScore"
             :teamAscore="card.teamAscore"
             :teamBscore="card.teamBscore"
             :formationA="formatFormation(card.formationA)"
@@ -82,7 +90,7 @@ import Arrow from '../icons/arrow.vue'
 import NewsCard from '../components/NewsCard.vue'
 import Card from '../components/CardComponent.vue'
 import Upcoming from '../components/UpcomingPicks.vue'
-import AboutComponent from '../components/aboutComponent.vue'
+import AboutComponent from '../components/AboutComponent.vue'
 import HeroComponent from '../components/HeroComponent.vue'
 import OtherComponent from '../components/OtherComponent.vue'
 
@@ -111,13 +119,12 @@ const getNews = async () => {
       }
     )
     console.log(response.data.data)
-    newsData.value = response.data.data // Set the newsData to the response directly
+    newsData.value = response.data.data
     console.log(newsData.value)
   } catch (err) {
     console.log(err)
   }
 }
-
 
 const getPrediction = async () => {
   const token = JSON.parse(localStorage.getItem('token'))
@@ -125,7 +132,7 @@ const getPrediction = async () => {
     const response = await axios.get(
       `https://predictions-server.onrender.com/predictions/tips/freeTip/${currentDate.value}`
     )
-    console.log(response.data);
+    console.log(response.data)
     cardData.value = response.data
   } catch (err) {
     console.log(err)
@@ -155,9 +162,9 @@ const updateCurrentDate = () => {
   const today = new Date()
   today.setDate(today.getDate() + offset.value)
   const month = today.getMonth() + 1
-  const formattedMonth = month < 10 ? `0${month}` : month
+  const formattedMonth = month.toString().padStart(2, '0')
   const day = today.getDate()
-  const formattedDay = day < 10 ? `0${day}` : day
+  const formattedDay = day.toString().padStart(2, '0')
   currentDate.value = `${formattedDay}-${formattedMonth}-${today.getFullYear()}`
 }
 
@@ -175,6 +182,6 @@ watch(currentDate, () => {
 })
 </script>
 
-<style>
+<style scoped>
 @import '../style/Home.css';
 </style>

@@ -1,7 +1,7 @@
 <script setup>
 import { ref } from 'vue'
 import Ios from '../assets/ios.png'
-import { useRouter } from 'vue-router'
+import { useRouter, RouterLink } from 'vue-router'
 import phoneIcon from '../icons/phone.vue'
 import emailIcon from '../icons/email.vue'
 import Android from '../assets/android.png'
@@ -13,24 +13,34 @@ import facebookIcon from '../icons/facebook.vue'
 const booknow = ref('')
 const errMessage = ref('')
 const router = useRouter()
-const phoneNumber = ref('+254706272207')
+const phoneNumber = ref('+254703147237')
 
 const goAlogin = () => {
   router.push({ name: 'AdminLogin' })
 }
 
 const openWhatsapp = () => {
-  window.open('https://wa.me/+254706272207?text=How can I help', '_blank')
+  window.open('https://wa.me/+254703147237?text=How can I help', '_blank')
 }
 
 const openIos = () => {
   window.open('https://itunes.apple.com/app/idYOUR_APP_ID', '_blank')
-  // Replace 'YOUR_APP_ID' with the actual App Store ID of your iOS app
 }
 
 const openAndroid = () => {
   window.open('https://play.google.com/store/apps/details?id=YOUR_PACKAGE_NAME', '_blank')
-  // Replace 'YOUR_PACKAGE_NAME' with the actual package name of your Android app
+}
+
+const openFacebook = () => {
+  window.open('https://www.facebook.com/profile.php?id=100093225097104&mibextid=LQQJ4d', '_blank')
+}
+
+const openTwitter = () => {
+  window.open('https://twitter.com/sportypredict_?s=21&t=ordgrMn8HjrBLUy3PdpsBA', '_blank')
+}
+
+const openInstagram = () => {
+  window.open('https://instagram.com/sportypredict_?igshid=MTIzZWMxMTBkOA==', '_blank')
 }
 
 const book = () => {
@@ -47,6 +57,7 @@ const reset = () => {
   booknow.value = ''
 }
 </script>
+
 <template>
   <div class="contact-contain">
     <div class="contact-wrapper">
@@ -116,15 +127,15 @@ const reset = () => {
         </form>
         <div class="book-social">
           Social media:
-          <facebookIcon class="bk-icon" />
-          <twitterIcon class="bk-icon" />
+          <facebookIcon class="bk-icon" @click="openFacebook" />
+          <twitterIcon class="bk-icon" @click="openTwitter"/>
           <whatsappIcon class="bk-icon" @click="openWhatsapp" />
-          <instagramIcon class="bk-icon" />
+          <instagramIcon class="bk-icon" @click="openInstagram" />
         </div>
       </div>
     </div>
     <div class="footer-x">
-      <span>sportyPredict@2023</span>
+      <span>© 2023 SportyPredict. All rights reserved</span>
       <span>FAQ Terms and Services Refund Policy</span>
     </div>
   </div>

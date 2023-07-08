@@ -42,6 +42,7 @@
           </div>
         </div>
         <h2>{{ teamB }}</h2>
+        <h2>{{ showScore }}</h2>
       </div>
     </div>
     <div class="card-footer">
@@ -57,45 +58,57 @@
 </template>
 
 <script setup>
-import { ref, watch, computed } from 'vue';
+import { ref, computed, defineProps } from 'vue';
 
 const props = defineProps({
   formationA: {
+    type: Array,
     required: true,
     default: () => ['l', 'w', 'd', 'l', 'w']
   },
   formationB: {
+    type: Array,
     required: true,
     default: () => ['l', 'w', 'd', 'l', 'w']
   },
   leagueIcon: {
+    type: String,
     required: true
   },
   teamAIcon: {
+    type: String,
     required: true
   },
   teamBIcon: {
+    type: String,
     required: true
   },
   tip: {
+    type: String,
     default: '0'
   },
   league: {
+    type: String,
     required: true
   },
   teamA: {
+    type: String,
     required: true
   },
   teamB: {
+    type: String,
     required: true
   },
   teamAscore: {
+    type: Number,
     required: true
   },
   teamBscore: {
+    type: Number,
     required: true
   },
   time: {
+    type: String,
     required: true
   },
   showScore: {
@@ -104,13 +117,12 @@ const props = defineProps({
   }
 });
 
-const formationsA = props.formationA;
-const formationsB = props.formationB;
+const formationsA = ref(props.formationA);
+const formationsB = ref(props.formationB);
 
 const shouldShowScore = computed(() => {
   return props.showScore && props.teamAscore !== undefined && props.teamBscore !== undefined;
 });
-
 </script>
 
 <style scoped>
