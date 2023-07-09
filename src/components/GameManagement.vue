@@ -1,4 +1,4 @@
-<template>
+5<template>
   <div class="Account-container">
     <div class="Account-header">
       <h1><span>Welcome</span><br />{{ username }},</h1>

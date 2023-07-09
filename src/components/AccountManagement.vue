@@ -29,7 +29,7 @@
             <td>
               <div class="Account-tbl-img">
                 <img :src="Profile" alt="Account-p" class="Account-pi" />
-                <span>{{ account.username }}</span>
+                <span>{{ account.email }}</span>
               </div>
             </td>
             <td>{{ account.paid }}</td>
