@@ -153,7 +153,7 @@
                 </div>
               </td>
             </tr>
-            <tr v-if="cardData.length === 0">
+            <tr v-if="predictionData.length === 0">
               <td colspan="8">No games yet!</td>
             </tr>
           </tbody>
@@ -302,7 +302,7 @@
                 </div>
               </td>
               <td>
-                <div class="Account-delete" @click="deleteSport(data._id)">
+                <div class="Account-delete" @click="deletePrediction(data._id)">
                   <DeleteIcon class="icon-delete" />
                 </div>
               </td>
@@ -379,7 +379,7 @@
                 </div>
               </td>
               <td>
-                <div class="Account-delete" @click="deleteSport(data._id)">
+                <div class="Account-delete" @click="deletePrediction(data._id)">
                   <DeleteIcon class="icon-delete" />
                 </div>
               </td>
@@ -456,7 +456,7 @@
                 </div>
               </td>
               <td>
-                <div class="Account-delete" @click="deletePrediction(data._id)">
+                <div class="Account-delete" @click="deleteSport(data._id)">
                   <DeleteIcon class="icon-delete" />
                 </div>
               </td>
@@ -799,6 +799,7 @@ const deletePrediction = async (id) => {
     await getFreeTips()
     await getUpcoming()
     await getBetOfTheDay()
+    await getVipGames()
   } catch (err) {
     message.value = err.message
   }
