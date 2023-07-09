@@ -73,12 +73,15 @@ const login = async () => {
         router.push({ name: 'Panel' })
       } else {
         errMsg.value = 'Invalid admin credentials'
+        alert(errMsg.value)
       }
     } catch (error) {
       console.error(error)
     }
   } else {
     errMsg.value = 'Write something'
+    alert(errMsg.value)
+
     reset()
   }
 }

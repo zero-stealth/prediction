@@ -44,8 +44,8 @@
               :showScore="card.showScore"
               :teamAscore="card.teamAscore"
               :teamBscore="card.teamBscore"
-              :formationA="formatFormation(card.formationA) ? card.formationA[0].split('-') : []"
-              :formationB="formatFormation(card.formationB) ? card.formationB[0].split('-') : []"
+              :formationA="formatFormation(card.formationA)"
+              :formationB="formatFormation(card.formationB)"
               :time="card.time"
               @click="showCard(card._id)"
             />
@@ -60,107 +60,107 @@
     </div>
   </div>
 </template>
-<script setup>
-import axios from 'axios'
-import Arrow from '@/icons/arrow.vue'
-import { useRouter } from 'vue-router'
-import MoneyIcon from '../icons/payIcon.vue'
-import Card from '../components/CardComponent.vue'
-import ProfileIcon from '../icons/profileIcon.vue'
-import { ref, onMounted, watchEffect, watch } from 'vue'
 
-const isPaid = ref(false)
-const router = useRouter()
-const username = ref(null)
-const isAdmin = ref(false)
-const cardData = ref([])
-const currentDate = ref('')
-const offset = ref(0)
+<script setup>
+import axios from 'axios';
+import Arrow from '@/icons/arrow.vue';
+import { useRouter } from 'vue-router';
+import MoneyIcon from '../icons/payIcon.vue';
+import Card from '../components/CardComponent.vue';
+import ProfileIcon from '../icons/profileIcon.vue';
+import { ref, onMounted, watchEffect, watch } from 'vue';
+
+const isPaid = ref(false);
+const router = useRouter();
+const username = ref(null);
+const isAdmin = ref(false);
+const cardData = ref([]);
+const currentDate = ref('');
+const offset = ref(0);
 
 const updateAuthStatus = () => {
-  const token = localStorage.getItem('token')
-  isPaid.value = token && localStorage.getItem('paid') === 'true'
-  username.value = localStorage.getItem('username')
-  isAdmin.value = localStorage.getItem('admin')
+  const token = localStorage.getItem('token');
+  isPaid.value = token && localStorage.getItem('paid') === 'true';
+  username.value = localStorage.getItem('username');
+  isAdmin.value = localStorage.getItem('admin');
 
   // Clear cardData if token does not exist
   if (!token) {
-    cardData.value = []
+    cardData.value = [];
   }
-}
-
+};
 
 const PayPage = () => {
-  router.push({ name: 'Pay' })
-}
+  router.push({ name: 'Pay' });
+};
 
 const goLogin = () => {
-  router.push({ name: 'Login' })
-}
+  router.push({ name: 'Login' });
+};
 
 const showCard = (cardID) => {
-  router.push({ name: 'Tips', params: { id: cardID } })
-}
+  router.push({ name: 'Tips', params: { id: cardID } });
+};
 
 async function getPrediction() {
-  const token = JSON.parse(localStorage.getItem('token'))
+  const token = JSON.parse(localStorage.getItem('token'));
 
   try {
     const response = await axios.get(`https://predictions-server.onrender.com/predictions/vipPredictions/vip/${currentDate.value}`, {
       headers: {
-        Authorization: `Bearer ${token}`
-      }
-    })
-    console.log(response.data)
-    cardData.value = response.data
+        Authorization: `Bearer ${token}`,
+      },
+    });
+    console.log(response.data);
+    cardData.value = response.data;
   } catch (err) {
-    console.log(err)
+    console.log(err);
   }
 }
 
 onMounted(() => {
-  getPrediction()
-  updateAuthStatus()
-})
+  getPrediction();
+  updateAuthStatus();
+});
 
 const previousDay = () => {
-  offset.value--
-  updateCurrentDate()
-}
+  offset.value--;
+  updateCurrentDate();
+};
 
 const nextDay = () => {
   if (offset.value < 1) {
-    offset.value++
-    updateCurrentDate()
+    offset.value++;
+    updateCurrentDate();
   }
-}
+};
 
 const updateCurrentDate = () => {
-  const today = new Date()
-  today.setDate(today.getDate() + offset.value)
-  const month = today.getMonth() + 1
-  const formattedMonth = month < 10 ? `0${month}` : month
-  const day = today.getDate()
-  const formattedDay = day < 10 ? `0${day}` : day
-  currentDate.value = `${formattedDay}-${formattedMonth}-${today.getFullYear()}`
-}
+  const today = new Date();
+  today.setDate(today.getDate() + offset.value);
+  const month = today.getMonth() + 1;
+  const formattedMonth = month < 10 ? `0${month}` : month;
+  const day = today.getDate();
+  const formattedDay = day < 10 ? `0${day}` : day;
+  currentDate.value = `${formattedDay}-${formattedMonth}-${today.getFullYear()}`;
+};
 
-updateCurrentDate()
+updateCurrentDate();
 
 const formatFormation = (formation) => {
   if (Array.isArray(formation)) {
-    return formation[0].split('-')
+    return formation[0].split('-');
   }
-  return []
-}
+  return [];
+};
 
 watch(currentDate, () => {
-  getPrediction()
-})
+  getPrediction();
+});
 
 watchEffect(() => {
-  updateAuthStatus()
-})
+  updateAuthStatus();
+});
 </script>
 
 <style>

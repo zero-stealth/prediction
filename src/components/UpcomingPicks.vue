@@ -6,29 +6,29 @@
           <h1>Upcoming Picks</h1>
         </div>
       </div>
-      <div class="main-h-c">
-        <template v-if="cardData.length > 0">
-          <div v-for="item in cardData" :key="item.id" class="main-h-card">
-            <Card
-              v-for="(card, index) in item.cards"
-              :key="card._id"
-              :tip="card.tip"
-              :status="card.status"
-              :leagueIcon="card.leagueIcon"
-              :teamAIcon="card.teamAIcon"
-              :teamBIcon="card.teamBIcon"
-              :teamA="card.teamA"
-              :teamB="card.teamB"
-              :league="card.league"
-              :teamAscore="card.teamAscore"
-              :teamBscore="card.teamBscore"
-              :time="card.time"
-              :formationA="Array.isArray(card.formationA) ? card.formationA[0].split('-') : []"
-              :formationB="Array.isArray(card.formationB) ? card.formationB[0].split('-') : []"
-              @click="showCard(card._id)"
-            />
-          </div>
-        </template>
+      <template v-if="cardData.length > 0">
+        <div class="main-h-card">
+          <Card
+            v-for="(card, index) in cardData"
+            :key="card._id"
+            :tip="card.tip"
+            :status="card.status"
+            :leagueIcon="card.leagueIcon"
+            :teamAIcon="card.teamAIcon"
+            :teamBIcon="card.teamBIcon"
+            :teamA="card.teamA"
+            :teamB="card.teamB"
+            :league="card.league"
+            :showScore="card.showScore"
+            :teamAscore="card.teamAscore"
+            :teamBscore="card.teamBscore"
+            :formationA="formatFormation(card.formationA)"
+            :formationB="formatFormation(card.formationB)"
+            :time="card.time"
+            @click="showCard(card._id)"
+          />
+        </div>
+      </template>
         <template v-else>
           <div class="home-freetip">
             <h1>No upcoming predictions available today</h1>
@@ -36,14 +36,13 @@
         </template>
       </div>
     </div>
-  </div>
 </template>
 
 <script setup>
+import axios from 'axios';
 import { ref, onMounted } from 'vue';
 import { useRouter } from 'vue-router';
 import Card from '../components/CardComponent.vue';
-import axios from 'axios';
 
 const router = useRouter();
 const currentDate = ref('');
@@ -54,29 +53,16 @@ const showCard = (cardID) => {
 
 const cardData = ref([]);
 
-async function getPrediction() {
+const getPrediction = async () => {
   try {
     const response = await axios.get(
-      `https://predictions-server.onrender.com/predictions/upcomingPredictions/upcoming/${currentDate.value}`
+      `https://predictions-server.onrender.com/predictions/upcomingPredictions/upcoming/10-07-2023`
     );
-    console.log(response.data);
-    cardData.value = response.data.length > 0 ? response.data : [];
-    console.log(cardData.value);
+    cardData.value = response.data;
   } catch (err) {
     console.log(err);
   }
-}
-
-async function deleteTip(id) {
-  try {
-    const response = await axios.delete(
-      `https://predictions-server.onrender.com/predictions/delete/${id}`
-    );
-    console.log(response);
-  } catch (err) {
-    console.log(err);
-  }
-}
+};
 
 onMounted(() => {
   updateCurrentDate();
@@ -93,6 +79,10 @@ const updateCurrentDate = () => {
   const day = today.getDate();
   const formattedDay = day < 10 ? `0${day}` : day;
   currentDate.value = `${formattedDay}-${formattedMonth}-${today.getFullYear()}`;
+};
+
+const formatFormation = (formation) => {
+  return Array.isArray(formation) ? formation[0].split('-') : [];
 };
 </script>
 

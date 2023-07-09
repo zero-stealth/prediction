@@ -132,7 +132,6 @@ const getPrediction = async () => {
     const response = await axios.get(
       `https://predictions-server.onrender.com/predictions/tips/freeTip/${currentDate.value}`
     )
-    console.log(response.data)
     cardData.value = response.data
   } catch (err) {
     console.log(err)
