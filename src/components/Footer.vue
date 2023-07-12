@@ -16,9 +16,6 @@ const errMessage = ref('')
 const router = useRouter()
 const phoneNumber = ref('+254703147237')
 
-const goAlogin = () => {
-  router.push({ name: 'AdminLogin' })
-}
 
 const openWhatsapp = () => {
   window.open(
@@ -72,7 +69,7 @@ const reset = () => {
       <div class="contact-d1">
         <h1>Contact information</h1>
         <p>
-          For queries or help, please feel <span @click="goAlogin()">free</span> to contact us on:
+          For queries or help, please feel free to contact us on:
         </p>
         <div class="d1-contact">
           <div class="d1-icon" @click="openWhatsapp">
