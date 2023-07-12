@@ -11,8 +11,8 @@
             <h1>Bet of the day  ({{ currentDate }})</h1>
           </div>
           <div class="header-btn">
-            <button class="btn-h" :class="{ 'active-btn': offset === -1 }" @click="setOffset(-1)">
-              Yesterday
+            <button class="btn-h"  :class="{ 'active-btn': offset > 0 }" @click="previousDay">
+              previous
             </button>
             <button class="btn-h" :class="{ 'active-btn': offset === 0 }" @click="setOffset(0)">
               Today
@@ -89,8 +89,8 @@
             <h1>Prediction picks ({{ currentDate }})</h1>
           </div>
           <div class="header-btn">
-            <button class="btn-h" :class="{ 'active-btn': offset === -1 }" @click="setOffset(-1)">
-              Yesterday
+            <button class="btn-h"  :class="{ 'active-btn': offset > 0 }" @click="previousDay">
+              previous
             </button>
             <button class="btn-h" :class="{ 'active-btn': offset === 0 }" @click="setOffset(0)">
               Today
@@ -166,8 +166,8 @@
             <h1>Free tips ({{ currentDate }})</h1>
           </div>
           <div class="header-btn">
-            <button class="btn-h" :class="{ 'active-btn': offset === -1 }" @click="setOffset(-1)">
-              Yesterday
+             <button class="btn-h"  :class="{ 'active-btn': offset > 0 }" @click="previousDay">
+              previous
             </button>
             <button class="btn-h" :class="{ 'active-btn': offset === 0 }" @click="setOffset(0)">
               Today
@@ -243,8 +243,8 @@
             <h1>Upcoming games ({{ currentDate }})</h1>
           </div>
           <div class="header-btn">
-            <button class="btn-h" :class="{ 'active-btn': offset === -1 }" @click="setOffset(-1)">
-              Yesterday
+             <button class="btn-h"  :class="{ 'active-btn': offset > 0 }" @click="previousDay">
+              previous
             </button>
             <button class="btn-h" :class="{ 'active-btn': offset === 0 }" @click="setOffset(0)">
               Today
@@ -320,8 +320,8 @@
             <h1>Vip games ({{ currentDate }})</h1>
           </div>
           <div class="header-btn">
-            <button class="btn-h" :class="{ 'active-btn': offset === -1 }" @click="setOffset(-1)">
-              Yesterday
+             <button class="btn-h"  :class="{ 'active-btn': offset > 0 }" @click="previousDay">
+              previous
             </button>
             <button class="btn-h" :class="{ 'active-btn': offset === 0 }" @click="setOffset(0)">
               Today
@@ -397,8 +397,8 @@
             <h1>Tennis bets ({{ currentDate }})</h1>
           </div>
           <div class="header-btn">
-            <button class="btn-h" :class="{ 'active-btn': offset === -1 }" @click="setOffset(-1)">
-              Yesterday
+             <button class="btn-h"  :class="{ 'active-btn': offset > 0 }" @click="previousDay">
+              previous
             </button>
             <button class="btn-h" :class="{ 'active-btn': offset === 0 }" @click="setOffset(0)">
               Today
@@ -473,8 +473,8 @@
             <h1>Basketball bets ({{ currentDate }})</h1>
           </div>
           <div class="header-btn">
-            <button class="btn-h" :class="{ 'active-btn': offset === -1 }" @click="setOffset(-1)">
-              Yesterday
+             <button class="btn-h"  :class="{ 'active-btn': offset > 0 }" @click="previousDay">
+              previous
             </button>
             <button class="btn-h" :class="{ 'active-btn': offset === 0 }" @click="setOffset(0)">
               Today
@@ -747,10 +747,17 @@ async function updateSport(teamAscore, teamBscore, showScore) {
 //   }
 // };
 
+
+
 const setOffset = (value) => {
   offset.value = value
   updateCurrentDate()
 }
+
+const previousDay = () => {
+  offset.value--;
+  updateCurrentDate();
+};
 
 const getFormattedDate = (offset) => {
   const today = new Date()
