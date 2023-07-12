@@ -3,7 +3,7 @@
     <div class="nav-container">
       <!-- <div class="language-drop-down">
       </div> -->
-      <img src="../assets/logo-spp.png" alt="logo" class="logo-spp" />
+      <img src="../assets/logo-spp.png" alt="logo" class="logo-spp" @click="goHome" />
       <div class="nav-link-container">
         <RouterLink :to="{ name: 'Home' }" class="nav-link"> Home </RouterLink>
         <!-- <div @click="openTelegram" class="nav-link">Telegram tips</div> -->
@@ -181,6 +181,10 @@ const goBasketball = () => {
 const goLogin = () => {
   router.push({ name: 'Login' })
   // showMenu();
+}
+
+const goHome = () => {
+  router.push({ name: 'Home' })
 }
 
 const goSignin = () => {
