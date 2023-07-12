@@ -6,7 +6,7 @@
       </div>
       <div class="panel-profile">
         <div class="panel-img" :style="{ backgroundImage: `url(${banner})` }"></div>
-        <h1>{{ username }}</h1>
+        <h1>SportyPredict</h1>
         <span>Administrator</span>
       </div>
       <div class="panel-nav">

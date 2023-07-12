@@ -1,7 +1,7 @@
 5<template>
   <div class="Account-container">
     <div class="Account-header">
-      <h1><span>Welcome</span><br />{{ username }},</h1>
+      <h1><span>Welcome</span><br />SportyPredict</h1>
     </div>
     <div class="Account-game-p">
       <!-- loop this  -->

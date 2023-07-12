@@ -12,7 +12,18 @@
         </div>
       </div>
     </div>
-
+    <div class="search-section">
+      <div class="form-group">
+        <label for="Accountname">Search Accounts</label>
+        <input
+          v-model="SearchAccount"
+          type="text"
+          class="form-g-input"
+          placeholder="Account name"
+          id="Accountname"
+        />
+      </div>
+    </div>
     <div class="acc-m">
       <table>
         <thead>
@@ -25,7 +36,7 @@
           </tr>
         </thead>
         <tbody>
-          <tr v-for="account in accountData" :key="account.id">
+          <tr v-for="account in filterAccount" :key="account.id">
             <td>
               <div class="Account-tbl-img">
                 <img :src="Profile" alt="Account-p" class="Account-pi" />
@@ -75,6 +86,7 @@ import ProfileIcon from '../icons/profileIcon.vue';
 const username = ref(null);
 const accountCards = ref([]);
 const accountInfo = ref([]);
+const SearchAccount = ref('');
 const message = ref();
 
 const accountsData = async () => {
@@ -159,6 +171,18 @@ const getCount = (cardId) => {
 };
 
 
+const filterAccount = computed(() => {
+  if (SearchAccount.value !== '') {
+    return accountData.value.filter((account) =>
+      account.email.includes(SearchAccount.value) ||
+      account.email.toUpperCase().includes(SearchAccount.value)
+    );
+  } else {
+    return accountData.value;
+  }
+}, [SearchAccount, accountData]);
+
+
 
 async function toggleStatus(account) {
   account.status = !account.status;
@@ -173,11 +197,6 @@ async function toggleStatus(account) {
   } catch (err) {
     console.log(err);
   }
-}
-
-function toggleScoreAccount() {
-  showscore.value = !showscore.value;
-  localStorage.setItem('showscore', showscore.value.toString());
 }
 </script>
 

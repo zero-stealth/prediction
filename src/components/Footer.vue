@@ -9,6 +9,7 @@ import twitterIcon from '../icons/twitterIcon.vue'
 import whatsappIcon from '../icons/whatsapp.vue'
 import instagramIcon from '../icons/instagram.vue'
 import facebookIcon from '../icons/facebook.vue'
+import telegramIcon from '../icons/telegram.vue'
 
 const booknow = ref('')
 const errMessage = ref('')
@@ -20,12 +21,17 @@ const goAlogin = () => {
 }
 
 const openWhatsapp = () => {
-  window.open('https://wa.me/+254703147237?text=How can I help', '_blank')
+  window.open('https://wa.me/+254703147237?text=Hi sporty predict', '_blank')
 }
 
 const openIos = () => {
   window.open('https://itunes.apple.com/app/idYOUR_APP_ID', '_blank')
 }
+
+const openTelegram = () => {
+  window.open('https://t.me/sportypredict_tips', '_blank')
+}
+
 
 const openAndroid = () => {
   window.open('https://play.google.com/store/apps/details?id=YOUR_PACKAGE_NAME', '_blank')
@@ -45,7 +51,7 @@ const openInstagram = () => {
 
 const book = () => {
   if (booknow.value !== '') {
-    window.open(`https://wa.me/${phoneNumber.value}?text=*Message*: ${booknow.value}`, '_blank')
+    window.open(`https://wa.me/${phoneNumber.value}?text=${booknow.value}`, '_blank')
   } else {
     errMessage.value = 'Write something'
   }
@@ -69,7 +75,7 @@ const reset = () => {
         <div class="d1-contact">
           <div class="d1-icon">
             <phoneIcon class="icon-d1" />
-            <span>+254706272207</span>
+            <span>+254703147237</span>
           </div>
           <div class="d1-icon">
             <emailIcon class="icon-d1" />
@@ -91,27 +97,27 @@ const reset = () => {
       </div>
       <div class="contact-dp2">
         <div class="contact-d2">
-        <div>
-          <h1>Quick links</h1>
+          <div>
+            <h1>Quick links</h1>
+          </div>
+          <div class="d2-con">
+            <RouterLink :to="{ name: 'Home' }" class="nav-link">Home</RouterLink>
+            <RouterLink :to="{ name: 'Banker' }" class="nav-link">Banker tips</RouterLink>
+            <RouterLink :to="{ name: 'Tennis' }" class="nav-link">Tennis</RouterLink>
+            <RouterLink :to="{ name: 'Basketball' }" class="nav-link">Basketball</RouterLink>
+          </div>
         </div>
-        <div class="d2-con">
-          <RouterLink :to="{ name: 'Home' }" class="nav-link">Home</RouterLink>
-          <RouterLink :to="{ name: 'Banker' }" class="nav-link">Banker tips</RouterLink>
-          <RouterLink :to="{ name: 'Tennis' }" class="nav-link">Tennis</RouterLink>
-          <RouterLink :to="{ name: 'Basketball' }" class="nav-link">Basketball</RouterLink>
+        <div class="contact-d2">
+          <div>
+            <h1>Information</h1>
+          </div>
+          <div class="d2-con">
+            <RouterLink :to="{ name: 'Disclaimer' }" class="nav-link">Disclaimer</RouterLink>
+            <RouterLink :to="{ name: 'Policy' }" class="nav-link">Policy</RouterLink>
+            <RouterLink :to="{ name: 'Refund' }" class="nav-link">Refund policy</RouterLink>
+            <RouterLink :to="{ name: 'Terms' }" class="nav-link">Terms & Condition</RouterLink>
+          </div>
         </div>
-      </div>
-      <div class="contact-d2">
-        <div>
-          <h1>Information</h1>
-        </div>
-        <div class="d2-con">
-          <RouterLink :to="{ name: 'Disclaimer' }" class="nav-link">Disclaimer</RouterLink>
-          <RouterLink :to="{ name: 'Policy' }" class="nav-link">Policy</RouterLink>
-          <RouterLink :to="{ name: 'Refund' }" class="nav-link">Refund policy</RouterLink>
-          <RouterLink :to="{ name: 'Terms' }" class="nav-link">Terms & Condition</RouterLink>
-        </div>
-      </div>
       </div>
       <div class="contact-d3">
         <h1>Talk with us</h1>
@@ -119,17 +125,18 @@ const reset = () => {
         <form @submit.prevent="book" class="book-f">
           <div class="book-con">
             <div class="con-s">
-              <emailIcon class="book-icon" />
-              <input v-model="booknow" class="input-book" placeholder="Company email" />
+              <input v-model="booknow" class="input-book" placeholder="Whatsapp us" />
             </div>
-            <button type="submit" class="book-btn">Start now</button>
+            <button type="submit" class="book-btn">
+              <whatsappIcon class="book-icon" />
+            </button>
           </div>
         </form>
         <div class="book-social">
           Social media:
           <facebookIcon class="bk-icon" @click="openFacebook" />
-          <twitterIcon class="bk-icon" @click="openTwitter"/>
-          <whatsappIcon class="bk-icon" @click="openWhatsapp" />
+          <twitterIcon class="bk-icon" @click="openTwitter" />
+          <telegramIcon class="bk-icon" @click="openTelegram" />
           <instagramIcon class="bk-icon" @click="openInstagram" />
         </div>
       </div>
