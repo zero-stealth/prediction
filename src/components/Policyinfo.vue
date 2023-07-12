@@ -3,10 +3,9 @@
     <h1>Privacy policy</h1>
     <div class="abt-p-in">
       <p>
-        At sportypredict, which operates under the trading name sportypredict Services LTD, we are deeply
-        committed to protecting your privacy and ensuring the security of your personal information.
-        This privacy policy explains how we collect and utilize your information when you use our
-        website.
+        At sportypredict we are deeply committed to protecting your privacy and ensuring the
+        security of your personal information. This privacy policy explains how we collect and
+        utilize your information when you use our website.
       </p>
     </div>
     <div class="abt-p-in">
@@ -21,7 +20,7 @@
       <p>
         On occasion, we may send you promotional emails and SMS messages containing information
         about new products, exclusive offers, or other relevant updates. If you no longer wish to
-        receive such communications, please contact us at info@sportypredict.com.
+        receive such communications, please contact us at contact@sportypredict.com
       </p>
     </div>
     <div class="abt-p-in">
@@ -36,13 +35,15 @@
       <p>
         If you decide to delete your sportypredict account, please be aware that all associated data
         and content, including active subscriptions, will be permanently lost. However, you can
-        still access sportypredict services by registering with a new email address and phone number.
+        still access sportypredict services by registering with a new email address and phone
+        number.
       </p>
     </div>
     <div class="abt-p-in">
       <p>
         Please note that this privacy policy may be updated periodically, and the effective date is
-        November 10, 2020. We encourage you to regularly review this page for any changes or updates.
+        July 12, 2023. We encourage you to regularly review this page for any changes or
+        updates.
       </p>
     </div>
   </div>

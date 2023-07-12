@@ -8,7 +8,10 @@
   .vip-wrapper {
     height: 100%;
     display: flex;
+    z-index: -9999;
+    background-size: cover;
     flex-direction: column;
+    background-repeat: no-repeat;
   }
 
   .vip-notpaid {
@@ -24,6 +27,7 @@
     font-size: 1.1rem;
     text-align: center;
     text-transform: uppercase;
+    color: var(--background-color);
   }
 
   .vip-btn {
@@ -54,7 +58,7 @@
 }
 /* using it as global style for larger devices  */
 @media only screen and (min-width: 48em) {
-  .vip-wrapper {
-    padding: 10px;
+  .vip-m {
+    margin: 10px;
   }
 }

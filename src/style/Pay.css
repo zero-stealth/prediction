@@ -175,6 +175,27 @@
     border-top: 1px solid var(--light-color);
   }
 
+  .pay-info-spx {
+    gap: 10px;
+    padding: 10px;
+    display: flex;
+    border-radius: 12px;
+    flex-direction: column;
+    background-color: var(--dark-primary-color);
+  }
+  .pay-info-spx h1 {
+    font-size: 1rem;
+    text-decoration: underline;
+  }
+
+  .pay-info-spx p {
+    font-size: .8rem;
+  }
+
+  .pay-info-spx h1 span {
+    color: var(--secondary-color);
+  }
+
   .method-pay h1 {
     text-decoration: underline;
     font-size: 1rem;
@@ -200,6 +221,8 @@
     font-size: 1rem;
     font-weight: 600;
   }
+
+  
 }
 
 /* using it as global style for larger devices  */

@@ -21,7 +21,10 @@ const goAlogin = () => {
 }
 
 const openWhatsapp = () => {
-  window.open('https://wa.me/+254703147237?text=Hi sporty predict', '_blank')
+  window.open(
+    'https://wa.me/+254703147237?text=Hi sporty predict, I want to buy VIP subcription',
+    '_blank'
+  )
 }
 
 const openIos = () => {
@@ -31,7 +34,6 @@ const openIos = () => {
 const openTelegram = () => {
   window.open('https://t.me/sportypredict_tips', '_blank')
 }
-
 
 const openAndroid = () => {
   window.open('https://play.google.com/store/apps/details?id=YOUR_PACKAGE_NAME', '_blank')
@@ -73,13 +75,13 @@ const reset = () => {
           For queries or help, please feel <span @click="goAlogin()">free</span> to contact us on:
         </p>
         <div class="d1-contact">
-          <div class="d1-icon">
-            <phoneIcon class="icon-d1" />
+          <div class="d1-icon" @click="openWhatsapp">
+            <whatsappIcon class="icon-d1" />
             <span>+254703147237</span>
           </div>
           <div class="d1-icon">
             <emailIcon class="icon-d1" />
-            <span>sportyPredict@gmail.com</span>
+            <span>contact@sportypredict.com</span>
           </div>
         </div>
         <div class="app-d-link">
