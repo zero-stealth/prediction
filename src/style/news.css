@@ -10,7 +10,7 @@
  }
 
  .card-n-img {
-    height: 50%;
+   height: 70%;
     width: 100%;
     background-size: cover;
     border-radius: 4px 4px 0 0;
@@ -28,24 +28,9 @@
 /* using it as global style for larger devices  */
 @media only screen and (min-width: 48em) {
     .news-card-con {
-        display: flex;
         width: 300px;
-        height: 250px;
-        cursor: pointer;
-        border-radius:8px;
-        flex-direction: column;
-        background-color: var(--background-color);
+        height: 200px;
      }
     
-     .card-n-img {
-        height: 50%;
-        width: 100%;
-    
-     }
-    
-     .card-n-info {
-        padding: 10px;
-        color: var(--primary-color);
-     }  
     
 }

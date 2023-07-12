@@ -159,7 +159,8 @@ const logOut = () => {
 
 const openBetOfDay = () => {
   router.push({ name: 'Banker'})
-  showDrop()
+  showMenu()
+
 }
 
 
