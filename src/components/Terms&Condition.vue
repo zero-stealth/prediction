@@ -3,7 +3,7 @@
     <h1>Terms & Condition</h1>
     <div class="abt-p-in">
       <p>
-        By accessing or using predictions and betting tips on the Sport SportPredict.com website or any of our
+        By accessing or using predictions and betting tips on the SportPredict.com website or any of our
         affiliate sites, pages, accounts, or signing up on the website, you agree to be bound by and
         comply with:
       </p>
