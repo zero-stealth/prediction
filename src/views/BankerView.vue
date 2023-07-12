@@ -62,7 +62,7 @@ const predictions = async () => {
   try {
     const token = localStorage.getItem('token')
     const response = await axios.get(
-      `https://predictions-server.onrender.com/predictions/bet/betOfTheDay/${currentDate.value}`
+      `https://predictions-reg9.onrender.com/predictions/bet/betOfTheDay/${currentDate.value}`
     )
     console.log(response.data);
     cardData.value = response.data.length > 0 ? [response.data] : [];

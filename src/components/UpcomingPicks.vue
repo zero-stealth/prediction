@@ -56,7 +56,7 @@ const cardData = ref([]);
 const getPrediction = async () => {
   try {
     const response = await axios.get(
-      `https://predictions-server.onrender.com/predictions/upcomingPredictions/upcoming/${currentDate.value}`
+      `https://predictions-reg9.onrender.com/predictions/upcomingPredictions/upcoming/${currentDate.value}`
     );
     cardData.value = response.data;
   } catch (err) {

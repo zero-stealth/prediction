@@ -75,7 +75,7 @@
           <span @click="goBasketball()" class="nav-link">Basketball</span>
         </div>
         <div @click="openTelegramX" class="mobile-link">Telegram tips</div>
-        <RouterLink :to="{ name: 'Banker' }" class="mobile-link"> Bet Of the day </RouterLink>
+        <div @click="openBetOfDay" class="mobile-link">Bet Of the day</div>
         <div class="drop-container">
         <div class="drop-down" @click="showDrp()">
           <span>Predictions</span>
@@ -156,6 +156,12 @@ const logOut = () => {
   isAdmin.value = false
   window.location.reload()
 }
+
+const openBetOfDay = () => {
+  router.push({ name: 'Banker'})
+  showDrop()
+}
+
 
 const goToC = (betname) => {
   router.push({ name: 'Bet', params: { betName: betname } })

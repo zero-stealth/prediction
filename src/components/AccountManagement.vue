@@ -1,7 +1,7 @@
 <template>
   <div class="Account-container">
     <div class="Account-header">
-      <h1><span>Welcome</span><br />{{ username }},</h1>
+      <h1><span>Welcome</span><br />SportyPredict,</h1>
     </div>
     <div class="Account-info">
       <div class="Account-card" v-for="card in accountCards" :key="card.id">
@@ -123,7 +123,7 @@ const accountData = computed(() => {
 const deleteAccount = async (id) => {
   try {
     const token = JSON.parse(localStorage.getItem('token'));
-    const response = await axios.delete(`https://predictions-server.onrender.com/auth/delete/${id}`,{
+    const response = await axios.delete(`https://predictions-reg9.onrender.com/auth/delete/${id}`,{
       headers:{
         Authorization: `Bearer ${token}`
       }

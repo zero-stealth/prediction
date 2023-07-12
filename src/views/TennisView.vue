@@ -63,7 +63,7 @@ const url = ref('');
 
 async function getPrediction() {
   const token = JSON.parse(localStorage.getItem('token'));
-  url.value = `https://predictions-server.onrender.com/sports/sport/Tennis/${currentDate.value}`;
+  url.value = `https://predictions-reg9.onrender.com/sports/sport/Tennis/${currentDate.value}`;
   console.log(url.value);
 
   try {

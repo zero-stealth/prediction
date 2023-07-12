@@ -155,7 +155,7 @@ async function handleSubmit() {
       formData.append('tip', tip.value);
 
       const response = await axios.post(
-        'https://predictions-server.onrender.com/sports/create/Basketball',
+        'https://predictions-reg9.onrender.com/sports/create/Basketball',
         formData,
         {
           headers: {

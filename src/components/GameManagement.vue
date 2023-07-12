@@ -590,7 +590,7 @@ const getBetOfTheDay = async () => {
   try {
     // const token = JSON.parse(localStorage.getItem('token'));
     const response = await axios.get(
-      `https://predictions-server.onrender.com/predictions/bet/betOfTheDay/${currentDate.value}`
+      `https://predictions-reg9.onrender.com/predictions/bet/betOfTheDay/${currentDate.value}`
     )
     console.log(response.data)
     cardData.value = response.data.length > 0 ? [response.data] : []
@@ -602,7 +602,7 @@ const getBetOfTheDay = async () => {
 const getVipGames = async () => {
   try {
     const response = await axios.get(
-      `https://predictions-server.onrender.com/predictions/vipPredictions/vip/${currentDate.value}`
+      `https://predictions-reg9.onrender.com/predictions/vipPredictions/vip/${currentDate.value}`
     )
     console.log(response.data)
     vipData.value = response.data.length > 0 ? [response.data] : []
@@ -615,7 +615,7 @@ const getPredictions = async () => {
   try {
     // const token = JSON.parse(localStorage.getItem('token'));
     const response = await axios.get(
-      `https://predictions-server.onrender.com/predictions/${currentDate.value}`
+      `https://predictions-reg9.onrender.com/predictions/${currentDate.value}`
     )
     console.log(response.data)
     predictionData.value = response.data.length > 0 ? [response.data] : []
@@ -628,7 +628,7 @@ const getFreeTips = async () => {
   try {
     // const token = JSON.parse(localStorage.getItem('token'));
     const response = await axios.get(
-      `https://predictions-server.onrender.com/predictions/tips/freeTip/${currentDate.value}`
+      `https://predictions-reg9.onrender.com/predictions/tips/freeTip/${currentDate.value}`
     )
     console.log(response.data)
     freeTipData.value = response.data.length > 0 ? [response.data] : []
@@ -641,7 +641,7 @@ const getUpcoming = async () => {
   try {
     // const token = JSON.parse(localStorage.getItem('token'));
     const response = await axios.get(
-      `https://predictions-server.onrender.com/predictions/upcomingPredictions/upcoming/${currentDate.value}`
+      `https://predictions-reg9.onrender.com/predictions/upcomingPredictions/upcoming/${currentDate.value}`
     )
     console.log(response.data)
     upcomingData.value = response.data.length > 0 ? [response.data] : []
@@ -654,7 +654,7 @@ const getTennisBets = async () => {
   try {
     // const token = JSON.parse(localStorage.getItem('token'));
     const response = await axios.get(
-      `https://predictions-server.onrender.com/sports/sport/Tennis/${currentDate.value}`
+      `https://predictions-reg9.onrender.com/sports/sport/Tennis/${currentDate.value}`
     )
     console.log(response.data)
     tennisData.value = response.data.length > 0 ? [response.data] : []
@@ -667,7 +667,7 @@ const getBasketballBets = async () => {
   try {
     // const token = JSON.parse(localStorage.getItem('token'));
     const response = await axios.get(
-      `https://predictions-server.onrender.com/sports/sport/Basketball/${currentDate.value}`
+      `https://predictions-reg9.onrender.com/sports/sport/Basketball/${currentDate.value}`
     )
     console.log(response.data)
     basketBallData.value = response.data.length > 0 ? [response.data] : []
@@ -700,7 +700,7 @@ async function updateGame(teamAscore, teamBscore, showScore) {
   try {
     const token = JSON.parse(localStorage.getItem('token'))
     const response = await axios.put(
-      `https://predictions-server.onrender.com/predictions/update/${gameId.value}`,
+      `https://predictions-reg9.onrender.com/predictions/update/${gameId.value}`,
       { teamAscore, teamBscore, showScore },
       {
         headers: {
@@ -716,7 +716,7 @@ async function updateSport(teamAscore, teamBscore, showScore) {
   try {
     const token = JSON.parse(localStorage.getItem('token'))
     const response = await axios.put(
-      `https://predictions-server.onrender.com/sports/update/${sportId.value}`,
+      `https://predictions-reg9.onrender.com/sports/update/${sportId.value}`,
       { teamAscore, teamBscore, showScore },
       {
         headers: {
@@ -731,7 +731,7 @@ async function updateSport(teamAscore, teamBscore, showScore) {
 // const accountsData = async () => {
 //   try {
 //     const user = JSON.parse(localStorage.getItem('token'));
-//     const response = await axios.get(`https://predictions-server.onrender.com/auth`, {
+//     const response = await axios.get(`https://predictions-reg9.onrender.com/auth`, {
 //       headers: {
 //         Authorization: `Bearer ${user}`,
 //       },
@@ -796,7 +796,7 @@ const deletePrediction = async (id) => {
     const token = JSON.parse(localStorage.getItem('token'))
 
     const response = await axios.delete(
-      `https://predictions-server.onrender.com/predictions/delete/${id}`,
+      `https://predictions-reg9.onrender.com/predictions/delete/${id}`,
       {
         headers: { Authorization: `Bearer ${token}` }
       }
@@ -818,7 +818,7 @@ const deleteSport = async (id) => {
     const token = JSON.parse(localStorage.getItem('token'))
 
     const response = await axios.delete(
-      `https://predictions-server.onrender.com/sports/delete/${id}`,
+      `https://predictions-reg9.onrender.com/sports/delete/${id}`,
       {
         headers: { Authorization: `Bearer ${token}` }
       }

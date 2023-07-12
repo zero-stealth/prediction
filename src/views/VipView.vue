@@ -111,7 +111,7 @@ async function getPrediction() {
 
   try {
     const response = await axios.get(
-      `https://predictions-server.onrender.com/predictions/vipPredictions/vip/${currentDate.value}`,
+      `https://predictions-reg9.onrender.com/predictions/vipPredictions/vip/${currentDate.value}`,
       {
         headers: {
           Authorization: `Bearer ${token}`
