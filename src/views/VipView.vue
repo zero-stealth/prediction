@@ -1,10 +1,7 @@
 <template>
   <div class="vip-container">
-    <div
-      class="vip-wrapper">
-      <div class="vip-notpaid"    :style="{
-        backgroundImage: `url(${SportBg})`
-      }" v-if="!isPaid">
+    <div class="vip-wrapper">
+      <div class="vip-notpaid" :style="{ backgroundImage: `url(${SportBg})` }" v-if="!isPaid">
         <h1>Your VIP account is inactive 🌵</h1>
         <button class="vip-btn" @click="goLogin()" v-if="!username">
           <ProfileIcon class="vip-pay-icon" />

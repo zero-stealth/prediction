@@ -8,7 +8,6 @@
   .vip-wrapper {
     height: 100%;
     display: flex;
-    z-index: -9999;
     background-size: cover;
     flex-direction: column;
     background-repeat: no-repeat;
