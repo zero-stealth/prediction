@@ -103,7 +103,6 @@ const formationB = ref('l-d-w-d');
 const teamAPosition = ref('');
 const teamBPosition = ref('');
 const time = ref('');
-const category = ref('')
 const league = ref('');
 const teamAscore = ref(0);
 const teamBscore = ref(0);
@@ -162,7 +161,6 @@ async function handleSubmit() {
       formData.append('teamBPosition', teamBPosition.value);
       formData.append('teamBscore', teamBscore.value);
       formData.append('time', time.value);
-      formData.append('category', category.value);
       formData.append('league', league.value);
       formData.append('date', date.value)
       formData.append('tip', tip.value);

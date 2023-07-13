@@ -76,13 +76,14 @@ const create = async () => {
       const isPaid = response.data.paid
       localStorage.setItem('token', token)
       localStorage.setItem('isPaid', isPaid)
-      console.log(response.data) // Handle the response data as needed
       router.push({ name: 'Vip' })
     } catch (error) {
-      console.error(error)
+      errMsg.value = error;
+      alert(errMsg.value)
     }
   } else {
     errMsg.value = 'Write something'
+    alert(errMsg.value)
     reset()
   }
 }
@@ -93,11 +94,11 @@ const useGoogle = async () => {
 
     // Handle the response from the server
     // You may redirect the user to the returned URL or perform other operations based on the response
-    console.log(response.data)
     router.push({ name: 'Home' })
   } catch (error) {
     // Handle the error
-    console.error(error)
+    errMsg.value = error;
+    alert(errMsg.value)
   }
 }
 

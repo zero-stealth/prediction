@@ -73,10 +73,12 @@ const login = async () => {
       localStorage.setItem('isPaid', isPaid)
       router.push({ name: 'Vip' })
     } catch (error) {
-      console.error(error)
+      errMsg.value = error;
+      alert(errMsg.value)
     }
   } else {
     errMsg.value = 'Write something'
+    alert(errMsg.value)
     reset()
   }
 }
