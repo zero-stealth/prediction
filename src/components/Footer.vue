@@ -142,7 +142,7 @@ const reset = () => {
     </div>
     <div class="footer-x">
       <span>© 2023 SportyPredict. All rights reserved</span>
-      <span>FAQ Terms and Services Refund Policy</span>
+      <!-- <span>FAQ Terms and Services Refund Policy</span> -->
     </div>
   </div>
 </template>

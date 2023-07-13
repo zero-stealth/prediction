@@ -50,6 +50,7 @@ async function handleSubmit() {
   ) {
     try {
       emit('formSubmitSport', teamAscore.value, teamBscore.value , ShowScore.value)
+      alert("game updated")
     } catch (err) {
       console.log(err)
     }

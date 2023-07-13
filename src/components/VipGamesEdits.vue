@@ -20,7 +20,7 @@
         <div class="form-wrapper">
           <div class="form-group">
             <label for="score">Show score:</label>
-            <input v-model="ShowScore" type="text" class="form-g-input" placeholder="true" id="score" />
+            <input v-model="ShowScore" type="text" class="form-g-input" placeholder="false" id="score" />
           </div>
         <button type="submit" class="btn-f-f f-desktop">Submit</button>
         </div>
@@ -60,6 +60,7 @@
     ) {
       try {
         emit('formSubmit', teamAscore.value, teamBscore.value , ShowScore.value)
+        alert("game updated")
       } catch (err) {
         console.log(err)
       }
