@@ -32,10 +32,6 @@
           <google-icon class="alt-icon" />
           Sign up with Google
         </button>
-        <button class="alt-btn" @click="useGuest">
-          <guest-icon class="alt-icon" />
-          Sign up as a Guest
-        </button>
       </div>
     </div>
   </div>
@@ -46,7 +42,6 @@ import { ref } from 'vue'
 import axios from 'axios'
 import { useRouter } from 'vue-router'
 import SportBg from '../assets/sport-bg.png'
-import GuestIcon from '../icons/profileIcon.vue'
 import GoogleIcon from '../icons/googleIcon.vue'
 import countriesData from '../components/countries.json'
 
@@ -104,10 +99,6 @@ const useGoogle = async () => {
     // Handle the error
     console.error(error)
   }
-}
-
-const useGuest = () => {
-  router.push({ name: 'Home' })
 }
 
 const login = () => {

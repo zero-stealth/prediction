@@ -19,7 +19,7 @@
           </div>
           <div class="header-btn">
             <button class="btn-h" :class="{ 'active-btn': offset > 0 }" @click="previousDay">
-              <Arrow class="btn-icon icon-left" />
+              <Arrow class="btn-icon icon-left" />  
               Previous
             </button>
             <button class="btn-h" :class="{ 'active-btn': offset < 0 }" @click="nextDay">

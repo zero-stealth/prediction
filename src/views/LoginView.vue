@@ -124,9 +124,6 @@ const useGoogle = async () => {
   }
 };
 
-const useGuest = () => {
-  router.push({ name: 'Home' })
-}
 </script>
 
 <style>
