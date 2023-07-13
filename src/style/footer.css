@@ -187,12 +187,18 @@
     }
   
     .footer-x span {
+      width: 100%;
+      display: flex;
       font-size: .9rem;
-    }
-  
+      text-align: center;
+      align-items: center;
+      justify-content: center;
+
+      }
+/*   
     .footer-x span:last-child {
       display: none;
-    }
+    } */
   
   }
   

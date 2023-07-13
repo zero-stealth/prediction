@@ -1,5 +1,5 @@
 <script setup>
-import { onMounted, ref, computed } from 'vue'
+import { onMounted, ref, computed, defineProps } from 'vue'
 import { useRouter } from 'vue-router'
 import banner from '@/assets/banner.jpeg'
 import ArrowIcon from '@/icons/ArrowIcon.vue'
@@ -17,10 +17,10 @@ const teamAIcon = ref('')
 const teamBIcon = ref('')
 const league = ref('')
 const leagueIcon = ref('')
-const teamAPosition = ref()
-const teamBPosition = ref()
+const teamAPosition = ref('')
+const teamBPosition = ref('')
 const time = ref('')
-const showScore = ref()
+const showScore = ref('')
 const formationsA = ref([])
 const formationsB = ref([])
 
@@ -63,8 +63,18 @@ const formatFormation = (formation) => {
   return []
 }
 
-const shouldShowScore = computed(() => {
-  return showScore && teamAscore !== undefined && teamBscore !== undefined;
+
+// Arrange table rows based on alphanumeric order
+const sortedTeams = computed(() => {
+  const teams = [
+    { position: teamAPosition.value, name: teamA.value, score: teamAscore.value },
+    { position: teamBPosition.value, name: teamB.value, score: teamBscore.value }
+  ];
+  return teams.sort((a, b) => {
+    if (a.position < b.position) return -1;
+    if (a.position > b.position) return 1;
+    return a.name.localeCompare(b.name);
+  });
 });
 </script>
 
@@ -144,26 +154,15 @@ const shouldShowScore = computed(() => {
                 <th>team</th>
                 <th>score</th>
               </tr>
-              <tr>
-                <td>{{ teamAPosition }}</td>
+              <tr v-for="team in sortedTeams" :key="team.name">
+                <td>{{ team.position }}</td>
                 <td>
                   <div class="table-formation">
-                    <img :src="teamAIcon" alt="" class="tbl-f-image" />
-                    <span>{{ teamA }}</span>
+                    <img :src="team.name === teamA ? teamAIcon : teamBIcon" alt="" class="tbl-f-image" />
+                    <span>{{ team.name === teamA? teamA : teamB }}</span>
                   </div>
                 </td>
-                <td>{{ teamAscore }}</td>
-              </tr>
-              <tr>
-                <td>{{ teamBPosition }}</td>
-
-                <td>
-                  <div class="table-formation">
-                    <img :src="teamBIcon" alt="" class="tbl-f-image" />
-                    <span>{{ teamA }}</span>
-                  </div>
-                </td>
-                <td>{{ teamBscore }}</td>
+                <td>{{ team.score }}</td>
               </tr>
             </table>
           </div>
