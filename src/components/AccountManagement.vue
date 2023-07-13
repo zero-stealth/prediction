@@ -92,7 +92,7 @@ const message = ref();
 const accountsData = async () => {
   try {
     const user = JSON.parse(localStorage.getItem('token'));
-    const response = await axios.get(`https://predictions-server.onrender.com/auth`, {
+    const response = await axios.get(`https://predictions-reg9.onrender.com/auth`, {
       headers: {
         Authorization: `Bearer ${user}`,
       },
@@ -188,7 +188,7 @@ async function toggleStatus(account) {
   account.status = !account.status;
 
   try {
-    const response = await axios.put(`https://predictions-server.onrender.com/auth/update/${account._id}`, {
+    const response = await axios.put(`https://predictions-reg9.onrender.com/auth/update/${account._id}`, {
       paid: account.status,
     });
 

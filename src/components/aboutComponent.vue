@@ -117,7 +117,7 @@
       <p>
         SportyPredict is the ultimate destination for accurate sports betting predictions,
         specializing in football, basketball, and tennis. We provide reliable information and
-        predictions to individuals <span @click="goAlogin()">who</span>are passionate about betting and eager to earn money.
+        predictions to individuals <span @click="goAlogin()">who</span> are passionate about betting and eager to earn money.
         Additionally, our (VIP PLAN) offers an opportunity for maximum profitability.
       </p>
     </div>

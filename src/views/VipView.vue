@@ -7,7 +7,7 @@
           <ProfileIcon class="vip-pay-icon" />
           Log in
         </button>
-        <button class="vip-btn" @click="PayPage()" v-else>
+        <button class="vip-btn" @click="payPage()" v-else>
           <MoneyIcon class="vip-pay-icon" />
           Pay to activate
         </button>
@@ -19,12 +19,13 @@
           </div>
           <div class="header-btn">
             <button class="btn-h" :class="{ 'active-btn': offset > 0 }" @click="previousDay">
-              <Arrow class="btn-icon icon-left" />  
+              <Arrow class="btn-icon icon-left" />
               Previous
             </button>
             <button class="btn-h" :class="{ 'active-btn': offset < 0 }" @click="nextDay">
               Next
               <Arrow class="btn-icon icon-right" />
+              Next
             </button>
           </div>
         </div>
@@ -69,7 +70,7 @@ import SportBg from '../assets/stadium.jpg'
 import MoneyIcon from '../icons/payIcon.vue'
 import Card from '../components/CardComponent.vue'
 import ProfileIcon from '../icons/profileIcon.vue'
-import { ref, onMounted, watchEffect, watch } from 'vue'
+import { ref, onMounted, watchEffect } from 'vue'
 
 const isPaid = ref(false)
 const router = useRouter()
@@ -91,7 +92,7 @@ const updateAuthStatus = () => {
   }
 }
 
-const PayPage = () => {
+const payPage = () => {
   router.push({ name: 'Pay' })
 }
 
@@ -158,12 +159,9 @@ const formatFormation = (formation) => {
   return []
 }
 
-watch(currentDate, () => {
-  getPrediction()
-})
-
 watchEffect(() => {
   updateAuthStatus()
+  getPrediction()
 })
 </script>
 
