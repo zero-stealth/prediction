@@ -5,7 +5,7 @@
         <ExitIcon class="panel-icon-exit" @click="showMenu()" />
       </div>
       <div class="panel-profile">
-        <div class="panel-img" :style="{ backgroundImage: `url(${banner})` }"></div>
+        <div class="panel-img" :style="{ backgroundImage: `url(${logo})` }"></div>
         <h1>SportyPredict</h1>
         <span>Administrator</span>
       </div>
@@ -89,7 +89,7 @@ import ExitIcon from '../icons/ExitIcon.vue'
 import DrawIcon from '../icons/DrawIcon.vue'
 import FileIcon from '../icons/FileIcon.vue'
 import VipIcon from '../icons/VipIcon.vue'
-import banner from '../assets/banner.jpeg'
+import logo from '../assets/logo.png'
 import { useRouter } from 'vue-router'
 
 const username = ref('admin')
