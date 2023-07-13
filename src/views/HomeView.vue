@@ -60,9 +60,6 @@
           <h1>Sport News</h1>
         </div>
         <div class="news-link">
-          <Arrow class="news-icon icon-left" />
-          <span>see more</span>
-          <Arrow class="news-icon" />
         </div>
       </div>
       <div class="news-wrapper">
