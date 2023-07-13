@@ -1,5 +1,5 @@
 <script setup>
-import pic from '@/assets/news.png';
+import banner from '../assets/banner.jpeg';
 import { useRouter } from 'vue-router';
 import argentina from '../assets/Arg-log.png';
 import ArrowIcon from '@/icons/ArrowIcon.vue';
@@ -21,7 +21,7 @@ const goBack = () => {
       <div
         class="details-image"
         :style="{
-          backgroundImage: `linear-gradient(to bottom, transparent, #031e3c), url(${pic})`
+          backgroundImage: `linear-gradient(to bottom, transparent, #031e3c), url(${banner  })`
         }"
       >
         <div class="details-h">
@@ -45,31 +45,6 @@ const goBack = () => {
           <div class="details-d">
             <img :src="Manchester" alt="" class="details-d-img" />
             <span>Manchester</span>
-          </div>
-        </div>
-      </div>
-      <div class="details-details">
-        <h1>Match Details</h1>
-        <div class="details-match">
-          <div class="match-su">
-            <span>8</span>
-            <span>Shooting</span>
-            <span>12</span>
-          </div>
-          <div class="match-su">
-            <span>10</span>
-            <span>Attack</span>
-            <span>11</span>
-          </div>
-          <div class="match-su">
-            <span>20</span>
-            <span>Possession</span>
-            <span>32</span>
-          </div>
-          <div class="match-su">
-            <span>7</span>
-            <span>Corner</span>
-            <span>9</span>
           </div>
         </div>
       </div>

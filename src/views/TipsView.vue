@@ -1,33 +1,48 @@
 <script setup>
-import {onMounted, ref} from 'vue'
-import { useRouter } from 'vue-router';
-import pic from '@/assets/news.png';
-import ArrowIcon from '@/icons/ArrowIcon.vue';
-import axios from 'axios';
+import { onMounted, ref, computed } from 'vue'
+import { useRouter } from 'vue-router'
+import banner from '@/assets/banner.jpeg'
+import ArrowIcon from '@/icons/ArrowIcon.vue'
+import axios from 'axios'
 
-const router = useRouter();
-const props  = defineProps({
+const router = useRouter()
+const props = defineProps({
   id: String
 })
-const teamA = ref("")
-const teamB = ref("")
-const teamAscore = ref("")
+const teamA = ref('')
+const teamB = ref('')
+const teamAscore = ref('')
+const teamBscore = ref('')
+const teamAIcon = ref('')
+const teamBIcon = ref('')
+const league = ref('')
+const leagueIcon = ref('')
+const teamAPosition = ref()
+const teamBPosition = ref()
+const time = ref('')
+const showScore = ref()
+const formationsA = ref([])
+const formationsB = ref([])
 
-const teamBscore = ref("")
-const teamAIcon = ref("")
-const teamBIcon = ref("")
-const league = ref("")
-const leagueIcon = ref("")
-const time = ref("")
-
-async function getTip(){
-  const response = await axios.get(`https://predictions-reg9.onrender.com/predictions/single/${props.id}`)
+async function getTip() {
+  const response = await axios.get(
+    `https://predictions-reg9.onrender.com/predictions/single/${props.id}`
+  )
   teamA.value = response.data.teamA
   teamB.value = response.data.teamB
+  showScore.value = response.data.showScore
   teamAIcon.value = response.data.teamAIcon
   teamBIcon.value = response.data.teamBIcon
   teamAscore.value = response.data.teamAscore
+  teamAPosition.value = response.data.teamAPosition
+  teamBPosition.value = response.data.teamBPosition
   teamBscore.value = response.data.teamBscore
+  formationsA.value = formatFormation(response.data.formationA)
+    ? response.data.formationA[0].split('-')
+    : []
+  formationsB.value = formatFormation(response.data.formationB)
+    ? response.data.formationB[0].split('-')
+    : []
   league.value = response.data.league
   leagueIcon.value = response.data.leagueIcon
   time.value = response.data.time
@@ -36,9 +51,21 @@ async function getTip(){
 onMounted(() => {
   getTip()
 })
+
 const goBack = () => {
-  router.go(-1);
-};
+  router.go(-1)
+}
+
+const formatFormation = (formation) => {
+  if (Array.isArray(formation)) {
+    return formation[0].split('-')
+  }
+  return []
+}
+
+const shouldShowScore = computed(() => {
+  return showScore && teamAscore !== undefined && teamBscore !== undefined;
+});
 </script>
 
 <template>
@@ -47,12 +74,12 @@ const goBack = () => {
       <div
         class="details-image"
         :style="{
-          backgroundImage: `linear-gradient(to bottom, transparent, #031e3c), url(${pic})`
+          backgroundImage: `linear-gradient(to bottom, transparent, #031e3c), url(${banner})`
         }"
       >
         <div class="details-h">
           <ArrowIcon class="details-arrow" @click="goBack()" />
-          <h2>uefa champion</h2>
+          <h2>{{ league }}</h2>
           <span></span>
         </div>
         <div class="details-image-d">
@@ -60,7 +87,10 @@ const goBack = () => {
             <img :src="teamAIcon" alt="" class="details-d-img" />
             <span>{{ teamA }}</span>
           </div>
-          <div class="details-score">
+          <div v-if="!showScore" class="details-score">
+            <h1>vs</h1>
+          </div>
+          <div v-else class="details-score">
             <div class="score-p">
               <span>{{ teamAscore }}</span>
               <span>-</span>
@@ -80,56 +110,60 @@ const goBack = () => {
             <div class="team-header">
               <h1>team form</h1>
             </div>
-            <div class="form-xs">
-              <img :src="teamBIcon" alt="" class="formation-img" />
-              <div class="formation-score">
-                <span>{{ teamBscore }}</span>
-                <span>-</span>
-                <span>{{ teamAscore }}</span>
+            <div class="Cf-p">
+              <div class="cp-sp">
+                <img :src="teamAIcon" alt="" class="details-d-img" />
+                <div class="card-f" v-for="formationA in formationsA" :key="formationA">
+                  <span
+                    :class="[formationA === 'l' ? 'loose' : formationA === 'w' ? 'win' : 'draw']"
+                    >{{ formationA }}</span
+                  >
+                </div>
               </div>
-              <img :src="teamAIcon" alt="" class="formation-img" />
-            </div>
-            <div class="form-xs">
-              <img :src="teamBIcon" alt="" class="formation-img" />
-              <div class="formation-score">
-                <span>{{ teamAscore }}</span>
-                <span>-</span>
-                <span>{{ teamBscore }}</span>
+              <div class="cp-sp">
+                <img :src="teamBIcon" alt="" class="details-d-img" />
+                <div class="card-f" v-for="formationB in formationsB" :key="formationB">
+                  <span
+                    :class="[formationB === 'l' ? 'loose' : formationB === 'w' ? 'win' : 'draw']"
+                    >{{ formationB }}</span
+                  >
+                </div>
               </div>
-              <img :src="teamAIcon" alt="" class="formation-img" />
             </div>
           </div>
         </div>
         <div class="team-form-a">
           <div class="team-header">
-            <h1>Liga</h1>
+            <img :src="leagueIcon" alt="" class="tbl-f-image tbl-l-i" />
+            <h4>{{ league }}</h4>
           </div>
           <div class="tbl-slider">
             <table>
               <tr>
+                <th>position</th>
                 <th>team</th>
-                <th></th>
-                <th>pl</th>
-                <th>w</th>
-                <th>D</th>
-                <th>+/-</th>
-                <th>gd</th>
-                <th>pts</th>
+                <th>score</th>
               </tr>
               <tr>
-                <td>2</td>
+                <td>{{ teamAPosition }}</td>
                 <td>
                   <div class="table-formation">
                     <img :src="teamAIcon" alt="" class="tbl-f-image" />
-                    <span>{{teamA}}</span>
+                    <span>{{ teamA }}</span>
                   </div>
                 </td>
-                <td>20</td>
-                <td>2</td>
-                <td>45</td>
-                <td>60-76</td>
-                <td>+34</td>
-                <td>23</td>
+                <td>{{ teamAscore }}</td>
+              </tr>
+              <tr>
+                <td>{{ teamBPosition }}</td>
+
+                <td>
+                  <div class="table-formation">
+                    <img :src="teamBIcon" alt="" class="tbl-f-image" />
+                    <span>{{ teamA }}</span>
+                  </div>
+                </td>
+                <td>{{ teamBscore }}</td>
               </tr>
             </table>
           </div>
@@ -138,7 +172,9 @@ const goBack = () => {
     </div>
   </div>
 </template>
+
 <style>
 @import '../style/tips.css';
+@import '../style/card.css';
 @import '../style/predictions.css';
 </style>

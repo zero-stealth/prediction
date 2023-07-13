@@ -22,7 +22,29 @@
   }
 
   .team-header {
+    gap: 10px;
     display: flex;
+    align-items: center;
+  }
+
+  .Cf-p {
+    gap: 20px;
+    display: flex;
+    align-items: start;
+    justify-content: start;
+    flex-direction: column;
+  }
+
+  .cp-sp {
+    gap: 20px;
+    display: flex;
+
+  }
+
+  .team-header h4 {
+    font-weight: 400;
+    text-align: center;
+    
   }
 
   .form-xs {

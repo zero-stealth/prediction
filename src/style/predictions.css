@@ -7,16 +7,17 @@
     .news-pin {
       height: 100%;
     }
-    
+
 
     .details-image {
       gap: 50px;
       height: 50vh;
       display: flex;
       padding: 20px;
+
       flex-direction: column;
       background-size: cover;
-      background-position:center;
+      background-position:bottom;
       backdrop-filter: blur(3px);
       background-repeat: no-repeat;
     }
