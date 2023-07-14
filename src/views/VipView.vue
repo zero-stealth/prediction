@@ -13,6 +13,7 @@
         </button>
       </div>
       <div v-else>
+      <template v-if="isPaid && username && cardData.length > 0">
         <div class="main-header vip-m">
           <div class="header-info">
             <h1>VIP tips {{ currentDate }}</h1>
@@ -28,7 +29,6 @@
             </button>
           </div>
         </div>
-        <template v-if="isPaid && username && cardData.length > 0">
           <div class="main-h-card">
             <Card
               v-for="(card, index) in cardData"
