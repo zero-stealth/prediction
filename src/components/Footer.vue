@@ -2,9 +2,10 @@
 import { ref } from 'vue'
 import Ios from '../assets/ios.png'
 import { useRouter, RouterLink } from 'vue-router'
-import phoneIcon from '../icons/phone.vue'
 import emailIcon from '../icons/email.vue'
 import Android from '../assets/android.png'
+import tiktokIcon from '../icons/tiktokIcon.vue'
+import youtubeIcon from '../icons/youtubeIcon.vue'
 import twitterIcon from '../icons/twitterIcon.vue'
 import whatsappIcon from '../icons/whatsapp.vue'
 import instagramIcon from '../icons/instagram.vue'
@@ -46,6 +47,16 @@ const openTwitter = () => {
 
 const openInstagram = () => {
   window.open('https://instagram.com/sportypredict_?igshid=MTIzZWMxMTBkOA==', '_blank')
+}
+
+
+const openTiktok = () => {
+  window.open('https://www.tiktok.com/@sportypredict?_t=8dxjShAnRI5&_r=1', '_blank')
+}
+
+
+const openYoutube = () => {
+  window.open('https://www.youtube.com/@Sportypredict', '_blank')
 }
 
 const book = () => {
@@ -101,7 +112,7 @@ const reset = () => {
           </div>
           <div class="d2-con">
             <RouterLink :to="{ name: 'Home' }" class="nav-link">Home</RouterLink>
-            <RouterLink :to="{ name: 'Banker' }" class="nav-link">Banker tips</RouterLink>
+            <RouterLink :to="{ name: 'Banker' }" class="nav-link">Bet of the day</RouterLink>
             <RouterLink :to="{ name: 'Tennis' }" class="nav-link">Tennis</RouterLink>
             <RouterLink :to="{ name: 'Basketball' }" class="nav-link">Basketball</RouterLink>
           </div>
@@ -137,6 +148,8 @@ const reset = () => {
           <twitterIcon class="bk-icon" @click="openTwitter" />
           <telegramIcon class="bk-icon" @click="openTelegram" />
           <instagramIcon class="bk-icon" @click="openInstagram" />
+          <tiktokIcon class="bk-icon" @click="openTiktok" />
+          <youtubeIcon class="bk-icon" @click="openYoutube" />
         </div>
       </div>
     </div>

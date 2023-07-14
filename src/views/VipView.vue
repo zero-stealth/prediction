@@ -28,7 +28,7 @@
             </button>
           </div>
         </div>
-        <template v-if="isPaid && cardData.length > 0">
+        <template v-if="isPaid && username && cardData.length > 0">
           <div class="main-h-card">
             <Card
               v-for="(card, index) in cardData"
@@ -51,7 +51,7 @@
             />
           </div>
         </template>
-        <template v-else-if="isPaid && cardData.length === 0">
+        <template v-else-if="isPaid && username && cardData.length === 0">
           <div class="home-freetip">
             <h1>No predictions yet! Check back later.</h1>
           </div>
@@ -63,7 +63,6 @@
 
 <script setup>
 import axios from 'axios'
-import Arrow from '@/icons/arrow.vue'
 import { useRouter } from 'vue-router'
 import SportBg from '../assets/stadium.jpg'
 import MoneyIcon from '../icons/payIcon.vue'
@@ -74,7 +73,6 @@ import { ref, onMounted, watchEffect } from 'vue'
 const isPaid = ref(false)
 const router = useRouter()
 const username = ref(null)
-const isAdmin = ref(false)
 const cardData = ref([])
 const currentDate = ref('')
 const offset = ref(0)
@@ -83,7 +81,6 @@ const updateAuthStatus = () => {
   const token = localStorage.getItem('token')
   isPaid.value = token && localStorage.getItem('paid') === 'true'
   username.value = localStorage.getItem('username')
-  isAdmin.value = localStorage.getItem('admin')
 
   // Clear cardData if token does not exist
   if (!token) {
@@ -150,13 +147,6 @@ const updateCurrentDate = () => {
 }
 
 updateCurrentDate()
-
-const formatFormation = (formation) => {
-  if (Array.isArray(formation)) {
-    return formation[0].split('-')
-  }
-  return []
-}
 
 watchEffect(() => {
   updateAuthStatus()

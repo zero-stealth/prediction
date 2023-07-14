@@ -1,25 +1,12 @@
 <template>
   <div class="nav-main">
     <div class="nav-container">
-      <!-- <div class="language-drop-down">
-      </div> -->
       <img src="../assets/logo-spp.png" alt="logo" class="logo-spp" @click="goHome" />
       <div class="nav-link-container">
-        <RouterLink :to="{ name: 'Home' }" class="nav-link"> Home </RouterLink>
-        <!-- <div @click="openTelegram" class="nav-link">Telegram tips</div> -->
-        <RouterLink :to="{ name: 'Banker' }" class="nav-link"> Bet of the day </RouterLink>
-        <RouterLink :to="{ name: 'Basketball' }" class="nav-link"> Basketball </RouterLink>
-        <RouterLink :to="{ name: 'Tennis' }" class="nav-link"> Tennis </RouterLink>
-        <!-- <div class="drop-container">
-          <div class="drop-down" @click="showDrp()">
-            <span>Other sports</span>
-            <ArrowIcon class="drop-icon" />
-          </div>
-          <div class="drop-down-panel" :class="[isDrpOpen ? 'show' : 'hide']">
-            <span @click="goBasketballC()">Basketball</span>
-            <span @click="goTennisC()"> Tennis</span>
-          </div>
-        </div> -->
+        <RouterLink :to="{ name: 'Home' }" class="nav-link">Home</RouterLink>
+        <RouterLink :to="{ name: 'Banker' }" class="nav-link">Bet of the day</RouterLink>
+        <RouterLink :to="{ name: 'Basketball' }" class="nav-link">Basketball</RouterLink>
+        <RouterLink :to="{ name: 'Tennis' }" class="nav-link">Tennis</RouterLink>
         <div class="drop-container">
           <div class="drop-down" @click="showDrop()">
             <span>Other Predictions</span>
@@ -30,7 +17,6 @@
             <span @click="goToC('Over 2.5 Goals')">Over 2.5 Goals</span>
             <span @click="goToC('Over 1.5 Goals')">Over 1.5 Goals</span>
             <span @click="goToC('Both Teams To Score')">Both Team To Score</span>
-            <!-- <span @click="goTo('Bet Of The Day')">Bet Of The Day</span> -->
             <span @click="goToC('Under 2.5 Goals')">Under 2.5 Goals</span>
           </div>
         </div>
@@ -38,17 +24,17 @@
       <div class="nav-btn-container" v-if="token !== null">
         <button @click="logOut" class="nav-btn btn-l btn-logout">
           <LogoutIcon class="icon-nav l-icon" />
-          log out
+          Log out
         </button>
       </div>
       <div class="nav-btn-container" v-else>
         <button @click="goSignin" class="nav-btn btn-r">
           <GroupIcon class="icon-nav r-icon" />
-          sign up
+          Sign up
         </button>
         <button @click="goLogin" class="nav-btn btn-l">
           <ProfileIcon class="icon-nav l-icon" />
-          log in
+          Log in
         </button>
       </div>
       <div class="nav-menu" @click="showMenu()">
@@ -63,48 +49,44 @@
       <ExitIcon class="icon-exit" @click="showMenu()" />
     </div>
     <div class="mobile-container">
-      <!-- <div class="mobile-logo">
-        <img src="../assets/logo-spp.png" alt="logo" class="logo-spp">
-      </div> -->
       <div class="mobile-link-container">
         <RouterLink :to="{ name: 'Home' }" @click="showMenu()" class="mobile-link">
           Home
         </RouterLink>
         <div class="drop-container">
-          <span @click="goTennis()" class="nav-link"> Tennis</span>
+          <span @click="goTennis()" class="nav-link">Tennis</span>
           <span @click="goBasketball()" class="nav-link">Basketball</span>
         </div>
         <div @click="openTelegramX" class="mobile-link">Telegram tips</div>
-        <div @click="openBetOfDay" class="mobile-link">Bet Of the day</div>
+        <div @click="openBetOfDay" class="mobile-link">Bet of the day</div>
         <div class="drop-container">
-        <div class="drop-down" @click="showDrp()">
-          <span>Predictions</span>
-          <ArrowIcon class="drop-icon" />
+          <div class="drop-down" @click="showDrp()">
+            <span>Predictions</span>
+            <ArrowIcon class="drop-icon" />
+          </div>
+          <div class="drop-down-panel" :class="[isDrpOpen ? 'show' : 'hide']">
+            <span @click="goTo('Double Chance')">Double chance</span>
+            <span @click="goTo('Over 2.5 Goals')">Over 2.5 Goals</span>
+            <span @click="goTo('Over 1.5 Goals')">Over 1.5 Goals</span>
+            <span @click="goTo('Both Teams To Score')">Both Team To Score</span>
+            <span @click="goTo('Under 2.5 Goals')">Under 2.5 Goals</span>
+          </div>
         </div>
-        <div class="drop-down-panel" :class="[isDrpOpen == false ? 'hide': 'show']">
-          <span @click="goTo('Double Chance')">Double chance</span>
-          <span @click="goTo('Over 2.5 Goals')">Over 2.5 Goals</span>
-          <span @click="goTo('Over 1.5 Goals')">Over 1.5 Goals</span>
-          <span @click="goTo('Both Teams To Score')">Both Team To Score</span>
-          <span @click="goTo('Under 2.5 Goals')">Under 2.5 Goals</span>
-        </div>
-       </div>
-        <!-- <span @click="goTo('Bet Of The Day')" class="nav-link">Bet Of The Day</span> -->
       </div>
       <div class="mobile-btn-container" v-if="token !== null">
         <button @click="logOut" class="mobile-btn btn-l btn-logout">
           <LogoutIcon class="icon-nav l-icon" />
-          log out
+          Log out
         </button>
       </div>
       <div class="mobile-btn-container" v-else>
         <button @click="goSignin" class="mobile-btn btn-r">
           <GroupIcon class="icon-nav r-icon" />
-          sign up
+          Sign up
         </button>
         <button @click="goLogin" class="mobile-btn btn-l">
           <ProfileIcon class="icon-nav l-icon" />
-          log in
+          Log in
         </button>
       </div>
     </div>
@@ -115,7 +97,6 @@
 <script setup>
 import MobileMenuIcon from '../icons/mobileMenuIcon.vue'
 import { RouterLink, useRouter } from 'vue-router'
-import { countries } from 'country-flags-svg'
 import ProfileIcon from '../icons/profileIcon.vue'
 import GroupIcon from '../icons/GroupIcon.vue'
 import ExitIcon from '../icons/ExitIcon.vue'
@@ -128,15 +109,14 @@ const isOpen = ref(false)
 const isDropOpen = ref(false)
 const isDrpOpen = ref(false)
 const token = ref(null)
-const countryData = countries
 
 watchEffect(() => {
   token.value = localStorage.getItem('token')
 })
 
-  const showMenu = () => {
-    isOpen.value = !isOpen.value
-  }
+const showMenu = () => {
+  isOpen.value = !isOpen.value
+}
 
 const showDrop = () => {
   isDropOpen.value = !isDropOpen.value
@@ -146,23 +126,20 @@ const showDrp = () => {
   isDrpOpen.value = !isDrpOpen.value
 }
 
-
-
 const logOut = () => {
   localStorage.removeItem('token')
   localStorage.removeItem('username')
-  isPaid.value = false
+  token.value = null 
+  isPaid.value = false 
   username.value = null
   isAdmin.value = false
   window.location.reload()
 }
 
 const openBetOfDay = () => {
-  router.push({ name: 'Banker'})
+  router.push({ name: 'Banker' })
   showMenu()
-
 }
-
 
 const goToC = (betname) => {
   router.push({ name: 'Bet', params: { betName: betname } })
@@ -187,7 +164,6 @@ const goBasketball = () => {
 
 const goLogin = () => {
   router.push({ name: 'Login' })
-  // showMenu();
 }
 
 const goHome = () => {
@@ -196,11 +172,6 @@ const goHome = () => {
 
 const goSignin = () => {
   router.push({ name: 'Signin' })
-  // showMenu();
-}
-
-const openTelegram = () => {
-  window.open('https://t.me/sportypredict_tips', '_blank')
 }
 
 const openTelegramX = () => {
