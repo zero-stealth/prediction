@@ -28,7 +28,7 @@
             </button>
           </div>
         </div>
-      <template v-if="isPaid && username && cardData.length > 0">
+        <template v-if="isPaid && username && cardData.length > 0">
           <div class="main-h-card">
             <Card
               v-for="(card, index) in cardData"
@@ -68,7 +68,7 @@ import SportBg from '../assets/stadium.jpg'
 import MoneyIcon from '../icons/payIcon.vue'
 import Card from '../components/CardComponent.vue'
 import ProfileIcon from '../icons/profileIcon.vue'
-import { ref, onMounted, watchEffect } from 'vue'
+import { ref, onMounted, watch } from 'vue'
 
 const isPaid = ref(false)
 const router = useRouter()
@@ -100,7 +100,7 @@ const showCard = (cardID) => {
   router.push({ name: 'Tips', params: { id: cardID } })
 }
 
-async function getPrediction() {
+const getPrediction = async () => {
   const token = JSON.parse(localStorage.getItem('token'))
 
   try {
@@ -133,7 +133,7 @@ const nextDay = () => {
   if (offset.value < 1) {
     offset.value++
     updateCurrentDate()
-  }
+  } 
 }
 
 const updateCurrentDate = () => {
@@ -148,13 +148,13 @@ const updateCurrentDate = () => {
 
 updateCurrentDate()
 
-watchEffect(() => {
+watch([offset, username,isPaid], () => {
   updateAuthStatus()
   getPrediction()
 })
 </script>
 
-<style>
+<style scoped>
 @import '../style/vip.css';
 @import '../style/Home.css';
 </style>
