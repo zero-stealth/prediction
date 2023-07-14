@@ -13,7 +13,11 @@
       <div class="card-a">
         <div class="card-fade">
           <div class="card-inner">
-            <img :src="teamAIcon" alt="card-img" class="card-img" />
+            <img
+              :src="teamAIcon"
+              alt="card-img"
+              :class="[sport === 'Tennis' ? 'card-img circle-tennis' : 'card-img square-img']"
+            />
           </div>
         </div>
         <h2>{{ teamA }}</h2>
@@ -38,7 +42,11 @@
       <div class="card-a">
         <div class="card-fade">
           <div class="card-inner">
-            <img :src="teamBIcon" alt="card-img" class="card-img" />
+            <img
+              :src="teamBIcon"
+              alt="card-img"
+              :class="[sport === 'Tennis' ? 'card-img circle-tennis' : 'card-img square-img']"
+            />
           </div>
         </div>
         <h2>{{ teamB }}</h2>
@@ -57,7 +65,7 @@
 </template>
 
 <script setup>
-import { ref, computed } from 'vue';
+import { ref, computed, defineProps } from 'vue';
 
 const props = defineProps({
   formationA: {
@@ -109,6 +117,10 @@ const props = defineProps({
   time: {
     type: String,
     required: true
+  },
+  sport: {
+    type: String,
+    required: false
   },
   showScore: {
     type: Boolean,

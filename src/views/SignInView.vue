@@ -75,7 +75,7 @@ const create = async () => {
       const token = response.data.token
       const isPaid = response.data.paid
       localStorage.setItem('token', token)
-      localStorage.setItem('isPaid', isPaid)
+      localStorage.setItem('paid', isPaid)
       router.push({ name: 'Vip' })
     } catch (error) {
       errMsg.value = error;

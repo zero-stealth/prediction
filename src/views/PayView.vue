@@ -154,7 +154,7 @@ const filteredCountries = computed(() => {
             </p>
           </div>
           <div class="Question-con">
-            <h1>Q: Why don't we post results anymore?</h1>
+            <h1>Q: Why don't we post results </h1>
             <p>
               <span>Answer:</span> We no longer disclose results because fraudsters take screenshots
               and swindle unsuspecting victims.
