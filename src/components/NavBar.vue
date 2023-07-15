@@ -141,13 +141,9 @@ const openBetOfDay = () => {
   showMenu()
 }
 
-const closeMenu = () => {
-  if (isOpen.value) {
-    showMenu();
-  }
-};
 
-document.body.addEventListener('click', closeMenu);
+
+document.body.addEventListener('click', showMenu);
 
 const goToC = (betname) => {
   router.push({ name: 'Bet', params: { betName: betname } })
