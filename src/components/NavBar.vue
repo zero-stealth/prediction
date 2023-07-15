@@ -64,7 +64,7 @@
             <span>Predictions</span>
             <ArrowIcon class="drop-icon" />
           </div>
-          <div class="drop-down-panel" :class="[isDrpOpen ? 'show' : 'hide']">
+          <div class="drop-down-panels" :class="[isDrpOpen ? 'show' : 'hide']">
             <span @click="goTo('Double Chance')">Double chance</span>
             <span @click="goTo('Over 2.5 Goals')">Over 2.5 Goals</span>
             <span @click="goTo('Over 1.5 Goals')">Over 1.5 Goals</span>
@@ -116,7 +116,9 @@ watchEffect(() => {
 
 const showMenu = () => {
   isOpen.value = !isOpen.value
+  isDrpOpen.value = false
 }
+
 
 const showDrop = () => {
   isDropOpen.value = !isDropOpen.value
@@ -125,6 +127,9 @@ const showDrop = () => {
 const showDrp = () => {
   isDrpOpen.value = !isDrpOpen.value
 }
+
+
+
 
 const logOut = () => {
   localStorage.removeItem('token')
@@ -141,10 +146,7 @@ const openBetOfDay = () => {
   showMenu()
 }
 
-
-
-document.body.addEventListener('click', showMenu);
-
+ 
 const goToC = (betname) => {
   router.push({ name: 'Bet', params: { betName: betname } })
   showDrop()
