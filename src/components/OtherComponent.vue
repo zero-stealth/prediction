@@ -1,6 +1,6 @@
 <template>
       <div class="prediction-con">
-      <h1>Other Predictions</h1>
+        <span>Extra Predictions</span>
       <div class="prediction-p">
         <OtherPredictions buttonName="Double Chance" />
         <OtherPredictions buttonName="Over 2.5 Goals" />

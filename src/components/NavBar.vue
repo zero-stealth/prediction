@@ -9,7 +9,7 @@
         <RouterLink :to="{ name: 'Tennis' }" class="nav-link">Tennis</RouterLink>
         <div class="drop-container">
           <div class="drop-down" @click="showDrop()">
-            <span>Other Predictions</span>
+            <span>Extra Predictions</span>
             <ArrowIcon class="drop-icon" />
           </div>
           <div class="drop-down-panel" :class="[isDropOpen ? 'show' : 'hide']">
@@ -61,7 +61,7 @@
         <div @click="openBetOfDay" class="mobile-link">Bet of the day</div>
         <div class="drop-container">
           <div class="drop-down" @click="showDrp()">
-            <span>Predictions</span>
+            <span>Extra Predictions</span>
             <ArrowIcon class="drop-icon" />
           </div>
           <div class="drop-down-panels" :class="[isDrpOpen ? 'show' : 'hide']">
@@ -102,7 +102,7 @@ import GroupIcon from '../icons/GroupIcon.vue'
 import ExitIcon from '../icons/ExitIcon.vue'
 import LogoutIcon from '../icons/logoutIcon.vue'
 import ArrowIcon from '../icons/ArrowIcon.vue'
-import { ref, watchEffect } from 'vue'
+import { ref, watchEffect, watch } from 'vue'
 
 const router = useRouter()
 const isOpen = ref(false)
@@ -114,10 +114,13 @@ watchEffect(() => {
   token.value = localStorage.getItem('token')
 })
 
+
 const showMenu = () => {
   isOpen.value = !isOpen.value
   isDrpOpen.value = false
+
 }
+
 
 
 const showDrop = () => {
@@ -130,12 +133,11 @@ const showDrp = () => {
 
 
 
-
 const logOut = () => {
   localStorage.removeItem('token')
   localStorage.removeItem('username')
-  token.value = null 
-  isPaid.value = false 
+  token.value = null
+  isPaid.value = false
   username.value = null
   isAdmin.value = false
   window.location.reload()
@@ -146,7 +148,6 @@ const openBetOfDay = () => {
   showMenu()
 }
 
- 
 const goToC = (betname) => {
   router.push({ name: 'Bet', params: { betName: betname } })
   showDrop()

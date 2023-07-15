@@ -1,7 +1,7 @@
 <template>
   <div class="vip-container">
     <div class="vip-wrapper">
-      <div class="vip-notpaid" :style="{ backgroundImage: `url(${SportBg})` }" v-if="!paid">
+      <div class="vip-notpaid" :style="{ backgroundImage: `url(${banner})` }" v-if="!paid">
         <div v-if="!username" class="vip-p">
           <h1>Your not login to your account 🌵</h1>
           <button class="vip-btn" @click="goLogin()">
@@ -33,8 +33,8 @@
             </button>
           </div>
         </div>
-        <template v-if="paid && username && cardData.length > 0">
-          <div class="main-h-card">
+        <template  v-if="paid && username && cardData.length > 0">
+          <div class="main-h-card booom-h">
             <Card
               v-for="(card, index) in cardData"
               :key="card._id"
@@ -68,8 +68,9 @@
 
 <script setup>
 import axios from 'axios'
+import Arrow from '../icons/arrow.vue'
 import { useRouter } from 'vue-router'
-import SportBg from '../assets/stadium.jpg'
+import banner from '../assets/banner.jpeg'
 import MoneyIcon from '../icons/payIcon.vue'
 import Card from '../components/CardComponent.vue'
 import ProfileIcon from '../icons/profileIcon.vue'
@@ -174,6 +175,14 @@ const updateCurrentDate = () => {
 }
 
 updateCurrentDate()
+
+const formatFormation = (formation) => {
+  if (Array.isArray(formation)) {
+    return formation[0].split('-')
+  }
+  return []
+}
+
 
 watch([offset, username, paid], () => {
   updateAuthStatus()

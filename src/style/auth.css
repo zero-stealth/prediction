@@ -32,6 +32,8 @@
     text-transform: capitalize;
 }
 
+
+
 .form-l-wrapper p {
     font-size: .8rem;
     color: var( --secondary-color) ;
