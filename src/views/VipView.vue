@@ -78,6 +78,7 @@ const currentDate = ref('')
 const paid = ref(null)
 const offset = ref(0)
 
+console.log(isPaid.value)
 const updateAuthStatus = () => {
   const token = localStorage.getItem('token')
   isPaid.value = token && paid.value === true
@@ -121,6 +122,7 @@ const getPrediction = async () => {
 }
 
 const getAccountDetails = async () => {
+  const token = localStorage.getItem('token')
   const id = localStorage.getItem('id')
 
   try {
@@ -131,15 +133,14 @@ const getAccountDetails = async () => {
           Authorization: `Bearer ${token}`
         }
       }
-    );
-    console.log(response.data);
-    username.value = response.data.username;
-    paid.value = response.data.paid;
-    
+    )
+    console.log(response.data)
+    username.value = response.data.username
+    paid.value = response.data.paid
   } catch (err) {
-    console.log(err);
+    console.log(err)
   }
-};
+}
 
 onMounted(() => {
   getPrediction()
@@ -156,7 +157,7 @@ const nextDay = () => {
   if (offset.value < 1) {
     offset.value++
     updateCurrentDate()
-  } 
+  }
 }
 
 const updateCurrentDate = () => {
@@ -171,7 +172,7 @@ const updateCurrentDate = () => {
 
 updateCurrentDate()
 
-watch([offset, username,isPaid], () => {
+watch([offset, username, isPaid], () => {
   updateAuthStatus()
   getPrediction()
 })
