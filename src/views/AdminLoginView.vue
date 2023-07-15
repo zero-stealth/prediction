@@ -63,12 +63,15 @@ const login = async () => {
         const token = response.data.token
         const admin = response.data.isAdmin
         const paid = response.data.paid
+        const id = response.data._id
         const adminusername = response.data.username
+
 
         localStorage.setItem('admin', admin)
         localStorage.setItem('username', adminusername)
         localStorage.setItem('token', JSON.stringify(token))
         localStorage.setItem('paid', paid)
+        localStorage.setItem('id', id)
 
         router.push({ name: 'Panel' })
       } else {

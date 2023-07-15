@@ -75,11 +75,12 @@ const router = useRouter()
 const username = ref(null)
 const cardData = ref([])
 const currentDate = ref('')
+const paid = ref(null)
 const offset = ref(0)
 
 const updateAuthStatus = () => {
   const token = localStorage.getItem('token')
-  isPaid.value = token && localStorage.getItem('paid') === 'true'
+  isPaid.value = token && paid.value === true
   username.value = localStorage.getItem('username')
 
   // Clear cardData if token does not exist
@@ -119,9 +120,31 @@ const getPrediction = async () => {
   }
 }
 
+const getAccountDetails = async () => {
+  const id = localStorage.getItem('id')
+
+  try {
+    const response = await axios.get(
+      `https://predictions-reg9.onrender.com/auth/${id}`,
+      {
+        headers: {
+          Authorization: `Bearer ${token}`
+        }
+      }
+    );
+    console.log(response.data);
+    username.value = response.data.username;
+    paid.value = response.data.paid;
+    
+  } catch (err) {
+    console.log(err);
+  }
+};
+
 onMounted(() => {
   getPrediction()
   updateAuthStatus()
+  getAccountDetails()
 })
 
 const previousDay = () => {

@@ -71,8 +71,8 @@ const sortedTeams = computed(() => {
     { position: teamBPosition.value, name: teamB.value, score: teamBscore.value }
   ];
   return teams.sort((a, b) => {
-    if (a.position < b.position) return -1;
-    if (a.position > b.position) return 1;
+    if (a.position > b.position) return -1;
+    if (a.position < b.position) return 1;
     return a.name.localeCompare(b.name);
   });
 });

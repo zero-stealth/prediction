@@ -67,10 +67,12 @@ const login = async () => {
       const isPaid = response.data.paid
       const token = response.data.token
       const username = response.data.username
+      const id = response.data._id
 
       localStorage.setItem('username', username)
       localStorage.setItem('token', JSON.stringify(token))
-      localStorage.setItem('isPaid', isPaid)
+      localStorage.setItem('paid', isPaid)
+      localStorage.setItem('id', id)
       router.push({ name: 'Vip' })
     } catch (error) {
       errMsg.value = error;
