@@ -2,15 +2,20 @@
   <div class="vip-container">
     <div class="vip-wrapper">
       <div class="vip-notpaid" :style="{ backgroundImage: `url(${SportBg})` }" v-if="!paid">
-        <h1>Your VIP account is inactive 🌵</h1>
-        <button class="vip-btn" @click="goLogin()" v-if="!username">
-          <ProfileIcon class="vip-pay-icon" />
-          Log in
-        </button>
-        <button class="vip-btn" @click="payPage()" v-else>
-          <MoneyIcon class="vip-pay-icon" />
-          Pay to activate
-        </button>
+        <div v-if="!username" class="vip-p">
+          <h1>Your not login to your account 🌵</h1>
+          <button class="vip-btn" @click="goLogin()">
+            <ProfileIcon class="vip-pay-icon" />
+            Log in
+          </button>
+        </div>
+        <div class="vip-p" v-else>
+          <h1>Your VIP account is in not activated 🌵</h1>
+          <button class="vip-btn" @click="payPage()">
+            <MoneyIcon class="vip-pay-icon" />
+            Pay to activate
+          </button>
+        </div>
       </div>
       <div v-else>
         <div class="main-header vip-m">
@@ -84,11 +89,10 @@ const updateAuthStatus = () => {
   username.value = localStorage.getItem('username')
 
   // Clear cardData if token does not exist
-  if (!token) { 
+  if (!token) {
     cardData.value = []
   }
 }
-
 
 const payPage = () => {
   router.push({ name: 'Pay' })
@@ -126,14 +130,11 @@ const getAccountDetails = async () => {
   const id = localStorage.getItem('id')
 
   try {
-    const response = await axios.get(
-      `https://predictions-reg9.onrender.com/auth/${id}`,
-      {
-        headers: {
-          Authorization: `Bearer ${token}`
-        }
+    const response = await axios.get(`https://predictions-reg9.onrender.com/auth/${id}`, {
+      headers: {
+        Authorization: `Bearer ${token}`
       }
-    )
+    })
     // console.log(response.data)
     username.value = response.data.username
     paid.value = response.data.paid

@@ -54,6 +54,13 @@
   .vip-btn:hover .vip-pay-icon {
     fill: var(--background-color);
   }
+
+  .vip-p {
+    gap: 10px;
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+  }
 }
 /* using it as global style for larger devices  */
 @media only screen and (min-width: 48em) {
