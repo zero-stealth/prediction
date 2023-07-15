@@ -173,7 +173,7 @@ const updateCurrentDate = () => {
 
 updateCurrentDate()
 
-watch([offset, username, isPaid], () => {
+watch([offset, username, paid], () => {
   updateAuthStatus()
   getPrediction()
 })
