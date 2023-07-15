@@ -28,7 +28,7 @@
             </button>
           </div>
         </div>
-        <template v-if="isPaid && username && cardData.length > 0">
+        <template v-if="paid && username && cardData.length > 0">
           <div class="main-h-card">
             <Card
               v-for="(card, index) in cardData"
@@ -51,7 +51,7 @@
             />
           </div>
         </template>
-        <template v-else-if="isPaid && username && cardData.length === 0">
+        <template v-else-if="paid && username && cardData.length === 0">
           <div class="home-freetip">
             <h1>No predictions yet! Check back later.</h1>
           </div>
@@ -79,7 +79,7 @@ const offset = ref(0)
 
 console.log(paid.value)
 const updateAuthStatus = () => {
-  const token = localStorage.getItem('token')
+  const token = JSON.parse(localStorage.getItem('token'))
 
   username.value = localStorage.getItem('username')
 
@@ -122,7 +122,7 @@ const getPrediction = async () => {
 }
 
 const getAccountDetails = async () => {
-  const token = localStorage.getItem('token')
+  const token = JSON.parse(localStorage.getItem('token'))
   const id = localStorage.getItem('id')
 
   try {
@@ -134,10 +134,11 @@ const getAccountDetails = async () => {
         }
       }
     )
-    console.log(response.data)
+    // console.log(response.data)
     username.value = response.data.username
     paid.value = response.data.paid
-    console.log(response.data.paid)
+    // console.log(response.data.paid)
+    localStorage.setItem('paid', paid.value)
   } catch (err) {
     console.log(err)
   }
