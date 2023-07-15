@@ -141,6 +141,14 @@ const openBetOfDay = () => {
   showMenu()
 }
 
+const closeMenu = () => {
+  if (isOpen.value) {
+    showMenu();
+  }
+};
+
+document.body.addEventListener('click', closeMenu);
+
 const goToC = (betname) => {
   router.push({ name: 'Bet', params: { betName: betname } })
   showDrop()
