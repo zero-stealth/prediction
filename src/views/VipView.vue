@@ -1,7 +1,7 @@
 <template>
   <div class="vip-container">
     <div class="vip-wrapper">
-      <div class="vip-notpaid" :style="{ backgroundImage: `url(${SportBg})` }" v-if="!isPaid">
+      <div class="vip-notpaid" :style="{ backgroundImage: `url(${SportBg})` }" v-if="!paid">
         <h1>Your VIP account is inactive 🌵</h1>
         <button class="vip-btn" @click="goLogin()" v-if="!username">
           <ProfileIcon class="vip-pay-icon" />
@@ -70,25 +70,25 @@ import Card from '../components/CardComponent.vue'
 import ProfileIcon from '../icons/profileIcon.vue'
 import { ref, onMounted, watch } from 'vue'
 
-const isPaid = ref(false)
 const router = useRouter()
 const username = ref(null)
 const cardData = ref([])
 const currentDate = ref('')
-const paid = ref(null)
+const paid = ref(false)
 const offset = ref(0)
 
-console.log(isPaid.value)
+console.log(paid.value)
 const updateAuthStatus = () => {
   const token = localStorage.getItem('token')
-  isPaid.value = token && paid.value === true
+
   username.value = localStorage.getItem('username')
 
   // Clear cardData if token does not exist
-  if (!token) {
+  if (!token) { 
     cardData.value = []
   }
 }
+
 
 const payPage = () => {
   router.push({ name: 'Pay' })
@@ -137,6 +137,7 @@ const getAccountDetails = async () => {
     console.log(response.data)
     username.value = response.data.username
     paid.value = response.data.paid
+    console.log(response.data.paid)
   } catch (err) {
     console.log(err)
   }
