@@ -299,7 +299,7 @@
 
   .hero-img {
     height: 20vh;
-    width: 90%;
+    cursor: pointer;
     border-radius: 4px;
     background-size: contain;
     background-repeat: no-repeat;

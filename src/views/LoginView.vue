@@ -29,7 +29,7 @@
         <!-- <span @click="create">Create an account</span> -->
       </form>
       <!-- <span>or</span> -->
-      <span @click="create">Create an account</span>
+      <span class="click-a" @click="create">Create an account</span>
 
       <!-- <div class="l-alternatives">
         <button class="alt-btn" @click="useGoogle">

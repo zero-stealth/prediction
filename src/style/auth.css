@@ -32,7 +32,9 @@
     text-transform: capitalize;
 }
 
-
+.click-a {
+    text-decoration: underline;
+}
 
 .form-l-wrapper p {
     font-size: .8rem;
