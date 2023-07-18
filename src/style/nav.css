@@ -298,11 +298,11 @@
   }
 
   .hero-img {
-    height: 30vh;
-    margin: 10px;
+    height: 20vh;
     cursor: pointer;
+    margin: 0 10px;
     border-radius: 4px;
-    background-size: contain;
+    background-size: cover  ;
     background-repeat: no-repeat;
     background-position: center;
   }
@@ -473,7 +473,7 @@
 
   .hero-img {
     flex: 50%;
-    height: 240px;
+    height: 270px;
   }
 }
 }
