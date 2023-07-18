@@ -68,7 +68,7 @@
     <div @click="goAds()"
       class="ads-home"
       :style="{
-        backgroundImage: `url(${Ads})`
+        backgroundImage: `url(${ads})`
       }"
     ></div>
     <OtherComponent />
@@ -81,7 +81,7 @@ import { ref, computed, onMounted, watch } from 'vue'
 import { useRouter } from 'vue-router'
 import axios from 'axios'
 import Arrow from '../icons/arrow.vue'
-import Ads from '../assets/ads.gif'
+import ads from '../assets/ads.gif'
 import NewsCard from '../components/NewsCard.vue'
 import Card from '../components/CardComponent.vue'
 import Upcoming from '../components/UpcomingPicks.vue'
