@@ -164,7 +164,8 @@ async function handleSubmit() {
           },
         }
       );
-      console.log(response.data);
+      alert('tip posted')
+      // console.log(response.data);
     } catch (err) {
       console.log(err);
     }

@@ -59,7 +59,7 @@ const openTelegram = () => {
           back, relax, and enjoy the benefits. We've taken care of all the hard work for you
         </p>
       </div>
-      <div class="hero-img" :style="{ backgroundImage: `url(${ads})` }"></div>
+      <div  @click="goPay()" class="hero-img" :style="{ backgroundImage: `url(${ads})` }"></div>
     </div>
   </div>
 </template>

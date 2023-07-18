@@ -80,6 +80,7 @@ const login = async () => {
       }
     } catch (error) {
       console.error(error)
+      
     }
   } else {
     errMsg.value = 'Write something'

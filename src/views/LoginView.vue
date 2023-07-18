@@ -82,7 +82,7 @@ const login = async () => {
       router.push({ name: 'Vip' })
     } catch (error) {
       errMsg.value = error;
-      alert(errMsg.value)
+      errMsg.value = 'Invalid credentials'
     }
   } else {
     errMsg.value = 'Write something'

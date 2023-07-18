@@ -808,9 +808,10 @@ const deletePrediction = async (id) => {
     await getBetOfTheDay()
     await getVipGames()
   } catch (err) {
-    message.value = err.message
+    message.value = 'deletion failed'
   }
-  alert(message.value)
+  alert("deleted")
+
 }
 
 const deleteSport = async (id) => {
@@ -827,9 +828,9 @@ const deleteSport = async (id) => {
     await getTennisBets()
     await getBasketballBets()
   } catch (err) {
-    message.value = err.message
+    message.value = 'deletion failed'
   }
-  alert(message.value)
+  alert("deleted")
 }
 const showscore = ref(localStorage.getItem('showscore') === 'true')
 
