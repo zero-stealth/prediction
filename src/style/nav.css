@@ -298,7 +298,8 @@
   }
 
   .hero-img {
-    height: 20vh;
+    height: 30vh;
+    margin: 10px;
     cursor: pointer;
     border-radius: 4px;
     background-size: contain;
