@@ -7,19 +7,11 @@
           <h1>Free tips {{ currentDate }}</h1>
         </div>
         <div class="header-btn">
-          <button
-            class="btn-h"
-            :class="{ 'active-btn': offset > 0 }"
-            @click="previousDay"
-          >
+          <button class="btn-h" :class="{ 'active-btn': offset > 0 }" @click="previousDay">
             <Arrow class="btn-icon icon-left" />
             Previous
           </button>
-          <button
-            class="btn-h"
-            :class="{ 'active-btn': offset < 0 }"
-            @click="nextDay"
-          >
+          <button class="btn-h" :class="{ 'active-btn': offset < 0 }" @click="nextDay">
             Next
             <Arrow class="btn-icon icon-right" />
           </button>
@@ -59,8 +51,7 @@
         <div class="news-info">
           <h1>Sport News</h1>
         </div>
-        <div class="news-link">
-        </div>
+        <div class="news-link"></div>
       </div>
       <div class="news-wrapper">
         <NewsCard
@@ -74,6 +65,12 @@
       </div>
     </div>
     <Upcoming />
+    <div @click="goAds()"
+      class="ads-home"
+      :style="{
+        backgroundImage: `url(${Ads})`
+      }"
+    ></div>
     <OtherComponent />
     <AboutComponent />
   </div>
@@ -84,6 +81,7 @@ import { ref, computed, onMounted, watch } from 'vue'
 import { useRouter } from 'vue-router'
 import axios from 'axios'
 import Arrow from '../icons/arrow.vue'
+import Ads from '../assets/ads.gif'
 import NewsCard from '../components/NewsCard.vue'
 import Card from '../components/CardComponent.vue'
 import Upcoming from '../components/UpcomingPicks.vue'
@@ -104,17 +102,18 @@ const newsInfo = (newsID) => {
   router.push({ name: 'News', params: { id: newsID } })
 }
 
+const goAds = () => {
+  router.push({ name: 'Pay', })
+}
+
 const getNews = async () => {
   try {
-    const response = await axios.get(
-      'https://livescore-football.p.rapidapi.com/soccer/news-list',
-      {
-        headers: {
-          'X-RapidAPI-Key': import.meta.env.VITE_RAPIDAPI_KEY,
-          'X-RapidAPI-Host': import.meta.env.VITE_RAPIDAPI_HOST
-        },
+    const response = await axios.get('https://livescore-football.p.rapidapi.com/soccer/news-list', {
+      headers: {
+        'X-RapidAPI-Key': import.meta.env.VITE_RAPIDAPI_KEY,
+        'X-RapidAPI-Host': import.meta.env.VITE_RAPIDAPI_HOST
       }
-    )
+    })
     console.log(response.data.data)
     newsData.value = response.data.data
     console.log(newsData.value)
