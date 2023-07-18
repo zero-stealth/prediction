@@ -51,7 +51,7 @@ const openTelegram = () => {
     <div class="hero-s-contain">
       <div class="hero-info">
         <h1>
-          Enjoy Our <span>top-notch</span> daily Sports <span>Predictions </span> and
+          Enjoy our <span>daily top-notch</span>  Sports <span>Predictions </span> and
           <span>Tips</span>
         </h1>
         <p>

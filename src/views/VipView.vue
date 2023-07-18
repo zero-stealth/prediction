@@ -3,10 +3,10 @@
     <div class="vip-wrapper">
       <div class="vip-notpaid" :style="{ backgroundImage: `url(${banner})` }" v-if="!paid">
         <div v-if="!username" class="vip-p">
-          <h1>Your not login to your account 🌵</h1>
-          <button class="vip-btn" @click="goLogin()">
+          <h1>Sign in to your account 🌵</h1>
+          <button class="vip-btn" @click="goSignin()">
             <ProfileIcon class="vip-pay-icon" />
-            Log in
+            Sign in
           </button>
         </div>
         <div class="vip-p" v-else>
@@ -99,8 +99,8 @@ const payPage = () => {
   router.push({ name: 'Pay' })
 }
 
-const goLogin = () => {
-  router.push({ name: 'Login' })
+const goSignin = () => {
+  router.push({ name: 'Signin' })
 }
 
 const showCard = (cardID) => {
