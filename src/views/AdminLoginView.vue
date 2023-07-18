@@ -56,39 +56,39 @@ const login = async () => {
       const response = await axios.post('https://predictions-reg9.onrender.com/auth/login', {
         email: email.value,
         password: password.value
-      })
-      console.log(response.data) // Handle the response data as needed
-      const isAdmin = response.data.isAdmin
+      });
+
+      console.log(response.data); // Handle the response data as needed
+      const isAdmin = response.data.isAdmin;
+
       if (isAdmin) {
-        const token = response.data.token
-        const admin = response.data.isAdmin
-        const paid = response.data.paid
-        const id = response.data._id
-        const adminusername = response.data.username
+        const token = response.data.token;
+        const admin = response.data.isAdmin;
+        const paid = response.data.paid;
+        const id = response.data._id;
+        const adminusername = response.data.username;
 
+        localStorage.setItem('admin', admin);
+        localStorage.setItem('username', adminusername);
+        localStorage.setItem('token', JSON.stringify(token));
+        localStorage.setItem('paid', paid);
+        localStorage.setItem('id', id);
 
-        localStorage.setItem('admin', admin)
-        localStorage.setItem('username', adminusername)
-        localStorage.setItem('token', JSON.stringify(token))
-        localStorage.setItem('paid', paid)
-        localStorage.setItem('id', id)
-
-        router.push({ name: 'Panel' })
+        router.push({ name: 'Panel' });
       } else {
-        errMsg.value = 'Invalid admin credentials'
-        alert(errMsg.value)
+        errMsg.value = 'Invalid admin credentials';
+        alert(errMsg.value);
       }
     } catch (error) {
-      console.error(error)
-      
+      console.error(error);
+      errMsg.value = 'Login failed. Please check your email and password.';
+      alert(errMsg.value);
     }
   } else {
-    errMsg.value = 'Write something'
-    alert(errMsg.value)
-
-    reset()
+    errMsg.value = 'Please enter your email and password.';
+    alert(errMsg.value);
   }
-}
+};
 
 const forgot = () => {
   title.value = 'Reset Your Account'
