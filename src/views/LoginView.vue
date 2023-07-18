@@ -28,7 +28,7 @@
         <button class="btn-f" type="submit">Reset</button>
         <!-- <span @click="create">Create an account</span> -->
       </form>
-      <!-- <span>or</span> -->
+      <span>or</span>
       <span class="click-a" @click="create">Create an account</span>
 
       <!-- <div class="l-alternatives">
