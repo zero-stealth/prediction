@@ -1,7 +1,7 @@
 <template>
   <div>
     <div class="form-container-h">
-      <h1>Upcoming picks</h1>
+      <h1>Upcoming tips</h1>
     </div>
     <form @submit.prevent="handleSubmit" enctype="multipart/form-data" class="form-container">
       <div class="form-wrapper">

@@ -58,25 +58,20 @@ const login = async () => {
         password: password.value
       });
 
-      console.log(response.data); // Handle the response data as needed
-      const isAdmin = response.data.isAdmin;
-
-      if (isAdmin) {
-        const token = response.data.token;
-        const admin = response.data.isAdmin;
-        const paid = response.data.paid;
-        const id = response.data._id;
+      console.log(response.data); 
+      
+      const token = response.data.token;
+      if (token) {
+        const isAdmin = response.data.isAdmin;
         const adminusername = response.data.username;
 
-        localStorage.setItem('admin', admin);
+        localStorage.setItem('admin', isAdmin);
         localStorage.setItem('username', adminusername);
         localStorage.setItem('token', JSON.stringify(token));
-        localStorage.setItem('paid', paid);
-        localStorage.setItem('id', id);
 
         router.push({ name: 'Panel' });
       } else {
-        errMsg.value = 'Invalid admin credentials';
+        errMsg.value = 'Invalid email or password';
         alert(errMsg.value);
       }
     } catch (error) {
@@ -89,7 +84,6 @@ const login = async () => {
     alert(errMsg.value);
   }
 };
-
 const forgot = () => {
   title.value = 'Reset Your Account'
   resetPage.value = !resetPage.value

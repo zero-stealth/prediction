@@ -31,7 +31,7 @@
 </template>
 
 <script setup>
-import { ref, defineProps, defineEmits } from 'vue'
+import { ref } from 'vue'
 import TelegramIcon from '../icons/telegram.vue'
 import banner from '../assets/banner.jpeg'
 import PayIcon from '../icons/payIcon.vue'

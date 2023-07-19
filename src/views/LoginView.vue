@@ -68,28 +68,36 @@ const login = async () => {
       const response = await axios.post('https://predictions-reg9.onrender.com/auth/login', {
         email: email.value,
         password: password.value
-      })
-      console.log(response.data) // Handle the response data as needed
-      const isPaid = response.data.paid
-      const token = response.data.token
-      const username = response.data.username
-      const id = response.data._id
+      });
 
-      localStorage.setItem('username', username)
-      localStorage.setItem('token', JSON.stringify(token))
-      localStorage.setItem('paid', isPaid)
-      localStorage.setItem('id', id)
-      router.push({ name: 'Vip' })
+      const responseData = response.data;
+
+      const token = responseData.token;
+      if (token) {
+        const isPaid = responseData.paid;
+        const token = responseData.token;
+        const username = responseData.username;
+        const id = responseData._id;
+
+        localStorage.setItem('username', username);
+        localStorage.setItem('token', JSON.stringify(token));
+        localStorage.setItem('paid', isPaid);
+        localStorage.setItem('id', id);
+
+        router.push({ name: 'Vip' });
+      } else {
+        errMsg.value = 'Invalid credentials';
+      }
     } catch (error) {
-      errMsg.value = error;
-      errMsg.value = 'Invalid credentials'
+      errMsg.value = 'An error occurred. Please try again later.';
+      console.error(error);
     }
   } else {
-    errMsg.value = 'Write something'
-    alert(errMsg.value)
-    reset()
+    errMsg.value = 'Write something';
+    alert(errMsg.value);
+    reset();
   }
-}
+};
 
 const forgot = () => {
   title.value = 'reset your account'

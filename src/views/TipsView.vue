@@ -1,5 +1,5 @@
 <script setup>
-import { onMounted, ref, computed, defineProps } from 'vue'
+import { onMounted, ref, computed } from 'vue'
 import { useRouter } from 'vue-router'
 import banner from '@/assets/banner.jpeg'
 import ArrowIcon from '@/icons/ArrowIcon.vue'
