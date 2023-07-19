@@ -3,7 +3,7 @@
     <div class="main-h">
       <div class="main-header home-up">
         <div class="header-info home-up">
-          <h1>Upcoming Picks</h1>
+          <h1>Upcoming Tips</h1>
         </div>
       </div>
       <template v-if="cardData.length > 0">
