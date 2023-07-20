@@ -10,7 +10,7 @@ const router = createRouter({
       component: HomeView
     },
     {
-      path: '/admin-panel',
+      path: '/pixel',
       name: 'Panel',
       component: () => import('../views/PanelView.vue'),
       meta: {

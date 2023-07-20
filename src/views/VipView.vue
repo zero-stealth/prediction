@@ -3,11 +3,18 @@
     <div class="vip-wrapper">
       <div class="vip-notpaid" :style="{ backgroundImage: `url(${banner})` }" v-if="!paid">
         <div v-if="!username" class="vip-p">
-          <h1>Sign in to your account 🌵</h1>
+          <h1>Sign in or  log in to your account 🌵</h1>
+        <div class="vip-sp">
           <button class="vip-btn" @click="goSignin()">
             <ProfileIcon class="vip-pay-icon" />
             Sign in
           </button>
+          <button class="vip-btn" @click="goLogin()">
+            Log in
+            <ProfileIcon class="vip-pay-icon" />
+          </button>
+        </div>
+         
         </div>
         <div class="vip-p" v-else>
           <h1>Your VIP account is in not activated 🌵</h1>
@@ -101,6 +108,10 @@ const payPage = () => {
 
 const goSignin = () => {
   router.push({ name: 'Signin' })
+}
+
+const goLogin = () => {
+  router.push({ name: 'Login' })
 }
 
 const showCard = (cardID) => {

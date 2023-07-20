@@ -80,7 +80,7 @@ const create = async () => {
       localStorage.setItem('id', id)
       router.push({ name: 'Vip' })
     } catch (error) {
-      errMsg.value = error;
+      errMsg.value = 'Invalid email or password';
       alert(errMsg.value)
     }
   } else {

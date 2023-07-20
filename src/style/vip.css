@@ -63,6 +63,11 @@
     align-items: center;
     flex-direction: column;
   }
+
+  .vip-sp {
+    gap: 10px;
+    display: flex;
+  }
 }
 /* using it as global style for larger devices  */
 @media only screen and (min-width: 48em) {

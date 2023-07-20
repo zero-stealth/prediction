@@ -68,7 +68,7 @@ const filteredNewsData = computed(() => {
   </div>
 </template>
 
-<style>
+<style> 
 @import '../style/specific.css';
 @import '../style/predictions.css';
 </style>

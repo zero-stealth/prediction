@@ -29,8 +29,6 @@ const showPayment = () => {
     reveal.value = 'Zambia'
   } else if (Selectedcountry.value !== '' && Selectedcountry.value === 'RW') {
     reveal.value = 'Rwanda'
-  } else if (Selectedcountry.value !== '' && Selectedcountry.value === 'IN') {
-    reveal.value = 'India'
   } else if (Selectedcountry.value !== '' && Selectedcountry.value === 'MW') {
     reveal.value = 'Malawi'
   } else if (Selectedcountry.value !== '' && Selectedcountry.value === 'TZ') {

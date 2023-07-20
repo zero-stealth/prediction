@@ -86,7 +86,7 @@
       <div class="acc-m gm-m">
         <div class="main-header">
           <div class="header-info">
-            <h1>Prediction picks ({{ currentDate }})</h1>
+            <h1>Prediction Tips ({{ currentDate }})</h1>
           </div>
           <div class="header-btn">
             <button class="btn-h"  :class="{ 'active-btn': offset > 0 }" @click="previousDay">
@@ -130,7 +130,7 @@
               <td>
                 <div class="Account-tbl-img">
                   <img :src="data.teamBIcon" alt="Account-p" class="Account-pi" />
-                  <span>{{ data.teamA }}</span>
+                  <span>{{ data.teamB }}</span>
                 </div>
               </td>
               <td>
