@@ -51,14 +51,6 @@
     fill: var(--primary-color);
   }
 
-  .ads-home {
-    height: 30vh;
-    cursor: pointer;
-    background-size: cover;
-    background-position: center;
-    background-repeat: no-repeat;
-  }
-
   .img-ads-h {
     height: 100%;
   }
@@ -429,10 +421,6 @@
 
   .drop-down-panel {
     top: 70px;
-  }
-
-  .ads-home {
-    background-size: contain;
   }
 
   .nav-menu {

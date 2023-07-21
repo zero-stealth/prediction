@@ -86,21 +86,20 @@ const login = async () => {
 
         router.push({ name: 'Vip' });
       } else {
-        errMsg.value = 'Invalid credentials';
+        errMsg.value = 'Invalid email or password';
       }
     } catch (error) {
-      errMsg.value = 'An error occurred. Please try again later.';
-      console.error(error);
+      errMsg.value = 'Login failed. Please check your email and password.';
     }
   } else {
-    errMsg.value = 'Write something';
+    errMsg.value = 'Please enter your email and password.';
     alert(errMsg.value);
     reset();
   }
 };
 
 const forgot = () => {
-  title.value = 'reset your account'
+  title.value = 'Reset your account'
   resetPage.value = !resetPage.value
 }
 

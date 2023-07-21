@@ -167,6 +167,16 @@
     justify-content: center;
   }
 
+  .ads-home {
+    height: 20vh;
+    margin:  10px;
+    cursor: pointer;
+    border-radius: 4px;
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: center center;
+  }
+
 }
 /* using it as global style for larger devices  */
 @media only screen and (min-width: 48em) {
@@ -177,6 +187,11 @@
   .main-header {
     padding: 20px 0;
     flex-direction: row;
+  }
+
+  .ads-home {
+    height: 40vh;
+    background-size: cover;
   }
 
 

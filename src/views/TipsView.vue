@@ -64,18 +64,20 @@ const formatFormation = (formation) => {
 }
 
 
-// Arrange table rows based on alphanumeric order
+// Arrange table rows based on numeric order
 const sortedTeams = computed(() => {
+  // Parse the position values or provide a default value (e.g., 0) if parsing fails
+  const positionA = parseInt(teamAPosition.value) || 0;
+  const positionB = parseInt(teamBPosition.value) || 0;
+
   const teams = [
-    { position: teamAPosition.value, name: teamA.value, score: teamAscore.value },
-    { position: teamBPosition.value, name: teamB.value, score: teamBscore.value }
+    { position: positionA, name: teamA.value, score: parseInt(teamAscore.value) },
+    { position: positionB, name: teamB.value, score: parseInt(teamBscore.value) }
   ];
-  return teams.sort((a, b) => {
-    if (a.position > b.position) return -1;
-    if (a.position < b.position) return 1;
-    return a.name.localeCompare(b.name);
-  });
+
+  return teams.sort((a, b) => a.position - b.position);
 });
+
 </script>
 
 <template>

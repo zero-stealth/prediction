@@ -72,12 +72,10 @@ const login = async () => {
         router.push({ name: 'Panel' });
       } else {
         errMsg.value = 'Invalid email or password';
-        alert(errMsg.value);
       }
     } catch (error) {
       console.error(error);
       errMsg.value = 'Login failed. Please check your email and password.';
-      alert(errMsg.value);
     }
   } else {
     errMsg.value = 'Please enter your email and password.';
