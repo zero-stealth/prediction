@@ -110,8 +110,10 @@ const router = createRouter({
       name: 'NotFound',
       component: () => import('../views/NotFoundView.vue')
     }
-  ]
+  ],  
 })
+
+
 const currentUser = () => {
   const token = localStorage.getItem('token');
   return !!token; // Return true if token exists, false otherwise
@@ -123,8 +125,7 @@ const isAdmin = () => {
 }
 
 router.beforeEach(async (to, from, next) => {
-  window.scrollTo(0, 0);
-  if (to.matched.some((record) => record.meta.isAdmin)) {
+    if (to.matched.some((record) => record.meta.isAdmin)) {
     if (isAdmin()) {
       next();
     } else {
@@ -140,5 +141,6 @@ router.beforeEach(async (to, from, next) => {
     next();
   }
 })
+
 
 export default router
