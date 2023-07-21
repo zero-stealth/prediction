@@ -123,6 +123,7 @@ const isAdmin = () => {
 }
 
 router.beforeEach(async (to, from, next) => {
+  window.scrollTo(0, 0);
   if (to.matched.some((record) => record.meta.isAdmin)) {
     if (isAdmin()) {
       next();
