@@ -42,7 +42,7 @@ const openFacebook = () => {
 }
 
 const openTwitter = () => {
-  window.open('https://twitter.com/sportypredict_?s=21&t=ordgrMn8HjrBLUy3PdpsBA', '_blank')
+  window.open('https://twitter.com/sportypredict?s=21&t=ordgrMn8HjrBLUy3PdpsBA', '_blank')
 }
 
 const openInstagram = () => {
