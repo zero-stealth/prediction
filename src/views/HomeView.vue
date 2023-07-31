@@ -17,6 +17,9 @@
           </button>
         </div>
       </div>
+      <a href="https://bwredir.com/1bkh?p=%2Fregistration%2F" class="betw-banner-comp" @click="goAdds">
+        <img src="../assets/BannerBet.png" alt="bet winner" class="betw-banner" />
+      </a>
       <template v-if="cardData.length > 0">
         <div class="main-h-card">
           <Card
@@ -47,30 +50,31 @@
       </template>
     </div>
     <div class="news-main">
-    <div class="news-header">
-      <div class="news-info">
-        <h1>Sport News</h1>
+      <div class="news-header">
+        <div class="news-info">
+          <h1>Sport News</h1>
+        </div>
+        <div class="news-link">
+          <Arrow class="news-icon icon-left" />
+          <span v-if="showMoreButton" @click="showMoreNews">see more</span>
+          <span v-else @click="showLessNews">see less</span>
+          <Arrow class="news-icon" />
+        </div>
       </div>
-      <div class="news-link">
-        <Arrow class="news-icon icon-left" />
-        <span v-if="showMoreButton" @click="showMoreNews">see more</span>
-        <span v-else  @click="showLessNews">see less</span>
-        <Arrow class="news-icon" />
+      <div class="news-wrapper">
+        <NewsCard
+          v-for="(newsItem, index) in visibleNews"
+          :key="index"
+          :banner="newsItem.image"
+          @click="newsInfo(newsItem.id)"
+        >
+          <h2>{{ newsItem.caption }}</h2>
+        </NewsCard>
       </div>
     </div>
-    <div class="news-wrapper">
-      <NewsCard
-        v-for="(newsItem, index) in visibleNews"
-        :key="index"
-        :banner="newsItem.image"
-        @click="newsInfo(newsItem.id)"
-      >
-        <h2>{{ newsItem.caption }}</h2>
-      </NewsCard>
-    </div>
-  </div>
-  <Upcoming />
-    <div @click="goAds()"
+    <Upcoming />
+    <div
+      @click="goAds()"
       class="ads-home"
       :style="{
         backgroundImage: `url(${ads})`
@@ -81,7 +85,7 @@
   </div>
 </template>
 <script setup>
-import { ref, onMounted, watch , computed } from 'vue'
+import { ref, onMounted, watch, computed } from 'vue'
 import { useRouter } from 'vue-router'
 import axios from 'axios'
 import Arrow from '../icons/arrow.vue'
@@ -94,9 +98,8 @@ import HeroComponent from '../components/HeroComponent.vue'
 import OtherComponent from '../components/OtherComponent.vue'
 import BonusComponent from '../components/bonusComponent.vue'
 
-
-const showMoreButton = ref(true);
-const maxNewsToShow = ref(8);
+const showMoreButton = ref(true)
+const maxNewsToShow = ref(8)
 const currentDate = ref('')
 const router = useRouter()
 const cardData = ref([])
@@ -111,25 +114,27 @@ const newsInfo = (newsID) => {
 }
 
 const goAds = () => {
-  router.push({ name: 'Pay', })
+  window.open(
+    'https://wa.me/+254703147237?text=Hi sporty predict, I want to buy VIP subcription'
+  )
 }
 
 
 const visibleNews = computed(() => {
-  return newsData.value.slice(0, maxNewsToShow.value);
-});
+  return newsData.value.slice(0, maxNewsToShow.value)
+})
 
 const showMoreNews = () => {
-  maxNewsToShow.value += 8; 
-  showMoreButton.value = false;
-};
+  maxNewsToShow.value += 8
+  showMoreButton.value = false
+}
 
 const showLessNews = () => {
-  maxNewsToShow.value -= 8; 
+  maxNewsToShow.value -= 8
   if (maxNewsToShow.value <= 8) {
-    showMoreButton.value = true;
+    showMoreButton.value = true
   }
-};
+}
 const getNews = async () => {
   try {
     const response = await axios.get('https://livescore-football.p.rapidapi.com/soccer/news-list', {

@@ -76,6 +76,30 @@
     flex-direction: column;
   }
 
+  .betw-banner-comp {
+    display: flex;
+    cursor: pointer;
+    margin-top: 10px;
+    align-items: center ;
+    justify-content: center;
+
+  }
+
+
+  @keyframes moveLeftToRight {
+    0% {
+      transform: translateX(-100%);
+    }
+    100% {
+      transform: translateX(200%);
+    }
+  }
+  
+  .betw-banner {
+    height: 60px;
+    animation: moveLeftToRight 10s linear infinite; 
+  }
+
   .main-h-card {
     gap: 25px;
     display: flex;
@@ -194,6 +218,8 @@
     background-size: cover;
   }
 
-
+  .betw-banner {
+    height: 100px;
+  }
   
 }
