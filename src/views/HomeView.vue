@@ -2,7 +2,6 @@
   <HeroComponent />
   <div class="home-main">
     <div class="main-h">
-      <BonusComponent />
       <div class="main-header">
         <div class="header-info">
           <h1>Free tips {{ currentDate }}</h1>
