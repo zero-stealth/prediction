@@ -2,6 +2,7 @@
   <HeroComponent />
   <div class="home-main">
     <div class="main-h">
+      <BonusComponent />
       <div class="main-header">
         <div class="header-info">
           <h1>Free tips {{ currentDate }}</h1>
@@ -92,6 +93,7 @@ import Upcoming from '../components/UpcomingPicks.vue'
 import AboutComponent from '../components/aboutComponent.vue'
 import HeroComponent from '../components/HeroComponent.vue'
 import OtherComponent from '../components/OtherComponent.vue'
+import BonusComponent from '../components/bonusComponent.vue'
 
 
 const showMoreButton = ref(true);

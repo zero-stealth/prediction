@@ -151,6 +151,16 @@
     color: var(--secondary-color);
   }
 
+  .bet-adv {
+    margin: 0 20px;
+    cursor: pointer;
+
+  }
+
+  .bet-winner-logo {
+    height: 30px;
+  }
+
   .card-footer {
     display: flex;
     padding: 10px 0;
@@ -253,6 +263,10 @@
 
   .card-score {
     font-size: 2rem;
+  }
+
+  .bet-winner-logo {
+    height: 40px;
   }
 
   .card-fi {

@@ -1,0 +1,110 @@
+@media screen {
+  .bonus {
+    gap: 15px;
+    width: 100%;
+    display: flex;
+    padding: 10px;
+    margin: 10px 0;
+    border-radius: 12px;
+    flex-direction: column;
+    color: var(--background-color);
+    background-color: var(--primary-color);
+  }
+
+  .bonus span {
+    font-weight: 100;
+    font-size: 0.8rem;
+    text-align: center;
+  }
+
+  .bonus:hover {
+    box-shadow: rgba(17, 17, 26, 0.05) 0px 4px 16px, rgba(17, 17, 26, 0.05) 0px 8px 32px;
+  }
+
+  .bonus-title {
+    display: flex;
+    flex-direction: column;
+  }
+
+  .bonus-title h1 {
+    font-size: 2rem;
+    font-weight: bold;
+    text-align: center;
+    text-decoration: underline;
+  }
+
+  .bonus-title span {
+    font-size: 1rem;
+    font-weight: 100;
+  }
+
+  .bonus-hlf {
+    padding: 10px 0;
+    text-align: center;
+    border-radius: 4px;
+    text-transform: capitalize;
+    background-color: var(--dark-primary-color);
+  }
+
+  .bonus-form {
+    gap: 5px;
+    display: flex;
+    border-radius: 12px;
+    background-color: var(--light-primary-color);
+  }
+
+  .Promo-h {
+    gap: 10px;
+    width: 100%;
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+    border-top-left-radius: 12px;
+    border-end-start-radius: 12px;
+    /* border-top: 3px dotted var(--background-color);
+        border-bottom: 3px dotted var(--background-color);
+        border-left: 3px dotted var(--background-color); */
+  }
+
+  .Promo-h span {
+    font-size: 0.8rem;
+    font-weight: 100;
+  }
+
+  .bonus-btn {
+    width: 30%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 0 12px 12px 0;
+    background-color: var(--dark-primary-color);
+  }
+
+  .icon-bonus {
+    height: 24px;
+    fill: var(--background-color);
+  }
+
+  .input-code {
+    font-size: 1.3rem;
+    color: var(--background-color);
+  }
+
+  .btn-offer-spy {
+    padding: 15px;
+    font-size: 1rem;
+    border-radius: 4px;
+    color: var(--background-color);
+    background-color: var(--secondary-color);
+  }
+}
+
+/* using it as global style for larger devices  */
+@media only screen and (min-width: 48em) {
+  .bonus {
+    gap: 10px;
+    width: 40%;
+    padding: 20px;
+    margin: 10px 0;
+  }
+}

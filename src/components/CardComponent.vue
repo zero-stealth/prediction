@@ -34,6 +34,9 @@
           <span class="card-p">:</span>
           <span class="card-s">{{ teamBscore }}</span>
         </div>
+        <a  href="https://bwredir.com/1bkh?p=%2Fregistration%2F"  class="bet-adv" >
+          <img src="../assets/Bet.png" alt="Bet winner" class="bet-winner-logo">
+        </a>
         <div class="Tip">
           <h4>Tip:</h4>
           <span>{{ tip }}</span>
@@ -134,6 +137,7 @@ const formationsB = ref(props.formationB);
 const shouldShowScore = computed(() => {
   return props.showScore && props.teamAscore !== undefined && props.teamBscore !== undefined;
 });
+
 </script>
 
 <style scoped>
