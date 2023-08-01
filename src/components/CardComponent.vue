@@ -37,10 +37,6 @@
         <a  href="https://bwredir.com/1bkh?p=%2Fregistration%2F"  class="bet-adv" >
           <img src="../assets/Bet.png" alt="Bet winner" class="bet-winner-logo">
         </a>
-        <div class="Tip">
-          <h4>Tip:</h4>
-          <span>{{ tip }}</span>
-        </div>
       </div>
       <div class="card-a">
         <div class="card-fade">
@@ -55,6 +51,10 @@
         <h2>{{ teamB }}</h2>
       </div>
     </div>
+    <div class="Tip">
+          <h4>Tip:</h4>
+          <span>{{ tip }}</span>
+        </div>
     <div class="card-footer">
       <div class="card-f" v-for="formationA in formationsA" :key="formationA">
         <span :class="[formationA === 'l' ? 'loose' : (formationA === 'w' ? 'win' : 'draw')]">{{ formationA }}</span>
