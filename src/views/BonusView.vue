@@ -1,7 +1,7 @@
 <template>
   <div class="bon-comp">
     <div class="bonus-h">
-      <h1>Best sign up offers</h1>
+      <h1>Best Betting Sign Up Offers</h1>
       <span>New customers only | commercial content 18 + age limit | T&Cs apply</span>
     </div>
     <div class="bonus-component">
@@ -12,7 +12,7 @@
 
 <script setup>
 import { ref } from 'vue'
-import betImage from '../assets/Bet.png'
+import betImage from '../assets/betwinner.png'
 import stakeImage from '../assets/stake.png'
 import melbetImage from '../assets/melbet.png'
 import Bonus from '../components/bonusComponent.vue'
@@ -36,8 +36,8 @@ const bonusData = ref([
     imgSrc: stakeImage,
     alt: 'Bet-offer',
     description: 'Offers and welcome bonuses available',
-    code: 'no code needed',
-    link: 'stake.com/?c=e2abbfbd54'
+    code: '',
+    link: 'https://stake.com/?c=e2abbfbd54'
   }
 ])
 </script>

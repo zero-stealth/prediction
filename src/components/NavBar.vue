@@ -4,7 +4,7 @@
       <img src="../assets/logo-spp.png" alt="logo" class="logo-spp" @click="goHome" />
       <div class="nav-link-container">
         <RouterLink :to="{ name: 'Home' }" class="nav-link">Home</RouterLink>
-        <RouterLink :to="{ name: 'Bonus' }" class="nav-link">Bonus</RouterLink>
+        <RouterLink :to="{ name: 'Bonus' }" class="nav-link">Betting Offers</RouterLink>
         <RouterLink :to="{ name: 'Banker' }" class="nav-link">Bet of the day</RouterLink>
         <RouterLink :to="{ name: 'Basketball' }" class="nav-link">Basketball</RouterLink>
         <RouterLink :to="{ name: 'Tennis' }" class="nav-link">Tennis</RouterLink>
@@ -54,13 +54,14 @@
         <RouterLink :to="{ name: 'Home' }" @click="showMenu()" class="mobile-link">
           Home
         </RouterLink>
-        <RouterLink :to="{ name: 'Bonus' }" @click="showMenu()" class="mobile-link">
-          Bonus
-        </RouterLink>
+
         <div class="drop-container">
           <span @click="goTennis()" class="nav-link">Tennis</span>
           <span @click="goBasketball()" class="nav-link">Basketball</span>
         </div>
+        <RouterLink :to="{ name: 'Bonus' }" @click="showMenu()" class="mobile-link">
+          Betting Offers
+        </RouterLink>
         <div @click="openTelegramX" class="mobile-link">Telegram tips</div>
         <div @click="openBetOfDay" class="mobile-link">Bet of the day</div>
         <div class="drop-container">

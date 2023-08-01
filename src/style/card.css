@@ -157,6 +157,10 @@
 
   }
 
+  .bet-adv:hover .bet-winner-logo {
+    filter: brightness(90%);
+  }
+
   .bet-winner-logo {
     height: 30px;
   }

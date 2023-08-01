@@ -51,6 +51,17 @@
     flex-direction: column;
   }
 
+  .bonus-noc {
+    padding: 14px;
+    border-radius: 12px;
+    border: 3px dotted var(--primary-color);
+
+  }
+  
+  .bonus-noc span {
+    font-size: 1.5rem;
+  }
+
   .bonus-form-c span {
     font-size: 0.8rem;
   }
