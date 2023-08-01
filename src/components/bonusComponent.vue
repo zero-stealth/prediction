@@ -3,6 +3,9 @@
     <div class="bo-img">
       <img :src="bonusData.imgSrc" :alt="bonusData.alt" class="img-offer" />
     </div>
+    <div class="bo-off">
+      <span>{{bonusData.info}}</span>
+    </div>
     <div class="bonus-form-c">
       <div v-if="bonusData.code == ''" class="bonus-noc">
         <span>No code required</span>

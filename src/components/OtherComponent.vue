@@ -8,6 +8,7 @@
         <OtherPredictions buttonName="Both Teams To Score" />
         <!-- <OtherPredictions buttonName="Bet Of The Day" /> -->
         <button class="other-p-btn" @click="goToB()">Bet Of The Day</button>
+        <button class="other-p-btn" @click="goToBO()">Betting Offers</button>
         <OtherPredictions buttonName="Under 2.5 Goals" />
       </div>
     </div>
@@ -21,6 +22,12 @@ const router = useRouter();
 const goToB = () => {
   router.push({ name: 'Banker' })
 }
+
+const goToBO = () => {
+  router.push({ name: 'Bonus' })
+}
+
+
 </script>
 <style>
 @import '../style/other.css';

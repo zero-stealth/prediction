@@ -21,6 +21,7 @@ const bonusData = ref([
   {
     imgSrc: betImage,
     alt: 'Bet-offer',
+    info: 'Bonus upto 130 USD',
     description: 'Offers and welcome bonuses available',
     code: 'SPBW',
     link: 'https://bwredir.com/1bkh?p=%2Fregistration%2F'
@@ -28,6 +29,7 @@ const bonusData = ref([
   {
     imgSrc: melbetImage,
     alt: 'Bet-offer',
+    info: 'Bonus upto 130 USD',
     description: 'Offers and welcome bonuses available',
     code: 'BSTIPS',
     link: 'https://refpakrtsb.top/L?tag=d_2503393m_45415c_&site=2503393&ad=45415'
@@ -35,6 +37,7 @@ const bonusData = ref([
   {
     imgSrc: stakeImage,
     alt: 'Bet-offer',
+    info: 'Bonus upto 1000 USD',
     description: 'Offers and welcome bonuses available',
     code: '',
     link: 'https://stake.com/?c=e2abbfbd54'
