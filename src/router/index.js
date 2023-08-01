@@ -54,6 +54,11 @@ const router = createRouter({
       component: () => import('../views/VipView.vue'),
       // meta: { auth: true }
     },
+       {
+      path: '/bonus',
+      name: 'Bonus',
+      component: () => import('../views/BonusView.vue'),
+    },
     {
       path: '/news/:id',
       name: 'News',

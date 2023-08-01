@@ -1,25 +1,24 @@
 <template>
   <div class="bonus">
-    <img src="../assets/Bet.png" alt="Bet-offer" class="img-offer" />
-    <div class="bonus-title">
-      <h1>Sign up offers</h1>
-      <span>New customers only| commercial content 18 + age limit | T&Cs apply</span>
+    <div class="bo-img">
+      <img :src="bonusData.imgSrc" :alt="bonusData.alt" class="img-offer" />
     </div>
-    <div class="bonus-hlf">Offers and welcome bonuses available</div>
-    <div class="bonus-form">
-      <div class="Promo-h">
-        <span>Promo code</span>
-        <h2 class="input-code">{{ bonusCode }}</h2>
+    <div class="bonus-form-c">
+      <div class="bonus-form">
+        <div class="Promo-h">
+          <span>Promo code</span>
+          <h2 class="input-code">{{ bonusData.code }}</h2>
+        </div>
+        <button type="submit" class="bonus-btn" @click="copyCode">
+          <copyIcon class="icon-bonus" />
+        </button>
       </div>
-      <button type="submit" class="bonus-btn" @click="copyCode">
-        <copyIcon class="icon-bonus" />
-      </button>
+      <span
+        >The bonus code <b>{{ bonusData.code }}</b> is used during registration but the offer amount
+        doesn't change</span
+      >
     </div>
-    <span
-      >The bonus code <b>{{ bonusCode }}</b> is used during registration but the offer amount
-      doesn't change</span
-    >
-    <button class="btn-offer-spy" @click="goBetW()">See the offers</button>
+    <a :href="bonusData.link" class="btn-offer-spy" >See the offers</a>
   </div>
 </template>
 
@@ -27,11 +26,10 @@
 import { ref } from 'vue'
 import copyIcon from '../icons/COPYIcon.vue'
 
-const bonusCode = ref('sdsxfs')
+const props = defineProps(['bonusData'])
 
-const goBetW = () => {
-  window.open('https://bwredir.com/1bkh?p=%2Fregistration%2F', '_blank')
-}
+const bonusCode = ref(props.bonusData.code)
+
 
 const copyCode = () => {
   const tempElement = document.createElement('textarea')
