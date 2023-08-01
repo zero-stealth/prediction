@@ -6,8 +6,18 @@
     flex-direction: column;
   }
 
+  .bonus-h {
+    text-align: center;
+
+  }
+
   .bonus-h h1 {
+    font-size: 1.6rem;
     text-decoration: underline;
+  }
+
+  .bonus-h span {
+    font-size: .7rem;
   }
 
   .bonus-component {
@@ -116,6 +126,18 @@
   .bonus {
     gap: 10px;
     flex-direction: row;
+  }
+
+  .bonus-h {
+    text-align: start;
+  }
+
+  .bonus-h h1 {
+    font-size: 2rem;
+  }
+
+  .bonus-h span {
+    font-size: .8rem;
   }
 
   .bo-img {
