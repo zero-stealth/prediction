@@ -8,8 +8,8 @@
         <OtherPredictions buttonName="Both Teams To Score" />
         <!-- <OtherPredictions buttonName="Bet Of The Day" /> -->
         <button class="other-p-btn" @click="goToB()">Bet Of The Day</button>
-        <button class="other-p-btn" @click="goToBO()">Betting Offers</button>
         <OtherPredictions buttonName="Under 2.5 Goals" />
+        <button class="other-p-btn fh-btn" @click="goToBO()">Betting Offers</button>
       </div>
     </div>
 </template>
