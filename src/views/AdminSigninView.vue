@@ -21,13 +21,11 @@
         <input type="password" class="input-l" placeholder="Confirm password" v-model="confirmPassword" />
         <p>{{ errMsg }}</p>
         <button class="btn-f" type="submit">Sign up</button>
-        <span @click="login">Login</span>
       </form>
       <span>or</span>
       <div class="l-alternatives">
-        <button class="alt-btn" @click="useGoogle">
-          <google-icon class="alt-icon" />
-          Sign up with Google
+        <button class="alt-btn" @click="login">
+          Login
         </button>
       </div>
     </div>

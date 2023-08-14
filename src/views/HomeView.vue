@@ -150,6 +150,8 @@ const getNews = async () => {
   }
 }
 
+
+
 const getPrediction = async () => {
   const token = JSON.parse(localStorage.getItem('token'))
   try {
@@ -157,6 +159,8 @@ const getPrediction = async () => {
       `https://predictions-reg9.onrender.com/predictions/tips/freeTip/${currentDate.value}`
     )
     cardData.value = response.data
+console.log(cardData.value)
+
   } catch (err) {
     console.log(err)
   }

@@ -23,13 +23,11 @@
         <input type="password" class="input-l" placeholder="Password" v-model="password" />
         <p>{{ errMsg }}</p>
         <button class="btn-f" type="submit">Reset</button>
-        <span @click="create">Create an account</span>
       </form>
       <span>or</span>
       <div class="l-alternatives">
-        <button class="alt-btn" @click="useGoogle">
-          <googleIcon class="alt-icon" />
-          Login with Google
+        <button class="alt-btn" @click="create">
+          Create an account
         </button>
       </div>
     </div>

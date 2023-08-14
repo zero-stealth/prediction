@@ -31,6 +31,7 @@
             <th>Account</th>
             <th>Payment</th>
             <th>Period</th>
+            <th>Date activation</th>
             <th>Vip status</th>
             <th>Delete</th>
           </tr>
@@ -45,6 +46,7 @@
             </td>
             <td>{{ account.paid }}</td>
             <td>{{ account.paid ? '1 Month' : '0 Month' }}</td>
+            <td>{{ paidDate  || 'no change'     }}</td>
             <td>
               <div class="Account-t-con">
                 <div
@@ -86,6 +88,8 @@ import ProfileIcon from '../icons/profileIcon.vue';
 const username = ref(null);
 const accountCards = ref([]);
 const accountInfo = ref([]);
+const paidDate = ref(null);
+const endSub = ref(false);
 const SearchAccount = ref('');
 const message = ref();
 

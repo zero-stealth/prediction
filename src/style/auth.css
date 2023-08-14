@@ -92,22 +92,13 @@
     justify-content: center;
     color: var(--light-color);
     background-color: var(--primary-color);
-    border:1px solid var(--light-primary-color);
+    border:1px solid var(--secondary-color);
     
 }
 
 .alt-btn:hover {
     color: var(--background-color);
     background-color: var(--secondary-color);
-}
-
-.alt-icon {
-    height: 18px;
-    fill: var(--light-color);
-}
-
-.alt-btn:hover .alt-icon {
-    fill: var(--background-color);
 }
 
 }

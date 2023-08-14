@@ -24,15 +24,13 @@
         <input type="password" class="input-l" placeholder="Confirm password" v-model="confirmPassword" />
         <p>{{ errMsg }}</p>
         <button class="btn-f" type="submit">Sign up</button>
-        <span @click="login">Login</span>
       </form>
-      <!-- <span>or</span> -->
-      <!-- <div class="l-alternatives">
-        <button class="alt-btn" @click="useGoogle">
-          <google-icon class="alt-icon" />
-          Sign up with Google
+      <span>or</span>
+      <div class="l-alternatives">
+        <button class="alt-btn" @click="login">
+          Login
         </button>
-      </div> -->
+      </div>
     </div>
   </div>
 </template>
@@ -42,7 +40,6 @@ import { ref } from 'vue'
 import axios from 'axios'
 import { useRouter } from 'vue-router'
 import SportBg from '../assets/sport-bg.png'
-import GoogleIcon from '../icons/googleIcon.vue'
 import countriesData from '../components/countries.json'
 
 const selectedCountry = ref('')

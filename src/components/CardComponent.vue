@@ -1,9 +1,6 @@
 <template>
   <div class="card-container">
     <div class="card-title">
-      <div class="card-status">
-        <span></span>
-      </div>
       <div class="title-m">
         <img :src="leagueIcon" alt="league-img" class="league-c-img" />
         <span>{{ league }}</span>
@@ -24,7 +21,7 @@
       </div>
       <div class="card-in">
         <div class="card-in-s">
-          <span>[{{ time }}]</span>
+          <span>[{{ Time }}]</span>
         </div>
         <div v-if="!showScore">
           <span>vs</span>
@@ -59,7 +56,7 @@
       <div class="card-f" v-for="formationA in formationsA" :key="formationA">
         <span :class="[formationA === 'l' ? 'loose' : (formationA === 'w' ? 'win' : 'draw')]">{{ formationA }}</span>
       </div>
-      <div class="card-fi">form</div>
+      <div class="card-fi">Recent form</div>
       <div class="card-f" v-for="formationB in formationsB" :key="formationB">
         <span :class="[formationB === 'l' ? 'loose' : (formationB === 'w' ? 'win' : 'draw')]">{{ formationB }}</span>
       </div>
@@ -68,7 +65,10 @@
 </template>
 
 <script setup>
-import { ref, computed } from 'vue';
+import { ref, computed, onMounted } from 'vue';
+import { DateTime } from "luxon";
+
+const Time = ref();
 
 const props = defineProps({
   formationA: {
@@ -137,6 +137,16 @@ const formationsB = ref(props.formationB);
 const shouldShowScore = computed(() => {
   return props.showScore && props.teamAscore !== undefined && props.teamBscore !== undefined;
 });
+
+
+
+onMounted(() => {
+  const originalTime = props.time; 
+  const userTimeZone = DateTime.local().zoneName;
+  const convertedTime = DateTime.fromISO(originalTime).setZone(userTimeZone);
+  Time.value = convertedTime.toFormat('HH:mm:ss');
+});
+
 
 </script>
 

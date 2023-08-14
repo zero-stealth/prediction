@@ -7,7 +7,12 @@ const router = createRouter({
     {
       path: '/',
       name: 'Home',
-      component: HomeView
+      component: HomeView,
+      meta: {
+        title: "Passionpredict - Free Football Predictions",
+        description: "Passionpredict offers accurate and free football predictions daily. Discover sure home win tips, banker bets, BTTS/GG predictions, and more. Start making informed bets with Passionpredict.",
+      },
+      
     },
     {
       path: '/pixel',

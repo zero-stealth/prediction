@@ -17,27 +17,20 @@
         <p>{{ errMsg }}</p>
         <button class="btn-f" type="submit">Login</button>
         <span @click="forgot">Forgot password</span>
-        <!-- <span>or</span> -->
      
-        <!-- <span @click="create">Create an account</span> -->
       </form>
       <form @submit.prevent="resetAuth" class="l-form" v-else>
         <input type="email" class="input-l" placeholder="Email Address" v-model="email" />
         <input type="password" class="input-l" placeholder="Password" v-model="password" />
         <p>{{ errMsg }}</p>
         <button class="btn-f" type="submit">Reset</button>
-        <!-- <span @click="create">Create an account</span> -->
       </form>
       <span>or</span>
-      <span class="click-a" @click="create">Create an account</span>
-
-      <!-- <div class="l-alternatives">
-        <button class="alt-btn" @click="useGoogle">
-          <googleIcon class="alt-icon" />
-          Login with Google
+      <div class="l-alternatives">
+        <button class="alt-btn" @click="create">
+          Create an account
         </button>
-      </div> -->
-
+      </div>
     </div>
   </div>
 </template>

@@ -39,7 +39,7 @@ const bonusData = ref([
     alt: 'Bet-offer',
     info: 'Bonus upto 1000 USD',
     description: 'Offers and welcome bonuses available',
-    code: '',
+    code: 'SPTIPS',
     link: 'https://stake.com/?c=e2abbfbd54'
   }
 ])
