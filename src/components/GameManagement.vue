@@ -1,4 +1,4 @@
-5<template>
+<template>
   <div class="Account-container">
     <div class="Account-header">
       <h1><span>Welcome</span><br />SportyPredict</h1>
@@ -8,10 +8,10 @@
       <div class="acc-m gm-m">
         <div class="main-header">
           <div class="header-info">
-            <h1>Bet of the day  ({{ currentDate }})</h1>
+            <h1>Bet of the day ({{ currentDate }})</h1>
           </div>
           <div class="header-btn">
-            <button class="btn-h"  :class="{ 'active-btn': offset > 0 }" @click="previousDay">
+            <button class="btn-h" :class="{ 'active-btn': offset > 0 }" @click="previousDay">
               previous
             </button>
             <button class="btn-h" :class="{ 'active-btn': offset === 0 }" @click="setOffset(0)">
@@ -35,7 +35,7 @@
               <th>Delete</th>
             </tr>
           </thead>
-          <tbody v-for="item in cardData">
+          <tbody v-for="item in cardData" :key="item">
             <tr v-for="data in item" :key="data._id">
               <td>
                 <div class="Account-tbl-img">
@@ -89,7 +89,7 @@
             <h1>Prediction Tips ({{ currentDate }})</h1>
           </div>
           <div class="header-btn">
-            <button class="btn-h"  :class="{ 'active-btn': offset > 0 }" @click="previousDay">
+            <button class="btn-h" :class="{ 'active-btn': offset > 0 }" @click="previousDay">
               previous
             </button>
             <button class="btn-h" :class="{ 'active-btn': offset === 0 }" @click="setOffset(0)">
@@ -166,7 +166,7 @@
             <h1>Free tips ({{ currentDate }})</h1>
           </div>
           <div class="header-btn">
-             <button class="btn-h"  :class="{ 'active-btn': offset > 0 }" @click="previousDay">
+            <button class="btn-h" :class="{ 'active-btn': offset > 0 }" @click="previousDay">
               previous
             </button>
             <button class="btn-h" :class="{ 'active-btn': offset === 0 }" @click="setOffset(0)">
@@ -243,7 +243,7 @@
             <h1>Upcoming games ({{ currentDate }})</h1>
           </div>
           <div class="header-btn">
-             <button class="btn-h"  :class="{ 'active-btn': offset > 0 }" @click="previousDay">
+            <button class="btn-h" :class="{ 'active-btn': offset > 0 }" @click="previousDay">
               previous
             </button>
             <button class="btn-h" :class="{ 'active-btn': offset === 0 }" @click="setOffset(0)">
@@ -320,7 +320,7 @@
             <h1>Vip games ({{ currentDate }})</h1>
           </div>
           <div class="header-btn">
-             <button class="btn-h"  :class="{ 'active-btn': offset > 0 }" @click="previousDay">
+            <button class="btn-h" :class="{ 'active-btn': offset > 0 }" @click="previousDay">
               previous
             </button>
             <button class="btn-h" :class="{ 'active-btn': offset === 0 }" @click="setOffset(0)">
@@ -397,7 +397,7 @@
             <h1>Tennis bets ({{ currentDate }})</h1>
           </div>
           <div class="header-btn">
-             <button class="btn-h"  :class="{ 'active-btn': offset > 0 }" @click="previousDay">
+            <button class="btn-h" :class="{ 'active-btn': offset > 0 }" @click="previousDay">
               previous
             </button>
             <button class="btn-h" :class="{ 'active-btn': offset === 0 }" @click="setOffset(0)">
@@ -473,7 +473,7 @@
             <h1>Basketball bets ({{ currentDate }})</h1>
           </div>
           <div class="header-btn">
-             <button class="btn-h"  :class="{ 'active-btn': offset > 0 }" @click="previousDay">
+            <button class="btn-h" :class="{ 'active-btn': offset > 0 }" @click="previousDay">
               previous
             </button>
             <button class="btn-h" :class="{ 'active-btn': offset === 0 }" @click="setOffset(0)">
@@ -577,7 +577,6 @@ const currentDate = ref('')
 const offset = ref(0)
 const message = ref()
 const isGameOpen = ref(false)
-
 const cardData = ref([])
 const vipData = ref([])
 const predictionData = ref([])
@@ -585,6 +584,8 @@ const freeTipData = ref([])
 const upcomingData = ref([])
 const tennisData = ref([])
 const basketBallData = ref([])
+
+const emit = defineEmits(['gameUpdated', 'sportUpdated']) // Define the emitted events
 
 const getBetOfTheDay = async () => {
   try {
@@ -696,58 +697,116 @@ const editSport = (sport, id) => {
   showEdit()
 }
 
-async function updateGame(teamAscore, teamBscore, showScore) {
+async function updateGame(
+  teamAscore,
+  teamBscore,
+  showScore,
+  teamA,
+  teamB,
+  leagueIcon,
+  formationA,
+  formationB,
+  time,
+  date,
+  tip,
+  league,
+  teamAPosition,
+  teamBPosition,
+  teamAIcon,
+  teamBIcon
+) {
   try {
     const token = JSON.parse(localStorage.getItem('token'))
+    const formData = new FormData()
+    formData.append('teamAscore', teamAscore)
+    formData.append('teamBscore', teamBscore)
+    formData.append('showScore', showScore)
+    formData.append('teamA', teamA)
+    formData.append('teamB', teamB)
+    formData.append('leagueIcon', leagueIcon)
+    formData.append('formationA', formationA)
+    formData.append('formationB', formationB)
+    formData.append('teamAPosition', teamAPosition)
+    formData.append('teamBPosition', teamBPosition)
+    formData.append('teamAIcon', teamAIcon)
+    formData.append('teamBIcon', teamBIcon)
+    formData.append('time', time)
+    formData.append('date', date)
+    formData.append('tip', tip)
+    formData.append('league', league)
+
     const response = await axios.put(
       `https://predictions-reg9.onrender.com/predictions/update/${gameId.value}`,
-      { teamAscore, teamBscore, showScore },
+      formData,
       {
         headers: {
-          Authorization: `Bearer ${token}`
+          Authorization: `Bearer ${token}`,
+          'Content-Type': 'multipart/form-data'
         }
       }
     )
-    console.log(response.data)
-  } catch (error) {}
+
+    emit('gameUpdated') // Emit the event to the parent component
+    alert('Game updated')
+  } catch (error) {
+    console.log(error)
+  }
 }
 
-async function updateSport(teamAscore, teamBscore, showScore) {
+async function updateSport(
+  teamAscore,
+  teamBscore,
+  showScore,
+  teamA,
+  teamB,
+  leagueIcon,
+  formationA,
+  formationB,
+  time,
+  date,
+  tip,
+  league,
+  teamAPosition,
+  teamBPosition,
+  teamAIcon,
+  teamBIcon
+) {
   try {
     const token = JSON.parse(localStorage.getItem('token'))
+    const formData = new FormData()
+    formData.append('teamAscore', teamAscore)
+    formData.append('teamBscore', teamBscore)
+    formData.append('showScore', showScore)
+    formData.append('teamA', teamA)
+    formData.append('teamB', teamB)
+    formData.append('leagueIcon', leagueIcon)
+    formData.append('formationA', formationA)
+    formData.append('formationB', formationB)
+    formData.append('teamAPosition', teamAPosition)
+    formData.append('teamBPosition', teamBPosition)
+    formData.append('teamAIcon', teamAIcon)
+    formData.append('teamBIcon', teamBIcon)
+    formData.append('time', time)
+    formData.append('date', date)
+    formData.append('tip', tip)
+    formData.append('league', league)
+
     const response = await axios.put(
       `https://predictions-reg9.onrender.com/sports/update/${sportId.value}`,
-      { teamAscore, teamBscore, showScore },
+      formData,
       {
         headers: {
           Authorization: `Bearer ${token}`
         }
       }
     )
+
+    emit('sportUpdated') // Emit the event to the parent component
     console.log(response.data)
-  } catch (error) {}
+  } catch (error) {
+    console.log(error)
+  }
 }
-
-// const accountsData = async () => {
-//   try {
-//     const user = JSON.parse(localStorage.getItem('token'));
-//     const response = await axios.get(`https://predictions-reg9.onrender.com/auth`, {
-//       headers: {
-//         Authorization: `Bearer ${user}`,
-//       },
-//     });
-//     console.log(response.data);
-//     accountInfo.value = response.data.map((account) => ({
-//       ...account,
-//       status: account.paid,
-//     }));
-//     console.log(accountInfo.value);
-//   } catch (err) {
-//     console.log(err);
-//   }
-// };
-
-
 
 const setOffset = (value) => {
   offset.value = value
@@ -755,9 +814,9 @@ const setOffset = (value) => {
 }
 
 const previousDay = () => {
-  offset.value--;
-  updateCurrentDate();
-};
+  offset.value--
+  updateCurrentDate()
+}
 
 const getFormattedDate = (offset) => {
   const today = new Date()
@@ -810,8 +869,7 @@ const deletePrediction = async (id) => {
   } catch (err) {
     message.value = 'deletion failed'
   }
-  alert("deleted")
-
+  alert('deleted')
 }
 
 const deleteSport = async (id) => {
@@ -830,7 +888,7 @@ const deleteSport = async (id) => {
   } catch (err) {
     message.value = 'deletion failed'
   }
-  alert("deleted")
+  alert('deleted')
 }
 const showscore = ref(localStorage.getItem('showscore') === 'true')
 
@@ -839,14 +897,14 @@ watch(showscore, (value) => {
 })
 
 watch(currentDate, () => {
-  getBetOfTheDay();
-  getVipGames();
-  getPredictions();
-  getFreeTips();
-  getUpcoming();
-  getTennisBets();
-  getBasketballBets();
-});
+  getBetOfTheDay()
+  getVipGames()
+  getPredictions()
+  getFreeTips()
+  getUpcoming()
+  getTennisBets()
+  getBasketballBets()
+})
 </script>
 
 <style>

@@ -46,7 +46,7 @@
             </td>
             <td>{{ account.paid }}</td>
             <td>{{ account.paid ? '1 Month' : '0 Month' }}</td>
-            <td>{{ paidDate  || 'no change'     }}</td>
+            <td>{{ formatDate(account.updatedAt) || 'no change' }}</td> 
             <td>
               <div class="Account-t-con">
                 <div
@@ -88,10 +88,12 @@ import ProfileIcon from '../icons/profileIcon.vue';
 const username = ref(null);
 const accountCards = ref([]);
 const accountInfo = ref([]);
-const paidDate = ref(null);
-const endSub = ref(false);
 const SearchAccount = ref('');
 const message = ref();
+const statusC = ref(null);
+const paidDate = ref(null);
+const futuresDate = ref(null);
+const endSub = ref(false);
 
 const accountsData = async () => {
   try {
@@ -101,20 +103,49 @@ const accountsData = async () => {
         Authorization: `Bearer ${user}`,
       },
     });
-    console.log(response.data);
+    statusC.value = response.data.paid;
+    if (response.data.updatedAt) {
+      getFutureDate(response.data.updatedAt);
+    }
     accountInfo.value = response.data.map((account) => ({
       ...account,
       status: account.paid,
     }));
-    console.log(accountInfo.value);
   } catch (err) {
-    console.log(err);
   }
 };
 
-watchEffect(() => {
-  username.value = localStorage.getItem('username');
+function formatDate(date) {
+  if (!(date instanceof Date)) {
+    date = new Date(date); 
+  }
+
+  const options = { day: '2-digit', month: '2-digit', year: 'numeric' };
+  return date.toLocaleDateString(undefined, options);
+}
+
+
+function getFutureDate(date) {
+  const parsedDate = new Date(date);
+  paidDate.value = formatDate(parsedDate); 
+  const futureDate = new Date(parsedDate);
+  futureDate.setDate(parsedDate.getDate() + 30);
+  futuresDate.value = futureDate.toISOString();
+
+  const currentDate = new Date();
+  const currentDateInISOFormat = currentDate.toISOString();
+
+  const match = futureDate.toISOString() === currentDateInISOFormat;
+
+  endSub.value = match;
+}
+
+watch([statusC], () => {
+  getFutureDate(accountInfo.value[0]?.updatedAt); 
 });
+
+
+
 
 onMounted(() => {
   accountsData();
@@ -187,7 +218,6 @@ const filterAccount = computed(() => {
 }, [SearchAccount, accountData]);
 
 
-
 async function toggleStatus(account) {
   account.status = !account.status;
 
@@ -201,7 +231,27 @@ async function toggleStatus(account) {
   } catch (err) {
     console.log(err);
   }
+
 }
+
+watchEffect(() => {
+  // Update paidDate and VIP status when accountInfo or endSub changes
+  if (accountInfo.value.length > 0) {
+    getFutureDate(accountInfo.value[0]?.updatedAt);
+    paidDate.value = formatDate(accountInfo.value[0]?.updatedAt) || 'no change';
+    
+    // Toggle off VIP status after 30 days
+    if (endSub.value) {
+      const currentDate = new Date();
+      const futureDate = new Date(futuresDate.value);
+
+      if (currentDate >= futureDate) {
+        toggleStatus(accountInfo.value[0]);
+        endSub.value = false; // Reset the endSub flag
+      }
+    }
+  }
+});
 </script>
 
 <style>

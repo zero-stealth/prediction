@@ -27,39 +27,14 @@
             <span>Game management</span>
             <ArrowIcon class="icon-panel ap" />
           </button>
-          <button @click="setActivePage(BetOfTheDay)" :class="getButtonClass(BetOfTheDay)">
+          <button @click="setActivePage(PostGames)" :class="getButtonClass(PostGames)">
             <FileIcon class="icon-panel" />
-            <span> Bet of the day </span>
+            <span> Post Games </span>
             <ArrowIcon class="icon-panel ap" />
           </button>
           <button @click="setActivePage(Predictionpicks)" :class="getButtonClass(Predictionpicks)">
             <FileIcon class="icon-panel" />
             <span> Prediction picks </span>
-            <ArrowIcon class="icon-panel ap" />
-          </button>
-          <button @click="setActivePage(VipGames)" :class="getButtonClass(VipGames)">
-            <VipIcon class="icon-panel" />
-            <span> vip prediction </span>
-            <ArrowIcon class="icon-panel ap" />
-          </button>
-          <button @click="setActivePage(Freetips)" :class="getButtonClass(Freetips)">
-            <FileIcon class="icon-panel" />
-            <span> Free tips </span>
-            <ArrowIcon class="icon-panel ap" />
-          </button>
-          <button @click="setActivePage(Upcomingtips)" :class="getButtonClass(Upcomingtips)">
-            <FileIcon class="icon-panel" />
-            <span> upcoming tips </span>
-            <ArrowIcon class="icon-panel ap" />
-          </button>
-          <button @click="setActivePage(BasketballGames)" :class="getButtonClass(BasketballGames)">
-            <basketballIcon class="icon-panel" />
-            <span> Basketball </span>
-            <ArrowIcon class="icon-panel ap" />
-          </button>
-          <button @click="setActivePage(TennisGames)" :class="getButtonClass(TennisGames  )">
-            <tennisIcon class="icon-panel" />
-            <span>Tennis </span>
             <ArrowIcon class="icon-panel ap" />
           </button>
           <button @click="logout" :class="getButtonClass(Logout)">
@@ -79,16 +54,13 @@
   </div>
 </template>
 <script setup>
-import basketballIcon from '../icons/basketballIcon.vue'
 import { ref , watchEffect , shallowRef} from 'vue'
-import tennisIcon from '../icons/tennisIcon.vue'
 import LogoutIcon from '../icons/logoutIcon.vue'
 import GroupIcon from '../icons/GroupIcon.vue'
 import ArrowIcon from '../icons/ArrowIcon.vue'
 import ExitIcon from '../icons/ExitIcon.vue'
 import DrawIcon from '../icons/DrawIcon.vue'
 import FileIcon from '../icons/FileIcon.vue'
-import VipIcon from '../icons/VipIcon.vue'
 import logo from '../assets/logo.png'
 import { useRouter } from 'vue-router'
 
@@ -106,18 +78,15 @@ const showMenu = () => {
 // pages
 import AccountManagement from '../components/AccountManagement.vue'
 import GameManagement from '../components/GameManagement.vue'
-import BasketballGames from '../components/BasketballGames.vue'
 import Predictionpicks from '../components/Predictionpicks.vue'
-import Upcomingtips from '../components/UpcomingGames.vue'
-import TennisGames from '../components/TennisGames.vue'
-import BetOfTheDay from '../components/BetOfTheDay.vue'
-import VipGames from '../components/VipGames.vue'
-import Freetips from '../components/Freetips.vue'
+import PostGames from '../components/PostGames.vue'
 
 const activePage = shallowRef(AccountManagement)
 
 const setActivePage = (page) => {
   activePage.value = page
+  showMenu();
+
 }
 
 const getButtonClass = (page) => {

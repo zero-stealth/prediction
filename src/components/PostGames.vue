@@ -1,7 +1,7 @@
 <template>
   <div>
     <div class="form-container-h">
-      <h1>Bet Of the day</h1>
+      <h1>Post Game</h1>
     </div>
     <form @submit.prevent="handleSubmit" enctype="multipart/form-data" class="form-container">
       <div class="form-wrapper">
@@ -48,6 +48,18 @@
           <label for="date">Match Date:</label>
           <input v-model="date" type="text" class="form-g-input" placeholder="03-06-2023" id="date" />
         </div>
+        <div class="form-group">
+          <label for="status">Game category:</label>
+          <select v-model="category" class="form-g-input" id="status">
+            <option disabled value="">Choose games category</option>
+            <option value="Bet-of-the-day">Bet Of The day</option>
+            <option value="Basketball">Basketball</option>
+            <option value="Freetips">Freetips</option>
+            <option value="Tennis">Tennis</option>
+            <option value="vip">VIP</option>
+            <option value="Upcoming-games">Upcoming games</option>
+          </select>
+        </div>
         <button type="submit" class="btn-f-f f-desktop">Submit</button>
       </div>
       <div class="form-wrapper">
@@ -79,11 +91,12 @@
 </template>
 
 <script setup>
-import { ref } from 'vue';
+import { ref , watch } from 'vue';
 import axios from 'axios';
 
 const teamA = ref('');
 const teamB = ref('');
+const category = ref(null)
 const teamAIcon = ref(null);
 const teamBIcon = ref(null);
 const leagueIcon = ref(null);
@@ -97,6 +110,35 @@ const teamAscore = ref(0);
 const teamBscore = ref(0);
 const date = ref('');
 const tip = ref('');
+const url = ref(null);
+
+watch(category, () => {
+  switch (category.value) {
+    case 'Bet-of-the-day':
+    url.value = 'https://predictions-reg9.onrender.com/predictions/create/bet/betOfTheDay'
+      break;
+      case 'Basketball':
+    url.value = 'https://predictions-reg9.onrender.com/sports/create/Basketball'
+      break;
+      case 'Freetips':
+    url.value = 'https://predictions-reg9.onrender.com/predictions/create/tip/freeTip'
+      break;
+      case 'Tennis':
+    url.value = 'https://predictions-reg9.onrender.com/sports/create/Tennis'
+      break;
+      case 'vip':
+    url.value = 'https://predictions-reg9.onrender.com/predictions/create/vip'
+      break;
+      case 'Upcoming-games':
+    url.value = 'https://predictions-reg9.onrender.com/predictions/create/upcoming/upcoming'
+      break;
+      case null || '':
+      alert('No empty fields allowed');
+      break;
+    default:
+      break;
+  }
+});
 
 function handleFileUpload(event, targetRef) {
   const file = event.target.files[0];
@@ -117,6 +159,9 @@ function handleLeagueLogo(event) {
   handleFileUpload(event, leagueIcon);
 }
 
+
+
+
 async function handleSubmit() {
   if (
     teamA.value.trim() !== '' &&
@@ -127,6 +172,7 @@ async function handleSubmit() {
     teamAscore.value !== null &&
     teamB.value.trim() !== '' &&
     teamBIcon.value !== null &&
+    category.value !== null &&
     formationB.value.trim() !== '' &&
     teamBPosition.value.trim() !== '' &&
     teamBscore.value !== null &&
@@ -155,7 +201,7 @@ async function handleSubmit() {
       formData.append('tip', tip.value);
 
       const response = await axios.post(
-        'https://predictions-reg9.onrender.com/predictions/create/bet/betOfTheDay',
+        `${url.value}`,
         formData,
         {
           headers: {
@@ -165,7 +211,6 @@ async function handleSubmit() {
         }
       );
       alert('tip posted')
-      // console.log(response.data);
     } catch (err) {
       console.log(err);
     }

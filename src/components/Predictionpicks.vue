@@ -211,6 +211,7 @@ async function handleSubmit() {
     teamAscore.value !== null &&
     teamB.value.trim() !== '' &&
     teamBIcon.value !== null &&
+    category.value !== null &&
     formationB.value.trim() !== '' &&
     teamBPosition.value.trim() !== '' &&
     teamBscore.value !== null &&
