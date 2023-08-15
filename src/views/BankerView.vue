@@ -6,7 +6,7 @@
         <h1>Bet of the day {{ currentDate }}</h1>
       </div>
       <div class="header-btn">
-        <button class="btn-h" :class="{ 'active-btn': offset === -1 }" @click="setOffset(-1)">
+        <button class="btn-h" :class="{ 'active-btn': offset > 0 }" @click="previousDay()">
           Yesterday
         </button>
         <button class="btn-h" :class="{ 'active-btn': offset === 0 }" @click="setOffset(0)">
@@ -78,10 +78,19 @@ onMounted(() => {
   predictions();
 });
 
+
+const previousDay = () => {
+  offset.value--
+  updateCurrentDate()
+}
+
+
 const setOffset = (value) => {
   offset.value = value;
   updateCurrentDate();
 }
+
+
 
 const updateCurrentDate = () => {
   const today = new Date();

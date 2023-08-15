@@ -96,15 +96,15 @@ const teamB = ref('');
 const teamAIcon = ref(null);
 const teamBIcon = ref(null);
 const leagueIcon = ref(null);
-const formationA = ref('l-d-w-d');
-const formationB = ref('l-d-w-d');
+const formationA = ref('');
+const formationB = ref('');
 const teamAPosition = ref('');
 const teamBPosition = ref('');
 const time = ref('');
 const status = ref('');
 const league = ref('');
-const teamAscore = ref(0);
-const teamBscore = ref(0);
+const teamAscore = ref('');
+const teamBscore = ref('');
 const date = ref('');
 const tip = ref('');
 const ShowScore = ref(false);
@@ -128,36 +128,36 @@ function handleLeagueLogo(event) {
   handleFileUpload(event, leagueIcon);
 }
 
-// ... (your existing code)
-
-function handleSubmit() {
   // ... (your existing code)
-  try {
-    const formData = {
-      teamAscore: teamAscore.value,
-      teamBscore: teamBscore.value,
-      showScore: ShowScore.value,
-      teamA: teamA.value,
-      teamB: teamB.value,
-      leagueIcon: leagueIcon.value,
-      formationA: formationA.value,
-      formationB: formationB.value,
-      time: time.value,
-      date: date.value,
-      tip: tip.value,
-      status: status.value,
-      league: league.value,
-      teamAPosition: teamAPosition.value,
-      teamBPosition: teamBPosition.value,
-      teamAIcon: teamAIcon.value,
-      teamBIcon: teamBIcon.value
-    };
 
-    emit('formSubmit', formData);
-  } catch (err) {
-    console.log(err);
+  function handleSubmit() {
+    // ... (your existing code)
+    try {
+      const formData = {
+        teamAscore: teamAscore.value,
+        teamBscore: teamBscore.value,
+        showScore: ShowScore.value,
+        teamA: teamA.value,
+        teamB: teamB.value,
+        leagueIcon: leagueIcon.value,
+        formationA: formationA.value,
+        formationB: formationB.value,
+        time: time.value,
+        date: date.value,
+        tip: tip.value,
+        status: status.value,
+        league: league.value,
+        teamAPosition: teamAPosition.value,
+        teamBPosition: teamBPosition.value,
+        teamAIcon: teamAIcon.value,
+        teamBIcon: teamBIcon.value
+      };
+
+      emit('formSubmit', formData);
+    } catch (err) {
+      console.log(err);
+    }
   }
-}
 </script>
 
 <style>

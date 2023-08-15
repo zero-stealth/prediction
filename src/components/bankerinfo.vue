@@ -1,4 +1,4 @@
-<template>
+  <template>
   <div class="abt-info-p">
     <div class="abt-p-in">
       <h1>Banker Of The Day / Banker Tips</h1>
