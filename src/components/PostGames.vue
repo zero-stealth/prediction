@@ -15,8 +15,12 @@
           <input @change="handleTeamALogo" type="file" class="form-g-input" id="teamAIcon" accept="image/*" />
         </div>
         <div class="form-group">
-          <label for="formationA">Form:</label>
+          <label for="formationA">Formation:</label>
           <input v-model="formationA" type="text" class="form-g-input" placeholder="l-w-d-w" id="formationA" />
+        </div>
+        <div class="form-group">
+          <label for="Status">Status:</label>
+          <input v-model="status" type="text" class="form-g-input" placeholder="1" id="status" />
         </div>
         <div class="form-group">
           <label for="teamAPosition">Position:</label>
@@ -106,6 +110,7 @@ const teamAPosition = ref('');
 const teamBPosition = ref('');
 const time = ref('');
 const league = ref('');
+const status = ref('');
 const teamAscore = ref(0);
 const teamBscore = ref(0);
 const date = ref('');
@@ -196,6 +201,7 @@ async function handleSubmit() {
       formData.append('teamBPosition', teamBPosition.value);
       formData.append('teamBscore', teamBscore.value);
       formData.append('time', time.value);
+      formData.append('status', status.value);
       formData.append('league', league.value);
       formData.append('date', date.value);
       formData.append('tip', tip.value);

@@ -1,7 +1,7 @@
 <template>
   <div>
     <div class="form-container-h">
-      <h1>Vip updates</h1>
+      <h1>Vip update</h1>
     </div>
     <form @submit.prevent="handleSubmit" enctype="multipart/form-data" class="form-container">
       <div class="form-wrapper">
@@ -15,8 +15,12 @@
           <input @change="handleTeamALogo" type="file" class="form-g-input" id="teamAIcon" accept="image/*" />
         </div>
         <div class="form-group">
-          <label for="formationA">Form:</label>
+          <label for="formationA">Formation:</label>
           <input v-model="formationA" type="text" class="form-g-input" placeholder="l-w-d-w" id="formationA" />
+        </div>
+        <div class="form-group">
+          <label for="Status">Status:</label>
+          <input v-model="status" type="text" class="form-g-input" placeholder="1" id="status" />
         </div>
         <div class="form-group">
           <label for="teamAPosition">Position:</label>
@@ -84,7 +88,9 @@
 
 <script setup>
 import { ref } from 'vue';
-const emit = defineEmits(['formSubmitSport'])
+const emit = defineEmits(['formSubmit'])
+
+
 const teamA = ref('');
 const teamB = ref('');
 const teamAIcon = ref(null);
@@ -95,6 +101,7 @@ const formationB = ref('l-d-w-d');
 const teamAPosition = ref('');
 const teamBPosition = ref('');
 const time = ref('');
+const status = ref('');
 const league = ref('');
 const teamAscore = ref(0);
 const teamBscore = ref(0);
@@ -121,6 +128,7 @@ function handleLeagueLogo(event) {
   handleFileUpload(event, leagueIcon);
 }
 
+// ... (your existing code)
 
 function handleSubmit() {
   // ... (your existing code)
@@ -137,6 +145,7 @@ function handleSubmit() {
       time: time.value,
       date: date.value,
       tip: tip.value,
+      status: status.value,
       league: league.value,
       teamAPosition: teamAPosition.value,
       teamBPosition: teamBPosition.value,

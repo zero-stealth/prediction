@@ -713,6 +713,9 @@ async function updateGame(formData) {
     if(formData.formationA !== ''){
       formDataa.append('formationA', formData.formationA);
     }
+    if(formData.status !== ''){
+      formDataa.append('status', formData.status);
+    }
     if(formData.teamAPosition !== ''){
       formDataa.append('teamAPosition', formData.teamAPosition);
     }
@@ -781,6 +784,9 @@ async function updateSport(formData) {
     }
     if(formData.formationA !== ''){
       formDataa.append('formationA', formData.formationA);
+    }
+    if(formData.status !== ''){
+      formDataa.append('status', formData.status);
     }
     if(formData.teamAPosition !== ''){
       formDataa.append('teamAPosition', formData.teamAPosition);

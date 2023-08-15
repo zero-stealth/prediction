@@ -23,6 +23,7 @@
         <div class="card-in-s">
           <span>[{{ Time }}]</span>
         </div>
+        <span class="status-p">{{ status }}</span>
         <div v-if="!showScore">
           <span>vs</span>
         </div>
@@ -31,8 +32,8 @@
           <span class="card-p">:</span>
           <span class="card-s">{{ teamBscore }}</span>
         </div>
-        <a  href="https://bwredir.com/1bkh?p=%2Fregistration%2F"  class="bet-adv" >
-          <img src="../assets/Bet.png" alt="Bet winner" class="bet-winner-logo">
+        <a href="https://bwredir.com/1bkh?p=%2Fregistration%2F" class="bet-adv">
+          <img src="../assets/Bet.png" alt="Bet winner" class="bet-winner-logo" />
         </a>
       </div>
       <div class="card-a">
@@ -49,26 +50,30 @@
       </div>
     </div>
     <div class="Tip">
-          <h4>Tip:</h4>
-          <span>{{ tip }}</span>
-        </div>
+      <h4>Tip:</h4>
+      <span>{{ tip }}</span>
+    </div>
     <div class="card-footer">
       <div class="card-f" v-for="formationA in formationsA" :key="formationA">
-        <span :class="[formationA === 'l' ? 'loose' : (formationA === 'w' ? 'win' : 'draw')]">{{ formationA }}</span>
+        <span :class="[formationA === 'l' ? 'loose' : formationA === 'w' ? 'win' : 'draw']">{{
+          formationA
+        }}</span>
       </div>
       <div class="card-fi">Recent form</div>
       <div class="card-f" v-for="formationB in formationsB" :key="formationB">
-        <span :class="[formationB === 'l' ? 'loose' : (formationB === 'w' ? 'win' : 'draw')]">{{ formationB }}</span>
+        <span :class="[formationB === 'l' ? 'loose' : formationB === 'w' ? 'win' : 'draw']">{{
+          formationB
+        }}</span>
       </div>
     </div>
   </div>
 </template>
 
 <script setup>
-import { ref, computed, onMounted } from 'vue';
-import { DateTime } from "luxon";
+import { ref, computed, onMounted } from 'vue'
+import { DateTime } from 'luxon'
 
-const Time = ref();
+const Time = ref()
 
 const props = defineProps({
   formationA: {
@@ -121,6 +126,10 @@ const props = defineProps({
     type: String,
     required: true
   },
+  status: {
+    type: String,
+    required: false
+  },
   sport: {
     type: String,
     required: false
@@ -129,25 +138,21 @@ const props = defineProps({
     type: Boolean,
     default: false
   }
-});
+})
 
-const formationsA = ref(props.formationA);
-const formationsB = ref(props.formationB);
+const formationsA = ref(props.formationA)
+const formationsB = ref(props.formationB)
 
 const shouldShowScore = computed(() => {
-  return props.showScore && props.teamAscore !== undefined && props.teamBscore !== undefined;
-});
-
-
+  return props.showScore && props.teamAscore !== undefined && props.teamBscore !== undefined
+})
 
 onMounted(() => {
-  const originalTime = props.time; 
-  const userTimeZone = DateTime.local().zoneName;
-  const convertedTime = DateTime.fromISO(originalTime).setZone(userTimeZone);
-  Time.value = convertedTime.toFormat('HH:mm:ss');
-});
-
-
+  const originalTime = props.time
+  const userTimeZone = DateTime.local().zoneName
+  const convertedTime = DateTime.fromISO(originalTime).setZone(userTimeZone)
+  Time.value = convertedTime.toFormat('HH:mm:ss')
+})
 </script>
 
 <style scoped>
