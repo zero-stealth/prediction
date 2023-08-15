@@ -36,7 +36,7 @@
             </button>
             <button class="btn-h" :class="{ 'active-btn': offset < 0 }" @click="nextDay">
               <Arrow class="btn-icon icon-right" />
-              Next
+              Tomorrow
             </button>
           </div>
         </div>
