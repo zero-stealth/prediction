@@ -697,47 +697,60 @@ const editSport = (sport, id) => {
   showEdit()
 }
 
-async function updateGame(
-  teamAscore,
-  teamBscore,
-  showScore,
-  teamA,
-  teamB,
-  leagueIcon,
-  formationA,
-  formationB,
-  time,
-  date,
-  tip,
-  league,
-  teamAPosition,
-  teamBPosition,
-  teamAIcon,
-  teamBIcon
-) {
+async function updateGame(formData) {
   try {
     const token = JSON.parse(localStorage.getItem('token'))
-    const formData = new FormData()
-    formData.append('teamAscore', teamAscore)
-    formData.append('teamBscore', teamBscore)
-    formData.append('showScore', showScore)
-    formData.append('teamA', teamA)
-    formData.append('teamB', teamB)
-    formData.append('leagueIcon', leagueIcon)
-    formData.append('formationA', formationA)
-    formData.append('formationB', formationB)
-    formData.append('teamAPosition', teamAPosition)
-    formData.append('teamBPosition', teamBPosition)
-    formData.append('teamAIcon', teamAIcon)
-    formData.append('teamBIcon', teamBIcon)
-    formData.append('time', time)
-    formData.append('date', date)
-    formData.append('tip', tip)
-    formData.append('league', league)
-
+    const formDataa = new FormData()
+    if (formData.teamA !== '') {
+    formDataa.append('teamA', formData.teamA)
+    }
+    if(formData.teamAIcon !== ''){
+      formDataa.append('teamAIcon', formData.teamAIcon);
+    }
+    if(formData.leagueIcon !== ''){
+      formDataa.append('leagueIcon', formData.leagueIcon);
+    }
+    if(formData.formationA !== ''){
+      formDataa.append('formationA', formData.formationA);
+    }
+    if(formData.teamAPosition !== ''){
+      formDataa.append('teamAPosition', formData.teamAPosition);
+    }
+    if(formData.teamAscore !== ''){
+      formDataa.append('teamAscore', formData.teamAscore);
+    }
+    if(formData.teamB !== ''){
+      formDataa.append('teamB', formData.teamB);
+    }
+    if(formData.teamBIcon !== ''){
+      formDataa.append('teamBIcon', formData.teamBIcon);
+    }
+    if(formData.formationB !== ''){
+      formDataa.append('formationB', formData.formationB);
+    }
+    if(formData.teamBPosition !== ''){
+      formDataa.append('teamBPosition', formData.teamBPosition);
+    }
+    if(formData.teamBscore !== ''){
+      formDataa.append('teamBscore', formData.teamBscore);
+    }
+    if(formData.time !== ''){
+      formDataa.append('time', formData.time);
+    }
+    if(formData.league !== ''){
+      formDataa.append('league', formData.league);
+    }
+    if(formData.date !== ''){
+      formDataa.append('date', formData.date);
+    }
+    if(formData.tip !== ''){
+      formDataa.append('tip',formData.tip);
+    }
+    if(formData.showScore !== ''){
+      formDataa.append('showScore', formData.showScore);
+    }
     const response = await axios.put(
-      `https://predictions-reg9.onrender.com/predictions/update/${gameId.value}`,
-      formData,
+      `https://predictions-reg9.onrender.com/predictions/update/${gameId.value}`, formDataa,
       {
         headers: {
           Authorization: `Bearer ${token}`,
@@ -745,66 +758,78 @@ async function updateGame(
         }
       }
     )
+    console.log(response.data)
+    alert("game updated")
 
-    emit('gameUpdated') // Emit the event to the parent component
-    alert('Game updated')
   } catch (error) {
-    console.log(error)
+    console.error('Error updating game:', error);
   }
 }
 
-async function updateSport(
-  teamAscore,
-  teamBscore,
-  showScore,
-  teamA,
-  teamB,
-  leagueIcon,
-  formationA,
-  formationB,
-  time,
-  date,
-  tip,
-  league,
-  teamAPosition,
-  teamBPosition,
-  teamAIcon,
-  teamBIcon
-) {
-  try {
+async function updateSport(formData) {
+    try {
     const token = JSON.parse(localStorage.getItem('token'))
-    const formData = new FormData()
-    formData.append('teamAscore', teamAscore)
-    formData.append('teamBscore', teamBscore)
-    formData.append('showScore', showScore)
-    formData.append('teamA', teamA)
-    formData.append('teamB', teamB)
-    formData.append('leagueIcon', leagueIcon)
-    formData.append('formationA', formationA)
-    formData.append('formationB', formationB)
-    formData.append('teamAPosition', teamAPosition)
-    formData.append('teamBPosition', teamBPosition)
-    formData.append('teamAIcon', teamAIcon)
-    formData.append('teamBIcon', teamBIcon)
-    formData.append('time', time)
-    formData.append('date', date)
-    formData.append('tip', tip)
-    formData.append('league', league)
+    const formDataa = new FormData()
+    if (formData.teamA !== '') {
+    formDataa.append('teamA', formData.teamA)
+    }
+    if(formData.teamAIcon !== ''){
+      formDataa.append('teamAIcon', formData.teamAIcon);
+    }
+    if(formData.leagueIcon !== ''){
+      formDataa.append('leagueIcon', formData.leagueIcon);
+    }
+    if(formData.formationA !== ''){
+      formDataa.append('formationA', formData.formationA);
+    }
+    if(formData.teamAPosition !== ''){
+      formDataa.append('teamAPosition', formData.teamAPosition);
+    }
+    if(formData.teamAscore !== ''){
+      formDataa.append('teamAscore', formData.teamAscore);
+    }
+    if(formData.teamB !== ''){
+      formDataa.append('teamB', formData.teamB);
+    }
+    if(formData.teamBIcon !== ''){
+      formDataa.append('teamBIcon', formData.teamBIcon);
+    }
+    if(formData.formationB !== ''){
+      formDataa.append('formationB', formData.formationB);
+    }
+    if(formData.teamBPosition !== ''){
+      formDataa.append('teamBPosition', formData.teamBPosition);
+    }
+    if(formData.teamBscore !== ''){
+      formDataa.append('teamBscore', formData.teamBscore);
+    }
+    if(formData.time !== ''){
+      formDataa.append('time', formData.time);
+    }
+    if(formData.league !== ''){
+      formDataa.append('league', formData.league);
+    }
+    if(formData.date !== ''){
+      formDataa.append('date', formData.date);
+    }
+    if(formData.tip !== ''){
+      formDataa.append('tip',formData.tip);
+    }
+    if(formData.showScore !== ''){
+      formDataa.append('showScore', formData.showScore);
+    }
 
     const response = await axios.put(
-      `https://predictions-reg9.onrender.com/sports/update/${sportId.value}`,
-      formData,
+      `https://predictions-reg9.onrender.com/sports/update/${sportId.value}`, formDataa,
       {
         headers: {
           Authorization: `Bearer ${token}`
         }
       }
     )
-
-    emit('sportUpdated') // Emit the event to the parent component
     console.log(response.data)
   } catch (error) {
-    console.log(error)
+    console.log(error);
   }
 }
 
