@@ -7,7 +7,7 @@
       </div>
       <div class="header-btn">
         <button class="btn-h" :class="{ 'active-btn': offset > 0 }" @click="previousDay()">
-          Yesterday
+          Previous
         </button>
         <button class="btn-h" :class="{ 'active-btn': offset === 0 }" @click="setOffset(0)">
           Today

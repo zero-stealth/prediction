@@ -151,7 +151,7 @@ onMounted(() => {
   const originalTime = props.time
   const userTimeZone = DateTime.local().zoneName
   const convertedTime = DateTime.fromISO(originalTime).setZone(userTimeZone)
-  Time.value = convertedTime.toFormat('HH:mm:ss')
+  Time.value = convertedTime.toFormat('HH:mm')
 })
 </script>
 
