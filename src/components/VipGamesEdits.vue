@@ -93,9 +93,9 @@ const emit = defineEmits(['formSubmit'])
 
 const teamA = ref('');
 const teamB = ref('');
-const teamAIcon = ref(null);
-const teamBIcon = ref(null);
-const leagueIcon = ref(null);
+const teamAIcon = ref('');
+const teamBIcon = ref('');
+const leagueIcon = ref('');
 const formationA = ref('');
 const formationB = ref('');
 const teamAPosition = ref('');
@@ -106,7 +106,7 @@ const league = ref('');
 const teamAscore = ref('');
 const teamBscore = ref('');
 const date = ref('');
-const tip = ref('');  
+const tip = ref('');
 const ShowScore = ref(false);
 
 function handleFileUpload(event, targetRef) {
