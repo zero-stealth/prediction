@@ -703,10 +703,10 @@ async function updateGame(formData) {
     if (formData.teamA !== '') {
     formDataa.append('teamA', formData.teamA)
     }
-    if(formData.teamAIcon !== ''){
+    if(formData.teamAIcon !== null){
       formDataa.append('teamAIcon', formData.teamAIcon);
     }
-    if(formData.leagueIcon !== ''){
+    if(formData.leagueIcon !== null){
       formDataa.append('leagueIcon', formData.leagueIcon);
     }
     if(formData.status !== ''){
@@ -724,7 +724,7 @@ async function updateGame(formData) {
     if(formData.teamB !== ''){
       formDataa.append('teamB', formData.teamB);
     }
-    if(formData.teamBIcon !== ''){
+    if(formData.teamBIcon !== null){
       formDataa.append('teamBIcon', formData.teamBIcon);
     }
     if(formData.formationB !== ''){
@@ -775,13 +775,13 @@ async function updateSport(formData) {
     if (formData.teamA !== '') {
     formDataa.append('teamA', formData.teamA)
     }
-    if(formData.teamAIcon !== ''){
+    if(formData.teamAIcon !== null){
       formDataa.append('teamAIcon', formData.teamAIcon);
     }
     if(formData.status !== ''){
       formDataa.append('status', formData.status);
     }
-    if(formData.leagueIcon !== ''){
+    if(formData.leagueIcon !== null){
       formDataa.append('leagueIcon', formData.leagueIcon);
     }
     if(formData.formationA !== ''){
@@ -796,7 +796,7 @@ async function updateSport(formData) {
     if(formData.teamB !== ''){
       formDataa.append('teamB', formData.teamB);
     }
-    if(formData.teamBIcon !== ''){
+    if(formData.teamBIcon !== null){
       formDataa.append('teamBIcon', formData.teamBIcon);
     }
     if(formData.formationB !== ''){

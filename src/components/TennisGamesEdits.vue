@@ -173,11 +173,12 @@
 <script setup>
 import { ref } from 'vue'
 const emit = defineEmits(['formSubmitSport'])
+
 const teamA = ref('')
 const teamB = ref('')
-const teamAIcon = ref('')
-const teamBIcon = ref('')
-const leagueIcon = ref('')
+const teamAIcon = ref(null);
+const teamBIcon = ref(null);
+const leagueIcon = ref(null);
 const formationA = ref('')
 const formationB = ref('')
 const teamAPosition = ref('')
@@ -185,8 +186,8 @@ const teamBPosition = ref('')
 const time = ref('')
 const status = ref('')
 const league = ref('')
-const teamAscore = ref('')
-const teamBscore = ref('')
+const teamAscore = ref('');
+const teamBscore = ref('');
 const date = ref('')
 const tip = ref('')
 const ShowScore = ref(false)
