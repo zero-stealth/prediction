@@ -1,7 +1,7 @@
 <template>
   <div>
     <div class="form-container-h">
-      <h1>Tennis update</h1>
+      <h1>Tennis updates</h1>
     </div>
     <form @submit.prevent="handleSubmit" enctype="multipart/form-data" class="form-container">
       <div class="form-wrapper">
@@ -88,14 +88,12 @@
 
 <script setup>
 import { ref } from 'vue';
-const emit = defineEmits(['formSubmit'])
-
-
+const emit = defineEmits(['formSubmitSport'])
 const teamA = ref('');
 const teamB = ref('');
-const teamAIcon = ref('');
-const teamBIcon = ref('');
-const leagueIcon = ref('');
+const teamAIcon = ref(null);
+const teamBIcon = ref(null);
+const leagueIcon = ref(null);
 const formationA = ref('');
 const formationB = ref('');
 const teamAPosition = ref('');
@@ -128,36 +126,35 @@ function handleLeagueLogo(event) {
   handleFileUpload(event, leagueIcon);
 }
 
-// ... (your existing code)
 
-function handleSubmit() {
-  // ... (your existing code)
-  try {
-    const formData = {
-      teamAscore: teamAscore.value,
-      teamBscore: teamBscore.value,
-      showScore: ShowScore.value,
-      teamA: teamA.value,
-      teamB: teamB.value,
-      leagueIcon: leagueIcon.value,
-      formationA: formationA.value,
-      formationB: formationB.value,
-      time: time.value,
-      date: date.value,
-      tip: tip.value,
+  function handleSubmit() {
+    // ... (your existing code)
+    try {
+      const formData = {
+        teamAscore: teamAscore.value,
+        teamBscore: teamBscore.value,
+        showScore: ShowScore.value,
+        teamA: teamA.value,
+        teamB: teamB.value,
+        leagueIcon: leagueIcon.value,
+        formationA: formationA.value,
+        formationB: formationB.value,
+        time: time.value,
+        date: date.value,
+        tip: tip.value,
       status: status.value,
-      league: league.value,
-      teamAPosition: teamAPosition.value,
-      teamBPosition: teamBPosition.value,
-      teamAIcon: teamAIcon.value,
-      teamBIcon: teamBIcon.value
-    };
+        league: league.value,
+        teamAPosition: teamAPosition.value,
+        teamBPosition: teamBPosition.value,
+        teamAIcon: teamAIcon.value,
+        teamBIcon: teamBIcon.value
+      };
 
-    emit('formSubmit', formData);
-  } catch (err) {
-    console.log(err);
+      emit('formSubmit', formData);
+    } catch (err) {
+      console.log(err);
+    }
   }
-}
 </script>
 
 <style>

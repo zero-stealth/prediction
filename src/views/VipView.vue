@@ -3,18 +3,17 @@
     <div class="vip-wrapper">
       <div class="vip-notpaid" :style="{ backgroundImage: `url(${banner})` }" v-if="!paid">
         <div v-if="!username" class="vip-p">
-          <h1>Sign in or  log in to your account 🌵</h1>
-        <div class="vip-sp">
-          <button class="vip-btn" @click="goSignin()">
-            <ProfileIcon class="vip-pay-icon" />
-            Sign in
-          </button>
-          <button class="vip-btn" @click="goLogin()">
-            Log in
-            <ProfileIcon class="vip-pay-icon" />
-          </button>
-        </div>
-         
+          <h1>Sign in or log in to your account 🌵</h1>
+          <div class="vip-sp">
+            <button class="vip-btn" @click="goSignin()">
+              <ProfileIcon class="vip-pay-icon" />
+              Sign in
+            </button>
+            <button class="vip-btn" @click="goLogin()">
+              Log in
+              <ProfileIcon class="vip-pay-icon" />
+            </button>
+          </div>
         </div>
         <div class="vip-p" v-else>
           <h1>Your VIP account is in not activated 🌵</h1>
@@ -30,17 +29,18 @@
             <h1>VIP tips {{ currentDate }}</h1>
           </div>
           <div class="header-btn">
-            <button class="btn-h" :class="{ 'active-btn': offset > 0 }" @click="previousDay">
-              <Arrow class="btn-icon icon-left" />
+            <button class="btn-h" :class="{ 'active-btn': offset > 0 }" @click="previousDay()">
               Previous
             </button>
-            <button class="btn-h" :class="{ 'active-btn': offset < 0 }" @click="nextDay">
-              <Arrow class="btn-icon icon-right" />
+            <button class="btn-h" :class="{ 'active-btn': offset === 0 }" @click="setOffset(0)">
+              Today
+            </button>
+            <button class="btn-h" :class="{ 'active-btn': offset === 1 }" @click="setOffset(1)">
               Tomorrow
             </button>
           </div>
         </div>
-        <template  v-if="paid && username && cardData.length > 0">
+        <template v-if="paid && username && cardData.length > 0">
           <div class="main-h-card booom-h">
             <Card
               v-for="(card, index) in cardData"
@@ -168,11 +168,17 @@ const previousDay = () => {
   updateCurrentDate()
 }
 
-const nextDay = () => {
-  if (offset.value < 1) {
-    offset.value++
-    updateCurrentDate()
-  }
+// const nextDay = () => {
+//   if (offset.value < 1) {
+//     offset.value++
+//     updateCurrentDate()
+//   }
+// }
+
+
+const setOffset = (value) => {
+  offset.value = value
+  updateCurrentDate()
 }
 
 const updateCurrentDate = () => {
@@ -193,7 +199,6 @@ const formatFormation = (formation) => {
   }
   return []
 }
-
 
 watch([offset, username, paid], () => {
   updateAuthStatus()

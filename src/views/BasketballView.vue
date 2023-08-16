@@ -8,15 +8,16 @@
             <h1>Basketball Free tips {{ currentDate }}</h1>
           </div>
           <div class="header-btn">
-            <button class="btn-h" :class="{ 'active-btn': offset > 0 }" @click="previousDay">
-              <Arrow class="btn-icon icon-left" />
-              Previous
-            </button>
-            <button class="btn-h" :class="{ 'active-btn': offset < 0 }" @click="nextDay">
-              Tomorrow
-              <Arrow class="btn-icon icon-right" />
-            </button>
-          </div>
+        <button class="btn-h" :class="{ 'active-btn': offset > 0 }" @click="previousDay()">
+          Previous
+        </button>
+        <button class="btn-h" :class="{ 'active-btn': offset === 0 }" @click="setOffset(0)">
+          Today
+        </button>
+        <button class="btn-h" :class="{ 'active-btn': offset === 1 }" @click="setOffset(1)">
+          Tomorrow
+        </button>
+      </div>
         </div>
         <a href="https://bwredir.com/1bkh?p=%2Fregistration%2F" class="betw-banner-comp" @click="goAdds">
         <img src="../assets/BannerBet.png" alt="bet winner" class="betw-banner" />
@@ -56,7 +57,6 @@
 
 <script setup>
 import axios from 'axios';
-import Arrow from '../icons/arrow.vue';
 import Card from '../components/CardComponent.vue';
 import ButtonComponent from '../components/ButtonComponent.vue';
 import { ref, onMounted, watch } from 'vue';
@@ -95,12 +95,18 @@ const previousDay = () => {
   updateCurrentDate();
 };
 
-const nextDay = () => {
-  if (offset.value < 1) {
-    offset.value++;
-    updateCurrentDate();
-  }
-};
+// const nextDay = () => {
+//   if (offset.value < 1) {
+//     offset.value++;
+//     updateCurrentDate();
+//   }
+// };
+
+
+const setOffset = (value) => {
+  offset.value = value
+  updateCurrentDate()
+}
 
 const updateCurrentDate = () => {
   const today = new Date();

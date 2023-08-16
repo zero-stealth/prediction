@@ -585,7 +585,6 @@ const upcomingData = ref([])
 const tennisData = ref([])
 const basketBallData = ref([])
 
-const emit = defineEmits(['gameUpdated', 'sportUpdated']) // Define the emitted events
 
 const getBetOfTheDay = async () => {
   try {
@@ -710,11 +709,11 @@ async function updateGame(formData) {
     if(formData.leagueIcon !== ''){
       formDataa.append('leagueIcon', formData.leagueIcon);
     }
-    if(formData.formationA !== ''){
-      formDataa.append('formationA', formData.formationA);
-    }
     if(formData.status !== ''){
       formDataa.append('status', formData.status);
+    }
+    if(formData.formationA !== ''){
+      formDataa.append('formationA', formData.formationA);
     }
     if(formData.teamAPosition !== ''){
       formDataa.append('teamAPosition', formData.teamAPosition);
@@ -779,14 +778,14 @@ async function updateSport(formData) {
     if(formData.teamAIcon !== ''){
       formDataa.append('teamAIcon', formData.teamAIcon);
     }
+    if(formData.status !== ''){
+      formDataa.append('status', formData.status);
+    }
     if(formData.leagueIcon !== ''){
       formDataa.append('leagueIcon', formData.leagueIcon);
     }
     if(formData.formationA !== ''){
       formDataa.append('formationA', formData.formationA);
-    }
-    if(formData.status !== ''){
-      formDataa.append('status', formData.status);
     }
     if(formData.teamAPosition !== ''){
       formDataa.append('teamAPosition', formData.teamAPosition);

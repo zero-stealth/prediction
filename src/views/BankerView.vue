@@ -92,6 +92,9 @@ const setOffset = (value) => {
 
 
 
+
+
+
 const updateCurrentDate = () => {
   const today = new Date();
   today.setDate(today.getDate() + offset.value);
