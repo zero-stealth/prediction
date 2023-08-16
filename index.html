@@ -4,9 +4,10 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta name="description" content="Get free football, basketball, and tennis betting tips. Improve your odds with expert predictions for over 2.5 goals, double chance, and more. Maximize profits with our bet of the day.">
-  <meta name="keywords" content="betting tips, football predictions, basketball tips, tennis betting, sports betting, over 2.5 goals, double chance, bet of the day">
+  <meta name="keywords" content="betting tips, Over 2.5 Goals , Double Chance ,Over 1.5 Goals , Under 2.5 Goals , football predictions, basketball tips, tennis betting, sports betting, over 2.5 goals, double chance, bet of the day">
   <meta name="author" content="SportyPredict">
-  
+  <link rel="canonical" href="https://sportypredict.com/">
+
   <!-- Google Tag Manager -->
   <script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
   new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
@@ -37,6 +38,12 @@
     <!-- Vue.js template code -->
     <template>
       <div>
+        <nav aria-label="breadcrumb">
+          <ol class="breadcrumb">
+            <li class="breadcrumb-item"><a href="https://sportypredict.com/">Home</a></li>
+            <li class="breadcrumb-item"><a href="https://sportypredict.com//{{ currentPage.slug }}">{{ currentPage.title }}</a></li>
+          </ol>
+        </nav>
         <main>
           <h1>{{ currentPage.title }}</h1>
           <p>{{ currentPage.description }}</p>
@@ -49,33 +56,35 @@
       
       const pages = ref([
         {
-          title: "Free Football Predictions",
+          title: "Bet of the day",
           description:
             "Get accurate and free football predictions daily. Discover sure home win tips, banker bets, BTTS/GG predictions, and more. Start making informed bets.",
+          slug: "bet-of-day"
         },
         {
-          title: "Free Football Betting Tips",
-          description: "Get the latest free football betting tips to boost your winnings.",
+          title: "Basketball",
+          description: "Get the latest free Basketball betting tips to boost your winnings.",
+          slug: "Basketball"
         },
         {
-          title: "Free Basketball Betting Tips",
-          description: "Improve your basketball betting with expert tips and predictions.",
-        },
-        {
-          title: "Free Tennis Betting Tips",
+          title: "Tennis",
           description: "Ace your tennis bets with free and reliable betting tips.",
+          slug: "tennis"
         },
         {
           title: "Over 2.5 Goals Tips",
           description: "Predictions and tips for betting on matches with over 2.5 goals.",
+          slug: "over-2.5-goals-tips"
         },
         {
           title: "Double Chance Betting Tips",
           description: "Increase your chances with double chance betting tips.",
+          slug: "/bet/Double Chance"
         },
         {
-          title: "Bet Of The Day",
-          description: "Maximize your profits with our top pick for the best bet of the day.",
+          title: "Over 1.5 Goals",
+          description: "Maximize your profits with our top pick for the best Over 1.5 Goals tips",
+          slug: "/bet/Over 1.5 Goals"
         },
       ]);
 
@@ -92,6 +101,11 @@
         const metaDescriptionTag = document.querySelector('meta[name="description"]');
         if (metaDescriptionTag) {
           metaDescriptionTag.setAttribute('content', currentPage.description);
+        }
+
+        const canonicalLink = document.querySelector('link[rel="canonical"]');
+        if (canonicalLink) {
+          canonicalLink.setAttribute('href', window.location.href);
         }
       }
     </script>

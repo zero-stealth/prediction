@@ -833,8 +833,10 @@ async function updateSport(formData) {
       }
     )
     console.log(response.data)
+    alert("game updated")
+
   } catch (error) {
-    console.log(error);
+    console.error('Error updating game:', error);
   }
 }
 
