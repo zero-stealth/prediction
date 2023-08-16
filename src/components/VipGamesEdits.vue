@@ -211,7 +211,6 @@ function handleLeagueLogo(event) {
   handleFileUpload(event, leagueIcon)
 }
 
-// ... (your existing code)
 
 function handleSubmit() {
   // ... (your existing code)

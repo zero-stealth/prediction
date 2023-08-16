@@ -234,7 +234,7 @@ function handleSubmit() {
       teamBIcon: teamBIcon.value
     }
 
-    emit('formSubmit', formData)
+    emit('formSubmitSport', formData)
   } catch (err) {
     console.log(err)
   }
