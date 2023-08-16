@@ -1,33 +1,101 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Get free football, basketball, and tennis betting tips. Improve your odds with expert predictions for over 2.5 goals, double chance, and more. Maximize profits with our bet of the day.">
+  <meta name="keywords" content="betting tips, football predictions, basketball tips, tennis betting, sports betting, over 2.5 goals, double chance, bet of the day">
+  <meta name="author" content="SportyPredict">
+  
   <!-- Google Tag Manager -->
-<script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
+  <script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
   new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
   j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
   'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
   })(window,document,'script','dataLayer','GTM-K2Z5KL8G');</script>
   <!-- End Google Tag Manager -->
-  <meta charset="UTF-8">
-  <link rel="icon" href="/favicon.ico">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>sportypredict</title>
-</head>
-<!-- Google tag (gtag.js) -->
-<script async src="https://www.googletagmanager.com/gtag/js?id=G-SY8V8H1BQ9"></script>
-<script>
-  window.dataLayer = window.dataLayer || [];
-  function gtag() { dataLayer.push(arguments); }
-  gtag('js', new Date());
 
-  gtag('config', 'G-SY8V8H1BQ9');
-</script>
+  <title>SportyPredict - Betting Tips and Predictions</title>
+
+  <!-- Google tag (gtag.js) -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-SY8V8H1BQ9"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag() { dataLayer.push(arguments); }
+    gtag('js', new Date());
+  
+    gtag('config', 'G-SY8V8H1BQ9');
+  </script>
+</head>
 <body>
   <!-- Google Tag Manager (noscript) -->
-<noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-K2Z5KL8G"
+  <noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-K2Z5KL8G"
   height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
   <!-- End Google Tag Manager (noscript) -->
-  <div id="app"></div>
+
+  <div id="app">
+    <!-- Vue.js template code -->
+    <template>
+      <div>
+        <main>
+          <h1>{{ currentPage.title }}</h1>
+          <p>{{ currentPage.description }}</p>
+        </main>
+      </div>
+    </template>
+
+    <script setup>
+      import { ref, onMounted } from 'vue';
+      
+      const pages = ref([
+        {
+          title: "Free Football Predictions",
+          description:
+            "Get accurate and free football predictions daily. Discover sure home win tips, banker bets, BTTS/GG predictions, and more. Start making informed bets.",
+        },
+        {
+          title: "Free Football Betting Tips",
+          description: "Get the latest free football betting tips to boost your winnings.",
+        },
+        {
+          title: "Free Basketball Betting Tips",
+          description: "Improve your basketball betting with expert tips and predictions.",
+        },
+        {
+          title: "Free Tennis Betting Tips",
+          description: "Ace your tennis bets with free and reliable betting tips.",
+        },
+        {
+          title: "Over 2.5 Goals Tips",
+          description: "Predictions and tips for betting on matches with over 2.5 goals.",
+        },
+        {
+          title: "Double Chance Betting Tips",
+          description: "Increase your chances with double chance betting tips.",
+        },
+        {
+          title: "Bet Of The Day",
+          description: "Maximize your profits with our top pick for the best bet of the day.",
+        },
+      ]);
+
+      const currentPageIndex = ref(0);
+      const currentPage = ref(pages[currentPageIndex]);
+
+      onMounted(() => {
+        updateMetaTags();
+      });
+
+      function updateMetaTags() {
+        document.title = currentPage.title;
+
+        const metaDescriptionTag = document.querySelector('meta[name="description"]');
+        if (metaDescriptionTag) {
+          metaDescriptionTag.setAttribute('content', currentPage.description);
+        }
+      }
+    </script>
+  </div>
   <script type="module" src="/src/main.js"></script>
 </body>
 </html>
