@@ -91,9 +91,9 @@ import { ref } from 'vue';
 const emit = defineEmits(['formSubmitSport'])
 const teamA = ref('');
 const teamB = ref('');
-const teamAIcon = ref(null);
-const teamBIcon = ref(null);
-const leagueIcon = ref(null);
+const teamAIcon = ref('');
+const teamBIcon = ref('');
+const leagueIcon = ref('');
 const formationA = ref('');
 const formationB = ref('');
 const teamAPosition = ref('');
