@@ -1,5 +1,6 @@
 import { createApp } from 'vue'
 import { createPinia } from 'pinia'
+import { createI18n } from 'vue-i18n';
 
 // /--- app ---/ //
 import App from './App.vue'
@@ -8,7 +9,40 @@ import App from './App.vue'
 import router from './router'
 import './style/global.css'
 
-import i18n from './i18n'
+
+
+
+// Language files
+import Brazilian from './locales/pt-BR.json';
+import English from './locales/en.json';
+import French from './locales/fr.json';
+import Spanish from './locales/es.json';
+import Italian from './locales/it.json';
+import Dutch from './locales/nl.json';
+import German from './locales/de.json';
+
+function loadLocaleMessages() {
+    const locales = { English, French, Brazilian, Spanish, Italian, Dutch, German };
+    const messages = {};
+    for (const key in locales) {
+        messages[key] = locales[key];
+    }
+    return messages;
+}
+
+const i18n = createI18n({
+    locale: 'English',
+    fallbackLocale: 'English',
+    messages: loadLocaleMessages()
+});
+
+//   nl.js (Dutch)
+//   fr.js (French)
+//   de.js (German)
+//   es.js (Spanish)
+//   en.js (English)
+//   it.js (Italian)
+//   pt-PT.js (Portuguese)
 
 
 const app = createApp(App)

@@ -82,11 +82,11 @@ const reset = () => {
         <div class="d1-contact">
           <div class="d1-icon" @click="openWhatsapp">
             <whatsappIcon class="icon-d1" />
-            <span>{{ $t('footer.whatsappNumber') }}</span>
+            <span>+254703147237</span>
           </div>
           <div class="d1-icon">
             <emailIcon class="icon-d1" />
-            <span>{{ $t('footer.email') }}</span>
+            <span>contact@sportypredict.com</span>
           </div>
         </div>
         <div class="app-d-link">
@@ -136,7 +136,7 @@ const reset = () => {
         <form @submit.prevent="book" class="book-f">
           <div class="book-con">
             <div class="con-s">
-              <input v-model="booknow" class="input-book" :placeholder="$t('whatsappUs')" />
+              <input v-model="booknow" class="input-book" :placeholder="$t('footer.whatsappUs')" />
             </div>
             <button type="submit" class="book-btn">
               <whatsappIcon class="book-icon" />

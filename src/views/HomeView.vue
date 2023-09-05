@@ -21,7 +21,7 @@
       <a
         href="https://bwredir.com/1bkh?p=%2Fregistration%2F"
         class="betw-banner-comp"
-        @click="goAdds"
+        @click="goAds()"
       >
         <img src="../assets/BannerBet.png" alt="bet winner" class="betw-banner" />
       </a>
