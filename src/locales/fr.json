@@ -1,5 +1,5 @@
 {
-  "section 2": {
+  "section2": {
     "abt-h1": "SportyPredict est l'un des principaux fournisseurs d'analyses et de pronostics de paris sportifs.",
     "abt-p1": "Notre objectif principal est de fournir les meilleurs conseils de paris sportifs, couvrant un large éventail de sports, notamment le football, le basket-ball et le tennis. Notre objectif est de garantir que vous pouvez participer quotidiennement aux paris sportifs en toute confiance et maximiser votre potentiel de réussite. Notre site Web présente une interface conviviale qui permet une navigation facile sur les ordinateurs de bureau et les appareils mobiles, faisant des jeux de hasard sportifs en ligne une expérience fluide. Si vous recherchez une plate-forme fiable qui prédit avec précision les matchs de football, SportyPredict.com est incontestablement le meilleur site de pronostics sportifs.",
     "abt-h2": "Pourquoi choisir SportyPredict ?",
@@ -7,7 +7,7 @@
     "abt-h3": "L'importance de suivre un site Web de pronostics de paris.",
     "abt-p3": "Les sports, en particulier le football, le basket-ball et le tennis, ont rassemblé une énorme base de fans. Le frisson et l'excitation de ces sports ont attiré de nombreux passionnés désireux de s'engager dans des paris sportifs et de gagner de l'argent. Cependant, sans Une bonne connaissance des paris et des risques associés, les pertes peuvent rapidement s'accumuler. C'est là que SportyPredict.com s'avère inestimable en tant que fournisseur ultime de conseils de paris. Nos pronostics sont générés grâce à une analyse méticuleuse et une évaluation statistique menée par notre équipe d'experts, en tenant compte tenir compte de tous les facteurs pertinents pour produire les meilleurs pronostics possibles. En vous appuyant sur un site Web de pronostics réputé comme SportyPredict.com, vous pouvez éliminer le besoin de recherches approfondies et accéder sans effort à des conseils de premier ordre. Cela vous permet de vous détendre et de placer vos paris en toute confiance sur un site de paris digne de confiance et attendons avec impatience les résultats sans stress ni inquiétude inutiles."
   },
-  "Section 4": {
+  "section4": {
     "abt-h1": "L'importance de s'appuyer sur un site Web de pronostics de football précis.",
     "abt-p1": "L'importance de s'appuyer sur un site Web de pronostics sportifs précis réside dans la recherche inhérente de gagner de l'argent. C'est cette poursuite qui pousse les individus à rechercher des sites de pronostics sportifs fiables tels que SportyPredict.com, qui a constamment prouvé être une plateforme rentable pour beaucoup. Examinons les raisons pour lesquelles des prévisions précises sont cruciales :",
     "ul": [
@@ -58,7 +58,7 @@
       "deleteHeader": "Supprimer",
       "noAccountsMessage": "Aucun compte pour l'instant !"
     },
-    "statuts": {
+    "statuses": {
       "actif": "Actif",
       "notActive": "Non actif"
     }
@@ -107,7 +107,7 @@
     "socialMedia": "Réseaux sociaux",
     "allRightsReserved": "Tous droits réservés"
   },
-  "héros": {
+  "hero": {
     "span1": " Profitez de notre",
     "span2": "quotidien de premier ordre",
     "span3": "Sports",
@@ -134,26 +134,26 @@
     "btn7": "Inscrivez-vous",
     "btn8": "Connexion"
   },
-  "Info": {
+  "info": {
     "h1-1": "Autres pronostics et astuces sportifs",
     "p-1": "Vous recherchez des conseils de paris gratuits et des pronostics sportifs pour vous aider à augmenter vos bénéfices sur vos paris ? Vous êtes au bon endroit. Sur cette page, vous trouverez des conseils de paris sur tous les autres sports pour vous aider. trouvez les choix dont vous avez besoin.",
     "h1-2": "Que sont les autres pronostics sportifs ?",
     "p-2": "Ce sont des pronostics pour tous les autres sports à l'exclusion du football. Cette page montre tous les pronostics sur les autres sports de nos pronostiqueurs/experts. Tous nos pronostics contiennent le pays ou le continent, la ligue et les conseils de paris. Vous pouvez également consulter d'autres marchés de paris en cliquant sur le marché des paris sous les pronostics."
   },
-  "autre info": {
+  "otherI": {
     "h1-1": "Politique de confidentialité",
     "p-1": "Chez sportypredict, nous nous engageons profondément à protéger votre vie privée et à assurer la sécurité de vos informations personnelles. Cette politique de confidentialité explique comment nous collectons et utilisons vos informations lorsque vous utilisez notre site Web.",
     "p-2": "Nous pouvons vous demander votre nom, vos coordonnées (telles que votre adresse e-mail et votre numéro de téléphone) et votre date de naissance. De plus, nous pouvons recueillir d'autres informations pertinentes par le biais d'enquêtes auprès des clients et d'offres spéciales. Le seul but de la collecte de ces informations a pour but de vous fournir un service amélioré et d'améliorer nos produits et services.",
-    "p-3": "À l'occasion, nous pouvons vous envoyer des e-mails promotionnels et des SMS contenant des informations sur de nouveaux produits, des offres exclusives ou d'autres mises à jour pertinentes. Si vous ne souhaitez plus recevoir de telles communications, veuillez nous contacter à contact@sportypredict .com",
+    "p-3": "À l'occasion, nous pouvons vous envoyer des e-mails promotionnels et des SMS contenant des informations sur de nouveaux produits, des offres exclusives ou d'autres mises à jour pertinentes. Si vous ne souhaitez plus recevoir de telles communications, veuillez nous contacter",
     "p-4": "Si vous pensez que l'une des informations que nous avons collectées est incorrecte ou incomplète, veuillez nous contacter et nous corrigerons rapidement toute inexactitude. Conformément aux lois sur la protection des données, vous avez le droit de demander des informations sur le données personnelles que nous détenons à votre sujet.",
     "p-5": "Si vous décidez de supprimer votre compte sportypredict, sachez que toutes les données et contenus associés, y compris les abonnements actifs, seront définitivement perdus. Cependant, vous pouvez toujours accéder aux services sportypredict en vous inscrivant avec une nouvelle adresse e-mail. et numéro de téléphone.",
     "p-6": "Veuillez noter que cette politique de confidentialité peut être mise à jour périodiquement et que la date d'entrée en vigueur est le 12 juillet 2023. Nous vous encourageons à consulter régulièrement cette page pour toute modification ou mise à jour."
   },
-  "politique": {
+  "policy": {
     "h1-1": "Politique de remboursement",
     "p-1": "Les informations fournies sont destinées uniquement aux personnes ou entités âgées de plus de 18 ans. sportypredict n'offre pas de remboursement pour les paiements d'abonnement et n'assume aucune responsabilité en cas de pertes ou de gains financiers. Il est conseillé aux personnes de Les pays où les paris sont illégaux s'abstiennent de souscrire à nos forfaits. Pour plus de détails sur SportyPredict, veuillez vous référer à nos conditions générales complètes."
   },
-  "termes": {
+  "terms": {
     "h1-1": "Conditions générales",
     "p1-2": "En accédant ou en utilisant les pronostics et les conseils de paris sur le site Web Sportypredict.com ou l'un de nos sites, pages, comptes affiliés, ou en vous inscrivant sur le site Web, vous acceptez d'être lié et de vous conformer à :" ,
     "li-1": "Notre politique de confidentialité",
@@ -175,7 +175,7 @@
     "p1-13": "Ces Conditions générales ne créent pas de partenariat, de coentreprise ou de relation mandant-agent entre les parties, et aucune partie n'a le pouvoir de lier une autre partie, sauf disposition contraire expresse dans les présentes Conditions générales. ",
     "p1-14": "Sportypredict ne sera pas en violation des présentes conditions générales ni responsable de tout retard ou manquement à l'exécution de ses obligations si ce retard ou ce manquement résulte d'événements, de circonstances ou de causes échappant à son contrôle raisonnable. Ceux-ci peuvent inclure , mais sans s'y limiter, les pannes de réseau de télécommunications, les pannes de courant, les pannes de matériel informatique ou de logiciels tiers, les incendies, la foudre, les explosions, les inondations, les intempéries, les conflits du travail ou les lock-out, les activités terroristes et les actes gouvernementaux ou d'autres autorités compétentes. Dans de telles circonstances, le délai d'exécution sera prolongé d'une période équivalente au retard ou à l'échec."
   },
-  "A venir": {
+  "upcoming": {
     "h1-1": "Conseils à venir",
     "h1-2": "Aucune prédiction pour l'instant ! Revenez plus tard."
   },

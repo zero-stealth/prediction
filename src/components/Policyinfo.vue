@@ -1,38 +1,39 @@
 <template>
   <div class="abt-info-p info-dn">
-    <h1>{{$t('otherinfo.h1-1')}}</h1>
+    <h1>{{$t('otherI.h1-1')}}</h1>
     <div class="abt-p-in">
       <p>
-        {{$t('otherinfo.p-1')}}
+        {{$t('otherI.p-1')}}
       </p>
     </div>
     <div class="abt-p-in">
       <p>
-        {{$t('otherinfo.p-2')}}
+        {{$t('otherI.p-2')}}
       </p>
     </div>
     <div class="abt-p-in">
       <p>
-        {{$t('otherinfo.p-3')}}
+        {{$t('otherI.p-3')}}
       </p>
     </div>
     <div class="abt-p-in">
       <p>
-        {{$t('otherinfo.p-4')}}
+        {{$t('otherI.p-4')}}
       </p>
     </div>
     <div class="abt-p-in">
       <p>
-        {{$t('otherinfo.p-5')}}
+        {{$t('otherI.p-5')}}
       </p>
     </div>
     <div class="abt-p-in">
       <p>
-        {{$t('otherinfo.p-6')}}
+        {{$t('otherI.p-6')}}
       </p>
     </div>
   </div>
 </template>
-<style>
+
+<style scoped>
 @import '../style/info.css';
 </style>

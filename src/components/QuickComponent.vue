@@ -12,7 +12,6 @@
 
 <script setup>
 import { RouterLink } from 'vue-router'
-
 </script>
 <style>
 @import '../style/quick.css';

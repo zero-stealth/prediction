@@ -139,11 +139,11 @@
       "h1-2": "Cosa Sono le Altre Previsioni Sportive?",
       "p-2": "Si tratta di previsioni per ogni altra disciplina sportiva escludendo il calcio. Questa pagina mostra tutte le previsioni per altre discipline sportive dai nostri tipster / esperti. Tutte le nostre previsioni contengono il paese o il continente, la lega e i consigli sulle scommesse. Puoi anche controllare altri mercati delle scommesse cliccando sul mercato delle scommesse sotto le previsioni."
     },
-    "otherinfo": {
+    "otherI": {
       "h1-1": "Informativa sulla Privacy",
       "p-1": "Presso sportypredict siamo profondamente impegnati nella protezione della tua privacy e nella sicurezza delle tue informazioni personali. Questa informativa sulla privacy spiega come raccogliamo e utilizziamo le tue informazioni quando utilizzi il nostro sito web.",
       "p-2": "Potremmo chiedere il tuo nome, le informazioni di contatto (come l'indirizzo email e il numero di telefono) e la data di nascita. Inoltre, potremmo raccogliere altre informazioni pertinenti tramite sondaggi tra i clienti e offerte speciali. Lo scopo unico della raccolta di queste informazioni è fornirti un servizio migliore e migliorare i nostri prodotti e servizi.",
-      "p-3": "Occasionalmente, potremmo inviarti email promozionali e messaggi SMS contenenti informazioni su nuovi prodotti, offerte esclusive o altri aggiornamenti rilevanti. Se non desideri più ricevere tali comunicazioni, ti preghiamo di contattarci all'indirizzo contact@sportypredict.com",
+      "p-3": "Occasionalmente, potremmo inviarti email promozionali e messaggi SMS contenenti informazioni su nuovi prodotti, offerte esclusive o altri aggiornamenti rilevanti. Se non desideri più ricevere tali comunicazioni, ti preghiamo di contattarci all'indirizzo",
       "p-4": "Se ritieni che alcune delle informazioni che abbiamo raccolto siano errate o incomplete, ti preghiamo di contattarci e provvederemo prontamente a correggere eventuali inesattezze. In conformità alle leggi sulla protezione dei dati, hai il diritto di richiedere informazioni sui dati personali che deteniamo su di te.",
       "p-5": "Se decidi di eliminare il tuo account sportypredict, tieni presente che tutti i dati e i contenuti associati, comprese le sottoscrizioni attive, saranno definitivamente persi. Tuttavia, puoi comunque accedere ai servizi di sportypredict registrandoti con un nuovo indirizzo email e numero di telefono.",
       "p-6": "Tieni presente che questa informativa sulla privacy potrebbe essere aggiornata periodicamente e la data di efficacia è il 12 luglio 2023. Ti incoraggiamo a rivedere regolarmente questa pagina per eventuali modifiche o aggiornamenti."
@@ -172,16 +172,13 @@
       "p1-11": "Nessun ritardo, mancata esecuzione o omissione (in tutto o in parte) nell'esercizio, nell'applicazione o nell'attuazione di qualsiasi diritto, potere, privilegio, pretesa o rimedio fornito da questi Termini e Condizioni o dalla legge sarà considerato una rinuncia di tale diritto, potere, privilegio, pretesa o rimedio in relazione alle circostanze in questione o impedirà l'esercizio di tale diritto, potere, privilegio, pretesa o rimedio in qualsiasi altra circostanza in qualsiasi momento.",
       "p1-12": "Se una disposizione di questi Termini e Condizioni fosse considerata nulla o non applicabile da qualsiasi tribunale o organo amministrativo di giurisdizione competente, tale nullità o inapplicabilità non pregiudicherà in alcun modo gli altri Termini e Condizioni. Se una disposizione di questi Termini e Condizioni fosse considerata nulla o non applicabile da qualsiasi tribunale o organo amministrativo di giurisdizione competente, tale nullità o inapplicabilità non pregiudicherà in alcun modo gli altri Termini e Condizioni.",
       "p1-13": "Nessuna persona diversa dalle parti di questi Termini e Condizioni avrà il diritto di farli rispettare (in tutto o in parte), a meno che ciò non sia espressamente previsto nei Termini e Condizioni. Non c'è alcuna intenzione di creare alcun diritto o beneficio a favore di terzi.",
-      "p1-14": "Questi Termini e Condizioni saranno interpretati in conformità con la legge del Kenya e qualsiasi controversia derivante da o in connessione con questi Termini e Condizioni sarà sottoposta alla giurisdizione non esclusiva dei tribunali del Kenya.",
-      "h1-4": "CONTATTACI",
-      "p1-15": "Per qualsiasi domanda o chiarimento riguardo a questi Termini e Condizioni, ti preghiamo di contattarci all'indirizzo email contact@sportypredict.com.",
-      "p1-16": "Questi Termini e Condizioni sono stati aggiornati per l'ultima volta il 12 luglio 2023."
+      "p1-14": "Questi Termini e Condizioni saranno interpretati in conformità con la legge del Kenya e qualsiasi controversia derivante da o in connessione con questi Termini e Condizioni sarà sottoposta alla giurisdizione non esclusiva dei tribunali del Kenya."
     },
-    "imminente": {
+    "upcoming": {
       "h1-1": "Prossimi suggerimenti",
       "h1-2": "Ancora nessuna previsione! Ricontrolla più tardi."
     },
-    "Annunci": {
+    "ads": {
       "h1-1": "Non scommettere, investi invece",
       "span-1": "Guadagna al 100%",
       "span-2": "PROFITTI",
@@ -194,7 +191,7 @@
       "span-6": "Ore",
       "span-7": "Secondi"
     },
-    "banca": {
+    "bank": {
       "h1-1": "Scommessa del giorno",
       "h1-2": "Suggerimenti gratuiti per il basket",
       "h1-3": "Consigli gratuiti",
@@ -206,13 +203,13 @@
       "h1-1": "Le migliori offerte di iscrizione alle scommesse",
       "span": "Solo nuovi clienti | contenuto commerciale maggiore di 18 anni | Si applicano termini e condizioni"
     },
-    "notizia": {
+    "news": {
       "h1-1": "Notizie sportive",
       "span-1": "vedi di più",
       "span-2": "mostra meno",
       "a-1": "maggiori informazioni"
     },
-    "paga": {
+    "pay": {
       "span1": "Abbonati al piano VIP",
       "span2": "NOTA:",
       "h1-1": "Questo abbonamento è valido per 30 giorni e senza costi aggiuntivi o costi nascosti",
@@ -266,7 +263,7 @@
       "span13": "LINEA MTN PER MPESA KENYA",
       "span14": "Invia denaro dalla tua linea Mtn in Kenya"
     },
-    "autenticazione": {
+    "auth": {
       "h1-1": "Crea un account",
       "btn-1": "Accedi",
       "btn-2": "Iscriviti",

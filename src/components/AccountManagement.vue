@@ -1,7 +1,7 @@
 <template>
   <div class="Account-container">
     <div class="Account-header">
-      <h1><span>{{$t('section8.span')}}</span><br />{{$t('section8.span2')}} </h1>
+      <h1><span>Welcome</span><br />SportyPredict,</h1>
     </div>
     <div class="Account-info">
       <div class="Account-card" v-for="card in accountCards" :key="card.id">
@@ -14,12 +14,12 @@
     </div>
     <div class="search-section">
       <div class="form-group">
-        <label for="Accountname">{{$t('section8.searchLabel')}} {{$t('section8.span')}}</label>
+        <label for="Accountname">Search Accounts</label>
         <input
           v-model="SearchAccount"
           type="text"
           class="form-g-input"
-          :placeholder="$t('section8.searchPlaceholder')"
+          placeholder="Account name"
           id="Accountname"
         />
       </div>
@@ -28,12 +28,13 @@
       <table>
         <thead>
           <tr>
-            <th>{{$t('section8.accountTable.accountHeader')}}</th>
-            <th>{{$t('section8.accountTable.paymentHeader')}}</th>
-            <th>{{$t('section8.accountTable.periodHeader')}}</th>
-            <th>{{$t('section8.accountTable.dateActivationHeader')}}</th>
-            <th>{{$t('section8.accountTable.vipStatusHeader')}}</th>
-            <th>{{$t('section8.accountTable.deleteHeader')}}</th>
+            <th>Account</th>
+            <th>Country</th>
+            <th>Payment</th>
+            <th>Period</th>
+            <th>Date activation</th>
+            <th>Vip status</th>
+            <th>Delete</th>
           </tr>
         </thead>
         <tbody>
@@ -44,6 +45,7 @@
                 <span>{{ account.email }}</span>
               </div>
             </td>
+            <td>{{ account.country }}</td> 
             <td>{{ account.paid }}</td>
             <td>{{ account.paid ? '1 Month' : '0 Month' }}</td>
             <td>{{ formatDate(account.updatedAt) || 'no change' }}</td> 
@@ -66,7 +68,7 @@
             </td>
           </tr>
           <tr v-if="accountData.length === 0">
-            <td colspan="6">{{$t('section8.accountTable.noAccountsMessage')}}</td>
+            <td colspan="6">No accounts yet!</td>
           </tr>
         </tbody>
       </table>
