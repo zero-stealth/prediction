@@ -3,23 +3,23 @@
     <div class="vip-wrapper">
       <div class="vip-notpaid" :style="{ backgroundImage: `url(${banner})` }" v-if="!paid">
         <div v-if="!username" class="vip-p">
-          <h1>Sign in or log in to your account 🌵</h1>
+          <h1>{{ $t('vip.h1-1') }} 🌵</h1>
           <div class="vip-sp">
             <button class="vip-btn" @click="goSignin()">
               <ProfileIcon class="vip-pay-icon" />
-              Sign in
+              {{ $t('auth.btn-2') }}
             </button>
             <button class="vip-btn" @click="goLogin()">
-              Log in
+              {{ $t('auth.btn-1') }}
               <ProfileIcon class="vip-pay-icon" />
             </button>
           </div>
         </div>
         <div class="vip-p" v-else>
-          <h1>Your VIP account is in not activated 🌵</h1>
+          <h1> {{ $t('bank.h1-2') }}🌵</h1>
           <button class="vip-btn" @click="payPage()">
             <MoneyIcon class="vip-pay-icon" />
-            Pay to activate
+            {{ $t('bank.btn1') }}
           </button>
         </div>
       </div>
@@ -30,13 +30,13 @@
           </div>
           <div class="header-btn">
             <button class="btn-h" :class="{ 'active-btn': offset > 0 }" @click="previousDay()">
-              Previous
+            {{ $t('bank.btn-1') }}
             </button>
             <button class="btn-h" :class="{ 'active-btn': offset === 0 }" @click="setOffset(0)">
-              Today
+            {{ $t('bank.btn-2') }}
             </button>
             <button class="btn-h" :class="{ 'active-btn': offset === 1 }" @click="setOffset(1)">
-              Tomorrow
+            {{ $t('bank.btn-3') }}
             </button>
           </div>
         </div>
@@ -65,7 +65,7 @@
         </template>
         <template v-else-if="paid && username && cardData.length === 0">
           <div class="home-freetip">
-            <h1>No predictions yet! Check back later.</h1>
+            <h1>{{ $t('upcoming.h1-2') }}</h1>
           </div>
         </template>
       </div>

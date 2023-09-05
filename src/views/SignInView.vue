@@ -10,12 +10,12 @@
     }"
   >
     <div class="form-l-wrapper">
-      <h1>Create an account</h1>
+      <h1>{{$t('auth.h1-1')}}</h1>
       <form @submit.prevent="create" class="l-form">
         <input type="text" class="input-l" placeholder="Full Name" v-model="username" />
         <input type="email" class="input-l" placeholder="Email Address" v-model="email" />
         <select class="input-l" v-model="selectedCountry">
-          <option disabled value="">Select a country</option>
+          <option disabled value="">{{$t('auth.op')}}</option>
           <option v-for="country in countriesData" :key="country.code" :value="country.code">
             {{ country.name }}
           </option>
@@ -23,12 +23,12 @@
         <input type="password" class="input-l" placeholder="Password" v-model="password" />
         <input type="password" class="input-l" placeholder="Confirm password" v-model="confirmPassword" />
         <p>{{ errMsg }}</p>
-        <button class="btn-f" type="submit">Sign up</button>
+        <button class="btn-f" type="submit">{{$t('auth.btn-2')}}</button>
       </form>
       <span>or</span>
       <div class="l-alternatives">
         <button class="alt-btn" @click="login">
-          Login
+          {{$t('auth.btn-1')}}
         </button>
       </div>
     </div>

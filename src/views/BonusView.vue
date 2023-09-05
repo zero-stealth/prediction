@@ -1,8 +1,8 @@
 <template>
   <div class="bon-comp">
     <div class="bonus-h">
-      <h1>Best Betting Sign Up Offers</h1>
-      <span>New customers only | commercial content 18 + age limit | T&Cs apply</span>
+      <h1>{{ $t('bonus.h1-1') }}</h1>
+      <span>{{ $t('bonus.span') }}</span>
     </div>
     <div class="bonus-component">
       <Bonus v-for="(bonusItem, index) in bonusData" :key="index" :bonusData="bonusItem" />

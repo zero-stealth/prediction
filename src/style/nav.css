@@ -20,7 +20,7 @@
    
 
   .logo-spp {
-    width: 150px;
+    width: 130px;
 
   }
 
@@ -35,6 +35,7 @@
     text-decoration: none;
     text-transform: capitalize;
     color: var(--background-color);
+    
   }
 
   .router-link-active {
@@ -46,8 +47,8 @@
   }
 
   .icon-nav {
-    height: 24px;
-    width: 24px;
+    height: 15px;
+    width: 15px;
     fill: var(--primary-color);
   }
 
@@ -70,6 +71,10 @@
     display: flex;
     cursor: pointer;
     align-items: center;
+  }
+  
+  .drop-down span {
+    font-size: .9rem;
   }
 
   .drop-down:hover span {
@@ -100,7 +105,7 @@
 
   .drop-down-panels {
     display: flex;
-    font-size: .8rem;
+    font-size: 1rem;
     border-radius: 4px;
     position: relative;
     flex-direction: column;
@@ -168,28 +173,32 @@
 
 
   .menu-icon-nav {
-    width: 20px;
-    height: 20px;
+    width: 15px;
+    height: 15px;
     fill: var(--background-color);
   }
 
   .nav-btn-container {
-    gap: 20px;
+    gap: 10px;
     display: none;
     align-items: center;
   }
 
   .nav-btn, .mobile-btn {
     gap: 5px;
-    width: 90px;
+    width: 80px;
     height: 35px;
     display: flex;
     cursor: pointer;
-    font-size: .7rem;
+    font-size: .5em;
     border-radius: 4px;
     align-items: center;
     justify-content: center;
     text-transform: uppercase;
+  }
+
+  .mobile-btn  {
+    width:100%;
   }
 
   .btn-logout {
@@ -346,7 +355,7 @@
   }
 
   .mobile-link {
-    font-size: 1rem;
+    font-size: .9rem;
     cursor: pointer;
     text-decoration: none;
     text-transform: capitalize;
@@ -367,7 +376,7 @@
     border: none;
     display: flex;
     padding: 0 10px;
-    font-size: 1rem;
+    font-size: .8rem;
     border-radius: none;
     text-transform: capitalize;
     background-color: var(--primary-color);
@@ -386,7 +395,7 @@
   }
 
   .open {
-    width:75%;
+    width:85%;
     right:0;
   }
 
@@ -395,6 +404,65 @@
     right: -100px;
   }
 
+  .web-translate {
+    display: flex;
+    cursor: pointer;
+    align-items: center;
+    flex-direction: column;
+  }
+
+  .web-drop-down {
+    gap: 20px;
+    display: flex;
+    height: 40px;
+    width: 100px;
+    border-radius: 6px;
+    align-items: center;  
+    justify-content: space-around;
+    border: 2px solid var(--background-color);
+  }
+
+  .web-translate-icon {
+    height: 24px ;
+    width:24px;
+    fill: var(--background-color);
+  }
+
+  .web-type {
+    top: 80%;
+    gap: 10px;
+    padding: 10px;
+    display: flex;
+    position: absolute;
+    border-radius: 6px;
+    flex-direction: column;
+    color: var(--background-color);
+    background-color: var(--primary-color);
+  }
+
+  .web-type:hover span {
+    background-color: var(--primary-color);
+
+  }
+
+  .locale-changer {
+    height: 35px;
+    outline: none;
+    font-size: .7rem;
+    border-radius: 8px;
+    color: var(--background-color);
+    background-color: var(--primary-color);
+    border: 1px solid var(--background-color);
+    }
+
+    .locale-changer::placeholder {
+      color: var(--primary-color);
+    }
+
+    .locale-op {
+      padding: 10px ;
+      background-color: var(--primary-color);
+    }
   /* mobile responsive */
 
 
@@ -410,9 +478,13 @@
   }
 
   .logo-spp {
-    width: 210px;
+    width: 150px;
     height: 100%;
 
+  }
+
+  .nav-link {
+    font-size: .8rem;
   }
 
   .nav-link-container {
@@ -420,6 +492,7 @@
   }
 
   .drop-down-panel {
+    font-size: .8rem;
     top: 70px;
   }
 
@@ -439,7 +512,7 @@
   .nav-i-btn {
     height: 45px;
     width: 150px;
-    font-size: .7rem;
+    font-size: .6rem;
   }
 
   .hero-section {

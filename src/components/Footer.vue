@@ -17,7 +17,6 @@ const errMessage = ref('')
 const router = useRouter()
 const phoneNumber = ref('+254703147237')
 
-
 const openWhatsapp = () => {
   window.open(
     'https://wa.me/+254703147237?text=Hi sporty predict, I want to buy VIP subcription',
@@ -49,11 +48,9 @@ const openInstagram = () => {
   window.open('https://instagram.com/sportypredict_?igshid=MTIzZWMxMTBkOA==', '_blank')
 }
 
-
 const openTiktok = () => {
   window.open('https://www.tiktok.com/@sportypredict?_t=8dxjShAnRI5&_r=1', '_blank')
 }
-
 
 const openYoutube = () => {
   window.open('https://www.youtube.com/@Sportypredict', '_blank')
@@ -78,18 +75,18 @@ const reset = () => {
   <div class="contact-contain">
     <div class="contact-wrapper">
       <div class="contact-d1">
-        <h1>Contact information</h1>
+        <h1>{{ $t('footer.contactInformation') }}</h1>
         <p>
-          For queries or help, please feel free to contact us on:
+          {{ $t('footer.queriesOrHelp') }}
         </p>
         <div class="d1-contact">
           <div class="d1-icon" @click="openWhatsapp">
             <whatsappIcon class="icon-d1" />
-            <span>+254703147237</span>
+            <span>{{ $t('footer.whatsappNumber') }}</span>
           </div>
           <div class="d1-icon">
             <emailIcon class="icon-d1" />
-            <span>contact@sportypredict.com</span>
+            <span>{{ $t('footer.email') }}</span>
           </div>
         </div>
         <div class="app-d-link">
@@ -108,34 +105,38 @@ const reset = () => {
       <div class="contact-dp2">
         <div class="contact-d2">
           <div>
-            <h1>Quick links</h1>
+            <h1>{{ $t('footer.quickLinks') }}</h1>
           </div>
           <div class="d2-con">
-            <RouterLink :to="{ name: 'Home' }" class="nav-link">Home</RouterLink>
-            <RouterLink :to="{ name: 'Banker' }" class="nav-link">Bet of the day</RouterLink>
-            <RouterLink :to="{ name: 'Tennis' }" class="nav-link">Tennis</RouterLink>
-            <RouterLink :to="{ name: 'Basketball' }" class="nav-link">Basketball</RouterLink>
+            <RouterLink :to="{ name: 'Home' }" class="nav-link">{{ $t('footer.home') }}</RouterLink>
+            <RouterLink :to="{ name: 'Banker' }" class="nav-link">{{
+              $t('footer.betOfTheDay')
+            }}</RouterLink>
+            <RouterLink :to="{ name: 'Tennis' }" class="nav-link">{{ $t('footer.tennis') }}</RouterLink>
+            <RouterLink :to="{ name: 'Basketball' }" class="nav-link">{{
+              $t('footer.basketball')
+            }}</RouterLink>
           </div>
         </div>
         <div class="contact-d2">
           <div>
-            <h1>Information</h1>
+            <h1>{{ $t('footer.information') }}</h1>
           </div>
           <div class="d2-con">
-            <RouterLink :to="{ name: 'Disclaimer' }" class="nav-link">Disclaimer</RouterLink>
-            <RouterLink :to="{ name: 'Policy' }" class="nav-link">Policy</RouterLink>
-            <RouterLink :to="{ name: 'Refund' }" class="nav-link">Refund policy</RouterLink>
-            <RouterLink :to="{ name: 'Terms' }" class="nav-link">Terms & Condition</RouterLink>
+            <RouterLink :to="{ name: 'Disclaimer' }" class="nav-link">{{ $t('footer.disclaimer') }}</RouterLink>
+            <RouterLink :to="{ name: 'Policy' }" class="nav-link">{{ $t('footer.policy') }}</RouterLink>
+            <RouterLink :to="{ name: 'Refund' }" class="nav-link">{{ $t('footer.refundPolicy') }}</RouterLink>
+            <RouterLink :to="{ name: 'Terms' }" class="nav-link">{{ $t('footer.termsAndConditions') }}</RouterLink>
           </div>
         </div>
       </div>
       <div class="contact-d3">
-        <h1>Talk with us</h1>
-        <p>Know more about our service or consultancy in advance</p>
+        <h1>{{ $t('footer.talkWithUs') }}</h1>
+        <p>{{ $t('footer.knowMore') }}</p>
         <form @submit.prevent="book" class="book-f">
           <div class="book-con">
             <div class="con-s">
-              <input v-model="booknow" class="input-book" placeholder="Whatsapp us" />
+              <input v-model="booknow" class="input-book" :placeholder="$t('whatsappUs')" />
             </div>
             <button type="submit" class="book-btn">
               <whatsappIcon class="book-icon" />
@@ -143,7 +144,7 @@ const reset = () => {
           </div>
         </form>
         <div class="book-social">
-          Social media:
+          {{ $t('footer.socialMedia') }}:
           <facebookIcon class="bk-icon" @click="openFacebook" />
           <twitterIcon class="bk-icon" @click="openTwitter" />
           <telegramIcon class="bk-icon" @click="openTelegram" />
@@ -154,7 +155,7 @@ const reset = () => {
       </div>
     </div>
     <div class="footer-x">
-      <span>© 2023 SportyPredict. All rights reserved</span>
+      <span>© 2023 SportyPredict. {{ $t('footer.allRightsReserved') }}</span>
     </div>
   </div>
 </template>

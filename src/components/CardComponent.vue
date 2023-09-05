@@ -25,7 +25,7 @@
         </div>
         <span class="status-p">{{ status }}</span>
         <div v-if="!showScore">
-          <span>vs</span>
+          <span>{{$t('section11.vc')}} </span>
         </div>
         <div v-if="shouldShowScore" class="card-score">
           <span class="card-s">{{ teamAscore }}</span>
@@ -56,7 +56,7 @@
     <div class="card-footer">
       <div class="card-f" v-for="formationA in formationsA" :key="formationA">
         <span :class="[formationA === 'l' ? 'loose' : formationA === 'w' ? 'win' : 'draw']">{{
-          formationA
+          formationA 
         }}</span>
       </div>
       <div class="card-fi">Recent form</div>
@@ -72,6 +72,7 @@
 <script setup>
 import { ref, computed, onMounted } from 'vue'
 import { DateTime } from 'luxon'
+import axios from 'axios'
 
 const Time = ref()
 
@@ -147,9 +148,11 @@ const shouldShowScore = computed(() => {
   return props.showScore && props.teamAscore !== undefined && props.teamBscore !== undefined
 })
 
-onMounted(() => {
+onMounted(async () => {
+  const response = await axios.get('http://ipinfo.io')
+  const userTimeZone = response.data.timezone
+
   const originalTime = props.time
-  const userTimeZone = DateTime.local().zoneName
   const convertedTime = DateTime.fromISO(originalTime).setZone(userTimeZone)
   Time.value = convertedTime.toFormat('HH:mm')
 })

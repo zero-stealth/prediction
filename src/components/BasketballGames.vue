@@ -97,6 +97,8 @@ const league = ref('');
 const teamAscore = ref(0);
 const teamBscore = ref(0);
 const tip = ref('');
+const SERVER_HOST = import.meta.env.VITE_SERVER_HOST
+
 
 function handleFileUpload(event, targetRef) {
   const file = event.target.files[0];
@@ -155,7 +157,7 @@ async function handleSubmit() {
       formData.append('tip', tip.value);
 
       const response = await axios.post(
-        'https://predictions-reg9.onrender.com/sports/create/Basketball',
+        `${SERVER_HOST}/sports/create/Basketball`,
         formData,
         {
           headers: {

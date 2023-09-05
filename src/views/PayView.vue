@@ -1,51 +1,75 @@
-<script setup>
+<script>
 import countriesData from '../components/countries.json'
 import MoneyIcon from '../icons/payIcon.vue'
 import { ref, computed } from 'vue'
 
-const Selectedcountry = ref('')
-const reveal = ref('')
-const errMsg = ref('')
-const searchTerm = ref('')
+export default {
+  setup() {
+    const Selectedcountry = ref('')
+    const reveal = ref('')
+    const errMsg = ref('')
+    const searchTerm = ref('')
 
-const showPayment = () => {
-  if (Selectedcountry.value === '' && sport.value === '') {
-    errMsg.value = 'Empty field is not supported'
-  } else if (Selectedcountry.value !== '' && Selectedcountry.value === 'KE') {
-    reveal.value = 'kenya'
-  } else if (Selectedcountry.value !== '' && Selectedcountry.value === 'NG') {
-    reveal.value = 'Nigeria'
-  } else if (Selectedcountry.value !== '' && Selectedcountry.value === 'CM') {
-    reveal.value = 'Cameroon'
-  } else if (Selectedcountry.value !== '' && Selectedcountry.value === 'GH') {
-    reveal.value = 'ghana'
-  } else if (Selectedcountry.value !== '' && Selectedcountry.value === 'ZA') {
-    reveal.value = 'southA'
-  } else if (Selectedcountry.value !== '' && Selectedcountry.value === 'TZ') {
-    reveal.value = 'Tanzania'
-  } else if (Selectedcountry.value !== '' && Selectedcountry.value === 'UG') {
-    reveal.value = 'Uganda'
-  } else if (Selectedcountry.value !== '' && Selectedcountry.value === 'ZM') {
-    reveal.value = 'Zambia'
-  } else if (Selectedcountry.value !== '' && Selectedcountry.value === 'RW') {
-    reveal.value = 'Rwanda'
-  } else if (Selectedcountry.value !== '' && Selectedcountry.value === 'MW') {
-    reveal.value = 'Malawi'
-  } else if (Selectedcountry.value !== '' && Selectedcountry.value === 'TZ') {
-    reveal.value = 'Tanzania'
-  } else {
-    reveal.value = 'others'
-  }
+    const showPayment = () => {
+      if (Selectedcountry.value === '' && sport.value === '') {
+        errMsg.value = 'Empty field is not supported'
+      } else {
+        switch (Selectedcountry.value) {
+          case 'KE':
+            reveal.value = 'kenya'
+            break
+          case 'NG':
+            reveal.value = 'Nigeria'
+            break
+          case 'CM':
+            reveal.value = 'Cameroon'
+            break
+          case 'GH':
+            reveal.value = 'ghana'
+            break
+          case 'ZA':
+            reveal.value = 'southA'
+            break
+          case 'TZ':
+            reveal.value = 'Tanzania'
+            break
+          case 'UG':
+            reveal.value = 'Uganda'
+            break
+          case 'ZM':
+            reveal.value = 'Zambia'
+            break
+          case 'RW':
+            reveal.value = 'Rwanda'
+            break
+          case 'MW':
+            reveal.value = 'Malawi'
+            break
+          default:
+            reveal.value = 'others'
+        }
+      }
+    }
+
+    const filteredCountries = computed(() => {
+      const term = searchTerm.value.toLowerCase()
+      return countriesData.filter(
+        (country) =>
+          country.name.toLowerCase().includes(term) || country.code.toUpperCase().includes(term)
+      )
+    })
+
+    return {
+      Selectedcountry,
+      reveal,
+      errMsg,
+      searchTerm,
+      showPayment,
+      filteredCountries,
+      MoneyIcon,
+    }
+  },
 }
-
-
-const filteredCountries = computed(() => {
-  const term = searchTerm.value.toLowerCase()
-  return countriesData.filter(
-    (country) =>
-      country.name.toLowerCase().includes(term) || country.code.toUpperCase().includes(term)
-  )
-})
 </script>
 
 <template>
@@ -56,20 +80,20 @@ const filteredCountries = computed(() => {
     <div class="pay-contain">
       <div class="pay-title">
         <span></span>
-        <MoneyIcon class="icon-pay" />
-        <span>Subscribe to VIP plan</span>
+        <MoneyIcon class="icon-pay"/>
+        <span>{{$t('pay.span1')}}</span>
       </div>
       <div class="pay-info-spx">
         <h1>
-          <span>NOTE:</span>
-          This subscription is valid for 30 days and no extra charges or hidden charges
+          <span>{{$t('pay.span2')}}</span>
+          {{$t('pay.h1-1')}}
         </h1>
-        <p>Your SportyPredict VIP account will be activated once your payment is recieved</p>
-        <p>Choose your country to get payment details</p>
+        <p>{{$t('pay.p1')}}</p>
+        <p>{{$t('pay.p2')}}</p>
       </div>
       <div class="pay-main">
         <div class="sport-s-contain">
-          <label>Please select one</label>
+          <label>{{$t('pay.lb')}}</label>
           <input
             type="text"
             class="sport-selector"
@@ -77,7 +101,7 @@ const filteredCountries = computed(() => {
             placeholder="Search country"
           />
           <select class="sport-selector" v-model="Selectedcountry">
-            <option disabled value="">Select a country</option>
+            <option disabled value="">{{$t('pay.op')}}</option>
             <option v-for="country in filteredCountries" :key="country.code" :value="country.code">
               {{ country.name }}
             </option>
@@ -89,73 +113,67 @@ const filteredCountries = computed(() => {
       <div class="pay-info" v-if="reveal === 'others'">
         <div class="info-pay-h">
           <h1>
-            Duration of <span>30 days</span> <br />
-            Amount paid: <span>( 45 USD ) </span> <br />
-            <span>"2 - 4" odds</span> daily
+            {{$t('pay.spanh1')}} <span>{{$t('pay.spanh2')}}</span> <br />
+            {{$t('pay.spanh3')}}<span>( 45 USD ) </span> <br />
+            <span>"2 - 4" odds</span> {{$t('pay.spanh4')}}
           </h1>
         </div>
         <div class="step-pay">
-          <h1>Login or register</h1>
-          <p>Login in with Google or <span>Create an account</span></p>
+          <h1>{{$t('pay.h1-2')}}</h1>
+          <p>{{$t('pay.p3')}} <span>{{$t('pay.span3')}}</span></p>
         </div>
         <div class="method-head">
-          <h1>Available methods of payment for your country:</h1>
+          <h1>{{$t('pay.h1-3')}} </h1>
         </div>
         <div class="method-pay">
-          <h1>PAY USING SKRILL</h1>
+          <h1>{{$t('pay.h1-4')}}</h1>
           <ul>
-            <li>Go to your SKRILL account</li>
+            <li>{{$t('pay.li1')}}</li>
             <li>Use <span>betsmart.inc@gmail.com</span></li>
-            <li>Pay the required amount</li>
-            <li>Your VIP account will be activated once we receive your payment.</li>
+            <li>{{$t('pay.li3')}}</li>
+            <li>{{$t('pay.li8')}}</li>
           </ul>
         </div>
         <div class="method-pay">
-          <h1>PAY USING CRYPTO (BITCOIN)</h1>
+          <h1>{{$t('pay.h1-5')}}</h1>
           <ul>
-            <li>Go to your bitcoin wallet</li>
-            <li>Pay using this bitcoin address: <span>bc1qvzny5ffjym462y35qw7qqr6ucgtkcqcu402dl5</span></li>
-            <li>Pay the required amount</li>
-            <li>Your VIP account will be activated once we receive your payment.</li>
+            <li>{{$t('pay.li5')}}</li>
+            <li>{{$t('pay.li6')}} <span>bc1qvzny5ffjym462y35qw7qqr6ucgtkcqcu402dl5</span></li>
+            <li>{{$t('pay.li3')}}</li>
+            <li>{{$t('pay.li8')}}</li>
           </ul>
         </div>
         <div class="method-pay">
-          <h1>PAY USING PAYPAL</h1>
+          <h1>{{$t('pay.h1-6')}}</h1>
           <ul>
-            <li>COMING SOON</li>
+            <li>{{$t('pay.li9')}}</li>
           </ul>
         </div>
-        <p> <span>Moneygram and western union are available for those who want to make payment</span> </p>
+        <p> <span>{{$t('pay.span4')}}</span> </p>
         <div class="Question">
           <div class="Question-con">
-            <h1>Q: How guaranteed are your games?</h1>
+            <h1>{{$t('pay.h1-7')}}</h1>
             <p>
-              <span>Answer:</span> We have a team of top-notch well-researched/informed experts that
-              score up to 96% in their accuracy rate. You are guaranteed to make substantial
-              profits.
+              <span>{{$t('pay.span5')}}:</span> {{$t('pay.span6')}}
             </p>
           </div>
           <div class="Question-con">
-            <h1>Q: What happens for failed predictions?</h1>
+            <h1>{{$t('pay.h1-8')}}</h1>
             <p>
-              <span>Answer:</span> Keep in mind that in case of any loss, we will add an extra one
-              day FREE as a replacement on your subscription. We will keep adding an extra day until
-              you WIN! This is exclusive for VIP subscribers ONLY.
+              <span>{{$t('pay.span5')}}:</span> {{$t('pay.span8')}}
             </p>
           </div>
           <div class="Question-con">
-            <h1>Q: How do I get these daily games sent to me?</h1>
+            <h1>{{$t('pay.h1-10')}}</h1>
             <p>
-              <span>Answer:</span> We post games on our platform <span>https://sportyPredict.com/vip</span>.
-              You need to log in on the website using your email and password or through social
-              accounts to view games.
+              <span>{{$t('pay.span5')}}:</span> {{$t('pay.span9')}} <span>{{$t('pay.span10')}}</span>.
+              {{$t('pay.span11')}}
             </p>
           </div>
           <div class="Question-con">
-            <h1>Q: Why don't we post results </h1>
+            <h1>{{$t('pay.h1-11')}} </h1>
             <p>
-              <span>Answer:</span> We don't disclose results because fraudsters take screenshots
-              and swindle unsuspecting victims.
+              <span>{{$t('pay.span5')}}:</span>{{$t('pay.span12')}}
             </p>
           </div>
         </div>
@@ -163,56 +181,50 @@ const filteredCountries = computed(() => {
       <div class="pay-info" v-else-if="reveal === 'kenya'">
         <div class="info-pay-h">
           <h1>
-            Duration of <span>30 days</span> <br />
-            Amount paid: <span>(1,500ksh)</span> <br />
-            <span>"2 - 4" odds</span> daily
+            {{$t('pay.spanh1')}} <span>{{$t('pay.spanh2')}}</span> <br />
+            {{$t('pay.spanh3')}} <span>(1,500ksh)</span> <br />
+            <span>"2 - 4" odds</span> {{$t('pay.spanh4')}}
           </h1>
         </div>
         <div class="step-pay">
-          <h1>Login or register</h1>
-          <p>Login in with Google or <span>Create an account</span></p>
+          <h1>{{$t('pay.h1-2')}}</h1>
+          <p>{{$t('pay.p3')}} <span>{{$t('pay.span3')}}</span></p>
         </div>
         <div class="method-head">
-          <h1>Available methods of payment for kenya:</h1>
+          <h1>{{$t('pay.h1-3')}} kenya:</h1>
         </div>
         <div class="method-pay">
-          <h1>SEND TO MPESA </h1>
-          <ul>
+          <h1>{{$t('pay.spanh5')}} MPESA </h1>
+          <ul>{{$t('pay.spanh5')}} 
             <li>Name <span>Thwell Gichovi</span></li>
             <li>Mpesa Number : <span>0703 147 237</span> </li>
-            <li>Your VIP account will be activated once we receive your payment.</li>
+            <li>{{$t('pay.li8')}}</li>
           </ul>
         </div>
         <div class="Question">
           <div class="Question-con">
-            <h1>Q: How guaranteed are your games?</h1>
+            <h1>{{$t('pay.h1-7')}}</h1>
             <p>
-              <span>Answer:</span> We have a team of top-notch well-researched/informed experts that
-              score up to 96% in their accuracy rate. You are guaranteed to make substantial
-              profits.
+              <span>{{$t('pay.span5')}}:</span> {{$t('pay.span6')}}
             </p>
           </div>
           <div class="Question-con">
-            <h1>Q: What happens for failed predictions?</h1>
+            <h1>{{$t('pay.h1-8')}}</h1>
             <p>
-              <span>Answer:</span> Keep in mind that in case of any loss, we will add an extra one
-              day FREE as a replacement on your subscription. We will keep adding an extra day until
-              you WIN! This is exclusive for VIP subscribers ONLY.
+              <span>{{$t('pay.span5')}}:</span> {{$t('pay.span8')}}
             </p>
           </div>
           <div class="Question-con">
-            <h1>Q: How do I get these daily games sent to me?</h1>
+            <h1>{{$t('pay.h1-10')}}</h1>
             <p>
-              <span>Answer:</span> We post games on our platform <span>https://sportyPredict.com/vip</span>.
-              You need to log in on the website using your email and password or through social
-              accounts to view games.
+              <span>{{$t('pay.span5')}}:</span> {{$t('pay.span9')}} <span>{{$t('pay.span10')}}</span>.
+              {{$t('pay.span11')}}
             </p>
           </div>
           <div class="Question-con">
-            <h1>Q: Why don't we post results</h1>
+            <h1>{{$t('pay.h1-11')}}</h1>
             <p>
-              <span>Answer:</span> We don't disclose results because fraudsters take screenshots
-              and swindle unsuspecting victims.
+              <span>{{$t('pay.span5')}}:</span>{{$t('pay.span12')}}
             </p>
           </div>
         </div>
@@ -220,58 +232,52 @@ const filteredCountries = computed(() => {
       <div class="pay-info" v-else-if="reveal === 'Nigeria'">
         <div class="info-pay-h">
           <h1>
-            Duration of <span>30 days</span> <br />
-            Amount paid: <span>(8,500 NGN)</span> <br />
-            <span>"2 - 4" odds</span> daily
+            {{$t('pay.spanh1')}} <span>{{$t('pay.spanh2')}}</span> <br />
+            {{$t('pay.spanh3')}} <span>(8,500 NGN)</span> <br />
+            <span>"2 - 4" odds</span> {{$t('pay.spanh4')}}
 
           </h1>
         </div>
         <div class="step-pay">
-          <h1>Login or register</h1>
-          <p>Login in with Google or <span>Create an account</span></p>
+          <h1>{{$t('pay.h1-2')}}</h1>
+          <p>{{$t('pay.p3')}} <span>{{$t('pay.span3')}}</span></p>
         </div>
         <div class="method-head">
-          <h1>Available methods of payment for Nigeria:</h1>
+          <h1>{{$t('pay.h1-3')}} Nigeria:</h1>
         </div>
         <div class="method-pay">
-          <h1>PAY WITH BANK</h1>
+          <h1>{{$t('pay.spanh6')}}</h1>
           <ul>
             <li>Bank Name <span>FirstBank</span></li>
             <li>Account Number : <span>3087875918</span> </li>
             <li>Account Name : <span>Mboutidem akpan</span></li>
-            <li>Your VIP account will be activated once we receive your payment.</li>
+            <li>{{$t('pay.li8')}}</li>
           </ul>
         </div>
         <div class="Question">
           <div class="Question-con">
-            <h1>Q: How guaranteed are your games?</h1>
+            <h1>{{$t('pay.h1-7')}}</h1>
             <p>
-              <span>Answer:</span> We have a team of top-notch well-researched/informed experts that
-              score up to 96% in their accuracy rate. You are guaranteed to make substantial
-              profits.
+              <span>{{$t('pay.span5')}}:</span> {{$t('pay.span6')}}
             </p>
           </div>
           <div class="Question-con">
-            <h1>Q: What happens for failed predictions?</h1>
+            <h1>{{$t('pay.h1-8')}}</h1>
             <p>
-              <span>Answer:</span> Keep in mind that in case of any loss, we will add an extra one
-              day FREE as a replacement on your subscription. We will keep adding an extra day until
-              you WIN! This is exclusive for VIP subscribers ONLY.
+              <span>{{$t('pay.span5')}}:</span> {{$t('pay.span8')}}
             </p>
           </div>
           <div class="Question-con">
-            <h1>Q: How do I get these daily games sent to me?</h1>
+            <h1>{{$t('pay.h1-10')}}</h1>
             <p>
-              <span>Answer:</span> We post games on our platform <span>https://sportyPredict.com/vip</span>.
-              You need to log in on the website using your email and password or through social
-              accounts to view games.
+              <span>{{$t('pay.span5')}}:</span> {{$t('pay.span9')}} <span>{{$t('pay.span10')}}</span>.
+              {{$t('pay.span11')}}
             </p>
           </div>
           <div class="Question-con">
-            <h1>Q: Why don't we post results</h1>
+            <h1>{{$t('pay.h1-11')}}</h1>
             <p>
-              <span>Answer:</span> We don't disclose results because fraudsters take screenshots
-              and swindle unsuspecting victims.
+              <span>{{$t('pay.span5')}}:</span>{{$t('pay.span12')}}
             </p>
           </div>
         </div>
@@ -279,57 +285,51 @@ const filteredCountries = computed(() => {
       <div class="pay-info" v-else-if="reveal === 'ghana'">
         <div class="info-pay-h">
           <h1>
-            Duration of <span>30 days</span> <br />
-            Amount paid: <span>(130 GHC)</span> <br />
-            <span>"2 - 4" odds</span> daily
+            {{$t('pay.spanh1')}} <span>{{$t('pay.spanh2')}}</span> <br />
+            {{$t('pay.spanh3')}} <span>(130 GHC)</span> <br />
+            <span>"2 - 4" odds</span> {{$t('pay.spanh4')}}
 
           </h1>
         </div>
         <div class="step-pay">
-          <h1>Login or register</h1>
-          <p>Login in with Google or <span>Create an account</span></p>
+          <h1>{{$t('pay.h1-2')}}</h1>
+          <p>{{$t('pay.p3')}} <span>{{$t('pay.span3')}}</span></p>
         </div>
         <div class="method-head">
-          <h1>Available methods of payment for Ghana:</h1>
+          <h1>{{$t('pay.h1-3')}} Ghana:</h1>
         </div>
         <div class="method-pay">
-          <h1>PAY WITH MOBILE MONEY</h1>
+          <h1>{{$t('pay.spanh7')}}</h1>
           <ul>
             <li>Name <span>David Agyevi</span></li>
             <li>Mobile Number : <span>0594577146</span> </li>
-            <li>Your VIP account will be activated once we receive your payment.</li>
+            <li>{{$t('pay.li8')}}</li>
           </ul>
         </div>
         <div class="Question">
           <div class="Question-con">
-            <h1>Q: How guaranteed are your games?</h1>
+            <h1>{{$t('pay.h1-7')}}</h1>
             <p>
-              <span>Answer:</span> We have a team of top-notch well-researched/informed experts that
-              score up to 96% in their accuracy rate. You are guaranteed to make substantial
-              profits.
+              <span>{{$t('pay.span5')}}:</span> {{$t('pay.span6')}}
             </p>
           </div>
           <div class="Question-con">
-            <h1>Q: What happens for failed predictions?</h1>
+            <h1>{{$t('pay.h1-8')}}</h1>
             <p>
-              <span>Answer:</span> Keep in mind that in case of any loss, we will add an extra one
-              day FREE as a replacement on your subscription. We will keep adding an extra day until
-              you WIN! This is exclusive for VIP subscribers ONLY.
+              <span>{{$t('pay.span5')}}:</span> {{$t('pay.span8')}}
             </p>
           </div>
           <div class="Question-con">
-            <h1>Q: How do I get these daily games sent to me?</h1>
+            <h1>{{$t('pay.h1-10')}}</h1>
             <p>
-              <span>Answer:</span> We post games on our platform <span>https://sportyPredict.com/vip</span>.
-              You need to log in on the website using your email and password or through social
-              accounts to view games.
+              <span>{{$t('pay.span5')}}:</span> {{$t('pay.span9')}} <span>{{$t('pay.span10')}}</span>.
+              {{$t('pay.span11')}}
             </p>
           </div>
           <div class="Question-con">
-            <h1>Q: Why don't we post results</h1>
+            <h1>{{$t('pay.h1-11')}}</h1>
             <p>
-              <span>Answer:</span> We don't disclose results because fraudsters take screenshots
-              and swindle unsuspecting victims.
+              <span>{{$t('pay.span5')}}:</span>{{$t('pay.span12')}}
             </p>
           </div>
         </div>
@@ -337,57 +337,51 @@ const filteredCountries = computed(() => {
       <div class="pay-info" v-else-if="reveal === 'Cameroon'">
         <div class="info-pay-h">
           <h1>
-            Duration of <span>30 days</span> <br />
-            Amount paid: <span>(11500 CFA)</span> <br />
-            <span>"2 - 4" odds</span> daily
+            {{$t('pay.spanh1')}} <span>{{$t('pay.spanh2')}}</span> <br />
+            {{$t('pay.spanh3')}} <span>(11500 CFA)</span> <br />
+            <span>"2 - 4" odds</span> {{$t('pay.spanh4')}}
 
           </h1>
         </div>
         <div class="step-pay">
-          <h1>Login or register</h1>
-          <p>Login in with Google or <span>Create an account</span></p>
+          <h1>{{$t('pay.h1-2')}}</h1>
+          <p>{{$t('pay.p3')}} <span>{{$t('pay.span3')}}</span></p>
         </div>
         <div class="method-head">
-          <h1>Available methods of payment for Cameroon:</h1>
+          <h1>{{$t('pay.h1-3')}} Cameroon:</h1>
         </div>
         <div class="method-pay">
-          <h1>PAY WITH MTN MOBILE MONEY</h1>
+          <h1>{{$t('pay.spanh8')}}</h1>
           <ul>
             <li>Name <span>Promise Amadi</span></li>
             <li>Mobile Number : <span>(+237) 678 832 736</span> </li>
-            <li>Your VIP account will be activated once we receive your payment.</li>
+            <li>{{$t('pay.li8')}}</li>
           </ul>
         </div>
         <div class="Question">
           <div class="Question-con">
-            <h1>Q: How guaranteed are your games?</h1>
+            <h1>{{$t('pay.h1-7')}}</h1>
             <p>
-              <span>Answer:</span> We have a team of top-notch well-researched/informed experts that
-              score up to 96% in their accuracy rate. You are guaranteed to make substantial
-              profits.
+              <span>{{$t('pay.span5')}}:</span> {{$t('pay.span6')}}
             </p>
           </div>
           <div class="Question-con">
-            <h1>Q: What happens for failed predictions?</h1>
+            <h1>{{$t('pay.h1-8')}}</h1>
             <p>
-              <span>Answer:</span> Keep in mind that in case of any loss, we will add an extra one
-              day FREE as a replacement on your subscription. We will keep adding an extra day until
-              you WIN! This is exclusive for VIP subscribers ONLY.
+              <span>{{$t('pay.span5')}}:</span> {{$t('pay.span8')}}
             </p>
           </div>
           <div class="Question-con">
-            <h1>Q: How do I get these daily games sent to me?</h1>
+            <h1>{{$t('pay.h1-10')}}</h1>
             <p>
-              <span>Answer:</span> We post games on our platform <span>https://sportyPredict.com/vip</span>.
-              You need to log in on the website using your email and password or through social
-              accounts to view games.
+              <span>{{$t('pay.span5')}}:</span> {{$t('pay.span9')}} <span>{{$t('pay.span10')}}</span>.
+              {{$t('pay.span11')}}
             </p>
           </div>
           <div class="Question-con">
-            <h1>Q: Why don't we post results</h1>
+            <h1>{{$t('pay.h1-11')}}</h1>
             <p>
-              <span>Answer:</span> We don't disclose results because fraudsters take screenshots
-              and swindle unsuspecting victims.
+              <span>{{$t('pay.span5')}}:</span>{{$t('pay.span12')}}
             </p>
           </div>
         </div>
@@ -395,58 +389,52 @@ const filteredCountries = computed(() => {
       <div class="pay-info" v-else-if="reveal === 'Uganda'">
         <div class="info-pay-h">
           <h1>
-            Duration of <span>30 days</span> <br />
-            Amount paid: <span>(70,000 UGX)</span> <br />
-            <span>"2 - 4" odds</span> daily
+            {{$t('pay.spanh1')}} <span>{{$t('pay.spanh2')}}</span> <br />
+            {{$t('pay.spanh3')}} <span>(70,000 UGX)</span> <br />
+            <span>"2 - 4" odds</span> {{$t('pay.spanh4')}}
 
           </h1>
         </div>
         <div class="step-pay">
-          <h1>Login or register</h1>
-          <p>Login in with Google or <span>Create an account</span></p>
+          <h1>{{$t('pay.h1-2')}}</h1>
+          <p>{{$t('pay.p3')}} <span>{{$t('pay.span3')}}</span></p>
         </div>
         <div class="method-head">
-          <h1>Available methods of payment for Uganda:</h1>
+          <h1>{{$t('pay.h1-3')}} Uganda:</h1>
         </div>
         <div class="method-pay">
-          <h1>MTN UGANDA TO MPESA </h1>
+          <h1>{{$t('pay.spanh9')}} </h1>
           <ul>
             <li>Dial <span>*165# or via Mpesa App </span></li>
             <li>Name <span>Thwell Gichovi</span></li>
             <li>Mpesa Number : <span>(+254) 703 147 237</span> </li>
-            <li>Your VIP account will be activated once we receive your payment.</li>
+            <li>{{$t('pay.li8')}}</li>
           </ul>
         </div>
         <div class="Question">
           <div class="Question-con">
-            <h1>Q: How guaranteed are your games?</h1>
+            <h1>{{$t('pay.h1-7')}}</h1>
             <p>
-              <span>Answer:</span> We have a team of top-notch well-researched/informed experts that
-              score up to 96% in their accuracy rate. You are guaranteed to make substantial
-              profits.
+              <span>{{$t('pay.span5')}}:</span> {{$t('pay.span6')}}
             </p>
           </div>
           <div class="Question-con">
-            <h1>Q: What happens for failed predictions?</h1>
+            <h1>{{$t('pay.h1-8')}}</h1>
             <p>
-              <span>Answer:</span> Keep in mind that in case of any loss, we will add an extra one
-              day FREE as a replacement on your subscription. We will keep adding an extra day until
-              you WIN! This is exclusive for VIP subscribers ONLY.
+              <span>{{$t('pay.span5')}}:</span> {{$t('pay.span8')}}
             </p>
           </div>
           <div class="Question-con">
-            <h1>Q: How do I get these daily games sent to me?</h1>
+            <h1>{{$t('pay.h1-10')}}</h1>
             <p>
-              <span>Answer:</span> We post games on our platform <span>https://sportyPredict.com/vip</span>.
-              You need to log in on the website using your email and password or through social
-              accounts to view games.
+              <span>{{$t('pay.span5')}}:</span> {{$t('pay.span9')}} <span>{{$t('pay.span10')}}</span>.
+              {{$t('pay.span11')}}
             </p>
           </div>
           <div class="Question-con">
-            <h1>Q: Why don't we post results</h1>
+            <h1>{{$t('pay.h1-11')}}</h1>
             <p>
-              <span>Answer:</span> We don't disclose results because fraudsters take screenshots
-              and swindle unsuspecting victims.
+              <span>{{$t('pay.span5')}}:</span>{{$t('pay.span12')}}
             </p>
           </div>
         </div>
@@ -454,57 +442,51 @@ const filteredCountries = computed(() => {
       <div class="pay-info" v-else-if="reveal === 'Tanzania'">
         <div class="info-pay-h">
           <h1>
-            Duration of <span>30 days</span> <br />
-            Amount paid: <span>(45000 TZS)</span> <br />
-            <span>"2 - 4" odds</span> daily
+            {{$t('pay.spanh1')}} <span>{{$t('pay.spanh2')}}</span> <br />
+            {{$t('pay.spanh3')}} <span>(45000 TZS)</span> <br />
+            <span>"2 - 4" odds</span> {{$t('pay.spanh4')}}
 
           </h1>
         </div>
         <div class="step-pay">
-          <h1>Login or register</h1>
-          <p>Login in with Google or <span>Create an account</span></p>
+          <h1>{{$t('pay.h1-2')}}</h1>
+          <p>{{$t('pay.p3')}} <span>{{$t('pay.span3')}}</span></p>
         </div>
         <div class="method-head">
-          <h1>Available methods of payment for Tanzania:</h1>
+          <h1>{{$t('pay.h1-3')}} Tanzania:</h1>
         </div>
         <div class="method-pay">
-          <h1>SEND TO MPESA </h1>
+          <h1>{{$t('pay.spanh10')}} </h1>
           <ul>
             <li>Name <span>Thwell Gichovi</span></li>
             <li>Mpesa Number : <span>(+254) 703 147 237</span> </li>
-            <li>Your VIP account will be activated once we receive your payment.</li>
+            <li>{{$t('pay.li8')}}</li>
           </ul>
         </div>
         <div class="Question">
           <div class="Question-con">
-            <h1>Q: How guaranteed are your games?</h1>
+            <h1>{{$t('pay.h1-7')}}</h1>
             <p>
-              <span>Answer:</span> We have a team of top-notch well-researched/informed experts that
-              score up to 96% in their accuracy rate. You are guaranteed to make substantial
-              profits.
+              <span>{{$t('pay.span5')}}:</span> {{$t('pay.span6')}}
             </p>
           </div>
           <div class="Question-con">
-            <h1>Q: What happens for failed predictions?</h1>
+            <h1>{{$t('pay.h1-8')}}</h1>
             <p>
-              <span>Answer:</span> Keep in mind that in case of any loss, we will add an extra one
-              day FREE as a replacement on your subscription. We will keep adding an extra day until
-              you WIN! This is exclusive for VIP subscribers ONLY.
+              <span>{{$t('pay.span5')}}:</span> {{$t('pay.span8')}}
             </p>
           </div>
           <div class="Question-con">
-            <h1>Q: How do I get these daily games sent to me?</h1>
+            <h1>{{$t('pay.h1-10')}}</h1>
             <p>
-              <span>Answer:</span> We post games on our platform <span>https://sportyPredict.com/vip</span>.
-              You need to log in on the website using your email and password or through social
-              accounts to view games.
+              <span>{{$t('pay.span5')}}:</span> {{$t('pay.span9')}} <span>{{$t('pay.span10')}}</span>.
+              {{$t('pay.span11')}}
             </p>
           </div>
           <div class="Question-con">
-            <h1>Q: Why don't we post results</h1>
+            <h1>{{$t('pay.h1-11')}}</h1>
             <p>
-              <span>Answer:</span> We don't disclose results because fraudsters take screenshots
-              and swindle unsuspecting victims.
+              <span>{{$t('pay.span5')}}:</span>{{$t('pay.span12')}}
             </p>
           </div>
         </div>
@@ -512,67 +494,61 @@ const filteredCountries = computed(() => {
       <div class="pay-info" v-else-if="reveal === 'southA'">
         <div class="info-pay-h">
           <h1>
-            Duration of <span>30 days</span> <br />
-            Amount paid: <span>(620 ZAR)</span> <br />
-            <span>"2 - 4" odds</span> daily
+            {{$t('pay.spanh1')}} <span>{{$t('pay.spanh2')}}</span> <br />
+            {{$t('pay.spanh3')}} <span>(620 ZAR)</span> <br />
+            <span>"2 - 4" odds</span> {{$t('pay.spanh4')}}
 
           </h1>
         </div>
         <div class="step-pay">
-          <h1>Login or register</h1>
-          <p>Login in with Google or <span>Create an account</span></p>
+          <h1>{{$t('pay.h1-2')}}</h1>
+          <p>{{$t('pay.p3')}} <span>{{$t('pay.span3')}}</span></p>
         </div>
         <div class="method-head">
-          <h1>Available methods of payment for southAfrica:</h1>
+          <h1>{{$t('pay.h1-3')}} southAfrica:</h1>
         </div>
         <div class="method-pay">
-          <h1>PAY USING CRYPTO (BITCOIN)</h1>
+          <h1>{{$t('pay.h1-5')}} </h1>
           <ul>
-            <li>Go to your bitcoin wallet</li>
-            <li>Pay using this bitcoin address: <span>bc1qvzny5ffjym462y35qw7qqr6ucgtkcqcu402dl5</span></li>
-            <li>Pay the required amount</li>
-            <li>Your VIP account will be activated once we receive your payment.</li>
+            <li>{{$t('pay.li5')}}</li>
+            <li>{{$t('pay.li6')}} <span>bc1qvzny5ffjym462y35qw7qqr6ucgtkcqcu402dl5</span></li>
+            <li>{{$t('pay.li3')}}</li>
+            <li>{{$t('pay.li8')}}</li>
           </ul>
         </div>
         <div class="method-pay">
-          <h1>PAY USING SKRILL</h1>
+          <h1>{{$t('pay.h1-4')}}</h1>
           <ul>
-            <li>Go to your SKRILL account</li>
+            <li>{{$t('pay.li1')}}</li>
             <li>Use <span>betsmart.inc@gmail.com</span></li>
-            <li>Pay the required amount</li>
-            <li>Your VIP account will be activated once we receive your payment.</li>
+            <li>{{$t('pay.li3')}}</li>
+            <li>{{$t('pay.li8')}}</li>
           </ul>
         </div>
         <div class="Question">
           <div class="Question-con">
-            <h1>Q: How guaranteed are your games?</h1>
+            <h1>{{$t('pay.h1-7')}}</h1>
             <p>
-              <span>Answer:</span> We have a team of top-notch well-researched/informed experts that
-              score up to 96% in their accuracy rate. You are guaranteed to make substantial
-              profits.
+              <span>{{$t('pay.span5')}}:</span> {{$t('pay.span6')}}
             </p>
           </div>
           <div class="Question-con">
-            <h1>Q: What happens for failed predictions?</h1>
+            <h1>{{$t('pay.h1-8')}}</h1>
             <p>
-              <span>Answer:</span> Keep in mind that in case of any loss, we will add an extra one
-              day FREE as a replacement on your subscription. We will keep adding an extra day until
-              you WIN! This is exclusive for VIP subscribers ONLY.
+              <span>{{$t('pay.span5')}}:</span> {{$t('pay.span8')}}
             </p>
           </div>
           <div class="Question-con">
-            <h1>Q: How do I get these daily games sent to me?</h1>
+            <h1>{{$t('pay.h1-10')}}</h1>
             <p>
-              <span>Answer:</span> We post games on our platform <span>https://sportyPredict.com/vip</span>.
-              You need to log in on the website using your email and password or through social
-              accounts to view games.
+              <span>{{$t('pay.span5')}}:</span> {{$t('pay.span9')}} <span>{{$t('pay.span10')}}</span>.
+              {{$t('pay.span11')}}
             </p>
           </div>
           <div class="Question-con">
-            <h1>Q: Why don't we post results</h1>
+            <h1>{{$t('pay.h1-11')}}</h1>
             <p>
-              <span>Answer:</span> We don't disclose results because fraudsters take screenshots
-              and swindle unsuspecting victims.
+              <span>{{$t('pay.span5')}}:</span>{{$t('pay.span12')}}
             </p>
           </div>
         </div>
@@ -580,59 +556,53 @@ const filteredCountries = computed(() => {
       <div class="pay-info" v-else-if="reveal === 'Zambia'">
         <div class="info-pay-h">
           <h1>
-            Duration of <span>30 days</span> <br />
-            Amount paid: <span>(550 ZMW)</span> <br />
-            <span>"2 - 4" odds</span> daily
+            {{$t('pay.spanh1')}} <span>{{$t('pay.spanh2')}}</span> <br />
+            {{$t('pay.spanh3')}} <span>(550 ZMW)</span> <br />
+            <span>"2 - 4" odds</span> {{$t('pay.spanh4')}}
 
           </h1>
         </div>
         <div class="step-pay">
-          <h1>Login or register</h1>
-          <p>Login in with Google or <span>Create an account</span></p>
+          <h1>{{$t('pay.h1-2')}}</h1>
+          <p>{{$t('pay.p3')}} <span>{{$t('pay.span3')}}</span></p>
         </div>
         <div class="method-head">
-          <h1>Available methods of payment for Zambia:</h1>
-        </div>
+          <h1>{{$t('pay.h1-3')}} Zambia:</h1>
+        </div>{{$t('pay.spanh10')}}
         <div class="method-pay">
-          <h1>ONLY USE AIRTEL MONEY</h1>
+          <h1>{{$t('pay.spanh11')}}</h1>
           <ul>  
             <li>Dial <span>*778# or use Airtel money mobile app</span></li>
-            <li>Select international money transfer(choose kenya)</li>
+            <li>{{$t('pay.spanh12')}}</li>
             <li>Airtel Number : <span>(+254) 783 719 791</span> </li>
             <li>Name : <span> John</span> </li>
-            <li>Your VIP account will be activated once we receive your payment.</li>
+            <li>{{$t('pay.li8')}}</li>
           </ul>
         </div>
         <div class="Question">
           <div class="Question-con">
-            <h1>Q: How guaranteed are your games?</h1>
+            <h1>{{$t('pay.h1-7')}}</h1>
             <p>
-              <span>Answer:</span> We have a team of top-notch well-researched/informed experts that
-              score up to 96% in their accuracy rate. You are guaranteed to make substantial
-              profits.
+              <span>{{$t('pay.span5')}}:</span> {{$t('pay.span6')}}
             </p>
           </div>
           <div class="Question-con">
-            <h1>Q: What happens for failed predictions?</h1>
+            <h1>{{$t('pay.h1-8')}}</h1>
             <p>
-              <span>Answer:</span> Keep in mind that in case of any loss, we will add an extra one
-              day FREE as a replacement on your subscription. We will keep adding an extra day until
-              you WIN! This is exclusive for VIP subscribers ONLY.
+              <span>{{$t('pay.span5')}}:</span> {{$t('pay.span8')}}
             </p>
           </div>
           <div class="Question-con">
-            <h1>Q: How do I get these daily games sent to me?</h1>
+            <h1>{{$t('pay.h1-10')}}</h1>
             <p>
-              <span>Answer:</span> We post games on our platform <span>https://sportyPredict.com/vip</span>.
-              You need to log in on the website using your email and password or through social
-              accounts to view games.
+              <span>{{$t('pay.span5')}}:</span> {{$t('pay.span9')}} <span>{{$t('pay.span10')}}</span>.
+              {{$t('pay.span11')}}
             </p>
           </div>
           <div class="Question-con">
-            <h1>Q: Why don't we post results</h1>
+            <h1>{{$t('pay.h1-11')}}</h1>
             <p>
-              <span>Answer:</span> We don't disclose results because fraudsters take screenshots
-              and swindle unsuspecting victims.
+              <span>{{$t('pay.span5')}}:</span>{{$t('pay.span12')}}
             </p>
           </div>
         </div>
@@ -640,59 +610,53 @@ const filteredCountries = computed(() => {
       <div class="pay-info" v-else-if="reveal === 'Malawi'">
         <div class="info-pay-h">
           <h1>
-            Duration of <span>30 days</span> <br />
-            Amount paid: <span>(30,000 MWK )</span> <br />
-            <span>"2 - 4" odds</span> daily
+            {{$t('pay.spanh1')}} <span>{{$t('pay.spanh2')}}</span> <br />
+            {{$t('pay.spanh3')}} <span>(30,000 MWK )</span> <br />
+            <span>"2 - 4" odds</span> {{$t('pay.spanh4')}}
 
           </h1>
         </div>
         <div class="step-pay">
-          <h1>Login or register</h1>
-          <p>Login in with Google or <span>Create an account</span></p>
+          <h1>{{$t('pay.h1-2')}}</h1>
+          <p>{{$t('pay.p3')}} <span>{{$t('pay.span3')}}</span></p>
         </div>
         <div class="method-head">
-          <h1>Available methods of payment for Malawi:</h1>
+          <h1>{{$t('pay.h1-3')}} Malawi:</h1>
         </div>
         <div class="method-pay">
-          <h1>ONLY USE AIRTEL MONEY LINE</h1>
+          <h1>{{$t('pay.spanh11')}} LINE</h1>
           <ul>  
             <li>Dial <span>Use Airtel money mobile app</span></li>
-            <li>Select international money transfer(choose kenya)</li>
+            <li>{{$t('pay.spanh12')}}</li>
             <li>Airtel Number : <span>(+254) 783 719 791</span> </li>
             <li>Name : <span> John</span> </li>
-            <li>Your VIP account will be activated once we receive your payment.</li>
+            <li>{{$t('pay.li8')}}</li>
           </ul>
         </div>
         <div class="Question">
           <div class="Question-con">
-            <h1>Q: How guaranteed are your games?</h1>
+            <h1>{{$t('pay.h1-7')}}</h1>
             <p>
-              <span>Answer:</span> We have a team of top-notch well-researched/informed experts that
-              score up to 96% in their accuracy rate. You are guaranteed to make substantial
-              profits.
+              <span>{{$t('pay.span5')}}:</span> {{$t('pay.span6')}}
             </p>
           </div>
           <div class="Question-con">
-            <h1>Q: What happens for failed predictions?</h1>
+            <h1>{{$t('pay.h1-8')}}</h1>
             <p>
-              <span>Answer:</span> Keep in mind that in case of any loss, we will add an extra one
-              day FREE as a replacement on your subscription. We will keep adding an extra day until
-              you WIN! This is exclusive for VIP subscribers ONLY.
+              <span>{{$t('pay.span5')}}:</span> {{$t('pay.span8')}}
             </p>
           </div>
           <div class="Question-con">
-            <h1>Q: How do I get these daily games sent to me?</h1>
+            <h1>{{$t('pay.h1-10')}}</h1>
             <p>
-              <span>Answer:</span> We post games on our platform <span>https://sportyPredict.com/vip</span>.
-              You need to log in on the website using your email and password or through social
-              accounts to view games.
+              <span>{{$t('pay.span5')}}:</span> {{$t('pay.span9')}} <span>{{$t('pay.span10')}}</span>.
+              {{$t('pay.span11')}}
             </p>
           </div>
           <div class="Question-con">
-            <h1>Q: Why don't we post results</h1>
+            <h1>{{$t('pay.h1-11')}}</h1>
             <p>
-              <span>Answer:</span> We don't disclose results because fraudsters take screenshots
-              and swindle unsuspecting victims.
+              <span>{{$t('pay.span5')}}:</span>{{$t('pay.span12')}}
             </p>
           </div>
         </div>
@@ -700,59 +664,53 @@ const filteredCountries = computed(() => {
       <div class="pay-info" v-else-if="reveal === 'Rwanda'">
         <div class="info-pay-h">
           <h1>
-            Duration of <span>30 days</span> <br />
-            Amount paid: <span>(35,0000 RWF )</span> <br />
-            <span>"2 - 4" odds</span> daily
+            {{$t('pay.spanh1')}} <span>{{$t('pay.spanh2')}}</span> <br />
+            {{$t('pay.spanh3')}} <span>(35,0000 RWF )</span> <br />
+            <span>"2 - 4" odds</span> {{$t('pay.spanh4')}}
 
           </h1>
         </div>
         <div class="step-pay">
-          <h1>Login or register</h1>
-          <p>Login in with Google or <span>Create an account</span></p>
+          <h1>{{$t('pay.h1-2')}}</h1>
+          <p>{{$t('pay.p3')}} <span>{{$t('pay.span3')}}</span></p>
         </div>
         <div class="method-head">
-          <h1>Available methods of payment for Rwanda:</h1>
+          <h1>{{$t('pay.h1-3')}} Rwanda:</h1>
         </div>
         <div class="method-pay">
-          <h1>MTN LINE TO MPESA KENYA</h1>
+          <h1>{{$t('pay.span13')}}</h1>
           <ul>  
             <li>Dial <span> *830# </span></li>
-            <li>Send money from your Mtn line to Kenya</li>
+            <li>{{$t('pay.span14')}}</li>
             <li>Number : <span>(+254) 703 147 237</span> </li>
             <li>Name : <span> Thwell Gichovi</span> </li>
-            <li>Your VIP account will be activated once we receive your payment.</li>
+            <li>{{$t('pay.li8')}}</li>
           </ul>
         </div>
         <div class="Question">
           <div class="Question-con">
-            <h1>Q: How guaranteed are your games?</h1>
+            <h1>{{$t('pay.h1-7')}}</h1>
             <p>
-              <span>Answer:</span> We have a team of top-notch well-researched/informed experts that
-              score up to 96% in their accuracy rate. You are guaranteed to make substantial
-              profits.
+              <span>{{$t('pay.span5')}}:</span> {{$t('pay.span6')}}
             </p>
           </div>
           <div class="Question-con">
-            <h1>Q: What happens for failed predictions?</h1>
+            <h1>{{$t('pay.h1-8')}}</h1>
             <p>
-              <span>Answer:</span> Keep in mind that in case of any loss, we will add an extra one
-              day FREE as a replacement on your subscription. We will keep adding an extra day until
-              you WIN! This is exclusive for VIP subscribers ONLY.
+              <span>{{$t('pay.span5')}}:</span> {{$t('pay.span8')}}
             </p>
           </div>
           <div class="Question-con">
-            <h1>Q: How do I get these daily games sent to me?</h1>
+            <h1>{{$t('pay.h1-10')}}</h1>
             <p>
-              <span>Answer:</span> We post games on our platform <span>https://sportyPredict.com/vip</span>.
-              You need to log in on the website using your email and password or through social
-              accounts to view games.
+              <span>{{$t('pay.span5')}}:</span> {{$t('pay.span9')}} <span>{{$t('pay.span10')}}</span>.
+              {{$t('pay.span11')}}
             </p>
           </div>
           <div class="Question-con">
-            <h1>Q: Why don't we post results</h1>
+            <h1>{{$t('pay.h1-11')}}</h1>
             <p>
-              <span>Answer:</span> We don't disclose results because fraudsters take screenshots
-              and swindle unsuspecting victims.
+              <span>{{$t('pay.span5')}}:</span>{{$t('pay.span12')}}
             </p>
           </div>
         </div>

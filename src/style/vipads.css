@@ -1,0 +1,92 @@
+@media screen {
+    .ads-v-main{ 
+        margin: 10px;
+        display: flex;
+        align-items: center;
+        flex-direction: column;
+        justify-content: center;
+        border: 2px solid var(--primary-color);
+       
+    }
+
+    .ads-m1 {
+        gap: 20px;
+        display: flex;
+        min-height: 250px;
+        text-align: center;
+        align-items: center;
+        flex-direction: column;
+       
+
+    }
+
+    .ads-m1-h {
+        width: 100%;
+        color: var(--background-color);
+       
+        background-color: var(--primary-color);
+    }
+    .ads-m1-h h1 {
+        font-size: 1.8rem;
+        text-transform: uppercase;
+
+    }
+
+    .ads-m-btn {
+        margin: 10px;
+        padding: 10px 50px;
+        border-radius: 8px;
+        text-transform: uppercase;
+        color: var(--background-color);
+        background-color: var(--primary-color);
+    }
+
+    .ads-m-btn:hover {
+        background-color: var(--secondary-color);
+    }
+
+    .m1-ads {
+        display: flex;
+        padding: 20px;
+        justify-content: space-between;
+        color: var(--background-color);
+        background-color: var(--primary-color);
+    }
+
+    .m1-ads-info {
+        width: 100%;
+        display: flex;
+        flex-direction: column;
+    }
+
+    .m1-ads-info h1 {
+        font-size: 1.8rem;
+    }
+
+    .m1-ads-time {
+        width: 100%;
+        display: flex;
+        padding: 10px;
+        border-radius: 12px;
+        justify-content: space-around;
+        background-color: var(--background-color);
+    }
+
+    .ads-time {
+        display: flex;
+        flex-direction: column;
+        color: var(--primary-color);
+    }
+}
+
+
+/* using it as global style for larger devices  */
+@media only screen and (min-width: 48em) {
+
+    .ads-v-main{ 
+        margin: 80px;
+        flex-direction: row;
+       
+    }
+
+}

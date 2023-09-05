@@ -1,15 +1,15 @@
 <template>
       <div class="prediction-con">
-        <h1>Extra Predictions</h1>
+        <h1>{{ $t('nav.link6') }}</h1>
       <div class="prediction-p">
         <OtherPredictions buttonName="Double Chance" />
         <OtherPredictions buttonName="Over 2.5 Goals" />
         <OtherPredictions buttonName="Over 1.5 Goals" />
         <OtherPredictions buttonName="Both Teams To Score" />
         <!-- <OtherPredictions buttonName="Bet Of The Day" /> -->
-        <button class="other-p-btn" @click="goToB()">Bet Of The Day</button>
+        <button class="other-p-btn" @click="goToB()">{{ $t('nav.link3') }}</button>
         <OtherPredictions buttonName="Under 2.5 Goals" />
-        <button class="other-p-btn fh-btn" @click="goToBO()">Betting Offers</button>
+        <button class="other-p-btn fh-btn" @click="goToBO()">{{ $t('nav.link2') }}</button>
       </div>
     </div>
 </template>

@@ -9,6 +9,8 @@
     ), url(${SportBg})`
     }"
   >
+
+
     <div class="form-l-wrapper">
       <h1>{{ title }}</h1>
       <form @submit.prevent="login" class="l-form" v-if="!resetPage">
@@ -16,7 +18,7 @@
         <input type="password" class="input-l" placeholder="Password" v-model="password" />
         <p>{{ errMsg }}</p>
         <button class="btn-f" type="submit">Login</button>
-        <span @click="forgot">Forgot password</span>
+        <span @click="forgot">{{$t('auth.span1')}}</span>
      
       </form>
       <form @submit.prevent="resetAuth" class="l-form" v-else>
@@ -28,7 +30,7 @@
       <span>or</span>
       <div class="l-alternatives">
         <button class="alt-btn" @click="create">
-          Create an account
+          {{$t('auth.h1-1')}}
         </button>
       </div>
     </div>

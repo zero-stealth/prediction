@@ -1,7 +1,7 @@
 <template>
   <div class="Account-container">
     <div class="Account-header">
-      <h1><span>Welcome</span><br />SportyPredict,</h1>
+      <h1><span>{{$t('section8.span')}}</span><br />{{$t('section8.span2')}} </h1>
     </div>
     <div class="Account-info">
       <div class="Account-card" v-for="card in accountCards" :key="card.id">
@@ -14,12 +14,12 @@
     </div>
     <div class="search-section">
       <div class="form-group">
-        <label for="Accountname">Search Accounts</label>
+        <label for="Accountname">{{$t('section8.searchLabel')}} {{$t('section8.span')}}</label>
         <input
           v-model="SearchAccount"
           type="text"
           class="form-g-input"
-          placeholder="Account name"
+          :placeholder="$t('section8.searchPlaceholder')"
           id="Accountname"
         />
       </div>
@@ -28,12 +28,12 @@
       <table>
         <thead>
           <tr>
-            <th>Account</th>
-            <th>Payment</th>
-            <th>Period</th>
-            <th>Date activation</th>
-            <th>Vip status</th>
-            <th>Delete</th>
+            <th>{{$t('section8.accountTable.accountHeader')}}</th>
+            <th>{{$t('section8.accountTable.paymentHeader')}}</th>
+            <th>{{$t('section8.accountTable.periodHeader')}}</th>
+            <th>{{$t('section8.accountTable.dateActivationHeader')}}</th>
+            <th>{{$t('section8.accountTable.vipStatusHeader')}}</th>
+            <th>{{$t('section8.accountTable.deleteHeader')}}</th>
           </tr>
         </thead>
         <tbody>
@@ -66,7 +66,7 @@
             </td>
           </tr>
           <tr v-if="accountData.length === 0">
-            <td colspan="6">No accounts yet!</td>
+            <td colspan="6">{{$t('section8.accountTable.noAccountsMessage')}}</td>
           </tr>
         </tbody>
       </table>
@@ -94,11 +94,14 @@ const statusC = ref(null);
 const paidDate = ref(null);
 const futuresDate = ref(null);
 const endSub = ref(false);
+const SERVER_HOST = import.meta.env.VITE_SERVER_HOST
+
+
 
 const accountsData = async () => {
   try {
     const user = JSON.parse(localStorage.getItem('token'));
-    const response = await axios.get(`https://predictions-reg9.onrender.com/auth`, {
+    const response = await axios.get(`${SERVER_HOST}/auth`, {
       headers: {
         Authorization: `Bearer ${user}`,
       },
@@ -158,7 +161,7 @@ const accountData = computed(() => {
 const deleteAccount = async (id) => {
   try {
     const token = JSON.parse(localStorage.getItem('token'));
-    const response = await axios.delete(`https://predictions-reg9.onrender.com/auth/delete/${id}`,{
+    const response = await axios.delete(`${SERVER_HOST}/auth/delete/${id}`,{
       headers:{
         Authorization: `Bearer ${token}`
       }
@@ -222,7 +225,7 @@ async function toggleStatus(account) {
   account.status = !account.status;
 
   try {
-    const response = await axios.put(`https://predictions-reg9.onrender.com/auth/update/${account._id}`, {
+    const response = await axios.put(`${SERVER_HOST}/auth/update/${account._id}`, {
       paid: account.status,
     });
 

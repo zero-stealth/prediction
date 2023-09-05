@@ -3,7 +3,7 @@
     <div class="main-h">
       <div class="main-header home-up">
         <div class="header-info home-up">
-          <h1>Upcoming Tips</h1>
+          <h1>{{ $t('upcoming.h1-1') }}</h1>
         </div>
       </div>
       <template v-if="cardData.length > 0">
@@ -31,7 +31,7 @@
       </template>
         <template v-else>
           <div class="home-freetip">
-            <h1>No upcoming predictions available today</h1>
+            <h1>{{ $t('upcoming.h1-2') }}</h1>
           </div>
         </template>
       </div>

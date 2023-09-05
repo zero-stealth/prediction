@@ -1,7 +1,6 @@
 <script setup>
 import axios from 'axios'
 import { useRouter } from 'vue-router'
-import news from '../assets/news.png'
 import ArrowIcon from '@/icons/ArrowIcon.vue'
 import { ref, onMounted, computed } from 'vue'
 
@@ -23,8 +22,7 @@ const getNews = async () => {
         },
       }
     )
-    console.log(response.data.data)
-    newsData.value = response.data.data // Set the newsData to the response directly
+    newsData.value = response.data // Set the newsData to the response directly
     console.log(newsData.value)
   } catch (err) {
     console.log(err)
@@ -52,14 +50,14 @@ const filteredNewsData = computed(() => {
       >
         <div class="details-h">
           <ArrowIcon class="details-arrow" @click="goBack()" />
-          <h2>Sport news</h2>
+          <h2>{{ $t('news.h1-1') }}</h2>
           <span></span>
         </div>
       </div>
       <div class="news-details-i">
         <h1>{{ newsItem.title }}</h1>
-        <span>{{ newsItem.caption }}</span>
-        <a :href="newsItem.url">more info</a>
+        <span>{{ newsItem.img }}</span>
+        <a :href="newsItem.url">{{ $t('news.a-1') }}</a>
       </div>
     </div>
   </div>
