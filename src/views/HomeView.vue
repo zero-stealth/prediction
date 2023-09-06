@@ -219,6 +219,3 @@ watch(currentDate, () => {
 <style scoped>
 @import '../style/Home.css';
 </style>
-
-<script src=""></script>
-<script></script>

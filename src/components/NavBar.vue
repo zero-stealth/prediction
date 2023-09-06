@@ -37,7 +37,7 @@
           <ProfileIcon class="icon-nav l-icon" />
           {{ $t('nav.btn8') }}
         </button>
-        <select v-model="$i18n.locale" class="locale-changer">
+        <select v-model="$i18n.locale" id="locale" class="locale-changer">
           <option
             v-for="locale in $i18n.availableLocales"
             :key="`locale-${locale}`"

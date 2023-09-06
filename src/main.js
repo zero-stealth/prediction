@@ -13,31 +13,29 @@ import './style/global.css'
 
 
 // Language files
-import Brazilian from './locales/pt-BR.json';
 import English from './locales/en.json';
 import French from './locales/fr.json';
+import Brazilian from './locales/pt-BR.json';
 import Spanish from './locales/es.json';
 import Italian from './locales/it.json';
 import Dutch from './locales/nl.json';
 import German from './locales/de.json';
 
 function loadLocaleMessages() {
-    const locales = { English, French, Brazilian, Spanish, Italian, Dutch, German };
+    const locales = { English , French, Brazilian, Spanish, Italian, Dutch, German};
     const messages = {};
     for (const key in locales) {
-        messages[key] = locales[key];
+      messages[key] = locales[key];
     }
     return messages;
-}
-
-const i18n = createI18n({
-    legacy: false,
-    globalInjection: true,
+  }
+  
+  const i18n = createI18n({
     locale: 'English',
     fallbackLocale: 'English',
     messages: loadLocaleMessages()
-});
-
+  });
+  
 //   nl.js (Dutch)
 //   fr.js (French)
 //   de.js (German)
