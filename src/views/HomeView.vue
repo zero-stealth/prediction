@@ -125,7 +125,7 @@ const newsInfo = (newsID) => {
 }
 
 const goAds = () => {
-  window.open('https://wa.me/+254703147237?text=Hi sporty predict, I want to buy VIP subcription')
+  window.open('https://wa.me/+254703147237?text=Hi sporty predict, I want to buy VIP subscription')
 }
 
 const visibleNews = computed(() => {
@@ -143,6 +143,7 @@ const showLessNews = () => {
     showMoreButton.value = true
   }
 }
+
 const getNews = async () => {
   try {
     const response = await axios.get('https://livescore-football.p.rapidapi.com/soccer/news-list', {
@@ -152,9 +153,8 @@ const getNews = async () => {
       }
     })
     newsData.value = response.data.data
-    console.log(newsData.value)
   } catch (err) {
-    console.log(err)
+    console.error(err)
   }
 }
 
@@ -163,9 +163,8 @@ const getPrediction = async () => {
   try {
     const response = await axios.get(`${SERVER_HOST}/predictions/tips/freeTip/${currentDate.value}`)
     cardData.value = response.data
-    console.log(cardData.value)
   } catch (err) {
-    console.log(err)
+    console.error(err)
   }
 }
 
@@ -180,13 +179,6 @@ const previousDay = () => {
   offset.value--
   updateCurrentDate()
 }
-
-// const nextDay = () => {
-//   if (offset.value < 1) {
-//     offset.value++
-//     updateCurrentDate()
-//   }
-// }
 
 const setOffset = (value) => {
   offset.value = value
@@ -216,6 +208,7 @@ watch(currentDate, () => {
   getPrediction()
 })
 </script>
+
 <style scoped>
 @import '../style/Home.css';
 </style>
