@@ -149,7 +149,7 @@ const shouldShowScore = computed(() => {
 })
 
 onMounted(async () => {
-  const response = await axios.get('http://ipinfo.io')
+  const response = await axios.get('https://ipinfo.io/')
   const userTimeZone = response.data.timezone
 
   const originalTime = props.time
