@@ -1,4 +1,5 @@
 <template>
+  <QuickComponent/>
   <div class="bonus">
     <div class="bo-img">
       <img :src="bonusData.imgSrc" :alt="bonusData.alt" class="img-offer" />
@@ -32,6 +33,7 @@
 <script setup>
 import { ref } from 'vue'
 import copyIcon from '../icons/COPYIcon.vue'
+import QuickComponent from '../components/QuickComponent.vue'
 
 const props = defineProps(['bonusData'])
 

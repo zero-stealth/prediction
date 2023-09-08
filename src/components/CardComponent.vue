@@ -21,7 +21,7 @@
       </div>
       <div class="card-in">
         <div class="card-in-s">
-          <span>[{{ Time }}]</span>
+          <span>[{{ formattedTime }}]</span>
         </div>
         <span class="status-p">{{ status }}</span>
         <div v-if="!showScore">
@@ -74,7 +74,7 @@ import { ref, computed, onMounted } from 'vue'
 import { DateTime } from 'luxon'
 import axios from 'axios'
 
-const Time = ref()
+const formattedTime = ref()
 
 const props = defineProps({
   formationA: {
@@ -141,21 +141,29 @@ const props = defineProps({
   }
 })
 
-const formationsA = ref(props.formationA)
-const formationsB = ref(props.formationB)
+
+const formationsA = ref(props.formationA);
+const formationsB = ref(props.formationB);
 
 const shouldShowScore = computed(() => {
-  return props.showScore && props.teamAscore !== undefined && props.teamBscore !== undefined
-})
+  return props.showScore && props.teamAscore !== undefined && props.teamBscore !== undefined;
+});
 
 onMounted(async () => {
-  const response = await axios.get('https://ipinfo.io/')
-  const userTimeZone = response.data.timezone
+  try {
+    const response = await axios.get('https://ipinfo.io/');
+    const userTimeZone = response.data.timezone;
 
-  const originalTime = props.time
-  const convertedTime = DateTime.fromISO(originalTime).setZone(userTimeZone)
-  Time.value = convertedTime.toFormat('HH:mm')
-})
+    const originalTime = props.time;
+    const convertedTime = DateTime.fromISO(originalTime, { zone: 'utc' })
+      .setZone(userTimeZone)
+      .toLocaleString(DateTime.TIME_SIMPLE);
+
+    formattedTime.value = convertedTime;
+  } catch (error) {
+    console.error('Error fetching user timezone or formatting time:', error);
+  }
+});
 </script>
 
 <style scoped>

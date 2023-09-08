@@ -1,6 +1,16 @@
 <template>
   <div class="nav-main">
     <div class="nav-container">
+      <select v-model="$i18n.locale" class="locale-changer mb-locale">
+          <option
+            v-for="locale in $i18n.availableLocales"
+            :key="`locale-${locale}`"
+            class="locale-op"
+            :value="locale"
+          >
+            {{ locale }}
+          </option>
+        </select>
       <img src="../assets/logo-spp.png" alt="logo" class="logo-spp" @click="goHome" />
       <div class="nav-link-container">
         <RouterLink :to="{ name: 'Home' }" class="nav-link">{{ $t('nav.link1') }}</RouterLink>
@@ -37,7 +47,7 @@
           <ProfileIcon class="icon-nav l-icon" />
           {{ $t('nav.btn8') }}
         </button>
-        <select v-model="$i18n.locale" id="locale" class="locale-changer">
+        <select v-model="$i18n.locale" class="locale-changer">
           <option
             v-for="locale in $i18n.availableLocales"
             :key="`locale-${locale}`"
@@ -104,7 +114,7 @@
           {{ $t('nav.btn8') }}
         </button>
       </div>
-      <select v-model="$i18n.locale" class="locale-changer">
+      <!-- <select v-model="$i18n.locale" class="locale-changer">
           <option
             v-for="locale in $i18n.availableLocales"
             :key="`locale-${locale}`"
@@ -112,7 +122,7 @@
           >
             {{ locale }}
           </option>
-        </select>
+        </select> -->
     </div>
   </div>
   <!-- mobile responsive -->
@@ -124,7 +134,6 @@ import { RouterLink, useRouter } from 'vue-router'
 import ProfileIcon from '../icons/profileIcon.vue'
 import GroupIcon from '../icons/GroupIcon.vue'
 import ExitIcon from '../icons/ExitIcon.vue'
-import WebIcon from '../icons/webIcon.vue'
 import LogoutIcon from '../icons/logoutIcon.vue'
 import ArrowIcon from '../icons/ArrowIcon.vue'
 import { ref, watchEffect } from 'vue'
@@ -135,7 +144,6 @@ const router = useRouter()
 const isDrpOpen = ref(false)
 const isDropOpen = ref(false)
 const openLanguage = ref(false)
-const selectedLanguage = ref('')
 
 watchEffect(() => {
   token.value = localStorage.getItem('token')

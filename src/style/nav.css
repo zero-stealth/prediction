@@ -6,7 +6,7 @@
 
   }
 
-  @media screen {
+
     .nav-container {
       display: flex;
       font-size: 1rem;
@@ -20,7 +20,7 @@
    
 
   .logo-spp {
-    width: 130px;
+    width: 110px;
 
   }
 
@@ -173,8 +173,8 @@
 
 
   .menu-icon-nav {
-    width: 15px;
-    height: 15px;
+    width: 20px;
+    height: 20px;
     fill: var(--background-color);
   }
 
@@ -477,6 +477,10 @@
 
   }
 
+  .mb-locale {
+    display: none;
+  }
+
   .logo-spp {
     width: 150px;
     height: 100%;
@@ -552,5 +556,4 @@
     flex: 50%;
     height: 270px;
   }
-}
 }

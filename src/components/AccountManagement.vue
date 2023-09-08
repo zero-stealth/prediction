@@ -87,7 +87,6 @@ import AdminIcon from '../icons/AdminIcon.vue';
 import DeleteIcon from '../icons/DeleteIcon.vue';
 import ProfileIcon from '../icons/profileIcon.vue';
 
-const username = ref(null);
 const accountCards = ref([]);
 const accountInfo = ref([]);
 const SearchAccount = ref('');

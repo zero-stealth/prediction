@@ -22,6 +22,7 @@
         <a href="https://bwredir.com/1bkh?p=%2Fregistration%2F" class="betw-banner-comp" @click="goAdds">
         <img src="../assets/BannerBet.png" alt="bet winner" class="betw-banner" />
       </a>
+      <QuickComponent/>
         <template v-if="cardData.length > 0">
           <div v-for="item in cardData" class="main-h-card" :key="item">
             <Card
@@ -59,6 +60,7 @@
 import axios from 'axios';
 import Card from '../components/CardComponent.vue';
 import ButtonComponent from '../components/ButtonComponent.vue';
+import QuickComponent from '../components/QuickComponent.vue'
 import { ref, onMounted, watch } from 'vue';
 
 const upcomingDates = ref('');

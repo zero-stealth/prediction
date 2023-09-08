@@ -16,7 +16,7 @@ import betImage from '../assets/betwinner.png'
 import stakeImage from '../assets/stake.png'
 import melbetImage from '../assets/melbet.png'
 import Bonus from '../components/bonusComponent.vue'
-
+  
 const bonusData = ref([
   {
     imgSrc: betImage,
