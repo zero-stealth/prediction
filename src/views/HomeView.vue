@@ -4,28 +4,23 @@
     <div class="main-h">
       <div class="main-header">
         <div class="header-info">
-          <h1>{{ $t('bank.h1-3') }}{{ currentDate }}</h1>
+          <h1>Free tips {{ currentDate }}</h1>
         </div>
         <div class="header-btn">
-          <button class="btn-h" :class="{ 'active-btn': offset > 0 }" @click="previousDay()">
-            {{ $t('bank.btn-1') }}
-          </button>
-          <button class="btn-h" :class="{ 'active-btn': offset === 0 }" @click="setOffset(0)">
-            {{ $t('bank.btn-2') }}
-          </button>
-          <button class="btn-h" :class="{ 'active-btn': offset === 1 }" @click="setOffset(1)">
-            {{ $t('bank.btn-3') }}
-          </button>
-        </div>
+        <button class="btn-h" :class="{ 'active-btn': offset > 0 }" @click="previousDay()">
+          Previous
+        </button>
+        <button class="btn-h" :class="{ 'active-btn': offset === 0 }" @click="setOffset(0)">
+          Today
+        </button>
+        <button class="btn-h" :class="{ 'active-btn': offset === 1 }" @click="setOffset(1)">
+          Tomorrow
+        </button>
       </div>
-      <a
-        href="https://bwredir.com/1bkh?p=%2Fregistration%2F"
-        class="betw-banner-comp"
-        @click="goAds()"
-      >
+      </div>
+      <a href="https://bwredir.com/1bkh?p=%2Fregistration%2F" class="betw-banner-comp" @click="goAdds">
         <img src="../assets/BannerBet.png" alt="bet winner" class="betw-banner" />
       </a>
-      <QuickComponent />
       <template v-if="cardData.length > 0">
         <div class="main-h-card">
           <Card
@@ -51,22 +46,19 @@
       </template>
       <template v-else>
         <div class="home-freetip">
-          <h1>{{ $t('upcoming.h1-2') }}</h1>
+          <h1>No predictions yet! Check back later.</h1>
         </div>
       </template>
-    </div>
-    <div>
-      <vipads />
     </div>
     <div class="news-main">
       <div class="news-header">
         <div class="news-info">
-          <h1>{{ $t('news.h1-1') }}</h1>
+          <h1>Sport News</h1>
         </div>
         <div class="news-link">
           <Arrow class="news-icon icon-left" />
-          <span v-if="showMoreButton" @click="showMoreNews">{{ $t('news.span-1') }}</span>
-          <span v-else @click="showLessNews">{{ $t('news.span-2') }}</span>
+          <span v-if="showMoreButton" @click="showMoreNews">see more</span>
+          <span v-else @click="showLessNews">see less</span>
           <Arrow class="news-icon" />
         </div>
       </div>
@@ -99,16 +91,13 @@ import { useRouter } from 'vue-router'
 import axios from 'axios'
 import Arrow from '../icons/arrow.vue'
 import ads from '../assets/ads.gif'
-import vipads from '../components/vipads.vue'
 import NewsCard from '../components/NewsCard.vue'
 import Card from '../components/CardComponent.vue'
 import Upcoming from '../components/UpcomingPicks.vue'
-import QuickComponent from '../components/QuickComponent.vue'
 import AboutComponent from '../components/aboutComponent.vue'
 import HeroComponent from '../components/HeroComponent.vue'
 import OtherComponent from '../components/OtherComponent.vue'
 
-const SERVER_HOST = import.meta.env.VITE_SERVER_HOST
 const showMoreButton = ref(true)
 const maxNewsToShow = ref(8)
 const currentDate = ref('')
@@ -125,8 +114,11 @@ const newsInfo = (newsID) => {
 }
 
 const goAds = () => {
-  window.open('https://wa.me/+254703147237?text=Hi sporty predict, I want to buy VIP subscription')
+  window.open(
+    'https://wa.me/+254703147237?text=Hi sporty predict, I want to buy VIP subcription'
+  )
 }
+
 
 const visibleNews = computed(() => {
   return newsData.value.slice(0, maxNewsToShow.value)
@@ -143,7 +135,6 @@ const showLessNews = () => {
     showMoreButton.value = true
   }
 }
-
 const getNews = async () => {
   try {
     const response = await axios.get('https://livescore-football.p.rapidapi.com/soccer/news-list', {
@@ -152,19 +143,27 @@ const getNews = async () => {
         'X-RapidAPI-Host': import.meta.env.VITE_RAPIDAPI_HOST
       }
     })
+    console.log(response.data.data)
     newsData.value = response.data.data
+    console.log(newsData.value)
   } catch (err) {
-    console.error(err)
+    console.log(err)
   }
 }
+
+
 
 const getPrediction = async () => {
   const token = JSON.parse(localStorage.getItem('token'))
   try {
-    const response = await axios.get(`${SERVER_HOST}/predictions/tips/freeTip/${currentDate.value}`)
+    const response = await axios.get(
+      `https://predictions-reg9.onrender.com/predictions/tips/freeTip/${currentDate.value}`
+    )
     cardData.value = response.data
+console.log(cardData.value)
+
   } catch (err) {
-    console.error(err)
+    console.log(err)
   }
 }
 
@@ -179,6 +178,14 @@ const previousDay = () => {
   offset.value--
   updateCurrentDate()
 }
+
+// const nextDay = () => {
+//   if (offset.value < 1) {
+//     offset.value++
+//     updateCurrentDate()
+//   }
+// }
+
 
 const setOffset = (value) => {
   offset.value = value
@@ -208,7 +215,6 @@ watch(currentDate, () => {
   getPrediction()
 })
 </script>
-
 <style scoped>
 @import '../style/Home.css';
 </style>
