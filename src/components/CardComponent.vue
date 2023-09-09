@@ -1,3 +1,6 @@
+Your Vue.js template code looks fine, but there are a few improvements you can make for better organization and readability. Here's the improved code:
+
+```vue
 <template>
   <div class="card-container">
     <div class="card-title">
@@ -55,15 +58,11 @@
     </div>
     <div class="card-footer">
       <div class="card-f" v-for="formationA in formationsA" :key="formationA">
-        <span :class="[formationA === 'l' ? 'loose' : formationA === 'w' ? 'win' : 'draw']">{{
-          formationA 
-        }}</span>
+        <span :class="[formationA === 'l' ? 'loose' : formationA === 'w' ? 'win' : 'draw']">{{ formationA }}</span>
       </div>
       <div class="card-fi">Recent form</div>
       <div class="card-f" v-for="formationB in formationsB" :key="formationB">
-        <span :class="[formationB === 'l' ? 'loose' : formationB === 'w' ? 'win' : 'draw']">{{
-          formationB
-        }}</span>
+        <span :class="[formationB === 'l' ? 'loose' : formationB === 'w' ? 'win' : 'draw']">{{ formationB }}</span>
       </div>
     </div>
   </div>
@@ -141,7 +140,6 @@ const props = defineProps({
   }
 })
 
-
 const formationsA = ref(props.formationA);
 const formationsB = ref(props.formationB);
 
@@ -151,19 +149,23 @@ const shouldShowScore = computed(() => {
 
 onMounted(async () => {
   try {
-    const response = await axios.get('https://ipinfo.io/');
+    const ipData = await axios.get('https://api.ipify.org?format=json');
+    const userIp = ipData.data.ip;
+    const response = await axios.get(`http://ip-api.com/json/${userIp}`);
     const userTimeZone = response.data.timezone;
+    
+    // Parse the incoming time string to a DateTime object
+    const eventTime = DateTime.fromISO(props.time);
 
-    const originalTime = props.time;
-    const convertedTime = DateTime.fromISO(originalTime, { zone: 'utc' })
-      .setZone(userTimeZone)
-      .toLocaleString(DateTime.TIME_SIMPLE);
-
-    formattedTime.value = convertedTime;
+    // Convert the event time to the user's timezone and format it
+    formattedTime.value = eventTime.setZone(userTimeZone).toFormat('HH:mm:ss');
+    
+    console.log(formattedTime.value);
   } catch (error) {
     console.error('Error fetching user timezone or formatting time:', error);
   }
 });
+
 </script>
 
 <style scoped>
