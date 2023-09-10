@@ -158,7 +158,7 @@ onMounted(async () => {
     const eventTime = DateTime.fromISO(props.time);
 
     // Convert the event time to the user's timezone and format it
-    formattedTime.value = eventTime.setZone(userTimeZone).toFormat('HH:mm:ss');
+    formattedTime.value = eventTime.setZone(userTimeZone).toFormat('HH:mm');
     
     console.log(formattedTime.value);
   } catch (error) {

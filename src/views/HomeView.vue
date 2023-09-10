@@ -18,9 +18,14 @@
         </button>
       </div>
       </div>
-      <a href="https://bwredir.com/1bkh?p=%2Fregistration%2F" class="betw-banner-comp" @click="goAdds">
+      <a
+        href="https://bwredir.com/1bkh?p=%2Fregistration%2F"
+        class="betw-banner-comp"
+        @click="goAds()"
+      >
         <img src="../assets/BannerBet.png" alt="bet winner" class="betw-banner" />
       </a>
+      <QuickComponent />
       <template v-if="cardData.length > 0">
         <div class="main-h-card">
           <Card
@@ -49,6 +54,9 @@
           <h1>No predictions yet! Check back later.</h1>
         </div>
       </template>
+    </div>
+    <div>
+      <vipads />
     </div>
     <div class="news-main">
       <div class="news-header">
@@ -91,12 +99,15 @@ import { useRouter } from 'vue-router'
 import axios from 'axios'
 import Arrow from '../icons/arrow.vue'
 import ads from '../assets/ads.gif'
+import vipads from '../components/vipads.vue'
 import NewsCard from '../components/NewsCard.vue'
 import Card from '../components/CardComponent.vue'
 import Upcoming from '../components/UpcomingPicks.vue'
+import QuickComponent from '../components/QuickComponent.vue'
 import AboutComponent from '../components/aboutComponent.vue'
 import HeroComponent from '../components/HeroComponent.vue'
 import OtherComponent from '../components/OtherComponent.vue'
+
 
 const showMoreButton = ref(true)
 const maxNewsToShow = ref(8)
