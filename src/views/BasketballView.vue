@@ -1,6 +1,7 @@
 <template>
   <div>
     <ButtonComponent />
+    <QuickComponent/>
     <div class="home-main">
       <div class="main-h">
         <div class="main-header">
@@ -22,7 +23,6 @@
         <a href="https://bwredir.com/1bkh?p=%2Fregistration%2F" class="betw-banner-comp" @click="goAdds">
         <img src="../assets/BannerBet.png" alt="bet winner" class="betw-banner" />
       </a>
-      <QuickComponent/>
         <template v-if="cardData.length > 0">
           <div v-for="item in cardData" class="main-h-card" :key="item">
             <Card

@@ -190,7 +190,8 @@
   "p1-2": "O VIP é recomendado por nossa equipe de especialistas para aqueles que consideram as apostas como uma forma de ganhar lucro.",
   "h1-2": "A partida de hoje começa em:",
   "span-6": "Horas",
-  "span-7": "Segundos"
+  "span-7": "Minutos",
+  "span-8": "Segundos"
 },
 "bank": {
   "h1-1": "Aposta do Dia",

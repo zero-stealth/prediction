@@ -1,10 +1,11 @@
 <template>
   <HeroComponent />
+  <QuickComponent />
   <div class="home-main">
     <div class="main-h">
       <div class="main-header">
         <div class="header-info">
-          <h1>{{ $t('bank.h1-3') }}{{ currentDate }}</h1>
+          <h1>{{ $t('bank.h1-3') }} {{ currentDate }}</h1>
         </div>
         <div class="header-btn">
         <button class="btn-h" :class="{ 'active-btn': offset > 0 }" @click="previousDay()">
@@ -25,7 +26,6 @@
       >
         <img src="../assets/BannerBet.png" alt="bet winner" class="betw-banner" />
       </a>
-      <QuickComponent />
       <template v-if="cardData.length > 0">
         <div class="main-h-card">
           <Card
@@ -128,6 +128,12 @@ const goAds = () => {
   window.open(
     'https://wa.me/+254703147237?text=Hi sporty predict, I want to buy VIP subcription'
   )
+}
+
+const update = () => {
+  onMounted(() => {
+
+})
 }
 
 

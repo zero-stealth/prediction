@@ -190,7 +190,8 @@
     "p1-2": "VIP is recommended by our team of experts for those who consider betting as a way of gaining profit.",
     "h1-2": "Today's match starts:",
     "span-6": "Hours",
-    "span-7": "Seconds"
+    "span-7": "Minutes",
+    "span-8": "Seconds"
   },
   "bank": {
     "h1-1": "Bet of the day",

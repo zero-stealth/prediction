@@ -1,5 +1,6 @@
 <template>
   <ButtonComponent @change="handleBetNameChange" />
+  <QuickComponent />
   <div class="main-bet">
     <div class="main-header">
       <div class="header-info">
@@ -53,6 +54,7 @@
 
 <script setup>
 import ButtonComponent from '../components/ButtonComponent.vue'
+import QuickComponent from '../components/QuickComponent.vue'
 import Card from '../components/CardComponent.vue'
 import { ref, watchEffect, onMounted } from 'vue'
 import { useRouter } from 'vue-router'

@@ -79,25 +79,17 @@
   .betw-banner-comp {
     display: flex;
     cursor: pointer;
+    width: 100%;
     margin-top: 10px;
     align-items: center ;
     justify-content: center;
-    overflow: hidden;
   }
 
-
-  @keyframes moveLeftToRight {
-    0% {
-      transform: translateX(-100%);
-    }
-    100% {
-      transform: translateX(200%);
-    }
-  }
   
   .betw-banner {
     height: 60px;
-    animation: moveLeftToRight 10s linear infinite; 
+    width: 100%;
+
   }
 
   .main-h-card {
@@ -220,6 +212,7 @@
 
   .betw-banner {
     height: 100px;
+    width: fit-content;
   }
   
 }

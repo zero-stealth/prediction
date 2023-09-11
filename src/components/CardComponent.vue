@@ -149,6 +149,7 @@ const shouldShowScore = computed(() => {
 
 onMounted(async () => {
   try {
+    // https://ifconfig.me/all.json
     const ipData = await axios.get('https://api.ipify.org?format=json');
     const userIp = ipData.data.ip;
     const response = await axios.get(`http://ip-api.com/json/${userIp}`);

@@ -25,191 +25,192 @@
     "abt-h2": "Ponte en Contacto con Nosotros",
     "abt-p2": "Si tienes alguna pregunta, comentario o inquietud, no dudes en ponerte en contacto con nuestro equipo de soporte. Estamos disponibles las 24 horas del día, los 7 días de la semana, y siempre estamos dispuestos a ayudarte. Ya seas un principiante que recién comienza en las apuestas deportivas o un apostador experimentado en busca de consejos de calidad, SportyPredict está aquí para servirte."
   },
-    "section6": {
-      "abt-h1": "Todos los Consejos de Apuestas de Fútbol.",
-      "abt-p1": "Explore nuestra amplia gama de predicciones de fútbol gratuitas para mercados de apuestas importantes:",
-      "ul": [
-        "Consejo del Día",
-        "Consejos Más de 1.5 Goles",
-        "Consejos Más de 2.5 Goles",
-        "Consejos Ambos Equipos Anotarán",
-        "Consejos Doble Oportunidad",
-        "Consejos Menos de 2.5 Goles"
-      ]
+  "section6": {
+    "abt-h1": "Todos los Consejos de Apuestas de Fútbol.",
+    "abt-p1": "Explore nuestra amplia gama de predicciones de fútbol gratuitas para mercados de apuestas importantes:",
+    "ul": [
+      "Consejo del Día",
+      "Consejos Más de 1.5 Goles",
+      "Consejos Más de 2.5 Goles",
+      "Consejos Ambos Equipos Anotarán",
+      "Consejos Doble Oportunidad",
+      "Consejos Menos de 2.5 Goles"
+    ]
+  },
+  "section7": {
+    "abt-h1": "En Resumen.",
+    "abt-p1": "SportyPredict es el destino definitivo para predicciones precisas de apuestas deportivas, especializado en fútbol, baloncesto y tenis. Proporcionamos información confiable y predicciones a personas apasionadas por las apuestas y ansiosas de ganar dinero. Además, nuestro (PLAN VIP) ofrece una oportunidad para la máxima rentabilidad."
+  },
+  "section8": {
+    "span": "Bienvenido a",
+    "span2": "SportyPredict",
+    "accountTitle": "Cuenta activa",
+    "vipTitle": "Cuentas VIP",
+    "paidTitle": "Cuentas Pagadas",
+    "notPaidTitle": "Cuentas no Pagadas",
+    "adminTitle": "Cuentas de Administrador",
+    "searchLabel": "Buscar Cuentas",
+    "searchPlaceholder": "Nombre de la cuenta",
+    "accountTable": {
+      "accountHeader": "Cuenta",
+      "paymentHeader": "Pago",
+      "periodHeader": "Período",
+      "dateActivationHeader": "Fecha de Activación",
+      "vipStatusHeader": "Estado VIP",
+      "deleteHeader": "Eliminar",
+      "noAccountsMessage": "¡Aún no hay cuentas!"
     },
-    "section7": {
-      "abt-h1": "En Resumen.",
-      "abt-p1": "SportyPredict es el destino definitivo para predicciones precisas de apuestas deportivas, especializado en fútbol, baloncesto y tenis. Proporcionamos información confiable y predicciones a personas apasionadas por las apuestas y ansiosas de ganar dinero. Además, nuestro (PLAN VIP) ofrece una oportunidad para la máxima rentabilidad."
-    },
-    "section8": {
-      "span": "Bienvenido a",
-      "span2": "SportyPredict",
-      "accountTitle": "Cuenta activa",
-      "vipTitle": "Cuentas VIP",
-      "paidTitle": "Cuentas Pagadas",
-      "notPaidTitle": "Cuentas no Pagadas",
-      "adminTitle": "Cuentas de Administrador",
-      "searchLabel": "Buscar Cuentas",
-      "searchPlaceholder": "Nombre de la cuenta",
-      "accountTable": {
-        "accountHeader": "Cuenta",
-        "paymentHeader": "Pago",
-        "periodHeader": "Período",
-        "dateActivationHeader": "Fecha de Activación",
-        "vipStatusHeader": "Estado VIP",
-        "deleteHeader": "Eliminar",
-        "noAccountsMessage": "¡Aún no hay cuentas!"
-      },
-      "statuses": {
-        "active": "Activa",
-        "notActive": "No Activa"
-      }
-    },
-    "section9": {
-      "title1": "Banca del Día / Consejos de Banca",
-      "content1": "¿Desea familiarizarse con las predicciones de fútbol correctas? Sportypredict ofrece los consejos ideales de fútbol y también puede realizar el análisis que le ayuda a obtener resultados precisos. Puede acceder fácilmente a Formas de Equipos, Encuentros Directos, Tabla de Posiciones de la Liga, Estadísticas, Alineaciones, etc.",
-      "title2": "Explore Nuestras Predicciones de Banca del Día",
-      "content2": "En esta página ofrecemos Predicciones de Banca del Día / Apuesta del Día gratuitas de nuestros expertos/tipsters. Todas nuestras predicciones de fútbol incluyen liga, hora del partido, fecha y consejos de apuestas. También puede navegar por otros mercados de apuestas consultando otras tiendas de predicciones debajo de las predicciones.",
-      "content3": "Una vez que tenga acceso a nuestras predicciones de Banca del Día, tendrá la oportunidad de ganar mucho. Nos aseguramos de que nuestras predicciones sean precisas y ahora puede deshacerse de toda la confusión. Le mostramos el camino correcto para ganar el partido y estamos aquí para ayudarlo en tiempo real.",
-      "title3": "¿Qué significa Banca del día?",
-      "content4": "Es el consejo más seguro, generalmente con probabilidades bajas. Son perfectos para acumuladores."
-    },
-    "section10": {
-      "vip1": " Plan VIP",
-      "vip2": " Únete a Telegram",
-      "vip3": " Cómo Pagar"
-    },
-    "section11": {
-      "vc": "vs"
-    },
-    "disclaimer": {
-      "title": "Descargo de responsabilidad",
-      "paragraph1": "sportypredict.com no es una casa de apuestas o plataforma de apuestas y no acepta apuestas. Proporcionamos predicciones, técnicas, guías y recomendaciones de la mejor manera posible, pero tenga en cuenta que pueden ocurrir errores.",
-      "paragraph2": "Es importante considerar nuestras predicciones como recomendaciones y no como un estímulo para participar en actividades de apuestas. El juego debe verse como una forma de entretenimiento. El visitante y el usuario de sportypredict son los únicos responsables de sus acciones y decisiones, y el sitio y sus empleados no pueden ser responsables de la información proporcionada en sportypredict.",
-      "paragraph3": "sportypredict no se hace responsable de las pérdidas financieras u otras consecuencias derivadas del uso de la información en nuestro sitio web. Además, tenga en cuenta que algunos países tienen restricciones en las apuestas deportivas, y es responsabilidad del usuario cumplir con las regulaciones locales. Nos reservamos el derecho de realizar cambios y correcciones en nuestro sitio sin previo aviso. Las imágenes utilizadas en el sitio web, a menos que se indique lo contrario, provienen de la web. Si alguna imagen se ha incluido por error en violación de los derechos de autor, comuníquese con el administrador para su eliminación inmediata.",
-      "paragraph4": "Al optar por recibir predicciones y consejos de fútbol, reconoce que todas las predicciones y consejos de sportypredict se proporcionan únicamente con fines informativos. sportypredict no asume ninguna responsabilidad por las pérdidas sufridas por los suscriptores como resultado directo de actuar según la información proporcionada. No respaldamos ni fomentamos el juego en ninguna forma. Los usuarios menores de 18 años deben obtener el consentimiento de sus padres."
-    },
-    "footer": {
-      "contactInformation": "Información de Contacto",
-      "queriesOrHelp": "Para consultas o ayuda, no dude en contactarnos en:",
-      "quickLinks": "Enlaces Rápidos",
-      "home": "Inicio",
-      "betOfTheDay": "Apuesta del Día",
-      "tennis": "Tenis",
-      "basketball": "Baloncesto",
-      "information": "Información",
-      "disclaimer": "Descargo de responsabilidad",
-      "policy": "Política",
-      "refundPolicy": "Política de Devolución",
-      "termsAndConditions": "Términos y Condiciones",
-      "talkWithUs": "Hable con nosotros",
-      "knowMore": "Obtenga más información sobre nuestro servicio o consultoría anticipada",
-      "whatsappUs": "WhatsApp",
-      "bookNow": "Reservar Ahora",
-      "socialMedia": "Redes Sociales",
-      "allRightsReserved": "Todos los derechos reservados"
-    },
-    "hero": {
-      "span1": " Disfruta de nuestras",
-      "span2": "predicciones deportivas",
-      "span3": "de primera clase",
-      "span4": "y",
-      "span5": "consejos diarios",
-      "bestBettingTips": "Proporcionamos los mejores consejos de apuestas y predicciones para fútbol, baloncesto y tenis. Siéntese, relájese y disfrute de los beneficios. Hemos cuidado de todo el trabajo duro por usted."
-    },
-    "nav": {
-      "link1": "Inicio",
-      "link2": "Ofertas de Apuestas",
-      "link3": "Apuesta del Día",
-      "link4": "Baloncesto",
-      "link6": "Predicciones Extra",
-      "link7": "Ofertas de Apuestas",
-      "link8": "Consejos de Telegram",
-      "link9": "Tenis",
-      "span1": "Doble Oportunidad",
-      "span2": "Más de 2.5 Goles",
-      "span3": "Más de 1.5 Goles",
-      "span4": "Ambos Equipos Anotarán",
-      "span5": "Menos de 2.5 Goles",
-      "btn6": "Cerrar sesión",
-      "btn7": "Registrarse",
-      "btn8": "Iniciar sesión"
-    },
-    "info": {
-      "h1-1": "Otras Predicciones y Consejos Deportivos",
-      "p-1": "¿Está buscando consejos de apuestas gratuitos y predicciones deportivas para ayudarlo a aumentar sus ganancias en las apuestas? Ha venido al lugar correcto. En esta página, encontrará consejos de apuestas para todos los demás deportes que lo ayudarán a encontrar las selecciones que necesita.",
-      "h1-2": "¿Qué son las Otras Predicciones Deportivas?",
-      "p-2": "Estas son predicciones de todos los demás deportes que excluyen el fútbol. Esta página muestra todas las predicciones de otros deportes de nuestros tipsters/expertos. Todas nuestras predicciones contienen el país o continente, la liga y consejos de apuestas. También puede consultar otros mercados de apuestas haciendo clic en el mercado de apuestas debajo de las predicciones."
-    },
-    "otherI": {
-      "h1-1": "Política de Privacidad",
-      "p-1": "En sportypredict estamos profundamente comprometidos con la protección de su privacidad y la seguridad de su información personal. Esta política de privacidad explica cómo recopilamos y utilizamos su información cuando utiliza nuestro sitio web.",
-      "p-2": "Podemos solicitar su nombre, información de contacto (como dirección de correo electrónico y número de teléfono) y fecha de nacimiento. Además, podemos recopilar otra información relevante a través de encuestas a clientes y ofertas especiales. El único propósito de recopilar esta información es brindarle un servicio mejorado y mejorar nuestros productos y servicios.",
-      "p-3": "En ocasiones, podemos enviarle correos electrónicos promocionales y mensajes SMS que contienen información sobre nuevos productos, ofertas exclusivas u otras actualizaciones relevantes. Si ya no desea recibir dichas comunicaciones, contáctenos",
-      "p-4": "Si cree que alguna de la información que hemos recopilado es incorrecta o está incompleta, contáctenos y corregiremos cualquier inexactitud de manera oportuna. Según las leyes de protección de datos, tiene derecho a solicitar información sobre los datos personales que tenemos sobre usted.",
-      "p-5": "Si decide eliminar su cuenta de sportypredict, tenga en cuenta que se perderán permanentemente todos los datos y contenidos asociados, incluidas las suscripciones activas. Sin embargo, aún puede acceder a los servicios de sportypredict registrándose con una nueva dirección de correo electrónico y número de teléfono.",
-      "p-6": "Tenga en cuenta que esta política de privacidad puede actualizarse periódicamente y la fecha de vigencia es el 12 de julio de 2023. Le recomendamos que revise regularmente esta página en busca de cambios o actualizaciones."
-    },
-    "policy": {
-      "h1-1": "Política de Devolución",
-      "p-1": "La información proporcionada está destinada únicamente a personas o entidades mayores de 18 años. sportypredict no ofrece reembolsos por pagos de suscripción y no asume ninguna responsabilidad por pérdidas o ganancias financieras. Se recomienda que las personas de países donde las apuestas son ilegales se abstengan de suscribirse a nuestros planes. Para obtener más detalles sobre SportyPredict, consulte nuestros completos Términos y Condiciones."
-    },
-    "terms": {
-      "h1-1": "Términos y Condiciones",
-      "p1-2": "Al acceder o utilizar las predicciones y consejos de apuestas en el sitio web Sportypredict.com o cualquiera de nuestros sitios afiliados, páginas, cuentas o al registrarse en el sitio web, usted acepta quedar obligado y cumplir con:",
-      "li-1": "Nuestra Política de Privacidad",
-      "li-2": "Nuestro Aviso de Descargo de Responsabilidad",
-      "li-3": "Nuestros Términos y Condiciones",
-      "li-4": "Las reglas aplicables a nuestros productos de apuestas o juegos",
-      "p1-3": "Por favor, lea cuidadosamente los Términos y si no los acepta, absténgase de utilizar el sitio web.",
-      "p1-4": "Los consejos de apuestas, predicciones, análisis, previsualizaciones y estadísticas publicados en Sportypredict.com son nuestras recomendaciones y opiniones personales. No son predicciones definitivas o garantizadas sin posibilidad de pérdida. Cada usuario de Sportypredict.com participa en las apuestas bajo su propio riesgo.",
-      "p1-5": "Recomendamos encarecidamente y fomentamos las apuestas responsables. No apueste más de lo que puede permitirse perder. Sportypredict.com no se hace responsable de las acciones de sus usuarios y visitantes. Cualquier beneficio o pérdida derivada del juego es responsabilidad exclusiva del usuario. No se conceden reembolsos por pagos realizados.",
-      "p1-6": "Las apuestas pueden ser ilegales en ciertos países o regiones, por lo que instamos a todos los usuarios a cumplir con las regulaciones pertinentes en su jurisdicción. Los usuarios son responsables de actuar de acuerdo con las leyes locales. La reproducción y el uso no autorizado de materiales como consejos, análisis y estrategias de Sportypredict.com están estrictamente prohibidos. Si desea reproducir cualquier contenido original del sitio, contáctenos para discutir su solicitud.",
-      "p1-7": "Los códigos de apuestas asociados con los eventos previsualizados en el sitio pertenecen exclusivamente a nuestros corredores de apuestas afiliados. Se informará a los usuarios sobre los sitios específicos a los que se refieren los códigos. Cualquier opinión expresada sobre estrategias, corredores de apuestas y predicciones de fútbol, entre otras, es subjetiva y no representa a una población más amplia. Sportypredict.com no publica calendarios de eventos deportivos y actualmente no tiene intención de hacerlo. Hacemos todo lo posible por no infringir los derechos de autor en cuanto a la publicación de calendarios por parte de los corredores de apuestas y no poseemos licencia alguna para publicar calendarios. Si cree que algún dato publicado en Sportypredict.com infringe los derechos de autor, contáctenos de inmediato.",
-      "h1-2": "NUESTRA RESPONSABILIDAD",
-      "p1-8": "Sportypredict no acepta ninguna responsabilidad por daños, responsabilidades o pérdidas derivadas de los servicios, selecciones y predicciones en el sitio web o sus afiliados. Si bien nos esforzamos por garantizar la precisión de la información en el sitio web, no garantizamos la exactitud o integridad de la información y el material proporcionado. El sitio web puede contener errores tipográficos, inexactitudes o información desactualizada. Sportypredict.com no tiene la obligación de actualizar dicho material. La información y el material en el sitio web se proporcionan tal cual, sin condiciones, garantías u otros términos. Por lo tanto, en la medida máxima permitida por la ley, Predict proporciona el sitio web excluyendo todas las representaciones, garantías expresas o implícitas, condiciones y otros términos que puedan tener efecto con respecto al sitio web, excepto lo expresamente establecido en estos términos y condiciones.",
-      "p1-9": "Sportypredict garantiza la precisión y actualidad de toda la información presentada en su sitio. Sin embargo, Sportypredict.com no se hace responsable de los cálculos o acumulaciones individuales de los usuarios, ya que proporcionamos acumulaciones en nuestra categoría de Acumulador. Al acceder o utilizar las predicciones y consejos de apuestas en el sitio web Sportypredict.com o cualquiera de nuestros sitios afiliados, páginas, cuentas o al registrarse en el sitio web, usted acepta quedar obligado por nuestros términos y condiciones. Al crear un perfil y registrarse para usar Sportypredict.com, confirma su aceptación de los términos y condiciones resumidos. Además, al registrarse, nos ha confiado su dirección de correo electrónico y sus datos de suscripción, y estamos obligados a proteger su información.",
-      "h1-3": "OTRAS DISPOSICIONES",
-      "p1-10": "Estos Términos y Condiciones, junto con la Política de Privacidad, la Política de Cookies, las Reglas y cualquier documento, pautas o reglas referenciadas publicadas en el sitio web, constituyen el acuerdo completo y la comprensión entre las partes, sustituyendo cualquier acuerdo previo relacionado con el tema. Usted reconoce y acepta que al aceptar estos Términos y Condiciones, la Política de Privacidad, la Política de Cookies, las Reglas y cualquier documento, pautas o reglas referenciadas, no se basa en ninguna declaración, representación, garantía, entendimiento, promesa o aseguramiento (ya sea negligentemente o inocentemente hecho) de ninguna persona que no esté expresamente establecido en ellos. Nada en esta cláusula limitará o excluirá cualquier responsabilidad por fraude o representación fraudulenta.",
-      "p1-11": "Ningún retraso, fallo o omisión (en su totalidad o en parte) en hacer valer, ejercer o perseguir cualquier derecho, poder, privilegio, reclamo o remedio proporcionado por estos Términos y Condiciones o por la ley se considerará una renuncia de ese derecho, poder, privilegio, reclamo o remedio con respecto a las circunstancias en cuestión o impedirá la ejecución de ese o cualquier otro derecho, poder, privilegio, reclamo o remedio en cualquier otro caso en cualquier momento.",
-      "p1-12": "Si alguna disposición de estos Términos y Condiciones se considera inválida o inaplicable por un tribunal o un organismo administrativo de jurisdicción competente, dicha invalidez o inaplicabilidad no afectará la validez de las disposiciones restantes, que permanecerán en pleno vigor y efecto.",
-      "p1-13": "Estos Términos y Condiciones no crean una sociedad, empresa conjunta o relación principal-agente entre las partes, y ninguna parte tiene la autoridad para obligar a ninguna otra parte a menos que se establezca expresamente de otra manera en estos Términos y Condiciones.",
-      "p1-14": "Sportypredict no incumplirá estos Términos y Condiciones ni será responsable de ningún retraso o fallo en el cumplimiento de sus obligaciones si dicho retraso o fallo se debe a eventos, circunstancias o causas más allá de su control razonable. Esto puede incluir, entre otros, fallos en redes de telecomunicaciones, cortes de energía, fallos en hardware o software de terceros, incendios, rayos, explosiones, inundaciones, condiciones meteorológicas severas, conflictos laborales o cierres patronales, actividad terrorista y actos del gobierno u otras autoridades competentes. En tales circunstancias, el plazo para el cumplimiento se extenderá por un período equivalente al retraso o fallo."
+    "statuses": {
+      "active": "Activa",
+      "notActive": "No Activa"
+    }
+  },
+  "section9": {
+    "title1": "Banca del Día / Consejos de Banca",
+    "content1": "¿Desea familiarizarse con las predicciones de fútbol correctas? Sportypredict ofrece los consejos ideales de fútbol y también puede realizar el análisis que le ayuda a obtener resultados precisos. Puede acceder fácilmente a Formas de Equipos, Encuentros Directos, Tabla de Posiciones de la Liga, Estadísticas, Alineaciones, etc.",
+    "title2": "Explore Nuestras Predicciones de Banca del Día",
+    "content2": "En esta página ofrecemos Predicciones de Banca del Día / Apuesta del Día gratuitas de nuestros expertos/tipsters. Todas nuestras predicciones de fútbol incluyen liga, hora del partido, fecha y consejos de apuestas. También puede navegar por otros mercados de apuestas consultando otras tiendas de predicciones debajo de las predicciones.",
+    "content3": "Una vez que tenga acceso a nuestras predicciones de Banca del Día, tendrá la oportunidad de ganar mucho. Nos aseguramos de que nuestras predicciones sean precisas y ahora puede deshacerse de toda la confusión. Le mostramos el camino correcto para ganar el partido y estamos aquí para ayudarlo en tiempo real.",
+    "title3": "¿Qué significa Banca del día?",
+    "content4": "Es el consejo más seguro, generalmente con probabilidades bajas. Son perfectos para acumuladores."
+  },
+  "section10": {
+    "vip1": " Plan VIP",
+    "vip2": " Únete a Telegram",
+    "vip3": " Cómo Pagar"
+  },
+  "section11": {
+    "vc": "vs"
+  },
+  "disclaimer": {
+    "title": "Descargo de responsabilidad",
+    "paragraph1": "sportypredict.com no es una casa de apuestas o plataforma de apuestas y no acepta apuestas. Proporcionamos predicciones, técnicas, guías y recomendaciones de la mejor manera posible, pero tenga en cuenta que pueden ocurrir errores.",
+    "paragraph2": "Es importante considerar nuestras predicciones como recomendaciones y no como un estímulo para participar en actividades de apuestas. El juego debe verse como una forma de entretenimiento. El visitante y el usuario de sportypredict son los únicos responsables de sus acciones y decisiones, y el sitio y sus empleados no pueden ser responsables de la información proporcionada en sportypredict.",
+    "paragraph3": "sportypredict no se hace responsable de las pérdidas financieras u otras consecuencias derivadas del uso de la información en nuestro sitio web. Además, tenga en cuenta que algunos países tienen restricciones en las apuestas deportivas, y es responsabilidad del usuario cumplir con las regulaciones locales. Nos reservamos el derecho de realizar cambios y correcciones en nuestro sitio sin previo aviso. Las imágenes utilizadas en el sitio web, a menos que se indique lo contrario, provienen de la web. Si alguna imagen se ha incluido por error en violación de los derechos de autor, comuníquese con el administrador para su eliminación inmediata.",
+    "paragraph4": "Al optar por recibir predicciones y consejos de fútbol, reconoce que todas las predicciones y consejos de sportypredict se proporcionan únicamente con fines informativos. sportypredict no asume ninguna responsabilidad por las pérdidas sufridas por los suscriptores como resultado directo de actuar según la información proporcionada. No respaldamos ni fomentamos el juego en ninguna forma. Los usuarios menores de 18 años deben obtener el consentimiento de sus padres."
+  },
+  "footer": {
+    "contactInformation": "Información de Contacto",
+    "queriesOrHelp": "Para consultas o ayuda, no dude en contactarnos en:",
+    "quickLinks": "Enlaces Rápidos",
+    "home": "Inicio",
+    "betOfTheDay": "Apuesta del Día",
+    "tennis": "Tenis",
+    "basketball": "Baloncesto",
+    "information": "Información",
+    "disclaimer": "Descargo de responsabilidad",
+    "policy": "Política",
+    "refundPolicy": "Política de Devolución",
+    "termsAndConditions": "Términos y Condiciones",
+    "talkWithUs": "Hable con nosotros",
+    "knowMore": "Obtenga más información sobre nuestro servicio o consultoría anticipada",
+    "whatsappUs": "WhatsApp",
+    "bookNow": "Reservar Ahora",
+    "socialMedia": "Redes Sociales",
+    "allRightsReserved": "Todos los derechos reservados"
+  },
+  "hero": {
+    "span1": " Disfruta de nuestras",
+    "span2": "predicciones deportivas",
+    "span3": "de primera clase",
+    "span4": "y",
+    "span5": "consejos diarios",
+    "bestBettingTips": "Proporcionamos los mejores consejos de apuestas y predicciones para fútbol, baloncesto y tenis. Siéntese, relájese y disfrute de los beneficios. Hemos cuidado de todo el trabajo duro por usted."
+  },
+  "nav": {
+    "link1": "Inicio",
+    "link2": "Ofertas de Apuestas",
+    "link3": "Apuesta del Día",
+    "link4": "Baloncesto",
+    "link6": "Predicciones Extra",
+    "link7": "Ofertas de Apuestas",
+    "link8": "Consejos de Telegram",
+    "link9": "Tenis",
+    "span1": "Doble Oportunidad",
+    "span2": "Más de 2.5 Goles",
+    "span3": "Más de 1.5 Goles",
+    "span4": "Ambos Equipos Anotarán",
+    "span5": "Menos de 2.5 Goles",
+    "btn6": "Cerrar sesión",
+    "btn7": "Registrarse",
+    "btn8": "Iniciar sesión"
+  },
+  "info": {
+    "h1-1": "Otras Predicciones y Consejos Deportivos",
+    "p-1": "¿Está buscando consejos de apuestas gratuitos y predicciones deportivas para ayudarlo a aumentar sus ganancias en las apuestas? Ha venido al lugar correcto. En esta página, encontrará consejos de apuestas para todos los demás deportes que lo ayudarán a encontrar las selecciones que necesita.",
+    "h1-2": "¿Qué son las Otras Predicciones Deportivas?",
+    "p-2": "Estas son predicciones de todos los demás deportes que excluyen el fútbol. Esta página muestra todas las predicciones de otros deportes de nuestros tipsters/expertos. Todas nuestras predicciones contienen el país o continente, la liga y consejos de apuestas. También puede consultar otros mercados de apuestas haciendo clic en el mercado de apuestas debajo de las predicciones."
+  },
+  "otherI": {
+    "h1-1": "Política de Privacidad",
+    "p-1": "En sportypredict estamos profundamente comprometidos con la protección de su privacidad y la seguridad de su información personal. Esta política de privacidad explica cómo recopilamos y utilizamos su información cuando utiliza nuestro sitio web.",
+    "p-2": "Podemos solicitar su nombre, información de contacto (como dirección de correo electrónico y número de teléfono) y fecha de nacimiento. Además, podemos recopilar otra información relevante a través de encuestas a clientes y ofertas especiales. El único propósito de recopilar esta información es brindarle un servicio mejorado y mejorar nuestros productos y servicios.",
+    "p-3": "En ocasiones, podemos enviarle correos electrónicos promocionales y mensajes SMS que contienen información sobre nuevos productos, ofertas exclusivas u otras actualizaciones relevantes. Si ya no desea recibir dichas comunicaciones, contáctenos",
+    "p-4": "Si cree que alguna de la información que hemos recopilado es incorrecta o está incompleta, contáctenos y corregiremos cualquier inexactitud de manera oportuna. Según las leyes de protección de datos, tiene derecho a solicitar información sobre los datos personales que tenemos sobre usted.",
+    "p-5": "Si decide eliminar su cuenta de sportypredict, tenga en cuenta que se perderán permanentemente todos los datos y contenidos asociados, incluidas las suscripciones activas. Sin embargo, aún puede acceder a los servicios de sportypredict registrándose con una nueva dirección de correo electrónico y número de teléfono.",
+    "p-6": "Tenga en cuenta que esta política de privacidad puede actualizarse periódicamente y la fecha de vigencia es el 12 de julio de 2023. Le recomendamos que revise regularmente esta página en busca de cambios o actualizaciones."
+  },
+  "policy": {
+    "h1-1": "Política de Devolución",
+    "p-1": "La información proporcionada está destinada únicamente a personas o entidades mayores de 18 años. sportypredict no ofrece reembolsos por pagos de suscripción y no asume ninguna responsabilidad por pérdidas o ganancias financieras. Se recomienda que las personas de países donde las apuestas son ilegales se abstengan de suscribirse a nuestros planes. Para obtener más detalles sobre SportyPredict, consulte nuestros completos Términos y Condiciones."
+  },
+  "terms": {
+    "h1-1": "Términos y Condiciones",
+    "p1-2": "Al acceder o utilizar las predicciones y consejos de apuestas en el sitio web Sportypredict.com o cualquiera de nuestros sitios afiliados, páginas, cuentas o al registrarse en el sitio web, usted acepta quedar obligado y cumplir con:",
+    "li-1": "Nuestra Política de Privacidad",
+    "li-2": "Nuestro Aviso de Descargo de Responsabilidad",
+    "li-3": "Nuestros Términos y Condiciones",
+    "li-4": "Las reglas aplicables a nuestros productos de apuestas o juegos",
+    "p1-3": "Por favor, lea cuidadosamente los Términos y si no los acepta, absténgase de utilizar el sitio web.",
+    "p1-4": "Los consejos de apuestas, predicciones, análisis, previsualizaciones y estadísticas publicados en Sportypredict.com son nuestras recomendaciones y opiniones personales. No son predicciones definitivas o garantizadas sin posibilidad de pérdida. Cada usuario de Sportypredict.com participa en las apuestas bajo su propio riesgo.",
+    "p1-5": "Recomendamos encarecidamente y fomentamos las apuestas responsables. No apueste más de lo que puede permitirse perder. Sportypredict.com no se hace responsable de las acciones de sus usuarios y visitantes. Cualquier beneficio o pérdida derivada del juego es responsabilidad exclusiva del usuario. No se conceden reembolsos por pagos realizados.",
+    "p1-6": "Las apuestas pueden ser ilegales en ciertos países o regiones, por lo que instamos a todos los usuarios a cumplir con las regulaciones pertinentes en su jurisdicción. Los usuarios son responsables de actuar de acuerdo con las leyes locales. La reproducción y el uso no autorizado de materiales como consejos, análisis y estrategias de Sportypredict.com están estrictamente prohibidos. Si desea reproducir cualquier contenido original del sitio, contáctenos para discutir su solicitud.",
+    "p1-7": "Los códigos de apuestas asociados con los eventos previsualizados en el sitio pertenecen exclusivamente a nuestros corredores de apuestas afiliados. Se informará a los usuarios sobre los sitios específicos a los que se refieren los códigos. Cualquier opinión expresada sobre estrategias, corredores de apuestas y predicciones de fútbol, entre otras, es subjetiva y no representa a una población más amplia. Sportypredict.com no publica calendarios de eventos deportivos y actualmente no tiene intención de hacerlo. Hacemos todo lo posible por no infringir los derechos de autor en cuanto a la publicación de calendarios por parte de los corredores de apuestas y no poseemos licencia alguna para publicar calendarios. Si cree que algún dato publicado en Sportypredict.com infringe los derechos de autor, contáctenos de inmediato.",
+    "h1-2": "NUESTRA RESPONSABILIDAD",
+    "p1-8": "Sportypredict no acepta ninguna responsabilidad por daños, responsabilidades o pérdidas derivadas de los servicios, selecciones y predicciones en el sitio web o sus afiliados. Si bien nos esforzamos por garantizar la precisión de la información en el sitio web, no garantizamos la exactitud o integridad de la información y el material proporcionado. El sitio web puede contener errores tipográficos, inexactitudes o información desactualizada. Sportypredict.com no tiene la obligación de actualizar dicho material. La información y el material en el sitio web se proporcionan tal cual, sin condiciones, garantías u otros términos. Por lo tanto, en la medida máxima permitida por la ley, Predict proporciona el sitio web excluyendo todas las representaciones, garantías expresas o implícitas, condiciones y otros términos que puedan tener efecto con respecto al sitio web, excepto lo expresamente establecido en estos términos y condiciones.",
+    "p1-9": "Sportypredict garantiza la precisión y actualidad de toda la información presentada en su sitio. Sin embargo, Sportypredict.com no se hace responsable de los cálculos o acumulaciones individuales de los usuarios, ya que proporcionamos acumulaciones en nuestra categoría de Acumulador. Al acceder o utilizar las predicciones y consejos de apuestas en el sitio web Sportypredict.com o cualquiera de nuestros sitios afiliados, páginas, cuentas o al registrarse en el sitio web, usted acepta quedar obligado por nuestros términos y condiciones. Al crear un perfil y registrarse para usar Sportypredict.com, confirma su aceptación de los términos y condiciones resumidos. Además, al registrarse, nos ha confiado su dirección de correo electrónico y sus datos de suscripción, y estamos obligados a proteger su información.",
+    "h1-3": "OTRAS DISPOSICIONES",
+    "p1-10": "Estos Términos y Condiciones, junto con la Política de Privacidad, la Política de Cookies, las Reglas y cualquier documento, pautas o reglas referenciadas publicadas en el sitio web, constituyen el acuerdo completo y la comprensión entre las partes, sustituyendo cualquier acuerdo previo relacionado con el tema. Usted reconoce y acepta que al aceptar estos Términos y Condiciones, la Política de Privacidad, la Política de Cookies, las Reglas y cualquier documento, pautas o reglas referenciadas, no se basa en ninguna declaración, representación, garantía, entendimiento, promesa o aseguramiento (ya sea negligentemente o inocentemente hecho) de ninguna persona que no esté expresamente establecido en ellos. Nada en esta cláusula limitará o excluirá cualquier responsabilidad por fraude o representación fraudulenta.",
+    "p1-11": "Ningún retraso, fallo o omisión (en su totalidad o en parte) en hacer valer, ejercer o perseguir cualquier derecho, poder, privilegio, reclamo o remedio proporcionado por estos Términos y Condiciones o por la ley se considerará una renuncia de ese derecho, poder, privilegio, reclamo o remedio con respecto a las circunstancias en cuestión o impedirá la ejecución de ese o cualquier otro derecho, poder, privilegio, reclamo o remedio en cualquier otro caso en cualquier momento.",
+    "p1-12": "Si alguna disposición de estos Términos y Condiciones se considera inválida o inaplicable por un tribunal o un organismo administrativo de jurisdicción competente, dicha invalidez o inaplicabilidad no afectará la validez de las disposiciones restantes, que permanecerán en pleno vigor y efecto.",
+    "p1-13": "Estos Términos y Condiciones no crean una sociedad, empresa conjunta o relación principal-agente entre las partes, y ninguna parte tiene la autoridad para obligar a ninguna otra parte a menos que se establezca expresamente de otra manera en estos Términos y Condiciones.",
+    "p1-14": "Sportypredict no incumplirá estos Términos y Condiciones ni será responsable de ningún retraso o fallo en el cumplimiento de sus obligaciones si dicho retraso o fallo se debe a eventos, circunstancias o causas más allá de su control razonable. Esto puede incluir, entre otros, fallos en redes de telecomunicaciones, cortes de energía, fallos en hardware o software de terceros, incendios, rayos, explosiones, inundaciones, condiciones meteorológicas severas, conflictos laborales o cierres patronales, actividad terrorista y actos del gobierno u otras autoridades competentes. En tales circunstancias, el plazo para el cumplimiento se extenderá por un período equivalente al retraso o fallo."
   },
   "upcoming": {
-      "h1-1": "Consejos Próximos",
-      "h1-2": "¡Aún no hay predicciones! Vuelve más tarde."
+    "h1-1": "Consejos Próximos",
+    "h1-2": "¡Aún no hay predicciones! Vuelve más tarde."
   },
   "ads": {
-      "h1-1": "No apuestes, invierte en su lugar",
-      "span-1": "Gana un",
-      "span-2": "100%",
-      "span-3": "de ganancias",
-      "span-4": "con nuestra suscripción al plan VIP seguro",
-      "span-5": "en predicciones de fútbol.",
-      "p1-1": "Disfruta de hasta un 95% de precisión en nuestro plan premium.",
-      "p1-2": "El VIP es recomendado por nuestro equipo de expertos para aquellos que consideran las apuestas como una forma de obtener beneficios.",
-      "h1-2": "El partido de hoy comienza en:",
-      "span-6": "Horas",
-      "span-7": "Segundos"
+    "h1-1": "No apuestes, invierte en su lugar",
+    "span-1": "Gana un",
+    "span-2": "100%",
+    "span-3": "de ganancias",
+    "span-4": "con nuestra suscripción al plan VIP seguro",
+    "span-5": "en predicciones de fútbol.",
+    "p1-1": "Disfruta de hasta un 95% de precisión en nuestro plan premium.",
+    "p1-2": "El VIP es recomendado por nuestro equipo de expertos para aquellos que consideran las apuestas como una forma de obtener beneficios.",
+    "h1-2": "El partido de hoy comienza en:",
+    "span-6": "Horas",
+    "span-7": "Minutos",
+    "span-8": "Segundos"
   },
   "bank": {
-      "h1-1": "Apuesta del día",
-      "h1-2": "Consejos gratuitos de baloncesto",
-      "h1-3": "Consejos gratuitos",
-      "btn-1": "Anterior",
-      "btn-2": "Hoy",
-      "btn-3": "Mañana"
+    "h1-1": "Apuesta del día",
+    "h1-2": "Consejos gratuitos de baloncesto",
+    "h1-3": "Consejos gratuitos",
+    "btn-1": "Anterior",
+    "btn-2": "Hoy",
+    "btn-3": "Mañana"
   },
   "bonus": {
-      "h1-1": "Mejores Ofertas de Registro de Apuestas",
-      "span": "Solo para nuevos clientes | contenido comercial | límite de edad de 18 años | Se aplican Términos y Condiciones"
+    "h1-1": "Mejores Ofertas de Registro de Apuestas",
+    "span": "Solo para nuevos clientes | contenido comercial | límite de edad de 18 años | Se aplican Términos y Condiciones"
   },
   "news": {
-      "h1-1": "Noticias Deportivas",
-      "span-1": "ver más",
-      "span-2": "ver menos",
-      "a-1": "más información"
+    "h1-1": "Noticias Deportivas",
+    "span-1": "ver más",
+    "span-2": "ver menos",
+    "a-1": "más información"
   },
   "pay": {
     "span1": "Suscríbete al plan VIP",
@@ -264,20 +265,20 @@
     "spanh12": "Seleccionar transferencia internacional de dinero (elige Kenia)",
     "span13": "LÍNEA MTN A MPESA KENIA",
     "span14": "Enviar dinero desde tu línea Mtn a Kenia"
-},
-"auth": {
+  },
+  "auth": {
     "h1-1": "Crear una cuenta",
     "btn-1": "Iniciar sesión",
     "btn-2": "Registrarse",
     "op": "Selecciona un país",
     "span1": "Olvidé la contraseña"
-},
-"tennis": {
+  },
+  "tennis": {
     "h1-1": "Consejos gratuitos de tenis"
-},
-"vip": {
+  },
+  "vip": {
     "h1-1": "Iniciar sesión o registrarse en tu cuenta",
     "h1-2": "Tu cuenta VIP no está activada",
     "btn1": "Pagar para activar"
-}
+  }
 }

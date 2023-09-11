@@ -155,7 +155,7 @@
   },
   "terms": {
     "h1-1": "Conditions générales",
-    "p1-2": "En accédant ou en utilisant les pronostics et les conseils de paris sur le site Web Sportypredict.com ou l'un de nos sites, pages, comptes affiliés, ou en vous inscrivant sur le site Web, vous acceptez d'être lié et de vous conformer à :" ,
+    "p1-2": "En accédant ou en utilisant les pronostics et les conseils de paris sur le site Web Sportypredict.com ou l'un de nos sites, pages, comptes affiliés, ou en vous inscrivant sur le site Web, vous acceptez d'être lié et de vous conformer à :",
     "li-1": "Notre politique de confidentialité",
     "li-2": "Notre avis de non-responsabilité",
     "li-3": "Nos conditions générales",
@@ -190,27 +190,28 @@
     "p1-2": "VIP est recommandé par notre équipe d'experts pour ceux qui considèrent les paris comme un moyen de gagner de l'argent.",
     "h1-2": "Le match d'aujourd'hui commence dans :",
     "span-6": "Heures",
-    "span-7": "Secondes"
-},
-"bank": {
+    "span-7": "Minutes",
+    "span-8": "Secondes"
+  },
+  "bank": {
     "h1-1": "Pari du jour",
     "h1-2": "Conseils gratuits de basketball",
     "h1-3": "Conseils gratuits",
     "btn-1": "Précédent",
     "btn-2": "Aujourd'hui",
     "btn-3": "Demain"
-},
-"bonus": {
+  },
+  "bonus": {
     "h1-1": "Les meilleures offres d'inscription aux paris",
     "span": "Nouveaux clients uniquement | contenu commercial | limite d'âge de 18 ans | Conditions générales s'appliquent"
-},
-"news": {
+  },
+  "news": {
     "h1-1": "Actualités sportives",
     "span-1": "voir plus",
     "span-2": "voir moins",
     "a-1": "plus d'infos"
-},
-"pay": {
+  },
+  "pay": {
     "span1": "Abonnez-vous au plan VIP",
     "span2": "REMARQUE :",
     "h1-1": "Cette abonnement est valable pendant 30 jours et il n'y a pas de frais supplémentaires ni de frais cachés",
@@ -263,21 +264,20 @@
     "spanh12": "Sélectionnez le transfert international d'argent (choisissez le Kenya)",
     "span13": "LIGNE MTN À MPESA KENYA",
     "span14": "Envoyez de l'argent depuis votre ligne Mtn vers le Kenya"
-},
-"auth": {
+  },
+  "auth": {
     "h1-1": "Créer un compte",
     "btn-1": "Se connecter",
     "btn-2": "S'inscrire",
     "op": "Sélectionner un pays",
     "span1": "Mot de passe oublié"
-},
-"tennis": {
+  },
+  "tennis": {
     "h1-1": "Conseils gratuits de tennis"
-},
-"vip": {
+  },
+  "vip": {
     "h1-1": "Connectez-vous ou inscrivez-vous à votre compte",
     "h1-2": "Votre compte VIP n'est pas activé",
     "btn1": "Payer pour activer"
-}
-
+  }
 }

@@ -28,7 +28,7 @@
           </div>
           <div class="ads-time">
             <span>--</span>
-            <span>{{ $t('ads.span-6') }}</span>
+            <span>{{ $t('ads.span-8') }}</span>
           </div>
         </div>
       </div>

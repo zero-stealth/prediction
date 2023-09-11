@@ -1,6 +1,7 @@
 <template>
   <div>
     <ButtonComponent />
+    <QuickComponent />
     <div class="home-main">
       <div class="main-h">
         <div class="main-header">
@@ -26,7 +27,6 @@
         >
           <img src="../assets/BannerBet.png" alt="bet winner" class="betw-banner" />
         </a>
-      <QuickComponent />
         <template v-if="cardData.length > 0">
           <div v-for="item in cardData" class="main-h-card" :key="item._id">
             <Card
@@ -64,8 +64,8 @@
 import axios from 'axios'
 import { ref, onMounted, watch } from 'vue'
 import Card from '../components/CardComponent.vue'
-import ButtonComponent from '../components/ButtonComponent.vue'
 import QuickComponent from '../components/QuickComponent.vue'
+import ButtonComponent from '../components/ButtonComponent.vue'
 
 const currentDate = ref('')
 const cardData = ref([])

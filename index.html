@@ -15,7 +15,7 @@
   })(window,document,'script','dataLayer','GTM-K2Z5KL8G');</script>
   <!-- End Google Tag Manager -->
 
-  <title>SportyPredict - Betting Tips and Predictions</title>
+  <title>{{ $route.meta.title }}</title>
 
   <!-- Google tag (gtag.js) -->
   <script async src="https://www.googletagmanager.com/gtag/js?id=G-SY8V8H1BQ9"></script>
@@ -34,80 +34,6 @@
   <!-- End Google Tag Manager (noscript) -->
 
   <div id="app">
-    <!-- Vue.js template code -->
-    <template>
-      <div>
-        <nav aria-label="breadcrumb">
-          <ol class="breadcrumb">
-            <li class="breadcrumb-item"><a href="https://sportypredict.com/">Home</a></li>
-            <li class="breadcrumb-item"><a href="https://sportypredict.com//{{ currentPage.slug }}">{{ currentPage.title }}</a></li>
-          </ol>
-        </nav>
-        <main>
-          <h1>{{ currentPage.title }}</h1>
-          <p>{{ currentPage.description }}</p>
-        </main>
-      </div>
-    </template>
-
-    <script type="module">
-      import { ref, onMounted } from 'vue';
-      
-      const pages = ref([
-        {
-          title: "Bet of the day",
-          description:
-            "Get accurate and free football predictions daily. Discover sure home win tips, banker bets, BTTS/GG predictions, and more. Start making informed bets.",
-          slug: "bet-of-day"
-        },
-        {
-          title: "Basketball",
-          description: "Get the latest free Basketball betting tips to boost your winnings.",
-          slug: "Basketball"
-        },
-        {
-          title: "Tennis",
-          description: "Ace your tennis bets with free and reliable betting tips.",
-          slug: "tennis"
-        },
-        {
-          title: "Over 2.5 Goals Tips",
-          description: "Predictions and tips for betting on matches with over 2.5 goals.",
-          slug: "over-2.5-goals-tips"
-        },
-        {
-          title: "Double Chance Betting Tips",
-          description: "Increase your chances with double chance betting tips.",
-          slug: "/bet/Double Chance"
-        },
-        {
-          title: "Over 1.5 Goals",
-          description: "Maximize your profits with our top pick for the best Over 1.5 Goals tips",
-          slug: "/bet/Over 1.5 Goals"
-        },
-      ]);
-
-      const currentPageIndex = ref(0);
-      const currentPage = ref(pages[currentPageIndex]);
-
-      onMounted(() => {
-        updateMetaTags();
-      });
-
-      function updateMetaTags() {
-        document.title = currentPage.title;
-
-        const metaDescriptionTag = document.querySelector('meta[name="description"]');
-        if (metaDescriptionTag) {
-          metaDescriptionTag.setAttribute('content', currentPage.description);
-        }
-
-        const canonicalLink = document.querySelector('link[rel="canonical"]');
-        if (canonicalLink) {
-          canonicalLink.setAttribute('href', window.location.href);
-        }
-      }
-    </script>
   </div>
   <script type="module" src="/src/main.js"></script>
 </body>
