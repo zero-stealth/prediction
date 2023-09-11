@@ -19,15 +19,15 @@
         <h1>{{ $t('ads.h1-2') }}</h1>
         <div class="m1-ads-time">
           <div class="ads-time">
-            <span>--</span>
+            <h1>{{ hours }}</h1>
             <span>{{ $t('ads.span-6') }}</span>
           </div>
           <div class="ads-time">
-            <span>--</span>
+            <h1>{{ minutes }}</h1>
             <span>{{ $t('ads.span-7') }}</span>
           </div>
           <div class="ads-time">
-            <span>--</span>
+            <h1>{{ seconds }}</h1>
             <span>{{ $t('ads.span-8') }}</span>
           </div>
         </div>
@@ -35,17 +35,49 @@
     </div>
   </div>
 </template>
-
 <script setup>
+import { ref, onMounted } from 'vue'
 import { useRouter } from 'vue-router'
 
 const router = useRouter()
 
+const hours = ref(0)
+const minutes = ref(0)
+const seconds = ref(0)
+
 const goVip = () => {
   router.push({ name: 'Vip' })
 }
-</script>
 
+const startCountdown = () => {
+  const endTime = new Date().getTime() + 60 * 60 * 1000 // 1 hour from now
+
+  const updateCountdown = () => {
+    const currentTime = new Date().getTime()
+    const timeLeft = endTime - currentTime
+
+    if (timeLeft <= 0) {
+      clearInterval(intervalId)
+      return
+    }
+
+    const hoursLeft = Math.floor(timeLeft / (1000 * 60 * 60))
+    const minutesLeft = Math.floor((timeLeft % (1000 * 60 * 60)) / (1000 * 60))
+    const secondsLeft = Math.floor((timeLeft % (1000 * 60)) / 1000)
+
+    hours.value = hoursLeft
+    minutes.value = minutesLeft
+    seconds.value = secondsLeft
+  }
+
+  updateCountdown()
+  const intervalId = setInterval(updateCountdown, 1000)
+}
+
+onMounted(() => {
+  startCountdown()
+})
+</script>
 <style>
 @import '../style/vipads.css';
 </style>
