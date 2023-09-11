@@ -24,18 +24,17 @@
   }
 
   .offer-container h1 {
-    font-size: .8rem;
+    font-size: 0.8rem;
     color: var(--ads-color1);
   }
 
   .offerA-comp h2 {
-    font-size: .7em;
+    font-size: 0.7em;
     color: var(--ads-color2);
   }
 
   .offer-container span {
-    font-size: .8rem;
-
+    font-size: 0.8rem;
   }
 
   .offerA-inner {
@@ -73,37 +72,40 @@
 /* using it as global style for larger devices  */
 @media only screen and (min-width: 48em) {
 
+    .offer-container {
+        align-items: center;
+        flex-direction: column;
+        justify-content: center;
+      }
 
-      .offerA-comp {
-        padding: 10px;
-      }
-    
-      .offer-container h1 {
-        font-size: 2rem;
-      }
-    
-      .offerA-comp h2 {
-        font-size: 2rem;
-      }
-    
-      .offer-container span {
-        font-size: 1.2rem;
-    
-      }
-    
-      .offerA-inner {
-        width: 50%;
-        padding: 10px;
-      }
-    
-      .bet-win {
-        width: 60px;
-        height: 60px;
-      }
-    
-      .offerA-circle {
-        width: 40px;
-        height: 40px;
-      }
       
+  .offerA-comp {
+    width: 70%;
+  }
+
+  .offer-container h1 {
+    font-size: 1.5rem;
+  }
+
+  .offerA-comp h2 {
+    font-size: 1.5rem;
+  }
+
+  .offer-container span {
+    font-size: 1rem;
+  }
+
+  .offerA-inner {
+    width: 50%;
+  }
+
+  .bet-win {
+    width: 60px;
+    height: 60px;
+  }
+
+  .offerA-circle {
+    width: 40px;
+    height: 40px;
+  }
 }

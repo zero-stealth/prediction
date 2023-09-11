@@ -18,7 +18,7 @@
         </button>
       </div>
     </div>
- <OfferAds/>
+    <OfferAds />
     <template v-if="cardData.length > 0">
       <div v-for="item in cardData" class="main-h-card booom-h">
         <Card
@@ -74,7 +74,7 @@ const predictions = async () => {
       `https://predictions-reg9.onrender.com/predictions/prediction/${betName.value}/${currentDate.value}`
     )
 
-    cardData.value = response.data.length > 0 ? [response.data] : [];
+    cardData.value = response.data.length > 0 ? [response.data] : []
   } catch (err) {
     console.log(err)
   }
@@ -96,7 +96,6 @@ const previousDay = () => {
   updateCurrentDate()
 }
 
-
 const setOffset = (value) => {
   offset.value = value
   updateCurrentDate()
@@ -117,10 +116,10 @@ const updateCurrentDate = () => {
 
 const formatFormation = (formation) => {
   if (Array.isArray(formation)) {
-    return formation[0].split('-');
+    return formation[0].split('-')
   }
-  return [];
-};
+  return []
+}
 
 watchEffect(() => {
   paramValue.value = router.currentRoute.value.params.betName
