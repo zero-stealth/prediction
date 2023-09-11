@@ -126,6 +126,7 @@
     "link7": "Ofertas de Apuestas",
     "link8": "Consejos de Telegram",
     "link9": "Tenis",
+    "link10": "Fútbol americano",
     "span1": "Doble Oportunidad",
     "span2": "Más de 2.5 Goles",
     "span3": "Más de 1.5 Goles",
@@ -196,15 +197,15 @@
   },
   "bank": {
     "h1-1": "Apuesta del día",
-    "h1-2": "Consejos gratuitos de baloncesto",
-    "h1-3": "Consejos gratuitos",
+    "h1-2": "Consejos de baloncesto",
+    "h1-3": "Consejos de fútbol",
     "btn-1": "Anterior",
     "btn-2": "Hoy",
     "btn-3": "Mañana"
   },
   "bonus": {
     "h1-1": "Mejores Ofertas de Registro de Apuestas",
-    "span": "Solo para nuevos clientes | contenido comercial | límite de edad de 18 años | Se aplican Términos y Condiciones"
+    "span": "Solo para nuevos clientes / contenido comercial / límite de edad de 18 años / Se aplican Términos y Condiciones"
   },
   "news": {
     "h1-1": "Noticias Deportivas",
@@ -280,5 +281,10 @@
     "h1-1": "Iniciar sesión o registrarse en tu cuenta",
     "h1-2": "Tu cuenta VIP no está activada",
     "btn1": "Pagar para activar"
+  },
+  "Offer": {
+    "Oh1": "Oferta exclusiva",
+    "Oh2": "Bono hasta 130.USD",
+    "Ospan": "Sólo nuevos clientes / Contenido comercial / Límite de edad mayor de 18 años / Se aplican términos y condiciones"
   }
 }

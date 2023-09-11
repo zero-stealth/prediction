@@ -1,0 +1,109 @@
+@media screen {
+  .offer-container {
+    gap: 10px;
+    display: flex;
+    cursor: pointer;
+    padding: 20px 0;
+    text-align: center;
+    flex-direction: column;
+  }
+
+  .offer-container span {
+    font-size: 1rem;
+    font-weight: 200;
+    color: var(--primary-color);
+  }
+
+  .offerA-comp {
+    display: flex;
+    padding: 5px;
+    align-items: center;
+    border-radius: 12px;
+    justify-content: space-between;
+    border: 1px solid var(--dark-primary-color);
+  }
+
+  .offer-container h1 {
+    font-size: .8rem;
+    color: var(--ads-color1);
+  }
+
+  .offerA-comp h2 {
+    font-size: .7em;
+    color: var(--ads-color2);
+  }
+
+  .offer-container span {
+    font-size: .8rem;
+
+  }
+
+  .offerA-inner {
+    width: 60%;
+    display: flex;
+    padding: 5px;
+    align-items: center;
+    border-radius: 12px;
+    justify-content: space-between;
+    border: 1px solid var(--dark-primary-color);
+  }
+
+  .bet-win {
+    width: 40px;
+    height: 40px;
+    border-radius: 8px;
+  }
+
+  .offerA-circle {
+    width: 30px;
+    height: 30px;
+    display: flex;
+    align-items: center;
+    border-radius: 360%;
+    justify-content: center;
+    background-color: var(--ads-color2);
+  }
+
+  .offer-arrow {
+    height: 20px;
+    width: 20px;
+    fill: var(--background-color);
+  }
+}
+/* using it as global style for larger devices  */
+@media only screen and (min-width: 48em) {
+
+
+      .offerA-comp {
+        padding: 10px;
+      }
+    
+      .offer-container h1 {
+        font-size: 2rem;
+      }
+    
+      .offerA-comp h2 {
+        font-size: 2rem;
+      }
+    
+      .offer-container span {
+        font-size: 1.2rem;
+    
+      }
+    
+      .offerA-inner {
+        width: 50%;
+        padding: 10px;
+      }
+    
+      .bet-win {
+        width: 60px;
+        height: 60px;
+      }
+    
+      .offerA-circle {
+        width: 40px;
+        height: 40px;
+      }
+      
+}

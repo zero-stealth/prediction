@@ -8,24 +8,18 @@
           <h1>{{ $t('bank.h1-3') }} {{ currentDate }}</h1>
         </div>
         <div class="header-btn">
-        <button class="btn-h" :class="{ 'active-btn': offset > 0 }" @click="previousDay()">
-          {{ $t('bank.btn-1') }}
-        </button>
-        <button class="btn-h" :class="{ 'active-btn': offset === 0 }" @click="setOffset(0)">
-          {{ $t('bank.btn-2') }}
-        </button>
-        <button class="btn-h" :class="{ 'active-btn': offset === 1 }" @click="setOffset(1)">
-          {{ $t('bank.btn-3') }}
-        </button>
+          <button class="btn-h" :class="{ 'active-btn': offset > 0 }" @click="previousDay()">
+            {{ $t('bank.btn-1') }}
+          </button>
+          <button class="btn-h" :class="{ 'active-btn': offset === 0 }" @click="setOffset(0)">
+            {{ $t('bank.btn-2') }}
+          </button>
+          <button class="btn-h" :class="{ 'active-btn': offset === 1 }" @click="setOffset(1)">
+            {{ $t('bank.btn-3') }}
+          </button>
+        </div>
       </div>
-      </div>
-      <a
-        href="https://bwredir.com/1bkh?p=%2Fregistration%2F"
-        class="betw-banner-comp"
-        @click="goAds()"
-      >
-        <img src="../assets/BannerBet.png" alt="bet winner" class="betw-banner" />
-      </a>
+      <OfferAds />
       <template v-if="cardData.length > 0">
         <div class="main-h-card">
           <Card
@@ -101,6 +95,7 @@ import Arrow from '../icons/arrow.vue'
 import ads from '../assets/ads.gif'
 import vipads from '../components/vipads.vue'
 import NewsCard from '../components/NewsCard.vue'
+import OfferAds from '../components/OfferAds.vue'
 import Card from '../components/CardComponent.vue'
 import Upcoming from '../components/UpcomingPicks.vue'
 import QuickComponent from '../components/QuickComponent.vue'
@@ -125,17 +120,12 @@ const newsInfo = (newsID) => {
 }
 
 const goAds = () => {
-  window.open(
-    'https://wa.me/+254703147237?text=Hi sporty predict, I want to buy VIP subcription'
-  )
+  window.open('https://wa.me/+254703147237?text=Hi sporty predict, I want to buy VIP subcription')
 }
 
 const update = () => {
-  onMounted(() => {
-
-})
+  onMounted(() => {})
 }
-
 
 const visibleNews = computed(() => {
   return newsData.value.slice(0, maxNewsToShow.value)
@@ -168,8 +158,6 @@ const getNews = async () => {
   }
 }
 
-
-
 const getPrediction = async () => {
   const token = JSON.parse(localStorage.getItem('token'))
   try {
@@ -177,8 +165,7 @@ const getPrediction = async () => {
       `https://predictions-reg9.onrender.com/predictions/tips/freeTip/${currentDate.value}`
     )
     cardData.value = response.data
-console.log(cardData.value)
-
+    console.log(cardData.value)
   } catch (err) {
     console.log(err)
   }
@@ -202,7 +189,6 @@ const previousDay = () => {
 //     updateCurrentDate()
 //   }
 // }
-
 
 const setOffset = (value) => {
   offset.value = value

@@ -23,260 +23,266 @@
     "abt-h1": "Come scommettere sui consigli dal nostro sito.",
     "abt-p1": "Sconsigliamo vivamente di scommettere il denaro su tutte le partite elencate sulla nostra piattaforma in una sola schedina di scommessa. Invece, consigliamo di giocare da 1 a 3 partite su una singola schedina di scommessa. Seguendo questa strategia, puoi massimizzare la probabilità di risultati redditizi nel modo più efficiente possibile. Inoltre, la nostra sezione (VIP PLAN) offre una selezione ancora più esclusiva e altamente consigliata di consigli, consentendo agli utenti di generare guadagni consistenti. Seguendo il nostro lavoro, intraprenderai un percorso di redditività costante e non rimpiangerai mai di aver scelto SportyPredict. È importante notare che le scommesse comportano rischi finanziari e dovresti scommettere con responsabilità. Non scommettere più di quanto puoi permetterti di perdere e cerca aiuto se ritieni di avere un problema di gioco d'azzardo."
   },
-    "section6": {
-      "abt-h1": "Tutti i Consigli sulle Scommesse Calcistiche.",
-      "abt-p1": "Esplora la nostra ampia gamma di previsioni gratuite sul calcio per i principali mercati delle scommesse:",
-      "ul": [
-        "Consiglio della Giornata",
-        "Consigli Oltre 1,5 Gol",
-        "Consigli Oltre 2,5 Gol",
-        "Consigli Entrambe le Squadre Segnano",
-        "Consigli Doppia Chance",
-        "Consigli Sotto 2,5 Gol"
-      ]
+  "section6": {
+    "abt-h1": "Tutti i Consigli sulle Scommesse Calcistiche.",
+    "abt-p1": "Esplora la nostra ampia gamma di previsioni gratuite sul calcio per i principali mercati delle scommesse:",
+    "ul": [
+      "Consiglio della Giornata",
+      "Consigli Oltre 1,5 Gol",
+      "Consigli Oltre 2,5 Gol",
+      "Consigli Entrambe le Squadre Segnano",
+      "Consigli Doppia Chance",
+      "Consigli Sotto 2,5 Gol"
+    ]
+  },
+  "section7": {
+    "abt-h1": "In Sintesi.",
+    "abt-p1": "SportyPredict è la destinazione ultima per previsioni accurate sulle scommesse sportive, specializzata nel calcio, basket e tennis. Forniamo informazioni e previsioni affidabili a coloro che sono appassionati delle scommesse e desiderano guadagnare denaro. Inoltre, il nostro (VIP PLAN) offre un'opportunità per massimizzare il potenziale di profitto."
+  },
+  "section8": {
+    "span": "Benvenuti",
+    "span2": "SportyPredict",
+    "accountTitle": "Account attivi",
+    "vipTitle": "Account Vip",
+    "paidTitle": "Account a pagamento",
+    "notPaidTitle": "Account non a pagamento",
+    "adminTitle": "Account Amministratore",
+    "searchLabel": "Cerca Account",
+    "searchPlaceholder": "Nome account",
+    "accountTable": {
+      "accountHeader": "Account",
+      "paymentHeader": "Pagamento",
+      "periodHeader": "Periodo",
+      "dateActivationHeader": "Data di Attivazione",
+      "vipStatusHeader": "Stato Vip",
+      "deleteHeader": "Elimina",
+      "noAccountsMessage": "Nessun account ancora!"
     },
-    "section7": {
-      "abt-h1": "In Sintesi.",
-      "abt-p1": "SportyPredict è la destinazione ultima per previsioni accurate sulle scommesse sportive, specializzata nel calcio, basket e tennis. Forniamo informazioni e previsioni affidabili a coloro che sono appassionati delle scommesse e desiderano guadagnare denaro. Inoltre, il nostro (VIP PLAN) offre un'opportunità per massimizzare il potenziale di profitto."
-    },
-    "section8": {
-      "span": "Benvenuti",
-      "span2": "SportyPredict",
-      "accountTitle": "Account attivi",
-      "vipTitle": "Account Vip",
-      "paidTitle": "Account a pagamento",
-      "notPaidTitle": "Account non a pagamento",
-      "adminTitle": "Account Amministratore",
-      "searchLabel": "Cerca Account",
-      "searchPlaceholder": "Nome account",
-      "accountTable": {
-        "accountHeader": "Account",
-        "paymentHeader": "Pagamento",
-        "periodHeader": "Periodo",
-        "dateActivationHeader": "Data di Attivazione",
-        "vipStatusHeader": "Stato Vip",
-        "deleteHeader": "Elimina",
-        "noAccountsMessage": "Nessun account ancora!"
-      },
-      "statuses": {
-        "active": "Attivo",
-        "notActive": "Non Attivo"
-      }
-    },
-    "section9": {
-      "title1": "Pronostico del Giorno / Consigli del Giorno",
-      "content1": "Vuoi conoscere le previsioni giuste sul calcio? Sportypredict propone i consigli ideali sul calcio e puoi anche fare l'analisi che ti aiuta a ottenere risultati accurati. Puoi facilmente accedere a Formazioni delle Squadre, Testa a Testa, Classifiche di Lega, Statistiche, Formazioni, ecc.",
-      "title2": "Esplora i nostri Pronostici del Giorno",
-      "content2": "In questa pagina offriamo Pronostici Gratuiti del Giorno / Bet del Giorno per il calcio da parte dei nostri esperti / tipster. Tutte le nostre previsioni di calcio contengono la lega, l'orario della partita, la data e i consigli sulle scommesse. Puoi anche navigare attraverso altri mercati delle scommesse controllando altri negozi di previsione sotto le previsioni.",
-      "content3": "Una volta che avrai accesso alle nostre previsioni del Giorno, avrai l'opportunità di vincere in grande. Ci assicuriamo che le nostre previsioni siano accurate e ora puoi eliminare ogni confusione. Ti mostriamo la strada giusta per vincere la partita e siamo qui per aiutarti in tempo reale.",
-      "title3": "Cosa significa Pronostico del Giorno?",
-      "content4": "È il consiglio più sicuro, di solito con quote basse. Sono perfetti per le scommesse accumulator."
-    },
-    "section10": {
-      "vip1": " Piano Vip",
-      "vip2": " Unisciti a Telegram",
-      "vip3": " Come Pagare"
-    },
-    "section11": {
-      "vc": "contro"
-    },
-    "disclaimer": {
-      "title": "Avviso Legale",
-      "paragraph1": "sportypredict.com non è un bookmaker o una piattaforma di scommesse e non accetta scommesse. Forniamo previsioni, tecniche, guide e raccomandazioni nel migliore dei modi, ma tenere presente che possono verificarsi errori.",
-      "paragraph2": "È importante considerare le nostre previsioni come raccomandazioni e non come incoraggiamento a partecipare alle attività di scommessa. Il gioco d'azzardo dovrebbe essere visto come una forma di intrattenimento. Il visitatore e l'utente di sportypredict sono l'unico responsabile delle proprie azioni e decisioni, e il sito e i suoi dipendenti non possono essere ritenuti responsabili delle informazioni fornite su sportypredict.",
-      "paragraph3": "sportypredict non sarà ritenuto responsabile per eventuali perdite finanziarie o altre conseguenze derivanti dall'uso delle informazioni sul nostro sito web. Inoltre, si tenga presente che alcuni paesi hanno restrizioni sulle scommesse sportive, ed è responsabilità dell'utente rispettare le normative locali. Ci riserviamo il diritto di apportare modifiche e correzioni al nostro sito senza preavviso. Le immagini utilizzate sul sito web, a meno che non sia diversamente indicato, sono tratte da Internet. Se ritieni che alcune immagini siano state erroneamente incluse in violazione del copyright, ti preghiamo di contattare l'amministratore per la rimozione immediata.",
-      "paragraph4": "Optando per ricevere previsioni e consigli sul calcio, riconosci che tutte le previsioni e i consigli di sportypredict sono forniti esclusivamente a scopo informativo. sportypredict non si assume alcuna responsabilità per le perdite subite dai sottoscrittori a causa dell'uso delle informazioni fornite. Non approviamo o incoraggiamo il gioco d'azzardo in nessuna forma. Gli utenti di età inferiore ai 18 anni devono ottenere il consenso dei genitori."
-    },
-    "footer": {
-      "contactInformation": "Informazioni di Contatto",
-      "queriesOrHelp": "Per domande o aiuto, non esitare a contattarci su:",
-      "quickLinks": "Link Rapidi",
-      "home": "Home",
-      "betOfTheDay": "Bet del Giorno",
-      "tennis": "Tennis",
-      "basketball": "Basket",
-      "information": "Informazioni",
-      "disclaimer": "Avviso Legale",
-      "policy": "Politica",
-      "refundPolicy": "Politica di Rimborso",
-      "termsAndConditions": "Termini e Condizioni",
-      "talkWithUs": "Parla con Noi",
-      "knowMore": "Scopri di più sul nostro servizio o sulla consulenza anticipata",
-      "whatsappUs": "WhatsApp",
-      "bookNow": "Prenota Ora",
-      "socialMedia": "Social Media",
-      "allRightsReserved": "Tutti i diritti riservati"
-    },
-    "hero": {
-      "span1": "Goditi le nostre",
-      "span2": "previsioni sportive",
-      "span3": "di alta qualità giornaliere",
-      "span4": "e",
-      "span5": "consigli",
-      "bestBettingTips": "Forniamo i migliori consigli e previsioni per le scommesse su calcio, basket e tennis. Siediti, rilassati e goditi i vantaggi. Abbiamo fatto tutto il lavoro duro per te."
-    },
-    "nav": {
-      "link1": "Home",
-      "link2": "Offerte di Scommesse",
-      "link3": "Bet del Giorno",
-      "link4": "Basket",
-      "link6": "Previsioni Extra",
-      "link7": "Offerte di Scommesse",
-      "link8": "Consigli Telegram",
-      "link9": "Tennis",
-      "span1": "Doppia Chance",
-      "span2": "Oltre 2,5 Gol",
-      "span3": "Oltre 1,5 Gol",
-      "span4": "Entrambe le Squadre Segnano",
-      "span5": "Sotto 2,5 Gol",
-      "btn6": "Esci",
-      "btn7": "Registrati",
-      "btn8": "Accedi"
-    },
-    "info": {
-      "h1-1": "Altre Previsioni e Consigli Sportivi",
-      "p-1": "Stai cercando consigli gratuiti sulle scommesse e previsioni sportive per aumentare i tuoi profitti? Sei nel posto giusto. In questa pagina troverai consigli per tutte le altre discipline sportive per aiutarti a trovare le scelte di cui hai bisogno.",
-      "h1-2": "Cosa Sono le Altre Previsioni Sportive?",
-      "p-2": "Si tratta di previsioni per ogni altra disciplina sportiva escludendo il calcio. Questa pagina mostra tutte le previsioni per altre discipline sportive dai nostri tipster / esperti. Tutte le nostre previsioni contengono il paese o il continente, la lega e i consigli sulle scommesse. Puoi anche controllare altri mercati delle scommesse cliccando sul mercato delle scommesse sotto le previsioni."
-    },
-    "otherI": {
-      "h1-1": "Informativa sulla Privacy",
-      "p-1": "Presso sportypredict siamo profondamente impegnati nella protezione della tua privacy e nella sicurezza delle tue informazioni personali. Questa informativa sulla privacy spiega come raccogliamo e utilizziamo le tue informazioni quando utilizzi il nostro sito web.",
-      "p-2": "Potremmo chiedere il tuo nome, le informazioni di contatto (come l'indirizzo email e il numero di telefono) e la data di nascita. Inoltre, potremmo raccogliere altre informazioni pertinenti tramite sondaggi tra i clienti e offerte speciali. Lo scopo unico della raccolta di queste informazioni è fornirti un servizio migliore e migliorare i nostri prodotti e servizi.",
-      "p-3": "Occasionalmente, potremmo inviarti email promozionali e messaggi SMS contenenti informazioni su nuovi prodotti, offerte esclusive o altri aggiornamenti rilevanti. Se non desideri più ricevere tali comunicazioni, ti preghiamo di contattarci all'indirizzo",
-      "p-4": "Se ritieni che alcune delle informazioni che abbiamo raccolto siano errate o incomplete, ti preghiamo di contattarci e provvederemo prontamente a correggere eventuali inesattezze. In conformità alle leggi sulla protezione dei dati, hai il diritto di richiedere informazioni sui dati personali che deteniamo su di te.",
-      "p-5": "Se decidi di eliminare il tuo account sportypredict, tieni presente che tutti i dati e i contenuti associati, comprese le sottoscrizioni attive, saranno definitivamente persi. Tuttavia, puoi comunque accedere ai servizi di sportypredict registrandoti con un nuovo indirizzo email e numero di telefono.",
-      "p-6": "Tieni presente che questa informativa sulla privacy potrebbe essere aggiornata periodicamente e la data di efficacia è il 12 luglio 2023. Ti incoraggiamo a rivedere regolarmente questa pagina per eventuali modifiche o aggiornamenti."
-    },
-    "policy": {
-      "h1-1": "Politica di Rimborso",
-      "p-1": "Le informazioni fornite sono destinate esclusivamente a individui o entità che abbiano compiuto 18 anni. sportypredict non offre rimborsi per i pagamenti delle sottoscrizioni e declina ogni responsabilità per eventuali perdite o guadagni finanziari. Si consiglia agli individui provenienti da paesi in cui le scommesse sono illegali di astenersi dall'iscriversi ai nostri piani. Per ulteriori dettagli su SportyPredict, consulta la nostra completa Informativa sui Termini e Condizioni."
-    },
-    "terms": {
-      "h1-1": "Termini e Condizioni",
-      "p1-2": "Accedendo o utilizzando le previsioni e i consigli sulle scommesse sul sito web Sportypredict.com o su qualsiasi nostro sito affiliato, pagina, account o registrandoti sul sito web, accetti di essere vincolato da e di conformarti a:",
-      "li-1": "La nostra Informativa sulla Privacy",
-      "li-2": "Il nostro Avviso Legale",
-      "li-3": "I nostri Termini e Condizioni",
-      "li-4": "Le regole applicabili ai nostri prodotti o giochi di scommesse",
-      "p1-3": "Ti preghiamo di leggere attentamente i Termini e, se non li accetti, astieniti dall'utilizzare il sito web.",
-      "p1-4": "I consigli sulle scommesse, le previsioni, le analisi, i resoconti e le statistiche pubblicate su Sportypredict.com sono le nostre raccomandazioni e opinioni personali. Non sono previsioni definitive o garantite senza possibilità di perdita. Ogni utente di Sportypredict.com si impegna a scommettere a proprio rischio.",
-      "p1-5": "Consigliamo vivamente e incoraggiamo le scommesse responsabili. Non scommettere più di quanto puoi permetterti di perdere. Sportypredict.com non può essere ritenuto responsabile per le azioni degli utenti e dei visitatori. Profitti o perdite derivanti dal gioco d'azzardo sono di esclusiva responsabilità dell'utente. Non vengono effettuati rimborsi per i pagamenti effettuati.",
-      "p1-6": "Le scommesse possono essere illegali in certi paesi o regioni, quindi invitiamo tutti gli utenti a rispettare le normative pertinenti nella loro giurisdizione. Gli utenti sono responsabili del rispetto delle leggi locali. La riproduzione e l'uso non autorizzato di materiali come consigli, analisi e strategie da Sportypredict.com sono strettamente vietati. Se desideri riprodurre qualsiasi contenuto originale dal sito, ti preghiamo di contattarci per discutere la tua richiesta.",
-      "p1-7": "I codici delle scommesse associati agli eventi presentati sul sito appartengono esclusivamente ai nostri bookmaker affiliati. Gli utenti saranno informati sui siti specifici a cui si riferiscono i codici. Eventuali opinioni espresse in merito a strategie, bookmaker e previsioni calcistiche, tra le altre, sono soggettive e non rappresentano una popolazione più ampia o implicita. Sportypredict.com non pubblica calendari sportivi o liste di partite e attualmente non ha intenzione di farlo. Ci impegniamo a non violare il copyright riguardante la pubblicazione di calendari da parte dei bookmaker e non possediamo alcuna licenza per la pubblicazione di calendari. Se ritieni che alcuni dati pubblicati su Sportypredict.com violino il copyright, ti preghiamo di contattarci immediatamente.",
-      "h1-2": "LA NOSTRA RESPONSABILITÀ",
-      "p1-8": "Sportypredict non accetta alcuna responsabilità per danni, passività o perdite derivanti o connesse ai servizi, alle scelte e alle previsioni presenti sul sito web o sui suoi affiliati. Sebbene ci sforziamo di garantire l'accuratezza delle informazioni sul sito, non garantiamo l'accuratezza o la completezza delle informazioni e dei materiali forniti. Il sito web può contenere errori tipografici, inesattezze o informazioni obsolete. Sportypredict.com non è obbligato ad aggiornare tali materiali. Le informazioni e i materiali sul sito web sono forniti così come sono, senza alcuna condizione, garanzia o altro termine. Pertanto, nella misura massima consentita dalla legge, Predict fornisce il sito web sulla base dell'esclusione di tutte le rappresentazioni, garanzie, condizioni e altri termini che potrebbero avere effetto in relazione al sito web, salvo quanto espressamente indicato in questi termini e condizioni.",
-      "p1-9": "Sportypredict garantisce l'accuratezza e l'attualità di tutte le informazioni presentate sul suo sito. Tuttavia, Sportypredict.com non può essere ritenuto responsabile dei calcoli o delle accumulazioni individuali degli utenti, poiché forniamo accumulazioni nella nostra categoria Accumulator. Accedendo o utilizzando le previsioni e i consigli sulle scommesse sul sito web Sportypredict.com o su qualsiasi nostro sito affiliato, pagina, account o registrandoti sul sito web, accetti di essere vincolato dai nostri termini e condizioni. Creando un profilo e registrandoti per utilizzare Sportypredict.com, confermi la tua accettazione dei termini e delle condizioni riassunti. Inoltre, registrandoti, ci hai affidato il tuo indirizzo email e i dettagli della sottoscrizione, e siamo obbligati a proteggere le tue informazioni.",
-      "h1-3": "ALTRE DISPOSIZIONI",
-      "p1-10": "Questi Termini e Condizioni, insieme all'Informativa sulla Privacy, alla Politica sui Cookie, alle Regole e a qualsiasi documento, linea guida o regola citati, costituiscono l'accordo completo e l'intesa tra le parti, sostituendo ogni accordo precedente relativo all'oggetto. Riconosci e accetti che, stipulando e accettando questi Termini e Condizioni, l'Informativa sulla Privacy, la Politica sui Cookie, le Regole e qualsiasi documento, linea guida o regola citati, non ti fidi di alcuna dichiarazione, rappresentazione, garanzia, comprensione, promessa o assicurazione (se sia stata fatta in modo negligente o innocente) di qualsiasi persona diversa da quanto espressamente stabilito in essi. Nulla in questa clausola limita o esclude qualsiasi responsabilità per frode o rappresentazione fraudolenta.",
-      "p1-11": "Nessun ritardo, mancata esecuzione o omissione (in tutto o in parte) nell'esercizio, nell'applicazione o nell'attuazione di qualsiasi diritto, potere, privilegio, pretesa o rimedio fornito da questi Termini e Condizioni o dalla legge sarà considerato una rinuncia di tale diritto, potere, privilegio, pretesa o rimedio in relazione alle circostanze in questione o impedirà l'esercizio di tale diritto, potere, privilegio, pretesa o rimedio in qualsiasi altra circostanza in qualsiasi momento.",
-      "p1-12": "Se una disposizione di questi Termini e Condizioni fosse considerata nulla o non applicabile da qualsiasi tribunale o organo amministrativo di giurisdizione competente, tale nullità o inapplicabilità non pregiudicherà in alcun modo gli altri Termini e Condizioni. Se una disposizione di questi Termini e Condizioni fosse considerata nulla o non applicabile da qualsiasi tribunale o organo amministrativo di giurisdizione competente, tale nullità o inapplicabilità non pregiudicherà in alcun modo gli altri Termini e Condizioni.",
-      "p1-13": "Nessuna persona diversa dalle parti di questi Termini e Condizioni avrà il diritto di farli rispettare (in tutto o in parte), a meno che ciò non sia espressamente previsto nei Termini e Condizioni. Non c'è alcuna intenzione di creare alcun diritto o beneficio a favore di terzi.",
-      "p1-14": "Questi Termini e Condizioni saranno interpretati in conformità con la legge del Kenya e qualsiasi controversia derivante da o in connessione con questi Termini e Condizioni sarà sottoposta alla giurisdizione non esclusiva dei tribunali del Kenya."
-    },
-    "upcoming": {
-      "h1-1": "Prossimi suggerimenti",
-      "h1-2": "Ancora nessuna previsione! Ricontrolla più tardi."
-    },
-    "ads": {
-      "h1-1": "Non scommettere, investi invece",
-      "span-1": "Guadagna al 100%",
-      "span-2": "PROFITTI",
-      "span-3": "dal nostro sicuro",
-      "span-4": "Abbonamento al piano VIP",
-      "span-5": "nei pronostici di calcio.",
-      "p1-1": "Goditi una precisione fino al 95% con il nostro piano premium.",
-      "p1-2": "VIP è consigliato dal nostro team di esperti per coloro che considerano le scommesse come un modo per ottenere profitti.",
-      "h1-2": "La partita di oggi inizia:",
-      "span-6": "Ore",
-      "span-7": "Minuti",
-      "span-8": "Secondi"
-    },
-    "bank": {
-      "h1-1": "Scommessa del giorno",
-      "h1-2": "Suggerimenti gratuiti per il basket",
-      "h1-3": "Consigli gratuiti",
-      "btn-1": "Precedente",
-      "btn-2": "Oggi",
-      "btn-3": "Domani"
-    },
-    "bonus": {
-      "h1-1": "Le migliori offerte di iscrizione alle scommesse",
-      "span": "Solo nuovi clienti | contenuto commerciale maggiore di 18 anni | Si applicano termini e condizioni"
-    },
-    "news": {
-      "h1-1": "Notizie sportive",
-      "span-1": "vedi di più",
-      "span-2": "mostra meno",
-      "a-1": "maggiori informazioni"
-    },
-    "pay": {
-      "span1": "Abbonati al piano VIP",
-      "span2": "NOTA:",
-      "h1-1": "Questo abbonamento è valido per 30 giorni e senza costi aggiuntivi o costi nascosti",
-      "p1": "Il tuo account SportyPredict VIP verrà attivato una volta ricevuto il pagamento.",
-      "p2": "Scegli il tuo Paese per ottenere i dettagli del pagamento:",
-      "lb": "Selezionane uno",
-      "op": "Seleziona un paese",
-      "h1-2": "Accedi o registrati",
-      "p3": "Accedi con Google o",
-      "span3": "Crea un account",
-      "h1-3": "Metodi di pagamento disponibili per il tuo Paese:",
-      "h1-4": "PAGA CON SKRILL",
-      "li1": "Vai al tuo account SKRILL",
-      "li2": "Usa",
-      "li3": "Paga l'importo richiesto",
-      "li4": "Il tuo account VIP verrà attivato una volta ricevuto il pagamento.",
-      "h1-5": "PAGA USANDO CRYPTO (BITCOIN)",
-      "li5": "Vai al tuo portafoglio bitcoin",
-      "li6": "Paga utilizzando questo indirizzo bitcoin:",
-      "li7": "Paga l'importo richiesto",
-      "li8": "Il tuo account VIP verrà attivato una volta ricevuto il pagamento.",
-      "h1-6": "PAGA CON PAYPAL",
-      "li9": "PROSSIMAMENTE",
-      "span4": "Moneygram e Western Union sono disponibili per coloro che desiderano effettuare il pagamento.",
-      "h1-7": "D: Quanto sono garantiti i tuoi giochi?",
-      "span5": "Rispondi",
-      "span6": "Abbiamo un team di esperti di prim'ordine, ben documentati e informati che ottengono un punteggio fino al 96% nel loro tasso di precisione. Hai la garanzia di ottenere profitti sostanziali.",
-      "h1-8": "D: Cosa succede in caso di pronostici falliti?",
-      "span7": "Rispondi",
-      "p4": "Abbiamo un team di esperti di prim'ordine, ben documentati e informati che ottengono un punteggio fino al 96% nel loro tasso di precisione. Hai la garanzia di ottenere profitti sostanziali.",
-      "h1-9": "D: Cosa succede alle previsioni fallite?",
-      "span8": "Tieni presente che, in caso di perdita, aggiungeremo un giorno in più GRATIS in sostituzione del tuo abbonamento. Continueremo ad aggiungere un giorno in più finché non VINCI! Questo è esclusivo SOLO per gli abbonati VIP." ,
-      "h1-10": "D: Come posso ricevere questi giochi giornalieri?",
-      "span9": "Pubblichiamo giochi sulla nostra piattaforma:",
-      "span10": "https://sportyPredict.com/vip",
-      "span11": "Devi accedere al sito web utilizzando la tua email e password o tramite account social per visualizzare i giochi.",
-      "h1-11": "D: Perché non pubblichiamo i risultati?",
-      "span12": "Non divulghiamo i risultati perché i truffatori prendono screenshot e truffano le vittime ignare.",
-      "spanh1": "Durata di",
-      "spanh2": "30 giorni",
-      "spanh3": "Importo pagato: ",
-      "spanh4": "quotidiano",
-      "spanh5": "INVIA A",
-      "spanh6": "PAGA CON BANCARIO",
-      "spanh7": "PAGA CON SOLDI MOBILI",
-      "spanh8": "PAGA CON DENARO MOBILE MTN",
-      "spanh9": "da MTN UGANDA A MPESA",
-      "spanh10": "INVIA A MPESA",
-      "spanh11": "UTILIZZA SOLO SOLDI AIRTEL",
-      "spanh12": "Seleziona trasferimento di denaro internazionale (scegli Kenya)",
-      "span13": "LINEA MTN PER MPESA KENYA",
-      "span14": "Invia denaro dalla tua linea Mtn in Kenya"
-    },
-    "auth": {
-      "h1-1": "Crea un account",
-      "btn-1": "Accedi",
-      "btn-2": "Iscriviti",
-      "op": "Seleziona un paese",
-      "span1": "Password dimenticata"
-    },
-    "tennis": {
-      "h1-1": "Suggerimenti gratuiti per il tennis"
-    },
-    "vip": {
-      "h1-1": "Accedi o accedi al tuo account",
-      "h1-2": "Il tuo account VIP non è attivato",
-      "btn1": "Paga per attivare"
+    "statuses": {
+      "active": "Attivo",
+      "notActive": "Non Attivo"
     }
- }
+  },
+  "section9": {
+    "title1": "Pronostico del Giorno / Consigli del Giorno",
+    "content1": "Vuoi conoscere le previsioni giuste sul calcio? Sportypredict propone i consigli ideali sul calcio e puoi anche fare l'analisi che ti aiuta a ottenere risultati accurati. Puoi facilmente accedere a Formazioni delle Squadre, Testa a Testa, Classifiche di Lega, Statistiche, Formazioni, ecc.",
+    "title2": "Esplora i nostri Pronostici del Giorno",
+    "content2": "In questa pagina offriamo Pronostici Gratuiti del Giorno / Bet del Giorno per il calcio da parte dei nostri esperti / tipster. Tutte le nostre previsioni di calcio contengono la lega, l'orario della partita, la data e i consigli sulle scommesse. Puoi anche navigare attraverso altri mercati delle scommesse controllando altri negozi di previsione sotto le previsioni.",
+    "content3": "Una volta che avrai accesso alle nostre previsioni del Giorno, avrai l'opportunità di vincere in grande. Ci assicuriamo che le nostre previsioni siano accurate e ora puoi eliminare ogni confusione. Ti mostriamo la strada giusta per vincere la partita e siamo qui per aiutarti in tempo reale.",
+    "title3": "Cosa significa Pronostico del Giorno?",
+    "content4": "È il consiglio più sicuro, di solito con quote basse. Sono perfetti per le scommesse accumulator."
+  },
+  "section10": {
+    "vip1": " Piano Vip",
+    "vip2": " Unisciti a Telegram",
+    "vip3": " Come Pagare"
+  },
+  "section11": {
+    "vc": "contro"
+  },
+  "disclaimer": {
+    "title": "Avviso Legale",
+    "paragraph1": "sportypredict.com non è un bookmaker o una piattaforma di scommesse e non accetta scommesse. Forniamo previsioni, tecniche, guide e raccomandazioni nel migliore dei modi, ma tenere presente che possono verificarsi errori.",
+    "paragraph2": "È importante considerare le nostre previsioni come raccomandazioni e non come incoraggiamento a partecipare alle attività di scommessa. Il gioco d'azzardo dovrebbe essere visto come una forma di intrattenimento. Il visitatore e l'utente di sportypredict sono l'unico responsabile delle proprie azioni e decisioni, e il sito e i suoi dipendenti non possono essere ritenuti responsabili delle informazioni fornite su sportypredict.",
+    "paragraph3": "sportypredict non sarà ritenuto responsabile per eventuali perdite finanziarie o altre conseguenze derivanti dall'uso delle informazioni sul nostro sito web. Inoltre, si tenga presente che alcuni paesi hanno restrizioni sulle scommesse sportive, ed è responsabilità dell'utente rispettare le normative locali. Ci riserviamo il diritto di apportare modifiche e correzioni al nostro sito senza preavviso. Le immagini utilizzate sul sito web, a meno che non sia diversamente indicato, sono tratte da Internet. Se ritieni che alcune immagini siano state erroneamente incluse in violazione del copyright, ti preghiamo di contattare l'amministratore per la rimozione immediata.",
+    "paragraph4": "Optando per ricevere previsioni e consigli sul calcio, riconosci che tutte le previsioni e i consigli di sportypredict sono forniti esclusivamente a scopo informativo. sportypredict non si assume alcuna responsabilità per le perdite subite dai sottoscrittori a causa dell'uso delle informazioni fornite. Non approviamo o incoraggiamo il gioco d'azzardo in nessuna forma. Gli utenti di età inferiore ai 18 anni devono ottenere il consenso dei genitori."
+  },
+  "footer": {
+    "contactInformation": "Informazioni di Contatto",
+    "queriesOrHelp": "Per domande o aiuto, non esitare a contattarci su:",
+    "quickLinks": "Link Rapidi",
+    "home": "Home",
+    "betOfTheDay": "Bet del Giorno",
+    "tennis": "Tennis",
+    "basketball": "Basket",
+    "information": "Informazioni",
+    "disclaimer": "Avviso Legale",
+    "policy": "Politica",
+    "refundPolicy": "Politica di Rimborso",
+    "termsAndConditions": "Termini e Condizioni",
+    "talkWithUs": "Parla con Noi",
+    "knowMore": "Scopri di più sul nostro servizio o sulla consulenza anticipata",
+    "whatsappUs": "WhatsApp",
+    "bookNow": "Prenota Ora",
+    "socialMedia": "Social Media",
+    "allRightsReserved": "Tutti i diritti riservati"
+  },
+  "hero": {
+    "span1": "Goditi le nostre",
+    "span2": "previsioni sportive",
+    "span3": "di alta qualità giornaliere",
+    "span4": "e",
+    "span5": "consigli",
+    "bestBettingTips": "Forniamo i migliori consigli e previsioni per le scommesse su calcio, basket e tennis. Siediti, rilassati e goditi i vantaggi. Abbiamo fatto tutto il lavoro duro per te."
+  },
+  "nav": {
+    "link1": "Home",
+    "link2": "Offerte di Scommesse",
+    "link3": "Bet del Giorno",
+    "link4": "Basket",
+    "link6": "Previsioni Extra",
+    "link7": "Offerte di Scommesse",
+    "link8": "Consigli Telegram",
+    "link9": "Tennis",
+    "link10": "calcio",
+    "span1": "Doppia Chance",
+    "span2": "Oltre 2,5 Gol",
+    "span3": "Oltre 1,5 Gol",
+    "span4": "Entrambe le Squadre Segnano",
+    "span5": "Sotto 2,5 Gol",
+    "btn6": "Esci",
+    "btn7": "Registrati",
+    "btn8": "Accedi"
+  },
+  "info": {
+    "h1-1": "Altre Previsioni e Consigli Sportivi",
+    "p-1": "Stai cercando consigli gratuiti sulle scommesse e previsioni sportive per aumentare i tuoi profitti? Sei nel posto giusto. In questa pagina troverai consigli per tutte le altre discipline sportive per aiutarti a trovare le scelte di cui hai bisogno.",
+    "h1-2": "Cosa Sono le Altre Previsioni Sportive?",
+    "p-2": "Si tratta di previsioni per ogni altra disciplina sportiva escludendo il calcio. Questa pagina mostra tutte le previsioni per altre discipline sportive dai nostri tipster / esperti. Tutte le nostre previsioni contengono il paese o il continente, la lega e i consigli sulle scommesse. Puoi anche controllare altri mercati delle scommesse cliccando sul mercato delle scommesse sotto le previsioni."
+  },
+  "otherI": {
+    "h1-1": "Informativa sulla Privacy",
+    "p-1": "Presso sportypredict siamo profondamente impegnati nella protezione della tua privacy e nella sicurezza delle tue informazioni personali. Questa informativa sulla privacy spiega come raccogliamo e utilizziamo le tue informazioni quando utilizzi il nostro sito web.",
+    "p-2": "Potremmo chiedere il tuo nome, le informazioni di contatto (come l'indirizzo email e il numero di telefono) e la data di nascita. Inoltre, potremmo raccogliere altre informazioni pertinenti tramite sondaggi tra i clienti e offerte speciali. Lo scopo unico della raccolta di queste informazioni è fornirti un servizio migliore e migliorare i nostri prodotti e servizi.",
+    "p-3": "Occasionalmente, potremmo inviarti email promozionali e messaggi SMS contenenti informazioni su nuovi prodotti, offerte esclusive o altri aggiornamenti rilevanti. Se non desideri più ricevere tali comunicazioni, ti preghiamo di contattarci all'indirizzo",
+    "p-4": "Se ritieni che alcune delle informazioni che abbiamo raccolto siano errate o incomplete, ti preghiamo di contattarci e provvederemo prontamente a correggere eventuali inesattezze. In conformità alle leggi sulla protezione dei dati, hai il diritto di richiedere informazioni sui dati personali che deteniamo su di te.",
+    "p-5": "Se decidi di eliminare il tuo account sportypredict, tieni presente che tutti i dati e i contenuti associati, comprese le sottoscrizioni attive, saranno definitivamente persi. Tuttavia, puoi comunque accedere ai servizi di sportypredict registrandoti con un nuovo indirizzo email e numero di telefono.",
+    "p-6": "Tieni presente che questa informativa sulla privacy potrebbe essere aggiornata periodicamente e la data di efficacia è il 12 luglio 2023. Ti incoraggiamo a rivedere regolarmente questa pagina per eventuali modifiche o aggiornamenti."
+  },
+  "policy": {
+    "h1-1": "Politica di Rimborso",
+    "p-1": "Le informazioni fornite sono destinate esclusivamente a individui o entità che abbiano compiuto 18 anni. sportypredict non offre rimborsi per i pagamenti delle sottoscrizioni e declina ogni responsabilità per eventuali perdite o guadagni finanziari. Si consiglia agli individui provenienti da paesi in cui le scommesse sono illegali di astenersi dall'iscriversi ai nostri piani. Per ulteriori dettagli su SportyPredict, consulta la nostra completa Informativa sui Termini e Condizioni."
+  },
+  "terms": {
+    "h1-1": "Termini e Condizioni",
+    "p1-2": "Accedendo o utilizzando le previsioni e i consigli sulle scommesse sul sito web Sportypredict.com o su qualsiasi nostro sito affiliato, pagina, account o registrandoti sul sito web, accetti di essere vincolato da e di conformarti a:",
+    "li-1": "La nostra Informativa sulla Privacy",
+    "li-2": "Il nostro Avviso Legale",
+    "li-3": "I nostri Termini e Condizioni",
+    "li-4": "Le regole applicabili ai nostri prodotti o giochi di scommesse",
+    "p1-3": "Ti preghiamo di leggere attentamente i Termini e, se non li accetti, astieniti dall'utilizzare il sito web.",
+    "p1-4": "I consigli sulle scommesse, le previsioni, le analisi, i resoconti e le statistiche pubblicate su Sportypredict.com sono le nostre raccomandazioni e opinioni personali. Non sono previsioni definitive o garantite senza possibilità di perdita. Ogni utente di Sportypredict.com si impegna a scommettere a proprio rischio.",
+    "p1-5": "Consigliamo vivamente e incoraggiamo le scommesse responsabili. Non scommettere più di quanto puoi permetterti di perdere. Sportypredict.com non può essere ritenuto responsabile per le azioni degli utenti e dei visitatori. Profitti o perdite derivanti dal gioco d'azzardo sono di esclusiva responsabilità dell'utente. Non vengono effettuati rimborsi per i pagamenti effettuati.",
+    "p1-6": "Le scommesse possono essere illegali in certi paesi o regioni, quindi invitiamo tutti gli utenti a rispettare le normative pertinenti nella loro giurisdizione. Gli utenti sono responsabili del rispetto delle leggi locali. La riproduzione e l'uso non autorizzato di materiali come consigli, analisi e strategie da Sportypredict.com sono strettamente vietati. Se desideri riprodurre qualsiasi contenuto originale dal sito, ti preghiamo di contattarci per discutere la tua richiesta.",
+    "p1-7": "I codici delle scommesse associati agli eventi presentati sul sito appartengono esclusivamente ai nostri bookmaker affiliati. Gli utenti saranno informati sui siti specifici a cui si riferiscono i codici. Eventuali opinioni espresse in merito a strategie, bookmaker e previsioni calcistiche, tra le altre, sono soggettive e non rappresentano una popolazione più ampia o implicita. Sportypredict.com non pubblica calendari sportivi o liste di partite e attualmente non ha intenzione di farlo. Ci impegniamo a non violare il copyright riguardante la pubblicazione di calendari da parte dei bookmaker e non possediamo alcuna licenza per la pubblicazione di calendari. Se ritieni che alcuni dati pubblicati su Sportypredict.com violino il copyright, ti preghiamo di contattarci immediatamente.",
+    "h1-2": "LA NOSTRA RESPONSABILITÀ",
+    "p1-8": "Sportypredict non accetta alcuna responsabilità per danni, passività o perdite derivanti o connesse ai servizi, alle scelte e alle previsioni presenti sul sito web o sui suoi affiliati. Sebbene ci sforziamo di garantire l'accuratezza delle informazioni sul sito, non garantiamo l'accuratezza o la completezza delle informazioni e dei materiali forniti. Il sito web può contenere errori tipografici, inesattezze o informazioni obsolete. Sportypredict.com non è obbligato ad aggiornare tali materiali. Le informazioni e i materiali sul sito web sono forniti così come sono, senza alcuna condizione, garanzia o altro termine. Pertanto, nella misura massima consentita dalla legge, Predict fornisce il sito web sulla base dell'esclusione di tutte le rappresentazioni, garanzie, condizioni e altri termini che potrebbero avere effetto in relazione al sito web, salvo quanto espressamente indicato in questi termini e condizioni.",
+    "p1-9": "Sportypredict garantisce l'accuratezza e l'attualità di tutte le informazioni presentate sul suo sito. Tuttavia, Sportypredict.com non può essere ritenuto responsabile dei calcoli o delle accumulazioni individuali degli utenti, poiché forniamo accumulazioni nella nostra categoria Accumulator. Accedendo o utilizzando le previsioni e i consigli sulle scommesse sul sito web Sportypredict.com o su qualsiasi nostro sito affiliato, pagina, account o registrandoti sul sito web, accetti di essere vincolato dai nostri termini e condizioni. Creando un profilo e registrandoti per utilizzare Sportypredict.com, confermi la tua accettazione dei termini e delle condizioni riassunti. Inoltre, registrandoti, ci hai affidato il tuo indirizzo email e i dettagli della sottoscrizione, e siamo obbligati a proteggere le tue informazioni.",
+    "h1-3": "ALTRE DISPOSIZIONI",
+    "p1-10": "Questi Termini e Condizioni, insieme all'Informativa sulla Privacy, alla Politica sui Cookie, alle Regole e a qualsiasi documento, linea guida o regola citati, costituiscono l'accordo completo e l'intesa tra le parti, sostituendo ogni accordo precedente relativo all'oggetto. Riconosci e accetti che, stipulando e accettando questi Termini e Condizioni, l'Informativa sulla Privacy, la Politica sui Cookie, le Regole e qualsiasi documento, linea guida o regola citati, non ti fidi di alcuna dichiarazione, rappresentazione, garanzia, comprensione, promessa o assicurazione (se sia stata fatta in modo negligente o innocente) di qualsiasi persona diversa da quanto espressamente stabilito in essi. Nulla in questa clausola limita o esclude qualsiasi responsabilità per frode o rappresentazione fraudolenta.",
+    "p1-11": "Nessun ritardo, mancata esecuzione o omissione (in tutto o in parte) nell'esercizio, nell'applicazione o nell'attuazione di qualsiasi diritto, potere, privilegio, pretesa o rimedio fornito da questi Termini e Condizioni o dalla legge sarà considerato una rinuncia di tale diritto, potere, privilegio, pretesa o rimedio in relazione alle circostanze in questione o impedirà l'esercizio di tale diritto, potere, privilegio, pretesa o rimedio in qualsiasi altra circostanza in qualsiasi momento.",
+    "p1-12": "Se una disposizione di questi Termini e Condizioni fosse considerata nulla o non applicabile da qualsiasi tribunale o organo amministrativo di giurisdizione competente, tale nullità o inapplicabilità non pregiudicherà in alcun modo gli altri Termini e Condizioni. Se una disposizione di questi Termini e Condizioni fosse considerata nulla o non applicabile da qualsiasi tribunale o organo amministrativo di giurisdizione competente, tale nullità o inapplicabilità non pregiudicherà in alcun modo gli altri Termini e Condizioni.",
+    "p1-13": "Nessuna persona diversa dalle parti di questi Termini e Condizioni avrà il diritto di farli rispettare (in tutto o in parte), a meno che ciò non sia espressamente previsto nei Termini e Condizioni. Non c'è alcuna intenzione di creare alcun diritto o beneficio a favore di terzi.",
+    "p1-14": "Questi Termini e Condizioni saranno interpretati in conformità con la legge del Kenya e qualsiasi controversia derivante da o in connessione con questi Termini e Condizioni sarà sottoposta alla giurisdizione non esclusiva dei tribunali del Kenya."
+  },
+  "upcoming": {
+    "h1-1": "Prossimi suggerimenti",
+    "h1-2": "Ancora nessuna previsione! Ricontrolla più tardi."
+  },
+  "ads": {
+    "h1-1": "Non scommettere, investi invece",
+    "span-1": "Guadagna al 100%",
+    "span-2": "PROFITTI",
+    "span-3": "dal nostro sicuro",
+    "span-4": "Abbonamento al piano VIP",
+    "span-5": "nei pronostici di calcio.",
+    "p1-1": "Goditi una precisione fino al 95% con il nostro piano premium.",
+    "p1-2": "VIP è consigliato dal nostro team di esperti per coloro che considerano le scommesse come un modo per ottenere profitti.",
+    "h1-2": "La partita di oggi inizia:",
+    "span-6": "Ore",
+    "span-7": "Minuti",
+    "span-8": "Secondi"
+  },
+  "bank": {
+    "h1-1": "Scommessa del giorno",
+    "h1-2": "consigli sul basket",
+    "h1-3": "Consigli sul calcio",
+    "btn-1": "Precedente",
+    "btn-2": "Oggi",
+    "btn-3": "Domani"
+  },
+  "bonus": {
+    "h1-1": "Le migliori offerte di iscrizione alle scommesse",
+    "span": "Solo nuovi clienti / contenuto commerciale maggiore di 18 anni / Si applicano termini e condizioni"
+  },
+  "news": {
+    "h1-1": "Notizie sportive",
+    "span-1": "vedi di più",
+    "span-2": "mostra meno",
+    "a-1": "maggiori informazioni"
+  },
+  "pay": {
+    "span1": "Abbonati al piano VIP",
+    "span2": "NOTA:",
+    "h1-1": "Questo abbonamento è valido per 30 giorni e senza costi aggiuntivi o costi nascosti",
+    "p1": "Il tuo account SportyPredict VIP verrà attivato una volta ricevuto il pagamento.",
+    "p2": "Scegli il tuo Paese per ottenere i dettagli del pagamento:",
+    "lb": "Selezionane uno",
+    "op": "Seleziona un paese",
+    "h1-2": "Accedi o registrati",
+    "p3": "Accedi con Google o",
+    "span3": "Crea un account",
+    "h1-3": "Metodi di pagamento disponibili per il tuo Paese:",
+    "h1-4": "PAGA CON SKRILL",
+    "li1": "Vai al tuo account SKRILL",
+    "li2": "Usa",
+    "li3": "Paga l'importo richiesto",
+    "li4": "Il tuo account VIP verrà attivato una volta ricevuto il pagamento.",
+    "h1-5": "PAGA USANDO CRYPTO (BITCOIN)",
+    "li5": "Vai al tuo portafoglio bitcoin",
+    "li6": "Paga utilizzando questo indirizzo bitcoin:",
+    "li7": "Paga l'importo richiesto",
+    "li8": "Il tuo account VIP verrà attivato una volta ricevuto il pagamento.",
+    "h1-6": "PAGA CON PAYPAL",
+    "li9": "PROSSIMAMENTE",
+    "span4": "Moneygram e Western Union sono disponibili per coloro che desiderano effettuare il pagamento.",
+    "h1-7": "D: Quanto sono garantiti i tuoi giochi?",
+    "span5": "Rispondi",
+    "span6": "Abbiamo un team di esperti di prim'ordine, ben documentati e informati che ottengono un punteggio fino al 96% nel loro tasso di precisione. Hai la garanzia di ottenere profitti sostanziali.",
+    "h1-8": "D: Cosa succede in caso di pronostici falliti?",
+    "span7": "Rispondi",
+    "p4": "Abbiamo un team di esperti di prim'ordine, ben documentati e informati che ottengono un punteggio fino al 96% nel loro tasso di precisione. Hai la garanzia di ottenere profitti sostanziali.",
+    "h1-9": "D: Cosa succede alle previsioni fallite?",
+    "span8": "Tieni presente che, in caso di perdita, aggiungeremo un giorno in più GRATIS in sostituzione del tuo abbonamento. Continueremo ad aggiungere un giorno in più finché non VINCI! Questo è esclusivo SOLO per gli abbonati VIP.",
+    "h1-10": "D: Come posso ricevere questi giochi giornalieri?",
+    "span9": "Pubblichiamo giochi sulla nostra piattaforma:",
+    "span10": "https://sportyPredict.com/vip",
+    "span11": "Devi accedere al sito web utilizzando la tua email e password o tramite account social per visualizzare i giochi.",
+    "h1-11": "D: Perché non pubblichiamo i risultati?",
+    "span12": "Non divulghiamo i risultati perché i truffatori prendono screenshot e truffano le vittime ignare.",
+    "spanh1": "Durata di",
+    "spanh2": "30 giorni",
+    "spanh3": "Importo pagato: ",
+    "spanh4": "quotidiano",
+    "spanh5": "INVIA A",
+    "spanh6": "PAGA CON BANCARIO",
+    "spanh7": "PAGA CON SOLDI MOBILI",
+    "spanh8": "PAGA CON DENARO MOBILE MTN",
+    "spanh9": "da MTN UGANDA A MPESA",
+    "spanh10": "INVIA A MPESA",
+    "spanh11": "UTILIZZA SOLO SOLDI AIRTEL",
+    "spanh12": "Seleziona trasferimento di denaro internazionale (scegli Kenya)",
+    "span13": "LINEA MTN PER MPESA KENYA",
+    "span14": "Invia denaro dalla tua linea Mtn in Kenya"
+  },
+  "auth": {
+    "h1-1": "Crea un account",
+    "btn-1": "Accedi",
+    "btn-2": "Iscriviti",
+    "op": "Seleziona un paese",
+    "span1": "Password dimenticata"
+  },
+  "tennis": {
+    "h1-1": "Suggerimenti gratuiti per il tennis"
+  },
+  "vip": {
+    "h1-1": "Accedi o accedi al tuo account",
+    "h1-2": "Il tuo account VIP non è attivato",
+    "btn1": "Paga per attivare"
+  },
+  "Offer": {
+    "Oh1": "Offerta esclusiva",
+    "Oh2": "Bonus fino a 130.USD",
+    "Ospan": "Solo nuovi clienti / Contenuti commerciali / Limite di età 18+ / Si applicano termini e condizioni"
+  }
+}

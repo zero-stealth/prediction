@@ -125,6 +125,7 @@
     "link7": "Offres de paris",
     "link8": "Conseils sur les télégrammes",
     "link9": "Tennis",
+    "link10": "Football",
     "span1": "Double chance",
     "span2": "Plus de 2,5 buts",
     "span3": "Plus de 1,5 buts",
@@ -195,15 +196,15 @@
   },
   "bank": {
     "h1-1": "Pari du jour",
-    "h1-2": "Conseils gratuits de basketball",
-    "h1-3": "Conseils gratuits",
+    "h1-2": "Conseils de basketball",
+    "h1-3": "Conseils de football",
     "btn-1": "Précédent",
     "btn-2": "Aujourd'hui",
     "btn-3": "Demain"
   },
   "bonus": {
     "h1-1": "Les meilleures offres d'inscription aux paris",
-    "span": "Nouveaux clients uniquement | contenu commercial | limite d'âge de 18 ans | Conditions générales s'appliquent"
+    "span": "Nouveaux clients uniquement / contenu commercial / limite d'âge de 18 ans / Conditions générales s'appliquent"
   },
   "news": {
     "h1-1": "Actualités sportives",
@@ -279,5 +280,10 @@
     "h1-1": "Connectez-vous ou inscrivez-vous à votre compte",
     "h1-2": "Votre compte VIP n'est pas activé",
     "btn1": "Payer pour activer"
+  },
+  "Offer": {
+    "Oh1": "Offre exclusive",
+    "Oh2": "Bonus jusqu'à 130.USD",
+    "Ospan": "Nouveaux clients uniquement / Contenu commercial / Limite d'âge de 18 ans et plus / Conditions générales applicables"
   }
 }

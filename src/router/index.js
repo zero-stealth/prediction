@@ -117,6 +117,15 @@ const router = createRouter({
       },
     },
     {
+      path: '/football',
+      name: 'Football',
+      component: () => import('../views/FootballView.vue'),
+      meta: {
+        title: "Football predictions and daily free betting tips",
+        description: "Get the latest free Football betting tips to boost your winnings.",
+      },
+    },
+    {
       path: '/tennis',
       name: 'Tennis',
       component: () => import('../views/TennisView.vue'),

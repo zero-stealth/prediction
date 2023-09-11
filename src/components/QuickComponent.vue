@@ -1,6 +1,7 @@
 <template>
   <div class="quick-main">
     <div class="quick-nav">
+      <router-link :to="{ name: 'Football' }" class="quick-link">{{ $t('nav.link10') }}</router-link>
       <router-link :to="{ name: 'Bonus' }" class="quick-link">{{ $t('nav.link2') }}</router-link>
       <router-link :to="{ name: 'Banker' }" class="quick-link">{{ $t('nav.link3') }}</router-link>
       <router-link :to="{ name: 'Basketball' }" class="quick-link">{{

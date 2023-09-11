@@ -99,8 +99,9 @@
     "link4": "Basketball",
     "link6": "Zusätzliche Vorhersagen",
     "link7": "Wettangebote",
-    "link8": "Telegrammtipps",
+    "link8": "Telegram Tipps",
     "link9": "Tennis",
+    "link10": "Fußball",
     "span1": "Doppelte Chance",
     "span2": "Über 2,5 Tore",
     "span3": "Über 1,5 Tore",
@@ -169,15 +170,15 @@
     },
     "bank": {
       "h1-1": "Wette des Tages",
-      "h1-2": "Basketball Gratis Tipps",
-      "h1-3": "Gratis Tipps",
+      "h1-2": "Basketball Tipps",
+      "h1-3": "Fußball Tipps",
       "btn-1": "Vorherige",
       "btn-2": "Heute",
       "btn-3": "Morgen"
     },
     "bonus": {
       "h1-1": "Beste Wettanbieter-Angebote zur Anmeldung",
-      "span": "Nur für Neukunden | kommerzieller Inhalt | Altersbeschränkung 18+ | AGB gelten"
+      "span": "Nur für Neukunden / kommerzieller Inhalt / Altersbeschränkung 18+ / AGB gelten"
     },
     "news": {
       "h1-1": "Sportnachrichten",
@@ -253,6 +254,11 @@
       "h1-1": "Anmelden oder Einloggen in Ihr Konto",
       "h1-2": "Ihr VIP-Konto ist nicht aktiviert",
       "btn1": "Zur Aktivierung bezahlen"
+    },
+    "Offer": {
+      "Oh1": "Exclusives Angebot",
+      "Oh2": "Bonus bis zu 130.USD",
+      "Ospan": "Nur Neukunden / Kommerzieller Inhalt / Altersgrenze 18+ / Es gelten die AGB"
     }
   }
   

@@ -16,6 +16,7 @@
         <RouterLink :to="{ name: 'Home' }" class="nav-link">{{ $t('nav.link1') }}</RouterLink>
         <RouterLink :to="{ name: 'Bonus' }" class="nav-link">{{ $t('nav.link2') }}</RouterLink>
         <RouterLink :to="{ name: 'Banker' }" class="nav-link">{{ $t('nav.link3') }}</RouterLink>
+        <RouterLink :to="{ name: 'Football' }" class="nav-link">{{ $t('nav.link10') }}</RouterLink>
         <RouterLink :to="{ name: 'Basketball' }" class="nav-link">{{ $t('nav.link4') }}</RouterLink>
         <RouterLink :to="{ name: 'Tennis' }" class="nav-link">{{ $t('nav.link9') }}</RouterLink>
         <div class="drop-container">

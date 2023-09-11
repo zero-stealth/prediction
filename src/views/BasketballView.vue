@@ -1,7 +1,7 @@
 <template>
   <div>
     <ButtonComponent />
-    <QuickComponent/>
+    <QuickComponent />
     <div class="home-main">
       <div class="main-h">
         <div class="main-header">
@@ -9,20 +9,18 @@
             <h1>{{ $t('bank.h1-2') }} {{ currentDate }}</h1>
           </div>
           <div class="header-btn">
-        <button class="btn-h" :class="{ 'active-btn': offset > 0 }" @click="previousDay()">
-          {{ $t('bank.btn-1') }}
-        </button>
-        <button class="btn-h" :class="{ 'active-btn': offset === 0 }" @click="setOffset(0)">
-          {{ $t('bank.btn-2') }}
-        </button>
-        <button class="btn-h" :class="{ 'active-btn': offset === 1 }" @click="setOffset(1)">
-          {{ $t('bank.btn-3') }}
-        </button>
-      </div>
+            <button class="btn-h" :class="{ 'active-btn': offset > 0 }" @click="previousDay()">
+              {{ $t('bank.btn-1') }}
+            </button>
+            <button class="btn-h" :class="{ 'active-btn': offset === 0 }" @click="setOffset(0)">
+              {{ $t('bank.btn-2') }}
+            </button>
+            <button class="btn-h" :class="{ 'active-btn': offset === 1 }" @click="setOffset(1)">
+              {{ $t('bank.btn-3') }}
+            </button>
+          </div>
         </div>
-        <a href="https://bwredir.com/1bkh?p=%2Fregistration%2F" class="betw-banner-comp" @click="goAdds">
-        <img src="../assets/BannerBet.png" alt="bet winner" class="betw-banner" />
-      </a>
+        <OfferAds />
         <template v-if="cardData.length > 0">
           <div v-for="item in cardData" class="main-h-card" :key="item">
             <Card
@@ -42,7 +40,6 @@
               :formationA="formatFormation(card.formationA) ? card.formationA[0]?.split('-') : []"
               :formationB="formatFormation(card.formationB) ? card.formationB[0]?.split('-') : []"
               :time="card.time"
-      
             />
           </div>
         </template>
@@ -57,18 +54,19 @@
 </template>
 
 <script setup>
-import axios from 'axios';
-import Card from '../components/CardComponent.vue';
-import ButtonComponent from '../components/ButtonComponent.vue';
+import axios from 'axios'
+import OfferAds from '../components/OfferAds.vue'
+import Card from '../components/CardComponent.vue'
+import ButtonComponent from '../components/ButtonComponent.vue'
 import QuickComponent from '../components/QuickComponent.vue'
-import { ref, onMounted, watch } from 'vue';
+import { ref, onMounted, watch } from 'vue'
 
-const upcomingDates = ref('');
-const currentDate = ref('');
-const cardData = ref([]);
+const upcomingDates = ref('')
+const currentDate = ref('')
+const cardData = ref([])
 
 async function getPrediction() {
-  const token = JSON.parse(localStorage.getItem('token'));
+  const token = JSON.parse(localStorage.getItem('token'))
 
   try {
     const response = await axios.get(
@@ -78,24 +76,24 @@ async function getPrediction() {
           Authorization: `Bearer ${token}`
         }
       }
-    );
-    cardData.value = response.data.length > 0 ? [response.data] : []; // Set the data or an empty array
-    console.log(cardData.value);
+    )
+    cardData.value = response.data.length > 0 ? [response.data] : [] // Set the data or an empty array
+    console.log(cardData.value)
   } catch (err) {
-    console.log(err);
+    console.log(err)
   }
 }
 
 onMounted(() => {
-  getPrediction();
-});
+  getPrediction()
+})
 
-const offset = ref(0);
+const offset = ref(0)
 
 const previousDay = () => {
-  offset.value--;
-  updateCurrentDate();
-};
+  offset.value--
+  updateCurrentDate()
+}
 
 // const nextDay = () => {
 //   if (offset.value < 1) {
@@ -104,35 +102,34 @@ const previousDay = () => {
 //   }
 // };
 
-
 const setOffset = (value) => {
   offset.value = value
   updateCurrentDate()
 }
 
 const updateCurrentDate = () => {
-  const today = new Date();
-  today.setDate(today.getDate() + offset.value);
-  const month = today.getMonth() + 1;
-  const formattedMonth = month < 10 ? `0${month}` : month;
-  const day = today.getDate();
-  const formattedDay = day < 10 ? `0${day}` : day;
-  upcomingDates.value = `${formattedDay}-${formattedMonth}-${today.getFullYear()}`;
-  currentDate.value = `${formattedDay}-${formattedMonth}-${today.getFullYear()}`;
-};
+  const today = new Date()
+  today.setDate(today.getDate() + offset.value)
+  const month = today.getMonth() + 1
+  const formattedMonth = month < 10 ? `0${month}` : month
+  const day = today.getDate()
+  const formattedDay = day < 10 ? `0${day}` : day
+  upcomingDates.value = `${formattedDay}-${formattedMonth}-${today.getFullYear()}`
+  currentDate.value = `${formattedDay}-${formattedMonth}-${today.getFullYear()}`
+}
 
-updateCurrentDate();
+updateCurrentDate()
 
 const formatFormation = (formation) => {
   if (Array.isArray(formation)) {
-    return formation[0].split('-');
+    return formation[0].split('-')
   }
-  return [];
-};
+  return []
+}
 
 watch(currentDate, () => {
-  getPrediction();
-});
+  getPrediction()
+})
 </script>
 
 <style>

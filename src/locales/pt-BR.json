@@ -125,6 +125,7 @@
   "link7": "Ofertas de Apostas",
   "link8": "Dicas no Telegram",
   "link9": "Tênis",
+  "link10": "Futebol",
   "span1": "Dupla Chance",
   "span2": "Mais de 2.5 Gols",
   "span3": "Mais de 1.5 Gols",
@@ -195,8 +196,8 @@
 },
 "bank": {
   "h1-1": "Aposta do Dia",
-  "h1-2": "Dicas Gratuitas de Basquete",
-  "h1-3": "Dicas Gratuitas",
+  "h1-2": "Dicas de basquete",
+  "h1-3": "Dicas de futebol",
   "btn-1": "Anterior",
   "btn-2": "Hoje",
   "btn-3": "Amanhã"
@@ -279,6 +280,11 @@
   "h1-1": "Faça login ou entre na sua conta",
   "h1-2": "Sua conta VIP não está ativada",
   "btn1": "Pagar para ativar"
+},
+"Offer": {
+  "Oh1": "Oferta exclusiva",
+  "Oh2": "Bonus upto 130.USD",
+  "Ospan": "Somente novos clientes | Conteúdo comercial | Limite de idade para maiores de 18 anos | Aplicam-se T&C"
 }
 }
 

@@ -125,6 +125,7 @@
       "link7": "Weddenschapsaanbiedingen",
       "link8": "Telegram-tips",
       "link9": "Tennis",
+      "link10": "Voetbal",
       "span1": "Dubbele Kans",
       "span2": "Meer dan 2.5 Doelpunten",
       "span3": "Meer dan 1.5 Doelpunten",
@@ -195,15 +196,15 @@
     },
     "bank": {
       "h1-1": "Weddenschap van de dag",
-      "h1-2": "Basketbal Gratis tips",
-      "h1-3": "Gratis tips",
+      "h1-2": "Tip bola basket",
+      "h1-3": "Kiat Sepak Bola",
       "btn-1": "Vorige",
       "btn-2": "Vandaag",
       "btn-3": "Morgen"
     },
     "bonus": {
       "h1-1": "Beste Aanmeldingsaanbiedingen voor Weddenschappen",
-      "span": "Alleen voor nieuwe klanten | commerciële inhoud | leeftijdsbeperking 18+ | Algemene voorwaarden zijn van toepassing"
+      "span": "Alleen voor nieuwe klanten / commerciële inhoud / leeftijdsbeperking 18+ / Algemene voorwaarden zijn van toepassing"
     },
     "news": {
       "h1-1": "Sportnieuws",
@@ -279,6 +280,11 @@
       "h1-1": "Log in of meld u aan bij uw account aan",
       "h1-2": "Uw VIP-account is niet geactiveerd",
       "btn1": "Betalen om te activeren"
+    },
+    "Offer": {
+      "Oh1": "Exclusieve aanbieding",
+      "Oh2": "Bonus tot 130.USD",
+      "Ospan": "New customers only / Commercial content / 18+ age limit / T&C applyAlleen nieuwe klanten / Commerciële inhoud / Leeftijdsgrens 18+ / Algemene voorwaarden zijn van toepassing"
     }
   }
   

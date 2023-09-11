@@ -18,9 +18,7 @@
         </button>
       </div>
     </div>
-    <a href="https://bwredir.com/1bkh?p=%2Fregistration%2F" class="betw-banner-comp" @click="goAdds">
-        <img src="../assets/BannerBet.png" alt="bet winner" class="betw-banner" />
-      </a>
+ <OfferAds/>
     <template v-if="cardData.length > 0">
       <div v-for="item in cardData" class="main-h-card booom-h">
         <Card
@@ -56,6 +54,7 @@
 import ButtonComponent from '../components/ButtonComponent.vue'
 import QuickComponent from '../components/QuickComponent.vue'
 import Card from '../components/CardComponent.vue'
+import OfferAds from '../components/OfferAds.vue'
 import { ref, watchEffect, onMounted } from 'vue'
 import { useRouter } from 'vue-router'
 import axios from 'axios'

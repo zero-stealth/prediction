@@ -27,6 +27,7 @@
     align-items: center;
     overflow: hidden;
     overflow-x: auto;
+    font-weight: 500;
     justify-content: space-between;
     border: 1px solid var(--light-primary-color);
   }

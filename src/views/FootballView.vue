@@ -1,12 +1,12 @@
 <template>
-  <ButtonComponent />
   <QuickComponent />
-  <div class="main-bet">
-    <div class="main-header">
-      <div class="header-info">
-        <h1> {{ $t('bank.h1-1') }} {{ currentDate }}</h1>
-      </div>
-      <div class="header-btn">
+  <div class="home-main">
+    <div class="main-h">
+      <div class="main-header">
+        <div class="header-info">
+          <h1>{{ $t('bank.h1-3') }} {{ currentDate }}</h1>
+        </div>
+        <div class="header-btn">
         <button class="btn-h" :class="{ 'active-btn': offset > 0 }" @click="previousDay()">
           {{ $t('bank.btn-1') }}
         </button>
@@ -17,8 +17,8 @@
           {{ $t('bank.btn-3') }}
         </button>
       </div>
-    </div>
-    <OfferAds />
+      </div>
+  <OfferAds/>
     <template v-if="cardData.length > 0">
       <div v-for="item in cardData" class="main-h-card booom-h">
         <Card
@@ -46,14 +46,14 @@
         <h1>{{ $t('upcoming.h1-2') }}</h1>
       </div>
     </template>
+    </div>
   </div>
 </template>
 <script setup>
 import QuickComponent from '../components/QuickComponent.vue'
-import ButtonComponent from '../components/ButtonComponent.vue'
 import Card from '../components/CardComponent.vue'
-import { ref, watchEffect, onMounted } from 'vue'
 import OfferAds from '../components/OfferAds.vue'
+import { ref, watchEffect, onMounted } from 'vue'
 import axios from 'axios'
 
 const currentDate = ref('')
@@ -65,7 +65,7 @@ const predictions = async () => {
   try {
     const token = localStorage.getItem('token')
     const response = await axios.get(
-      `https://predictions-reg9.onrender.com/predictions/bet/betOfTheDay/${currentDate.value}`
+      `https://predictions-reg9.onrender.com/predictions/tips/freeTip/${currentDate.value}`
     )
     console.log(response.data);
     cardData.value = response.data.length > 0 ? [response.data] : [];
@@ -107,14 +107,13 @@ const formatFormation = (formation) => {
   }
   return [];
 };
-https://predictions-reg9.onrender.com/predictions/tips/freeTip/${currentDate.value}
+
 
 watchEffect(() => {
   predictions();
 });
 </script>
 
-<style>
+<style scoped>
 @import '../style/Home.css';
-@import '../style/Bet.css';
 </style>
