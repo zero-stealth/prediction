@@ -114,15 +114,6 @@
           {{ $t('nav.btn8') }}
         </button>
       </div>
-      <!-- <select v-model="$i18n.locale" class="locale-changer">
-          <option
-            v-for="locale in $i18n.availableLocales"
-            :key="`locale-${locale}`"
-            :value="locale"
-          >
-            {{ locale }}
-          </option>
-        </select> -->
     </div>
   </div>
   <!-- mobile responsive -->
@@ -175,6 +166,7 @@ const logOut = () => {
   isAdmin.value = false
   window.location.reload()
 }
+
 
 // Check if a preferred language is stored in local storage and set it
 const storedLocale = localStorage.getItem('locale')

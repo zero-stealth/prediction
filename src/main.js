@@ -31,6 +31,7 @@ function loadLocaleMessages() {
   }
   
   const i18n = createI18n({
+    legacy: false,
     locale: 'English',
     fallbackLocale: 'English',
     messages: loadLocaleMessages()
