@@ -107,7 +107,6 @@ const formatFormation = (formation) => {
   }
   return [];
 };
-https://predictions-reg9.onrender.com/predictions/tips/freeTip/${currentDate.value}
 
 watchEffect(() => {
   predictions();

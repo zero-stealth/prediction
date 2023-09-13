@@ -18,7 +18,7 @@ const openLink = () => {
       </div>
       </div>
     </div>
-    <span class="span-o">{{ $t('Offer.Ospan') }}</span>
+    <span>{{ $t('Offer.Ospan') }}</span>
   </div>
 </template>
 <style>

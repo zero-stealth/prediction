@@ -188,29 +188,24 @@ const router = createRouter({
 })
 
 
-const currentUser = () => {
-  const token = localStorage.getItem('token');
-  return !!token; // Return true if token exists, false otherwise
-}
-// routeGuards.js
-export const dynamicTitleGuard = (to, from, next) => {
-  document.title = to.meta.title || 'Sportypredict - Free Football Predictions';
-  next();
-};
-
 function getDescription(betName) {
   const descriptions = {
-    'Over 2.5 Goals': 'over 2.5 goals predictions and tips.',
-    'Double Chance': 'Double chance predictions and tips',
-    'Over 1.5 Goals': 'Over 1.5 goals predictions and tips.',
-    'Under 2.5 Goals': 'Under 2.5 goals predictions and tips.',
-    'Both Team To Score': 'both teams to score/BTTS predictions and tips.',
+    "Over 2.5 Goals": 'over 2.5 goals predictions and tips.',
+    "Double Chance": 'Double chance predictions and tips',
+    "Over 1.5 Goals": 'Over 1.5 goals predictions and tips.',
+    "Under 2.5 Goals": 'Under 2.5 goals predictions and tips.',
+    "Both Team To Score": 'both teams to score/BTTS predictions and tips.',
   };
 
   return descriptions[betName] || ''; // Return the description or an empty string if not found
 }
 
-export const adminGuard = (to, from, next) => {
+const dynamicTitleGuard = (to, from, next) => {
+  document.title = to.meta.title || 'Sportypredict - Free Football Predictions';
+  next();
+};
+
+const adminGuard = (to, from, next) => {
   if (to.matched.some((record) => record.meta.isAdmin)) {
     if (isAdmin()) {
       next();
@@ -231,5 +226,4 @@ export const adminGuard = (to, from, next) => {
 router.beforeEach(dynamicTitleGuard);
 router.beforeEach(adminGuard);
 
-
-export default router
+export default router;

@@ -81,7 +81,7 @@
       class="ads-home"
       :style="{
         backgroundImage: `url(${ads})`
-      }"
+      }"  
     ></div>
     <OtherComponent />
     <AboutComponent />

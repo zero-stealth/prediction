@@ -20,27 +20,30 @@
     align-items: center;
     border-radius: 12px;
     justify-content: space-between;
+    background-color: var(--background-color);
     border: 1px solid var(--dark-primary-color);
   }
 
   .offer-container h1 {
-    font-size: 0.8rem;
+    font-size: 0.9rem;
+    text-align: center;
     color: var(--ads-color1);
   }
 
   .offerA-comp h2 {
-    font-size: 0.7em;
+    font-size: 0.7rem;
     color: var(--ads-color2);
   }
 
   .offer-container span {
-    font-size: 0.8rem;
+    font-size: 0.5rem;
+    font-weight: 600;
   }
 
   .offerA-inner {
-    width: 60%;
+    width: 50%;
     display: flex;
-    padding: 5px;
+    padding: 10px;
     align-items: center;
     border-radius: 12px;
     justify-content: space-between;
@@ -71,16 +74,14 @@
 }
 /* using it as global style for larger devices  */
 @media only screen and (min-width: 48em) {
+  .offer-container {
+    align-items: center;
+    flex-direction: column;
+    justify-content: center;
+  }
 
-    .offer-container {
-        align-items: center;
-        flex-direction: column;
-        justify-content: center;
-      }
-
-      
   .offerA-comp {
-    width: 70%;
+    width: 60%;
   }
 
   .offer-container h1 {
@@ -92,7 +93,9 @@
   }
 
   .offer-container span {
-    font-size: 1rem;
+    font-size: .9rem;
+    font-weight: 300;
+
   }
 
   .offerA-inner {

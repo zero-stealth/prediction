@@ -67,6 +67,8 @@ const betName = ref('')
 
 const cardData = ref([])
 
+
+
 const predictions = async () => {
   try {
     // const token = JSON.parse(localStorage.getItem('token'));

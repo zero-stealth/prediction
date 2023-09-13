@@ -137,6 +137,7 @@ const isDrpOpen = ref(false)
 const isDropOpen = ref(false)
 const openLanguage = ref(false)
 
+
 watchEffect(() => {
   token.value = localStorage.getItem('token')
 })
@@ -167,6 +168,7 @@ const logOut = () => {
   isAdmin.value = false
   window.location.reload()
 }
+
 
 
 // Check if a preferred language is stored in local storage and set it

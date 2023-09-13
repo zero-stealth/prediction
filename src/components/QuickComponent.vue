@@ -1,13 +1,12 @@
 <template>
   <div class="quick-main">
     <div class="quick-nav">
+      <router-link :to="{ name: 'Home' }" class="quick-link">{{ $t('Offer.Ohr') }}</router-link>
       <router-link :to="{ name: 'Football' }" class="quick-link">{{ $t('nav.link10') }}</router-link>
+      <router-link :to="{ name: 'Basketball' }" class="quick-link">{{ $t('nav.link4')  }}</router-link>
+      <router-link :to="{ name: 'Tennis' }" class="quick-link">{{ $t('nav.link9') }}</router-link>
       <router-link :to="{ name: 'Bonus' }" class="quick-link">{{ $t('nav.link2') }}</router-link>
       <router-link :to="{ name: 'Banker' }" class="quick-link">{{ $t('nav.link3') }}</router-link>
-      <router-link :to="{ name: 'Basketball' }" class="quick-link">{{
-        $t('nav.link4')
-      }}</router-link>
-      <router-link :to="{ name: 'Tennis' }" class="quick-link">{{ $t('nav.link9') }}</router-link>
       <span
         v-for="betItem in betItems"
         :key="betItem.name"
@@ -30,7 +29,6 @@ const addClass = ref(false)
 const router = useRouter()
 const route = useRoute()
 
-console.log(route.params.betName)
 
 const betItems = [
   { name: 'Double Chance', translationKey: 'nav.span1' },
