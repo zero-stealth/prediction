@@ -27,7 +27,7 @@ const getBackgroundImage = () => {
     return `url(${tennis}), linear-gradient(rgb(17, 51, 86), rgb(17, 51, 86))`;
   } else if (router.currentRoute.value.name === 'Basketball') {
     // Update with the desired background for the Basketball route
-    return `url(${tennis}), linear-gradient(rgb(17, 51, 86), rgb(17, 51, 86))`;
+    return `url(${basketball}), linear-gradient(rgb(17, 51, 86), rgb(17, 51, 86))`;
   } else if (router.currentRoute.value.name === 'Football') {
     // Update with the desired background for the Basketball route
     return `url(${Football}), linear-gradient(rgb(17, 51, 86), rgb(17, 51, 86))`;

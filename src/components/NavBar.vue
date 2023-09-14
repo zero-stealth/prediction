@@ -2,7 +2,7 @@
   <div class="nav-main">
     <div class="nav-container">
       <select v-model="$i18n.locale" class="locale-changer mb-locale">
-          <option
+          <option 
             v-for="locale in $i18n.availableLocales"
             :key="`locale-${locale}`"
             class="locale-op"
