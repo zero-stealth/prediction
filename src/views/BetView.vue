@@ -58,8 +58,11 @@
       <p>{{ $t('double.p2') }}</p>
     </div>
     <div class="fp-class" v-if="betName === 'Over 2.5 Goals'">
+      <h1>{{ $t('overT.h1') }}</h1>
       <p>{{ $t('overT.p1') }}</p>
+      <h1>{{ $t('overT.h2') }}</h1>
       <p>{{ $t('overT.p2') }}</p>
+      <p>{{ $t('overT.p3') }}</p>
     </div>
       <div class="fp-class" v-if="betName === 'Over 1.5 Goals'">
       <h1>{{ $t('overO.h1') }}</h1>

@@ -311,9 +311,12 @@
     "d1": "Significa que estás apostando a que habrá al menos dos (2) goles marcados en el partido. Si se marcan dos o más goles al final del partido (Tiempo completo: 90 minutos), tu predicción se considerará exitosa."
   },
   "overT": {
-    "p1": "Significa que estamos prediciendo que habrá más de dos goles marcados en un partido en particular. Si se marcan tres o más goles al final del partido (Tiempo completo: 90 minutos), tu predicción se considerará exitosa.",
-    "p2": "Este tipo de predicción suele ser utilizada por apostadores que esperan un juego ofensivo y de alto puntaje, ya que implica que ambos equipos probablemente anotarán múltiples goles o que el total de goles marcados en el partido superará los dos."
-  },
+    "h1": "Predicciones de más de 2.5 goles",
+    "p1": "Para ganar con las predicciones de más de 2.5 goles en tu boleto, el total de goles anotados debe ser al menos 3 goles en ambos equipos al final de los 90 minutos. Sportypredict se encarga de las predicciones de más de 2.5 goles de nuestros expertos. Es una opción de apuesta popular para aquellos que buscan más emoción y posiblemente cuotas más altas que simplemente predecir el resultado de un partido.",
+    "h2": "¿Qué significa la predicción de más de 2.5 goles?",
+    "p2": "Significa que estamos prediciendo que habrá más de dos goles anotados en un partido en particular. Si se marcan tres o más goles al final del partido (Tiempo completo: 90 minutos), tu predicción se consideraría exitosa.",
+    "p3": "Este tipo de predicción a menudo es utilizada por apostadores que esperan un partido ofensivo y con muchos goles, ya que implica que es probable que ambos equipos anoten múltiples goles o que el total de goles anotados en el partido exceda los dos."
+},
   "double": {
     "h1": "Predicciones de Doble Oportunidad (1X, 12, X2)",
     "p1": "En esta página tratamos con Predicciones de Doble Oportunidad (1X, 12, X2) de nuestros expertos. La predicción de doble oportunidad es popular cuando se cree que un partido será muy disputado y se desea cubrir múltiples resultados posibles.",

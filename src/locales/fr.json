@@ -310,9 +310,12 @@
     "d1": "Cela signifie que vous pariez qu'il y aura au moins deux (2) buts marqués dans le match. Si deux buts ou plus sont marqués à la fin du match (temps réglementaire : 90 minutes), votre prédiction sera considérée comme réussie."
   },
   "overT": {
-    "p1": "Cela signifie que nous prédisons qu'il y aura plus de deux buts marqués dans un match particulier. Si trois buts ou plus sont marqués à la fin du match (temps réglementaire : 90 minutes), votre prédiction sera considérée comme réussie.",
-    "p2": "Ce type de prédiction est souvent utilisé par les parieurs qui s'attendent à un match offensif et à un score élevé, car cela implique que les deux équipes sont susceptibles de marquer plusieurs buts ou que le nombre total de buts marqués dans le match dépassera deux."
-  },
+    "h1": "Prédictions de plus de 2,5 buts",
+    "p1": "Pour gagner des prédictions de plus de 2,5 buts sur votre billet, le total des buts marqués doit être d'au moins 3 buts dans les deux équipes à la fin des 90 minutes. Sportypredict propose des prédictions de plus de 2,5 buts de nos experts. C'est une option de pari populaire pour ceux qui recherchent plus d'excitation et potentiellement des cotes plus élevées que de simplement prédire l'issue d'un match.",
+    "h2": "Que signifie la prédiction de plus de 2,5 buts ?",
+    "p2": "Cela signifie que nous prévoyons qu'il y aura plus de deux buts marqués dans un match particulier. Si trois buts ou plus sont marqués à la fin du match (temps plein : 90 minutes), votre prédiction sera considérée comme réussie.",
+    "p3": "Ce type de prédiction est souvent utilisé par les parieurs qui s'attendent à un match offensif et à fort score, car cela implique que les deux équipes sont susceptibles de marquer plusieurs buts ou que le total des buts marqués dans le match dépassera deux."
+},
   "double": {
     "h1": "Prédictions Double Chance (1N, 12, X2)",
     "p1": "Sur cette page, nous traitons des prédictions Double Chance (1N, 12, X2) de nos experts. La prédiction Double Chance est populaire lorsque vous pensez qu'un match est susceptible d'être très disputé, et que vous souhaitez couvrir plusieurs résultats possibles.",

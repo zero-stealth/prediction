@@ -310,8 +310,11 @@
   "d1": "Significa que você está apostando que haverá pelo menos dois (2) gols marcados na partida. Se dois ou mais gols forem marcados até o final da partida (Tempo Integral: 90 minutos), sua previsão será considerada bem-sucedida."
 },
 "overT": {
-  "p1": "Isso significa que estamos prevendo que haverá mais de dois gols marcados em uma partida específica. Se três ou mais gols forem marcados até o final da partida (Tempo Integral: 90 minutos), sua previsão será considerada bem-sucedida.",
-  "p2": "Esse tipo de previsão é frequentemente usado por apostadores que esperam um jogo ofensivo e com muitos gols, pois implica que ambas as equipes provavelmente marcarão vários gols ou que o total de gols marcados na partida excederá dois."
+  "h1": "Previsões de Mais de 2,5 gols",
+  "p1": "Para ganhar nas previsões de mais de 2,5 gols em seu bilhete, o total de gols marcados deve ser de pelo menos 3 gols em ambas as equipes ao final dos 90 minutos. O Sportypredict lida com previsões de mais de 2,5 gols feitas por nossos especialistas. É uma opção popular de apostas para aqueles que buscam mais emoção e odds potencialmente mais altas do que simplesmente prever o resultado de uma partida.",
+  "h2": "O que Significa a Previsão de Mais de 2,5 Gols?",
+  "p2": "Significa que estamos prevendo que haverá mais de dois gols marcados em uma partida específica. Se três ou mais gols forem marcados até o final do jogo (Tempo Integral: 90 minutos), sua previsão será considerada bem-sucedida.",
+  "p3": "Esse tipo de previsão é frequentemente usado por apostadores que esperam um jogo ofensivo e com muitos gols, pois isso implica que ambas as equipes provavelmente marcarão vários gols ou que o total de gols marcados na partida excederá dois."
 },
 "double": {
   "h1": "Previsões de Dupla Chance (1X, 12, X2)",

@@ -309,9 +309,12 @@
       "d1": "Significa scommettere che ci saranno almeno due (2) gol segnati nella partita. Se alla fine della partita (Tempo Pieno: 90 minuti) vengono segnati due o più gol, la tua previsione sarà considerata vincente."
     },
     "overT": {
-      "p1": "Significa che prevediamo che saranno segnati più di due gol in una partita particolare. Se alla fine della partita (Tempo Pieno: 90 minuti) vengono segnati tre o più gol, la tua previsione sarà considerata vincente.",
-      "p2": "Questo tipo di previsione è spesso utilizzato dai scommettitori che si aspettano una partita offensiva e ad alto punteggio, poiché implica che entrambe le squadre sono probabilmente in grado di segnare più gol o che il totale dei gol segnati nella partita supererà i due."
-    },
+      "h1": "Previsioni Over 2.5 gol",
+      "p1": "Per vincere con le previsioni Over 2.5 gol nella tua schedina, il numero totale di gol segnati deve essere almeno 3 gol da entrambe le squadre al termine dei 90 minuti. Sportypredict si occupa delle previsioni Over 2.5 gol grazie ai nostri esperti. È un'opzione di scommessa popolare per coloro che cercano maggiore eccitazione e potenzialmente quote più alte rispetto alla semplice previsione dell'esito di una partita.",
+      "h2": "Cosa significa la previsione Over 2.5?",
+      "p2": "Significa che prevediamo che verranno segnati più di due gol in una partita specifica. Se vengono segnati tre o più gol entro la fine della partita (Tempo pieno: 90 minuti), la tua previsione sarà considerata vincente.",
+      "p3": "Questo tipo di previsione è spesso utilizzato dai scommettitori che si aspettano una partita offensiva e ad alto punteggio, poiché implica che entrambe le squadre sono probabilmente in grado di segnare più gol o che il totale dei gol segnati nella partita supererà i due."
+  },  
     "double": {
       "h1": "Previsioni sulla Doppia Chance (1X, 12, X2)",
       "p1": "In questa pagina trattiamo le previsioni sulla Doppia Chance (1X, 12, X2) dai nostri esperti. La previsione sulla Doppia Chance è popolare quando si crede che una partita sia probabile che sia molto equilibrata, e si desidera coprire più esiti possibili.",
