@@ -6,7 +6,7 @@
       <div class="main-h">
         <div class="main-header">
           <div class="header-info">
-            <h1>{{ $t('tennis.h1-1') }}{{ currentDate }}</h1>
+            <h1>{{ $t('tennis.h1-1') }} ({{ currentDate }})</h1>
           </div>
           <div class="header-btn">
             <button class="btn-h" :class="{ 'active-btn': offset > 0 }" @click="previousDay()">
@@ -20,11 +20,11 @@
             </button>
           </div>
         </div>
-       <OfferAds/>
+        <OfferAds />
         <template v-if="cardData.length > 0">
           <div v-for="item in cardData" class="main-h-card" :key="item._id">
             <Card
-              v-for="(card, index) in item"
+              v-for="card in item"
               :key="card._id"
               :tip="card.tip"
               :status="card.status"
@@ -51,12 +51,21 @@
         </template>
       </div>
     </div>
+    <div>
+      <vipads />
+    </div>
+    <div class="fp-class">
+      <h1>{{ $t('ten.h1') }}</h1>
+      <p>{{ $t('ten.p1') }}</p>
+      <p>{{ $t('ten.p2') }}</p>
+    </div>
   </div>
 </template>
 
 <script setup>
 import axios from 'axios'
 import { ref, onMounted, watch } from 'vue'
+import vipads from '../components/vipads.vue'
 import OfferAds from '../components/OfferAds.vue'
 import Card from '../components/CardComponent.vue'
 import QuickComponent from '../components/QuickComponent.vue'
@@ -67,7 +76,7 @@ const cardData = ref([])
 const url = ref('')
 
 async function getPrediction() {
-  const token = JSON.parse(localStorage.getItem('token'))
+  // const token = JSON.parse(localStorage.getItem('token'))
   url.value = `https://predictions-reg9.onrender.com/sports/sport/Tennis/${currentDate.value}`
   console.log(url.value)
 

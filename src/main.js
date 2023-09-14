@@ -43,7 +43,7 @@ function loadLocaleMessages() {
 //   es.js (Spanish)
 //   en.js (English)
 //   it.js (Italian)
-//   pt-PT.js (Portuguese)
+//   pt-BR.js (Portuguese)
 
 
 const app = createApp(App)

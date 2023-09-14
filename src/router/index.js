@@ -200,6 +200,17 @@ function getDescription(betName) {
   return descriptions[betName] || ''; // Return the description or an empty string if not found
 }
 
+const currentUser = () => {
+  const token = localStorage.getItem('token');
+  return !!token; // Return true if token exists, false otherwise
+}
+
+const isAdmin = () => {
+  const admin = localStorage.getItem('admin');
+  return admin === 'true'; // Return true if admin is 'true', false otherwise
+}
+
+
 const dynamicTitleGuard = (to, from, next) => {
   document.title = to.meta.title || 'Sportypredict - Free Football Predictions';
   next();

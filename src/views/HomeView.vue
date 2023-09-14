@@ -5,7 +5,7 @@
     <div class="main-h">
       <div class="main-header">
         <div class="header-info">
-          <h1>{{ $t('bank.h1-3') }} {{ currentDate }}</h1>
+          <h1>{{ $t('bank.h1-3') }}  ({{ currentDate }})</h1>
         </div>
         <div class="header-btn">
           <button class="btn-h" :class="{ 'active-btn': offset > 0 }" @click="previousDay()">
@@ -23,7 +23,7 @@
       <template v-if="cardData.length > 0">
         <div class="main-h-card">
           <Card
-            v-for="(card, index) in cardData"
+            v-for="(card) in cardData"
             :key="card._id"
             :tip="card.tip"
             :status="card.status"
@@ -76,13 +76,15 @@
       </div>
     </div>
     <Upcoming />
-    <div
+    <div class="ads-p">
+      <div
       @click="goAds()"
       class="ads-home"
       :style="{
         backgroundImage: `url(${ads})`
       }"  
     ></div>
+    </div>
     <OtherComponent />
     <AboutComponent />
   </div>
@@ -123,9 +125,6 @@ const goAds = () => {
   window.open('https://wa.me/+254703147237?text=Hi sporty predict, I want to buy VIP subcription')
 }
 
-const update = () => {
-  onMounted(() => {})
-}
 
 const visibleNews = computed(() => {
   return newsData.value.slice(0, maxNewsToShow.value)
@@ -159,7 +158,7 @@ const getNews = async () => {
 }
 
 const getPrediction = async () => {
-  const token = JSON.parse(localStorage.getItem('token'))
+  // const token = JSON.parse(localStorage.getItem('token'))
   try {
     const response = await axios.get(
       `https://predictions-reg9.onrender.com/predictions/tips/freeTip/${currentDate.value}`

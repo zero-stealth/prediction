@@ -183,15 +183,40 @@
     justify-content: center;
   }
 
+  .ads-p{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border: 2px solid border;
+  }
+
   .ads-home {
-    height: 50vh;
-    margin:  10px;
+    margin:10px;
+    width: 700px;
+    height: 280px;
     cursor: pointer;
     border-radius: 4px;
-    background-size: contain;
+    background-size: cover;
     background-repeat: no-repeat;
     background-position: center center;
   }
+
+  .fp-class {
+    gap: 10px;
+    display: flex;
+    font-size: .9rem;
+    padding: 20px;
+    text-align: justify;
+    flex-direction: column;
+  }
+
+
+  .fp-class h1 {
+    font-size: 1.2rem;
+    text-align: center;
+    text-decoration: underline;
+  }
+
 
 }
 /* using it as global style for larger devices  */
@@ -213,6 +238,14 @@
   .betw-banner {
     height: 100px;
     width: fit-content;
+  }
+
+  .fp-class {
+    padding: 20px 100px;
+  }
+
+  .fp-class h1 {
+    text-align: start;
   }
   
 }

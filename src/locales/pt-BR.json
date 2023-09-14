@@ -286,7 +286,61 @@
   "Oh1": "Oferta exclusiva",
   "Oh2": "Bonus upto 130.USD",
   "Ospan": "Somente novos clientes | Conteúdo comercial | Limite de idade para maiores de 18 anos | Aplicam-se T&C"
+},
+"football": {
+  "h1": "Previsões de Futebol",
+  "p1": "As previsões de futebol envolvem tentar prever o resultado de partidas de futebol (futebol soccer). As pessoas fazem previsões de futebol para diversos fins, incluindo apostas, análise esportiva ou simplesmente por diversão. Alguns tipos comuns de previsões de futebol incluem: Previsões de Resultado da Partida (1 para time da casa, 2 para time visitante, X para empate), Previsões de Mais/Menos Gols (ou seja, mais de 1,5 gols, menos de 2,5 gols), Previsões de Ambas as Equipes Marcam (BTTS - Both Teams to Score) (ou seja, BTTS-Sim e BTTS-Não), Previsões de Dupla Chance (1X, 12, X2) e muitas outras.",
+  "p2": "Ao fazer previsões de futebol, é essencial considerar fatores como forma da equipe, lesões de jogadores, estatísticas de confrontos diretos, vantagem de jogar em casa, condições climáticas e outros dados relevantes. Lembre-se de que prever o resultado de eventos esportivos sempre envolve um elemento de incerteza, e apostas responsáveis são cruciais. Além disso, algumas pessoas fazem previsões por diversão ou como parte da análise esportiva, sem envolver apostas."
+},
+"bask": {
+  "h1": "Previsões de Basquete",
+  "p1": "As previsões de basquete envolvem tentar prever o resultado de jogos de basquete, como os da NBA (Associação Nacional de Basquete) ou outras ligas profissionais, basquete universitário ou competições internacionais.",
+  "p2": "Ao fazer previsões de basquete, consideramos fatores como forma da equipe, lesões de jogadores, histórico de confrontos diretos, vantagem de jogar em casa e desempenho recente. Análise estatística avançada, dados históricos e opiniões de especialistas frequentemente são usados para embasar as previsões. Tenha em mente que as previsões esportivas estão sujeitas a incertezas, e os resultados podem ser influenciados por eventos inesperados durante o jogo."
+},
+"ten": {
+  "h1": "Previsões de Tênis",
+  "p1": "As previsões de tênis envolvem prever os resultados de partidas de tênis, incluindo as de torneios de tênis profissionais como os Grand Slam (Wimbledon, Aberto da França, Aberto dos Estados Unidos, Aberto da Austrália) e outros torneios da ATP (Associação de Tenistas Profissionais) e da WTA (Associação de Tênis Feminino).",
+  "p2": "Ao fazer previsões de tênis, consideramos fatores como rankings de jogadores, forma recente, histórico de confrontos diretos, superfície de jogo (quadra dura, grama, saibro), situação de lesões e desempenho em partidas anteriores. Além disso, alguns entusiastas do tênis contam com estatísticas avançadas, opiniões de especialistas e dados históricos para embasar suas previsões."
+},
+"overO": {
+  "h1": "Previsões de Mais de 1,5 Gols",
+  "p1": "Obtenha as Previsões de Mais de 1,5 Gols de hoje dos nossos especialistas gratuitamente nesta página. Mais de 1,5 gols é uma estratégia popular de apostas no futebol (futebol soccer) que você pode usar para lucrar diariamente.",
+  "p2": "É uma das opções de apostas mais simples e populares para quem deseja apostar no número total de gols em uma partida. Usamos diversas estratégias ao fazer previsões de mais de 1,5 gols. As previsões, neste caso, são dos especialistas em sportypredict.com.",
+  "h2": "O Que Significa a Previsão de Mais de 1,5 Gols?",
+  "d1": "Significa que você está apostando que haverá pelo menos dois (2) gols marcados na partida. Se dois ou mais gols forem marcados até o final da partida (Tempo Integral: 90 minutos), sua previsão será considerada bem-sucedida."
+},
+"overT": {
+  "p1": "Isso significa que estamos prevendo que haverá mais de dois gols marcados em uma partida específica. Se três ou mais gols forem marcados até o final da partida (Tempo Integral: 90 minutos), sua previsão será considerada bem-sucedida.",
+  "p2": "Esse tipo de previsão é frequentemente usado por apostadores que esperam um jogo ofensivo e com muitos gols, pois implica que ambas as equipes provavelmente marcarão vários gols ou que o total de gols marcados na partida excederá dois."
+},
+"double": {
+  "h1": "Previsões de Dupla Chance (1X, 12, X2)",
+  "p1": "Nesta página, lidamos com Previsões de Dupla Chance (1X, 12, X2) de nossos especialistas. A previsão de dupla chance é popular quando você acredita que uma partida tem chances de ser muito equilibrada, e você deseja cobrir múltiplos resultados possíveis.",
+  "h2": "O Que Significa a Previsão de Dupla Chance (1X, 12, X2)?",
+  "p2": "Envolve selecionar duas das três possíveis saídas da partida para aumentar suas chances de ganhar. Essas opções de dupla chance oferecem uma probabilidade maior de vitória em comparação com apostar no resultado da partida (1 para vitória em casa, X para empate ou 2 para vitória fora), e essa estratégia reduz o risco de perder uma aposta."
+},
+"Teams": {
+  "h1": "Previsões de Ambas as Equipes Marcam",
+  "p1": "Nesta página, lidamos com Previsões de Ambas as Equipes Marcam (BTTS) de nossos especialistas. As previsões BTTS são populares porque adicionam emoção a uma partida, independentemente de quem vença no final. Não importa se é um jogo com muitos gols ou um empate em 1 a 1; desde que ambas as equipes marquem, a aposta 'Sim' ganha. Fatores que consideramos ao fazer previsões BTTS incluem as forças ofensivas e defensivas das equipes, histórico recente de gols, histórico de confrontos diretos e estilo de jogo de ambas as equipes.",
+  "h2": "O Que Significa a Previsão de Ambas as Equipes Marcam?",
+  "p2": "As previsões de 'Ambas as Equipes Marcam' (BTTS) nas apostas de futebol envolvem apostar se ambas as equipes em uma partida marcarão pelo menos um gol cada durante o jogo. Veja como funcionam as previsões BTTS:",
+  "li1": "Sim (BTTS-Sim): Se você prevê 'Sim' para BTTS, significa que você acredita que ambas as equipes marcarão pelo menos um gol na partida. Se ambas as equipes marcarem, sua aposta é bem-sucedida, independentemente do placar final.",
+  "li2": "Não (BTTS-Não): Se você prevê 'Não' para BTTS, está apostando que pelo menos uma das equipes não marcará na partida. Se uma das equipes não marcar, sua aposta ganha."
+},
+"Under": {
+  "h1": "Previsões de Menos de 2,5 Gols",
+  "p1": "Nesta página, lidamos com Previsões de Menos de 2,5 Gols de nossos especialistas. Essa aposta envolve apostar que uma determinada partida terá menos de três gols marcados no total. Esse tipo de previsão é frequentemente usado quando antecipamos uma partida com poucos gols ou defensiva, ou quando acreditamos que ambas as equipes podem ter dificuldades para marcar. Fatores que consideramos ao fazer previsões de menos de 2,5 gols incluem as forças defensivas das equipes, histórico recente de baixa pontuação, histórico de confrontos diretos e outros fatores que possam sugerir poucas oportunidades de marcar gols na partida.",
+  "h2": "O Que Significa Previsões de Menos de 2,5 Gols?",
+  "p2": "Isso significa que se você prever 'Menos de 2,5 gols', você ganha sua aposta se a partida terminar com um total de dois gols ou menos. Isso inclui placares como 0-0, 1-0, 0-1 ou 1-1. Se a partida tiver três ou mais gols (como 2-1, 1-2 ou qualquer resultado com mais gols), sua aposta não será bem-sucedida."
+},
+"BetF": {
+  "h1": "Aposta do Dia",
+  "p1": "Nesta página, oferecemos a Aposta do Dia Gratuita em previsões de futebol, basquete ou tênis feitas pelos nossos especialistas. Uma vez que você tenha acesso à nossa previsão da Aposta do Dia, terá a oportunidade de ganhar muito. Garantimos que nossas previsões são precisas e você agora pode se livrar de toda a confusão.",
+  "h2": "O que significa Aposta do Dia?",
+  "p2": "É a dica mais segura, geralmente com odds baixas. São perfeitas para acumuladores/rolagens."
 }
+
+
 }
 
 

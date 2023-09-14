@@ -20,9 +20,9 @@
     </div>
     <OfferAds />
     <template v-if="cardData.length > 0">
-      <div v-for="item in cardData" class="main-h-card booom-h">
+      <div v-for="item in cardData" class="main-h-card booom-h" :key="item._id">
         <Card
-          v-for="(card, index) in item"
+          v-for="(card) in item"
           :key="card._id"
           :tip="card.tip"
           :status="card.status"
@@ -48,6 +48,42 @@
       </div>
     </template>
   </div>
+  <div>
+      <vipads />
+    </div>
+  <div class="fp-class" v-if="betName === 'Double Chance'">
+      <h1>{{ $t('double.h1') }}</h1>
+      <p>{{ $t('double.p1') }}</p>
+      <h1>{{ $t('double.h2') }}</h1>
+      <p>{{ $t('double.p2') }}</p>
+    </div>
+    <div class="fp-class" v-if="betName === 'Over 2.5 Goals'">
+      <p>{{ $t('overT.p1') }}</p>
+      <p>{{ $t('overT.p2') }}</p>
+    </div>
+      <div class="fp-class" v-if="betName === 'Over 1.5 Goals'">
+      <h1>{{ $t('overO.h1') }}</h1>
+      <p>{{ $t('overO.p1') }}</p>
+      <p>{{ $t('overO.p2') }}</p>
+      <h1>{{ $t('overO.h2') }}</h1>
+      <p>{{ $t('overO.d1') }}</p>
+    </div>
+    <div class="fp-class" v-if="betName === 'Both Team To Score'">
+      <h1>{{ $t('Teams.h1') }}</h1>
+      <p>{{ $t('Teams.p1') }}</p>
+      <h1>{{ $t('Teams.h2') }}</h1>
+      <p>{{ $t('Teams.p2') }}</p>
+      <ol>
+        <li>{{ $t('Teams.li1') }}</li>
+        <li>{{ $t('Teams.li2') }}</li>
+      </ol>
+    </div>
+     <div class="fp-class" v-if="betName === 'Under 2.5 Goals'">
+      <h1>{{ $t('Under.h1') }}</h1>
+      <p>{{ $t('Under.p1') }}</p>
+      <h1>{{ $t('Under.h2') }}</h1>
+      <p>{{ $t('Under.p2') }}</p>
+    </div>
 </template>
 
 <script setup>
@@ -56,6 +92,7 @@ import QuickComponent from '../components/QuickComponent.vue'
 import Card from '../components/CardComponent.vue'
 import OfferAds from '../components/OfferAds.vue'
 import { ref, watchEffect, onMounted } from 'vue'
+import vipads from '../components/vipads.vue'
 import { useRouter } from 'vue-router'
 import axios from 'axios'
 

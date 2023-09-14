@@ -6,7 +6,7 @@
       <div class="main-h">
         <div class="main-header">
           <div class="header-info">
-            <h1>{{ $t('bank.h1-2') }} {{ currentDate }}</h1>
+            <h1>{{ $t('bank.h1-2') }}  ({{ currentDate }})</h1>
           </div>
           <div class="header-btn">
             <button class="btn-h" :class="{ 'active-btn': offset > 0 }" @click="previousDay()">
@@ -24,7 +24,7 @@
         <template v-if="cardData.length > 0">
           <div v-for="item in cardData" class="main-h-card" :key="item">
             <Card
-              v-for="(card, index) in item"
+              v-for="(card) in item"
               :key="card._id"
               :tip="card.tip"
               :status="card.status"
@@ -50,11 +50,20 @@
         </template>
       </div>
     </div>
+    <div>
+      <vipads />
+    </div>
+    <div class="fp-class">
+      <h1>{{ $t('bask.h1') }}</h1>
+      <p>{{ $t('bask.p1') }}</p>
+      <p>{{ $t('bask.p2') }}</p>
+    </div>
   </div>
 </template>
 
 <script setup>
 import axios from 'axios'
+import vipads from '../components/vipads.vue'
 import OfferAds from '../components/OfferAds.vue'
 import Card from '../components/CardComponent.vue'
 import ButtonComponent from '../components/ButtonComponent.vue'

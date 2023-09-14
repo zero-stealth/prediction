@@ -129,7 +129,7 @@ export default {
           <h1>{{$t('pay.h1-4')}}</h1>
           <ul>
             <li>{{$t('pay.li1')}}</li>
-            <li>Use <span>betsmart.inc@gmail.com</span></li>
+            <li>Use <span>contact@sportypredict.com</span></li>
             <li>{{$t('pay.li3')}}</li>
             <li>{{$t('pay.li8')}}</li>
           </ul>
@@ -520,7 +520,7 @@ export default {
           <h1>{{$t('pay.h1-4')}}</h1>
           <ul>
             <li>{{$t('pay.li1')}}</li>
-            <li>Use <span>betsmart.inc@gmail.com</span></li>
+            <li>Use <span>contact@sportypredict.com</span></li>
             <li>{{$t('pay.li3')}}</li>
             <li>{{$t('pay.li8')}}</li>
           </ul>

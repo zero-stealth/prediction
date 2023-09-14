@@ -287,5 +287,58 @@
     "Oh1": "Oferta exclusiva",
     "Oh2": "Bono hasta 130.USD",
     "Ospan": "Sólo nuevos clientes / Contenido comercial / Límite de edad mayor de 18 años / Se aplican términos y condiciones"
-  }
+  },
+  "football": {
+    "h1": "Predicciones de Fútbol",
+    "p1": "Las predicciones de fútbol implican intentar predecir el resultado de los partidos de fútbol. Las personas hacen predicciones de fútbol con varios propósitos, incluyendo las apuestas, el análisis deportivo o simplemente por diversión. Algunos tipos comunes de predicciones de fútbol incluyen: Predicciones de Resultado del Partido (1 para el equipo local, 2 para el equipo visitante, X para el empate), Predicciones de Más/Menos Goles (es decir, más de 1.5 goles, menos de 2.5 goles), Predicciones de Ambos Equipos Anotarán (BTTS) (es decir, BTTS-Sí y BTTS-No), Predicciones de Doble Oportunidad (1X, 12, X2) y muchas más.",
+    "p2": "Al hacer predicciones de fútbol, es esencial tener en cuenta factores como la forma del equipo, lesiones de jugadores, estadísticas de enfrentamientos previos, ventaja de jugar en casa, condiciones climáticas y otros datos relevantes. Ten en cuenta que predecir el resultado de eventos deportivos siempre conlleva un elemento de incertidumbre, y las apuestas responsables son cruciales. Además, algunas personas hacen predicciones por diversión o como parte del análisis deportivo sin involucrar apuestas."
+  },
+  "bask": {
+    "h1": "Predicciones de Baloncesto",
+    "p1": "Las predicciones de baloncesto implican intentar pronosticar el resultado de los juegos de baloncesto, como los de la NBA (Asociación Nacional de Baloncesto) u otras ligas profesionales, el baloncesto universitario o competiciones internacionales.",
+    "p2": "Al hacer predicciones de baloncesto, consideramos factores como la forma del equipo, lesiones de jugadores, registros de enfrentamientos previos, ventaja de jugar en casa y desempeño reciente. El análisis estadístico avanzado, los datos históricos y las opiniones de expertos a menudo se utilizan para fundamentar las predicciones. Ten en cuenta que las predicciones deportivas están sujetas a la incertidumbre, y los resultados pueden verse influenciados por eventos inesperados durante el juego."
+  },
+  "ten": {
+    "h1": "Predicciones de Tenis",
+    "p1": "Las predicciones de tenis implican pronosticar los resultados de los partidos de tenis, incluyendo los de los torneos de tenis profesionales como los eventos de Grand Slam (Wimbledon, Abierto de Francia, Abierto de EE. UU., Abierto de Australia) y otros torneos de la ATP (Asociación de Tenis Profesional) y la WTA (Asociación de Tenis Femenino).",
+    "p2": "Al hacer predicciones de tenis, consideramos factores como el ranking de los jugadores, la forma reciente, los registros de enfrentamientos previos, la superficie de juego (pista dura, césped, arcilla), el estado de lesiones y el desempeño en partidos anteriores. Además, algunos entusiastas del tenis confían en estadísticas avanzadas, opiniones de expertos y datos históricos para fundamentar sus predicciones."
+  },
+  "overO": {
+    "h1": "Predicciones de Más de 1.5 Goles",
+    "p1": "Obtén las Predicciones de Más de 1.5 goles de hoy de nuestros expertos de forma gratuita en esta página. Más de 1.5 goles es una estrategia popular de apuestas en el fútbol (soccer) que se puede utilizar para obtener ganancias diarias.",
+    "p2": "Es una de las opciones de apuestas más simples y populares para aquellos que buscan apostar por el número total de goles en un partido. Utilizamos varias estrategias al hacer predicciones de más de 1.5 goles. Las predicciones en este caso son de Expertos en sportypredict.com.",
+    "h2": "¿Qué Significa la Predicción de Más de 1.5?",
+    "d1": "Significa que estás apostando a que habrá al menos dos (2) goles marcados en el partido. Si se marcan dos o más goles al final del partido (Tiempo completo: 90 minutos), tu predicción se considerará exitosa."
+  },
+  "overT": {
+    "p1": "Significa que estamos prediciendo que habrá más de dos goles marcados en un partido en particular. Si se marcan tres o más goles al final del partido (Tiempo completo: 90 minutos), tu predicción se considerará exitosa.",
+    "p2": "Este tipo de predicción suele ser utilizada por apostadores que esperan un juego ofensivo y de alto puntaje, ya que implica que ambos equipos probablemente anotarán múltiples goles o que el total de goles marcados en el partido superará los dos."
+  },
+  "double": {
+    "h1": "Predicciones de Doble Oportunidad (1X, 12, X2)",
+    "p1": "En esta página tratamos con Predicciones de Doble Oportunidad (1X, 12, X2) de nuestros expertos. La predicción de doble oportunidad es popular cuando se cree que un partido será muy disputado y se desea cubrir múltiples resultados posibles.",
+    "h2": "¿Qué Significa la Predicción de Doble Oportunidad (1X, 12, X2)?",
+    "p2": "Implica seleccionar dos de las tres posibles resultados del partido para aumentar tus posibilidades de ganar. Estas opciones de doble oportunidad ofrecen una probabilidad más alta de ganar en comparación con apostar por el resultado del partido (1 para una victoria local, X para un empate o 2 para una victoria visitante), y esta estrategia reduce el riesgo de perder una apuesta."
+  },
+  "Teams": {
+    "h1": "Predicciones de Ambos Equipos Anotarán",
+    "p1": "En esta página tratamos con Predicciones de Ambos Equipos Anotarán (BTTS) de nuestros expertos. Las predicciones BTTS son populares porque agregan emoción a un partido, sin importar quién gane en última instancia. No importa si es un juego de alto puntaje o un empate 1-1; siempre que ambos equipos anoten, una apuesta de 'Sí' gana. Los factores que consideramos al hacer predicciones BTTS incluyen las fortalezas ofensivas y defensivas del equipo, registros recientes de goles, historial de enfrentamientos y el estilo de juego de ambos equipos.",
+    "h2": "¿Qué Significan las Predicciones de Ambos Equipos Anotarán?",
+    "p2": "Las predicciones de 'Ambos Equipos Anotarán' (BTTS) en las apuestas de fútbol implican apostar si ambos equipos en un partido anotarán al menos un gol cada uno durante el juego. Así es cómo funcionan las predicciones BTTS:",
+    "li1": "Sí (BTTS-Sí): Si pronosticas 'Sí' para BTTS, significa que crees que ambos equipos anotarán al menos un gol en el partido. Si ambos equipos anotan, tu apuesta es exitosa, independientemente del marcador final.",
+    "li2": "No (BTTS-No): Si pronosticas 'No' para BTTS, estás apostando a que al menos uno de los equipos no anotará en el partido. Si uno de los equipos no anota, tu apuesta gana."
+  },
+  "Under": {
+    "h1": "Predicciones de Menos de 2.5 Goles",
+    "p1": "En esta página tratamos con Predicciones de Menos de 2.5 goles de nuestros expertos. Esta apuesta implica apostar que un partido en particular tendrá menos de tres goles en total. Este tipo de predicción se utiliza a menudo cuando anticipamos un partido con pocos goles o defensivo, o cuando creemos que ambos equipos pueden tener dificultades para anotar. Los factores que consideramos al hacer predicciones de menos de 2.5 goles incluyen las fortalezas defensivas del equipo, registros recientes de partidos con pocos goles, historial de enfrentamientos y cualquier otro factor que pueda sugerir una falta de oportunidades para anotar goles en el juego.",
+    "h2": "¿Qué Significa la Predicción de Menos de 2.5 Goles?",
+    "p2": "Esto significa que ganas tu apuesta si el partido termina con un total de dos goles o menos. Esto incluye marcadores como 0-0, 1-0, 0-1 o 1-1. Si el partido tiene tres o más goles (como 2-1, 1-2 o cualquier resultado con más goles), tu apuesta no es exitosa."
+  },
+  "BetF": {
+    "h1": "Apuesta del día",
+    "p1": "En esta página ofrecemos una Apuesta del Día gratuita en predicciones de fútbol, baloncesto o tenis de nuestros expertos. Una vez que obtengas acceso a nuestra predicción de la Apuesta del Día, tendrás la oportunidad de ganar en grande. Nos aseguramos de que nuestras predicciones sean precisas y ahora puedes deshacerte de toda confusión.",
+    "h2": "¿Qué significa Apuesta del día?",
+    "p2": "Es el pronóstico más seguro, generalmente con probabilidades bajas. Son perfectas para acumuladores/rollovers."
+}
+
 }

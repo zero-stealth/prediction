@@ -286,5 +286,59 @@
     "Oh1": "Exclusieve aanbieding",
     "Oh2": "Bonus tot 130.USD",
     "Ospan": "New customers only / Commercial content / 18+ age limit / T&C applyAlleen nieuwe klanten / Commerciële inhoud / Leeftijdsgrens 18+ / Algemene voorwaarden zijn van toepassing"
+  },
+    "football": {
+      "h1": "Voetbal Voorspellingen",
+      "p1": "Voetbalvoorspellingen proberen de uitkomst van voetbalwedstrijden te voorspellen, zoals die in voetbalwedstrijden. Mensen maken voetbalvoorspellingen om verschillende redenen, waaronder wedden, sportanalyse, of gewoon voor de lol. Enkele veelvoorkomende soorten voetbalvoorspellingen zijn: Voorspellingen van de Wedstrijduitslag (1 voor thuisteam, 2 voor uitteam, X voor gelijkspel), Over/Onder Voorspellingen (bijv. meer dan 1,5 doelpunten of minder dan 2,5 doelpunten), Voorspellingen voor Beide Teams Scoren (BTTS-ja en BTTS-nee), Dubbele Kans Voorspellingen (1X, 12, X2), en nog veel meer.",
+      "p2": "Bij het maken van voetbalvoorspellingen is het essentieel om factoren zoals teamvorm, spelerblessures, onderlinge statistieken, thuisvoordeel, weersomstandigheden en andere relevante gegevens in overweging te nemen. Houd er rekening mee dat het voorspellen van de uitkomst van sportevenementen altijd een element van onzekerheid met zich meebrengt, en verantwoord wedden is cruciaal. Bovendien maken sommige mensen voorspellingen gewoon voor de lol of als onderdeel van sportanalyse zonder te wedden."
+    },
+    "bask": {
+      "h1": "Basketbal Voorspellingen",
+      "p1": "Basketbalvoorspellingen proberen de uitkomst van basketbalwedstrijden te voorspellen, zoals die in de NBA (National Basketball Association) of andere professionele competities, universiteitsbasketbal of internationale wedstrijden.",
+      "p2": "Bij het maken van basketbalvoorspellingen houden we rekening met factoren zoals teamvorm, spelerblessures, onderlinge statistieken, thuisvoordeel en recente prestaties. Geavanceerde statistische analyse, historische gegevens en expertmeningen worden vaak gebruikt om voorspellingen te informeren. Houd er rekening mee dat sportvoorspellingen onderhevig zijn aan onzekerheid en uitkomsten kunnen worden beïnvloed door onverwachte gebeurtenissen tijdens de wedstrijd."
+    },
+    "ten": {
+      "h1": "Tennis Voorspellingen",
+      "p1": "Tennisvoorspellingen proberen de uitkomsten van tenniswedstrijden te voorspellen, inclusief die in professionele tennistoernooien zoals de Grand Slam-evenementen (Wimbledon, French Open, US Open, Australian Open) en andere ATP (Association of Tennis Professionals) en WTA (Women's Tennis Association) toernooien.",
+      "p2": "Bij het maken van tennisvoorspellingen houden we rekening met factoren zoals speler ranglijsten, recente vorm, onderlinge statistieken, speeloppervlakte (hardcourt, gras, klei), blessurestatus en prestaties in eerdere wedstrijden. Bovendien vertrouwen sommige tennisliefhebbers op geavanceerde statistieken, expertmeningen en historische gegevens om hun voorspellingen te informeren."
+    },
+    "overO": {
+      "h1": "Voorspellingen Over 1,5 Doelpunten",
+      "p1": "Krijg vandaag Over 1,5 doelpunten voorspellingen van onze experts gratis op deze pagina. Over 1,5 doelpunten is een populaire voetbalwedstrategie die je kunt gebruiken om dagelijks winst te maken.",
+      "p2": "Het is een van de eenvoudigste en populairste weddenschapsopties voor mensen die willen wedden op het totale aantal doelpunten in een wedstrijd. We gebruiken verschillende strategieën bij het maken van over 1,5 doelpunten voorspellingen. De voorspellingen in dit geval zijn afkomstig van experts op sportypredict.com.",
+      "h2": "Wat Betekent Over 1,5 Voorspelling?",
+      "d1": "Dit betekent dat je wedt dat er minstens twee (2) doelpunten worden gescoord in de wedstrijd. Als er aan het einde van de wedstrijd (Volledige Tijd: 90 minuten) twee of meer doelpunten zijn gescoord, wordt je voorspelling als succesvol beschouwd."
+    },
+    "overT": {
+      "p1": "Dit betekent dat we voorspellen dat er meer dan twee doelpunten worden gescoord in een bepaalde wedstrijd. Als er aan het einde van de wedstrijd (Volledige Tijd: 90 minuten) drie of meer doelpunten zijn gescoord, wordt je voorspelling als succesvol beschouwd.",
+      "p2": "Dit type voorspelling wordt vaak gebruikt door wedders die een aanvallende en doelpuntrijke wedstrijd verwachten, aangezien dit impliceert dat beide teams waarschijnlijk meerdere doelpunten zullen scoren of dat het totale aantal doelpunten in de wedstrijd meer dan twee zal zijn."
+    },
+    "double": {
+      "h1": "Dubbele Kans Voorspellingen (1X, 12, X2)",
+      "p1": "Op deze pagina behandelen we dubbele kans (1X, 12, X2) voorspellingen van onze experts. Dubbele kans voorspelling is populair als je denkt dat een wedstrijd waarschijnlijk spannend zal zijn en je meerdere mogelijke uitkomsten wilt dekken.",
+      "h2": "Wat Betekent Dubbele Kans Voorspelling (1X, 12, X2)?",
+      "p2": "Het houdt in dat je twee van de drie mogelijke wedstrijduitslagen selecteert om je kansen op winst te vergroten. Deze dubbele kans opties bieden een hogere kans op winst in vergelijking met wedden op de uitkomst van de wedstrijd (1 voor een thuisoverwinning, X voor gelijkspel of 2 voor een uitoverwinning), en deze strategie vermindert het risico van het verliezen van een weddenschap."
+    },
+    "Teams": {
+      "h1": "Voorspellingen Beide Teams Scoren",
+      "p1": "Op deze pagina behandelen we voorspellingen voor Beide Teams Scoren (BTTS) van onze experts. BTTS-voorspellingen zijn populair omdat ze spanning toevoegen aan een wedstrijd, ongeacht wie uiteindelijk wint. Het maakt niet uit of het een doelpuntrijke wedstrijd is of een 1-1 gelijkspel; zolang beide teams het net weten te vinden, wint een 'Ja'-weddenschap. Factoren die we overwegen bij het maken van BTTS-voorspellingen zijn onder andere de aanvallende en defensieve kracht van het team, recente doelpuntenrecords, onderlinge geschiedenis en de speelstijl van beide teams.",
+      "h2": "Wat Betekent Voorspellingen Beide Teams Scoren?",
+      "p2": " 'Beide Teams Scoren' (BTTS) voorspellingen in voetbalwedden houden in dat je wedt op de vraag of beide teams in een wedstrijd minstens één doelpunt zullen scoren. Zo werken BTTS-voorspellingen:",
+      "li1": "Ja (BTTS-Ja): Als je 'Ja' voorspelt voor BTTS, betekent dit dat je gelooft dat beide teams minstens één doelpunt zullen scoren in de wedstrijd. Als beide teams scoren, is je weddenschap succesvol, ongeacht de uiteindelijke score.",
+      "li2": "Nee (BTTS-Nee): Als je 'Nee' voorspelt voor BTTS, wed je dat ten minste één van de teams niet zal scoren in de wedstrijd. Als een van beide teams niet scoort, wint je weddenschap."
+    },
+    "Under": {
+      "h1": "Onder 2,5 Doelpunten Voorspellingen",
+      "p1": "Op deze pagina behandelen we onder 2,5 doelpunten voorspellingen van onze experts. Bij deze weddenschap voorspel je dat een bepaalde wedstrijd minder dan drie doelpunten in totaal zal hebben. Dit type voorspelling wordt vaak gebruikt als we een wedstrijd verwachten met weinig doelpunten of als we denken dat beide teams moeite zullen hebben met scoren. Factoren die we overwegen bij het maken van onder 2,5 doelpunten voorspellingen zijn onder andere de verdedigende kracht van het team, recente wedstrijden met weinig doelpunten, onderlinge geschiedenis en andere factoren die kunnen wijzen op een gebrek aan kansen om te scoren in de wedstrijd.",
+      "h2": "Wat Betekent Onder 2,5 Doelpunten Voorspellingen?",
+      "p2": "Dit betekent dat je wedt op 'Onder 2,5 doelpunten' als de wedstrijd eindigt met een totaal van twee doelpunten of minder. Dit omvat scorelijnen zoals 0-0, 1-0, 0-1 of 1-1. Als de wedstrijd drie of meer doelpunten heeft (zoals 2-1, 1-2 of een hogere score), is je weddenschap niet succesvol."
+    },
+    "BetF": {
+      "h1": "Weddenschap van de dag",
+      "p1": "Op deze pagina bieden we gratis weddenschappen van de dag aan in voetbal-, basketbal- of tennisvoorspellingen van onze experts. Zodra je toegang krijgt tot onze voorspelling van de weddenschap van de dag, krijg je de kans om groot te winnen. We zorgen ervoor dat onze voorspellingen accuraat zijn, zodat je nu van alle verwarring af kunt komen.",
+      "h2": "Wat betekent Weddenschap van de dag?",
+      "p2": "Het is de veiligste tip, meestal met lage odds. Ze zijn perfect voor accumulatoren/rollovers."
   }
-}
+  
+  }
+  

@@ -286,5 +286,57 @@
     "Oh1": "Offre exclusive",
     "Oh2": "Bonus jusqu'à 130.USD",
     "Ospan": "Nouveaux clients uniquement / Contenu commercial / Limite d'âge de 18 ans et plus / Conditions générales applicables"
-  }
+  },
+  "football": {
+    "h1": "Prédictions de football",
+    "p1": "Les prédictions de football consistent à essayer de prédire le résultat des matchs de football (soccer). Les gens font des prédictions de football à des fins diverses, notamment les paris, l'analyse sportive ou simplement pour le plaisir. Certains types courants de prédictions de football comprennent : Prédictions du résultat du match (1 pour l'équipe à domicile, 2 pour l'équipe à l'extérieur, X pour le match nul), Prédictions Over/Under (c'est-à-dire plus de 1,5 buts, moins de 2,5 buts), Prédictions Both Teams to Score (BTTS) (c'est-à-dire BTTS-Oui et BTTS-Non), Prédictions Double Chance (1N, 12, X2), et bien d'autres.",
+    "p2": "Lors de la réalisation de prédictions de football, il est essentiel de prendre en compte des facteurs tels que la forme de l'équipe, les blessures des joueurs, les statistiques tête-à-tête, l'avantage du terrain, les conditions météorologiques et d'autres données pertinentes. Gardez à l'esprit que prédire l'issue des événements sportifs comporte toujours un élément d'incertitude, et il est crucial de parier de manière responsable. De plus, certaines personnes font des prédictions pour le plaisir ou dans le cadre de l'analyse sportive sans impliquer de paris."
+  },
+  "bask": {
+    "h1": "Prédictions de basketball",
+    "p1": "Les prédictions de basketball consistent à tenter de prévoir l'issue des matchs de basketball, tels que ceux de la NBA (National Basketball Association) ou d'autres ligues professionnelles, du basketball universitaire ou des compétitions internationales.",
+    "p2": "Lors de la réalisation de prédictions de basketball, nous prenons en compte des facteurs tels que la forme de l'équipe, les blessures des joueurs, les statistiques tête-à-tête, l'avantage du terrain et les performances récentes. L'analyse statistique avancée, les données historiques et les avis d'experts sont souvent utilisés pour éclairer les prédictions. Gardez à l'esprit que les prédictions sportives sont sujettes à l'incertitude, et les résultats peuvent être influencés par des événements inattendus pendant le match."
+  },
+  "ten": {
+    "h1": "Prédictions de tennis",
+    "p1": "Les prédictions de tennis consistent à prévoir les résultats des matchs de tennis, y compris ceux des tournois de tennis professionnels tels que les tournois du Grand Chelem (Wimbledon, Roland Garros, US Open, Open d'Australie) et d'autres tournois ATP (Association des professionnels du tennis) et WTA (Association du tennis féminin).",
+    "p2": "Lors de la réalisation de prédictions de tennis, nous prenons en compte des facteurs tels que les classements des joueurs, la forme récente, les statistiques tête-à-tête, la surface de jeu (dur, gazon, terre battue), l'état des blessures et les performances lors des matchs précédents. De plus, certains passionnés de tennis se fient à des statistiques avancées, aux avis d'experts et aux données historiques pour éclairer leurs prédictions."
+  },
+  "overO": {
+    "h1": "Prédictions de plus de 1,5 buts",
+    "p1": "Obtenez les prédictions d'aujourd'hui sur les plus de 1,5 buts de nos experts gratuitement sur cette page. Les plus de 1,5 buts sont une stratégie populaire de paris sur le football (soccer) que l'on peut utiliser pour réaliser un profit quotidien.",
+    "p2": "Il s'agit de l'une des options de paris les plus simples et populaires pour ceux qui souhaitent parier sur le nombre total de buts dans un match. Nous utilisons diverses stratégies pour faire des prédictions sur les plus de 1,5 buts. Les prédictions dans ce cas proviennent des experts de sportypredict.com.",
+    "h2": "Que signifient les prédictions de plus de 1,5 buts ?",
+    "d1": "Cela signifie que vous pariez qu'il y aura au moins deux (2) buts marqués dans le match. Si deux buts ou plus sont marqués à la fin du match (temps réglementaire : 90 minutes), votre prédiction sera considérée comme réussie."
+  },
+  "overT": {
+    "p1": "Cela signifie que nous prédisons qu'il y aura plus de deux buts marqués dans un match particulier. Si trois buts ou plus sont marqués à la fin du match (temps réglementaire : 90 minutes), votre prédiction sera considérée comme réussie.",
+    "p2": "Ce type de prédiction est souvent utilisé par les parieurs qui s'attendent à un match offensif et à un score élevé, car cela implique que les deux équipes sont susceptibles de marquer plusieurs buts ou que le nombre total de buts marqués dans le match dépassera deux."
+  },
+  "double": {
+    "h1": "Prédictions Double Chance (1N, 12, X2)",
+    "p1": "Sur cette page, nous traitons des prédictions Double Chance (1N, 12, X2) de nos experts. La prédiction Double Chance est populaire lorsque vous pensez qu'un match est susceptible d'être très disputé, et que vous souhaitez couvrir plusieurs résultats possibles.",
+    "h2": "Que signifie la prédiction Double Chance (1N, 12, X2) ?",
+    "p2": "Il s'agit de choisir deux des trois résultats de match possibles pour augmenter vos chances de gagner. Ces options de double chance offrent une probabilité de gain plus élevée par rapport au fait de parier sur le résultat du match (1 pour une victoire à domicile, X pour un match nul, ou 2 pour une victoire à l'extérieur), et cette stratégie réduit le risque de perdre un pari."
+  },
+  "Teams": {
+    "h1": "Prédictions des deux équipes marquent",
+    "p1": "Sur cette page, nous traitons les prédictions Both Teams to Score (BTTS) de nos experts. Les prédictions BTTS sont populaires car elles ajoutent de l'excitation à un match, peu importe qui gagne finalement. Peu importe qu'il s'agisse d'un match à score élevé ou d'un match nul 1-1 ; tant que les deux équipes marquent, un pari 'Oui' est gagnant. Les facteurs que nous prenons en compte lors de la réalisation de prédictions BTTS incluent les forces offensives et défensives de l'équipe, les records récents de marquage de buts, l'historique des confrontations directes et le style de jeu des deux équipes.",
+    "h2": "Que signifient les prédictions Both Teams to Score (BTTS) ?",
+    "p2": "Les prédictions 'Both Teams to Score' (BTTS) dans les paris sur le football (soccer) consistent à parier sur le fait que les deux équipes marqueront au moins un but chacune au cours du match. Voici comment fonctionnent les prédictions BTTS :",
+    "li1": "Oui (BTTS-Oui) : Si vous prévoyez 'Oui' pour BTTS, cela signifie que vous croyez que les deux équipes marqueront au moins un but dans le match. Si les deux équipes marquent, votre pari est réussi, quel que soit le score final.",
+    "li2": "Non (BTTS-Non) : Si vous prévoyez 'Non' pour BTTS, vous pariez qu'au moins l'une des équipes ne marquera pas dans le match. Si l'une des équipes ne parvient pas à marquer, votre pari est gagnant."
+  },
+  "Under": {
+    "h1": "Prédictions de moins de 2,5 buts",
+    "p1": "Sur cette page, nous traitons les prédictions de moins de 2,5 buts de nos experts. Ce type de pari consiste à parier qu'un match particulier aura moins de trois buts marqués au total. Ce type de prédiction est souvent utilisé lorsque nous anticipons un match à faible score ou défensif, ou lorsque nous pensons que les deux équipes auront du mal à marquer. Les facteurs que nous prenons en compte lors de la réalisation de prédictions de moins de 2,5 buts incluent les forces défensives de l'équipe, les records récents de faible score, l'historique des confrontations directes et tout autre facteur qui pourrait suggérer un manque d'opportunités de marquage de buts dans le match.",
+    "h2": "Que signifient les prédictions de moins de 2,5 buts ?",
+    "p2": "Cela signifie que si vous prévoyez 'Moins de 2,5 buts', vous gagnez votre pari si le match se termine avec un total de deux buts ou moins. Cela comprend des scores tels que 0-0, 1-0, 0-1 ou 1-1. Si le match a trois buts ou plus (comme 2-1, 1-2 ou tout autre résultat à score plus élevé), votre pari n'est pas gagnant."
+  },
+  "BetF": {
+    "h1": "Pari du jour",
+    "p1": "Sur cette page, nous proposons un Pari du Jour gratuit en prédictions de football, de basketball ou de tennis de la part de nos experts. Une fois que vous aurez accès à notre prédiction du Pari du Jour, vous aurez l'opportunité de gagner gros. Nous nous assurons que nos prédictions sont précises, et vous pouvez maintenant vous débarrasser de toute confusion.",
+    "h2": "Que signifie Pari du jour ?",
+    "p2": "C'est le conseil le plus sûr, généralement avec des cotes faibles. Ils sont parfaits pour les accumulateurs/rollovers."
+}
 }

@@ -285,5 +285,59 @@
     "Oh1": "Offerta esclusiva",
     "Oh2": "Bonus fino a 130.USD",
     "Ospan": "Solo nuovi clienti / Contenuti commerciali / Limite di età 18+ / Si applicano termini e condizioni"
+  },
+    "football": {
+      "h1": "Previsioni sul Calcio",
+      "p1": "Le previsioni sul calcio implicano cercare di predire l'esito delle partite di calcio. Le persone effettuano previsioni sul calcio per vari scopi, tra cui scommesse, analisi sportive o semplicemente per divertimento. Alcuni tipi comuni di previsioni sul calcio includono: Previsioni sull'esito della partita (1 per la squadra di casa, 2 per la squadra ospite, X per il pareggio), Previsioni sull'Over/Under (cioè più di 1,5 gol o meno di 2,5 gol), Previsioni su Entrambe le Squadre Segnano (Entrambe le Squadre Gol) (cioè BTTS-Sì e BTTS-No), Previsioni sulla Doppia Chance (1X, 12, X2), e molte altre.",
+      "p2": "Nel fare previsioni sul calcio, è essenziale considerare fattori come la forma della squadra, infortuni dei giocatori, statistiche testa a testa, vantaggio in casa, condizioni meteorologiche e altri dati rilevanti. Tieni presente che prevedere l'esito degli eventi sportivi comporta sempre un elemento di incertezza, ed è fondamentale scommettere responsabilmente. Inoltre, alcune persone fanno previsioni per divertimento o come parte di un'analisi sportiva senza coinvolgere scommesse."
+    },
+    "bask": {
+      "h1": "Previsioni sul Basket",
+      "p1": "Le previsioni sul basket implicano cercare di prevedere l'esito delle partite di basket, come quelle nella NBA (National Basketball Association) o in altre leghe professionistiche, il basket universitario o competizioni internazionali.",
+      "p2": "Nel fare previsioni sul basket, consideriamo fattori come la forma della squadra, infortuni dei giocatori, record testa a testa, vantaggio in casa e prestazioni recenti. Spesso si utilizzano analisi statistiche avanzate, dati storici e opinioni degli esperti per informare le previsioni. Tieni presente che le previsioni sportive sono soggette a incertezza, e gli esiti possono essere influenzati da eventi imprevisti durante la partita."
+    },
+    "ten": {
+      "h1": "Previsioni sul Tennis",
+      "p1": "Le previsioni sul tennis implicano prevedere gli esiti delle partite di tennis, comprese quelle nei tornei di tennis professionistici come gli eventi del Grande Slam (Wimbledon, Open di Francia, US Open, Australian Open) e altri tornei ATP (Association of Tennis Professionals) e WTA (Women's Tennis Association).",
+      "p2": "Nel fare previsioni sul tennis, consideriamo fattori come il ranking dei giocatori, la forma recente, i record testa a testa, il tipo di superficie (cemento, erba, terra), lo stato di salute degli atleti e le prestazioni nelle partite precedenti. Inoltre, alcuni appassionati di tennis si affidano a statistiche avanzate, opinioni degli esperti e dati storici per informare le loro previsioni."
+    },
+    "overO": {
+      "h1": "Previsioni sull'Over 1.5 gol",
+      "p1": "Ottieni le previsioni sull'Over 1.5 gol di oggi dai nostri esperti gratuitamente su questa pagina. L'Over 1.5 gol è una strategia popolare per le scommesse sul calcio che puoi utilizzare per ottenere profitti quotidiani.",
+      "p2": "Si tratta di una delle opzioni di scommessa più semplici e popolari per coloro che vogliono scommettere sul numero totale di gol in una partita. Utilizziamo diverse strategie per fare previsioni sull'Over 1.5 gol. Le previsioni in questo caso provengono dagli esperti di sportypredict.com.",
+      "h2": "Cosa significa la previsione sull'Over 1.5 gol?",
+      "d1": "Significa scommettere che ci saranno almeno due (2) gol segnati nella partita. Se alla fine della partita (Tempo Pieno: 90 minuti) vengono segnati due o più gol, la tua previsione sarà considerata vincente."
+    },
+    "overT": {
+      "p1": "Significa che prevediamo che saranno segnati più di due gol in una partita particolare. Se alla fine della partita (Tempo Pieno: 90 minuti) vengono segnati tre o più gol, la tua previsione sarà considerata vincente.",
+      "p2": "Questo tipo di previsione è spesso utilizzato dai scommettitori che si aspettano una partita offensiva e ad alto punteggio, poiché implica che entrambe le squadre sono probabilmente in grado di segnare più gol o che il totale dei gol segnati nella partita supererà i due."
+    },
+    "double": {
+      "h1": "Previsioni sulla Doppia Chance (1X, 12, X2)",
+      "p1": "In questa pagina trattiamo le previsioni sulla Doppia Chance (1X, 12, X2) dai nostri esperti. La previsione sulla Doppia Chance è popolare quando si crede che una partita sia probabile che sia molto equilibrata, e si desidera coprire più esiti possibili.",
+      "h2": "Cosa significa la previsione sulla Doppia Chance (1X, 12, X2)?",
+      "p2": "Implica la selezione di due dei tre possibili esiti della partita per aumentare le tue possibilità di vincita. Queste opzioni di Doppia Chance offrono una probabilità più elevata di vincita rispetto alla scommessa sull'esito della partita (1 per la vittoria in casa, X per il pareggio o 2 per la vittoria in trasferta), e questa strategia riduce il rischio di perdere una scommessa."
+    },
+    "Teams": {
+      "h1": "Previsioni su Entrambe le Squadre Segnano",
+      "p1": "In questa pagina trattiamo le previsioni su Entrambe le Squadre Segnano (BTTS) dai nostri esperti. Le previsioni BTTS sono popolari perché aggiungono eccitazione a una partita, indipendentemente da chi alla fine vince. Non importa se è una partita ad alto punteggio o un pareggio per 1-1; fintanto che entrambe le squadre segnano, una scommessa su 'Sì' vince. I fattori che consideriamo quando facciamo previsioni BTTS includono le forze offensive e difensive delle squadre, i record recenti di segnature, la storia dei confronti diretti e lo stile di gioco delle due squadre.",
+      "h2": "Cosa significa la previsione su Entrambe le Squadre Segnano?",
+      "p2": "Le previsioni su 'Entrambe le Squadre Segnano' (BTTS) nelle scommesse sul calcio implicano scommettere se entrambe le squadre in una partita segneranno almeno un gol ciascuna durante la partita. Ecco come funzionano le previsioni BTTS:",
+      "li1": "Sì (BTTS-Sì): Se prevedi 'Sì' per BTTS, significa che credi che entrambe le squadre segneranno almeno un gol nella partita. Se entrambe le squadre segnano, la tua scommessa è vincente, indipendentemente dal punteggio finale.",
+      "li2": "No (BTTS-No): Se prevedi 'No' per BTTS, stai scommettendo che almeno una delle squadre non riuscirà a segnare nella partita. Se una delle squadre non segna, la tua scommessa vince."
+    },
+    "Under": {
+      "h1": "Previsioni su Meno di 2,5 Gol",
+      "p1": "In questa pagina trattiamo le previsioni su Meno di 2,5 Gol dai nostri esperti. Queste scommesse implicano scommettere che in una particolare partita saranno segnati meno di tre gol in totale. Questo tipo di previsione è spesso utilizzato quando ci si aspetta una partita a basso punteggio o difensiva, o quando si crede che entrambe le squadre possano avere difficoltà a segnare. I fattori che consideriamo quando facciamo previsioni su Meno di 2,5 Gol includono le forze difensive delle squadre, i record recenti di partite a basso punteggio, la storia dei confronti diretti e altri fattori che potrebbero suggerire una mancanza di opportunità di segnare gol nella partita.",
+      "h2": "Cosa significa la previsione su Meno di 2,5 Gol?",
+      "p2": "Questo significa che se prevedi 'Meno di 2,5 gol', vinci la tua scommessa se la partita si conclude con un totale di due gol o meno. Questo include punteggi come 0-0, 1-0, 0-1 o 1-1. Se la partita ha tre o più gol (come 2-1, 1-2 o qualsiasi altro risultato con un punteggio più alto), la tua scommessa non è vincente."
+    },
+    "BetF": {
+      "h1": "Pronostico del giorno",
+      "p1": "In questa pagina offriamo il Pronostico del Giorno gratuito, con previsioni per il calcio, il basket o il tennis fatte dai nostri esperti. Una volta che avrai accesso al nostro pronostico del giorno, avrai l'opportunità di vincere grandi premi. Ci assicuriamo che le nostre previsioni siano accurate, e ora puoi eliminare ogni confusione.",
+      "h2": "Cosa significa Pronostico del giorno?",
+      "p2": "Si tratta del consiglio più sicuro, di solito con quote basse. Sono perfetti per le multiple/rollover."
   }
-}
+  
+  }
+  

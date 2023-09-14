@@ -150,116 +150,167 @@
     "p1-11": "Keine Verzögerung, kein Versäumnis oder keine Verzichtung durch eine der Parteien bei der Ausübung eines Rechts, einer Befugnis oder eines Rechtsbehelfs auf Grundlage dieser Bedingungen und Konditionen oder in Verbindung damit stellt einen Verzicht auf dieses Recht, diese Befugnis oder diesen Rechtsbehelf dar oder hindert diese Partei an der Ausübung dieses Rechts, dieser Befugnis oder dieses Rechtsbehelfs. Ein Verzicht auf das Ausüben eines Rechts oder Rechtsbehelfs aufgrund dieser Bedingungen und Konditionen ist nur dann wirksam, wenn er schriftlich erfolgt, und beschränkt sich auf die ausdrücklich im Verzicht angegebenen Rechte oder Rechtsbehelfe.",
     "p1-12": "Diese Bedingungen und Konditionen sowie die Datenschutzrichtlinie, die Cookie-Richtlinie und die Regeln und alle damit zusammenhängenden Angelegenheiten unterliegen und werden in Übereinstimmung mit den Gesetzen des Vereinigten Königreichs ausgelegt und ausgelegt, und die Gerichte des Vereinigten Königreichs haben nicht ausschließliche Gerichtsbarkeit in Bezug auf Streitigkeiten in Bezug auf diese Bedingungen und Konditionen, die Datenschutzrichtlinie, die Cookie-Richtlinie, die Regeln und alle damit zusammenhängenden Angelegenheiten."
   },
-    "upcoming": {
-      "h1-1": "Kommende Tipps",
-      "h1-2": "Keine Vorhersagen bisher! Schauen Sie später wieder vorbei."
-    },
-    "ads": {
-      "h1-1": "Nicht wetten, stattdessen investieren",
-      "span-1": "100%",
-      "span-2": "GEWINN",
-      "span-3": "aus unserem sicheren",
-      "span-4": "VIP-Plan-Abonnement",
-      "span-5": "in Fußballvorhersagen.",
-      "p1-1": "Genießen Sie bis zu 95% Genauigkeit auf unserem Premium-Plan.",
-      "p1-2": "VIP wird von unserem Team von Experten empfohlen für diejenigen, die Wetten als Möglichkeit sehen, Gewinn zu erzielen.",
-      "h1-2": "Das heutige Spiel beginnt in:",
-      "span-6": "Stunden",
-      "span-7": "Minuten",
-      "span-8": "Sekunden"
-    },
-    "bank": {
-      "h1-1": "Wette des Tages",
-      "h1-2": "Basketball Tipps",
-      "h1-3": "Fußball Tipps",
-      "btn-1": "Vorherige",
-      "btn-2": "Heute",
-      "btn-3": "Morgen"
-    },
-    "bonus": {
-      "h1-1": "Beste Wettanbieter-Angebote zur Anmeldung",
-      "span": "Nur für Neukunden / kommerzieller Inhalt / Altersbeschränkung 18+ / AGB gelten"
-    },
-    "news": {
-      "h1-1": "Sportnachrichten",
-      "span-1": "Mehr anzeigen",
-      "span-2": "Weniger anzeigen",
-      "a-1": "Weitere Informationen"
-    },
-    "pay": {
-      "span1": "Abonnieren Sie den VIP-Plan",
-      "span2": "HINWEIS:",
-      "h1-1": "Dieses Abonnement ist 30 Tage gültig und es fallen keine zusätzlichen oder versteckten Kosten an",
-      "p1": "Ihr SportyPredict VIP-Konto wird aktiviert, sobald Ihre Zahlung eingegangen ist.",
-      "p2": "Wählen Sie Ihr Land, um Zahlungsdetails zu erhalten:",
-      "lb": "Bitte wählen Sie eins",
-      "op": "Wählen Sie ein Land",
-      "h1-2": "Einloggen oder Registrieren",
-      "p3": "Melden Sie sich mit Google an oder",
-      "span3": "Erstellen Sie ein Konto",
-      "h1-3": "Verfügbare Zahlungsmethoden für Ihr Land:",
-      "h1-4": "MIT SKRILL BEZAHLEN",
-      "li1": "Gehen Sie zu Ihrem SKRILL-Konto",
-      "li2": "Verwenden Sie",
-      "li3": "Zahlen Sie den erforderlichen Betrag",
-      "li4": "Ihr VIP-Konto wird aktiviert, sobald wir Ihre Zahlung erhalten.",
-      "h1-5": "MIT KRYPTO (BITCOIN) BEZAHLEN",
-      "li5": "Gehen Sie zu Ihrer Bitcoin-Brieftasche",
-      "li6": "Zahlen Sie mit dieser Bitcoin-Adresse:",
-      "li7": "Zahlen Sie den erforderlichen Betrag",
-      "li8": "Ihr VIP-Konto wird aktiviert, sobald wir Ihre Zahlung erhalten.",
-      "h1-6": "MIT PAYPAL BEZAHLEN",
-      "li9": "KOMMT BALD",
-      "span4": "Moneygram und Western Union stehen zur Verfügung, wenn Sie eine Zahlung vornehmen möchten.",
-      "h1-7": "F: Wie sicher sind Ihre Spiele?",
-      "span5": "Antwort",
-      "span6": "Wir haben ein Team von erstklassigen, gut informierten Experten, die eine Genauigkeitsrate von bis zu 96% erzielen. Sie sind garantiert, erhebliche Gewinne zu erzielen.",
-      "h1-8": "F: Was passiert bei fehlgeschlagenen Vorhersagen?",
-      "span7": "Antwort",
-      "p4": "Wir haben ein Team von erstklassigen, gut informierten Experten, die eine Genauigkeitsrate von bis zu 96% erzielen. Sie sind garantiert, erhebliche Gewinne zu erzielen.",
-      "h1-9": "F: Was passiert bei fehlgeschlagenen Vorhersagen?",
-      "span8": "Beachten Sie, dass im Falle eines Verlusts ein zusätzlicher Tag KOSTENLOS als Ersatz für Ihr Abonnement hinzugefügt wird. Wir werden jeden Tag einen zusätzlichen Tag hinzufügen, bis Sie GEWINNEN! Dies gilt ausschließlich für VIP-Abonnenten.",
-      "h1-10": "F: Wie erhalte ich diese täglichen Spiele zugesandt?",
-      "span9": "Wir veröffentlichen Spiele auf unserer Plattform:",
-      "span10": "https://sportyPredict.com/vip",
-      "span11": "Sie müssen sich auf der Website mit Ihrer E-Mail-Adresse und Ihrem Passwort oder über soziale Konten anmelden, um Spiele anzuzeigen.",
-      "h1-11": "F: Warum veröffentlichen wir keine Ergebnisse?",
-      "span12": "Wir veröffentlichen keine Ergebnisse, weil Betrüger Screenshots erstellen und arglose Opfer betrügen.",
-      "spanh1": "Dauer von ",
-      "spanh2": "30 Tagen ",
-      "spanh3": "Gezahlter Betrag: ",
-      "spanh4": "täglich",
-      "spanh5": "SENDEN AN",
-      "spanh6": "MIT BANK BEZAHLEN",
-      "spanh7": "MIT MOBILEM GELD BEZAHLEN",
-      "spanh8": "MIT MTN MOBILEM GELD BEZAHLEN",
-      "spanh9": "MTN UGANDA NACH MPESA",
-      "spanh10": "AN MPESA SENDEN",
-      "spanh11": "NUR AIRTEL MONEY VERWENDEN",
-      "spanh12": "Internationale Geldüberweisung auswählen (Kenia auswählen)",
-      "span13": "MTN LINE NACH MPESA KENIA",
-      "span14": "Geld von Ihrer MTN-Nummer nach Kenia senden"
-    },
-    "auth": {
-      "h1-1": "Konto erstellen",
-      "btn-1": "Einloggen",
-      "btn-2": "Registrieren",
-      "op": "Wählen Sie ein Land",
-      "span1": "Passwort vergessen"
-    },
-    "tennis": {
-      "h1-1": "Tennis Gratis Tipps"
-    },
-    "vip": {
-      "h1-1": "Anmelden oder Einloggen in Ihr Konto",
-      "h1-2": "Ihr VIP-Konto ist nicht aktiviert",
-      "btn1": "Zur Aktivierung bezahlen"
-    },
-    "Offer": {
-      "Ohr": "Alle",
-      "Oh1": "Exclusives Angebot",
-      "Oh2": "Bonus bis zu 130.USD",
-      "Ospan": "Nur Neukunden / Kommerzieller Inhalt / Altersgrenze 18+ / Es gelten die AGB"
-    }
-  }
-  
+  "upcoming": {
+    "h1-1": "Kommende Tipps",
+    "h1-2": "Keine Vorhersagen bisher! Schauen Sie später wieder vorbei."
+  },
+  "ads": {
+    "h1-1": "Nicht wetten, stattdessen investieren",
+    "span-1": "100%",
+    "span-2": "GEWINN",
+    "span-3": "aus unserem sicheren",
+    "span-4": "VIP-Plan-Abonnement",
+    "span-5": "in Fußballvorhersagen.",
+    "p1-1": "Genießen Sie bis zu 95% Genauigkeit auf unserem Premium-Plan.",
+    "p1-2": "VIP wird von unserem Team von Experten empfohlen für diejenigen, die Wetten als Möglichkeit sehen, Gewinn zu erzielen.",
+    "h1-2": "Das heutige Spiel beginnt in:",
+    "span-6": "Stunden",
+    "span-7": "Minuten",
+    "span-8": "Sekunden"
+  },
+  "bank": {
+    "h1-1": "Wette des Tages",
+    "h1-2": "Basketball Tipps",
+    "h1-3": "Fußball Tipps",
+    "btn-1": "Vorherige",
+    "btn-2": "Heute",
+    "btn-3": "Morgen"
+  },
+  "bonus": {
+    "h1-1": "Beste Wettanbieter-Angebote zur Anmeldung",
+    "span": "Nur für Neukunden / kommerzieller Inhalt / Altersbeschränkung 18+ / AGB gelten"
+  },
+  "news": {
+    "h1-1": "Sportnachrichten",
+    "span-1": "Mehr anzeigen",
+    "span-2": "Weniger anzeigen",
+    "a-1": "Weitere Informationen"
+  },
+  "pay": {
+    "span1": "Abonnieren Sie den VIP-Plan",
+    "span2": "HINWEIS:",
+    "h1-1": "Dieses Abonnement ist 30 Tage gültig und es fallen keine zusätzlichen oder versteckten Kosten an",
+    "p1": "Ihr SportyPredict VIP-Konto wird aktiviert, sobald Ihre Zahlung eingegangen ist.",
+    "p2": "Wählen Sie Ihr Land, um Zahlungsdetails zu erhalten:",
+    "lb": "Bitte wählen Sie eins",
+    "op": "Wählen Sie ein Land",
+    "h1-2": "Einloggen oder Registrieren",
+    "p3": "Melden Sie sich mit Google an oder",
+    "span3": "Erstellen Sie ein Konto",
+    "h1-3": "Verfügbare Zahlungsmethoden für Ihr Land:",
+    "h1-4": "MIT SKRILL BEZAHLEN",
+    "li1": "Gehen Sie zu Ihrem SKRILL-Konto",
+    "li2": "Verwenden Sie",
+    "li3": "Zahlen Sie den erforderlichen Betrag",
+    "li4": "Ihr VIP-Konto wird aktiviert, sobald wir Ihre Zahlung erhalten.",
+    "h1-5": "MIT KRYPTO (BITCOIN) BEZAHLEN",
+    "li5": "Gehen Sie zu Ihrer Bitcoin-Brieftasche",
+    "li6": "Zahlen Sie mit dieser Bitcoin-Adresse:",
+    "li7": "Zahlen Sie den erforderlichen Betrag",
+    "li8": "Ihr VIP-Konto wird aktiviert, sobald wir Ihre Zahlung erhalten.",
+    "h1-6": "MIT PAYPAL BEZAHLEN",
+    "li9": "KOMMT BALD",
+    "span4": "Moneygram und Western Union stehen zur Verfügung, wenn Sie eine Zahlung vornehmen möchten.",
+    "h1-7": "F: Wie sicher sind Ihre Spiele?",
+    "span5": "Antwort",
+    "span6": "Wir haben ein Team von erstklassigen, gut informierten Experten, die eine Genauigkeitsrate von bis zu 96% erzielen. Sie sind garantiert, erhebliche Gewinne zu erzielen.",
+    "h1-8": "F: Was passiert bei fehlgeschlagenen Vorhersagen?",
+    "span7": "Antwort",
+    "p4": "Wir haben ein Team von erstklassigen, gut informierten Experten, die eine Genauigkeitsrate von bis zu 96% erzielen. Sie sind garantiert, erhebliche Gewinne zu erzielen.",
+    "h1-9": "F: Was passiert bei fehlgeschlagenen Vorhersagen?",
+    "span8": "Beachten Sie, dass im Falle eines Verlusts ein zusätzlicher Tag KOSTENLOS als Ersatz für Ihr Abonnement hinzugefügt wird. Wir werden jeden Tag einen zusätzlichen Tag hinzufügen, bis Sie GEWINNEN! Dies gilt ausschließlich für VIP-Abonnenten.",
+    "h1-10": "F: Wie erhalte ich diese täglichen Spiele zugesandt?",
+    "span9": "Wir veröffentlichen Spiele auf unserer Plattform:",
+    "span10": "https://sportyPredict.com/vip",
+    "span11": "Sie müssen sich auf der Website mit Ihrer E-Mail-Adresse und Ihrem Passwort oder über soziale Konten anmelden, um Spiele anzuzeigen.",
+    "h1-11": "F: Warum veröffentlichen wir keine Ergebnisse?",
+    "span12": "Wir veröffentlichen keine Ergebnisse, weil Betrüger Screenshots erstellen und arglose Opfer betrügen.",
+    "spanh1": "Dauer von ",
+    "spanh2": "30 Tagen ",
+    "spanh3": "Gezahlter Betrag: ",
+    "spanh4": "täglich",
+    "spanh5": "SENDEN AN",
+    "spanh6": "MIT BANK BEZAHLEN",
+    "spanh7": "MIT MOBILEM GELD BEZAHLEN",
+    "spanh8": "MIT MTN MOBILEM GELD BEZAHLEN",
+    "spanh9": "MTN UGANDA NACH MPESA",
+    "spanh10": "AN MPESA SENDEN",
+    "spanh11": "NUR AIRTEL MONEY VERWENDEN",
+    "spanh12": "Internationale Geldüberweisung auswählen (Kenia auswählen)",
+    "span13": "MTN LINE NACH MPESA KENIA",
+    "span14": "Geld von Ihrer MTN-Nummer nach Kenia senden"
+  },
+  "auth": {
+    "h1-1": "Konto erstellen",
+    "btn-1": "Einloggen",
+    "btn-2": "Registrieren",
+    "op": "Wählen Sie ein Land",
+    "span1": "Passwort vergessen"
+  },
+  "tennis": {
+    "h1-1": "Tennis Gratis Tipps"
+  },
+  "vip": {
+    "h1-1": "Anmelden oder Einloggen in Ihr Konto",
+    "h1-2": "Ihr VIP-Konto ist nicht aktiviert",
+    "btn1": "Zur Aktivierung bezahlen"
+  },
+  "Offer": {
+    "Ohr": "Alle",
+    "Oh1": "Exclusives Angebot",
+    "Oh2": "Bonus bis zu 130.USD",
+    "Ospan": "Nur Neukunden / Kommerzieller Inhalt / Altersgrenze 18+ / Es gelten die AGB"
+  },
+  "football": {
+    "h1": "Fußballvorhersagen",
+    "p1": "Fußballvorhersagen beinhalten den Versuch, das Ergebnis von Fußballspielen vorherzusagen. Menschen treffen Fußballvorhersagen aus verschiedenen Gründen, einschließlich Wetten, Sportanalysen oder einfach nur zum Spaß. Einige gängige Arten von Fußballvorhersagen umfassen: Vorhersagen des Spielausgangs (1 für die Heimmannschaft, 2 für die Auswärtsmannschaft, X für ein Unentschieden), Über/Unter-Vorhersagen (z. B. über 1,5 Tore, unter 2,5 Tore), Vorhersagen für Beide Teams erzielen ein Tor (BTTS - Ja und BTTS - Nein), Doppelte Chance Vorhersagen (1X, 12, X2) und vieles mehr.",
+    "p2": "Beim Treffen von Fußballvorhersagen ist es wichtig, Faktoren wie die Form der Mannschaft, Spielerverletzungen, direkte Statistiken, Heimvorteil, Wetterbedingungen und andere relevante Daten zu berücksichtigen. Bedenken Sie, dass die Vorhersage des Ergebnisses von Sportveranstaltungen immer ein Element der Unsicherheit birgt, und verantwortungsvolles Wetten ist entscheidend. Außerdem treffen einige Leute Vorhersagen zum Spaß oder im Rahmen von Sportanalysen, ohne Wetten zu platzieren."
+  },
+  "bask": {
+    "h1": "Basketballvorhersagen",
+    "p1": "Basketballvorhersagen beinhalten den Versuch, das Ergebnis von Basketballspielen vorherzusagen, wie sie in der NBA (National Basketball Association) oder anderen professionellen Ligen, im College-Basketball oder bei internationalen Wettbewerben stattfinden.",
+    "p2": "Beim Treffen von Basketballvorhersagen berücksichtigen wir Faktoren wie die Form der Mannschaft, Spielerverletzungen, direkte Statistiken, Heimvorteil und die jüngste Leistung. Fortgeschrittene statistische Analysen, historische Daten und Expertenmeinungen werden oft zur Informationsgewinnung verwendet. Bedenken Sie, dass Sportvorhersagen Unsicherheiten unterliegen und unerwartete Ereignisse während des Spiels das Ergebnis beeinflussen können."
+  },
+  "ten": {
+    "h1": "Tennisvorhersagen",
+    "p1": "Tennisvorhersagen beinhalten die Prognose der Ergebnisse von Tennismatches, einschließlich derjenigen in professionellen Tennisturnieren wie den Grand-Slam-Veranstaltungen (Wimbledon, French Open, US Open, Australian Open) und anderen ATP- (Association of Tennis Professionals) und WTA- (Women's Tennis Association) Turnieren.",
+    "p2": "Beim Treffen von Tennisvorhersagen berücksichtigen wir Faktoren wie Spielerplatzierungen, aktuelle Form, direkte Statistiken, Spielfläche (Hartplatz, Rasen, Sand), Verletzungsstatus und Leistung in früheren Spielen. Zusätzlich verlassen sich einige Tennisbegeisterte auf fortgeschrittene Statistiken, Expertenmeinungen und historische Daten, um ihre Vorhersagen zu informieren."
+  },
+  "overO": {
+    "h1": "Über 1,5 Tore Vorhersagen",
+    "p1": "Erhalten Sie heute kostenlose Über 1,5 Tore Vorhersagen von unseren Experten auf dieser Seite. Über 1,5 Tore ist eine beliebte Fußballwettstrategie, die täglich Gewinn bringen kann.",
+    "p2": "Es handelt sich um eine der einfachsten und beliebtesten Wettmöglichkeiten für diejenigen, die auf die Gesamtanzahl der Tore in einem Spiel wetten möchten. Wir verwenden verschiedene Strategien, um Über 1,5 Tore Vorhersagen zu treffen. Die Vorhersagen in diesem Fall stammen von Experten auf sportypredict.com.",
+    "h2": "Was bedeuten Über 1,5 Tore Vorhersagen?",
+    "d1": "Das bedeutet, dass Sie darauf wetten, dass im Spiel mindestens zwei (2) Tore erzielt werden. Wenn bis zum Ende des Spiels (Volle Spielzeit: 90 Minuten) zwei oder mehr Tore erzielt werden, gilt Ihre Vorhersage als erfolgreich."
+  },
+  "overT": {
+    "p1": "Das bedeutet, dass wir vorhersagen, dass in einem bestimmten Spiel mehr als zwei Tore erzielt werden. Wenn bis zum Ende des Spiels (Volle Spielzeit: 90 Minuten) drei oder mehr Tore erzielt werden, gilt Ihre Vorhersage als erfolgreich.",
+    "p2": "Diese Art der Vorhersage wird oft von Wettenden verwendet, die ein offensives und torreiches Spiel erwarten, da dies impliziert, dass beide Mannschaften wahrscheinlich mehrere Tore erzielen werden oder dass die Gesamtzahl der Tore im Spiel mehr als zwei beträgt."
+  },
+  "double": {
+    "h1": "Doppelte Chance Vorhersagen (1X, 12, X2)",
+    "p1": "Auf dieser Seite befassen wir uns mit doppelten Chance (1X, 12, X2) Vorhersagen von unseren Experten. Doppelte Chance Vorhersage ist beliebt, wenn Sie glauben, dass ein Spiel wahrscheinlich eng umkämpft sein wird und Sie mehrere mögliche Ergebnisse abdecken möchten.",
+    "h2": "Was bedeuten Doppelte Chance Vorhersagen (1X, 12, X2)?",
+    "p2": "Es beinhaltet die Auswahl von zwei der drei möglichen Spielausgänge, um Ihre Gewinnchancen zu erhöhen. Diese doppelten Chance Optionen bieten eine höhere Gewinnwahrscheinlichkeit im Vergleich zur Wettabgabe auf das Ergebnis des Spiels (1 für Heimsieg, X für ein Unentschieden oder 2 für Auswärtssieg), und diese Strategie reduziert das Risiko einer verlorenen Wette."
+  },
+  "Teams": {
+    "h1": "Vorhersagen für Beide Teams erzielen ein Tor",
+    "p1": "Auf dieser Seite befassen wir uns mit Vorhersagen für Beide Teams erzielen ein Tor (BTTS) von unseren Experten. BTTS-Vorhersagen sind beliebt, weil sie einem Spiel Spannung verleihen, unabhängig davon, wer letztendlich gewinnt. Es spielt keine Rolle, ob es ein torreiches Spiel oder ein 1: 1-Unentschieden ist; solange beide Teams ein Tor erzielen, gewinnt eine 'Ja'-Wette. Faktoren, die wir bei BTTS-Vorhersagen berücksichtigen, sind die offensive und defensive Stärke der Mannschaften, aktuelle Torschussrekorde, direkte Historie und der Spielstil beider Teams.","h2": "Was bedeuten BTTS-Vorhersagen?",
+    "p2": " 'Beide Teams erzielen ein Tor' (BTTS) Vorhersagen im Fußballwetten beinhalten die Wette darauf, ob beide Teams in einem Spiel mindestens ein Tor erzielen werden. So funktionieren BTTS-Vorhersagen:",
+    "li1": "Ja (BTTS-Ja): Wenn Sie 'Ja' für BTTS vorhersagen, bedeutet das, dass Sie glauben, dass beide Teams mindestens ein Tor im Spiel erzielen werden. Wenn beide Teams ein Tor erzielen, ist Ihre Wette erfolgreich, unabhängig vom Endstand.",
+    "li2": "Nein (BTTS-Nein): Wenn Sie 'Nein' für BTTS vorhersagen, setzen Sie darauf, dass mindestens eines der Teams kein Tor im Spiel erzielen wird. Wenn eines der Teams kein Tor erzielt, gewinnt Ihre Wette."
+  },
+  "Under": {
+    "h1": "Unter 2,5 Tore Vorhersagen",
+    "p1": "Auf dieser Seite befassen wir uns mit Unter 2,5 Tore Vorhersagen von unseren Experten. Diese Art der Wette beinhaltet die Vorhersage, dass bei einem bestimmten Spiel insgesamt weniger als drei Tore erzielt werden. Diese Art der Vorhersage wird oft verwendet, wenn wir ein Spiel mit wenig Toren oder eine defensive Partie erwarten oder wenn wir glauben, dass beide Teams Schwierigkeiten beim Tore schießen haben könnten. Faktoren, die wir bei Unter 2,5 Tore Vorhersagen berücksichtigen, sind die defensive Stärke der Mannschaften, aktuelle Torschussrekorde, direkte Historie und andere Faktoren, die auf mangelnde Tormöglichkeiten im Spiel hinweisen könnten.",
+    "h2": "Was bedeuten Unter 2,5 Tore Vorhersagen?",
+    "p2": "Dies bedeutet, dass Sie Ihre Wette gewinnen, wenn das Spiel mit insgesamt zwei Toren oder weniger endet. Dies umfasst Ergebnisse wie 0:0, 1:0, 0:1 oder 1:1. Wenn das Spiel drei oder mehr Tore hat (wie 2:1, 1:2 oder jedes höherwertige Ergebnis), ist Ihre Wette nicht erfolgreich."
+  },
+  "BetF": {
+    "h1": "Wette des Tages",
+    "p1": "Auf dieser Seite bieten wir kostenlose Wetten des Tages in Form von Fußball-, Basketball- oder Tennisprognosen von unseren Experten an. Sobald Sie Zugang zu unserer Wettvorhersage des Tages erhalten, haben Sie die Möglichkeit, große Gewinne zu erzielen. Wir stellen sicher, dass unsere Vorhersagen genau sind, sodass Sie alle Verwirrung loswerden können.",
+    "h2": "Was bedeutet Wette des Tages?",
+    "p2": "Es handelt sich um den sichersten Tipp, normalerweise mit niedrigen Quoten. Sie eignen sich perfekt für Kombiwetten oder Fortsetzungswetten."
+}
+
+}

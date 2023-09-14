@@ -4,7 +4,7 @@
   <div class="main-bet">
     <div class="main-header">
       <div class="header-info">
-        <h1> {{ $t('bank.h1-1') }} {{ currentDate }}</h1>
+        <h1> {{ $t('bank.h1-1') }} ({{ currentDate }})</h1>
       </div>
       <div class="header-btn">
         <button class="btn-h" :class="{ 'active-btn': offset > 0 }" @click="previousDay()">
@@ -20,9 +20,9 @@
     </div>
     <OfferAds />
     <template v-if="cardData.length > 0">
-      <div v-for="item in cardData" class="main-h-card booom-h">
+      <div v-for="item in cardData" class="main-h-card booom-h" :key="item._id">
         <Card
-          v-for="(card, index) in item"
+          v-for="(card) in item"
           :key="card._id"
           :tip="card.tip"
           :status="card.status"
@@ -46,6 +46,15 @@
         <h1>{{ $t('upcoming.h1-2') }}</h1>
       </div>
     </template>
+    <div>
+      <vipads />
+    </div>
+    <div class="fp-class">
+      <h1>{{ $t('BetF.h1') }}</h1>
+      <p>{{ $t('BetF.p1') }}</p>
+      <h1>{{ $t('BetF.h2') }}</h1>
+      <p>{{ $t('BetF.p2') }}</p>
+    </div>
   </div>
 </template>
 <script setup>
@@ -54,6 +63,7 @@ import ButtonComponent from '../components/ButtonComponent.vue'
 import Card from '../components/CardComponent.vue'
 import { ref, watchEffect, onMounted } from 'vue'
 import OfferAds from '../components/OfferAds.vue'
+import vipads from '../components/vipads.vue'
 import axios from 'axios'
 
 const currentDate = ref('')
@@ -63,7 +73,7 @@ const cardData = ref([])
 
 const predictions = async () => {
   try {
-    const token = localStorage.getItem('token')
+    // const token = localStorage.getItem('token')
     const response = await axios.get(
       `https://predictions-reg9.onrender.com/predictions/bet/betOfTheDay/${currentDate.value}`
     )
