@@ -154,9 +154,8 @@ onMounted(async () => {
     const userIp = ipData.data.ip;
     const response = await axios.get(`http://ip-api.com/json/${userIp}`);
     const userTimeZone = response.data.timezone;
-    
-    // Parse the incoming time string to a DateTime object
-    const eventTime = DateTime.fromISO(props.time);
+      // Parse the incoming time string to a DateTime object
+      const eventTime = DateTime.fromISO(props.time);
 
     // Convert the event time to the user's timezone and format it
     formattedTime.value = eventTime.setZone(userTimeZone).toFormat('HH:mm');

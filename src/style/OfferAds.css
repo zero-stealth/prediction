@@ -18,6 +18,7 @@
     display: flex;
     padding: 5px;
     height: 60px;
+    width: 100%;
     align-items: center;
     border-radius: 12px;
     justify-content: space-between;
@@ -26,9 +27,11 @@
   }
 
   .offer-container h1 {
+    width: 40%;
     font-size: 0.8rem;
     text-align: center;
     color: var(--ads-color1);
+
   }
 
   .offerA-comp h2 {
