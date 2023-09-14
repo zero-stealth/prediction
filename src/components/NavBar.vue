@@ -48,16 +48,19 @@
           <ProfileIcon class="icon-nav l-icon" />
           {{ $t('nav.btn8') }}
         </button>
-        <select v-model="$i18n.locale" class="locale-changer">
-          <option
-            v-for="locale in $i18n.availableLocales"
-            :key="`locale-${locale}`"
-            class="locale-op"
-            :value="locale"
-          >
-            {{ locale }}
-          </option>
-        </select>
+        <div class="drop-container">
+          <div class="drop-down" @click="showDrop()">
+            <span>{{ $t('nav.link6') }}</span> 
+            <ArrowIcon class="drop-icon" />
+          </div>
+          <div class="drop-down-panel" :class="[isDropOpen ? 'show' : 'hide']">
+            <span @click="goToC($t('nav.span1'))">{{ $t('nav.span1') }}</span>
+            <span @click="goToC($t('nav.span2'))">{{ $t('nav.span2') }}</span>
+            <span @click="goToC($t('nav.span3'))">{{ $t('nav.span3') }}</span>
+            <span @click="goToC($t('nav.span4'))">{{ $t('nav.span4') }}</span>
+            <span @click="goToC($t('nav.span5'))">{{ $t('nav.span5') }}</span>
+          </div>
+        </div>
       </div>
       <div class="nav-menu" @click="showMenu()">
         <MobileMenuIcon class="menu-icon-nav" />
