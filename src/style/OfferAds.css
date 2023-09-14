@@ -25,7 +25,7 @@
   }
 
   .offer-container h1 {
-    font-size: 0.9rem;
+    font-size: 0.8rem;
     text-align: center;
     color: var(--ads-color1);
   }
@@ -33,7 +33,7 @@
   .offerA-comp h2 {
     font-size: 0.7rem;
     color: var(--ads-color2);
-  }
+  } 
 
   .offer-container span {
     font-size: 0.5rem;
@@ -41,7 +41,7 @@
   }
 
   .offerA-inner {
-    width: 50%;
+    width: 65%;
     display: flex;
     padding: 10px;
     align-items: center;
@@ -99,7 +99,7 @@
   }
 
   .offerA-inner {
-    width: 50%;
+    width: 60%;
   }
 
   .bet-win {

@@ -5,7 +5,7 @@
         <h1>{{ $t('ads.h1-1') }}</h1>
       </div>
       <p>
-        {{ $t('ads.span-1') }} {{ $t('ads.span-2') }} from our sure {{ $t('ads.span-4') }} in a football
+        {{ $t('ads.span-1') }} {{ $t('ads.span-2') }} from our sure {{ $t('ads.span-4') }} 
         {{ $t('ads.span-5') }}.
       </p>
       <p>{{ $t('ads.p1-1') }}</p>

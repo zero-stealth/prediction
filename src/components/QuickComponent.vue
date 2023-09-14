@@ -1,7 +1,7 @@
 <template>
   <div class="quick-main">
     <div class="quick-nav">
-      <router-link :to="{ name: 'Home' }" class="quick-link">{{ $t('Offer.Ohr') }}</router-link>
+      <router-link :to="{ name: 'Home' }" class="quick-link sos-link"> <HomeIcon class="nav-home-icon"/> </router-link>
       <router-link :to="{ name: 'Football' }" class="quick-link">{{ $t('nav.link10') }}</router-link>
       <router-link :to="{ name: 'Basketball' }" class="quick-link">{{ $t('nav.link4')  }}</router-link>
       <router-link :to="{ name: 'Tennis' }" class="quick-link">{{ $t('nav.link9') }}</router-link>
@@ -22,6 +22,7 @@
 
 <script setup>
 import { ref, watch } from 'vue'
+import HomeIcon from '../icons/homeIcon.vue'
 import { RouterLink, useRouter, useRoute } from 'vue-router'
 
 const isDropOpen = ref(false)

@@ -1,4 +1,5 @@
 <template>
+  <QuickComponent/>
   <div class="bon-comp">
     <div class="bonus-h">
       <h1>{{ $t('bonus.h1-1') }}</h1>
@@ -16,6 +17,8 @@ import betImage from '../assets/betwinner.png'
 import stakeImage from '../assets/stake.png'
 import melbetImage from '../assets/melbet.png'
 import Bonus from '../components/bonusComponent.vue'
+import QuickComponent from '../components/QuickComponent.vue'
+
   
 const bonusData = ref([
   {

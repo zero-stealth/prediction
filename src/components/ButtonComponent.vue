@@ -1,6 +1,7 @@
 <script setup>
 import TelegramIcon from '../icons/telegram.vue'
 import basketball from '../assets/basketball.jpg'
+import Football from '../assets/Football.jpg'
 import banner from '../assets/banner.jpeg'
 import tennis from '../assets/tennis.jpg'
 import PayIcon from '../icons/payIcon.vue'
@@ -26,7 +27,10 @@ const getBackgroundImage = () => {
     return `url(${tennis}), linear-gradient(rgb(17, 51, 86), rgb(17, 51, 86))`;
   } else if (router.currentRoute.value.name === 'Basketball') {
     // Update with the desired background for the Basketball route
-    return `url(${basketball}), linear-gradient(rgb(17, 51, 86), rgb(17, 51, 86))`;
+    return `url(${tennis}), linear-gradient(rgb(17, 51, 86), rgb(17, 51, 86))`;
+  } else if (router.currentRoute.value.name === 'Football') {
+    // Update with the desired background for the Basketball route
+    return `url(${Football}), linear-gradient(rgb(17, 51, 86), rgb(17, 51, 86))`;
   } else {
     return `url(${banner}), linear-gradient(rgb(17, 51, 86), rgb(17, 51, 86))`;
   }
