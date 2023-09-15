@@ -1,6 +1,4 @@
-Your Vue.js template code looks fine, but there are a few improvements you can make for better organization and readability. Here's the improved code:
 
-```vue
 <template>
   <div class="card-container">
     <div class="card-title">
@@ -24,7 +22,7 @@ Your Vue.js template code looks fine, but there are a few improvements you can m
       </div>
       <div class="card-in">
         <div class="card-in-s">
-          <span>[{{ formattedTime }}]</span>
+          <span>[{{ time }}]</span>
         </div>
         <span class="status-p">{{ status }}</span>
         <div v-if="!showScore">

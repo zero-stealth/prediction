@@ -5,7 +5,7 @@
     <div class="main-h">
       <div class="main-header">
         <div class="header-info">
-          <h1>{{ $t('bank.h1-3') }}  ({{ currentDate }})</h1>
+          <h1>{{ $t('bank.h1-3') }} ({{ currentDate }})</h1>
         </div>
         <div class="header-btn">
           <button class="btn-h" :class="{ 'active-btn': offset > 0 }" @click="previousDay()">
@@ -23,7 +23,7 @@
       <template v-if="cardData.length > 0">
         <div class="main-h-card">
           <Card
-            v-for="(card) in cardData"
+            v-for="card in cardData"
             :key="card._id"
             :tip="card.tip"
             :status="card.status"
@@ -68,22 +68,22 @@
         <NewsCard
           v-for="(newsItem, index) in visibleNews"
           :key="index"
-          :banner="newsItem.image"
-          @click="newsInfo(newsItem.id)"
+          :banner="newsItem.img"
+          @click="newsInfo(newsItem.title)"
         >
-          <h2>{{ newsItem.caption }}</h2>
+          <h2>{{ newsItem.title }}</h2>
         </NewsCard>
       </div>
     </div>
     <Upcoming />
     <div class="ads-p">
       <div
-      @click="goAds()"
-      class="ads-home"
-      :style="{
-        backgroundImage: `url(${ads})`
-      }"  
-    ></div>
+        @click="goAds()"
+        class="ads-home"
+        :style="{
+          backgroundImage: `url(${ads})`
+        }"
+      ></div>
     </div>
     <OtherComponent />
     <AboutComponent />
@@ -105,7 +105,6 @@ import AboutComponent from '../components/aboutComponent.vue'
 import HeroComponent from '../components/HeroComponent.vue'
 import OtherComponent from '../components/OtherComponent.vue'
 
-
 const showMoreButton = ref(true)
 const maxNewsToShow = ref(8)
 const currentDate = ref('')
@@ -117,14 +116,14 @@ const showCard = (cardID) => {
   router.push({ name: 'Tips', params: { id: cardID } })
 }
 
-const newsInfo = (newsID) => {
-  router.push({ name: 'News', params: { id: newsID } })
+const newsInfo = (newsTitle) => {
+  
+  router.push({ name: 'News', params: { title: newsTitle  } })
 }
 
 const goAds = () => {
   window.open('https://wa.me/+254703147237?text=Hi sporty predict, I want to buy VIP subcription')
 }
-
 
 const visibleNews = computed(() => {
   return newsData.value.slice(0, maxNewsToShow.value)
@@ -143,14 +142,17 @@ const showLessNews = () => {
 }
 const getNews = async () => {
   try {
-    const response = await axios.get('https://livescore-football.p.rapidapi.com/soccer/news-list', {
-      headers: {
-        'X-RapidAPI-Key': import.meta.env.VITE_RAPIDAPI_KEY,
-        'X-RapidAPI-Host': import.meta.env.VITE_RAPIDAPI_HOST
+    const response = await axios.get(
+      'https://football-news-aggregator-live.p.rapidapi.com/news/onefootball',
+      {
+        headers: {
+          'X-RapidAPI-Key': import.meta.env.VITE_RAPIDAPI_KEY,
+          'X-RapidAPI-Host': import.meta.env.VITE_RAPIDAPI_HOST
+        }
       }
-    })
-    console.log(response.data.data)
-    newsData.value = response.data.data
+    )
+    console.log(response.data)
+    newsData.value = response.data
     console.log(newsData.value)
   } catch (err) {
     console.log(err)

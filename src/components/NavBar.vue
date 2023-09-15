@@ -33,7 +33,7 @@
           </div>
         </div>
       </div>
-      <div class="nav-btn-container" v-if="token !== null">
+      <div class="nav-btn-container cs-btn" v-if="token !== null">
         <button @click="logOut" class="nav-btn btn-l btn-logout">
           <LogoutIcon class="icon-nav l-icon" />
           {{ $t('nav.btn6') }}
@@ -50,11 +50,11 @@
         </select>
       </div>
       <div class="nav-btn-container" v-else>
-        <button @click="goSignin" class="nav-btn btn-r">
+        <button @click="goSignin()" class="nav-btn btn-r">
           <GroupIcon class="icon-nav r-icon" />
           {{ $t('nav.btn7') }}
         </button>
-        <button @click="goLogin" class="nav-btn btn-l">
+        <button @click="goLogin()" class="nav-btn btn-l">
           <ProfileIcon class="icon-nav l-icon" />
           {{ $t('nav.btn8') }}
         </button>
@@ -145,7 +145,6 @@ const isOpen = ref(false)
 const router = useRouter()
 const isDrpOpen = ref(false)
 const isDropOpen = ref(false)
-const openLanguage = ref(false)
 
 
 watchEffect(() => {
@@ -161,9 +160,6 @@ const showDrop = () => {
   isDropOpen.value = !isDropOpen.value
 }
 
-const showLanguage = () => {
-  openLanguage.value = !openLanguage.value
-}
 
 const showDrp = () => {
   isDrpOpen.value = !isDrpOpen.value
@@ -173,19 +169,10 @@ const logOut = () => {
   localStorage.removeItem('token')
   localStorage.removeItem('username')
   token.value = null
-  isPaid.value = false
-  username.value = null
-  isAdmin.value = false
   window.location.reload()
 }
 
 
-
-// Check if a preferred language is stored in local storage and set it
-const storedLocale = localStorage.getItem('locale')
-if (storedLocale) {
-  i18n.global.locale = storedLocale
-}
 
 const openBetOfDay = () => {
   router.push({ name: 'Banker' })

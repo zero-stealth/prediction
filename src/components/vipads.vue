@@ -46,7 +46,7 @@ const minutes = ref(0)
 const seconds = ref(0)
 
 const goVip = () => {
-  router.push({ name: 'Vip' })
+  router.push({ name: 'Pay' })
 }
 
 const startCountdown = () => {

@@ -116,6 +116,7 @@ const accountsData = async () => {
       status: account.paid,
     }));
   } catch (err) {
+  console.error(err);
   }
 };
 

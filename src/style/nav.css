@@ -177,6 +177,8 @@
     align-items: center;
   }
 
+
+
   .nav-btn,
   .mobile-btn {
     gap: 5px;
@@ -470,6 +472,10 @@
 
   .mb-locale {
     display: none;
+  }
+
+  .btn-logout {
+    width: 80px;
   }
 
   .logo-spp {

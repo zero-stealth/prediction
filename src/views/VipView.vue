@@ -19,14 +19,14 @@
           <h1> {{ $t('bank.h1-2') }}🌵</h1>
           <button class="vip-btn" @click="payPage()">
             <MoneyIcon class="vip-pay-icon" />
-            {{ $t('bank.btn1') }}
+            {{ $t('vip.btn1') }}
           </button>
         </div>
       </div>
       <div v-else>
         <div class="main-header vip-m">
           <div class="header-info">
-            <h1>VIP tips {{ currentDate }}</h1>
+            <h1>VIP tips ({{ currentDate }})</h1>
           </div>
           <div class="header-btn">
             <button class="btn-h" :class="{ 'active-btn': offset > 0 }" @click="previousDay()">
@@ -43,7 +43,7 @@
         <template v-if="paid && username && cardData.length > 0">
           <div class="main-h-card booom-h">
             <Card
-              v-for="(card, index) in cardData"
+              v-for="(card) in cardData"
               :key="card._id"
               :tip="card.tip"
               :status="card.status"
