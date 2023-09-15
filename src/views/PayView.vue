@@ -11,7 +11,7 @@ export default {
     const searchTerm = ref('')
 
     const showPayment = () => {
-      if (Selectedcountry.value === '' && sport.value === '') {
+      if (Selectedcountry.value === '') {
         errMsg.value = 'Empty field is not supported'
       } else {
         switch (Selectedcountry.value) {
@@ -146,7 +146,10 @@ export default {
         <div class="method-pay">
           <h1>{{$t('pay.h1-6')}}</h1>
           <ul>
-            <li>{{$t('pay.li9')}}</li>
+            <li>{{$t('pay.li1')}}</li>
+            <li>Use <span>contact@sportypredict.com</span></li>
+            <li>{{$t('pay.li3')}}</li>
+            <li>{{$t('pay.li8')}}</li>
           </ul>
         </div>
         <p> <span>{{$t('pay.span4')}}</span> </p>
@@ -715,7 +718,7 @@ export default {
           </div>
         </div>
       </div>
-      <div v-else="reveal === ''"></div>
+      <div v-else></div>
     </div>
   </div>
   <div class="mobilenav-layout">
