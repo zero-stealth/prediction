@@ -25,11 +25,11 @@
             <ArrowIcon class="drop-icon" />
           </div>
           <div class="drop-down-panel" :class="[isDropOpen ? 'show' : 'hide']">
-            <span @click="goToC($t('nav.span1'))">{{ $t('nav.span1') }}</span>
-            <span @click="goToC($t('nav.span2'))">{{ $t('nav.span2') }}</span>
-            <span @click="goToC($t('nav.span3'))">{{ $t('nav.span3') }}</span>
-            <span @click="goToC($t('nav.span4'))">{{ $t('nav.span4') }}</span>
-            <span @click="goToC($t('nav.span5'))">{{ $t('nav.span5') }}</span>
+            <span @click="goToC('Double Chance')">{{ $t('nav.span1') }}</span>
+            <span @click="goToC('Over 2.5 Goals')">{{ $t('nav.span2') }}</span>
+            <span @click="goToC('Over 1.5 Goals')">{{ $t('nav.span3') }}</span>
+            <span @click="goToC('Both Teams To Score')">{{ $t('nav.span4') }}</span>
+            <span @click="goToC('Under 2.5 Goals')">{{ $t('nav.span5') }}</span>
           </div>
         </div>
       </div>

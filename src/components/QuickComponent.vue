@@ -21,12 +21,11 @@
 </template>
 
 <script setup>
-import { ref, watch } from 'vue'
+import { ref } from 'vue'
 import HomeIcon from '../icons/homeIcon.vue'
 import { RouterLink, useRouter, useRoute } from 'vue-router'
 
 const isDropOpen = ref(false)
-const addClass = ref(false)
 const router = useRouter()
 const route = useRoute()
 
@@ -35,7 +34,7 @@ const betItems = [
   { name: 'Double Chance', translationKey: 'nav.span1' },
   { name: 'Over 2.5 Goals', translationKey: 'nav.span2' },
   { name: 'Over 1.5 Goals', translationKey: 'nav.span3' },
-  { name: 'Both Team To Score', translationKey: 'nav.span4' },
+  { name: 'Both Teams To Score', translationKey: 'nav.span4' },
   { name: 'Under 2.5 Goals', translationKey: 'nav.span5' },
 ]
 
