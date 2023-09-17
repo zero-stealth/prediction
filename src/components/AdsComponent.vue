@@ -42,7 +42,7 @@ async function handleSubmit() {
     const user = JSON.parse(localStorage.getItem('token'));
     try {
       const formData = new FormData();
-      formData.append('ads', adsImage.value);
+      formData.append('image', adsImage.value);
       await axios.post(
         `${SERVER_HOST}/ads/create`,
         formData,

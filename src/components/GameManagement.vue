@@ -914,7 +914,7 @@ async function updateAds(formData) {
     const token = JSON.parse(localStorage.getItem('token'))
     const formDataaa = new FormData()
     if(formData.adsImage !== null){
-      formDataaa.append('ads', formData.adsImage);
+      formDataaa.append('image', formData.adsImage);
     }
 
     const response = await axios.put(
