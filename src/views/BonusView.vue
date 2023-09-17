@@ -1,5 +1,5 @@
 <template>
-  <QuickComponent/>
+  <QuickComponent />
   <div class="bon-comp">
     <div class="bonus-h">
       <h1>{{ $t('bonus.h1-1') }}</h1>
@@ -9,8 +9,19 @@
       <Bonus v-for="(bonusItem, index) in bonusData" :key="index" :bonusData="bonusItem" />
     </div>
   </div>
+  <div class="fp-class fp-bon">
+  <h1>{{ $t('BonusInfo.h1') }}</h1>
+  <p>{{ $t('BonusInfo.p1') }}</p>
+  <ol>
+    <li>{{ $t('BonusInfo.li1') }}</li>
+    <li>{{ $t('BonusInfo.li2') }}</li>
+    <li>{{ $t('BonusInfo.li3') }}</li>
+    <li>{{ $t('BonusInfo.li4') }}</li>
+    <li>{{ $t('BonusInfo.li5') }}</li>
+  </ol>
+  <p>{{ $t('BonusInfo.p2') }}</p>
+</div>
 </template>
-
 <script setup>
 import { ref } from 'vue'
 import betImage from '../assets/betwinner.png'
@@ -19,7 +30,6 @@ import melbetImage from '../assets/melbet.png'
 import Bonus from '../components/bonusComponent.vue'
 import QuickComponent from '../components/QuickComponent.vue'
 
-  
 const bonusData = ref([
   {
     imgSrc: betImage,

@@ -71,7 +71,7 @@
       <h1>{{ $t('overO.h2') }}</h1>
       <p>{{ $t('overO.d1') }}</p>
     </div>
-    <div class="fp-class" v-if="betName === 'Both Team To Score'">
+    <div class="fp-class" v-if="betName === 'Both Teams To Score'">
       <h1>{{ $t('Teams.h1') }}</h1>
       <p>{{ $t('Teams.p1') }}</p>
       <h1>{{ $t('Teams.h2') }}</h1>

@@ -225,6 +225,8 @@
     padding: 0 30px;
   }
 
+ 
+
   .main-header {
     padding: 20px 0;
     flex-direction: row;
@@ -246,6 +248,10 @@
 
   .fp-class h1 {
     text-align: start;
+  }
+
+  .fp-bon {
+    padding: 30px;
   }
 
   .ads-home {

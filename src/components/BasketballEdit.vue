@@ -212,7 +212,6 @@ function handleLeagueLogo(event) {
 }
 
 function handleSubmit() {
-  // ... (your existing code)
   try {
     const formData = {
       teamAscore: teamAscore.value,

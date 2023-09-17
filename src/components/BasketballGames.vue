@@ -156,7 +156,7 @@ async function handleSubmit() {
       formData.append('date', date.value)
       formData.append('tip', tip.value);
 
-      const response = await axios.post(
+       await axios.post(
         `${SERVER_HOST}/sports/create/Basketball`,
         formData,
         {

@@ -35,7 +35,7 @@
               <th>Delete</th>
             </tr>
           </thead>
-          <tbody v-for="item in cardData" :key="item">
+          <tbody v-for="item in cardData"  :key="item._id">
             <tr v-for="data in item" :key="data._id">
               <td>
                 <div class="Account-tbl-img">
@@ -113,7 +113,7 @@
               <th>Delete</th>
             </tr>
           </thead>
-          <tbody v-for="item in predictionData">
+          <tbody v-for="item in predictionData"  :key="item._id">
             <tr v-for="data in item" :key="data._id">
               <td>
                 <div class="Account-tbl-img">
@@ -190,7 +190,7 @@
               <th>Delete</th>
             </tr>
           </thead>
-          <tbody v-for="item in freeTipData">
+          <tbody v-for="item in freeTipData"  :key="item._id">
             <tr v-for="data in item" :key="data._id">
               <td>
                 <div class="Account-tbl-img">
@@ -267,7 +267,7 @@
               <th>Delete</th>
             </tr>
           </thead>
-          <tbody v-for="item in upcomingData">
+          <tbody v-for="item in upcomingData"  :key="item._id">
             <tr v-for="data in item" :key="data._id">
               <td>
                 <div class="Account-tbl-img">
@@ -344,7 +344,7 @@
               <th>Delete</th>
             </tr>
           </thead>
-          <tbody v-for="item in vipData">
+          <tbody v-for="item in vipData"  :key="item._id">
             <tr v-for="data in item" :key="data._id">
               <td>
                 <div class="Account-tbl-img">
@@ -390,7 +390,6 @@
           </tbody>
         </table>
       </div>
-
       <div class="acc-m gm-m">
         <div class="main-header">
           <div class="header-info">
@@ -421,7 +420,7 @@
               <th>Delete</th>
             </tr>
           </thead>
-          <tbody v-for="item in tennisData">
+          <tbody v-for="item in tennisData" :key="item._id">
             <tr v-for="data in item" :key="data._id">
               <td>
                 <div class="Account-tbl-img">
@@ -497,7 +496,7 @@
               <th>Delete</th>
             </tr>
           </thead>
-          <tbody v-for="item in basketBallData">
+          <tbody v-for="item in basketBallData"  :key="item._id">
             <tr v-for="data in item" :key="data._id">
               <td>
                 <div class="Account-tbl-img">
@@ -543,6 +542,80 @@
           </tbody>
         </table>
       </div>
+      <div class="acc-m gm-m">
+        <div class="main-header">
+          <div class="header-info">
+            <h1>Ads Posted </h1>
+          </div>
+        </div>
+        <table>
+          <thead>
+            <tr>
+              <th>Image</th>
+              <th>Edit</th>
+              <th>Delete</th>
+            </tr>
+          </thead>
+          <tbody v-for="item in adData"  :key="item._id">
+            <tr v-for="data in item" :key="data._id">
+              <td>
+                <div class="Account-tbl-img">
+                  <img :src="data.leagueIcon" alt="Account-p" class="Account-pi" />
+                </div>
+              </td>
+              <td>
+                <div class="Account-delete" @click="editAds(AdsPage, data._id)">
+                  <FileIcon class="icon-delete" />
+                </div>
+              </td>
+              <td>
+                <div class="Account-delete" @click="deleteAds(data._id)">
+                  <DeleteIcon class="icon-delete" />
+                </div>
+              </td>
+            </tr>
+            <tr v-if="tennisData.length === 0">
+              <td colspan="8">No Ads Posted!</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+      <div class="acc-m gm-m">
+        <div class="main-header">
+          <div class="header-info">
+            <h1>Time Posted </h1>
+          </div>
+        </div>
+        <table>
+          <thead>
+            <tr>
+              <th>Time</th>
+              <th>Edit</th>
+              <th>Delete</th>
+            </tr>
+          </thead>
+          <tbody v-for="item in TimeData"  :key="item._id">
+            <tr v-for="data in item" :key="data._id">
+              <td>
+                <span>{{ data.time  }}</span>
+              </td>
+              <td>
+                <div class="Account-delete" @click="editTime(TimePage, data._id)">
+                  <FileIcon class="icon-delete" />
+                </div>
+              </td>
+              <td>
+                <div class="Account-delete" @click="deleteTime(data._id)">
+                  <DeleteIcon class="icon-delete" />
+                </div>
+              </td>
+            </tr>
+            <tr v-if="tennisData.length === 0">
+              <td colspan="8">No games yet!</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
     </div>
   </div>
   <Teleport to="body">
@@ -551,31 +624,33 @@
         <ExitIcon class="icon-exit" @click="showEdit()" />
       </div>
       <div class="game-main-p">
-        <component @formSubmit="updateGame" @formSubmitSport="updateSport" :is="activePage" />
+        <component @formSubmit="updateGame" @formSubmitSport="updateSport" @formSubmitTime="updateTime" @formSubmitAds="updateAds" :is="activePage" />
       </div>
     </div>
   </Teleport>
 </template>
-
 <script setup>
 import axios from 'axios'
-import { ref, watchEffect, onMounted, computed, watch, shallowRef } from 'vue'
+import { ref, watchEffect, onMounted, watch, shallowRef } from 'vue'
 import ExitIcon from '../icons/ExitIcon.vue'
 import FileIcon from '../icons/FileIcon.vue'
+import AdsPage from '../components/AdsEdit.vue'
 import DeleteIcon from '../icons/DeleteIcon.vue'
 import BetOfTheDay from '../components/BetOfTheDayEdit.vue'
 import Predictionpicks from '../components/PredictionpicksEdits.vue'
 import Freetips from '../components/FreetipsEdit.vue'
+import TimePage from '../components/TimeEdit.vue'
 import UpcomingGames from '../components/UpcomingGamesEdits.vue'
 import TennisGames from '../components/TennisGamesEdits.vue'
 import BasketballGames from '../components/BasketballEdit.vue'
 import VipGames from './VipGamesEdits.vue'
 
 const username = ref(null)
-const accountInfo = ref([])
 const currentDate = ref('')
 const offset = ref(0)
 const message = ref()
+const adData = ref([])
+const TimeData = ref([])
 const isGameOpen = ref(false)
 const cardData = ref([])
 const vipData = ref([])
@@ -584,13 +659,14 @@ const freeTipData = ref([])
 const upcomingData = ref([])
 const tennisData = ref([])
 const basketBallData = ref([])
+const SERVER_HOST = import.meta.env.VITE_SERVER_HOST
 
 
 const getBetOfTheDay = async () => {
   try {
     // const token = JSON.parse(localStorage.getItem('token'));
     const response = await axios.get(
-      `https://predictions-reg9.onrender.com/predictions/bet/betOfTheDay/${currentDate.value}`
+      `${SERVER_HOST}/predictions/bet/betOfTheDay/${currentDate.value}`
     )
     console.log(response.data)
     cardData.value = response.data.length > 0 ? [response.data] : []
@@ -602,7 +678,7 @@ const getBetOfTheDay = async () => {
 const getVipGames = async () => {
   try {
     const response = await axios.get(
-      `https://predictions-reg9.onrender.com/predictions/vipPredictions/vip/${currentDate.value}`
+      `${SERVER_HOST}/predictions/vipPredictions/vip/${currentDate.value}`
     )
     console.log(response.data)
     vipData.value = response.data.length > 0 ? [response.data] : []
@@ -615,7 +691,7 @@ const getPredictions = async () => {
   try {
     // const token = JSON.parse(localStorage.getItem('token'));
     const response = await axios.get(
-      `https://predictions-reg9.onrender.com/predictions/${currentDate.value}`
+      `${SERVER_HOST}/predictions/${currentDate.value}`
     )
     console.log(response.data)
     predictionData.value = response.data.length > 0 ? [response.data] : []
@@ -628,7 +704,7 @@ const getFreeTips = async () => {
   try {
     // const token = JSON.parse(localStorage.getItem('token'));
     const response = await axios.get(
-      `https://predictions-reg9.onrender.com/predictions/tips/freeTip/${currentDate.value}`
+      `${SERVER_HOST}/predictions/tips/freeTip/${currentDate.value}`
     )
     console.log(response.data)
     freeTipData.value = response.data.length > 0 ? [response.data] : []
@@ -641,7 +717,7 @@ const getUpcoming = async () => {
   try {
     // const token = JSON.parse(localStorage.getItem('token'));
     const response = await axios.get(
-      `https://predictions-reg9.onrender.com/predictions/upcomingPredictions/upcoming/${currentDate.value}`
+      `${SERVER_HOST}/predictions/upcomingPredictions/upcoming/${currentDate.value}`
     )
     console.log(response.data)
     upcomingData.value = response.data.length > 0 ? [response.data] : []
@@ -654,7 +730,7 @@ const getTennisBets = async () => {
   try {
     // const token = JSON.parse(localStorage.getItem('token'));
     const response = await axios.get(
-      `https://predictions-reg9.onrender.com/sports/sport/Tennis/${currentDate.value}`
+      `${SERVER_HOST}/sports/sport/Tennis/${currentDate.value}`
     )
     console.log(response.data)
     tennisData.value = response.data.length > 0 ? [response.data] : []
@@ -667,10 +743,36 @@ const getBasketballBets = async () => {
   try {
     // const token = JSON.parse(localStorage.getItem('token'));
     const response = await axios.get(
-      `https://predictions-reg9.onrender.com/sports/sport/Basketball/${currentDate.value}`
+      `${SERVER_HOST}/sports/sport/Basketball/${currentDate.value}`
     )
     console.log(response.data)
     basketBallData.value = response.data.length > 0 ? [response.data] : []
+  } catch (err) {
+    console.log(err)
+  }
+}
+
+const getAds = async () => {
+  try {
+    // const token = JSON.parse(localStorage.getItem('token'));
+    const response = await axios.get(
+      `${SERVER_HOST}/ads`
+    )
+    console.log(response.data)
+    adData.value = response.data.length > 0 ? [response.data] : []
+  } catch (err) {
+    console.log(err)
+  }
+}
+
+const getTime = async () => {
+  try {
+    // const token = JSON.parse(localStorage.getItem('token'));
+    const response = await axios.get(
+      `${SERVER_HOST}/time`
+    )
+    console.log(response.data)
+    TimeData.value = response.data.length > 0 ? [response.data] : []
   } catch (err) {
     console.log(err)
   }
@@ -683,6 +785,8 @@ const showEdit = () => {
 const activePage = shallowRef(BetOfTheDay)
 const gameId = ref('')
 const sportId = ref('')
+const TimeId = ref('')
+const AdsId = ref('')
 
 const editGame = (game, id) => {
   activePage.value = game
@@ -693,6 +797,18 @@ const editGame = (game, id) => {
 const editSport = (sport, id) => {
   activePage.value = sport
   sportId.value = id
+  showEdit()
+}
+
+const editTime  = (time, id) => {
+  activePage.value = time
+  TimeId.value = id
+  showEdit()
+}
+
+const editAds = (ads, id) => {
+  activePage.value = ads
+  AdsId.value = id
   showEdit()
 }
 
@@ -752,7 +868,7 @@ async function updateGame(formData) {
       formDataa.append('showScore', formData.showScore);
     }
     const response = await axios.put(
-      `https://predictions-reg9.onrender.com/predictions/update/${gameId.value}`, formDataa,
+      `${SERVER_HOST}/predictions/update/${gameId.value}`, formDataa,
       {
         headers: {
           Authorization: `Bearer ${token}`,
@@ -767,6 +883,56 @@ async function updateGame(formData) {
     console.error('Error updating game:', error);
   }
 }
+
+
+async function updateTime(formData) {
+    try {
+    const token = JSON.parse(localStorage.getItem('token'))
+    const formDat = new FormData()
+    if(formData.time !== ''){
+      formDat.append('time', formData.time);
+    }
+
+    const response = await axios.put(
+      `${SERVER_HOST}/time/update/${TimeId.value}`, formDat,
+      {
+        headers: {
+          Authorization: `Bearer ${token}`
+        }
+      }
+    )
+    console.log(response.data)
+    alert("Time updated")
+
+  } catch (error) {
+    console.error('Error updating game:', error);
+  }
+}
+
+async function updateAds(formData) {
+    try {
+    const token = JSON.parse(localStorage.getItem('token'))
+    const formDataaa = new FormData()
+    if(formData.adsImage !== null){
+      formDataaa.append('ads', formData.adsImage);
+    }
+
+    const response = await axios.put(
+      `${SERVER_HOST}/ads/update/${AdsId.value}`, formDataaa,
+      {
+        headers: {
+          Authorization: `Bearer ${token}`
+        }
+      }
+    )
+    console.log(response.data)
+    alert("Ads updated")
+
+  } catch (error) {
+    console.error('Error updating game:', error);
+  }
+}
+
 
 async function updateSport(formData) {
     try {
@@ -825,7 +991,7 @@ async function updateSport(formData) {
     }
 
     const response = await axios.put(
-      `https://predictions-reg9.onrender.com/sports/update/${sportId.value}`, formDataa,
+      `${SERVER_HOST}/sports/update/${sportId.value}`, formDataa,
       {
         headers: {
           Authorization: `Bearer ${token}`
@@ -839,6 +1005,8 @@ async function updateSport(formData) {
     console.error('Error updating game:', error);
   }
 }
+
+
 
 const setOffset = (value) => {
   offset.value = value
@@ -869,6 +1037,8 @@ watchEffect(() => {
 })
 
 onMounted(() => {
+  getAds()
+  getTime()
   getBetOfTheDay()
   getPredictions()
   getVipGames()
@@ -878,16 +1048,14 @@ onMounted(() => {
   getBasketballBets()
 })
 
-const accountData = computed(() => {
-  return accountInfo.value
-})
+
 
 const deletePrediction = async (id) => {
   try {
     const token = JSON.parse(localStorage.getItem('token'))
 
     const response = await axios.delete(
-      `https://predictions-reg9.onrender.com/predictions/delete/${id}`,
+      `${SERVER_HOST}/predictions/delete/${id}`,
       {
         headers: { Authorization: `Bearer ${token}` }
       }
@@ -909,7 +1077,7 @@ const deleteSport = async (id) => {
     const token = JSON.parse(localStorage.getItem('token'))
 
     const response = await axios.delete(
-      `https://predictions-reg9.onrender.com/sports/delete/${id}`,
+      `${SERVER_HOST}/sports/delete/${id}`,
       {
         headers: { Authorization: `Bearer ${token}` }
       }
@@ -922,6 +1090,42 @@ const deleteSport = async (id) => {
   }
   alert('deleted')
 }
+
+const deleteAds = async (id) => {
+  try {
+    const token = JSON.parse(localStorage.getItem('token'))
+
+    const response = await axios.delete(
+      `${SERVER_HOST}/ads/delete/${id}`,
+      {
+        headers: { Authorization: `Bearer ${token}` }
+      }
+    )
+    message.value = response.data.message
+    await getAds()
+  } catch (err) {
+    message.value = 'deletion failed'
+  }
+  alert('deleted')
+}
+
+const deleteTime = async (id) => {
+  try {
+    const token = JSON.parse(localStorage.getItem('token'))
+
+    const response = await axios.delete(
+      `${SERVER_HOST}/time/delete/${id}`,
+      {
+        headers: { Authorization: `Bearer ${token}` }
+      }
+    )
+    message.value = response.data.message
+    await getTime()
+  } catch (err) {
+    message.value = 'deletion failed'
+  }
+  alert('deleted')
+}
 const showscore = ref(localStorage.getItem('showscore') === 'true')
 
 watch(showscore, (value) => {
@@ -929,6 +1133,8 @@ watch(showscore, (value) => {
 })
 
 watch(currentDate, () => {
+  // getAds()
+  // getTime()
   getBetOfTheDay()
   getVipGames()
   getPredictions()
