@@ -11,7 +11,6 @@ const route = useRoute()
 const goBack = () => {
   router.go(-1)
 }
-
 const getNews = async () => {
   try {
     const response = await axios.get(

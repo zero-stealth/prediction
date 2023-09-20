@@ -1,7 +1,23 @@
+
 <script>
 import countriesData from '../components/countries.json'
 import MoneyIcon from '../icons/payIcon.vue'
+
 import { ref, computed } from 'vue'
+import { useRouter } from 'vue-router'
+
+
+const router = useRouter()
+
+
+const logIn = () => {
+  router.push({ name: 'Login' })
+}
+
+const signIn = () => {
+  router.push({ name: 'Signin' })
+
+}
 
 export default {
   setup() {
@@ -70,8 +86,9 @@ export default {
     }
   },
 }
-</script>
 
+
+</script>
 <template>
   <div class="pay-monitor">
     <div class="desknav-layout">
@@ -522,7 +539,7 @@ export default {
         <div class="method-pay">
           <h1>{{$t('pay.h1-4')}}</h1>
           <ul>
-            <li>{{$t('pay.li1')}}</li>
+            <li @click="login()">{{$t('pay.li1')}}</li>
             <li>Use <span>contact@sportypredict.com</span></li>
             <li>{{$t('pay.li3')}}</li>
             <li>{{$t('pay.li8')}}</li>

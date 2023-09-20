@@ -1,6 +1,38 @@
 <script setup>
+import { ref, onMounted, computed } from 'vue';
 import ArrowIcon from '../icons/ArrowIcon.vue'
 import BetWin from '../assets/betwin.png'
+import axios from 'axios';
+
+
+const ads = ref(null);
+const adsData = ref(null);
+const SERVER_HOST = import.meta.env.VITE_SERVER_HOST;
+
+const getAds = async () => {
+  try {
+    const response = await axios.get(`${SERVER_HOST}/ads`);
+    adsData.value = response.data;
+    console.log(response.data);
+    showAds();
+  } catch (err) {
+    console.log(err);
+  }
+};
+
+
+const filteredAds = computed(() => {
+  const AdTitle = 'Top';
+  return adsData.value ? adsData.value.filter((Ads) => Ads.title === AdTitle) : [];
+});
+
+const showAds = () => {
+  ads.value = filteredAds.value[0]?.image || null;
+};
+
+onMounted(() => {
+  getAds();
+});
 
 const openLink = () => {
   window.open('https://bwredir.com/1bkh?p=%2Fregistration%2F', '_blank')

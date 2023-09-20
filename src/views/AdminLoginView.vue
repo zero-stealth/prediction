@@ -96,7 +96,6 @@ const resetAuth = async () => {
         email: email.value,
         password: password.value
       })
-      console.log(response.data) // Handle the response data as needed
       resetPage.value = !resetPage.value
     } catch (error) {
       errMsg.value = error

@@ -36,7 +36,8 @@
   </div>
 </template>
 <script setup>
-import { ref, onMounted } from 'vue'
+import axios from 'axios'
+import { ref, onMounted, watch } from 'vue'
 import { useRouter } from 'vue-router'
 
 const router = useRouter()
@@ -44,40 +45,83 @@ const router = useRouter()
 const hours = ref(0)
 const minutes = ref(0)
 const seconds = ref(0)
+const currentTime = ref(null) // Initialize as null
+const SERVER_HOST = import.meta.env.VITE_SERVER_HOST
 
 const goVip = () => {
   router.push({ name: 'Pay' })
 }
 
+const parseTime = (timeString) => {
+  const [hours, minutes] = timeString.split(':').map(Number);
+  return { hours, minutes };
+};
+
+const getTimeData = async () => {
+  try {
+    const response = await axios.get(`${SERVER_HOST}/time`)
+    console.log(response.data[0].time)
+    currentTime.value = parseTime(response.data[0].time); // Parse the time
+    startCountdown()
+  } catch (err) {
+    console.error(err)
+  }
+}
+
+
+
 const startCountdown = () => {
-  const endTime = new Date().getTime() + 60 * 60 * 1000 // 1 hour from now
+  const waitForCurrentTime = () => {
+    if (!currentTime.value) {
+      // If currentTime is not loaded, wait and check again after 1 second
+      setTimeout(waitForCurrentTime, 1000)
+    } else {
+      // When currentTime is loaded, calculate endTime and start the countdown
+      const now = new Date();
+      const endTime = new Date(
+        now.getFullYear(),
+        now.getMonth(),
+        now.getDate(),
+        currentTime.value.hours,
+        currentTime.value.minutes
+      ).getTime();
+      
+      const updateCountdown = () => {
+        const currentTimeMillis = new Date().getTime()
+        const timeLeft = endTime - currentTimeMillis
 
-  const updateCountdown = () => {
-    const currentTime = new Date().getTime()
-    const timeLeft = endTime - currentTime
+        if (timeLeft <= 0) {
+          clearInterval(intervalId)
+          hours.value = minutes.value = seconds.value = 0
+          return
+        }
 
-    if (timeLeft <= 0) {
-      clearInterval(intervalId)
-      return
+        const hoursLeft = Math.floor(timeLeft / (1000 * 60 * 60))
+        const minutesLeft = Math.floor((timeLeft % (1000 * 60 * 60)) / (1000 * 60))
+        const secondsLeft = Math.floor((timeLeft % (1000 * 60)) / 1000)
+
+        hours.value = hoursLeft
+        minutes.value = minutesLeft
+        seconds.value = secondsLeft
+      }
+
+      updateCountdown()
+      const intervalId = setInterval(updateCountdown, 1000)
     }
-
-    const hoursLeft = Math.floor(timeLeft / (1000 * 60 * 60))
-    const minutesLeft = Math.floor((timeLeft % (1000 * 60 * 60)) / (1000 * 60))
-    const secondsLeft = Math.floor((timeLeft % (1000 * 60)) / 1000)
-
-    hours.value = hoursLeft
-    minutes.value = minutesLeft
-    seconds.value = secondsLeft
   }
 
-  updateCountdown()
-  const intervalId = setInterval(updateCountdown, 1000)
+  waitForCurrentTime()
 }
 
 onMounted(() => {
+  getTimeData()
+})
+
+watch(currentTime, () => {
   startCountdown()
 })
 </script>
+
 <style>
 @import '../style/vipads.css';
 </style>

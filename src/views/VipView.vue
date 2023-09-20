@@ -16,7 +16,7 @@
           </div>
         </div>
         <div class="vip-p" v-else>
-          <h1> {{ $t('bank.h1-2') }}🌵</h1>
+          <h1> {{ $t('bank.h1-4') }}🌵</h1>
           <button class="vip-btn" @click="payPage()">
             <MoneyIcon class="vip-pay-icon" />
             {{ $t('vip.btn1') }}

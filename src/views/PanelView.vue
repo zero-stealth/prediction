@@ -37,11 +37,6 @@
             <span> Post Ads </span>
             <ArrowIcon class="icon-panel ap" />
           </button>
-          <button @click="setActivePage(PostTime)" :class="getButtonClass(PostTime)">
-            <FileIcon class="icon-panel" />
-            <span> Post Time </span>
-            <ArrowIcon class="icon-panel ap" />
-          </button>
           <button @click="setActivePage(Predictionpicks)" :class="getButtonClass(Predictionpicks)">
             <FileIcon class="icon-panel" />
             <span> Prediction picks </span>
@@ -90,7 +85,6 @@ import AccountManagement from '../components/AccountManagement.vue'
 import GameManagement from '../components/GameManagement.vue'
 import Predictionpicks from '../components/Predictionpicks.vue'
 import PostGames from '../components/PostGames.vue'
-import PostTime from '../components/TimeComponent.vue'
 import PostAds from '../components/AdsComponent.vue'
 
 const activePage = shallowRef(AccountManagement)

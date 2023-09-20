@@ -198,6 +198,7 @@
     "h1-1": "Bet of the day",
     "h1-2": "Basketball Tips",
     "h1-3": "Football Tips",
+    "h1-4": "Your currently on free plan",
     "btn-1": "Previous",
     "btn-2": "Today",
     "btn-3": "Tomorrow"
@@ -218,10 +219,10 @@
     "h1-1": "This subscription is valid for 30 days and no extra charges or hidden charges",
     "p1": "Your SportyPredict VIP account will be activated once your payment is received.",
     "p2": "Choose your country to get payment details:",
-    "lb": "Please select one",
+    "lb": "Please select your country",
     "op": "Select a country",
     "h1-2": "Login or Register",
-    "p3": "Log in with Google or",
+    "p3": "Log in",
     "span3": "Create an account",
     "h1-3": "Available Payment Methods for your country:",
     "h1-4": "PAY USING SKRILL",
@@ -284,7 +285,7 @@
   "Offer": {
     "Ohr": "All",
     "Oh1": "Exclusive offer",
-    "Oh2": "Bonus upto 130.USD",
+    "Oh2": "Bonus upto",
     "Ospan": "New customers only / Commercial content /  18+ age limit / T&C apply"
   },
   "football": {

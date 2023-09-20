@@ -87,6 +87,9 @@
     </div>
     <OtherComponent />
     <AboutComponent />
+    <PopUP v-if="formation == true">
+        <img href="" class="pop-ads-img"/>
+      </PopUP>
   </div>
 </template>
 <script setup>
@@ -99,6 +102,7 @@ import vipads from '../components/vipads.vue'
 import NewsCard from '../components/NewsCard.vue'
 import OfferAds from '../components/OfferAds.vue'
 import Card from '../components/CardComponent.vue'
+import PopUP from '../components/popupComponent.vue'
 import Upcoming from '../components/UpcomingPicks.vue'
 import QuickComponent from '../components/QuickComponent.vue'
 import AboutComponent from '../components/aboutComponent.vue'

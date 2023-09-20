@@ -17,46 +17,74 @@
     <div class="hero-s-contain">
       <div class="hero-info">
         <h1>
-          {{ $t('hero.span1') }} <span>  {{ $t('hero.span2') }}</span>   {{ $t('hero.span3') }} <span>  {{ $t('hero.span4') }}</span>   {{ $t('hero.span5') }}
-          <span>  {{ $t('hero.span6') }}</span>
+          {{ $t('hero.span1') }} <span>{{ $t('hero.span2') }}</span>
+          {{ $t('hero.span3') }} <span>{{ $t('hero.span4') }}</span>
+          {{ $t('hero.span5') }}
+          <span>{{ $t('hero.span6') }}</span>
         </h1>
-        <p>
-          <p>{{ $t('hero.bestBettingTips') }}</p>
-        </p>
+        <p>{{ $t('hero.bestBettingTips') }}</p>
       </div>
       <div @click="goPay" class="hero-img" :style="{ backgroundImage: `url(${ads})` }"></div>
     </div>
   </div>
 </template>
-
 <script setup>
-import { ref } from 'vue'
-import TelegramIcon from '../icons/telegram.vue'
-import banner from '../assets/banner.jpeg'
-import PayIcon from '../icons/payIcon.vue'
-import VipIcon from '../icons/VipIcon.vue'
-import { useRouter } from 'vue-router'
-import ads from '../assets/ads.gif'
+import TelegramIcon from '../icons/telegram.vue';
+import { ref, onMounted, computed } from 'vue';
+import banner from '../assets/banner.jpeg';
+import PayIcon from '../icons/payIcon.vue';
+import VipIcon from '../icons/VipIcon.vue';
+import { useRouter } from 'vue-router';
+import axios from 'axios';
 
-const router = useRouter()
-const isOpen = ref(false)
+const ads = ref(null);
+const adsData = ref(null);
+const router = useRouter();
+const SERVER_HOST = import.meta.env.VITE_SERVER_HOST;
 
 const goVip = () => {
-  router.push({ name: 'Vip' })
-}
+  router.push({ name: 'Vip' });
+};
+
+const getAds = async () => {
+  try {
+    const response = await axios.get(`${SERVER_HOST}/ads`);
+    adsData.value = response.data;
+    showAds();
+  } catch (err) {
+    console.log(err);
+  }
+};
 
 const goPay = () => {
-  router.push({ name: 'Pay' })
-}
+  router.push({ name: 'Pay' });
+};
 
 const openTelegram = () => {
-  window.open('https://t.me/sportypredict_tips', '_blank')
-}
+  window.open('https://t.me/sportypredict_tips', '_blank');
+};
 
 const heroSectionStyle = {
-  backgroundImage: `url(${banner}), linear-gradient(rgb(17, 51, 86), rgb(17, 51, 86))`
-}
+  backgroundImage: `url(${banner}), linear-gradient(rgb(17, 51, 86), rgb(17, 51, 86))`,
+};
+
+const filteredAds = computed(() => {
+  const AdTitle = 'Top';
+  return adsData.value ? adsData.value.filter((Ads) => Ads.title === AdTitle) : [];
+});
+
+const showAds = () => {
+  ads.value = filteredAds.value[0]?.image || null;
+};
+
+onMounted(() => {
+  getAds();
+});
 </script>
+
+<style>
+@import '../style/nav.css';
+</style>
 
 <style>
 @import '../style/nav.css';
