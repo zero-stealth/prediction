@@ -2,16 +2,16 @@
   <Teleport to="body">
     <div class="pop-container" :class="[openPop ? 'show-p' : '']">
       <div class="pop-align">
+        <div class="pop-circle-container" @click="drawerStore.togglePop">
+          <ExitIcon class="pop-exit-icon" />
+        </div>
         <div
           class="pop-inner"
+          @click="openAdlink()"
           :style="{
             backgroundImage: `url(${adsBannerImage})`
           }"
-        >
-          <div class="pop-circle-container" @click="drawerStore.togglePop">
-            <ExitIcon class="pop-exit-icon" />
-          </div>
-        </div>
+        ></div>
       </div>
     </div>
   </Teleport>
@@ -25,6 +25,7 @@ import axios from 'axios'
 const SERVER_HOST = import.meta.env.VITE_SERVER_HOST
 const drawerStore = useDrawerStore()
 const adsBannerImage = ref(null)
+const adsBannerLink = ref(null)
 const openPop = ref(null)
 const adsData = ref([])
 
@@ -50,6 +51,21 @@ const filteredAds = computed(() => {
 
 const showAds = () => {
   adsBannerImage.value = filteredAds.value[0]?.image || null
+  adsBannerLink.value = filteredAds.value[0]?.link || null
+
+  // Call AutoClose after setting adsBannerImage
+  AutoClose()
+}
+
+// When there is no data in the server
+const AutoClose = () => {
+  if (adsBannerImage.value === null || adsBannerImage.value === '') {
+    drawerStore.togglePop()
+  }
+}
+
+const openAdlink = () => {
+  window.open(`${adsBannerLink.value}`, '_blank')
 }
 
 onMounted(() => {

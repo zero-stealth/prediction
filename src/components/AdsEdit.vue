@@ -25,7 +25,6 @@
             <option value="Popup">Popup</option>
             <option value="Middle">Middle</option>
             <option value="Banner">Banner</option>
-            <option value="Sticky">Sticky</option>
             <option value="Card">Card</option>
             <option value="Bottom">Bottom</option>
           </select>

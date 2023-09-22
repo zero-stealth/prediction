@@ -35,7 +35,6 @@
             <option value="Popup">Popup</option>p
             <option value="Middle">Middle</option>
             <option value="Banner">Banner</option>
-            <option value="Sticky">Sticky</option>
             <option value="Card">Card</option>
             <option value="Bottom">Bottom</option>
           </select>
@@ -72,11 +71,7 @@ function handleAdsimage(event) {
 
 async function handleSubmit() {
   if (
-    description.value !== null ,
-    adsImage.value !== null,
-    category.value !== null,
-    link.value !== null
-    
+    category.value !== ''
 
   ) {
     const user = JSON.parse(localStorage.getItem('token'));

@@ -5,6 +5,8 @@
     right: 0;
     bottom: 0;
     height: 80px;
+    display: none;
+    visibility: hidden;
     border-radius: 0;
     position: sticky;
     align-items: center;
@@ -13,11 +15,15 @@
 
   }
 
+
   .sticky-inner {
-    background-repeat: no-repeat;
+    background-clip: content-box;
+    background-position: center;
+    background-repeat:no-repeat;
     background-size: cover;
-    border-radius: 20px;
-    border-radius: 0;
+    object-fit: cover;
+    cursor: pointer;
+    max-width: 100%e;
     height: 100%;
     width: 100%;
   }
@@ -39,10 +45,12 @@
 .sticky-ads {
   margin: 20px;
   padding: 5px;
+  visibility: visible;
+  
+
 }
 
-
   .sticky-inner {
-    width: 50%;
+    width: 700px;
 }
 }
