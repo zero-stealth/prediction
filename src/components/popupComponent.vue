@@ -1,40 +1,62 @@
-<script setup>
-import { useDrawerStore } from "@/stores/drawer";
-import CircleDrawer from "../icons/circleIcon.vue";
-import ExitIcon from "../icons/ExitIcon.vue";
-
-import { ref, watchEffect } from "vue";
-
-const drawerStore = useDrawerStore();
-const open = ref(null);
-
-watchEffect(() => {
-    open.value = drawerStore.popDrawer;
-})
-
-</script>
 <template>
   <Teleport to="body">
-    <div
-      class="pop-container"
-      :class="[open == false ? 'Close' : '']"
-    >
-    <div class="pop-inner">
-    <div class="pop-inner-c">
-      <div class="pop-circle-container">
-      <CircleDrawer class="pop-circle" @click="drawerStore.togglePop">
-          <ExitIcon class="icon pop-exit-icon" />
-        </CircleDrawer>
-    </div>
-    </div>
-    <div class="pop-sec-d">
-      <slot></slot>
-    </div>
-    </div>
+    <div class="pop-container" :class="[openPop ? 'show-p' : '']">
+      <div class="pop-align">
+        <div
+          class="pop-inner"
+          :style="{
+            backgroundImage: `url(${adsBannerImage})`
+          }"
+        >
+          <div class="pop-circle-container" @click="drawerStore.togglePop">
+            <ExitIcon class="pop-exit-icon" />
+          </div>
+        </div>
+      </div>
     </div>
   </Teleport>
 </template>
-<style>
-@import "@/style/popup.css";
-</style>
+<script setup>
+import { ref, watchEffect, onMounted, computed } from 'vue'
+import { useDrawerStore } from '../stores/drawer'
+import ExitIcon from '../icons/ExitIcon.vue'
+import axios from 'axios'
 
+const SERVER_HOST = import.meta.env.VITE_SERVER_HOST
+const drawerStore = useDrawerStore()
+const adsBannerImage = ref(null)
+const openPop = ref(null)
+const adsData = ref([])
+
+watchEffect(() => {
+  openPop.value = drawerStore.popDrawer
+})
+
+const getAds = async () => {
+  try {
+    const response = await axios.get(`${SERVER_HOST}/ads`)
+    adsData.value = response.data
+    // console.log(response.data);
+    showAds()
+  } catch (err) {
+    console.log(err)
+  }
+}
+
+const filteredAds = computed(() => {
+  const AdTitle = 'Popup'
+  return adsData.value ? adsData.value.filter((Ads) => Ads.title === AdTitle) : []
+})
+
+const showAds = () => {
+  adsBannerImage.value = filteredAds.value[0]?.image || null
+}
+
+onMounted(() => {
+  getAds()
+})
+</script>
+
+<style scoped>
+@import '../style/popup.css';
+</style>

@@ -17,6 +17,7 @@
     --dark-primary-color: #06274a;
     --light-primary-color: rgb(17, 51, 86);
     --drop-shadow: 5px 8px 9px var(--tertiary-color);
+    --box-shadow-style: rgba(0, 0, 0, 0.09) 0px 3px 12px;
 
     margin: 0;
     padding: 0;
@@ -38,6 +39,7 @@
 
   input {
     outline: none;
+    
   }
 
   .mobilenav-layout {

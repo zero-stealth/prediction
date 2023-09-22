@@ -60,12 +60,13 @@
   </div>
 </template>
 <script setup>
+const SERVER_HOST = import.meta.env.VITE_SERVER_HOST
 import ButtonComponent from '../components/ButtonComponent.vue'
 import QuickComponent from '../components/QuickComponent.vue'
+import vipads from '../components/vipadsComponent.vue'
 import Card from '../components/CardComponent.vue'
 import OfferAds from '../components/OfferAds.vue'
 import { ref, watchEffect, onMounted } from 'vue'
-import vipads from '../components/vipads.vue'
 import axios from 'axios'
 
 const currentDate = ref('')
@@ -77,7 +78,7 @@ const predictions = async () => {
   try {
     // const token = localStorage.getItem('token')
     const response = await axios.get(
-      `https://predictions-reg9.onrender.com/predictions/tips/freeTip/${currentDate.value}`
+      `${SERVER_HOST}/predictions/tips/freeTip/${currentDate.value}`
     )
     console.log(response.data)
     cardData.value = response.data.length > 0 ? [response.data] : []

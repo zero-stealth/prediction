@@ -198,6 +198,7 @@
     "h1-1": "Pari du jour",
     "h1-2": "Conseils de basketball",
     "h1-3": "Conseils de football",
+    "h1-4":"Votre forfait est actuellement gratuit",
     "btn-1": "Précédent",
     "btn-2": "Aujourd'hui",
     "btn-3": "Demain"
@@ -218,7 +219,7 @@
     "h1-1": "Cette abonnement est valable pendant 30 jours et il n'y a pas de frais supplémentaires ni de frais cachés",
     "p1": "Votre compte VIP SportyPredict sera activé dès réception de votre paiement.",
     "p2": "Choisissez votre pays pour obtenir les détails de paiement :",
-    "lb": "Veuillez en sélectionner un",
+    "lb": "S'il vous plaît sélectionnez votre pays",
     "op": "Sélectionner un pays",
     "h1-2": "Connexion ou inscription",
     "p3": "Connectez-vous avec Google ou",

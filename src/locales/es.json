@@ -199,6 +199,7 @@
     "h1-1": "Apuesta del día",
     "h1-2": "Consejos de baloncesto",
     "h1-3": "Consejos de fútbol",
+    "h1-4":"Actualmente estás en el plan gratuito",
     "btn-1": "Anterior",
     "btn-2": "Hoy",
     "btn-3": "Mañana"
@@ -219,7 +220,7 @@
     "h1-1": "Esta suscripción es válida por 30 días y no tiene cargos adicionales ni cargos ocultos.",
     "p1": "Tu cuenta VIP de SportyPredict se activará una vez que recibamos tu pago.",
     "p2": "Elige tu país para obtener los detalles de pago:",
-    "lb": "Por favor, selecciona uno",
+    "lb": "por favor seleccione su país",
     "op": "Selecciona un país",
     "h1-2": "Iniciar sesión o registrarse",
     "p3": "Inicia sesión con Google o",

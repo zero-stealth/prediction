@@ -5,7 +5,7 @@
         <h1>{{ $t('ads.h1-1') }}</h1>
       </div>
       <p>
-        {{ $t('ads.span-1') }} {{ $t('ads.span-2') }} from our sure {{ $t('ads.span-4') }} 
+        {{ $t('ads.span-1') }} {{ $t('ads.span-2') }} from our sure {{ $t('ads.span-4') }}
         {{ $t('ads.span-5') }}.
       </p>
       <p>{{ $t('ads.p1-1') }}</p>
@@ -45,6 +45,7 @@ const router = useRouter()
 const hours = ref(0)
 const minutes = ref(0)
 const seconds = ref(0)
+const intervalId = ref(0)
 const currentTime = ref(null) // Initialize as null
 const SERVER_HOST = import.meta.env.VITE_SERVER_HOST
 
@@ -53,46 +54,56 @@ const goVip = () => {
 }
 
 const parseTime = (timeString) => {
-  const [hours, minutes] = timeString.split(':').map(Number);
-  return { hours, minutes };
-};
+  const [hours, minutes] = timeString.split(':').map(Number)
+  return { hours, minutes }
+}
 
 const getTimeData = async () => {
   try {
     const response = await axios.get(`${SERVER_HOST}/time`)
-    console.log(response.data[0].time)
-    currentTime.value = parseTime(response.data[0].time); // Parse the time
+    currentTime.value = parseTime(response.data[0].time)
     startCountdown()
   } catch (err) {
     console.error(err)
   }
 }
 
-
-
 const startCountdown = () => {
   const waitForCurrentTime = () => {
     if (!currentTime.value) {
-      // If currentTime is not loaded, wait and check again after 1 second
       setTimeout(waitForCurrentTime, 1000)
     } else {
-      // When currentTime is loaded, calculate endTime and start the countdown
-      const now = new Date();
-      const endTime = new Date(
+      const now = new Date()
+      let endTime = new Date(
         now.getFullYear(),
         now.getMonth(),
         now.getDate(),
         currentTime.value.hours,
         currentTime.value.minutes
-      ).getTime();
-      
+      ).getTime()
+
+      // Check if there's a stored end time in local storage
+      const storedEndTime = localStorage.getItem('countdownEndTime')
+
+      if (storedEndTime) {
+        // Use the stored end time if available
+        endTime = parseInt(storedEndTime)
+      } else {
+        // Store the end time in local storage
+        localStorage.setItem('countdownEndTime', endTime.toString())
+      }
+
       const updateCountdown = () => {
         const currentTimeMillis = new Date().getTime()
         const timeLeft = endTime - currentTimeMillis
 
         if (timeLeft <= 0) {
-          clearInterval(intervalId)
+          clearInterval(intervalId.value)
           hours.value = minutes.value = seconds.value = 0
+
+          // Remove the countdownEndTime from local storage
+          localStorage.removeItem('countdownEndTime')
+
           return
         }
 
@@ -106,7 +117,7 @@ const startCountdown = () => {
       }
 
       updateCountdown()
-      const intervalId = setInterval(updateCountdown, 1000)
+      intervalId.value = setInterval(updateCountdown, 1000) // Assign intervalId here
     }
   }
 

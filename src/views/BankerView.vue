@@ -60,10 +60,10 @@
 <script setup>
 import QuickComponent from '../components/QuickComponent.vue'
 import ButtonComponent from '../components/ButtonComponent.vue'
+import vipads from '../components/vipadsComponent.vue'
 import Card from '../components/CardComponent.vue'
 import { ref, watchEffect, onMounted } from 'vue'
 import OfferAds from '../components/OfferAds.vue'
-import vipads from '../components/vipads.vue'
 import axios from 'axios'
 
 const currentDate = ref('')

@@ -77,14 +77,11 @@ const showAds = () => {
   ads.value = filteredAds.value[0]?.image || null;
 };
 
+
 onMounted(() => {
   getAds();
 });
 </script>
-
-<style>
-@import '../style/nav.css';
-</style>
 
 <style>
 @import '../style/nav.css';

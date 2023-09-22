@@ -87,34 +87,43 @@
     </div>
     <OtherComponent />
     <AboutComponent />
-    <PopUP v-if="formation == true">
-        <img href="" class="pop-ads-img"/>
+    <PopUP v-if="showPop" >
       </PopUP>
   </div>
 </template>
 <script setup>
-import { ref, onMounted, watch, computed } from 'vue'
-import { useRouter } from 'vue-router'
 import axios from 'axios'
-import Arrow from '../icons/arrow.vue'
 import ads from '../assets/ads.gif'
-import vipads from '../components/vipads.vue'
+import Arrow from '../icons/arrow.vue'
+import { useRouter } from 'vue-router'
 import NewsCard from '../components/NewsCard.vue'
 import OfferAds from '../components/OfferAds.vue'
+import { useDrawerStore } from "../stores/drawer"
 import Card from '../components/CardComponent.vue'
 import PopUP from '../components/popupComponent.vue'
 import Upcoming from '../components/UpcomingPicks.vue'
+import vipads from '../components/vipadsComponent.vue'
 import QuickComponent from '../components/QuickComponent.vue'
 import AboutComponent from '../components/aboutComponent.vue'
 import HeroComponent from '../components/HeroComponent.vue'
 import OtherComponent from '../components/OtherComponent.vue'
+import { ref, watch, computed, watchEffect , onMounted } from 'vue'
 
+const SERVER_HOST = import.meta.env.VITE_SERVER_HOST;
+const drawerStore = useDrawerStore();
 const showMoreButton = ref(true)
 const maxNewsToShow = ref(8)
 const currentDate = ref('')
 const router = useRouter()
+const showPop = ref(null)
 const cardData = ref([])
 const newsData = ref([])
+
+
+watchEffect(() => {
+  showPop.value = drawerStore.popDrawer;
+  console.log(showPop.value)
+})
 
 const showCard = (cardID) => {
   router.push({ name: 'Tips', params: { id: cardID } })
@@ -167,19 +176,17 @@ const getPrediction = async () => {
   // const token = JSON.parse(localStorage.getItem('token'))
   try {
     const response = await axios.get(
-      `https://predictions-reg9.onrender.com/predictions/tips/freeTip/${currentDate.value}`
+      `${SERVER_HOST}/predictions/tips/freeTip/${currentDate.value}`
     )
     cardData.value = response.data
-    console.log(cardData.value)
+    // console.log(cardData.value)
   } catch (err) {
     console.log(err)
   }
 }
 
-onMounted(() => {
-  getPrediction()
-  getNews()
-})
+
+
 
 const offset = ref(0)
 
@@ -221,6 +228,11 @@ const formatFormation = (formation) => {
 
 watch(currentDate, () => {
   getPrediction()
+})
+
+onMounted(() => {
+  getPrediction()
+  getNews()
 })
 </script>
 <style scoped>

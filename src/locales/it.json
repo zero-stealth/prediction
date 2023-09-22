@@ -1,5 +1,4 @@
-{
-  "section2": {
+{ "section2": {
     "abt-h1": "SportyPredict è uno dei principali fornitori di analisi e previsioni delle scommesse sportive.",
     "abt-p1": "Il nostro obiettivo principale è fornire i migliori consigli sulle scommesse sportive, coprendo una vasta gamma di sport, tra cui calcio, basket e tennis. Il nostro obiettivo è assicurare che tu possa impegnarti nelle scommesse sportive quotidiane con fiducia e massimizzare il tuo potenziale di successo. Il nostro sito web offre un'interfaccia utente facile da usare che consente una navigazione semplice sia su desktop che su dispositivi mobili, rendendo l'esperienza delle scommesse sportive online senza soluzione di continuità. Se stai cercando una piattaforma affidabile che preveda con precisione le partite di calcio, SportyPredict.com è indubbiamente il miglior sito di previsioni sportive.",
     "abt-h2": "Perché scegliere SportyPredict?",
@@ -197,6 +196,7 @@
     "h1-1": "Scommessa del giorno",
     "h1-2": "consigli sul basket",
     "h1-3": "Consigli sul calcio",
+    "h1-4":"Attualmente hai un piano gratuito",
     "btn-1": "Precedente",
     "btn-2": "Oggi",
     "btn-3": "Domani"
@@ -217,7 +217,7 @@
     "h1-1": "Questo abbonamento è valido per 30 giorni e senza costi aggiuntivi o costi nascosti",
     "p1": "Il tuo account SportyPredict VIP verrà attivato una volta ricevuto il pagamento.",
     "p2": "Scegli il tuo Paese per ottenere i dettagli del pagamento:",
-    "lb": "Selezionane uno",
+    "lb": "Selezionare il proprio paese",
     "op": "Seleziona un paese",
     "h1-2": "Accedi o registrati",
     "p3": "Accedi con Google o",

@@ -65,9 +65,9 @@
 <script setup>
 import axios from 'axios'
 import { ref, onMounted, watch } from 'vue'
-import vipads from '../components/vipads.vue'
 import OfferAds from '../components/OfferAds.vue'
 import Card from '../components/CardComponent.vue'
+import vipads from '../components/vipadsComponent.vue'
 import QuickComponent from '../components/QuickComponent.vue'
 import ButtonComponent from '../components/ButtonComponent.vue'
 

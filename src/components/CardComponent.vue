@@ -65,11 +65,9 @@
     </div>
   </div>
 </template>
-
 <script setup>
-
-import { ref, computed } from 'vue'
-import moment from 'moment-timezone'; 
+import { ref, computed } from 'vue';  
+import moment from 'moment-timezone';
 
 const props = defineProps({
   formationA: {
@@ -138,20 +136,14 @@ const props = defineProps({
 
 const formattedTime = computed(() => {
   try {
-    // Parse the incoming time string with the specified format
     const eventTime = moment(props.time, 'HH:mm');
-
-    // Get the user's time zone
     const userTimeZone = moment.tz.guess();
-    // Convert the event time to the user's time zone and format it
     return eventTime.tz(userTimeZone).format('HH:mm');
-    
   } catch (error) {
     console.error('Error formatting time:', error);
-    return 'props.time';
+    return props.time; // Return the original time string on error
   }
 });
-
 
 const formationsA = ref(props.formationA);
 const formationsB = ref(props.formationB);
@@ -160,29 +152,8 @@ const shouldShowScore = computed(() => {
   return props.showScore && props.teamAscore !== undefined && props.teamBscore !== undefined;
 });
 
+</script>
 
-// onMounted(async () => {
-//   try {
-//     // https://ifconfig.me/all.json
-//     const ipData = await axios.get('https://api.ipify.org?format=json');
-//     const userIp = ipData.data.ip;
-//     const response = await axios.get(`http://ip-api.com/json/${userIp}`);
-//     const userTimeZone = response.data.timezone;
-//       // Parse the incoming time string to a DateTime object
-//       const eventTime = DateTime.fromISO(props.time);
-
-//     // Convert the event time to the user's timezone and format it
-//     formattedTime.value = eventTime.setZone(userTimeZone).toFormat('HH:mm');
-    
-//     console.log(formattedTime.value);
-//   } catch (error) {
-//     console.error('Error fetching user timezone or formatting time:', error);
-//   }
-// });
-
-
-
- </script>
 <style scoped>
 @import '../style/card.css';
 </style>

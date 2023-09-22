@@ -172,6 +172,7 @@
     "h1-1": "Wette des Tages",
     "h1-2": "Basketball Tipps",
     "h1-3": "Fußball Tipps",
+    "h1-4":"Sie nutzen derzeit den kostenlosen Tarif",
     "btn-1": "Vorherige",
     "btn-2": "Heute",
     "btn-3": "Morgen"
@@ -192,7 +193,7 @@
     "h1-1": "Dieses Abonnement ist 30 Tage gültig und es fallen keine zusätzlichen oder versteckten Kosten an",
     "p1": "Ihr SportyPredict VIP-Konto wird aktiviert, sobald Ihre Zahlung eingegangen ist.",
     "p2": "Wählen Sie Ihr Land, um Zahlungsdetails zu erhalten:",
-    "lb": "Bitte wählen Sie eins",
+    "lb": "Bitte wählen Sie Ihr Land",
     "op": "Wählen Sie ein Land",
     "h1-2": "Einloggen oder Registrieren",
     "p3": "Melden Sie sich mit Google an oder",

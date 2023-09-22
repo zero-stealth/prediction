@@ -4,71 +4,69 @@
     left: 0;
     right: 0;
     bottom: 0;
-    margin: auto;
+    height: 100%;
+    width: 100%;
+    display: none;
     position: fixed;
     overflow: hidden;
-    overflow-y: auto;
-    background-color: var(--light-color);
+    align-items: center;
+    justify-content: center;
+    background-color: var(--drop-shadow);
   }
-  
+
+  .pop-align {
+    width: 80%;
+    height: 40%;
+    cursor: pointer;
+    border-radius: 20px;
+    background-color: var(--primary-color);
+  }
+
   .pop-inner {
-    gap: 10px;
-    display: flex;
-    overflow-y: scroll;
-    flex-direction: column;
+    background-position: center center;
+    background-clip: content-box;
+    background-repeat: no-repeat;
+    background-size: cover;
+    border-radius: 20px;
+    height: 100%;
+    width: 100%;
   }
-  
-  .pop-inner-c {
-    background-color: var(--background-color);
-    box-shadow: var(--search-shadow);
-    border-radius: 5px;
-  }
-  
 
   .pop-circle-container {
+    width: 28px;
+    height: 28px;
+    z-index: 999;
     display: flex;
-    justify-content: end;
+    position: relative;
+    align-items: center;
+    border-radius: 360%;
+    justify-content: center;
+    background-color: var(--background-color);
   }
-  
-  .pop-up-details {
+
+  .pop-circle-container:hover {
+    background-color: var(--secondary-color);
+  }
+
+  .pop-circle-container .pop-exit-icon:hover {
+    fill: var(--background-color);
+  }
+
+  .pop-exit-icon {
+    width: 24px;
+    height: 24px;
+    fill: var(--primary-color);
+  }
+
+  .show-p {
     display: flex;
-    text-align: center;
-    flex-direction: column;
-    padding: 20px;
-  }
-  
-  .pop-up-details h1 {
-    font-size: 1rem;
-    color: var(--primary-color);
-  }
-
-  .pop-sec-d {
-    padding: 10px;
-  }
-
-  .Close {
-    display: none;
-  }
-
-  .pop-circle {
-    box-shadow: none;   
   }
 }
 
 /* using it as global style for larger devices  */
 @media only screen and (min-width: 48em) {
-
-  .pop-container {
-    border-radius: 10px;
-    width: fit-content;
-    height: 80%;
-    padding:0 10px;
+  .pop-align {
+    width: 40%;
+    height: 40%;
   }
-
-  .pop-inner-c {
-    background-color: var(--light-color);
-    box-shadow: none;
-    
-  }
-
 }

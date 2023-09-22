@@ -17,7 +17,7 @@
 
 <script setup>
 import { ref } from 'vue'
-const emit = defineEmits(['formSubmitSport'])
+const emit = defineEmits(['formSubmitTime'])
 
 
 const time = ref('');
@@ -30,7 +30,7 @@ function handleSubmit() {
       time: time.value,
     }
 
-    emit('formSubmitSport', formData)
+    emit('formSubmitTime', formData)
   } catch (err) {
     console.log(err)
   }
