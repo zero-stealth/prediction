@@ -896,7 +896,7 @@ async function updateTime(formData) {
     const token = JSON.parse(localStorage.getItem('token'))
     const formDatas = new FormData()
     if(formData.time !== ''){
-      formDatas.append('time', formData.time);
+      formDatas.append('time', formDatas.time);
     }
 
     const response = await axios.put(

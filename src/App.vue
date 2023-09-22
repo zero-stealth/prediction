@@ -11,8 +11,8 @@ import { RouterView } from 'vue-router'
     <div class="app-main">
       <NavBar />
       <RouterView />
-    <Sticky/>
     </div>
+    <Sticky/>
     <Footer />
   </div>
 </template>

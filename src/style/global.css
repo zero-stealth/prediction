@@ -18,6 +18,7 @@
     --light-primary-color: rgb(17, 51, 86);
     --drop-shadow: 5px 8px 9px var(--tertiary-color);
     --box-shadow-style: rgba(0, 0, 0, 0.09) 0px 3px 12px;
+    --search-shadow: rgba(17, 17, 26, 0.1) 0px 0px 16px;
 
     margin: 0;
     padding: 0;

@@ -75,7 +75,6 @@
 
 <script setup>
 import axios from 'axios'
-import Arrow from '../icons/arrow.vue'
 import { useRouter } from 'vue-router'
 import banner from '../assets/banner.jpeg'
 import MoneyIcon from '../icons/payIcon.vue'

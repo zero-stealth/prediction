@@ -1,9 +1,15 @@
 <template>
   <div class="quick-main">
     <div class="quick-nav">
-      <router-link :to="{ name: 'Home' }" class="quick-link sos-link"> <HomeIcon class="nav-home-icon"/> </router-link>
-      <router-link :to="{ name: 'Football' }" class="quick-link">{{ $t('nav.link10') }}</router-link>
-      <router-link :to="{ name: 'Basketball' }" class="quick-link">{{ $t('nav.link4')  }}</router-link>
+      <router-link :to="{ name: 'Home' }" class="quick-link sos-link">
+        <HomeIcon class="nav-home-icon" />
+      </router-link>
+      <router-link :to="{ name: 'Football' }" class="quick-link">{{
+        $t('nav.link10')
+      }}</router-link>
+      <router-link :to="{ name: 'Basketball' }" class="quick-link">{{
+        $t('nav.link4')
+      }}</router-link>
       <router-link :to="{ name: 'Tennis' }" class="quick-link">{{ $t('nav.link9') }}</router-link>
       <router-link :to="{ name: 'Bonus' }" class="quick-link">{{ $t('nav.link2') }}</router-link>
       <router-link :to="{ name: 'Banker' }" class="quick-link">{{ $t('nav.link3') }}</router-link>
@@ -29,15 +35,13 @@ const isDropOpen = ref(false)
 const router = useRouter()
 const route = useRoute()
 
-
 const betItems = [
   { name: 'Double Chance', translationKey: 'nav.span1' },
   { name: 'Over 2.5 Goals', translationKey: 'nav.span2' },
   { name: 'Over 1.5 Goals', translationKey: 'nav.span3' },
   { name: 'Both Teams To Score', translationKey: 'nav.span4' },
-  { name: 'Under 2.5 Goals', translationKey: 'nav.span5' },
+  { name: 'Under 2.5 Goals', translationKey: 'nav.span5' }
 ]
-
 
 const isBetActive = (betName) => {
   return route.params.betName === betName

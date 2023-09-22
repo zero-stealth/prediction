@@ -92,10 +92,10 @@
 <script setup>
 import ButtonComponent from '../components/ButtonComponent.vue'
 import QuickComponent from '../components/QuickComponent.vue'
+import vipads from '../components/vipadsComponent.vue'
 import Card from '../components/CardComponent.vue'
 import OfferAds from '../components/OfferAds.vue'
 import { ref, watchEffect, onMounted } from 'vue'
-import vipads from '../components/vipads.vue'
 import { useRouter } from 'vue-router'
 import axios from 'axios'
 
