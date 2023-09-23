@@ -92,7 +92,6 @@ const predictions = async () => {
     const response = await axios.get(
       `https://predictions-reg9.onrender.com/predictions/bet/betOfTheDay/${currentDate.value}`
     )
-    console.log(response.data);
     cardData.value = response.data.length > 0 ? [response.data] : [];
   } catch (err) {
     console.log(err)

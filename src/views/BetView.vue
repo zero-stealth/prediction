@@ -3,7 +3,7 @@
   <QuickComponent />
   <div class="main-bet">
     <div class="main-header">
-      <div class="header-info">
+      <div class="header-info"> 
         <h1>{{ paramValue }} ({{ currentDate }})</h1>
       </div>
       <div class="header-btn">

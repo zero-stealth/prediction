@@ -89,7 +89,6 @@ watchEffect(() => {
 async function getPrediction() {
   // const token = JSON.parse(localStorage.getItem('token'))
   url.value = `https://predictions-reg9.onrender.com/sports/sport/Tennis/${currentDate.value}`
-  console.log(url.value)
 
   try {
     const response = await axios.get(url.value)

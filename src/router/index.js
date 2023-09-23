@@ -171,7 +171,7 @@ const router = createRouter({
         description: "how to pay for our vip services",
       },
     },
-    {
+      {
       path: '/disclaimer',
       name: 'Disclaimer',
       component: () => import('../components/Disclaimerinfo.vue'),

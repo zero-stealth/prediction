@@ -29,8 +29,8 @@
   </div>
 </template>
 <script setup>
+import { ref, onMounted, computed } from 'vue'
 import TelegramIcon from '../icons/telegram.vue'
-import { ref, onMounted, computed, watchEffect } from 'vue'
 import banner from '../assets/banner.jpeg'
 import PayIcon from '../icons/payIcon.vue'
 import VipIcon from '../icons/VipIcon.vue'
@@ -39,9 +39,10 @@ import axios from 'axios'
 
 const ads = ref(null)
 const adsData = ref(null)
-const router = useRouter()
 const bannerLink = ref(null)
 const SERVER_HOST = import.meta.env.VITE_SERVER_HOST
+
+const router = useRouter()
 
 const goVip = () => {
   router.push({ name: 'Vip' })
@@ -53,18 +54,16 @@ const getAds = async () => {
     adsData.value = response.data
     showAds()
   } catch (err) {
-    console.log(err)
+    console.error(err)
   }
 }
 
 const goPay = () => {
-  watchEffect(() => {
-    if (bannerLink.value === null) {
-      router.push({ name: 'Pay' })
-    } else {
-      window.open(`${bannerLink.value}`, '_blank')
-    }
-  })
+  if (bannerLink.value === null) {
+    router.push({ name: 'Pay' })
+  } else {
+    window.open(`${bannerLink.value}`, '_blank')
+  }
 }
 
 const openTelegram = () => {

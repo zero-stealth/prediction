@@ -103,7 +103,6 @@ async function getPrediction() {
       }
     )
     cardData.value = response.data.length > 0 ? [response.data] : [] // Set the data or an empty array
-    console.log(cardData.value)
   } catch (err) {
     console.log(err)
   }
