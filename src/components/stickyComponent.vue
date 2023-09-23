@@ -1,8 +1,10 @@
 <template>
   <div class="sticky-ads" :class="[openSticky ? 'show-s' : 'hide-s']" v-if="openSticky">
-    <div class="pop-circle-container sticky-c" @click="drawerStore.toggleSticky">
+   <div class="sticky-c">
+    <div class="pop-circle-container" @click="drawerStore.toggleSticky">
       <ExitIcon class="pop-exit-icon" />
     </div>
+   </div>
     <div
       @click="openAdlink()"
       class="sticky-inner"

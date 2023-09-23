@@ -14,6 +14,11 @@
 
   }
 
+  .sticky-c {
+    height: 70px;
+    position: relative;
+  }
+
 
   .sticky-inner {
     background-clip: content-box;
