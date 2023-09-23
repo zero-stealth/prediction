@@ -3,13 +3,6 @@ import HomeView from '../views/HomeView.vue'
 
 const router = createRouter({
   history: createWebHistory(import.meta.env.BASE_URL),
-  scrollBehavior(to, from, savedPosition) {
-    if (savedPosition) {
-      return savedPosition;
-    } else {
-      return { top: 0 };
-    }
-  },
   routes: [
     {
       path: '/',
@@ -179,6 +172,21 @@ const router = createRouter({
       },
     },
     {
+      path: '/sitemap.xml', // URL to access the sitemap
+      name: 'Sitemap',
+      component: () => {
+        const blob = new Blob([sitemapXML], { type: 'application/xml' });
+        const url = window.URL.createObjectURL(blob);
+        const link = document.createElement('a');
+        link.href = url;
+        link.download = 'sitemap.xml'; 
+        link.click();
+      },
+      meta: {
+        title: 'Download Sitemap',
+      },
+    },
+    {
       path: '/how-to-pay',
       name: 'Pay',
       component: () => import('../views/PayView.vue'),
@@ -193,6 +201,9 @@ const router = createRouter({
       component: () => import('../views/NotFoundView.vue'),
     },
   ],
+  scrollBehavior() {
+    return { x: 0, y: 0 };
+  },
 })
 
 
@@ -245,4 +256,26 @@ const adminGuard = (to, from, next) => {
 router.beforeEach(dynamicTitleGuard);
 router.beforeEach(adminGuard);
 
+// Generate the sitemap
+function generateSitemap() {
+  const baseUrl = 'https://sportypredict.com/';
+  const routes = router.options.routes;
+
+  let sitemap = `<?xml version="1.0" encoding="UTF-8"?>\n`;
+  sitemap += `<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">\n`;
+
+  routes.forEach((route) => {
+    sitemap += `  <url>\n`;
+    sitemap += `    <loc>${baseUrl}${route.path}</loc>\n`;
+    sitemap += `  </url>\n`;
+  });
+
+  sitemap += `</urlset>`;
+  return sitemap;
+}
+
+// Usage: Call generateSitemap() to get the sitemap XML
+const sitemapXML = generateSitemap();
+
 export default router;
+export { sitemapXML };

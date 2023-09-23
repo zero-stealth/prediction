@@ -6,12 +6,12 @@
     bottom: 0;
     height: 80px;
     display: none;
-    visibility: hidden;
     border-radius: 0;
     position: sticky;
+    visibility: hidden;
     align-items: center;
     justify-content: center;
-    border-radius: 20px;
+    background-color: transparent;
 
   }
 
