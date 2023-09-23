@@ -176,46 +176,67 @@ const logOut = () => {
 
 const openBetOfDay = () => {
   router.push({ name: 'Banker' })
+  scrollToTop()
   showMenu()
 }
 
 const goToC = (betname) => {
   router.push({ name: 'Bet', params: { betName: betname } })
   showDrop()
+  scrollToTop()
+
 }
 
 const goTo = (betname) => {
   router.push({ name: 'Bet', params: { betName: betname } })
+  scrollToTop()
   showMenu()
   showDrp()
 }
 
 const goTennis = () => {
   router.push({ name: 'Tennis' })
+  scrollToTop()
   showMenu()
 }
 
 const goBasketball = () => {
   router.push({ name: 'Basketball' })
+  scrollToTop()
   showMenu()
 }
 
 const goLogin = () => {
   router.push({ name: 'Login' })
+  scrollToTop()
+
 }
 
 const goHome = () => {
   router.push({ name: 'Home' })
+  scrollToTop()
+
 }
 
 const goSignin = () => {
   router.push({ name: 'Signin' })
+  scrollToTop()
+
 }
 
 const openTelegramX = () => {
   window.open('https://t.me/sportypredict_tips', '_blank')
   showMenu()
 }
+
+const scrollToTop = () => {
+  // Scroll to the top of the page
+  window.scrollTo({
+    top: 0,
+    behavior: "smooth", 
+  });
+}
+
 </script>
 
 <style>

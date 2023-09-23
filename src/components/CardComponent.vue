@@ -134,6 +134,8 @@ const props = defineProps({
   }
 })
 
+
+
 const formattedTime = computed(() => {
   try {
     const eventTime = moment(props.time, 'HH:mm');

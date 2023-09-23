@@ -54,6 +54,15 @@ const showDrop = () => {
 const goToC = (betname) => {
   router.push({ name: 'Bet', params: { betName: betname } })
   showDrop()
+  scrollToTop()
+}
+
+const scrollToTop = () => {
+  // Scroll to the top of the page
+  window.scrollTo({
+    top: 0,
+    behavior: 'smooth'
+  })
 }
 </script>
 

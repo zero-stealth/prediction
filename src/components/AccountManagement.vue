@@ -258,7 +258,6 @@ watchEffect(() => {
   }
 });
 </script>
-
 <style>
 @import '../style/account.css';
 @import '../style/Bet.css';

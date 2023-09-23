@@ -1,7 +1,7 @@
 <script setup>
 import { ref } from 'vue'
 import Ios from '../assets/ios.png'
-import { useRouter, RouterLink } from 'vue-router'
+import { RouterLink } from 'vue-router'
 import emailIcon from '../icons/email.vue'
 import Android from '../assets/android.png'
 import tiktokIcon from '../icons/tiktokIcon.vue'
@@ -14,7 +14,6 @@ import telegramIcon from '../icons/telegram.vue'
 
 const booknow = ref('')
 const errMessage = ref('')
-const router = useRouter()
 const phoneNumber = ref('+254703147237')
 
 const openWhatsapp = () => {
@@ -66,6 +65,14 @@ const book = () => {
   reset()
 }
 
+
+const scrollToTop = () => {
+  // Scroll to the top of the page
+  window.scrollTo({
+    top: 0,
+    behavior: "smooth", 
+  });
+}
 const reset = () => {
   booknow.value = ''
 }
@@ -107,7 +114,7 @@ const reset = () => {
           <div>
             <h1>{{ $t('footer.quickLinks') }}</h1>
           </div>
-          <div class="d2-con">
+          <div class="d2-con" @click="scrollToTop">
             <RouterLink :to="{ name: 'Home' }" class="nav-link">{{ $t('footer.home') }}</RouterLink>
             <RouterLink :to="{ name: 'Banker' }" class="nav-link">{{
               $t('footer.betOfTheDay')
@@ -122,7 +129,7 @@ const reset = () => {
           <div>
             <h1>{{ $t('footer.information') }}</h1>
           </div>
-          <div class="d2-con">
+          <div class="d2-con" @click="scrollToTop">
             <RouterLink :to="{ name: 'Disclaimer' }" class="nav-link">{{ $t('footer.disclaimer') }}</RouterLink>
             <RouterLink :to="{ name: 'Policy' }" class="nav-link">{{ $t('footer.policy') }}</RouterLink>
             <RouterLink :to="{ name: 'Refund' }" class="nav-link">{{ $t('footer.refundPolicy') }}</RouterLink>

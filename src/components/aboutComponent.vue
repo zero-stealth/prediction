@@ -54,15 +54,31 @@ const router = useRouter()
 
 const goTo = (liName) => {
   router.push({ name: 'Bet', params: { betName: liName } })
+  scrollToTop()
+
 }
+
 
 const goToB = () => {
   router.push({ name: 'Banker' })
+  scrollToTop()
+
 }
 
 const goAlogin = () => {
   router.push({ name: 'AdminLogin' })
+  scrollToTop()
+
 }
+
+const scrollToTop = () => {
+  // Scroll to the top of the page
+  window.scrollTo({
+    top: 0,
+    behavior: "smooth", 
+  });
+}
+
 </script>
 <style>
 @import '../style/info.css';

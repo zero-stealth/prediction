@@ -13,14 +13,29 @@ const searchTerm = ref('')
 
 const logIn = () => {
   router.push({ name: 'Login' })
+  scrollToTop()
+
 }
 
 const signIn = () => {
   router.push({ name: 'Signin' })
+  scrollToTop()
+
 }
 
 const goVip = () => {
   router.push({ name: 'Vip' })
+  scrollToTop()
+
+}
+
+
+const scrollToTop = () => {
+  // Scroll to the top of the page
+  window.scrollTo({
+    top: 0,
+    behavior: "smooth", 
+  });
 }
 
 const showPayment = () => {

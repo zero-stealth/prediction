@@ -40,7 +40,7 @@
 import { ref } from 'vue'
 import axios from 'axios'
 import SportBg from '../assets/sport-bg.png'
-import googleIcon from '../icons/googleIcon.vue'
+// import googleIcon from '../icons/googleIcon.vue'
 import { useRouter } from 'vue-router'
 
 const resetPage = ref(false)
@@ -120,21 +120,21 @@ const resetAuth = async () => {
   }
 }
 
-const useGoogle = async () => {
-  try {
-    const response = await axios.get('https://predictions-reg9.onrender.com/auth/auth/google');
+// const useGoogle = async () => {
+//   try {
+//     const response = await axios.get('https://predictions-reg9.onrender.com/auth/auth/google');
 
-    // Handle the response from the server
-    if (response.data.redirectTo) {
-      router.push({ path: response.data.redirectTo });
-    } else {
-      console.error('Invalid response from server');
-    }
-  } catch (error) {
-    // Handle the error
-    console.error(error);
-  }
-};
+//     // Handle the response from the server
+//     if (response.data.redirectTo) {
+//       router.push({ path: response.data.redirectTo });
+//     } else {
+//       console.error('Invalid response from server');
+//     }
+//   } catch (error) {
+//     // Handle the error
+//     console.error(error);
+//   }
+// };
 
 </script>
 

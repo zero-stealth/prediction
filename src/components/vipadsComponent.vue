@@ -51,11 +51,20 @@ const SERVER_HOST = import.meta.env.VITE_SERVER_HOST
 
 const goVip = () => {
   router.push({ name: 'Pay' })
+  scrollToTop()
 }
 
 const parseTime = (timeString) => {
   const [hours, minutes] = timeString.split(':').map(Number)
   return { hours, minutes }
+}
+
+const scrollToTop = () => {
+  // Scroll to the top of the page
+  window.scrollTo({
+    top: 0,
+    behavior: "smooth", 
+  });
 }
 
 const getTimeData = async () => {

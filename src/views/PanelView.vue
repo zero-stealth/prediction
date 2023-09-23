@@ -102,7 +102,18 @@ const getButtonClass = (page) => {
 const logout = () => {
   localStorage.removeItem('token');
   router.push({ name: 'Home' });
+  scrollToTop()
+
 };
+
+const scrollToTop = () => {
+  // Scroll to the top of the page
+  window.scrollTo({
+    top: 0,
+    behavior: "smooth", 
+  });
+}
+
 </script>
 <style>
 @import '../style/panel.css';

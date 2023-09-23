@@ -19,6 +19,17 @@ const props = defineProps({
 
 const goTo = () => {
   router.push({ name: 'Bet', params: { betName: props.buttonName } })
+  scrollToTop()
+
+}
+
+
+const scrollToTop = () => {
+  // Scroll to the top of the page
+  window.scrollTo({
+    top: 0,
+    behavior: "smooth", 
+  });
 }
 
 </script>

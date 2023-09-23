@@ -103,14 +103,28 @@ const updateAuthStatus = () => {
 
 const payPage = () => {
   router.push({ name: 'Pay' })
+  scrollToTop()
+
 }
 
 const goSignin = () => {
   router.push({ name: 'Signin' })
+  scrollToTop()
+
 }
 
 const goLogin = () => {
   router.push({ name: 'Login' })
+  scrollToTop()
+
+}
+
+const scrollToTop = () => {
+  // Scroll to the top of the page
+  window.scrollTo({
+    top: 0,
+    behavior: "smooth", 
+  });
 }
 
 const showCard = (cardID) => {

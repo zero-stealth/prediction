@@ -1,14 +1,18 @@
 @media screen {
 .app-x {
-    top: 0;
+    /* top: 0;
     left: 0;
     right: 0;
     bottom: 0;
+    height: 100;
     max-height: 100vh;
     position: fixed;
     overflow: auto;
-    overflow-y: auto;
-
+    overflow-y: auto; */
+    height: 100%;
+    overflow: auto;
+    overflow-y: auto; 
+    overflow-x: hidden; 
 }
 
 

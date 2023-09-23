@@ -1,13 +1,12 @@
 @media screen {
   .sticky-ads {
-    top: 0;
     left: 0;
     right: 0;
-    bottom: 0;
+    bottom: -20px;
     height: 80px;
     display: none;
     border-radius: 0;
-    position: sticky;
+    position: fixed;
     visibility: hidden;
     align-items: center;
     justify-content: center;

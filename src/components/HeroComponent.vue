@@ -46,6 +46,16 @@ const router = useRouter()
 
 const goVip = () => {
   router.push({ name: 'Vip' })
+  scrollToTop()
+
+}
+
+const scrollToTop = () => {
+  // Scroll to the top of the page
+  window.scrollTo({
+    top: 0,
+    behavior: "smooth", 
+  });
 }
 
 const getAds = async () => {

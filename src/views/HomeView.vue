@@ -87,9 +87,8 @@
     </div>
     <OtherComponent />
     <AboutComponent />
-    <PopUP v-if="showPop" >
-      </PopUP>
-      <Sticky/>
+    <PopUP v-if="showPop"> </PopUP>
+    <Sticky />
   </div>
 </template>
 <script setup>
@@ -98,7 +97,7 @@ import Arrow from '../icons/arrow.vue'
 import { useRouter } from 'vue-router'
 import NewsCard from '../components/NewsCard.vue'
 import OfferAds from '../components/OfferAds.vue'
-import { useDrawerStore } from "../stores/drawer"
+import { useDrawerStore } from '../stores/drawer'
 import Card from '../components/CardComponent.vue'
 import PopUP from '../components/popupComponent.vue'
 import Sticky from '../components/stickyComponent.vue'
@@ -108,10 +107,10 @@ import QuickComponent from '../components/QuickComponent.vue'
 import AboutComponent from '../components/aboutComponent.vue'
 import HeroComponent from '../components/HeroComponent.vue'
 import OtherComponent from '../components/OtherComponent.vue'
-import { ref, watch, computed, watchEffect , onMounted } from 'vue'
+import { ref, watch, computed, watchEffect, onMounted } from 'vue'
 
-const SERVER_HOST = import.meta.env.VITE_SERVER_HOST;
-const drawerStore = useDrawerStore();
+const SERVER_HOST = import.meta.env.VITE_SERVER_HOST
+const drawerStore = useDrawerStore()
 const showMoreButton = ref(true)
 const adsMiddleImage = ref(null)
 const adsMiddleLink = ref(null)
@@ -123,19 +122,17 @@ const cardData = ref([])
 const newsData = ref([])
 const adsData = ref([])
 
-
-
 watchEffect(() => {
-  showPop.value = drawerStore.popDrawer;
+  showPop.value = drawerStore.popDrawer
 })
 
 const showCard = (cardID) => {
   router.push({ name: 'Tips', params: { id: cardID } })
+  scrollToTop()
 }
 
 const newsInfo = (newsTitle) => {
-  
-  router.push({ name: 'News', params: { title: newsTitle  } })
+  router.push({ name: 'News', params: { title: newsTitle } })
 }
 
 const getMiddleAds = async () => {
@@ -155,21 +152,20 @@ const filteredAds = computed(() => {
 })
 
 const showAds = () => {
-  adsMiddleImage.value = filteredAds.value[0]?.image || null;
+  adsMiddleImage.value = filteredAds.value[0]?.image || null
   adsMiddleLink.value = filteredAds.value[0]?.link || ''
-
 }
 
 const goAds = () => {
   watchEffect(() => {
     if (adsMiddleLink.value === null) {
       router.push({ name: 'Pay' })
+      scrollToTop()
     } else {
       window.open(`${adsMiddleLink.value}`, '_blank')
     }
   })
 }
-
 
 const visibleNews = computed(() => {
   return newsData.value.slice(0, maxNewsToShow.value)
@@ -208,18 +204,13 @@ const getNews = async () => {
 const getPrediction = async () => {
   // const token = JSON.parse(localStorage.getItem('token'))
   try {
-    const response = await axios.get(
-      `${SERVER_HOST}/predictions/tips/freeTip/${currentDate.value}`
-    )
+    const response = await axios.get(`${SERVER_HOST}/predictions/tips/freeTip/${currentDate.value}`)
     cardData.value = response.data
     // console.log(cardData.value)
   } catch (err) {
     console.log(err)
   }
 }
-
-
-
 
 const offset = ref(0)
 
@@ -262,6 +253,14 @@ const formatFormation = (formation) => {
 watch(currentDate, () => {
   getPrediction()
 })
+
+const scrollToTop = () => {
+  // Scroll to the top of the page
+  window.scrollTo({
+    top: 0,
+    behavior: "smooth", 
+  });
+}
 
 onMounted(() => {
   getPrediction()

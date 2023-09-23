@@ -10,6 +10,17 @@ import { useRouter } from 'vue-router'
 const router = useRouter()
 const goHome = () => {
     router.push({ name: 'Home' })
+  scrollToTop()
+
+    
+}
+
+const scrollToTop = () => {
+  // Scroll to the top of the page
+  window.scrollTo({
+    top: 0,
+    behavior: "smooth", 
+  });
 }
 
 </script>

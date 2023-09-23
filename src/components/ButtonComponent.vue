@@ -12,10 +12,22 @@ const router = useRouter()
 
 const goVip = () => {
   router.push({ name: 'Vip' })
+  scrollToTop()
+
 }
 
 const goPay = () => {
   router.push({ name: 'Pay' })
+  scrollToTop()
+
+}
+
+const scrollToTop = () => {
+  // Scroll to the top of the page
+  window.scrollTo({
+    top: 0,
+    behavior: "smooth", 
+  });
 }
 
 const openTelegram = () => {

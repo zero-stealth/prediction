@@ -21,12 +21,24 @@ const router = useRouter();
 
 const goToB = () => {
   router.push({ name: 'Banker' })
+  scrollToTop()
+  
 }
 
 const goToBO = () => {
   router.push({ name: 'Bonus' })
+  scrollToTop()
+
 }
 
+
+const scrollToTop = () => {
+  // Scroll to the top of the page
+  window.scrollTo({
+    top: 0,
+    behavior: "smooth", 
+  });
+}
 
 </script>
 <style>
