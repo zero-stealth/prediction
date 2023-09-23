@@ -1,4 +1,4 @@
-<template>
+  <template>
   <div class="panel-container">
     <div class="panel-bar" :class="[isOpen != false ? 'open-p' : 'close-p']">
       <div class="panel-exit">
