@@ -59,20 +59,36 @@
       <p>{{ $t('bask.p2') }}</p>
     </div>
   </div>
+  <PopUP v-if="showPop" >
+      </PopUP>
+      <Sticky/>
 </template>
 
 <script setup>
 import axios from 'axios'
+import { useDrawerStore } from "../stores/drawer"
 import OfferAds from '../components/OfferAds.vue'
 import Card from '../components/CardComponent.vue'
+import PopUP from '../components/popupComponent.vue'
 import vipads from '../components/vipadsComponent.vue'
+import Sticky from '../components/stickyComponent.vue'
 import ButtonComponent from '../components/ButtonComponent.vue'
 import QuickComponent from '../components/QuickComponent.vue'
-import { ref, onMounted, watch } from 'vue'
+import { ref, onMounted, watch ,watchEffect } from 'vue'
 
 const upcomingDates = ref('')
 const currentDate = ref('')
 const cardData = ref([])
+
+const showPop = ref(null)
+const drawerStore = useDrawerStore();
+
+
+watchEffect(() => {
+  showPop.value = drawerStore.popDrawer;
+})
+
+
 
 async function getPrediction() {
   const token = JSON.parse(localStorage.getItem('token'))

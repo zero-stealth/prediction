@@ -70,7 +70,9 @@
   }
 
   .abt-info-p li {
+    cursor: pointer;
     font-size: 0.9rem;
+    color: var(--secondary-color);
   }
 
   .abt-p-in {

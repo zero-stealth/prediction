@@ -60,14 +60,19 @@
       <p>{{ $t('ten.p2') }}</p>
     </div>
   </div>
+  <PopUP v-if="showPop"> </PopUP>
+  <Sticky />
 </template>
 
 <script setup>
 import axios from 'axios'
-import { ref, onMounted, watch } from 'vue'
+import { useDrawerStore } from '../stores/drawer'
 import OfferAds from '../components/OfferAds.vue'
 import Card from '../components/CardComponent.vue'
+import PopUP from '../components/popupComponent.vue'
+import Sticky from '../components/stickyComponent.vue'
 import vipads from '../components/vipadsComponent.vue'
+import { ref, onMounted, watch, watchEffect } from 'vue'
 import QuickComponent from '../components/QuickComponent.vue'
 import ButtonComponent from '../components/ButtonComponent.vue'
 
@@ -75,6 +80,12 @@ const currentDate = ref('')
 const cardData = ref([])
 const url = ref('')
 
+const showPop = ref(null)
+const drawerStore = useDrawerStore()
+
+watchEffect(() => {
+  showPop.value = drawerStore.popDrawer
+})
 async function getPrediction() {
   // const token = JSON.parse(localStorage.getItem('token'))
   url.value = `https://predictions-reg9.onrender.com/sports/sport/Tennis/${currentDate.value}`

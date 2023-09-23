@@ -1,10 +1,8 @@
 <template>
-  <Teleport to="body">
     <div class="container-not-found">
       <img src="../assets/404.gif" alt="gif_ing" class="imag-gif" />
       <button class="not-f-btn" @click="goHome">Go home</button>
     </div>
-  </Teleport>
 </template>
 <script setup>
 import { useRouter } from 'vue-router'

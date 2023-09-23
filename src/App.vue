@@ -1,5 +1,4 @@
 <script setup>
-import Sticky from './components/stickyComponent.vue'
 import NavBar from './components/NavBar.vue'
 import Footer from './components/Footer.vue'
 import { RouterView } from 'vue-router'
@@ -12,7 +11,6 @@ import { RouterView } from 'vue-router'
       <NavBar />
       <RouterView />
     </div>
-    <Sticky/>
     <Footer />
   </div>
 </template>

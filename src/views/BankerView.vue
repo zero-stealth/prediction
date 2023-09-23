@@ -56,12 +56,18 @@
       <p>{{ $t('BetF.p2') }}</p>
     </div>
   </div>
+  <PopUP v-if="showPop" >
+      </PopUP>
+      <Sticky/>
 </template>
 <script setup>
 import QuickComponent from '../components/QuickComponent.vue'
 import ButtonComponent from '../components/ButtonComponent.vue'
 import vipads from '../components/vipadsComponent.vue'
+import Sticky from '../components/stickyComponent.vue'
+import PopUP from '../components/popupComponent.vue'
 import Card from '../components/CardComponent.vue'
+import { useDrawerStore } from "../stores/drawer"
 import { ref, watchEffect, onMounted } from 'vue'
 import OfferAds from '../components/OfferAds.vue'
 import axios from 'axios'
@@ -70,6 +76,15 @@ const currentDate = ref('')
 const offset = ref(0)
 
 const cardData = ref([])
+const showPop = ref(null)
+const drawerStore = useDrawerStore();
+
+
+watchEffect(() => {
+  showPop.value = drawerStore.popDrawer;
+})
+
+
 
 const predictions = async () => {
   try {

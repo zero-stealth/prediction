@@ -81,7 +81,7 @@
         @click="goAds()"
         class="ads-home"
         :style="{
-          backgroundImage: `url(${ads})`
+          backgroundImage: `url(${adsMiddleImage})`
         }"
       ></div>
     </div>
@@ -89,11 +89,11 @@
     <AboutComponent />
     <PopUP v-if="showPop" >
       </PopUP>
+      <Sticky/>
   </div>
 </template>
 <script setup>
 import axios from 'axios'
-import ads from '../assets/ads.gif'
 import Arrow from '../icons/arrow.vue'
 import { useRouter } from 'vue-router'
 import NewsCard from '../components/NewsCard.vue'
@@ -101,6 +101,7 @@ import OfferAds from '../components/OfferAds.vue'
 import { useDrawerStore } from "../stores/drawer"
 import Card from '../components/CardComponent.vue'
 import PopUP from '../components/popupComponent.vue'
+import Sticky from '../components/stickyComponent.vue'
 import Upcoming from '../components/UpcomingPicks.vue'
 import vipads from '../components/vipadsComponent.vue'
 import QuickComponent from '../components/QuickComponent.vue'
@@ -112,17 +113,20 @@ import { ref, watch, computed, watchEffect , onMounted } from 'vue'
 const SERVER_HOST = import.meta.env.VITE_SERVER_HOST;
 const drawerStore = useDrawerStore();
 const showMoreButton = ref(true)
+const adsMiddleImage = ref(null)
+const adsMiddleLink = ref(null)
 const maxNewsToShow = ref(8)
 const currentDate = ref('')
 const router = useRouter()
 const showPop = ref(null)
 const cardData = ref([])
 const newsData = ref([])
+const adsData = ref([])
+
 
 
 watchEffect(() => {
   showPop.value = drawerStore.popDrawer;
-  console.log(showPop.value)
 })
 
 const showCard = (cardID) => {
@@ -134,9 +138,32 @@ const newsInfo = (newsTitle) => {
   router.push({ name: 'News', params: { title: newsTitle  } })
 }
 
-const goAds = () => {
-  window.open('https://wa.me/+254703147237?text=Hi sporty predict, I want to buy VIP subcription')
+const getMiddleAds = async () => {
+  try {
+    const response = await axios.get(`${SERVER_HOST}/ads`)
+    adsData.value = response.data
+    // console.log(response.data);
+    showAds()
+  } catch (err) {
+    console.log(err)
+  }
 }
+
+const filteredAds = computed(() => {
+  const AdTitle = 'Middle'
+  return adsData.value ? adsData.value.filter((Ads) => Ads.title === AdTitle) : []
+})
+
+const showAds = () => {
+  adsMiddleImage.value = filteredAds.value[0]?.image || null;
+  adsMiddleLink.value = filteredAds.value[0]?.link || null
+
+}
+
+const goAds = () => {
+  window.open(`${adsMiddleLink.value}`, '_blank')
+}
+
 
 const visibleNews = computed(() => {
   return newsData.value.slice(0, maxNewsToShow.value)
@@ -232,6 +259,7 @@ watch(currentDate, () => {
 
 onMounted(() => {
   getPrediction()
+  getMiddleAds()
   getNews()
 })
 </script>

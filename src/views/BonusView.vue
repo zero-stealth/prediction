@@ -10,25 +10,37 @@
     </div>
   </div>
   <div class="fp-class fp-bon">
-  <h1>{{ $t('BonusInfo.h1') }}</h1>
-  <p>{{ $t('BonusInfo.p1') }}</p>
-  <ol>
-    <li>{{ $t('BonusInfo.li1') }}</li>
-    <li>{{ $t('BonusInfo.li2') }}</li>
-    <li>{{ $t('BonusInfo.li3') }}</li>
-    <li>{{ $t('BonusInfo.li4') }}</li>
-    <li>{{ $t('BonusInfo.li5') }}</li>
-  </ol>
-  <p>{{ $t('BonusInfo.p2') }}</p>
-</div>
+    <h1>{{ $t('BonusInfo.h1') }}</h1>
+    <p>{{ $t('BonusInfo.p1') }}</p>
+    <ol>
+      <li>{{ $t('BonusInfo.li1') }}</li>
+      <li>{{ $t('BonusInfo.li2') }}</li>
+      <li>{{ $t('BonusInfo.li3') }}</li>
+      <li>{{ $t('BonusInfo.li4') }}</li>
+      <li>{{ $t('BonusInfo.li5') }}</li>
+    </ol>
+    <p>{{ $t('BonusInfo.p2') }}</p>
+  </div>
+  <PopUP v-if="showPop"> </PopUP>
+  <Sticky />
 </template>
 <script setup>
-import { ref } from 'vue'
+import { ref, watchEffect } from 'vue'
+import { useDrawerStore } from '../stores/drawer'
 import betImage from '../assets/betwinner.png'
 import stakeImage from '../assets/stake.png'
 import melbetImage from '../assets/melbet.png'
 import Bonus from '../components/bonusComponent.vue'
 import QuickComponent from '../components/QuickComponent.vue'
+import PopUP from '../components/popupComponent.vue'
+import Sticky from '../components/stickyComponent.vue'
+
+const showPop = ref(null)
+const drawerStore = useDrawerStore()
+
+watchEffect(() => {
+  showPop.value = drawerStore.popDrawer
+})
 
 const bonusData = ref([
   {

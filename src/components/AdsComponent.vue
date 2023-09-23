@@ -25,7 +25,7 @@
         </div>
         <div class="form-group">
           <label for="link">Description:</label>
-          <input v-model="description" type="text" class="form-g-input" placeholder="description" id="description" />
+          <input v-model="description" type="text" class="form-g-input" placeholder="description or link image for bottom" id="description" />
         </div>
         <div class="form-group">
           <label for="category">Ads category:</label>

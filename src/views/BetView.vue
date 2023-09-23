@@ -87,13 +87,18 @@
       <h1>{{ $t('Under.h2') }}</h1>
       <p>{{ $t('Under.p2') }}</p>
     </div>
+     <PopUP v-if="showPop"> </PopUP>
+  <Sticky />
 </template>
 
 <script setup>
 import ButtonComponent from '../components/ButtonComponent.vue'
 import QuickComponent from '../components/QuickComponent.vue'
 import vipads from '../components/vipadsComponent.vue'
+import Sticky from '../components/stickyComponent.vue'
+import PopUP from '../components/popupComponent.vue'
 import Card from '../components/CardComponent.vue'
+import { useDrawerStore } from '../stores/drawer'
 import OfferAds from '../components/OfferAds.vue'
 import { ref, watchEffect, onMounted } from 'vue'
 import { useRouter } from 'vue-router'
@@ -106,6 +111,12 @@ const paramValue = ref('')
 const betName = ref('')
 
 const cardData = ref([])
+const showPop = ref(null)
+const drawerStore = useDrawerStore()
+
+watchEffect(() => {
+  showPop.value = drawerStore.popDrawer
+})
 
 
 
