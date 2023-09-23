@@ -75,9 +75,6 @@ const filteredCountries = computed(() => {
 
 <template>
   <div class="pay-monitor">
-    <div class="desknav-layout">
-      <desktopNav class="desk-show" />
-    </div>
     <div class="pay-contain">
       <div class="pay-title">
         <span></span>
@@ -175,7 +172,7 @@ const filteredCountries = computed(() => {
             <h1>{{ $t('pay.h1-10') }}</h1>
             <p>
               <span>{{ $t('pay.span5') }}:</span> {{ $t('pay.span9') }}
-              <spanz>{{ $t('pay.span10') }}</spanz
+              <span>{{ $t('pay.span10') }}</span
               >.
               {{ $t('pay.span11') }}
             </p>
@@ -770,9 +767,6 @@ const filteredCountries = computed(() => {
       </div>
       <div v-else></div>
     </div>
-  </div>
-  <div class="mobilenav-layout">
-    <mobileNav />
   </div>
 </template>
 

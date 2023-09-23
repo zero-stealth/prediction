@@ -163,6 +163,15 @@ const router = createRouter({
       },
     },
     {
+      path: '/how-to-pay',
+      name: 'Pay',
+      component: () => import('../views/PayView.vue'),
+      meta: {
+        title: "Pay - Pay for vip",
+        description: "how to pay for our vip services",
+      },
+    },
+    {
       path: '/disclaimer',
       name: 'Disclaimer',
       component: () => import('../components/Disclaimerinfo.vue'),
@@ -184,15 +193,6 @@ const router = createRouter({
       },
       meta: {
         title: 'Download Sitemap',
-      },
-    },
-    {
-      path: '/how-to-pay',
-      name: 'Pay',
-      component: () => import('../views/PayView.vue'),
-      meta: {
-        title: "Pay - Pay for vip",
-        description: "how to pay for our vip services",
       },
     },
     {
@@ -258,7 +258,7 @@ router.beforeEach(adminGuard);
 
 // Generate the sitemap
 function generateSitemap() {
-  const baseUrl = 'https://sportypredict.com/';
+  const baseUrl = 'https://sportypredict.com';
   const routes = router.options.routes;
 
   let sitemap = `<?xml version="1.0" encoding="UTF-8"?>\n`;
@@ -267,6 +267,15 @@ function generateSitemap() {
   routes.forEach((route) => {
     sitemap += `  <url>\n`;
     sitemap += `    <loc>${baseUrl}${route.path}</loc>\n`;
+
+    // Add the title and description if available in route meta
+    if (route.meta && route.meta.title) {
+      sitemap += `    <title>${route.meta.title}</title>\n`;
+    }
+    if (route.meta && route.meta.description) {
+      sitemap += `    <description>${route.meta.description}</description>\n`;
+    }
+
     sitemap += `  </url>\n`;
   });
 

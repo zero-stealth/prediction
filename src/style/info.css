@@ -28,6 +28,7 @@
   .p-in li {
     cursor: pointer;
     list-style: square;
+    color: var(--fade-color);
   }
 
   .abt-info-p h1 {
@@ -70,9 +71,7 @@
   }
 
   .abt-info-p li {
-    cursor: pointer;
     font-size: 0.9rem;
-    color: var(--secondary-color);
   }
 
   .abt-p-in {

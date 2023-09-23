@@ -37,7 +37,6 @@ import { ref } from 'vue'
 import axios from 'axios'
 import { useRouter } from 'vue-router'
 import SportBg from '../assets/sport-bg.png'
-import GoogleIcon from '../icons/googleIcon.vue'
 import countriesData from '../components/countries.json'
 
 const selectedCountry = ref('')

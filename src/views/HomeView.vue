@@ -156,12 +156,18 @@ const filteredAds = computed(() => {
 
 const showAds = () => {
   adsMiddleImage.value = filteredAds.value[0]?.image || null;
-  adsMiddleLink.value = filteredAds.value[0]?.link || null
+  adsMiddleLink.value = filteredAds.value[0]?.link || ''
 
 }
 
 const goAds = () => {
-  window.open(`${adsMiddleLink.value}`, '_blank')
+  watchEffect(() => {
+    if (adsMiddleLink.value === null) {
+      router.push({ name: 'Pay' })
+    } else {
+      window.open(`${adsMiddleLink.value}`, '_blank')
+    }
+  })
 }
 
 
