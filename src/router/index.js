@@ -181,10 +181,11 @@ const router = createRouter({
       },
     },
     {
-      path: '/sitemap.xml', // URL to access the sitemap
+      path: '/sitemap.xml',
       name: 'Sitemap',
       component: () => {
-        const blob = new Blob([sitemapXML], { type: 'application/xml' });
+        const sitemap = generateSitemap(); // Generate the sitemap in XML format
+        const blob = new Blob([sitemap], { type: 'application/xml' });
         const url = window.URL.createObjectURL(blob);
         const link = document.createElement('a');
         link.href = url;
@@ -256,7 +257,7 @@ const adminGuard = (to, from, next) => {
 router.beforeEach(dynamicTitleGuard);
 router.beforeEach(adminGuard);
 
-// Generate the sitemap
+// Generate the sitemap in XML format
 function generateSitemap() {
   const baseUrl = 'https://sportypredict.com';
   const routes = router.options.routes;
