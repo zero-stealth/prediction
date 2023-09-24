@@ -171,7 +171,7 @@ const router = createRouter({
         description: "how to pay for our vip services",
       },
     },
-      {
+    {
       path: '/disclaimer',
       name: 'Disclaimer',
       component: () => import('../components/Disclaimerinfo.vue'),
@@ -184,13 +184,15 @@ const router = createRouter({
       path: '/sitemap.xml',
       name: 'Sitemap',
       component: () => {
-        const sitemap = generateSitemap(); // Generate the sitemap in XML format
-        const blob = new Blob([sitemap], { type: 'application/xml' });
-        const url = window.URL.createObjectURL(blob);
-        const link = document.createElement('a');
-        link.href = url;
-        link.download = 'sitemap.xml'; 
-        link.click();
+        const sitemap = generateSitemap();
+
+        const response = new Response(sitemap, {
+          headers: {
+            'Content-Type': 'application/xml',
+          },
+        });
+
+        return response;
       },
       meta: {
         title: 'Download Sitemap',
@@ -257,7 +259,7 @@ const adminGuard = (to, from, next) => {
 router.beforeEach(dynamicTitleGuard);
 router.beforeEach(adminGuard);
 
-// Generate the sitemap in XML format
+// Generate the sitemap manually
 function generateSitemap() {
   const baseUrl = 'https://sportypredict.com';
   const routes = router.options.routes;
@@ -268,15 +270,9 @@ function generateSitemap() {
   routes.forEach((route) => {
     sitemap += `  <url>\n`;
     sitemap += `    <loc>${baseUrl}${route.path}</loc>\n`;
-
-    // Add the title and description if available in route meta
-    if (route.meta && route.meta.title) {
-      sitemap += `    <title>${route.meta.title}</title>\n`;
-    }
-    if (route.meta && route.meta.description) {
-      sitemap += `    <description>${route.meta.description}</description>\n`;
-    }
-
+    sitemap += `    <lastmod>${new Date().toISOString()}</lastmod>\n`; 
+    sitemap += `    <changefreq>daily</changefreq>\n`; 
+    sitemap += `    <priority>1.0</priority>\n`; 
     sitemap += `  </url>\n`;
   });
 
@@ -285,7 +281,7 @@ function generateSitemap() {
 }
 
 // Usage: Call generateSitemap() to get the sitemap XML
-const sitemapXML = generateSitemap();
+const sitemapXML = generateSitemap()
 
 export default router;
 export { sitemapXML };
