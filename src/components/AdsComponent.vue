@@ -1,8 +1,6 @@
 <template>
-  <div>
-    <div class="form-container-h">
-    </div>
-    <div class="form-container snap-time ">
+  <div class="bn-snap">
+    <div class="form-container  ">
       <form @submit.prevent="handleSubmitT" enctype="multipart/form-data">
       <div class="form-wrapper">
         <div class="form-group">

@@ -82,19 +82,19 @@ const create = async () => {
   }
 }
 
-const useGoogle = async () => {
-  try {
-    const response = await axios.get('https://predictions-reg9.onrender.com/auth/auth/google')
+// const useGoogle = async () => {
+//   try {
+//     const response = await axios.get('https://predictions-reg9.onrender.com/auth/auth/google')
 
-    // Handle the response from the server
-    // You may redirect the user to the returned URL or perform other operations based on the response
-    console.log(response.data)
-    router.push({ name: 'Home' })
-  } catch (error) {
-    // Handle the error
-    console.error(error)
-  }
-}
+//     // Handle the response from the server
+//     // You may redirect the user to the returned URL or perform other operations based on the response
+//     console.log(response.data)
+//     router.push({ name: 'Home' })
+//   } catch (error) {
+//     // Handle the error
+//     console.error(error)
+//   }
+// }
 
 const login = () => {
   router.push({ name: 'AdminLogin' })

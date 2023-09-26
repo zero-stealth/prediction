@@ -23,8 +23,8 @@
   }
 
   .Account-game-p {
-    padding: 10px;
     gap: 20px;
+    padding: 10px;
     display: flex;
     height: inherit;
     overflow: hidden;

@@ -113,6 +113,8 @@ const betName = ref('')
 const cardData = ref([])
 const showPop = ref(null)
 const drawerStore = useDrawerStore()
+const SERVER_HOST = import.meta.env.VITE_SERVER_HOST
+
 
 watchEffect(() => {
   showPop.value = drawerStore.popDrawer
@@ -124,7 +126,7 @@ const predictions = async () => {
   try {
     // const token = JSON.parse(localStorage.getItem('token'));
     const response = await axios.get(
-      `https://predictions-reg9.onrender.com/predictions/prediction/${betName.value}/${currentDate.value}`
+      `${SERVER_HOST}/predictions/prediction/${betName.value}/${currentDate.value}`
     )
 
     cardData.value = response.data.length > 0 ? [response.data] : []

@@ -1,10 +1,10 @@
 <template>
-  <div class="sticky-ads" :class="[openSticky ? 'show-s' : 'hide-s']" v-if="openSticky">
-   <div class="sticky-c">
-    <div class="pop-circle-container" @click="drawerStore.toggleSticky">
-      <ExitIcon class="pop-exit-icon" />
+  <div class="sticky-ads" :class="[openSticky ? 'show-s' : 'hide-s']" v-if="openSticky && adsImage">
+    <div class="sticky-c">
+      <div class="pop-circle-container" @click="drawerStore.toggleSticky">
+        <ExitIcon class="pop-exit-icon" />
+      </div>
     </div>
-   </div>
     <div
       @click="openAdlink()"
       class="sticky-inner"
@@ -22,7 +22,7 @@ import axios from 'axios'
 const adsData = ref([])
 const adsImage = ref(null)
 const adsLink = ref(null)
-const openSticky = ref(null)
+const openSticky = ref(false) // Initialize as false
 const drawerStore = useDrawerStore()
 const SERVER_HOST = import.meta.env.VITE_SERVER_HOST
 
@@ -37,7 +37,7 @@ const getAds = async () => {
     showAds()
   } catch (err) {
     console.error(err)
-    autoClose() // Call autoClose in case of an error
+    autoClose() 
   }
 }
 
@@ -49,13 +49,11 @@ const filteredAds = computed(() => {
 const showAds = () => {
   adsImage.value = filteredAds.value[0]?.description || null
   adsLink.value = filteredAds.value[0]?.link || null
-  // Call autoClose after setting adsBannerImage
   autoClose()
 }
 
-// When there is no data in the server
 const autoClose = () => {
-  if (adsImage.value === null || adsImage.value === '') {
+  if (!adsImage.value) {
     drawerStore.toggleSticky()
   }
 }

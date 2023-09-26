@@ -66,13 +66,13 @@ const book = () => {
 }
 
 
-const scrollToTop = () => {
-  // Scroll to the top of the page
-  window.scrollTo({
-    top: 0,
-    behavior: "smooth", 
-  });
-}
+// // const scrollToTop = () => {
+// //   // Scroll to the top of the page
+// //   window.scrollTo({
+// //     top: 0,
+// //     behavior: "smooth", 
+// //   });
+// }
 const reset = () => {
   booknow.value = ''
 }
@@ -114,7 +114,7 @@ const reset = () => {
           <div>
             <h1>{{ $t('footer.quickLinks') }}</h1>
           </div>
-          <div class="d2-con" @click="scrollToTop">
+          <div class="d2-con">
             <RouterLink :to="{ name: 'Home' }" class="nav-link">{{ $t('footer.home') }}</RouterLink>
             <RouterLink :to="{ name: 'Banker' }" class="nav-link">{{
               $t('footer.betOfTheDay')
@@ -129,9 +129,10 @@ const reset = () => {
           <div>
             <h1>{{ $t('footer.information') }}</h1>
           </div>
-          <div class="d2-con" @click="scrollToTop">
-            <RouterLink :to="{ name: 'Disclaimer' }" class="nav-link">{{ $t('footer.disclaimer') }}</RouterLink>
+          <div class="d2-con">
             <RouterLink :to="{ name: 'Policy' }" class="nav-link">{{ $t('footer.policy') }}</RouterLink>
+            <RouterLink :to="{ name: 'Sitemap' }" class="nav-link">{{ $t('footer.Sitemap') }}</RouterLink>
+            <RouterLink :to="{ name: 'Disclaimer' }" class="nav-link">{{ $t('footer.disclaimer') }}</RouterLink>
             <RouterLink :to="{ name: 'Refund' }" class="nav-link">{{ $t('footer.refundPolicy') }}</RouterLink>
             <RouterLink :to="{ name: 'Terms' }" class="nav-link">{{ $t('footer.termsAndConditions') }}</RouterLink>
           </div>

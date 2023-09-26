@@ -6,16 +6,20 @@
         flex-direction: column;
         justify-content: center;
         border: 2px solid var(--primary-color);
+        background-color: var(--primary-color);
        
     }
 
     .ads-m1 {
         gap: 20px;
+        flex: 50%;
         display: flex;
         min-height: 250px;
         text-align: center;
         align-items: center;
         flex-direction: column;
+        background-color: var(--background-color);
+
        
 
     }
@@ -23,7 +27,6 @@
     .ads-m1-h {
         width: 100%;
         color: var(--background-color);
-       
         background-color: var(--primary-color);
     }
     .ads-m1-h h1 {
@@ -57,6 +60,7 @@
         width: 100%;
         display: flex;
         flex-direction: column;
+
     }
 
     .m1-ads-info h1 {

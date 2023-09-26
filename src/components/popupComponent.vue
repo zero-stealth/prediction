@@ -1,6 +1,6 @@
 <template>
   <Teleport to="body">
-    <div class="pop-container" :class="[openPop ? 'show-p' : '']">
+    <div class="pop-container" :class="[openPop ? 'show-p' : '']" v-if="adsBannerImage">
       <div class="pop-align">
         <div class="pop-circle-container" @click="drawerStore.togglePop">
           <ExitIcon class="pop-exit-icon" />
@@ -16,6 +16,7 @@
     </div>
   </Teleport>
 </template>
+
 <script setup>
 import { ref, watchEffect, onMounted, computed } from 'vue'
 import { useDrawerStore } from '../stores/drawer'
@@ -26,7 +27,7 @@ const SERVER_HOST = import.meta.env.VITE_SERVER_HOST
 const drawerStore = useDrawerStore()
 const adsBannerImage = ref(null)
 const adsBannerLink = ref(null)
-const openPop = ref(null)
+const openPop = ref(false)
 const adsData = ref([])
 
 watchEffect(() => {
@@ -37,7 +38,6 @@ const getAds = async () => {
   try {
     const response = await axios.get(`${SERVER_HOST}/ads`)
     adsData.value = response.data
-    // console.log(response.data);
     showAds()
   } catch (err) {
     console.log(err)
@@ -52,14 +52,11 @@ const filteredAds = computed(() => {
 const showAds = () => {
   adsBannerImage.value = filteredAds.value[0]?.image || null
   adsBannerLink.value = filteredAds.value[0]?.link || null
-
-  // Call AutoClose after setting adsBannerImage
   AutoClose()
 }
 
-// When there is no data in the server
 const AutoClose = () => {
-  if (adsBannerImage.value === null || adsBannerImage.value === '') {
+  if (!adsBannerImage.value) {
     drawerStore.togglePop()
   }
 }

@@ -22,7 +22,7 @@
       </div>
       <div class="card-in">
         <div class="card-in-s">
-          <span>[{{ formattedTime }}]</span>
+          <span>[{{ formattedTime  }}]</span>
         </div>
         <span class="status-p">{{ status }}</span>
         <div v-if="!showScore">
@@ -33,8 +33,8 @@
           <span class="card-p">:</span>
           <span class="card-s">{{ teamBscore }}</span>
         </div>
-        <a href="https://bwredir.com/1bkh?p=%2Fregistration%2F" class="bet-adv">
-          <img src="../assets/Bet.png" alt="Bet winner" class="bet-winner-logo" />
+        <a :href="cardAdsLink" class="bet-adv">
+          <img :src="cardAdsImg" alt="Bet Advertisement" class="bet-winner-logo" />
         </a>
       </div>
       <div class="card-a">
@@ -66,8 +66,17 @@
   </div>
 </template>
 <script setup>
-import { ref, computed } from 'vue';  
-import moment from 'moment-timezone';
+import { ref, computed, onMounted } from 'vue';  
+// import moment from 'moment-timezone';
+import { DateTime } from 'luxon';
+import axios from 'axios'
+
+
+const cardAdsData = ref([])
+const cardAdsImg = ref(null)
+const cardAdsLink = ref(null)
+const SERVER_HOST = import.meta.env.VITE_SERVER_HOST
+
 
 const props = defineProps({
   formationA: {
@@ -134,18 +143,54 @@ const props = defineProps({
   }
 })
 
+const getAds = async () => {
+  try {
+    const response = await axios.get(`${SERVER_HOST}/ads`)
+    cardAdsData.value = response.data
+    showAds()
+  } catch (err) {
+    console.error(err)
+  }
+}
+
+const filteredAds = computed(() => {
+  const AdTitle = 'Card'
+  return cardAdsData.value ? cardAdsData.value.filter((Ads) => Ads.title === AdTitle) : []
+})
+
+
+const showAds = () => {
+  cardAdsImg.value = filteredAds.value[0]?.description || null
+  cardAdsLink.value = filteredAds.value[0]?.link || null
+}
 
 
 const formattedTime = computed(() => {
   try {
-    const eventTime = moment(props.time, 'HH:mm');
-    const userTimeZone = moment.tz.guess();
-    return eventTime.tz(userTimeZone).format('HH:mm');
+    const eventTime = DateTime.fromFormat(props.time, 'HH:mm', { zone: 'utc' });
+    const userTimeZone = DateTime.local().zoneName;
+
+    const convertedTime = eventTime.setZone(userTimeZone);
+    return convertedTime.toFormat('HH:mm');
   } catch (error) {
     console.error('Error formatting time:', error);
-    return props.time; // Return the original time string on error
+    return props.time;
   }
 });
+
+// const formattedTime = computed(() => {
+//   try {
+//     const eventTime = moment(props.time, 'HH:mm');
+//     const userTimeZone = moment.tz.guess();
+//     console.log(userTimeZone);
+
+//     return eventTime.tz(userTimeZone).format('HH:mm');
+//   } catch (error) {
+//     console.error('Error formatting time:', error);
+//     return props.time;
+//   }
+// });
+
 
 const formationsA = ref(props.formationA);
 const formationsB = ref(props.formationB);
@@ -153,6 +198,10 @@ const formationsB = ref(props.formationB);
 const shouldShowScore = computed(() => {
   return props.showScore && props.teamAscore !== undefined && props.teamBscore !== undefined;
 });
+
+onMounted(() => {
+  getAds()
+})
 
 </script>
 

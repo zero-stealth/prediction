@@ -78,6 +78,8 @@ const offset = ref(0)
 const cardData = ref([])
 const showPop = ref(null)
 const drawerStore = useDrawerStore();
+const SERVER_HOST = import.meta.env.VITE_SERVER_HOST
+
 
 
 watchEffect(() => {
@@ -90,7 +92,7 @@ const predictions = async () => {
   try {
     // const token = localStorage.getItem('token')
     const response = await axios.get(
-      `https://predictions-reg9.onrender.com/predictions/bet/betOfTheDay/${currentDate.value}`
+      `${SERVER_HOST}/predictions/bet/betOfTheDay/${currentDate.value}`
     )
     cardData.value = response.data.length > 0 ? [response.data] : [];
   } catch (err) {

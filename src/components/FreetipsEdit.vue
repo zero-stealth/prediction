@@ -211,10 +211,8 @@ function handleLeagueLogo(event) {
   handleFileUpload(event, leagueIcon)
 }
 
-// ... (your existing code)
 
 function handleSubmit() {
-  // ... (your existing code)
   try {
     const formData = {
       teamAscore: teamAscore.value,

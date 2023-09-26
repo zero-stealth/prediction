@@ -22,12 +22,12 @@ const router = createRouter({
       }
     },
     {
-      path: '/px-login',
+      path: '/admin-login',
       name: 'AdminLogin',
       component: () => import('../views/AdminLoginView.vue')
     },
     {
-      path: '/px-signin',
+      path: '/admin-signin',
       name: 'AdminSignin',
       component: () => import('../views/AdminSigninView.vue')
     },
@@ -163,15 +163,6 @@ const router = createRouter({
       },
     },
     {
-      path: '/how-to-pay',
-      name: 'Pay',
-      component: () => import('../views/PayView.vue'),
-      meta: {
-        title: "Pay - Pay for vip",
-        description: "how to pay for our vip services",
-      },
-    },
-    {
       path: '/disclaimer',
       name: 'Disclaimer',
       component: () => import('../components/Disclaimerinfo.vue'),
@@ -181,22 +172,22 @@ const router = createRouter({
       },
     },
     {
+      path: '/how-to-pay',
+      name: 'Pay',
+      component: () => import('../views/PayView.vue'),
+      meta: {
+        title: "Pay - Pay for vip",
+        description: "how to pay for our vip services",
+      },
+    },
+    {
       path: '/sitemap.xml',
       name: 'Sitemap',
-      component: () => {
-        const sitemap = generateSitemap();
-
-        const response = new Response(sitemap, {
-          headers: {
-            'Content-Type': 'application/xml',
-          },
-        });
-
-        return response;
-      },
+      component: () => import('../views/SitemapView.vue'),
       meta: {
-        title: 'Download Sitemap',
-      },
+        title: 'Sitemap',
+        description: 'Download the sitemap for search engines.'
+      }
     },
     {
       path: '/:catchAll(.*)',
@@ -204,9 +195,6 @@ const router = createRouter({
       component: () => import('../views/NotFoundView.vue'),
     },
   ],
-  scrollBehavior() {
-    return { x: 0, y: 0 };
-  },
 })
 
 
@@ -219,7 +207,7 @@ function getDescription(betName) {
     "Both Team To Score": 'both teams to score/BTTS predictions and tips.',
   };
 
-  return descriptions[betName] || ''; // Return the description or an empty string if not found
+  return descriptions[betName] || ''; 
 }
 
 const currentUser = () => {
@@ -259,29 +247,4 @@ const adminGuard = (to, from, next) => {
 router.beforeEach(dynamicTitleGuard);
 router.beforeEach(adminGuard);
 
-// Generate the sitemap manually
-function generateSitemap() {
-  const baseUrl = 'https://sportypredict.com';
-  const routes = router.options.routes;
-
-  let sitemap = `<?xml version="1.0" encoding="UTF-8"?>\n`;
-  sitemap += `<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">\n`;
-
-  routes.forEach((route) => {
-    sitemap += `  <url>\n`;
-    sitemap += `    <loc>${baseUrl}${route.path}</loc>\n`;
-    sitemap += `    <lastmod>${new Date().toISOString()}</lastmod>\n`; 
-    sitemap += `    <changefreq>daily</changefreq>\n`; 
-    sitemap += `    <priority>1.0</priority>\n`; 
-    sitemap += `  </url>\n`;
-  });
-
-  sitemap += `</urlset>`;
-  return sitemap;
-}
-
-// Usage: Call generateSitemap() to get the sitemap XML
-const sitemapXML = generateSitemap()
-
 export default router;
-export { sitemapXML };
