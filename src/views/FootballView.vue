@@ -5,7 +5,8 @@
     <div class="main-h">
       <div class="main-header">
         <div class="header-info">
-          <h1>{{ $t('bank.h1-3') }}  ({{ currentDate }})</h1>
+          <h1>{{ $t('bank.h1-3') }}</h1>
+          <span>({{ currentDate }})</span>
         </div>
         <div class="header-btn">
           <button class="btn-h" :class="{ 'active-btn': offset > 0 }" @click="previousDay()">

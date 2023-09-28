@@ -197,14 +197,15 @@
     "span-8": "Segundos"
   },
   "bank": {
-    "h1-1": "Apuesta del día",
-    "h1-2": "Consejos de baloncesto",
-    "h1-3": "Consejos de fútbol",
-    "h1-4":"Actualmente estás en el plan gratuito",
+    "h1-1": "Predicción de la Apuesta del Día",
+    "h1-2": "Consejos y Predicciones de Apuestas de Baloncesto",
+    "h1-3": "Consejos y Predicciones de Apuestas de Fútbol",
+    "h1-4": "Actualmente estás en el plan gratuito",
+    "h1-5": "Consejos y Predicciones de Apuestas",
     "btn-1": "Anterior",
     "btn-2": "Hoy",
     "btn-3": "Mañana"
-  },
+},
   "bonus": {
     "h1-1": "Mejores Ofertas de Registro de Apuestas",
     "span": "Solo para nuevos clientes / contenido comercial / límite de edad de 18 años / Se aplican Términos y Condiciones"
@@ -277,7 +278,7 @@
     "span1": "Olvidé la contraseña"
   },
   "tennis": {
-    "h1-1": "Consejos gratuitos de tenis"
+    "h1-1": "tenis"
   },
   "vip": {
     "h1-1": "Iniciar sesión o registrarse en tu cuenta",

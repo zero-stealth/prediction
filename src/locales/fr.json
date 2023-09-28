@@ -196,14 +196,15 @@
     "span-8": "Secondes"
   },
   "bank": {
-    "h1-1": "Pari du jour",
-    "h1-2": "Conseils de basketball",
-    "h1-3": "Conseils de football",
-    "h1-4":"Votre forfait est actuellement gratuit",
+    "h1-1": "Pronostic du jour",
+    "h1-2": "Conseils et prédictions de paris sur le basket-ball",
+    "h1-3": "Conseils et prédictions de paris sur le football",
+    "h1-4": "Vous êtes actuellement sur un plan gratuit",
+    "h1-5": "Conseils et prédictions de paris",
     "btn-1": "Précédent",
     "btn-2": "Aujourd'hui",
     "btn-3": "Demain"
-  },
+},
   "bonus": {
     "h1-1": "Les meilleures offres d'inscription aux paris",
     "span": "Nouveaux clients uniquement / contenu commercial / limite d'âge de 18 ans / Conditions générales s'appliquent"
@@ -276,7 +277,7 @@
     "span1": "Mot de passe oublié"
   },
   "tennis": {
-    "h1-1": "Conseils gratuits de tennis"
+    "h1-1": "tennis"
   },
   "vip": {
     "h1-1": "Connectez-vous ou inscrivez-vous à votre compte",

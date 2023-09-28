@@ -131,7 +131,7 @@ const reset = () => {
           </div>
           <div class="d2-con">
             <RouterLink :to="{ name: 'Policy' }" class="nav-link">{{ $t('footer.policy') }}</RouterLink>
-            <RouterLink :to="{ name: 'Sitemap' }" class="nav-link">{{ $t('footer.Sitemap') }}</RouterLink>
+            <!-- <RouterLink :to="{ name: 'Sitemap' }" class="nav-link">{{ $t('footer.Sitemap') }}</RouterLink> -->
             <RouterLink :to="{ name: 'Disclaimer' }" class="nav-link">{{ $t('footer.disclaimer') }}</RouterLink>
             <RouterLink :to="{ name: 'Refund' }" class="nav-link">{{ $t('footer.refundPolicy') }}</RouterLink>
             <RouterLink :to="{ name: 'Terms' }" class="nav-link">{{ $t('footer.termsAndConditions') }}</RouterLink>

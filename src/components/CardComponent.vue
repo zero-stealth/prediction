@@ -165,16 +165,12 @@ const showAds = () => {
 }
 
 
-const defaultTimeZone = 'Africa/Nairobi'; 
-
 const formattedTime = computed(() => {
   try {
-    const eventTime = DateTime.fromFormat(props.time, 'HH:mm', { zone: defaultTimeZone });
-
+    const eventTime = DateTime.fromFormat(props.time, 'HH:mm', { zone: 'utc' });
     const userTimeZone = DateTime.local().zoneName;
 
     const convertedTime = eventTime.setZone(userTimeZone);
-
     return convertedTime.toFormat('HH:mm');
   } catch (error) {
     console.error('Error formatting time:', error);

@@ -36,6 +36,11 @@
     text-transform: capitalize;
   }
 
+  .header-info span {
+    font-weight: 600;
+    font-size: 1rem;
+
+  } 
   .header-btn {
     gap: 10px;
     display: flex;

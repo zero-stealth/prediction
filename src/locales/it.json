@@ -195,13 +195,14 @@
   },
   "bank": {
     "h1-1": "Scommessa del giorno",
-    "h1-2": "consigli sul basket",
-    "h1-3": "Consigli sul calcio",
-    "h1-4":"Attualmente hai un piano gratuito",
+    "h1-2": "Consigli e previsioni sulle scommesse di basket",
+    "h1-3": "Consigli e previsioni sulle scommesse di calcio",
+    "h1-4": "Attualmente sei su un piano gratuito",
+    "h1-5": "Consigli e previsioni sulle scommesse",
     "btn-1": "Precedente",
     "btn-2": "Oggi",
     "btn-3": "Domani"
-  },
+},
   "bonus": {
     "h1-1": "Le migliori offerte di iscrizione alle scommesse",
     "span": "Solo nuovi clienti / contenuto commerciale maggiore di 18 anni / Si applicano termini e condizioni"
@@ -274,7 +275,7 @@
     "span1": "Password dimenticata"
   },
   "tennis": {
-    "h1-1": "Suggerimenti gratuiti per il tennis"
+    "h1-1": "tennis"
   },
   "vip": {
     "h1-1": "Accedi o accedi al tuo account",

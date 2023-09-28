@@ -196,10 +196,11 @@
   "span-8": "Segundos"
 },
 "bank": {
-  "h1-1": "Aposta do Dia",
-  "h1-2": "Dicas de basquete",
-  "h1-3": "Dicas de futebol",
+  "h1-1": "Aposta do Dia - Previsão",
+  "h1-2": "Dicas e Previsões de Apostas em Basquetebol",
+  "h1-3": "Dicas e Previsões de Apostas em Futebol",
   "h1-4": "Você está atualmente no plano gratuito",
+  "h1-5": "Dicas e Previsões de Apostas",
   "btn-1": "Anterior",
   "btn-2": "Hoje",
   "btn-3": "Amanhã"
@@ -276,7 +277,7 @@
   "span1": "Esqueceu a senha"
 },
 "tennis": {
-  "h1-1": "Dicas Gratuitas de Tênis"
+  "h1-1": "Tênis"
 },
 "vip": {
   "h1-1": "Faça login ou entre na sua conta",

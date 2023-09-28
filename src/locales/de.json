@@ -170,14 +170,15 @@
     "span-8": "Sekunden"
   },
   "bank": {
-    "h1-1": "Wette des Tages",
-    "h1-2": "Basketball Tipps",
-    "h1-3": "Fußball Tipps",
-    "h1-4":"Sie nutzen derzeit den kostenlosen Tarif",
+    "h1-1": "Wette des Tages Vorhersage",
+    "h1-2": "Basketball-Wett-Tipps und Vorhersagen",
+    "h1-3": "Fußball-Wett-Tipps und Vorhersagen",
+    "h1-4": "Sie verwenden derzeit den kostenlosen Tarif",
+    "h1-5": "Wett-Tipps und Vorhersagen",
     "btn-1": "Vorherige",
     "btn-2": "Heute",
     "btn-3": "Morgen"
-  },
+},
   "bonus": {
     "h1-1": "Beste Wettanbieter-Angebote zur Anmeldung",
     "span": "Nur für Neukunden / kommerzieller Inhalt / Altersbeschränkung 18+ / AGB gelten"
@@ -250,7 +251,7 @@
     "span1": "Passwort vergessen"
   },
   "tennis": {
-    "h1-1": "Tennis Gratis Tipps"
+    "h1-1": "Tennis"
   },
   "vip": {
     "h1-1": "Anmelden oder Einloggen in Ihr Konto",

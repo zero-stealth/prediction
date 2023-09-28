@@ -196,10 +196,11 @@
     "span-8": "Seconds"
   },
   "bank": {
-    "h1-1": "Bet of the day",
-    "h1-2": "Basketball Tips",
-    "h1-3": "Football Tips",
+    "h1-1": "Bet of the day Prediction",
+    "h1-2": "Basketball Betting Tips And Predictions",
+    "h1-3": "Football Betting Tips And Predictions",
     "h1-4": "Your're currently on free plan",
+    "h1-5": "Betting Tips and Predictions",
     "btn-1": "Previous",
     "btn-2": "Today",
     "btn-3": "Tomorrow"
@@ -276,7 +277,7 @@
     "span1": "Forgot password"
   },
   "tennis": {
-    "h1-1": "Tennis tips "
+    "h1-1": "Tennis "
   },
   "vip": {
     "h1-1": "Sign in or log in to your account",
