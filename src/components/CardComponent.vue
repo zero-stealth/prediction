@@ -167,16 +167,23 @@ const showAds = () => {
 
 const formattedTime = computed(() => {
   try {
-    const eventTime = DateTime.fromFormat(props.time, 'HH:mm', { zone: 'utc' });
+    const eventDate = DateTime.fromISO(props.time, { zone: 'utc' });
+
     const userTimeZone = DateTime.local().zoneName;
 
-    const convertedTime = eventTime.setZone(userTimeZone);
-    return convertedTime.toFormat('HH:mm');
+    const convertedTime = eventDate.setZone(userTimeZone);
+
+    const adjustedTime = convertedTime.minus({ hours: 3 });
+
+    return adjustedTime.toFormat('HH:mm');
   } catch (error) {
     console.error('Error formatting time:', error);
     return props.time;
   }
 });
+
+
+
 
 // const formattedTime = computed(() => {
 //   try {

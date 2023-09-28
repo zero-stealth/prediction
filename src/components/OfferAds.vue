@@ -4,9 +4,10 @@ import ArrowIcon from '../icons/ArrowIcon.vue'
 import axios from 'axios';
 
 
+const adsData = ref([]);
 const adsImage = ref(null);
 const Description = ref(null);
-const adsData = ref([]);
+const OfferAdsLink = ref(null);
 const SERVER_HOST = import.meta.env.VITE_SERVER_HOST;
 
 const getAds = async () => {
@@ -29,6 +30,8 @@ const filteredAds = computed(() => {
 const showAds = () => {
   adsImage.value = filteredAds.value[0]?.image || null;
   Description.value = filteredAds.value[0]?.description || null;
+  OfferAdsLink.value = filteredAds.value[0]?.link || null;
+
 };
 
 onMounted(() => {
@@ -36,8 +39,11 @@ onMounted(() => {
 });
 
 const openLink = () => {
-  window.open('https://bwredir.com/1bkh?p=%2Fregistration%2F', '_blank')
+  window.open(`${OfferAdsLink.value}`, '_blank')
 }
+
+
+
 </script>
 <template>
   <div class="offer-container">
