@@ -127,11 +127,11 @@
 
    
     .icon-won {
-        fill: var(--secondary-color);
+        fill: var(--green-color);
     }
 
     .icon-fail {
-        fill: var(--green-color);
+        fill: var(--red-color);
     }
 
     .icon-cancel {
