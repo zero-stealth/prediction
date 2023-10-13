@@ -61,6 +61,7 @@
         display: flex;
         flex-direction: column;
 
+
     }
 
     .m1-ads-info h1 {
@@ -84,6 +85,49 @@
 
     .ads-time h1 {
         color: var(--secondary-color);
+    }
+
+    .vip-results-d {
+        gap: 10px;
+        display: flex;
+        padding: 10px;
+        flex-wrap: wrap;
+        text-align: center;
+        color: var(--grey-color);
+        justify-content: space-between;
+    }
+
+    .vip-results-cont {
+        gap: 4px;
+        padding: 5px;
+        display: flex;
+        border-radius: 8px;
+        flex-direction: column;
+        border:  1px solid var(--grey-color);
+
+    }
+
+    .vip-results-cont span {
+        font-size: .9rem;
+    }
+
+    .icon-rs {
+        width: 24px;
+        height: 24px;
+        fill: var(--grey-color);
+    }
+
+   
+    .icon-won {
+        fill: var(--secondary-color);
+    }
+
+    .icon-fail {
+        fill: var(--green-color);
+    }
+
+    .icon-cancel {
+        fill: var(--red-color);
     }
 }
 

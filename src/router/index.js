@@ -22,19 +22,31 @@ const router = createRouter({
       }
     },
     {
-      path: '/admin-login',
+      path: '/a-login',
       name: 'AdminLogin',
-      component: () => import('../views/AdminLoginView.vue')
+      component: () => import('../views/AdminLoginView.vue'),
+      meta: {
+        title: "Login - Login to sportypredict",
+        description: "Login to enjoy more services ",
+      },
     },
     {
-      path: '/admin-signin',
+      path: '/a-signin',
       name: 'AdminSignin',
-      component: () => import('../views/AdminSigninView.vue')
+      component: () => import('../views/AdminSigninView.vue'),
+      meta: {
+        title: "Signin - Signin to sportypredict",
+        description: "Signin to get more offers and services",
+      },
     },
     {
       path: '/login',
       name: 'Login',
-      component: () => import('../views/LoginView.vue')
+      component: () => import('../views/LoginView.vue'),
+      meta: {
+        title: "Login - Login to sportypredict",
+        description: "Login to enjoy more services ",
+      },
     },
     {
       path: '/signin',
@@ -141,7 +153,7 @@ const router = createRouter({
       component: () => import('../components/Terms&Condition.vue'),
       meta: {
         title: "Terms - Our Terms and conditions",
-        description: " our Terms and conditions",
+        description: "Know our terms and conditions to better work with us or partner with us",
       },
     },
     {
@@ -150,7 +162,7 @@ const router = createRouter({
       component: () => import('../components/Refundpolicy.vue'),
       meta: {
         title: "Refund - Our refund policy",
-        description: " our refund policy",
+        description: "Read to know when refund policy applies in terms of payment issues",
       },
     },
     {
@@ -159,7 +171,7 @@ const router = createRouter({
       component: () => import('../components/Policyinfo.vue'),
       meta: {
         title: "Policy - our policy",
-        description: " our policy",
+        description: " our policy outline's the code of conduct neccesary to ensure good working condition with us",
       },
     },
     {
@@ -168,7 +180,7 @@ const router = createRouter({
       component: () => import('../components/Disclaimerinfo.vue'),
       meta: {
         title: "Disclaimer",
-        description: " our disclaimer",
+        description: " our disclaimer information to note",
       },
     },
     {
@@ -193,6 +205,10 @@ const router = createRouter({
       path: '/:catchAll(.*)',
       name: 'NotFound',
       component: () => import('../views/NotFoundView.vue'),
+      meta: {
+        title: "404 - Page not found",
+        description: "Sorry page doesn't exist on sportypredict",
+      },
     },
   ],
 })

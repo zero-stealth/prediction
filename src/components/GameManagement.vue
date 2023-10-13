@@ -622,6 +622,46 @@
           </tbody>
         </table>
       </div>
+      <div class="acc-m gm-m">
+        <div class="main-header">
+          <div class="header-info">
+            <h1>Vip Result Posted</h1>
+          </div>
+        </div>
+        <table>
+          <thead>
+            <tr>
+              <th>Date&Day</th>
+              <th>Result</th>
+              <th>Edit</th>
+              <th>Delete</th>
+            </tr>
+          </thead>
+          <tbody v-for="item in vipResultData">
+            <tr v-for="data in item" :key="data._id">
+              <td>
+                <span>{{ data.gameName  }}</span>
+              </td>
+                <td>
+                <span>{{ data.gameScore }}</span>
+              </td>
+              <td>
+                <div class="Account-delete" @click="editVipResult(VipEditPage, data._id)">
+                  <FileIcon class="icon-delete" />
+                </div>
+              </td>
+              <td>
+                <div class="Account-delete" @click="deleteVipResult(data._id)">
+                  <DeleteIcon class="icon-delete" />
+                </div>
+              </td>
+            </tr>
+            <tr v-if="vipResultData.length === 0">
+              <td colspan="8">No Result yet!</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
     </div>
   </div>
   <Teleport to="body">
@@ -635,6 +675,7 @@
           @formSubmitSport="updateSport"
           @formSubmitTime="updateTime"
           @formSubmitAds="updateAds"
+          @formVipResultSubmit="updateVipResult"
           :is="activePage"
         />
       </div>
@@ -655,7 +696,9 @@ import TimePage from '../components/TimeEdit.vue'
 import UpcomingGames from '../components/UpcomingGamesEdits.vue'
 import TennisGames from '../components/TennisGamesEdits.vue'
 import BasketballGames from '../components/BasketballEdit.vue'
+import VipEditPage from '../components/VipresultsComponentEdits.vue'
 import VipGames from './VipGamesEdits.vue'
+
 
 const username = ref(null)
 const currentDate = ref('')
@@ -669,6 +712,7 @@ const vipData = ref([])
 const predictionData = ref([])
 const freeTipData = ref([])
 const upcomingData = ref([])
+const vipResultData = ref([])
 const tennisData = ref([])
 const basketBallData = ref([])
 const SERVER_HOST = import.meta.env.VITE_SERVER_HOST
@@ -777,6 +821,18 @@ const getTime = async () => {
   }
 }
 
+const getVipResult = async () => {
+  try {
+    // const token = JSON.parse(localStorage.getItem('token'));
+    const response = await axios.get(`${SERVER_HOST}/score/`)
+    // console.log(response.data)
+    vipResultData.value = response.data.length > 0 ? [response.data] : []
+  } catch (err) {
+    console.log(err)
+  }
+}
+
+
 const showEdit = () => {
   isGameOpen.value = !isGameOpen.value
 }
@@ -784,6 +840,7 @@ const showEdit = () => {
 const activePage = shallowRef(BetOfTheDay)
 const gameId = ref('')
 const sportId = ref('')
+const ScoreId = ref('')
 const TimeId = ref('')
 const AdsId = ref('')
 
@@ -808,6 +865,14 @@ const editTime = (time, id) => {
   showEdit()
 
 }
+
+const editVipResult = (vip, id) => {
+  activePage.value = vip
+  ScoreId.value = id
+  showEdit()
+
+}
+
 
 const editAds = (ads, id) => {
   activePage.value = ads
@@ -887,6 +952,32 @@ async function updateGame(formData) {
   }
 }
 
+
+
+async function updateVipResult(formData) {
+  try {
+    const token = JSON.parse(localStorage.getItem('token'))
+    const formDatass = new FormData()
+    if (formData.Result !== '') {
+      formDatass.append('gameScore', formDatass.Result)
+    }
+    if (formData.dayDate !== '') {
+      formDatass.append('gameName', formDatass.dayDate)
+    }
+
+    const response = await axios.put(`${SERVER_HOST}/score/updatescore/${ScoreId.value}`, formDatass, {
+      headers: {
+        Authorization: `Bearer ${token}`
+      }
+    })
+    // console.log(response.data)
+    alert('Vip result updated')
+    getVipGames()
+  } catch (error) {
+    console.error('Error updating vip result:', error)
+  }
+}
+
 async function updateTime(formData) {
   try {
     const token = JSON.parse(localStorage.getItem('token'))
@@ -906,6 +997,10 @@ async function updateTime(formData) {
     console.error('Error updating game:', error)
   }
 }
+
+
+
+
 
 async function updateAds(formData) {
   try {
@@ -1033,6 +1128,7 @@ onMounted(() => {
   getUpcoming()
   getTennisBets()
   getBasketballBets()
+  getVipResult()
 })
 
 const deletePrediction = async (id) => {
@@ -1099,6 +1195,22 @@ const deleteTime = async (id) => {
   }
   alert('deleted')
 }
+
+const deleteVipResult = async (id) => {
+  try {
+    const token = JSON.parse(localStorage.getItem('token'))
+
+    const response = await axios.delete(`${SERVER_HOST}/score/delete/${id}`, {
+      headers: { Authorization: `Bearer ${token}` }
+    })
+    message.value = response.data.message
+    await getVipResult()
+  } catch (err) {
+    message.value = 'deletion failed'
+  }
+  alert('deleted')
+}
+
 const showscore = ref(localStorage.getItem('showscore') === 'true')
 
 watch(showscore, (value) => {
@@ -1109,6 +1221,7 @@ watch(currentDate, () => {
   // getAds()
   // getTime()
   getBetOfTheDay()
+  getVipResult()
   getVipGames()
   getPredictions()
   getFreeTips()

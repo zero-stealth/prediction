@@ -88,6 +88,8 @@ const cardData = ref([])
 const currentDate = ref('')
 const paid = ref(false)
 const offset = ref(0)
+const SERVER_HOST = import.meta.env.VITE_SERVER_HOST
+
 
 console.log(paid.value)
 const updateAuthStatus = () => {
@@ -136,7 +138,7 @@ const getPrediction = async () => {
 
   try {
     const response = await axios.get(
-      `https://predictions-reg9.onrender.com/predictions/vipPredictions/vip/${currentDate.value}`,
+      `${SERVER_HOST}/predictions/vipPredictions/vip/${currentDate.value}`,
       {
         headers: {
           Authorization: `Bearer ${token}`
@@ -155,7 +157,7 @@ const getAccountDetails = async () => {
   const id = localStorage.getItem('id')
 
   try {
-    const response = await axios.get(`https://predictions-reg9.onrender.com/auth/${id}`, {
+    const response = await axios.get( `${SERVER_HOST}/auth/${id}`, {
       headers: {
         Authorization: `Bearer ${token}`
       }

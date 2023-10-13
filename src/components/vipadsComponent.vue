@@ -16,6 +16,18 @@
         {{ $t('ads.p1-2') }}
       </p>
       <div class="m1-ads-info">
+        <h2>Vip results</h2>
+        <div class="vip-results-d">
+          <div class="vip-results-cont" v-for="data in vipResultData" :key="data._id">
+            <span>{{ data.gameName }}</span>
+            <div class="results-s">
+              <PassedIcon class="icon-rs icon-won" v-if="data.gameScore === 'Passed'" />
+              <FailedIcon class="icon-rs icon-fail" v-else-if="data.gameScore === 'Failed'" />
+              <CanceledIcon class="icon-rs icon-cancel" v-else-if="data.gameScore === 'Cancel'" />
+              <EmptyIcon class="icon-rs" v-else />
+            </div>
+          </div>
+        </div>
         <h1>{{ $t('ads.h1-2') }}</h1>
         <div class="m1-ads-time">
           <div class="ads-time">
@@ -37,6 +49,10 @@
 </template>
 <script setup>
 import axios from 'axios'
+import PassedIcon from '../icons/PassedIcon.vue'
+import FailedIcon from '../icons/FailedIcon.vue'
+import EmptyIcon from '../icons/emptyIcon.vue'
+import CanceledIcon from '../icons/canceledIcon.vue'
 import { ref, onMounted, watch } from 'vue'
 import { useRouter } from 'vue-router'
 
@@ -46,7 +62,8 @@ const hours = ref(0)
 const minutes = ref(0)
 const seconds = ref(0)
 const intervalId = ref(0)
-const currentTime = ref(null) // Initialize as null
+const currentTime = ref(null)
+const vipResultData = ref([])
 const SERVER_HOST = import.meta.env.VITE_SERVER_HOST
 
 const goVip = () => {
@@ -62,8 +79,8 @@ const parseTime = (timeString) => {
 const scrollToTop = () => {
   window.scrollTo({
     top: 0,
-    behavior: "smooth", 
-  });
+    behavior: 'smooth'
+  })
 }
 
 const getTimeData = async () => {
@@ -73,6 +90,17 @@ const getTimeData = async () => {
     startCountdown()
   } catch (err) {
     console.error(err)
+  }
+}
+
+const getVipResult = async () => {
+  try {
+    // const token = JSON.parse(localStorage.getItem('token'));
+    const response = await axios.get(`${SERVER_HOST}/score/`)
+    // console.log(response.data)
+    vipResultData.value = response.data
+  } catch (err) {
+    console.log(err)
   }
 }
 
@@ -125,7 +153,7 @@ const startCountdown = () => {
       }
 
       updateCountdown()
-      intervalId.value = setInterval(updateCountdown, 1000) // Assign intervalId here
+      intervalId.value = setInterval(updateCountdown, 1000)
     }
   }
 
@@ -134,6 +162,7 @@ const startCountdown = () => {
 
 onMounted(() => {
   getTimeData()
+  getVipResult()
 })
 
 watch(currentTime, () => {

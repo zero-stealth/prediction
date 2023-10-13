@@ -37,6 +37,11 @@
             <span> Post Ads </span>
             <ArrowIcon class="icon-panel ap" />
           </button>
+          <button @click="setActivePage(VipresultsComponent)" :class="getButtonClass(VipresultsComponent)">
+            <FileIcon class="icon-panel" />
+            <span> Post vip results </span>
+            <ArrowIcon class="icon-panel ap" />
+          </button>
           <button @click="setActivePage(Predictionpicks)" :class="getButtonClass(Predictionpicks)">
             <FileIcon class="icon-panel" />
             <span> Prediction picks </span>
@@ -81,6 +86,7 @@ const showMenu = () => {
   isOpen.value = !isOpen.value
 }
 // pages
+import VipresultsComponent from '../components/VipresultsComponent.vue'
 import AccountManagement from '../components/AccountManagement.vue'
 import GameManagement from '../components/GameManagement.vue'
 import Predictionpicks from '../components/Predictionpicks.vue'
