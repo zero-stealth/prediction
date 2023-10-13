@@ -18,16 +18,20 @@
       <div class="m1-ads-info">
         <h2>Vip results</h2>
         <div class="vip-results-d">
-          <div class="vip-results-pn" v-for="data in vipResultData" :key="data._id">
+          <div
+            class="vip-results-pn"
+            v-for="data in vipResultData.slice(0, 6)"
+            :key="data._id"
+          >
             <span>{{ ShowName(data.gameName) }}</span>
             <div class="vip-results-cont">
               <span>{{ ShowDate(data.gameName) }}</span>
-            <div class="results-s">
-              <PassedIcon class="icon-rs icon-won" v-if="data.gameScore === 'Passed'" />
-              <FailedIcon class="icon-rs icon-fail" v-else-if="data.gameScore === 'Failed'" />
-              <CanceledIcon class="icon-rs icon-cancel" v-else-if="data.gameScore === 'Cancel'" />
-              <EmptyIcon class="icon-rs" v-else />
-            </div>
+              <div class="results-s">
+                <PassedIcon class="icon-rs icon-won" v-if="data.gameScore === 'Passed'" />
+                <FailedIcon class="icon-rs icon-fail" v-else-if="data.gameScore === 'Failed'" />
+                <CanceledIcon class="icon-rs icon-cancel" v-else-if="data.gameScore === 'Cancel'" />
+                <EmptyIcon class="icon-rs" v-else />
+              </div>
             </div>
           </div>
         </div>
@@ -75,13 +79,13 @@ const goVip = () => {
 }
 
 const ShowDate = (gameName) => {
-  const matches = gameName.match(/\((\d{1,2}\/\d{1,2})\)/);
-  return matches ? matches[1] : gameName;
+  const matches = gameName.match(/\((\d{1,2}\/\d{1,2})\)/)
+  return matches ? matches[1] : gameName
 }
 
 const ShowName = (gameName) => {
-  const matches = gameName.match(/(.+)(?:\(\d{1,2}\/\d{1,2}\))/);
-  return matches ? matches[1] : gameName;
+  const matches = gameName.match(/(.+)(?:\(\d{1,2}\/\d{1,2}\))/)
+  return matches ? matches[1] : gameName
 }
 
 const parseTime = (timeString) => {

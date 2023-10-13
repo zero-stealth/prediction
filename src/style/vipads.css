@@ -88,11 +88,10 @@
     }
 
     .vip-results-d {
-        gap: 10px;
         display: flex;
         text-align: center;
+        flex-direction: row-reverse;
         justify-content: space-between;
-
         color: var(--grey-color);
     }
 
@@ -106,8 +105,8 @@
 
     .vip-results-cont {
         gap: 4px;
+        padding: 4px;
         display: flex;
-        padding: 5px;
         border-radius: 8px;
         flex-direction: column;
         justify-content: space-between;
