@@ -60,7 +60,6 @@ async function handleSubmit() {
   }
 }
 </script>
-
 <style scoped>
-/* Add your scoped styles here */
+@import '../style/games.css';
 </style>
