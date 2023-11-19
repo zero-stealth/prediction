@@ -1,7 +1,6 @@
 <template>
-  <div class="bn-snap">
-    <div class="form-container">
-      <form @submit.prevent="handleSubmit" enctype="multipart/form-data">
+   <div class="form-con">
+      <form @submit.prevent="handleSubmit" class="form-container" enctype="multipart/form-data">
         <div class="form-wrapper">
           <h1>Vip results</h1>
           <div class="form-group">
@@ -22,7 +21,6 @@
         </div>
       </form>
     </div>
-  </div>
 </template>
 
 <script setup>

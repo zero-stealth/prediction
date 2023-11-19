@@ -1,8 +1,5 @@
 <template>
-  <div>
-    <div class="form-container-h">
-      <h1>Time updates</h1>
-    </div>
+<div class="form-con">
     <form @submit.prevent="handleSubmit" enctype="multipart/form-data" class="form-container">
       <div class="form-wrapper">
         <div class="form-group">

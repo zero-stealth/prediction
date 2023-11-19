@@ -1,0 +1,376 @@
+@media screen {
+  .user-container {
+    gap: 20px;
+    display: flex;
+    width: 100%;
+    flex-direction: column;
+  }
+
+  table {
+    width: 100%;
+  }
+  .user-card {
+    gap: 10px;
+    width: 100%;
+    display: flex;
+    padding: 10px;
+    border-radius: 12px;
+    height: fit-content;
+    flex-direction: column;
+    box-shadow: rgba(100, 100, 111, 0.2) 0px 7px 29px 0px;
+  }
+
+  .user-img {
+    height: 120px;
+    width: 100%;
+    padding: 10px;
+    display: flex;
+    align-items: center;
+    border-radius: inherit;
+    justify-content: center;
+    background-color: var(--primary-color);
+  }
+
+  .user-icon {
+    width: 50px;
+    height: 50px;
+    fill: var(--background-color);
+  }
+
+  .user-info {
+    width: 100%;
+    display: flex;
+    padding: 10px 0;
+    flex-direction: column;
+    justify-content: space-between;
+  }
+
+  .user-info-dn {
+    display: flex;
+    align-items: start;
+    justify-content: space-between;
+  }
+
+  .user-in {
+    gap: 10px;
+    display: flex;
+    flex-direction: column;
+  }
+
+  .user-in span,
+  p {
+    font-size: 0.8rem;
+    font-weight: 500;
+    text-decoration: underline;
+    color: var(--primary-color);
+    text-transform: capitalize;
+  }
+
+  .user-in h1 {
+    font-size: .9rem;
+    font-weight: 300;
+    color: var(--grey-color);
+  }
+
+  .user-span {
+    gap: 10px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+  }
+
+  .user-span span {
+    font-size: 0.8rem;
+    font-weight: 500;
+    text-decoration: underline;
+    color: var(--primary-color);
+  }
+
+  .user-span h1 {
+    font-size: .9rem;
+    font-weight: 300;
+    color: var(--grey-color);
+  }
+  .Account-card.selected {
+    color: var(--background-color);
+    background-color: var(--light-color);
+  }
+
+  .selected .icon-acc {
+    fill: var(--background-color);
+  }
+  .Account-game-p {
+    gap: 20px;
+    padding: 10px;
+    display: flex;
+    height: inherit;
+    overflow: hidden;
+    overflow-x: scroll;
+    overflow-y: hidden;
+    background-color: var(--dark-primary-color);
+  }
+
+  .Account-info {
+    gap: 10px;
+    display: flex;
+    overflow: hidden;
+    overflow-x: auto;
+    align-items: center;
+    padding: 10px;
+    justify-content: space-between;
+  }
+
+  .Account-card {
+    width: 200px;
+    display: flex;
+    padding: 10px;
+    cursor: pointer;
+    min-width: 200px;
+    flex-direction: column;
+    color: var(--light-color);
+    box-shadow: rgba(9, 30, 66, 0.25) 0px 4px 8px -2px, rgba(9, 30, 66, 0.08) 0px 0px 0px 1px;
+  }
+
+  .Account-card h5 {
+    font-size: 0.8rem;
+    text-transform: capitalize;
+  }
+
+  .Account-card-icon {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+  }
+
+  .Account-card-icon h1 {
+    font-size: 2rem;
+    font-weight: 600;
+  }
+
+  .icon-acc {
+    width: 40px;
+    height: 40px;
+    fill: var(--light-color);
+  }
+
+  .acc-m {
+
+    overflow: hidden;
+    overflow-x: auto;
+    overflow-y: scroll;
+    background-color: var(--dark-primary-color);
+  }
+
+  .hide-ds {
+    display: none;
+  }
+
+  .hide-mb {
+    display: flex;
+  }
+
+  .gm-m {
+    overflow-x: auto;
+    background-color: var(--dark-primary-color);
+  }
+
+  .acc-m thead {
+    font-size: 0.7rem;
+    background-color: var(--primary-color);
+    color: var(--background-color);
+  }
+
+  .acc-m tbody {
+    font-size: 0.7rem;
+  }
+
+  .acc-m th,
+  td {
+    padding: 20px;
+  }
+
+  .acc-m td {
+    font-weight: 200;
+    border-bottom: none;
+    cursor: pointer;
+    text-transform: capitalize;
+    color: var(--background-color);
+    border: 3px solid var(--primary-color);
+    background-color: var(--light-primary-color);
+  }
+
+  .acc-m th {
+    font-weight: 600;
+    text-transform: uppercase;
+    color: var(--light-color);
+  }
+
+  .Account-tbl-img {
+    gap: 20px;
+    display: flex;
+    align-items: center;
+  }
+
+  .Account-pi {
+    width: 50px;
+    height: 50px;
+    object-fit: cover;
+    border-radius: 360%;
+    object-position: center;
+  }
+
+  .Account-t-con {
+    display: flex;
+    cursor: pointer;
+    align-items: center;
+    justify-content: center;
+  }
+
+  .Account-toggle {
+    gap: 10px;
+    padding: 5px;
+    width: 130px;
+    display: flex;
+    align-items: center;
+    border-radius: 360px;
+    transition: all 0.8s ease 0s;
+    -webkit-transition: all 0.8s ease 0s;
+    background-color: var(--primary-color);
+  }
+
+  .Account-mode {
+    width: 20px;
+    height: 20px;
+    border-radius: 360%;
+    background-color: var(--light-primary-color);
+  }
+
+  .Account-toggle span {
+    font-size: 0.7rem;
+    font-weight: 600;
+    color: var(--light-color);
+  }
+
+  .on {
+    display: flex;
+    background-color: var(--secondary-color);
+  }
+
+  .on span {
+    color: var(--light-primary-color);
+  }
+
+  .off {
+    display: flex;
+    flex-direction: row-reverse;
+  }
+
+  .Account-delete {
+    display: flex;
+    cursor: pointer;
+    align-items: center;
+    justify-content: center;
+  }
+
+  .icon-delete {
+    width: 24px;
+    height: 24px;
+    fill: var(--red-color);
+  }
+}
+
+.game-edit {
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  display: none;
+  position: fixed;
+  overflow: hidden;
+  overflow-y: auto;
+  flex-direction: column;
+  background-color: var(--light-primary-color);
+}
+
+.mobile-exit {
+  cursor: pointer;
+}
+
+.showEdit {
+  display: flex;
+}
+
+.closeEdit {
+  display: none;
+}
+
+/* using it as global style for larger devices  */
+@media only screen and (min-width: 48em) {
+  .user-container {
+    padding: 20px 0;
+  }
+ 
+  .user-card {
+    gap: 10px;
+    height: 220px;
+    width: 500px;
+    flex-direction: row;
+  }
+
+  .user-img {
+    height: 100%;
+    width: 220px;
+  }
+
+  .user-in {
+    gap: 10px;
+    display: flex;
+    flex-direction: column;
+  }
+
+  .user-in span,
+  p {
+    font-size: 0.9rem;
+    font-weight: 500;
+    text-decoration: underline;
+    color: var(--primary-color);
+    text-transform: capitalize;
+  }
+
+  .user-in h1 {
+    font-size: 1rem;
+    font-weight: 300;
+    color: var(--grey-color);
+  }
+
+  .user-span {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+  }
+
+  .user-span span {
+    font-size: 0.9rem;
+    font-weight: 500;
+    text-decoration: underline;
+    color: var(--primary-color);
+  }
+
+  .user-span h1 {
+    font-size: 1rem;
+    font-weight: 300;
+    color: var(--grey-color);
+  }
+
+  .acc-m td {
+    text-align: center;
+  }
+
+  .hide-ds {
+    display: flex;
+  }
+
+  .hide-mb {
+    display: none;
+  }
+}

@@ -1,8 +1,5 @@
 <template>
-  <div>
-    <div class="form-container-h">
-      <h1>Vip update</h1>
-    </div>
+<div class="form-con">
     <form @submit.prevent="handleSubmit" enctype="multipart/form-data" class="form-container">
       <div class="form-wrapper">
         <h1>Team A</h1>

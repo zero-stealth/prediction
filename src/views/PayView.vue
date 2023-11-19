@@ -127,7 +127,7 @@ const filteredCountries = computed(() => {
         <div class="info-pay-h">
           <h1>
             {{ $t('pay.spanh1') }} <span>{{ $t('pay.spanh2') }}</span> <br />
-            {{ $t('pay.spanh3') }}<span>( 45 USD ) </span> <br />
+            {{ $t('pay.spanh3') }}<span>( 35 USD ) </span> <br />
             <span>"2 - 4" odds</span> {{ $t('pay.spanh4') }}
           </h1>
         </div>

@@ -1,11 +1,8 @@
 <template>
-  <div class="Account-container">
-    <div class="Account-header">
-      <h1><span>Welcome</span><br />SportyPredict</h1>
-    </div>
-    <div class="Account-game-p">
+  <div class="game-container">
+    <div class="game-game-p">
       <!-- loop this  -->
-      <div class="acc-m gm-m">
+      <div class="game-cf">
         <div class="main-header">
           <div class="header-info">
             <h1>Bet of the day ({{ currentDate }})</h1>
@@ -38,20 +35,20 @@
           <tbody v-for="item in cardData">
             <tr v-for="data in item" :key="data._id">
               <td>
-                <div class="Account-tbl-img">
-                  <img :src="data.leagueIcon" alt="Account-p" class="Account-pi" />
+                <div class="game-tbl-img">
+                  <img :src="data.leagueIcon" alt="game-p" class="game-pi" />
                   <span>{{ data.league }}</span>
                 </div>
               </td>
               <td>
-                <div class="Account-tbl-img">
-                  <img :src="data.teamAIcon" alt="Account-p" class="Account-pi" />
+                <div class="game-tbl-img">
+                  <img :src="data.teamAIcon" alt="game-p" class="game-pi" />
                   <span>{{ data.teamA }}</span>
                 </div>
               </td>
               <td>
-                <div class="Account-tbl-img">
-                  <img :src="data.teamBIcon" alt="Account-p" class="Account-pi" />
+                <div class="game-tbl-img">
+                  <img :src="data.teamBIcon" alt="game-p" class="game-pi" />
                   <span>{{ data.teamB }}</span>
                 </div>
               </td>
@@ -65,12 +62,12 @@
                 <span>{{ data.tip }}</span>
               </td>
               <td>
-                <div class="Account-delete" @click="editGame(BetOfTheDay, data._id)">
+                <div class="game-delete" @click="editGame(BetOfTheDay, data._id)">
                   <FileIcon class="icon-delete" />
                 </div>
               </td>
               <td>
-                <div class="Account-delete" @click="deletePrediction(data._id)">
+                <div class="game-delete" @click="deletePrediction(data._id)">
                   <DeleteIcon class="icon-delete" />
                 </div>
               </td>
@@ -83,7 +80,7 @@
         </table>
       </div>
       <!-- loop this  -->
-      <div class="acc-m gm-m">
+      <div class="game-cf">
         <div class="main-header">
           <div class="header-info">
             <h1>Prediction Tips ({{ currentDate }})</h1>
@@ -116,20 +113,20 @@
           <tbody v-for="item in predictionData">
             <tr v-for="data in item" :key="data._id">
               <td>
-                <div class="Account-tbl-img">
-                  <img :src="data.leagueIcon" alt="Account-p" class="Account-pi" />
+                <div class="game-tbl-img">
+                  <img :src="data.leagueIcon" alt="game-p" class="game-pi" />
                   <span>{{ data.league }}</span>
                 </div>
               </td>
               <td>
-                <div class="Account-tbl-img">
-                  <img :src="data.teamAIcon" alt="Account-p" class="Account-pi" />
+                <div class="game-tbl-img">
+                  <img :src="data.teamAIcon" alt="game-p" class="game-pi" />
                   <span>{{ data.teamA }}</span>
                 </div>
               </td>
               <td>
-                <div class="Account-tbl-img">
-                  <img :src="data.teamBIcon" alt="Account-p" class="Account-pi" />
+                <div class="game-tbl-img">
+                  <img :src="data.teamBIcon" alt="game-p" class="game-pi" />
                   <span>{{ data.teamB }}</span>
                 </div>
               </td>
@@ -143,12 +140,12 @@
                 <span>{{ data.tip }}</span>
               </td>
               <td>
-                <div class="Account-delete" @click="editGame(Predictionpicks, data._id)">
+                <div class="game-delete" @click="editGame(Predictionpicks, data._id)">
                   <FileIcon class="icon-delete" />
                 </div>
               </td>
               <td>
-                <div class="Account-delete" @click="deletePrediction(data._id)">
+                <div class="game-delete" @click="deletePrediction(data._id)">
                   <DeleteIcon class="icon-delete" />
                 </div>
               </td>
@@ -160,7 +157,7 @@
         </table>
       </div>
 
-      <div class="acc-m gm-m">
+      <div class="game-cf">
         <div class="main-header">
           <div class="header-info">
             <h1>Free tips ({{ currentDate }})</h1>
@@ -193,20 +190,20 @@
           <tbody v-for="item in freeTipData">
             <tr v-for="data in item" :key="data._id">
               <td>
-                <div class="Account-tbl-img">
-                  <img :src="data.leagueIcon" alt="Account-p" class="Account-pi" />
+                <div class="game-tbl-img">
+                  <img :src="data.leagueIcon" alt="game-p" class="game-pi" />
                   <span>{{ data.league }}</span>
                 </div>
               </td>
               <td>
-                <div class="Account-tbl-img">
-                  <img :src="data.teamAIcon" alt="Account-p" class="Account-pi" />
+                <div class="game-tbl-img">
+                  <img :src="data.teamAIcon" alt="game-p" class="game-pi" />
                   <span>{{ data.teamA }}</span>
                 </div>
               </td>
               <td>
-                <div class="Account-tbl-img">
-                  <img :src="data.teamBIcon" alt="Account-p" class="Account-pi" />
+                <div class="game-tbl-img">
+                  <img :src="data.teamBIcon" alt="game-p" class="game-pi" />
                   <span>{{ data.teamB }}</span>
                 </div>
               </td>
@@ -220,12 +217,12 @@
                 <span>{{ data.tip }}</span>
               </td>
               <td>
-                <div class="Account-delete" @click="editGame(Freetips, data._id)">
+                <div class="game-delete" @click="editGame(Freetips, data._id)">
                   <FileIcon class="icon-delete" />
                 </div>
               </td>
               <td>
-                <div class="Account-delete" @click="deletePrediction(data._id)">
+                <div class="game-delete" @click="deletePrediction(data._id)">
                   <DeleteIcon class="icon-delete" />
                 </div>
               </td>
@@ -237,7 +234,7 @@
         </table>
       </div>
 
-      <div class="acc-m gm-m">
+      <div class="game-cf">
         <div class="main-header">
           <div class="header-info">
             <h1>Upcoming games ({{ currentDate }})</h1>
@@ -270,20 +267,20 @@
           <tbody v-for="item in upcomingData">
             <tr v-for="data in item" :key="data._id">
               <td>
-                <div class="Account-tbl-img">
-                  <img :src="data.leagueIcon" alt="Account-p" class="Account-pi" />
+                <div class="game-tbl-img">
+                  <img :src="data.leagueIcon" alt="game-p" class="game-pi" />
                   <span>{{ data.league }}</span>
                 </div>
               </td>
               <td>
-                <div class="Account-tbl-img">
-                  <img :src="data.teamAIcon" alt="Account-p" class="Account-pi" />
+                <div class="game-tbl-img">
+                  <img :src="data.teamAIcon" alt="game-p" class="game-pi" />
                   <span>{{ data.teamA }}</span>
                 </div>
               </td>
               <td>
-                <div class="Account-tbl-img">
-                  <img :src="data.teamBIcon" alt="Account-p" class="Account-pi" />
+                <div class="game-tbl-img">
+                  <img :src="data.teamBIcon" alt="game-p" class="game-pi" />
                   <span>{{ data.teamB }}</span>
                 </div>
               </td>
@@ -297,12 +294,12 @@
                 <span>{{ data.tip }}</span>
               </td>
               <td>
-                <div class="Account-delete" @click="editGame(UpcomingGames, data._id)">
+                <div class="game-delete" @click="editGame(UpcomingGames, data._id)">
                   <FileIcon class="icon-delete" />
                 </div>
               </td>
               <td>
-                <div class="Account-delete" @click="deletePrediction(data._id)">
+                <div class="game-delete" @click="deletePrediction(data._id)">
                   <DeleteIcon class="icon-delete" />
                 </div>
               </td>
@@ -314,7 +311,7 @@
         </table>
       </div>
 
-      <div class="acc-m gm-m">
+      <div class="game-cf">
         <div class="main-header">
           <div class="header-info">
             <h1>Vip games ({{ currentDate }})</h1>
@@ -347,20 +344,20 @@
           <tbody v-for="item in vipData">
             <tr v-for="data in item" :key="data._id">
               <td>
-                <div class="Account-tbl-img">
-                  <img :src="data.leagueIcon" alt="Account-p" class="Account-pi" />
+                <div class="game-tbl-img">
+                  <img :src="data.leagueIcon" alt="game-p" class="game-pi" />
                   <span>{{ data.league }}</span>
                 </div>
               </td>
               <td>
-                <div class="Account-tbl-img">
-                  <img :src="data.teamAIcon" alt="Account-p" class="Account-pi" />
+                <div class="game-tbl-img">
+                  <img :src="data.teamAIcon" alt="game-p" class="game-pi" />
                   <span>{{ data.teamA }}</span>
                 </div>
               </td>
               <td>
-                <div class="Account-tbl-img">
-                  <img :src="data.teamBIcon" alt="Account-p" class="Account-pi" />
+                <div class="game-tbl-img">
+                  <img :src="data.teamBIcon" alt="game-p" class="game-pi" />
                   <span>{{ data.teamB }}</span>
                 </div>
               </td>
@@ -374,12 +371,12 @@
                 <span>{{ data.tip }}</span>
               </td>
               <td>
-                <div class="Account-delete" @click="editGame(VipGames, data._id)">
+                <div class="game-delete" @click="editGame(VipGames, data._id)">
                   <FileIcon class="icon-delete" />
                 </div>
               </td>
               <td>
-                <div class="Account-delete" @click="deletePrediction(data._id)">
+                <div class="game-delete" @click="deletePrediction(data._id)">
                   <DeleteIcon class="icon-delete" />
                 </div>
               </td>
@@ -390,7 +387,7 @@
           </tbody>
         </table>
       </div>
-      <div class="acc-m gm-m">
+      <div class="game-cf">
         <div class="main-header">
           <div class="header-info">
             <h1>Tennis bets ({{ currentDate }})</h1>
@@ -423,20 +420,20 @@
           <tbody v-for="item in tennisData">
             <tr v-for="data in item" :key="data._id">
               <td>
-                <div class="Account-tbl-img">
-                  <img :src="data.leagueIcon" alt="Account-p" class="Account-pi" />
+                <div class="game-tbl-img">
+                  <img :src="data.leagueIcon" alt="game-p" class="game-pi" />
                   <span>{{ data.league }}</span>
                 </div>
               </td>
               <td>
-                <div class="Account-tbl-img">
-                  <img :src="data.teamAIcon" alt="Account-p" class="Account-pi" />
+                <div class="game-tbl-img">
+                  <img :src="data.teamAIcon" alt="game-p" class="game-pi" />
                   <span>{{ data.teamA }}</span>
                 </div>
               </td>
               <td>
-                <div class="Account-tbl-img">
-                  <img :src="data.teamBIcon" alt="Account-p" class="Account-pi" />
+                <div class="game-tbl-img">
+                  <img :src="data.teamBIcon" alt="game-p" class="game-pi" />
                   <span>{{ data.teamB }}</span>
                 </div>
               </td>
@@ -450,12 +447,12 @@
                 <span>{{ data.tip }}</span>
               </td>
               <td>
-                <div class="Account-delete" @click="editSport(TennisGames, data._id)">
+                <div class="game-delete" @click="editSport(TennisGames, data._id)">
                   <FileIcon class="icon-delete" />
                 </div>
               </td>
               <td>
-                <div class="Account-delete" @click="deleteSport(data._id)">
+                <div class="game-delete" @click="deleteSport(data._id)">
                   <DeleteIcon class="icon-delete" />
                 </div>
               </td>
@@ -466,7 +463,7 @@
           </tbody>
         </table>
       </div>
-      <div class="acc-m gm-m">
+      <div class="game-cf">
         <div class="main-header">
           <div class="header-info">
             <h1>Basketball bets ({{ currentDate }})</h1>
@@ -499,20 +496,20 @@
           <tbody v-for="item in basketBallData">
             <tr v-for="data in item" :key="data._id">
               <td>
-                <div class="Account-tbl-img">
-                  <img :src="data.leagueIcon" alt="Account-p" class="Account-pi" />
+                <div class="game-tbl-img">
+                  <img :src="data.leagueIcon" alt="game-p" class="game-pi" />
                   <span>{{ data.league }}</span>
                 </div>
               </td>
               <td>
-                <div class="Account-tbl-img">
-                  <img :src="data.teamAIcon" alt="Account-p" class="Account-pi" />
+                <div class="game-tbl-img">
+                  <img :src="data.teamAIcon" alt="game-p" class="game-pi" />
                   <span>{{ data.teamA }}</span>
                 </div>
               </td>
               <td>
-                <div class="Account-tbl-img">
-                  <img :src="data.teamBIcon" alt="Account-p" class="Account-pi" />
+                <div class="game-tbl-img">
+                  <img :src="data.teamBIcon" alt="game-p" class="game-pi" />
                   <span>{{ data.teamB }}</span>
                 </div>
               </td>
@@ -526,12 +523,12 @@
                 <span>{{ data.tip }}</span>
               </td>
               <td>
-                <div class="Account-delete" @click="editSport(BasketballGames, data._id)">
+                <div class="game-delete" @click="editSport(BasketballGames, data._id)">
                   <FileIcon class="icon-delete" />
                 </div>
               </td>
               <td>
-                <div class="Account-delete" @click="deleteSport(data._id)">
+                <div class="game-delete" @click="deleteSport(data._id)">
                   <DeleteIcon class="icon-delete" />
                 </div>
               </td>
@@ -542,7 +539,7 @@
           </tbody>
         </table>
       </div>
-      <div class="acc-m gm-m">
+      <div class="game-cf">
         <div class="main-header">
           <div class="header-info">
             <h1>Ads Posted</h1>
@@ -560,8 +557,8 @@
           <tbody v-for="item in adData">
             <tr v-for="data in item" :key="data._id">
               <td>
-                <div class="Account-tbl-img">
-                  <img :src="data.image" alt="Account-p" class="Account-pi pi-ads" />
+                <div class="game-tbl-img">
+                  <img :src="data.image" alt="game-p" class="game-pi pi-ads" />
                 </div>
               </td>
               <td>
@@ -570,12 +567,12 @@
                 </span>
               </td>
               <td>
-                <div class="Account-delete" @click="editAds(AdsPage, data._id)">
+                <div class="game-delete" @click="editAds(AdsPage, data._id)">
                   <FileIcon class="icon-delete" />
                 </div>
               </td>
               <td>
-                <div class="Account-delete" @click="deleteAds(data._id)">
+                <div class="game-delete" @click="deleteAds(data._id)">
                   <DeleteIcon class="icon-delete" />
                 </div>
               </td>
@@ -586,7 +583,7 @@
           </tbody>
         </table>
       </div>
-      <div class="acc-m gm-m">
+      <div class="game-cf">
         <div class="main-header">
           <div class="header-info">
             <h1>Time Posted</h1>
@@ -606,12 +603,12 @@
                 <span>{{ data.time }}</span>
               </td>
               <td>
-                <div class="Account-delete" @click="editTime(TimePage, data._id)">
+                <div class="game-delete" @click="editTime(TimePage, data._id)">
                   <FileIcon class="icon-delete" />
                 </div>
               </td>
               <td>
-                <div class="Account-delete" @click="deleteTime(data._id)">
+                <div class="game-delete" @click="deleteTime(data._id)">
                   <DeleteIcon class="icon-delete" />
                 </div>
               </td>
@@ -622,7 +619,7 @@
           </tbody>
         </table>
       </div>
-      <div class="acc-m gm-m">
+      <div class="game-cf">
         <div class="main-header">
           <div class="header-info">
             <h1>Vip Result Posted</h1>
@@ -646,12 +643,12 @@
                 <span>{{ data.gameScore }}</span>
               </td>
               <td>
-                <div class="Account-delete" @click="editVipResult(VipEditPage, data._id)">
+                <div class="game-delete" @click="editVipResult(VipEditPage, data._id)">
                   <FileIcon class="icon-delete" />
                 </div>
               </td>
               <td>
-                <div class="Account-delete" @click="deleteVipResult(data._id)">
+                <div class="game-delete" @click="deleteVipResult(data._id)">
                   <DeleteIcon class="icon-delete" />
                 </div>
               </td>
@@ -935,6 +932,9 @@ async function updateGame(formData) {
     if (formData.showScore !== '') {
       formDataa.append('showScore', formData.showScore)
     }
+    if (formData.description !== '') {
+      formDataa.append('description', formData.description)
+    }
     const response = await axios.put(
       `${SERVER_HOST}/predictions/update/${gameId.value}`,
       formDataa,
@@ -1076,6 +1076,10 @@ async function updateSport(formData) {
     }
     if (formData.showScore !== '') {
       formDataa.append('showScore', formData.showScore)
+    }
+
+    if (formData.description !== '') {
+      formDataa.append('description', formData.description)
     }
 
     const response = await axios.put(`${SERVER_HOST}/sports/update/${sportId.value}`, formDataa, {
@@ -1230,7 +1234,6 @@ watch(currentDate, () => {
   getBasketballBets()
 })
 </script>
-<style>
-@import '../style/account.css';
-@import '../style/Bet.css';
+<style scoped>
+@import '../style/gameManagement.css';
 </style>

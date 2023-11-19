@@ -40,6 +40,7 @@
               :teamBscore="card.teamBscore"
               :formationA="formatFormation(card.formationA) ? card.formationA[0]?.split('-') : []"
               :formationB="formatFormation(card.formationB) ? card.formationB[0]?.split('-') : []"
+              @click="showCard(card.teamA, card.teamB, card._id)"
               :time="card.time"
               :sport="card.sport"
             />
@@ -67,6 +68,8 @@
 
 <script setup>
 import axios from 'axios'
+import { useRouter } from 'vue-router'
+import { useGameStore } from '../stores/game'
 import { useDrawerStore } from '../stores/drawer'
 import OfferAds from '../components/OfferAds.vue'
 import Card from '../components/CardComponent.vue'
@@ -77,7 +80,11 @@ import { ref, onMounted, watch, watchEffect } from 'vue'
 import QuickComponent from '../components/QuickComponent.vue'
 import ButtonComponent from '../components/ButtonComponent.vue'
 
+
+const SERVER_HOST = import.meta.env.VITE_SERVER_HOST
+const gameStore = useGameStore()
 const currentDate = ref('')
+const router = useRouter()
 const cardData = ref([])
 const url = ref('')
 
@@ -87,9 +94,14 @@ const drawerStore = useDrawerStore()
 watchEffect(() => {
   showPop.value = drawerStore.popDrawer
 })
+
+const showCard = (gameA, gameB ,cardID) => {
+  router.push({ name: 'TennisTips', params: { tennisName: `${gameA} vs ${gameB}`  } })
+  gameStore.updateGameId(cardID)
+}
+
 async function getPrediction() {
-  // const token = JSON.parse(localStorage.getItem('token'))
-  url.value = `https://predictions-reg9.onrender.com/sports/sport/Tennis/${currentDate.value}`
+  url.value =`${SERVER_HOST}/sports/sport/Tennis/${currentDate.value}`
 
   try {
     const response = await axios.get(url.value)

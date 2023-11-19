@@ -22,6 +22,9 @@
     background-color: var(--primary-color);
   }
 
+
+
+
   .bo-off span {
     color: var(--background-color);
    
@@ -66,9 +69,26 @@
     box-shadow: rgba(50, 50, 93, 0.25) 0px 6px 12px -2px, rgba(0, 0, 0, 0.3) 0px 3px 7px -3px;
   }
 
-  .img-offer {
+  .img-offer, .img-offer-skeleton {
     height: 50px;
 
+  }
+
+  .img-offer-skeleton {
+    cursor: progress;
+    background: linear-gradient(0.25turn, transparent, #fff, transparent),
+      linear-gradient(#eee, #eee),
+      radial-gradient(38px circle at 19px 19px, #eee 50%, transparent 51%),
+      linear-gradient(#eee, #eee);
+    background-repeat: no-repeat;
+    background-position: -315px 0, 0 0, 0px 190px, 50px 195px;
+    animation: loading 2s infinite;
+  }
+
+  @keyframes loading {
+    to {
+      background-position: 315px 0, 0 0, 0 190px, 50px 195px;
+    }
   }
 
   .bonus-form-c {

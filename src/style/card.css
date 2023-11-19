@@ -1,5 +1,5 @@
 @media screen {
-  .card-container {
+  .card-container, .card-skeleton {
     width: 100%;
     display: flex;
     padding: 10px;
@@ -11,6 +11,22 @@
     box-shadow: rgba(60, 64, 67, 0.3) 0px 1px 2px 0px, rgba(60, 64, 67, 0.15) 0px 1px 3px 1px;
   }
 
+  .card-skeleton {
+    cursor: progress;
+    background: linear-gradient(0.25turn, transparent, #fff, transparent),
+      linear-gradient(#eee, #eee),
+      radial-gradient(38px circle at 19px 19px, #eee 50%, transparent 51%),
+      linear-gradient(#eee, #eee);
+    background-repeat: no-repeat;
+    background-position: -315px 0, 0 0, 0px 190px, 50px 195px;
+    animation: loading 2s infinite;
+  }
+  
+  @keyframes loading {
+    to {
+      background-position: 315px 0, 0 0, 0 190px, 50px 195px;
+    }
+  }
   .card-container:hover {
     box-shadow: rgba(17, 17, 26, 0.05) 0px 4px 16px, rgba(17, 17, 26, 0.05) 0px 8px 32px;
   }
@@ -69,8 +85,9 @@
     padding: 10px 0;
     align-items: center;
     justify-content: space-around;
-
   }
+
+
 
   .card-a {
     gap: 10px;
@@ -79,7 +96,6 @@
     font-size: 0.6rem;
     align-items: center;
     flex-direction: column;
-
   }
 
   .status-p {
@@ -118,12 +134,29 @@
     background-repeat: no-repeat;
   }
 
-  .card-img {
+  .card-img, .card-img-skeleton  {
     height: 60px;
     object-fit: contain;
     object-position: center;
     /* background-color: var(--fade-color); */
+  }
 
+
+  .card-img-skeleton {
+    cursor: progress;
+    background: linear-gradient(0.25turn, transparent, #fff, transparent),
+      linear-gradient(#eee, #eee),
+      radial-gradient(38px circle at 19px 19px, #eee 50%, transparent 51%),
+      linear-gradient(#eee, #eee);
+    background-repeat: no-repeat;
+    background-position: -315px 0, 0 0, 0px 190px, 50px 195px;
+    animation: loading 2s infinite;
+  }
+
+  @keyframes loading {
+    to {
+      background-position: 315px 0, 0 0, 0 190px, 50px 195px;
+    }
   }
 
   .card-in {
@@ -161,7 +194,6 @@
   .bet-adv {
     margin: 0 20px;
     cursor: pointer;
-
   }
 
   .bet-adv:hover .bet-winner-logo {
@@ -196,7 +228,7 @@
   .card-fi {
     text-align: center;
     font-weight: 400;
-    font-size: .8rem;
+    font-size: 0.8rem;
   }
 
   .card-f span {
@@ -217,12 +249,11 @@
   }
 
   .card-f .win {
-    background-color:  var(--green-color);
+    background-color: var(--green-color);
   }
 
   .card-f .draw {
     background-color: var(--grey-color);
-   
   }
 
   .circle-tennis {

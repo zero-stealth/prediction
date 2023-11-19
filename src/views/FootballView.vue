@@ -39,6 +39,7 @@
             :teamBscore="card.teamBscore"
             :formationA="formatFormation(card.formationA) ? card.formationA[0].split('-') : []"
             :formationB="formatFormation(card.formationB) ? card.formationB[0].split('-') : []"
+            @click="showCard(card.teamA, card.teamB, card._id)"
             :time="card.time"
           />
         </div>
@@ -59,9 +60,8 @@
       <p>{{ $t('football.p2') }}</p>
     </div>
   </div>
-  <PopUP v-if="showPop" >
-      </PopUP>
-      <Sticky/>
+  <PopUP v-if="showPop"> </PopUP>
+  <Sticky />
 </template>
 <script setup>
 const SERVER_HOST = import.meta.env.VITE_SERVER_HOST
@@ -71,31 +71,34 @@ import Sticky from '../components/stickyComponent.vue'
 import vipads from '../components/vipadsComponent.vue'
 import PopUP from '../components/popupComponent.vue'
 import Card from '../components/CardComponent.vue'
-import { useDrawerStore } from "../stores/drawer"
-
+import { useDrawerStore } from '../stores/drawer'
 import OfferAds from '../components/OfferAds.vue'
 import { ref, watchEffect, onMounted } from 'vue'
+import { useGameStore } from '../stores/game'
+import { useRouter } from 'vue-router'
 import axios from 'axios'
 
-const currentDate = ref('')
 const offset = ref(0)
-
 const cardData = ref([])
 const showPop = ref(null)
-const drawerStore = useDrawerStore();
-
+const router = useRouter()
+const currentDate = ref('')
+const gameStore = useGameStore()
+const drawerStore = useDrawerStore()
 
 watchEffect(() => {
-  showPop.value = drawerStore.popDrawer;
+  showPop.value = drawerStore.popDrawer
 })
 
+const showCard = (gameA, gameB, cardID) => {
+  router.push({ name: 'Tips', params: { gameName: `${gameA} vs ${gameB}` } })
+  gameStore.updateGameId(cardID)
+}
 
 const predictions = async () => {
   try {
     // const token = localStorage.getItem('token')
-    const response = await axios.get(
-      `${SERVER_HOST}/predictions/tips/freeTip/${currentDate.value}`
-    )
+    const response = await axios.get(`${SERVER_HOST}/predictions/tips/freeTip/${currentDate.value}`)
     console.log(response.data)
     cardData.value = response.data.length > 0 ? [response.data] : []
   } catch (err) {

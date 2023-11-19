@@ -1,18 +1,12 @@
-import { createApp } from 'vue'
-import { createPinia } from 'pinia'
+import { createApp } from 'vue';
+import { createPinia } from 'pinia';
 import { createI18n } from 'vue-i18n';
+import { ref } from 'vue';
 
-// /--- app ---/ //
-import App from './App.vue'
-// /--- app ---/ //
+import App from './App.vue';
+import router from './router';
+import './style/global.css';
 
-import router from './router'
-import './style/global.css'
-
-
-
-
-// Language files
 import English from './locales/en.json';
 import French from './locales/fr.json';
 import Brazilian from './locales/pt-BR.json';
@@ -22,34 +16,30 @@ import Dutch from './locales/nl.json';
 import German from './locales/de.json';
 
 function loadLocaleMessages() {
-    const locales = { English , French, Brazilian, Spanish, Italian, Dutch, German};
-    const messages = {};
-    for (const key in locales) {
-      messages[key] = locales[key];
-    }
-    return messages;
-  }
-  
-  const i18n = createI18n({
-    legacy: false,
-    locale: 'English',
-    fallbackLocale: 'English',
-    messages: loadLocaleMessages()
-  });
-  
-//   nl.js (Dutch)
-//   fr.js (French)
-//   de.js (German)
-//   es.js (Spanish)
-//   en.js (English)
-//   it.js (Italian)
-//   pt-BR.js (Portuguese)
+  const locales = { English, French, Brazilian, Spanish, Italian, Dutch, German };
+  return Object.fromEntries(Object.entries(locales).map(([key, value]) => [key, value]));
+}
+
+const savedLanguage = ref(null);
 
 
-const app = createApp(App)
 
+function setInitialLanguage() {
+  savedLanguage.value = localStorage.getItem('selectedLanguage') || 'English';
+}
 
-app.use(createPinia())
-app.use(i18n)
-app.use(router)
-app.mount('#app')
+setInitialLanguage(); 
+
+const i18n = createI18n({
+  legacy: false,
+  locale: savedLanguage.value,
+  fallbackLocale: 'English',
+  messages: loadLocaleMessages(),
+});
+
+const app = createApp(App);
+
+app.use(createPinia());
+app.use(i18n);
+app.use(router);
+app.mount('#app');

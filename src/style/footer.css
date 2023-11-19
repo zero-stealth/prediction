@@ -162,17 +162,25 @@
     }
   
     .book-social {
-      gap: 10px;
+      gap: 20px;
       display: flex;
       align-items: center;
       justify-content: center;
     }
   
     .bk-icon {
-      width: 20px;
-      height: 20px;
+      width: 28px;
+      height: 28px;
       cursor: pointer;
-      fill: var(--background-color);
+    }
+
+    .fb-icon {
+      fill: #1877F2;
+    }
+
+    .t-icon {
+      width: 24px;
+      height: 24px;
     }
   
     .footer-x {

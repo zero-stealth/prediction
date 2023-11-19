@@ -1,15 +1,14 @@
-  <template>
+<template>
   <div class="panel-container">
-    <div class="panel-bar" :class="[isOpen != false ? 'open-p' : 'close-p']">
-      <div class="panel-exit">
-        <ExitIcon class="panel-icon-exit" @click="showMenu()" />
-      </div>
-      <div class="panel-profile">
-        <div class="panel-img" :style="{ backgroundImage: `url(${logo})` }"></div>
-        <h1>SportyPredict</h1>
-        <span>Administrator</span>
-      </div>
+    <div class="panel-bar" :class="[isOpen ? 'close-dash' : '']">
       <div class="panel-nav">
+        <div class="panel-profile">
+          <div class="panel-img" :style="{ backgroundImage: `url(${logo})` }"></div>
+          <div class="panel-profile-info">
+            <h1>SportyPredict</h1>
+            <span>Administrator</span>
+          </div>
+        </div>
         <div class="panel-btn-container">
           <button
             @click="setActivePage(AccountManagement)"
@@ -17,60 +16,55 @@
           >
             <GroupIcon class="icon-panel" />
             <span>account management</span>
-            <ArrowIcon class="icon-panel ap" />
+          </button>
+          <button @click="setActivePage(GameManagement)" :class="getButtonClass(GameManagement)">
+            <GameIcon class="icon-panel" />
+            <span>Game management</span>
           </button>
           <button
-            @click="setActivePage(GameManagement)"
-            :class="getButtonClass(GameManagement)"
+            @click="setActivePage(VipresultsComponent)"
+            :class="getButtonClass(VipresultsComponent)"
           >
-            <FileIcon class="icon-panel" />
-            <span>Game management</span>
-            <ArrowIcon class="icon-panel ap" />
-          </button>
-          <button @click="setActivePage(PostGames)" :class="getButtonClass(PostGames)">
-            <FileIcon class="icon-panel" />
-            <span> Post Games </span>
-            <ArrowIcon class="icon-panel ap" />
-          </button>
-          <button @click="setActivePage(PostAds)" :class="getButtonClass(PostAds)">
-            <FileIcon class="icon-panel" />
-            <span> Post Ads </span>
-            <ArrowIcon class="icon-panel ap" />
-          </button>
-          <button @click="setActivePage(VipresultsComponent)" :class="getButtonClass(VipresultsComponent)">
-            <FileIcon class="icon-panel" />
+            <VipIcon class="icon-panel" />
             <span> Post vip results </span>
-            <ArrowIcon class="icon-panel ap" />
           </button>
           <button @click="setActivePage(Predictionpicks)" :class="getButtonClass(Predictionpicks)">
-            <FileIcon class="icon-panel" />
+            <PredictionIcon class="icon-panel" />
             <span> Prediction picks </span>
-            <ArrowIcon class="icon-panel ap" />
           </button>
-          <button @click="logout" :class="getButtonClass(logout)">
-            <LogoutIcon class="icon-panel" />
-            <span>Logout </span>
-            <ArrowIcon class="icon-panel ap" />
+          <button @click="setActivePage(PostGames)" :class="getButtonClass(PostGames)">
+            <GamePostIcon class="icon-panel" />
+            <span> Post Games </span>
+          </button>
+          <button @click="setActivePage(PostAds)" :class="getButtonClass(PostAds)">
+            <AdsIcon class="icon-panel" />
+            <span> Post Ads </span>
           </button>
         </div>
       </div>
+      <button @click="logout" :class="getButtonClass(logout)">
+        <LogoutIcon class="icon-panel" />
+        <span>Logout </span>
+      </button>
     </div>
     <div class="panel-main">
-      <div class="panel-menu" @click="showMenu()">
-        <DrawIcon class="panel-icon-nav" />
-      </div>
       <component :is="activePage" />
+      <div class="float-menu" @click="showMenu">
+        <DashIcon class="float-m-icon" />
+      </div>
     </div>
   </div>
 </template>
 <script setup>
-import { ref , watchEffect , shallowRef} from 'vue'
+import { ref, watchEffect, shallowRef } from 'vue'
+import PredictionIcon from '../icons/PredictionIcon.vue'
+import GamePostIcon from '../icons/gamePostIcon.vue'
 import LogoutIcon from '../icons/logoutIcon.vue'
 import GroupIcon from '../icons/GroupIcon.vue'
-import ArrowIcon from '../icons/ArrowIcon.vue'
-import ExitIcon from '../icons/ExitIcon.vue'
-import DrawIcon from '../icons/DrawIcon.vue'
-import FileIcon from '../icons/FileIcon.vue'
+import AdsIcon from '../icons/adsPostIcon.vue'
+import VipIcon from '../icons/VipIcon.vue'
+import GameIcon from '../icons/gameIcon.vue'
+import DashIcon from '../icons/DashIcon.vue'
 import logo from '../assets/logo.png'
 import { useRouter } from 'vue-router'
 
@@ -97,8 +91,6 @@ const activePage = shallowRef(AccountManagement)
 
 const setActivePage = (page) => {
   activePage.value = page
-  showMenu();
-
 }
 
 const getButtonClass = (page) => {
@@ -106,18 +98,8 @@ const getButtonClass = (page) => {
 }
 
 const logout = () => {
-  localStorage.removeItem('token');
-  router.push({ name: 'Home' });
-  scrollToTop()
-
-};
-
-const scrollToTop = () => {
-  // Scroll to the top of the page
-  window.scrollTo({
-    top: 0,
-    behavior: "smooth", 
-  });
+  localStorage.removeItem('token')
+  router.push({ name: 'Home' })
 }
 
 </script>

@@ -1,8 +1,5 @@
 <template>
-  <div>
-    <div class="form-container-h">
-      <h1>Upcoming tips</h1>
-    </div>
+<div class="form-con">
     <form @submit.prevent="handleSubmit" enctype="multipart/form-data" class="form-container">
       <div class="form-wrapper">
         <h1>Team A</h1>
@@ -45,6 +42,10 @@
           <input v-model="time" type="time" class="form-g-input" placeholder="12:00pm" id="time" />
         </div>
         <div class="form-group">
+          <label for="description">Description</label>
+          <input v-model="description" type="text" class="form-g-input" placeholder="about game" id="description" />
+        </div>
+        <div class="form-group">
           <label for="date">Match Date:</label>
           <input v-model="date" type="text" class="form-g-input" placeholder="03-06-2023" id="date" />
         </div>
@@ -81,6 +82,7 @@
 <script setup>
 import { ref } from 'vue';
 import axios from 'axios';
+const SERVER_HOST = import.meta.env.VITE_SERVER_HOST
 
 const teamA = ref('');
 const teamB = ref('');
@@ -97,6 +99,7 @@ const teamAscore = ref(0);
 const teamBscore = ref(0);
 const date = ref('');
 const tip = ref('');
+const description = ref('');
 
 function handleFileUpload(event, targetRef) {
   const file = event.target.files[0];
@@ -133,6 +136,7 @@ async function handleSubmit() {
     time.value.trim() !== '' &&
     tip.value !== null &&
     date.value !== null &&
+    description.value !== '',
     league.value !== null 
   ) {
     const user = JSON.parse(localStorage.getItem('token'));
@@ -153,9 +157,10 @@ async function handleSubmit() {
       formData.append('date', date.value)
       formData.append('league', league.value);
       formData.append('tip', tip.value);
+      formData.append('description', description.value);
 
       const response = await axios.post(
-        'https://predictions-reg9.onrender.com/predictions/create/upcoming/upcoming',
+        `${SERVER_HOST}/predictions/create/upcoming/upcoming`,
         formData,
         {
           headers: {

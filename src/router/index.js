@@ -54,7 +54,21 @@ const router = createRouter({
       component: () => import('../views/SignInView.vue')
     },
     {
-      path: '/tips-of-the-day/:id',
+      path: '/reset-password/:token',
+      name: 'reset',
+      component: () => import('../views/ResetPassword.vue'),
+      props: true
+
+    },
+    {
+      path: '/verify-user/:token',
+      name: 'verify',
+      component: () => import('../views/VerifyView.vue'),
+      props: true
+
+    },
+    {
+      path: '/game/:gameName',
       name: 'Tips',
       component: () => import('../views/TipsView.vue'),
       meta: {
@@ -64,6 +78,28 @@ const router = createRouter({
       props: true
     },
     {
+      path: '/basketball/:basketballName',
+      name: 'BasketballTips',
+      component: () => import('../views/BasketballTipsView.vue'),
+      meta: {
+        title: "Tips - Free Sport Tips and daily free betting tips",
+        description: "sportypredict offers accurate and free football predictions daily. Discover sure home win tips, bet of the day bets, tennis & basketball BTTS/GG predictions, and more. Start making informed bets with sportypredict.",
+      },
+      props: true
+    },
+
+    {
+      path: '/tennis/:tennisName',
+      name: 'TennisTips',
+      component: () => import('../views/TennisTipsView.vue'),
+      meta: {
+        title: "Tips - Free Sport Tips and daily free betting tips",
+        description: "sportypredict offers accurate and free football predictions daily. Discover sure home win tips, bet of the day bets, tennis & basketball BTTS/GG predictions, and more. Start making informed bets with sportypredict.",
+      },
+      props: true
+    },
+   
+    {
       path: '/predictions/:id',
       name: 'Predictions',
       component: () => import('../views/predictionView.vue'),
@@ -71,6 +107,8 @@ const router = createRouter({
         title: "Free Predictions and daily free betting tips",
         description: "sportypredict offers accurate and free football predictions daily.",
       },
+      props: true
+
     },
     {
       path: '/vip',

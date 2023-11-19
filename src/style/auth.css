@@ -1,5 +1,5 @@
 @media screen {
-.auth-container {
+.auth-container, .auth-skeleton , .verify-container  {
     top: 0;
     left: 0;
     right: 0;
@@ -9,15 +9,35 @@
     position: fixed;
     text-align: center;
     align-items: center;
+    background-size: cover;
     flex-direction: column;
     justify-content: center;
     color: var(--light-color);
-    background-color: var(--primary-color);
+    background-position: center;
+    background-repeat: no-repeat;
+    background-image: url('../assets/bg.jpeg');
 }
 
+
+.auth-skeleton {
+    cursor: progress;
+    background: linear-gradient(0.25turn, transparent, #fff, transparent),
+      linear-gradient(#eee, #eee),
+      radial-gradient(38px circle at 19px 19px, #eee 50%, transparent 51%),
+      linear-gradient(#eee, #eee);
+    background-repeat: no-repeat;
+    background-position: -315px 0, 0 0, 0px 190px, 50px 195px;
+    animation: loading 2s infinite;
+  }
+  
+  @keyframes loading {
+    to {
+      background-position: 315px 0, 0 0, 0 190px, 50px 195px;
+    }
+  }
 .form-l-wrapper {
     box-shadow: rgba(100, 100, 111, 0.2) 0px 7px 29px 0px;
-    background-color: var(--primary-color);
+    background-color: var(--background-color);
     flex-direction: column;
     border-radius: 8px;
     padding: 20px;
@@ -58,12 +78,12 @@
     border: none;
     border-radius: 4px;
     padding: 10px 20px;
-    color: var(--light-color);
-    background-color: var(--dark-primary-color);
+    color: var(--grey-color);
+    border: 1px solid var(--grey-color);
 }
 
 .input-l::placeholder {
-    color: var(--light-color);
+    color: var(--grey-color);
 }
 
 .btn-f {
@@ -92,18 +112,74 @@
     justify-content: center;
     color: var(--light-color);
     background-color: var(--primary-color);
-    border:1px solid var(--secondary-color);
     
 }
+
+
 
 .alt-btn:hover {
     color: var(--background-color);
     background-color: var(--secondary-color);
 }
 
+.auth-google-contain {
+    gap: 10px;
+    display: flex;
+    cursor: pointer;
+    font-size: .8rem;
+    align-items: center;
+    justify-content: center;
+    text-decoration: underline;
+
+}
+
+
+.auth-google {
+    height: 30px;
+    width: 30px;
+    fill: var(--secondary-color);
+}
+
+.verify-container {
+    height: 100%;
+    background-color: var(--background-color);
+}
+
+.verify-inn {
+    gap: 20px;
+    width: 90%;
+    height: 50%;
+    display: flex;
+    border-radius: 12px;
+    align-items: center;
+    flex-direction: column;
+    justify-content: center;
+    background-color: var(--background-color);
+}
+
+.verify-inn p {
+    font-size: 1.2rem;
+}
+
+.verify-icon {
+    height:70px ;
+    width:70px;
+    fill: var(--primary-color);
+}
+
 }
 /* using it as global style for larger devices  */
 @media only screen and (min-width: 48em) {
+    .auth-container {
+        padding: 100px;
+        align-items: start;
+        background-position: left;
+    }
 
+    .verify-inn {
+        width: 50%;
+        height: 50%;
+    }
+    
 
 }

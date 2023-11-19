@@ -1,7 +1,7 @@
 <template>
   <div class="bonus">
     <div class="bo-img">
-      <img :src="bonusData.imgSrc" :alt="bonusData.alt" class="img-offer" />
+      <img :src="bonusData.imgSrc" :alt="bonusData.alt" class="img-offer" :class="[bonusData.imgSrc === '' ? 'img-offer-skeleton' : '']" />
     </div>
     <div class="bo-off">
       <span>{{bonusData.info}}</span>

@@ -39,6 +39,8 @@
           :formationA="formatFormation(card.formationA) ? card.formationA[0].split('-') : []"
           :formationB="formatFormation(card.formationB) ? card.formationB[0].split('-') : []"
           :time="card.time"
+          @click="showCard(card.teamA, card.teamB, card._id)"
+
         />
       </div>
     </template>
@@ -71,13 +73,16 @@ import Card from '../components/CardComponent.vue'
 import { useDrawerStore } from "../stores/drawer"
 import { ref, watchEffect, onMounted } from 'vue'
 import OfferAds from '../components/OfferAds.vue'
+import { useGameStore } from '../stores/game'
+import { useRouter } from 'vue-router'
 import axios from 'axios'
 
 const currentDate = ref('')
 const offset = ref(0)
-
 const cardData = ref([])
 const showPop = ref(null)
+const router = useRouter()
+const gameStore = useGameStore()
 const drawerStore = useDrawerStore();
 const SERVER_HOST = import.meta.env.VITE_SERVER_HOST
 
@@ -87,6 +92,10 @@ watchEffect(() => {
   showPop.value = drawerStore.popDrawer;
 })
 
+const showCard = (gameA, gameB ,cardID) => {
+  router.push({ name: 'Tips', params: { gameName: `${gameA} vs ${gameB}`  } })
+  gameStore.updateGameId(cardID)
+}
 
 
 const predictions = async () => {

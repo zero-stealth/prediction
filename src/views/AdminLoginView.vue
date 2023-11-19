@@ -1,14 +1,6 @@
 <template>
   <div
-    class="auth-container"
-    :style="{
-      backgroundImage: `linear-gradient(
-      110deg,
-      rgba(3, 30, 60, 0.8),
-      rgba(3, 30, 60, 0.7)
-    ), url(${SportBg})`
-    }"
-  >
+    class="auth-container">
     <div class="form-l-wrapper">
       <h1>{{ title }}</h1>
       <form @submit.prevent="login" class="l-form" v-if="!resetPage">
@@ -20,15 +12,18 @@
       </form>
       <form @submit.prevent="resetAuth" class="l-form" v-else>
         <input type="email" class="input-l" placeholder="Email Address" v-model="email" />
-        <input type="password" class="input-l" placeholder="Password" v-model="password" />
         <p>{{ errMsg }}</p>
-        <button class="btn-f" type="submit">Reset</button>
+        <button class="btn-f" type="submit">Request reset</button>
       </form>
       <span>or</span>
       <div class="l-alternatives">
         <button class="alt-btn" @click="create">
           {{$t('auth.h1-1')}}
         </button>
+        <!-- <div class="auth-google-contain" @click="loginInWithGoogle">
+          <googleIcon class="auth-google" />
+          <span> sign in with google</span>
+        </div> -->
       </div>
     </div>
   </div>
@@ -38,8 +33,8 @@
 import { ref } from 'vue'
 import axios from 'axios'
 import { useRouter } from 'vue-router'
-import SportBg from '../assets/sport-bg.png'
-import googleIcon from '../icons/googleIcon.vue'
+// import googleIcon from '../icons/googleIcon.vue'
+const SERVER_HOST = import.meta.env.VITE_SERVER_HOST
 
 const resetPage = ref(false)
 const router = useRouter()
@@ -48,10 +43,15 @@ const title = ref('Login')
 const errMsg = ref('')
 const email = ref('')
 
+const reset = () => {
+  password.value = ''
+  email.value = ''
+}
+
 const login = async () => {
   if (email.value !== '' && password.value !== '') {
     try {
-      const response = await axios.post('https://predictions-reg9.onrender.com/auth/login', {
+      const response = await axios.post(`${SERVER_HOST}/auth/login`, {
         email: email.value,
         password: password.value
       });
@@ -90,36 +90,23 @@ const create = () => {
 }
 
 const resetAuth = async () => {
-  if (email.value !== '' && password.value !== '') {
+  if (email.value !== '') {
     try {
-      const response = await axios.post('https://predictions-reg9.onrender.com/auth/reset', {
+      await axios.post(`${SERVER_HOST}/auth/request-reset`, {
         email: email.value,
-        password: password.value
       })
-      resetPage.value = !resetPage.value
+      alert('Reset link sent to your email')
     } catch (error) {
-      errMsg.value = error
+      errMsg.value = 'Failed to send reset link'
     }
   } else {
-    errMsg.value = 'Write something'
-
+    errMsg.value = 'Write your email something'
+    reset()
   }
 }
 
-// const useGoogle = async () => {
-//   try {
-//     const response = await axios.get('https://predictions-reg9.onrender.com/auth/auth/google')
-
-//     // Handle the response from the server
-//     if (response.data.redirectTo) {
-//       router.push({ path: response.data.redirectTo })
-//     } else {
-//       console.error('Invalid response from server')
-//     }
-//   } catch (error) {
-//     // Handle the error
-//     console.error(error)
-//   }
+// const loginInWithGoogle = () => {
+  
 // }
 </script>
 

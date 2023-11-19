@@ -1,8 +1,5 @@
 <template>
-  <div>
-    <div class="form-container-h">
-      <h1>Prediction update</h1>
-    </div>
+  <div class="form-con">
     <form @submit.prevent="handleSubmit" enctype="multipart/form-data" class="form-container">
       <div class="form-wrapper">
         <h1>Team A</h1>
@@ -164,6 +161,10 @@
             id="teamBscore"
           />
         </div>
+        <div class="form-group">
+          <label for="description">Description</label>
+          <input v-model="description" type="text" class="form-g-input" placeholder="about game" id="description" />
+        </div>
         <button type="submit" class="btn-f-f f-mobile">Submit</button>
       </div>
     </form>
@@ -191,6 +192,8 @@ const teamBscore = ref('');
 const date = ref('')
 const tip = ref('')
 const ShowScore = ref(false)
+const description = ref('');
+
 
 function handleFileUpload(event, targetRef) {
   const file = event.target.files[0]
@@ -233,7 +236,8 @@ function handleSubmit() {
       teamAPosition: teamAPosition.value,
       teamBPosition: teamBPosition.value,
       teamAIcon: teamAIcon.value,
-      teamBIcon: teamBIcon.value
+      teamBIcon: teamBIcon.value,
+      description:description.value
     }
 
     emit('formSubmit', formData)

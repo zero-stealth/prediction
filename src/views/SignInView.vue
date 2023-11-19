@@ -1,14 +1,5 @@
 <template>
-  <div
-    class="auth-container"
-    :style="{
-      backgroundImage: `linear-gradient(
-        110deg,
-        rgba(3, 30, 60, 0.8),
-        rgba(3, 30, 60, 0.7)
-      ), url(${SportBg})`
-    }"
-  >
+ <div class="auth-container">
     <div class="form-l-wrapper">
       <h1>{{$t('auth.h1-1')}}</h1>
       <form @submit.prevent="create" class="l-form">
@@ -30,6 +21,10 @@
         <button class="alt-btn" @click="login">
           {{$t('auth.btn-1')}}
         </button>
+         <!-- <div class="auth-google-contain" @click="loginInWithGoogle">
+          <googleIcon class="auth-google" />
+          <span> sign in with google</span>
+        </div> -->
       </div>
     </div>
   </div>
@@ -39,8 +34,8 @@
 import { ref } from 'vue'
 import axios from 'axios'
 import { useRouter } from 'vue-router'
-import SportBg from '../assets/sport-bg.png'
 import countriesData from '../components/countries.json'
+const SERVER_HOST = import.meta.env.VITE_SERVER_HOST
 
 const selectedCountry = ref('')
 const router = useRouter()
@@ -61,7 +56,7 @@ const reset = () => {
 const create = async () => {
   if (username.value !== '' && password.value !== '') {
     try {
-      const response = await axios.post('https://predictions-reg9.onrender.com/auth/register', {
+      const response = await axios.post(`${SERVER_HOST}/auth/register`, {
         username: username.value,
         email: email.value,
         password: password.value,
@@ -75,7 +70,7 @@ const create = async () => {
       localStorage.setItem('token', token)
       localStorage.setItem('paid', isPaid)
       localStorage.setItem('id', id)
-      router.push({ name: 'Vip' })
+      alert('varification link sent to your email')
     } catch (error) {
       errMsg.value = 'Invalid email or password';
       alert(errMsg.value)
@@ -87,18 +82,8 @@ const create = async () => {
   }
 }
 
-// const useGoogle = async () => {
-//   try {
-//     const response = await axios.get('https://predictions-reg9.onrender.com/auth/auth/google')
-
-//     // Handle the response from the server
-//     // You may redirect the user to the returned URL or perform other operations based on the response
-//     router.push({ name: 'Home' })
-//   } catch (error) {
-//     // Handle the error
-//     errMsg.value = error;
-//     alert(errMsg.value)
-//   }
+// const loginInWithGoogle = () => {
+  
 // }
 
 const login = () => {

@@ -1,11 +1,5 @@
 <template>
-  <div class="auth-container" :style="{
-    backgroundImage: `linear-gradient(
-      110deg,
-      rgba(3, 30, 60, 0.8),
-      rgba(3, 30, 60, 0.7)
-    ), url(${SportBg})`
-  }">
+  <div class="auth-container">
     <div class="form-l-wrapper">
       <h1>{{$t('auth.h1-1')}}</h1>
       <form @submit.prevent="create" class="l-form">
@@ -27,6 +21,10 @@
         <button class="alt-btn" @click="login">
           {{$t('auth.btn-1')}}
         </button>
+         <!-- <div class="auth-google-contain" @click="loginInWithGoogle">
+          <googleIcon class="auth-google" />
+          <span> sign in with google</span>
+        </div> -->
       </div>
     </div>
   </div>
@@ -36,8 +34,10 @@
 import { ref } from 'vue'
 import axios from 'axios'
 import { useRouter } from 'vue-router'
-import SportBg from '../assets/sport-bg.png'
 import countriesData from '../components/countries.json'
+// import googleIcon from '../icons/googleIcon.vue'
+const SERVER_HOST = import.meta.env.VITE_SERVER_HOST
+
 
 const selectedCountry = ref('')
 const router = useRouter()
@@ -58,13 +58,13 @@ const reset = () => {
 const create = async () => {
   if (username.value !== '' && password.value !== '') {
     try {
-      const response = await axios.post('https://predictions-reg9.onrender.com/auth/register-admin', {
+      const response = await axios.post(`${SERVER_HOST}/auth/register-admin`, {
         username: username.value,
         email: email.value,
         password: password.value,
         selectedCountry: selectedCountry.value
       })
-      console.log(response.data) // Handle the response data as needed
+      console.log(response.data) 
       const token = response.data.token
       const id = response.data._id
       
@@ -82,20 +82,9 @@ const create = async () => {
   }
 }
 
-// const useGoogle = async () => {
-//   try {
-//     const response = await axios.get('https://predictions-reg9.onrender.com/auth/auth/google')
-
-//     // Handle the response from the server
-//     // You may redirect the user to the returned URL or perform other operations based on the response
-//     console.log(response.data)
-//     router.push({ name: 'Home' })
-//   } catch (error) {
-//     // Handle the error
-//     console.error(error)
-//   }
+// const loginInWithGoogle = () => {
+  
 // }
-
 const login = () => {
   router.push({ name: 'AdminLogin' })
 }

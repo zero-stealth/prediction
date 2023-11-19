@@ -142,6 +142,8 @@ const visibleNews = computed(() => {
   return newsData.value.slice(0, maxNewsToShow.value)
 })
 
+
+
 const showMoreNews = () => {
   maxNewsToShow.value += 8
   showMoreButton.value = false

@@ -1,8 +1,5 @@
 <template>
-  <div>
-    <div class="form-container-h">
-      <h1>Post Game</h1>
-    </div>
+<div class="form-con">
     <form @submit.prevent="handleSubmit" enctype="multipart/form-data" class="form-container">
       <div class="form-wrapper">
         <h1>Team A</h1>
@@ -88,6 +85,10 @@
           <label for="teamBscore">Score:</label>
           <input v-model="teamBscore" type="text" class="form-g-input" placeholder="5" id="teamBscore" />
         </div>
+        <div class="form-group">
+          <label for="description">Description</label>
+          <input v-model="description" type="text" class="form-g-input" placeholder="about game" id="description" />
+        </div>
         <button type="submit" class="btn-f-f f-mobile">Submit</button>
       </div>
     </form>
@@ -97,6 +98,8 @@
 <script setup>
 import { ref , watch } from 'vue';
 import axios from 'axios';
+const SERVER_HOST = import.meta.env.VITE_SERVER_HOST
+
 
 const teamA = ref('');
 const teamB = ref('');
@@ -116,26 +119,27 @@ const teamBscore = ref(0);
 const date = ref('');
 const tip = ref('');
 const url = ref(null);
+const description = ref('');
 
 watch(category, () => {
   switch (category.value) {
     case 'Bet-of-the-day':
-    url.value = 'https://predictions-reg9.onrender.com/predictions/create/bet/betOfTheDay'
+    url.value =  `${SERVER_HOST}predictions/create/bet/betOfTheDay`
       break;
       case 'Basketball':
-    url.value = 'https://predictions-reg9.onrender.com/sports/create/Basketball'
+    url.value =  `${SERVER_HOST}sports/create/Basketball`
       break;
       case 'Freetips':
-    url.value = 'https://predictions-reg9.onrender.com/predictions/create/tip/freeTip'
+    url.value =  `${SERVER_HOST}predictions/create/tip/freeTip`
       break;
       case 'Tennis':
-    url.value = 'https://predictions-reg9.onrender.com/sports/create/Tennis'
+    url.value =  `${SERVER_HOST}sports/create/Tennis`
       break;
       case 'vip':
-    url.value = 'https://predictions-reg9.onrender.com/predictions/create/vip'
+    url.value =  `${SERVER_HOST}predictions/create/vip`
       break;
       case 'Upcoming-games':
-    url.value = 'https://predictions-reg9.onrender.com/predictions/create/upcoming/upcoming'
+    url.value =  `${SERVER_HOST}predictions/create/upcoming/upcoming`
       break;
       case null || '':
       alert('No empty fields allowed');
@@ -184,6 +188,7 @@ async function handleSubmit() {
     time.value.trim() !== '' &&
     tip.value !== null &&
     league.value !== null &&
+    description.value !==  '',
     date.value !== null 
   ) {
     const user = JSON.parse(localStorage.getItem('token'));

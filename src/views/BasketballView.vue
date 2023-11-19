@@ -6,7 +6,7 @@
       <div class="main-h">
         <div class="main-header">
           <div class="header-info">
-            <h1>{{ $t('bank.h1-2') }} </h1>
+            <h1>{{ $t('bank.h1-2') }}</h1>
             <span>({{ currentDate }})</span>
           </div>
           <div class="header-btn">
@@ -25,7 +25,7 @@
         <template v-if="cardData.length > 0">
           <div v-for="item in cardData" class="main-h-card" :key="item">
             <Card
-              v-for="(card) in item"
+              v-for="card in item"
               :key="card._id"
               :tip="card.tip"
               :status="card.status"
@@ -40,6 +40,7 @@
               :showScore="card.showScore"
               :formationA="formatFormation(card.formationA) ? card.formationA[0]?.split('-') : []"
               :formationB="formatFormation(card.formationB) ? card.formationB[0]?.split('-') : []"
+              @click="showCard(card.teamA, card.teamB, card._id)"
               :time="card.time"
             />
           </div>
@@ -60,14 +61,15 @@
       <p>{{ $t('bask.p2') }}</p>
     </div>
   </div>
-  <PopUP v-if="showPop" >
-      </PopUP>
-      <Sticky/>
+  <PopUP v-if="showPop"> </PopUP>
+  <Sticky />
 </template>
 
 <script setup>
 import axios from 'axios'
-import { useDrawerStore } from "../stores/drawer"
+import { useRouter } from 'vue-router'
+import { useGameStore } from '../stores/game'
+import { useDrawerStore } from '../stores/drawer'
 import OfferAds from '../components/OfferAds.vue'
 import Card from '../components/CardComponent.vue'
 import PopUP from '../components/popupComponent.vue'
@@ -75,20 +77,26 @@ import vipads from '../components/vipadsComponent.vue'
 import Sticky from '../components/stickyComponent.vue'
 import ButtonComponent from '../components/ButtonComponent.vue'
 import QuickComponent from '../components/QuickComponent.vue'
-import { ref, onMounted, watch ,watchEffect } from 'vue'
+import { ref, onMounted, watch, watchEffect } from 'vue'
 
+const SERVER_HOST = import.meta.env.VITE_SERVER_HOST
 const upcomingDates = ref('')
 const currentDate = ref('')
+const router = useRouter()
 const cardData = ref([])
 
 const showPop = ref(null)
-const drawerStore = useDrawerStore();
-
+const gameStore = useGameStore()
+const drawerStore = useDrawerStore()
 
 watchEffect(() => {
-  showPop.value = drawerStore.popDrawer;
+  showPop.value = drawerStore.popDrawer
 })
 
+const showCard = (gameA, gameB, cardID) => {
+  router.push({ name: 'BasketballTips', params: { basketballName: `${gameA} vs ${gameB}` } })
+  gameStore.updateGameId(cardID)
+}
 
 
 async function getPrediction() {
@@ -96,7 +104,7 @@ async function getPrediction() {
 
   try {
     const response = await axios.get(
-      `https://predictions-reg9.onrender.com/sports/sport/Basketball/${currentDate.value}`,
+      `${SERVER_HOST}/sports/sport/Basketball/${currentDate.value}`,
       {
         headers: {
           Authorization: `Bearer ${token}`

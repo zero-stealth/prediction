@@ -5,12 +5,26 @@
     top: 0;
   }
 
+  .mb-locale {
+    gap: 10px;
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    flex-direction: row-reverse;
+  }
 
+  .nav-mb {
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
 
   .nav-container {
     display: flex;
     font-size: 1rem;
-    padding: 15px 20px;
+    padding: 15px 10px;
     align-items: center;
     color: var(--background-color);
     justify-content: space-between;
@@ -18,11 +32,11 @@
   }
 
   .logo-spp {
-    width: 140px;
+    width: 110px;
   }
 
   .nav-link-container {
-    gap: 50px;
+    gap: 30px;
     display: none;
   }
 
@@ -61,6 +75,7 @@
   .drop-container {
     gap: 10px;
     display: flex;
+    align-items: center;
     flex-direction: column;
   }
 
@@ -104,6 +119,7 @@
   .drop-down-panels {
     display: flex;
     font-size: 1rem;
+    align-items: center;
     border-radius: 4px;
     position: relative;
     flex-direction: column;
@@ -120,6 +136,12 @@
     flex-direction: column;
     color: var(--primary-color);
     background-color: var(--background-color);
+  }
+
+  .icon-nav-con {
+    display: flex;
+    justify-content: space-between;
+
   }
 
   .drop-down-panel span {
@@ -177,16 +199,16 @@
     align-items: center;
   }
 
-
-
   .nav-btn,
   .mobile-btn {
     gap: 5px;
-    width: 80px;
+    padding: 8px;
     height: 35px;
     display: flex;
     cursor: pointer;
+    max-width: 100px;
     font-size: 0.5em;
+    width: fit-content;
     border-radius: 4px;
     align-items: center;
     justify-content: center;
@@ -319,7 +341,6 @@
 
   .mobile-exit {
     display: flex;
-    padding: 20px 10px;
     justify-content: end;
   }
 
@@ -329,24 +350,27 @@
   }
 
   .mobile-bar {
-    top: 0;
-    right: 0;
-    width: 0;
-    bottom: 0;
     padding: 20px;
     z-index: 9999;
-    right: -100px;
     position: fixed;
+    overflow-y: auto;
     color: var(--background-color);
     transition: all 0.5s ease 0s;
     -webkit-transition: all 0.5s ease 0s;
     background-color: var(--primary-color);
   }
 
-  .mobile-container,
-  .mobile-link-container {
+  .mobile-container {
     gap: 20px;
+    height: 95%;
     display: flex;
+    flex-direction: column;
+    justify-content: space-evenly;
+  }
+  .mobile-link-container {
+    gap: 30px;
+    display: flex;
+    align-items: center;
     flex-direction: column;
   }
 
@@ -390,13 +414,13 @@
   }
 
   .open {
-    width: 85%;
-    right: 0;
+    height:100%;
+    width: 100%;
   }
 
   .close {
-    width: 0;
-    right: -100px;
+    top: -100px;
+    display: none;
   }
 
   .web-translate {
@@ -439,26 +463,68 @@
     background-color: var(--primary-color);
   }
 
-  .locale-changer {
+  .language-dropdown {
+    gap: 14px;
     height: 35px;
-    outline: none;
-    font-size: 0.7rem;
+    display: flex;
+    position: relative;
     border-radius: 8px;
+    flex-direction: column;
+    border: 2px solid var(--light-color);
+  }
+
+  .language-btn {
+    padding: 4px;
+    display: flex;
+    height: inherit;
+    font-size: 0.8rem;
+    align-items: center;
+    border-radius: inherit;
+    background-color: var(--primary-color);
+  }
+  .language-img {
+    width: 20px;
+    height: 20px;
+    object-fit: cover;
+    object-position: center;
+  }
+
+  .language-inn {
+    gap: 4px;
+    display: flex;
+    padding: 0 4px;
+    align-items: center;
+    color: var(--light-color);
+  }
+
+  .Dropdown-arrowIcon {
+    fill: var(--light-color);
+    transform: rotate(90deg);
+    height: 14px;
+    width: 14px;
+  }
+
+  .dropdown-content {
+    color: var(--light-color);
+    background-color: var(--primary-color);
+  }
+
+  .content-dp {
+    gap: 10px;
+    padding: 8px;
+    display: flex;
+    cursor: pointer;
+    font-size: 0.8rem;
+  }
+
+  .content-dp:hover {
     color: var(--background-color);
-    background-color: var(--primary-color);
-    border: 1px solid var(--background-color);
+    background-color: var(--secondary-color);
   }
 
-  .locale-changer::placeholder {
-    color: var(--primary-color);
+  .nav-l {
+    display: none;
   }
-
-  .locale-op {
-    padding: 10px;
-    background-color: var(--primary-color);
-  }
-
-
 
   /* mobile responsive */
 }
@@ -466,8 +532,12 @@
 /* using it as global style for larger devices  */
 @media only screen and (min-width: 48em) {
   .nav-container {
-    padding: 25px 20px;
+    padding: 25px 4px;
     flex-direction: row;
+  }
+
+  .nav-l {
+    display: flex;
   }
 
   .mb-locale {

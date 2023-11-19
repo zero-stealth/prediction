@@ -1,65 +1,68 @@
 <script setup>
-import { ref, onMounted, computed } from 'vue';
+import { ref, onMounted, computed } from 'vue'
 import ArrowIcon from '../icons/ArrowIcon.vue'
-import axios from 'axios';
+import axios from 'axios'
 
-
-const adsData = ref([]);
-const adsImage = ref(null);
-const Description = ref(null);
-const OfferAdsLink = ref(null);
-const SERVER_HOST = import.meta.env.VITE_SERVER_HOST;
+const adsData = ref([])
+const adsImage = ref(null)
+const description = ref(null)
+const offerAdsLink = ref(null)
+const SERVER_HOST = import.meta.env.VITE_SERVER_HOST
 
 const getAds = async () => {
   try {
-    const response = await axios.get(`${SERVER_HOST}/ads`);
-    adsData.value = response.data;
-    // console.log(response.data);
-    showAds();
+    const response = await axios.get(`${SERVER_HOST}/ads`)
+    adsData.value = response.data
+    showAds()
   } catch (err) {
-    console.log(err);
+    console.error(err)
   }
-};
-
-
-const filteredAds = computed(() => {
-  const AdTitle = 'Banner';
-  return adsData.value ? adsData.value.filter((Ads) => Ads.title === AdTitle) : [];
-});
-
-const showAds = () => {
-  adsImage.value = filteredAds.value[0]?.image || null;
-  Description.value = filteredAds.value[0]?.description || null;
-  OfferAdsLink.value = filteredAds.value[0]?.link || null;
-
-};
-
-onMounted(() => {
-  getAds();
-});
-
-const openLink = () => {
-  window.open(`${OfferAdsLink.value}`, '_blank')
 }
 
+const filteredAds = computed(() => {
+  const adTitle = 'Banner'
+  return adsData.value ? adsData.value.filter((ads) => ads.title === adTitle) : []
+})
 
+const showAds = () => {
+  adsImage.value = filteredAds.value[0]?.image || null
+  description.value = filteredAds.value[0]?.description || null
+  offerAdsLink.value = filteredAds.value[0]?.link || null
+}
+
+onMounted(() => {
+  getAds()
+})
+
+const openLink = () => {
+  if (offerAdsLink.value) {
+    window.open(`${offerAdsLink.value}`, '_blank')
+  }
+}
 
 </script>
+
 <template>
   <div class="offer-container">
     <div class="offerA-comp" @click="openLink()">
       <h1>{{ $t('Offer.Oh1') }}</h1>
       <div class="offerA-inner">
-        <img :src="adsImage" alt="bet winner logo" class="bet-win" />
-        <h2>{{ $t('Offer.Oh2') }} {{ Description }}</h2>
+        <img
+          :src="adsImage"
+          :alt="description || 'Bet Winner Logo'"
+          class="bet-win"
+          :class="[adsImage === null ? 'bet-win-skeleton' : '']"
+        />
+        <h2>{{ $t('Offer.Oh2') }} {{ description }}</h2>
         <div class="offerA-circle">
-        <ArrowIcon class="offer-arrow" />
-      </div>
+          <ArrowIcon class="offer-arrow" />
+        </div>
       </div>
     </div>
     <span>{{ $t('Offer.Ospan') }}</span>
   </div>
 </template>
+
 <style>
 @import '../style/OfferAds.css';
 </style>

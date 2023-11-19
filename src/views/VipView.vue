@@ -81,7 +81,6 @@ import MoneyIcon from '../icons/payIcon.vue'
 import Card from '../components/CardComponent.vue'
 import ProfileIcon from '../icons/profileIcon.vue'
 import { ref, onMounted, watch } from 'vue'
-
 const router = useRouter()
 const username = ref(null)
 const cardData = ref([])

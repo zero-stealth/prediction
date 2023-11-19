@@ -1,9 +1,8 @@
-
 <template>
-  <div class="card-container">
+  <div class="card-container" :class="[league === '' ? 'card-skeleton ' : '']">
     <div class="card-title">
       <div class="title-m">
-        <img :src="leagueIcon" alt="league-img" class="league-c-img" />
+        <img :src="leagueIcon" alt="league-img" class="league-c-img" :class="[leagueIcon === '' ? 'card-img-skeleton' : '']" />
         <span>{{ league }}</span>
       </div>
     </div>
@@ -14,7 +13,10 @@
             <img
               :src="teamAIcon"
               alt="card-img"
-              :class="[sport === 'Tennis' ? 'card-img circle-tennis' : 'card-img square-img']"
+              :class="[
+                sport === 'Tennis' ? 'card-img circle-tennis' : 'card-img square-img',
+                teamAIcon === '' ? 'card-img-skeleton' : ''
+              ]"
             />
           </div>
         </div>
@@ -22,20 +24,22 @@
       </div>
       <div class="card-in">
         <div class="card-in-s">
-          <span>[{{ formattedTime  }}]</span>
+          <span>[{{ formattedTime }}]</span>
         </div>
         <span class="status-p">{{ status }}</span>
         <div v-if="!showScore">
-          <span>{{$t('section11.vc')}} </span>
+          <span>{{ $t('section11.vc') }} </span>
         </div>
         <div v-if="shouldShowScore" class="card-score">
           <span class="card-s">{{ teamAscore }}</span>
           <span class="card-p">:</span>
           <span class="card-s">{{ teamBscore }}</span>
         </div>
-        <a :href="cardAdsLink" class="bet-adv">
-          <img :src="cardAdsImg" alt="Bet Advertisement" class="bet-winner-logo" />
-        </a>
+        <div v-if="cardAdsImg" class="bet-adv">
+          <a :href="cardAdsLink">
+            <img :src="cardAdsImg" alt="image" class="bet-winner-logo" />
+          </a>
+        </div>
       </div>
       <div class="card-a">
         <div class="card-fade">
@@ -43,7 +47,10 @@
             <img
               :src="teamBIcon"
               alt="card-img"
-              :class="[sport === 'Tennis' ? 'card-img circle-tennis' : 'card-img square-img']"
+              :class="[
+                sport === 'Tennis' ? 'card-img circle-tennis' : 'card-img square-img',
+                teamBIcon === '' ? 'card-img-skeleton' : ''
+              ]"
             />
           </div>
         </div>
@@ -56,27 +63,29 @@
     </div>
     <div class="card-footer">
       <div class="card-f" v-for="formationA in formationsA" :key="formationA">
-        <span :class="[formationA === 'l' ? 'loose' : formationA === 'w' ? 'win' : 'draw']">{{ formationA }}</span>
+        <span :class="[formationA === 'l' ? 'loose' : formationA === 'w' ? 'win' : 'draw']">{{
+          formationA
+        }}</span>
       </div>
       <div class="card-fi">Recent form</div>
       <div class="card-f" v-for="formationB in formationsB" :key="formationB">
-        <span :class="[formationB === 'l' ? 'loose' : formationB === 'w' ? 'win' : 'draw']">{{ formationB }}</span>
+        <span :class="[formationB === 'l' ? 'loose' : formationB === 'w' ? 'win' : 'draw']">{{
+          formationB
+        }}</span>
       </div>
     </div>
   </div>
 </template>
 <script setup>
-import { ref, computed, onMounted } from 'vue';  
+import { ref, computed, onMounted } from 'vue'
 // import moment from 'moment-timezone';
-import { DateTime } from 'luxon';
+import { DateTime } from 'luxon'
 import axios from 'axios'
-
 
 const cardAdsData = ref([])
 const cardAdsImg = ref(null)
 const cardAdsLink = ref(null)
 const SERVER_HOST = import.meta.env.VITE_SERVER_HOST
-
 
 const props = defineProps({
   formationA: {
@@ -158,32 +167,27 @@ const filteredAds = computed(() => {
   return cardAdsData.value ? cardAdsData.value.filter((Ads) => Ads.title === AdTitle) : []
 })
 
-
 const showAds = () => {
   cardAdsImg.value = filteredAds.value[0]?.description || null
   cardAdsLink.value = filteredAds.value[0]?.link || null
 }
 
-
 const formattedTime = computed(() => {
   try {
-    const eventDate = DateTime.fromISO(props.time, { zone: 'utc' });
+    const eventDate = DateTime.fromISO(props.time, { zone: 'utc' })
 
-    const userTimeZone = DateTime.local().zoneName;
+    const userTimeZone = DateTime.local().zoneName
 
-    const convertedTime = eventDate.setZone(userTimeZone);
+    const convertedTime = eventDate.setZone(userTimeZone)
 
-    const adjustedTime = convertedTime.minus({ hours: 3 });
+    const adjustedTime = convertedTime.minus({ hours: 3 })
 
-    return adjustedTime.toFormat('HH:mm');
+    return adjustedTime.toFormat('HH:mm')
   } catch (error) {
-    console.error('Error formatting time:', error);
-    return props.time;
+    console.error('Error formatting time:', error)
+    return props.time
   }
-});
-
-
-
+})
 
 // const formattedTime = computed(() => {
 //   try {
@@ -198,18 +202,16 @@ const formattedTime = computed(() => {
 //   }
 // });
 
-
-const formationsA = ref(props.formationA);
-const formationsB = ref(props.formationB);
+const formationsA = ref(props.formationA)
+const formationsB = ref(props.formationB)
 
 const shouldShowScore = computed(() => {
-  return props.showScore && props.teamAscore !== undefined && props.teamBscore !== undefined;
-});
+  return props.showScore && props.teamAscore !== undefined && props.teamBscore !== undefined
+})
 
 onMounted(() => {
   getAds()
 })
-
 </script>
 
 <style scoped>

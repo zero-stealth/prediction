@@ -43,6 +43,8 @@ import axios from 'axios';
 import { ref, onMounted } from 'vue';
 import { useRouter } from 'vue-router';
 import Card from '../components/CardComponent.vue';
+const SERVER_HOST = import.meta.env.VITE_SERVER_HOST
+
 
 const router = useRouter();
 const currentDate = ref('');
@@ -56,7 +58,7 @@ const cardData = ref([]);
 const getPrediction = async () => {
   try {
     const response = await axios.get(
-      `https://predictions-reg9.onrender.com/predictions/upcomingPredictions/upcoming/${currentDate.value}`
+      `${SERVER_HOST}/predictions/upcomingPredictions/upcoming/${currentDate.value}`
     );
     cardData.value = response.data;
   } catch (err) {

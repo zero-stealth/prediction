@@ -40,7 +40,7 @@
             :formationA="formatFormation(card.formationA)"
             :formationB="formatFormation(card.formationB)"
             :time="card.time"
-            @click="showCard(card._id)"
+            @click="showCard(card.teamA, card.teamB, card._id)"
           />
         </div>
       </template>
@@ -96,6 +96,7 @@
 import axios from 'axios'
 import Arrow from '../icons/arrow.vue'
 import { useRouter } from 'vue-router'
+import { useGameStore } from '../stores/game'
 import NewsCard from '../components/NewsCard.vue'
 import OfferAds from '../components/OfferAds.vue'
 import { useDrawerStore } from '../stores/drawer'
@@ -112,6 +113,7 @@ import { ref, watch, computed, watchEffect, onMounted } from 'vue'
 
 const SERVER_HOST = import.meta.env.VITE_SERVER_HOST
 const drawerStore = useDrawerStore()
+const gameStore = useGameStore()
 const showMoreButton = ref(true)
 const adsMiddleImage = ref(null)
 const adsMiddleLink = ref(null)
@@ -127,9 +129,9 @@ watchEffect(() => {
   showPop.value = drawerStore.popDrawer
 })
 
-const showCard = (cardID) => {
-  router.push({ name: 'Tips', params: { id: cardID } })
-  scrollToTop()
+const showCard = (gameA, gameB ,cardID) => {
+  router.push({ name: 'Tips', params: { gameName: `${gameA} vs ${gameB}`  } })
+  gameStore.updateGameId(cardID)
 }
 
 const newsInfo = (newsTitle) => {
@@ -161,7 +163,6 @@ const goAds = () => {
   watchEffect(() => {
     if (adsMiddleLink.value === null) {
       router.push({ name: 'Pay' })
-      scrollToTop()
     } else {
       window.open(`${adsMiddleLink.value}`, '_blank')
     }
@@ -183,9 +184,10 @@ const showLessNews = () => {
     showMoreButton.value = true
   }
 }
+
 const getNews = async () => {
   try {
-    const response = await axios.get(
+    const { data } = await axios.get(
       'https://football-news-aggregator-live.p.rapidapi.com/news/onefootball',
       {
         headers: {
@@ -194,13 +196,13 @@ const getNews = async () => {
         }
       }
     )
-    console.log(response.data)
-    newsData.value = response.data
-    console.log(newsData.value)
+    newsData.value = data
   } catch (err) {
     console.log(err)
   }
 }
+
+
 
 const getPrediction = async () => {
   // const token = JSON.parse(localStorage.getItem('token'))
@@ -254,14 +256,6 @@ const formatFormation = (formation) => {
 watch(currentDate, () => {
   getPrediction()
 })
-
-const scrollToTop = () => {
-  // Scroll to the top of the page
-  window.scrollTo({
-    top: 0,
-    behavior: "smooth", 
-  });
-}
 
 onMounted(() => {
   getPrediction()

@@ -79,7 +79,7 @@ const reset = () => {
 </script>
 
 <template>
-  <div class="contact-contain">
+  <div class="contact-contain" id="foot">
     <div class="contact-wrapper">
       <div class="contact-d1">
         <h1>{{ $t('footer.contactInformation') }}</h1>
@@ -152,9 +152,9 @@ const reset = () => {
           </div>
         </form>
         <div class="book-social">
-          {{ $t('footer.socialMedia') }}:
-          <facebookIcon class="bk-icon" @click="openFacebook" />
-          <twitterIcon class="bk-icon" @click="openTwitter" />
+          <!-- {{ $t('footer.socialMedia') }}: -->
+          <facebookIcon class="bk-icon fb-icon" @click="openFacebook" />
+          <twitterIcon class="bk-icon t-icon" @click="openTwitter" />
           <telegramIcon class="bk-icon" @click="openTelegram" />
           <instagramIcon class="bk-icon" @click="openInstagram" />
           <tiktokIcon class="bk-icon" @click="openTiktok" />
