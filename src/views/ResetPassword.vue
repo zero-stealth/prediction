@@ -19,7 +19,8 @@
 <script setup>
 import { ref } from 'vue';
 import axios from 'axios';
-import { useRouter, useRoute, onMounted } from 'vue-router';
+import { onMounted } from 'vue';
+import { useRouter, useRoute } from 'vue-router';
 
 const SERVER_HOST = import.meta.env.VITE_SERVER_HOST;
 
