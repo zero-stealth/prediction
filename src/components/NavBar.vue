@@ -10,35 +10,35 @@
           draggable="false"
         />
       </a>
-      <div class="language-dropdown mb-locale ">
-          <button @click="toggleDropdown" class="language-btn">
-            <img :src="getFlag(currentLanguage)" :alt="currentLanguage" class="language-img" />
-            <div class="language-inn">
-              {{ currentLanguage }}
-              <ArrowIcon class="Dropdown-arrowIcon" />
-            </div>
-          </button>
-          <div v-show="isDropdownOpen" class="dropdown-content">
-            <div
-              v-for="(flag, language) in flags"
-              :key="language"
-              @click="changeLanguage(language)"
-              class="content-dp"
-            >
-              <img :src="flag" alt="Language Flag" class="language-img" />
-              {{ language }}
-            </div>
+      <div class="language-dropdown mb-locale">
+        <button @click="toggleDropdown" class="language-btn">
+          <img :src="getFlag(currentLanguage)" :alt="currentLanguage" class="language-img" />
+          <div class="language-inn">
+            {{ currentLanguage }}
+            <ArrowIcon class="Dropdown-arrowIcon" />
+          </div>
+        </button>
+        <div v-show="isDropdownOpen" class="dropdown-content">
+          <div
+            v-for="(flag, language) in flags"
+            :key="language"
+            @click="changeLanguage(language)"
+            class="content-dp"
+          >
+            <img :src="flag" alt="Language Flag" class="language-img" />
+            {{ language }}
+          </div>
         </div>
       </div>
-        <a href="https://sportypredict.com/" class="nav-mb mb-locale ">
-          <img
-            src="@/assets/logo-spp.png"
-            alt="logo"
-            class="logo-spp"
-            @click="goHome"
-            draggable="false"
-          />
-        </a> 
+      <a href="https://sportypredict.com/" class="nav-mb mb-locale">
+        <img
+          src="@/assets/logo-spp.png"
+          alt="logo"
+          class="logo-spp"
+          @click="goHome"
+          draggable="false"
+        />
+      </a>
       <div class="nav-link-container">
         <RouterLink :to="{ name: 'Home' }" class="nav-link">{{ $t('nav.link1') }}</RouterLink>
         <RouterLink :to="{ name: 'Bonus' }" class="nav-link">{{ $t('nav.link2') }}</RouterLink>
@@ -60,7 +60,7 @@
           </div>
         </div>
       </div>
-      <div class="nav-btn-container cs-btn" v-if="token !== null">
+      <div class="nav-btn-container cs-btn" v-if="authStore.token !== null">
         <button @click="logOut" class="nav-btn btn-l btn-logout">
           <LogoutIcon class="icon-nav l-icon" />
           {{ $t('nav.btn6') }}
@@ -154,7 +154,7 @@
           </div>
         </div>
       </div>
-      <div class="mobile-btn-container" v-if="token !== null">
+      <div class="mobile-btn-container" v-if="authStore.token !== null">
         <button @click="logOut" class="mobile-btn btn-l btn-logout">
           <LogoutIcon class="icon-nav l-icon" />
           {{ $t('nav.btn6') }}
@@ -174,7 +174,7 @@
         <facebookIcon class="bk-icon fb-icon" @click="openFacebook" />
         <twitterIcon class="bk-icon t-icon" @click="openTwitter" />
         <telegramIcon class="bk-icon" @click="openTelegram" />
-          <instagramIcon class="bk-icon" @click="openInstagram" />
+        <instagramIcon class="bk-icon" @click="openInstagram" />
         <tiktokIcon class="bk-icon" @click="openTiktok" />
         <youtubeIcon class="bk-icon" @click="openYoutube" />
         <whatsappIcon class="bk-icon" @click="openYoutube" />
@@ -199,7 +199,7 @@ import Italian from '../assets/Italian.png'
 import Brazilian from '../assets/Brazilian.png'
 import Dutch from '../assets/Dutch.png'
 import Spanish from '../assets/Spanish.png'
-import { ref, watchEffect, watch } from 'vue'
+import { ref, watch } from 'vue'
 import tiktokIcon from '../icons/tiktokIcon.vue'
 import youtubeIcon from '../icons/youtubeIcon.vue'
 import twitterIcon from '../icons/twitterIcon.vue'
@@ -207,18 +207,15 @@ import whatsappIcon from '../icons/whatsapp.vue'
 import instagramIcon from '../icons/instagram.vue'
 import facebookIcon from '../icons/facebook.vue'
 import telegramIcon from '../icons/telegram.vue'
+import { useAuthStore } from '../stores/auth'
 
-const token = ref(null)
 const isOpen = ref(false)
 const router = useRouter()
 const isDrpOpen = ref(false)
 const isDropOpen = ref(false)
+const authStore = useAuthStore()
 const isDropdownOpen = ref(false)
 const currentLanguage = ref('English')
-
-watchEffect(() => {
-  token.value = localStorage.getItem('token')
-})
 
 const flags = {
   English: English,
@@ -288,7 +285,6 @@ const showDrp = () => {
 const logOut = () => {
   localStorage.removeItem('token')
   localStorage.removeItem('username')
-  token.value = null
   window.location.reload()
 }
 

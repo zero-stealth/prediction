@@ -34,6 +34,7 @@
 import { ref } from 'vue'
 import axios from 'axios'
 import { useRouter } from 'vue-router'
+import { useAuthStore } from '../stores/auth'
 import countriesData from '../components/countries.json'
 // import googleIcon from '../icons/googleIcon.vue'
 const SERVER_HOST = import.meta.env.VITE_SERVER_HOST
@@ -46,6 +47,7 @@ const password = ref('')
 const errMsg = ref('')
 const email = ref('')
 const confirmPassword = ref('')
+const authStore = useAuthStore()
 
 const reset = () => {
   email.value = ''
@@ -67,6 +69,7 @@ const create = async () => {
       console.log(response.data) 
       const token = response.data.token
       const id = response.data._id
+      authStore.toggleToken(JSON.stringify(token))
       
       localStorage.setItem('username', username)
       localStorage.setItem('token', JSON.stringify(token))

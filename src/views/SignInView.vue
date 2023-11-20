@@ -34,10 +34,12 @@
 import { ref } from 'vue'
 import axios from 'axios'
 import { useRouter } from 'vue-router'
+import { useAuthStore } from '../stores/auth'
 import countriesData from '../components/countries.json'
 const SERVER_HOST = import.meta.env.VITE_SERVER_HOST
 
 const selectedCountry = ref('')
+const authStore = useAuthStore()
 const router = useRouter()
 const username = ref('')
 const password = ref('')
@@ -67,6 +69,7 @@ const create = async () => {
       const token = response.data.token
       const isPaid = response.data.paid
       const id = response.data._id
+      authStore.toggleToken(JSON.stringify(token))
       localStorage.setItem('token', token)
       localStorage.setItem('paid', isPaid)
       localStorage.setItem('id', id)

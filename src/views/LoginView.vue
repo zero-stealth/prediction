@@ -32,9 +32,11 @@ import { ref } from 'vue'
 import axios from 'axios'
 // import googleIcon from '../icons/googleIcon.vue'
 import { useRouter } from 'vue-router'
+import { useAuthStore } from '../stores/auth'
+
 
 const SERVER_HOST = import.meta.env.VITE_SERVER_HOST
-
+const authStore = useAuthStore()
 const resetPage = ref(false)
 const router = useRouter()
 const title = ref('login')
@@ -47,6 +49,9 @@ const reset = () => {
   password.value = ''
   email.value = ''
 }
+
+
+
 
 const login = async () => {
   if (email.value !== '' && password.value !== '') {
@@ -63,7 +68,7 @@ const login = async () => {
         const isPaid = responseData.paid
         const username = responseData.username
         const id = responseData._id
-
+        authStore.toggleToken(JSON.stringify(token))
         localStorage.setItem('username', username)
         localStorage.setItem('token', JSON.stringify(token))
         localStorage.setItem('paid', isPaid)
