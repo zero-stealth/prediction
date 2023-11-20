@@ -40,8 +40,8 @@
           </tr>
         </thead>
         <tbody>
-          <tr v-for="account in filterAccount" :key="account.id" @click="showUserData(account._id)">
-            <td>
+          <tr v-for="account in filterAccount" :key="account.id">
+            <td @click="showUserData(account._id)">
               <div class="Account-tbl-img">
                 <span>{{ account.email }}</span>
               </div>
@@ -83,8 +83,8 @@
           </tr>
         </thead>
         <tbody>
-          <tr v-for="account in filterAccount" :key="account.id" @click="showUserData(account._id)">
-            <td>
+          <tr v-for="account in filterAccount" :key="account.id">
+            <td  @click="showUserData(account._id)">
               <div class="Account-tbl-img">
                 <span>{{ account.username }}</span>
               </div>
