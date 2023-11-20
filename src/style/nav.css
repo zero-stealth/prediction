@@ -491,7 +491,7 @@
   .language-inn {
     gap: 4px;
     display: flex;
-    padding: 0 4px;
+    padding: 0 8px;
     align-items: center;
     color: var(--light-color);
   }
@@ -531,7 +531,7 @@
 /* using it as global style for larger devices  */
 @media only screen and (min-width: 48em) {
   .nav-container {
-    padding: 25px 4px;
+    padding: 25px 8px;
     flex-direction: row;
   }
 

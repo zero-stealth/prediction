@@ -177,7 +177,7 @@
         <instagramIcon class="bk-icon" @click="openInstagram" />
         <tiktokIcon class="bk-icon" @click="openTiktok" />
         <youtubeIcon class="bk-icon" @click="openYoutube" />
-        <whatsappIcon class="bk-icon" @click="openYoutube" />
+        <whatsappIcon class="bk-icon" @click="openWhatsapp" />
       </div>
     </div>
   </div>
@@ -249,6 +249,13 @@ const openTiktok = () => {
 
 const openYoutube = () => {
   window.open('https://www.youtube.com/@Sportypredict', '_blank')
+}
+
+const openWhatsapp = () => {
+  window.open(
+    'https://wa.me/+254703147237?text=Hi sporty predict, I want to buy VIP subcription',
+    '_blank'
+  )
 }
 
 const getFlag = (language) => flags[language]
