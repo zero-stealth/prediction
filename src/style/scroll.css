@@ -2,9 +2,11 @@
  .scroll-contain{
   height: 50px;
   width: 50px;
-  right: 0;
+  position: sticky;
+  z-index: 100;
+  top: 0;
+
   display: flex;
-  position: fixed;
   cursor: pointer;
   border-radius: 360%;
   align-items: center;
@@ -18,33 +20,14 @@
  .scroll-icon{
   width: 40px;
   height: 40px ;
+  transform: rotate(-90deg);
   fill: var(--background-color);
  }
- .arrow-up {
-  transform: rotate(180deg);
-}
 
-.arrow-down {
-  transform: rotate(90deg);
-  
-}
 }
 /* using it as global style for larger devices  */
 @media only screen and (min-width: 48em) {
-  .scroll-contain{
-    height: 50px;
-    width: 50px;
-    right: 80px;
-    display: flex;
-    position: fixed;
-    cursor: pointer;
-    border-radius: 360%;
-    align-items: center;
-    justify-content: center;
-    background-color: var( --primary-color);
-    border: 2px solid var(--background-color);
-   }
-  
+
 
 
 }

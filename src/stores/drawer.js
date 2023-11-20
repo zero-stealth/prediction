@@ -5,7 +5,7 @@ export const useDrawerStore = defineStore("drawer", () => {
   const state = {
     popDrawer: ref(true),
     popSticky: ref(true),
-    showUserSpecific : ref(false),
+    showUserSpecific : ref(true),
   };
 
   const togglePop = () => {

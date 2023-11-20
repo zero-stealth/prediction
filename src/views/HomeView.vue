@@ -91,12 +91,14 @@
     <PopUP v-if="showPop"> </PopUP>
     <Sticky />
   </div>
+  <!-- <ScrollUp/> -->
 </template>
 <script setup>
 import axios from 'axios'
 import Arrow from '../icons/arrow.vue'
 import { useRouter } from 'vue-router'
 import { useGameStore } from '../stores/game'
+// import ScrollUp from '../components/ScrollUp.vue'
 import NewsCard from '../components/NewsCard.vue'
 import OfferAds from '../components/OfferAds.vue'
 import { useDrawerStore } from '../stores/drawer'

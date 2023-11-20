@@ -22,7 +22,7 @@ import axios from 'axios'
 const adsData = ref([])
 const adsImage = ref(null)
 const adsLink = ref(null)
-const openSticky = ref(false) // Initialize as false
+const openSticky = ref(false) 
 const drawerStore = useDrawerStore()
 const SERVER_HOST = import.meta.env.VITE_SERVER_HOST
 

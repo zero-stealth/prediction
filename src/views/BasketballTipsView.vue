@@ -27,6 +27,7 @@ const leagueIcon = ref('')
 const teamAPosition = ref('')
 const teamBPosition = ref('')
 const time = ref('')
+const date = ref('')
 const showScore = ref('')
 
 const activePage = shallowRef(overviewSection)
@@ -40,7 +41,7 @@ const getButtonClass = (page) => {
 }
 
 async function getTip() {
-  const response = await axios.get( `${SERVER_HOST}/sports/prediction/${gameStore.gameId}`)
+  const response = await axios.get(`${SERVER_HOST}/sports/prediction/${gameStore.gameId}`)
   teamA.value = response.data.teamA
   teamB.value = response.data.teamB
   showScore.value = response.data.showScore
@@ -53,6 +54,8 @@ async function getTip() {
   league.value = response.data.league
   leagueIcon.value = response.data.leagueIcon
   time.value = response.data.time
+  date.value = response.data.date
+
 }
 
 onMounted(() => {
@@ -62,11 +65,41 @@ onMounted(() => {
 const goBack = () => {
   router.go(-1)
 }
+
+function formatDate(inputDate) {
+  const parts = inputDate.split('-')
+  const day = parts[0]
+  const month = parts[1]
+  const year = parts[2]
+
+  const months = [
+    'January',
+    'February',
+    'March',
+    'April',
+    'May',
+    'June',
+    'July',
+    'August',
+    'September',
+    'October',
+    'November',
+    'December'
+  ]
+
+  const formattedDate = `${day} | ${months[parseInt(month, 10) - 1]} | ${year}`
+  return formattedDate
+}
+
 </script>
 
 <template>
   <div class="details-container">
-       <div class="details-h">
+    <div class="details-h-conx">
+       <div class="details-header-title">
+        <h1>{{ teamA }} vs {{ teamB }} prediction {{ formatDate(date) }}</h1>
+      </div>
+      <div class="details-h">
         <ArrowIcon class="details-arrow" @click="goBack()" />
         <div class="details-h-inn">
           <img :src="leagueIcon" alt="" class="tbl-f-image tbl-l-i" />
@@ -74,6 +107,7 @@ const goBack = () => {
         </div>
         <span class="pulse"></span>
       </div>
+    </div>
     <div
       class="details-image"
       :style="{
@@ -87,7 +121,7 @@ const goBack = () => {
         </div>
         <div class="details-midd">
           {{ [time] }}
-         
+
           <div v-if="showScore" class="details-score">
             <div class="score-p">
               <span>{{ teamAscore }}</span>
