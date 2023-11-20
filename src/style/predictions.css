@@ -231,10 +231,11 @@
 
   .description-info{
     padding:  10px;
+    background-color: var(--background-color);
   }
 
   .description-info p {
-    color: var(--background-color);
+    color: var(--primary-color);
     text-align: justify;
     font-size: .8rem;
 

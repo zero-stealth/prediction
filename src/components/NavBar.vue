@@ -65,8 +65,6 @@
           <LogoutIcon class="icon-nav l-icon" />
           {{ $t('nav.btn6') }}
         </button>
-      </div>
-      <div class="nav-btn-container" v-else>
         <div class="language-dropdown">
           <button @click="toggleDropdown" class="language-btn">
             <img :src="getFlag(currentLanguage)" :alt="currentLanguage" class="language-img" />
@@ -87,6 +85,8 @@
             </div>
           </div>
         </div>
+      </div>
+      <div class="nav-btn-container" v-else>
         <button @click="goSignin()" class="nav-btn btn-r">
           <GroupIcon class="icon-nav r-icon" />
           {{ $t('nav.btn7') }}
