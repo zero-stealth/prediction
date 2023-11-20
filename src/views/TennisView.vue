@@ -96,7 +96,7 @@ watchEffect(() => {
 })
 
 const showCard = (gameA, gameB ,cardID) => {
-  router.push({ name: 'TennisTips', params: { tennisName: `${gameA} vs ${gameB}`  } })
+  router.push({ name: 'TennisTips', params: { tennisName: `${gameA} vs ${gameB} prediction`  } })
   gameStore.updateGameId(cardID)
 }
 

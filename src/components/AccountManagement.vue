@@ -1,5 +1,5 @@
 <template>
-  <div class="Account-container" v-if="specific">
+  <div class="Account-container" v-if="drawerStore.showUserSpecific">
     <div class="Account-info">
       <div
         class="Account-card"
@@ -30,7 +30,7 @@
       <table>
         <thead>
           <tr>
-            <th>Account</th>
+            <th>Email</th>
             <th>Country</th>
             <th>Payment</th>
             <th>Period</th>
@@ -43,13 +43,13 @@
           <tr v-for="account in filterAccount" :key="account.id" @click="showUserData(account._id)">
             <td>
               <div class="Account-tbl-img">
-                <span>{{ account.username }}</span>
+                <span>{{ account.email }}</span>
               </div>
             </td>
             <td>{{ account.country }}</td>
             <td>{{ account.paid }}</td>
             <td>{{ account.paid ? '1 Month' : '0 Month' }}</td>
-            <td>{{ formatDate(account.updatedAt) || 'no change' }}</td>
+            <td>{{ formatDate(account.updatedAt) || 'not paid' }}</td>
             <td>
               <div class="Account-t-con">
                 <div
@@ -102,7 +102,7 @@
       </table>
     </div>
   </div>
-  <UserDetail :id="userID" :show="showUserSpecific" v-else />
+  <UserDetail :id="userID" :show="drawerStore.showUserSpecific" v-else />
 </template>
 <script setup>
 import axios from 'axios'
@@ -114,25 +114,24 @@ import AdminIcon from '../icons/AdminIcon.vue'
 import DeleteIcon from '../icons/DeleteIcon.vue'
 import ProfileIcon from '../icons/profileIcon.vue'
 import UserDetail from '../components/UserDetail.vue'
+import { useDrawerStore } from '../stores/drawer'
 
+const drawerStore = useDrawerStore()
 const accountCards = ref([])
 const accountInfo = ref([])
 const searchAccount = ref('')
-const specific = ref(true)
 const userID = ref(null)
 const message = ref()
 const statusC = ref(null)
 const paidDate = ref(null)
 const futuresDate = ref(null)
 const endSub = ref(false)
-const showUserSpecific = ref(false)
 const SERVER_HOST = import.meta.env.VITE_SERVER_HOST
 
 const showUserData = (id) => {
   if (id !== null && id !== undefined) {
     userID.value = id
-    showUserSpecific.value = true
-    specific.value = false
+    drawerStore.toggleUserSpecific()
   }
 }
 
@@ -171,7 +170,7 @@ function getFutureDate(date) {
   const parsedDate = new Date(date)
   paidDate.value = formatDate(parsedDate)
   const futureDate = new Date(parsedDate)
-  futureDate.setDate(parsedDate.getDate() + 30)
+  futureDate.setDate(parsedDate.getDate() + 31)
   futuresDate.value = futureDate.toISOString()
 
   const currentDate = new Date()

@@ -14,11 +14,37 @@
     background-color: var(--background-color);
   }
 
+  .pan-arrow-container {
+    gap: 10px;
+    display: flex;
+    padding: 8px;
+    cursor: pointer;
+    align-items: center;
+    flex-direction: row-reverse;
+    justify-content: space-around;
+    border: 1px solid var(--light-color);
+    border-left: 0;
+    border-right: 0;
+  }
+
+  .pan-arrow-container:hover {
+    background-color: var(--fade-color);
+  }
+
+  .pan-arrow-container span {
+    font-size: .9rem;
+    color: var(--light-color);
+  }
+
+  .pan-arrow {
+    height: 20px;
+    fill: var(--light-color);
+  }
+
   .panel-bar {
     height: 100%;
     display: flex;
     z-index: 9999;
-    padding: 10px 0;
     flex-direction: column;
     transition: all 0.5s ease 0s;
     justify-content: space-between;
@@ -55,6 +81,7 @@
     padding: 20px 10px;
     align-items: center;
     justify-content: space-between;
+    background-color: var(--fade-color);
   }
 
   .panel-profile-info {
@@ -219,7 +246,7 @@
   }
 
   .panel-main {
-    flex: 90%;
+    flex: 80%;
     min-width: 20%;
     overflow-y: hidden;
   }

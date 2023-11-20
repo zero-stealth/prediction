@@ -77,7 +77,6 @@ const create = async () => {
     }
   } else {
     errMsg.value = 'Write something'
-    alert(errMsg.value)
     reset()
   }
 }

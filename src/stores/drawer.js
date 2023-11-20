@@ -5,19 +5,24 @@ export const useDrawerStore = defineStore("drawer", () => {
   const state = {
     popDrawer: ref(true),
     popSticky: ref(true),
+    showUserSpecific : ref(false),
   };
 
   const togglePop = () => {
     state.popDrawer.value = !state.popDrawer.value;
   };
 
+  const toggleUserSpecific = () => {
+    state.showUserSpecific.value = !state.showUserSpecific.value;
+  }
   const toggleSticky = () => {
     state.popSticky.value = !state.popSticky.value;
   };
 
   return {
-    ...state, // Spread the state object to expose its properties
+    ...state, 
     toggleSticky,
     togglePop,
+    toggleUserSpecific
   };
 });

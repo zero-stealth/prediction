@@ -66,20 +66,20 @@ const goBack = () => {
 
 <template>
   <div class="details-container">
+       <div class="details-h">
+        <ArrowIcon class="details-arrow" @click="goBack()" />
+        <div class="details-h-inn">
+          <img :src="leagueIcon" alt="" class="tbl-f-image tbl-l-i" />
+          <h2>{{ league }}</h2>
+        </div>
+        <span class="pulse"></span>
+      </div>
     <div
       class="details-image"
       :style="{
         backgroundImage: `linear-gradient(to bottom, rgba(0, 0, 0, 0.9), #042f59), url(${banner})`
       }"
     >
-      <div class="details-h">
-        <ArrowIcon class="details-arrow" @click="goBack()" />
-        <div class="details-h-inn">
-          <img :src="leagueIcon" alt="" class="tbl-f-image tbl-l-i" />
-          <h2>{{ league }}</h2>
-        </div>
-        <span></span>
-      </div>
       <div class="details-image-d">
         <div class="details-d">
           <img :src="teamAIcon" alt="" class="details-d-img" />
@@ -87,10 +87,8 @@ const goBack = () => {
         </div>
         <div class="details-midd">
           {{ [time] }}
-          <div v-if="!showScore" class="details-score">
-            <h1>vs</h1>
-          </div>
-          <div v-else class="details-score">
+         
+          <div v-if="showScore" class="details-score">
             <div class="score-p">
               <span>{{ teamAscore }}</span>
               <span>-</span>

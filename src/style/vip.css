@@ -24,7 +24,7 @@
   }
 
   .vip-notpaid h1 {
-    font-size: 1.1rem;
+    font-size: .8rem;
     text-align: center;
     text-transform: uppercase;
     color: var(--background-color);
@@ -48,7 +48,7 @@
   }
 
   .vip-pay-icon {
-    height: 24px;
+    height: 20px;
     fill: var(--background-color);
   }
 
@@ -74,4 +74,9 @@
   .vip-m {
     margin: 10px;
   }
+
+  .vip-notpaid h1 {
+    font-size: 1rem;
+  }
+  
 }

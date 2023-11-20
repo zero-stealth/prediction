@@ -94,7 +94,7 @@ watchEffect(() => {
 })
 
 const showCard = (gameA, gameB, cardID) => {
-  router.push({ name: 'BasketballTips', params: { basketballName: `${gameA} vs ${gameB}` } })
+  router.push({ name: 'BasketballTips', params: { basketballName: `${gameA} vs ${gameB} prediction` } })
   gameStore.updateGameId(cardID)
 }
 
@@ -111,7 +111,7 @@ async function getPrediction() {
         }
       }
     )
-    cardData.value = response.data.length > 0 ? [response.data] : [] // Set the data or an empty array
+    cardData.value = response.data.length > 0 ? [response.data] : [] 
   } catch (err) {
     console.log(err)
   }

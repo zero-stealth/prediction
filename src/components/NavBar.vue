@@ -10,18 +10,7 @@
           draggable="false"
         />
       </a>
-      <div class="mb-locale">
-        <a href="https://sportypredict.com/" class="nav-mb">
-          <img
-            src="@/assets/logo-spp.png"
-            alt="logo"
-            class="logo-spp"
-            @click="goHome"
-            draggable="false"
-          />
-        </a>
-
-        <div class="language-dropdown">
+      <div class="language-dropdown mb-locale ">
           <button @click="toggleDropdown" class="language-btn">
             <img :src="getFlag(currentLanguage)" :alt="currentLanguage" class="language-img" />
             <div class="language-inn">
@@ -39,9 +28,17 @@
               <img :src="flag" alt="Language Flag" class="language-img" />
               {{ language }}
             </div>
-          </div>
         </div>
       </div>
+        <a href="https://sportypredict.com/" class="nav-mb mb-locale ">
+          <img
+            src="@/assets/logo-spp.png"
+            alt="logo"
+            class="logo-spp"
+            @click="goHome"
+            draggable="false"
+          />
+        </a> 
       <div class="nav-link-container">
         <RouterLink :to="{ name: 'Home' }" class="nav-link">{{ $t('nav.link1') }}</RouterLink>
         <RouterLink :to="{ name: 'Bonus' }" class="nav-link">{{ $t('nav.link2') }}</RouterLink>
@@ -133,7 +130,7 @@
             <span @click="goTo('Over 2.5 Goals')">{{ $t('nav.span2') }}</span>
             <span @click="goTo('Over 1.5 Goals')">{{ $t('nav.span3') }}</span>
             <span @click="goTo('Both Teams To Score')">{{ $t('nav.span4') }}</span>
-            <span @click="goTo('Under 2.5 Goals')">{{ $t('nav.span2') }}</span>
+            <span @click="goTo('Under 2.5 Goals')">{{ $t('nav.span5') }}</span>
           </div>
         </div>
       </div>

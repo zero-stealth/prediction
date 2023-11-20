@@ -1,7 +1,7 @@
 <template>
   <div class="vip-container">
     <div class="vip-wrapper">
-      <div class="vip-notpaid" :style="{ backgroundImage: `url(${banner})` }" v-if="!paid">
+      <div class="vip-notpaid" :style="{ backgroundImage: `linear-gradient(to bottom, rgba(0, 0, 0, 0.4), #042f59), url(${banner})` }" v-if="!paid">
         <div v-if="!username" class="vip-p">
           <h1>{{ $t('vip.h1-1') }} 🌵</h1>
           <div class="vip-sp">
@@ -76,7 +76,7 @@
 <script setup>
 import axios from 'axios'
 import { useRouter } from 'vue-router'
-import banner from '../assets/banner.jpeg'
+import banner from '../assets/back.jpeg'
 import MoneyIcon from '../icons/payIcon.vue'
 import Card from '../components/CardComponent.vue'
 import ProfileIcon from '../icons/profileIcon.vue'

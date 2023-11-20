@@ -1,160 +1,17 @@
-<template>
-  <HeroComponent />
-  <QuickComponent />
-  <div class="home-main">
-    <div class="main-h">
-      <div class="main-header">
-        <div class="header-info">
-          <h1>{{ $t('bank.h1-3') }} ({{ currentDate }})</h1>
-        </div>
-        <div class="header-btn">
-          <button class="btn-h" :class="{ 'active-btn': offset > 0 }" @click="previousDay()">
-            {{ $t('bank.btn-1') }}
-          </button>
-          <button class="btn-h" :class="{ 'active-btn': offset === 0 }" @click="setOffset(0)">
-            {{ $t('bank.btn-2') }}
-          </button>
-          <button class="btn-h" :class="{ 'active-btn': offset === 1 }" @click="setOffset(1)">
-            {{ $t('bank.btn-3') }}
-          </button>
-        </div>
-      </div>
-      <OfferAds />
-      <template v-if="cardData.length > 0">
-        <div class="main-h-card">
-          <Card
-            v-for="card in cardData"
-            :key="card._id"
-            :tip="card.tip"
-            :status="card.status"
-            :leagueIcon="card.leagueIcon"
-            :teamAIcon="card.teamAIcon"
-            :teamBIcon="card.teamBIcon"
-            :teamA="card.teamA"
-            :teamB="card.teamB"
-            :league="card.league"
-            :showScore="card.showScore"
-            :teamAscore="card.teamAscore"
-            :teamBscore="card.teamBscore"
-            :formationA="formatFormation(card.formationA)"
-            :formationB="formatFormation(card.formationB)"
-            :time="card.time"
-            @click="showCard(card._id)"
-          />
-        </div>
-      </template>
-      <template v-else>
-        <div class="home-freetip">
-          <h1>{{ $t('upcoming.h1-2') }}</h1>
-        </div>
-      </template>
-    </div>
-    <div>
-      <vipads />
-    </div>
-    <div class="news-main">
-      <div class="news-header">
-        <div class="news-info">
-          <h1>{{ $t('news.h1-1') }}</h1>
-        </div>
-        <div class="news-link">
-          <Arrow class="news-icon icon-left" />
-          <span v-if="showMoreButton" @click="showMoreNews">see more</span>
-          <span v-else @click="showLessNews">see less</span>
-          <Arrow class="news-icon" />
-        </div>
-      </div>
-      <div class="news-wrapper">
-        <NewsCard
-          v-for="(newsItem, index) in visibleNews"
-          :key="index"
-          :banner="newsItem.img"
-          @click="newsInfo(newsItem.title)"
-        >
-          <h2>{{ newsItem.title }}</h2>
-        </NewsCard>
-      </div>
-    </div>
-    <Upcoming />
-    <div class="ads-p">
-      <div
-        @click="goAds()"
-        class="ads-home"
-        :style="{
-          backgroundImage: `url(${ads})`
-        }"
-      ></div>
-    </div>
-    <OtherComponent />
-    <AboutComponent />
-    <PopUP v-if="showPop" >
-      </PopUP>
-  </div>
-</template>
 <script setup>
 import axios from 'axios'
-import ads from '../assets/ads.gif'
-import Arrow from '../icons/arrow.vue'
-import { useRouter } from 'vue-router'
-import NewsCard from '../components/NewsCard.vue'
-import OfferAds from '../components/OfferAds.vue'
-import { useDrawerStore } from "../stores/drawer"
-import Card from '../components/CardComponent.vue'
-import PopUP from '../components/popupComponent.vue'
-import Upcoming from '../components/UpcomingPicks.vue'
-import vipads from '../components/vipadsComponent.vue'
-import QuickComponent from '../components/QuickComponent.vue'
-import AboutComponent from '../components/aboutComponent.vue'
-import HeroComponent from '../components/HeroComponent.vue'
-import OtherComponent from '../components/OtherComponent.vue'
-import { ref, watch, computed, watchEffect } from 'vue'
+import { useRouter, useRoute } from 'vue-router'
+import ArrowIcon from '@/icons/ArrowIcon.vue'
+import { ref, onMounted, computed } from 'vue'
 
-const SERVER_HOST = import.meta.env.VITE_SERVER_HOST;
-const drawerStore = useDrawerStore();
-const showMoreButton = ref(true)
-const maxNewsToShow = ref(8)
-const currentDate = ref('')
-const router = useRouter()
-const showPop = ref(null)
-const cardData = ref([])
 const newsData = ref([])
+const router = useRouter()
+const route = useRoute()
 
-
-watchEffect(() => {
-  showPop.value = drawerStore.popDrawer;
-  console.log(showPop.value)
-})
-
-const showCard = (cardID) => {
-  router.push({ name: 'Tips', params: { id: cardID } })
+const goBack = () => {
+  router.go(-1)
 }
 
-const newsInfo = (newsTitle) => {
-  
-  router.push({ name: 'News', params: { title: newsTitle  } })
-}
-
-const goAds = () => {
-  window.open('https://wa.me/+254703147237?text=Hi sporty predict, I want to buy VIP subcription')
-}
-
-const visibleNews = computed(() => {
-  return newsData.value.slice(0, maxNewsToShow.value)
-})
-
-
-
-const showMoreNews = () => {
-  maxNewsToShow.value += 8
-  showMoreButton.value = false
-}
-
-const showLessNews = () => {
-  maxNewsToShow.value -= 8
-  if (maxNewsToShow.value <= 8) {
-    showMoreButton.value = true
-  }
-}
 const getNews = async () => {
   try {
     const response = await axios.get(
@@ -163,75 +20,48 @@ const getNews = async () => {
         headers: {
           'X-RapidAPI-Key': import.meta.env.VITE_RAPIDAPI_KEY,
           'X-RapidAPI-Host': import.meta.env.VITE_RAPIDAPI_HOST
-        }
+        },
       }
     )
-    console.log(response.data)
     newsData.value = response.data
-    console.log(newsData.value)
   } catch (err) {
-    console.log(err)
+    console.error(err)
   }
 }
 
-const getPrediction = async () => {
-  // const token = JSON.parse(localStorage.getItem('token'))
-  try {
-    const response = await axios.get(
-      `${SERVER_HOST}/predictions/tips/freeTip/${currentDate.value}`
-    )
-    cardData.value = response.data
-    // console.log(cardData.value)
-  } catch (err) {
-    console.log(err)
-  }
-}
+onMounted(getNews)
 
-
-
-
-const offset = ref(0)
-
-const previousDay = () => {
-  offset.value--
-  updateCurrentDate()
-}
-
-// const nextDay = () => {
-//   if (offset.value < 1) {
-//     offset.value++
-//     updateCurrentDate()
-//   }
-// }
-
-const setOffset = (value) => {
-  offset.value = value
-  updateCurrentDate()
-}
-
-const updateCurrentDate = () => {
-  const today = new Date()
-  today.setDate(today.getDate() + offset.value)
-  const month = today.getMonth() + 1
-  const formattedMonth = month.toString().padStart(2, '0')
-  const day = today.getDate()
-  const formattedDay = day.toString().padStart(2, '0')
-  currentDate.value = `${formattedDay}-${formattedMonth}-${today.getFullYear()}`
-}
-
-updateCurrentDate()
-
-const formatFormation = (formation) => {
-  if (Array.isArray(formation)) {
-    return formation[0].split('-')
-  }
-  return []
-}
-
-watch(currentDate, () => {
-  getPrediction()
+const filteredNewsData = computed(() => {
+  const newsTitle = route.params.title
+  return newsData.value.filter(newsItem => newsItem.title === newsTitle)
 })
 </script>
-<style scoped>
-@import '../style/Home.css';
+
+<template>
+  <div class="details-container news-pin">
+    <div v-if="filteredNewsData.length > 0" class="details-wrapper">
+      <div
+        class="details-image"
+        :style="{ backgroundImage: `url(${filteredNewsData[0].img})` }"
+      >
+        <div class="details-h">
+          <ArrowIcon class="details-arrow" @click="goBack" />
+          <h2>{{ $t('news.h1-1') }}</h2>
+          <span></span>
+        </div>
+      </div>
+      <div class="news-details-i">
+        <h1>{{ filteredNewsData[0].title }}</h1>
+        <a :href="filteredNewsData[0].url">{{ $t('news.a-1') }}</a>
+      </div>
+    </div>
+  </div>
+  <div class="mobilenav-layout">
+    <mobileNav />
+  </div>
+</template>
+
+<style>
+@import '../style/specific.css';
+@import '../style/predictions.css';
 </style>

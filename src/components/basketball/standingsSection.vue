@@ -22,7 +22,7 @@ const formationsB = ref([])
 
 async function getTip() {
   try {
-    const response = await axios.get(`${SERVER_HOST}/predictions/single/${gameStore.gameId}`)
+    const response = await axios.get(`${SERVER_HOST}/sports/prediction/${gameStore.gameId}`)
     teamA.value = response.data.teamA
     teamAIcon.value = response.data.teamAIcon
     teamBIcon.value = response.data.teamBIcon

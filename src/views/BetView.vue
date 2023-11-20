@@ -39,7 +39,6 @@
           :formationA="formatFormation(card.formationA) ? card.formationA[0].split('-') : []"
           :formationB="formatFormation(card.formationB) ? card.formationB[0].split('-') : []"
           :time="card.time"
-          @click="showCard(card._id)"
         />
       </div>
     </template>

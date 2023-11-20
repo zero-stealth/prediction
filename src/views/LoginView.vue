@@ -99,6 +99,7 @@ const resetAuth = async () => {
         email: email.value,
       })
       alert('Reset link sent to your email')
+      errMsg.value = 'Reset link sent to your email'
     } catch (error) {
       errMsg.value = 'Failed to send reset link'
     }

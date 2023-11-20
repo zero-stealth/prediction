@@ -22,7 +22,7 @@ const formationsB = ref([])
 
 async function getTip() {
   try {
-    const response = await axios.get(`${SERVER_HOST}/predictions/single/${gameStore.gameId}`)
+    const response = await axios.get(`${SERVER_HOST}/sports/prediction/${gameStore.gameId}`)
     teamA.value = response.data.teamA
     teamAIcon.value = response.data.teamAIcon
     teamBIcon.value = response.data.teamBIcon
@@ -78,7 +78,7 @@ const sortedTeams = computed(() => {
       <div class="tbl-slider">
             <table>
               <tr>
-                <th>position</th>
+                <th>rank</th>
                 <th>team</th>
               </tr>
               <tr v-for="team in sortedTeams" :key="team.name">

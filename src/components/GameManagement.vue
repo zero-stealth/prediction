@@ -8,76 +8,78 @@
             <h1>Bet of the day ({{ currentDate }})</h1>
           </div>
           <div class="header-btn">
-            <button class="btn-h" :class="{ 'active-btn': offset > 0 }" @click="previousDay">
+            <button class="btn-h game-h-b" :class="{ 'active-btn': offset > 0 }" @click="previousDay">
               previous
             </button>
-            <button class="btn-h" :class="{ 'active-btn': offset === 0 }" @click="setOffset(0)">
+            <button class="btn-h game-h-b" :class="{ 'active-btn': offset === 0 }" @click="setOffset(0)">
               Today
             </button>
-            <button class="btn-h" :class="{ 'active-btn': offset === 1 }" @click="setOffset(1)">
+            <button class="btn-h game-h-b" :class="{ 'active-btn': offset === 1 }" @click="setOffset(1)">
               Tomorrow
             </button>
           </div>
         </div>
-        <table>
-          <thead>
-            <tr>
-              <th>League</th>
-              <th>TeamA</th>
-              <th>TeamB</th>
-              <th>scoreA</th>
-              <th>scoreB</th>
-              <th>tip</th>
-              <th>Edit</th>
-              <th>Delete</th>
-            </tr>
-          </thead>
-          <tbody v-for="item in cardData">
-            <tr v-for="data in item" :key="data._id">
-              <td>
-                <div class="game-tbl-img">
-                  <img :src="data.leagueIcon" alt="game-p" class="game-pi" />
-                  <span>{{ data.league }}</span>
-                </div>
-              </td>
-              <td>
-                <div class="game-tbl-img">
-                  <img :src="data.teamAIcon" alt="game-p" class="game-pi" />
-                  <span>{{ data.teamA }}</span>
-                </div>
-              </td>
-              <td>
-                <div class="game-tbl-img">
-                  <img :src="data.teamBIcon" alt="game-p" class="game-pi" />
-                  <span>{{ data.teamB }}</span>
-                </div>
-              </td>
-              <td>
-                <span>{{ data.teamAscore }}</span>
-              </td>
-              <td>
-                <span>{{ data.teamBscore }}</span>
-              </td>
-              <td>
-                <span>{{ data.tip }}</span>
-              </td>
-              <td>
-                <div class="game-delete" @click="editGame(BetOfTheDay, data._id)">
-                  <FileIcon class="icon-delete" />
-                </div>
-              </td>
-              <td>
-                <div class="game-delete" @click="deletePrediction(data._id)">
-                  <DeleteIcon class="icon-delete" />
-                </div>
-              </td>
-            </tr>
+        <div class="game-table">
+          <table>
+            <thead>
+              <tr>
+                <th>League</th>
+                <th>TeamA</th>
+                <th>TeamB</th>
+                <th>scoreA</th>
+                <th>scoreB</th>
+                <th>tip</th>
+                <th>Edit</th>
+                <th>Delete</th>
+              </tr>
+            </thead>
+            <tbody v-for="item in cardData">
+              <tr v-for="data in item" :key="data._id">
+                <td>
+                  <div class="game-tbl-img">
+                    <img :src="data.leagueIcon" alt="game-p" class="game-pi" />
+                    <span>{{ data.league }}</span>
+                  </div>
+                </td>
+                <td>
+                  <div class="game-tbl-img">
+                    <img :src="data.teamAIcon" alt="game-p" class="game-pi" />
+                    <span>{{ data.teamA }}</span>
+                  </div>
+                </td>
+                <td>
+                  <div class="game-tbl-img">
+                    <img :src="data.teamBIcon" alt="game-p" class="game-pi" />
+                    <span>{{ data.teamB }}</span>
+                  </div>
+                </td>
+                <td>
+                  <span>{{ data.teamAscore }}</span>
+                </td>
+                <td>
+                  <span>{{ data.teamBscore }}</span>
+                </td>
+                <td>
+                  <span>{{ data.tip }}</span>
+                </td>
+                <td>
+                  <div class="game-delete" @click="editGame(BetOfTheDay, data._id)">
+                    <FileIcon class="icon-delete" />
+                  </div>
+                </td>
+                <td>
+                  <div class="game-delete" @click="deletePrediction(data._id)">
+                    <DeleteIcon class="icon-delete" />
+                  </div>
+                </td>
+              </tr>
 
-            <tr v-if="cardData.length === 0">
-              <td colspan="8">No games yet!</td>
-            </tr>
-          </tbody>
-        </table>
+              <tr v-if="cardData.length === 0">
+                <td colspan="8">No games yet!</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
       </div>
       <!-- loop this  -->
       <div class="game-cf">
@@ -86,75 +88,77 @@
             <h1>Prediction Tips ({{ currentDate }})</h1>
           </div>
           <div class="header-btn">
-            <button class="btn-h" :class="{ 'active-btn': offset > 0 }" @click="previousDay">
+            <button class="btn-h game-h-b" :class="{ 'active-btn': offset > 0 }" @click="previousDay">
               previous
             </button>
-            <button class="btn-h" :class="{ 'active-btn': offset === 0 }" @click="setOffset(0)">
+            <button class="btn-h game-h-b" :class="{ 'active-btn': offset === 0 }" @click="setOffset(0)">
               Today
             </button>
-            <button class="btn-h" :class="{ 'active-btn': offset === 1 }" @click="setOffset(1)">
+            <button class="btn-h game-h-b" :class="{ 'active-btn': offset === 1 }" @click="setOffset(1)">
               Tomorrow
             </button>
           </div>
         </div>
-        <table>
-          <thead>
-            <tr>
-              <th>League</th>
-              <th>TeamA</th>
-              <th>TeamB</th>
-              <th>scoreA</th>
-              <th>scoreB</th>
-              <th>tip</th>
-              <th>Edit</th>
-              <th>Delete</th>
-            </tr>
-          </thead>
-          <tbody v-for="item in predictionData">
-            <tr v-for="data in item" :key="data._id">
-              <td>
-                <div class="game-tbl-img">
-                  <img :src="data.leagueIcon" alt="game-p" class="game-pi" />
-                  <span>{{ data.league }}</span>
-                </div>
-              </td>
-              <td>
-                <div class="game-tbl-img">
-                  <img :src="data.teamAIcon" alt="game-p" class="game-pi" />
-                  <span>{{ data.teamA }}</span>
-                </div>
-              </td>
-              <td>
-                <div class="game-tbl-img">
-                  <img :src="data.teamBIcon" alt="game-p" class="game-pi" />
-                  <span>{{ data.teamB }}</span>
-                </div>
-              </td>
-              <td>
-                <span>{{ data.teamAscore }}</span>
-              </td>
-              <td>
-                <span>{{ data.teamBscore }}</span>
-              </td>
-              <td>
-                <span>{{ data.tip }}</span>
-              </td>
-              <td>
-                <div class="game-delete" @click="editGame(Predictionpicks, data._id)">
-                  <FileIcon class="icon-delete" />
-                </div>
-              </td>
-              <td>
-                <div class="game-delete" @click="deletePrediction(data._id)">
-                  <DeleteIcon class="icon-delete" />
-                </div>
-              </td>
-            </tr>
-            <tr v-if="predictionData.length === 0">
-              <td colspan="8">No games yet!</td>
-            </tr>
-          </tbody>
-        </table>
+        <div class="game-table">
+          <table>
+            <thead>
+              <tr>
+                <th>League</th>
+                <th>TeamA</th>
+                <th>TeamB</th>
+                <th>scoreA</th>
+                <th>scoreB</th>
+                <th>tip</th>
+                <th>Edit</th>
+                <th>Delete</th>
+              </tr>
+            </thead>
+            <tbody v-for="item in predictionData">
+              <tr v-for="data in item" :key="data._id">
+                <td>
+                  <div class="game-tbl-img">
+                    <img :src="data.leagueIcon" alt="game-p" class="game-pi" />
+                    <span>{{ data.league }}</span>
+                  </div>
+                </td>
+                <td>
+                  <div class="game-tbl-img">
+                    <img :src="data.teamAIcon" alt="game-p" class="game-pi" />
+                    <span>{{ data.teamA }}</span>
+                  </div>
+                </td>
+                <td>
+                  <div class="game-tbl-img">
+                    <img :src="data.teamBIcon" alt="game-p" class="game-pi" />
+                    <span>{{ data.teamB }}</span>
+                  </div>
+                </td>
+                <td>
+                  <span>{{ data.teamAscore }}</span>
+                </td>
+                <td>
+                  <span>{{ data.teamBscore }}</span>
+                </td>
+                <td>
+                  <span>{{ data.tip }}</span>
+                </td>
+                <td>
+                  <div class="game-delete" @click="editGame(Predictionpicks, data._id)">
+                    <FileIcon class="icon-delete" />
+                  </div>
+                </td>
+                <td>
+                  <div class="game-delete" @click="deletePrediction(data._id)">
+                    <DeleteIcon class="icon-delete" />
+                  </div>
+                </td>
+              </tr>
+              <tr v-if="predictionData.length === 0">
+                <td colspan="8">No games yet!</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
       </div>
 
       <div class="game-cf">
@@ -163,75 +167,77 @@
             <h1>Free tips ({{ currentDate }})</h1>
           </div>
           <div class="header-btn">
-            <button class="btn-h" :class="{ 'active-btn': offset > 0 }" @click="previousDay">
+            <button class="btn-h game-h-b" :class="{ 'active-btn': offset > 0 }" @click="previousDay">
               previous
             </button>
-            <button class="btn-h" :class="{ 'active-btn': offset === 0 }" @click="setOffset(0)">
+            <button class="btn-h game-h-b" :class="{ 'active-btn': offset === 0 }" @click="setOffset(0)">
               Today
             </button>
-            <button class="btn-h" :class="{ 'active-btn': offset === 1 }" @click="setOffset(1)">
+            <button class="btn-h game-h-b" :class="{ 'active-btn': offset === 1 }" @click="setOffset(1)">
               Tomorrow
             </button>
           </div>
         </div>
-        <table>
-          <thead>
-            <tr>
-              <th>League</th>
-              <th>TeamA</th>
-              <th>TeamB</th>
-              <th>scoreA</th>
-              <th>scoreB</th>
-              <th>tip</th>
-              <th>Edit</th>
-              <th>Delete</th>
-            </tr>
-          </thead>
-          <tbody v-for="item in freeTipData">
-            <tr v-for="data in item" :key="data._id">
-              <td>
-                <div class="game-tbl-img">
-                  <img :src="data.leagueIcon" alt="game-p" class="game-pi" />
-                  <span>{{ data.league }}</span>
-                </div>
-              </td>
-              <td>
-                <div class="game-tbl-img">
-                  <img :src="data.teamAIcon" alt="game-p" class="game-pi" />
-                  <span>{{ data.teamA }}</span>
-                </div>
-              </td>
-              <td>
-                <div class="game-tbl-img">
-                  <img :src="data.teamBIcon" alt="game-p" class="game-pi" />
-                  <span>{{ data.teamB }}</span>
-                </div>
-              </td>
-              <td>
-                <span>{{ data.teamAscore }}</span>
-              </td>
-              <td>
-                <span>{{ data.teamBscore }}</span>
-              </td>
-              <td>
-                <span>{{ data.tip }}</span>
-              </td>
-              <td>
-                <div class="game-delete" @click="editGame(Freetips, data._id)">
-                  <FileIcon class="icon-delete" />
-                </div>
-              </td>
-              <td>
-                <div class="game-delete" @click="deletePrediction(data._id)">
-                  <DeleteIcon class="icon-delete" />
-                </div>
-              </td>
-            </tr>
-            <tr v-if="freeTipData.length === 0">
-              <td colspan="8">No games yet!</td>
-            </tr>
-          </tbody>
-        </table>
+        <div class="game-table">
+          <table>
+            <thead>
+              <tr>
+                <th>League</th>
+                <th>TeamA</th>
+                <th>TeamB</th>
+                <th>scoreA</th>
+                <th>scoreB</th>
+                <th>tip</th>
+                <th>Edit</th>
+                <th>Delete</th>
+              </tr>
+            </thead>
+            <tbody v-for="item in freeTipData">
+              <tr v-for="data in item" :key="data._id">
+                <td>
+                  <div class="game-tbl-img">
+                    <img :src="data.leagueIcon" alt="game-p" class="game-pi" />
+                    <span>{{ data.league }}</span>
+                  </div>
+                </td>
+                <td>
+                  <div class="game-tbl-img">
+                    <img :src="data.teamAIcon" alt="game-p" class="game-pi" />
+                    <span>{{ data.teamA }}</span>
+                  </div>
+                </td>
+                <td>
+                  <div class="game-tbl-img">
+                    <img :src="data.teamBIcon" alt="game-p" class="game-pi" />
+                    <span>{{ data.teamB }}</span>
+                  </div>
+                </td>
+                <td>
+                  <span>{{ data.teamAscore }}</span>
+                </td>
+                <td>
+                  <span>{{ data.teamBscore }}</span>
+                </td>
+                <td>
+                  <span>{{ data.tip }}</span>
+                </td>
+                <td>
+                  <div class="game-delete" @click="editGame(Freetips, data._id)">
+                    <FileIcon class="icon-delete" />
+                  </div>
+                </td>
+                <td>
+                  <div class="game-delete" @click="deletePrediction(data._id)">
+                    <DeleteIcon class="icon-delete" />
+                  </div>
+                </td>
+              </tr>
+              <tr v-if="freeTipData.length === 0">
+                <td colspan="8">No games yet!</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
       </div>
 
       <div class="game-cf">
@@ -240,75 +246,77 @@
             <h1>Upcoming games ({{ currentDate }})</h1>
           </div>
           <div class="header-btn">
-            <button class="btn-h" :class="{ 'active-btn': offset > 0 }" @click="previousDay">
+            <button class="btn-h game-h-b" :class="{ 'active-btn': offset > 0 }" @click="previousDay">
               previous
             </button>
-            <button class="btn-h" :class="{ 'active-btn': offset === 0 }" @click="setOffset(0)">
+            <button class="btn-h game-h-b" :class="{ 'active-btn': offset === 0 }" @click="setOffset(0)">
               Today
             </button>
-            <button class="btn-h" :class="{ 'active-btn': offset === 1 }" @click="setOffset(1)">
+            <button class="btn-h game-h-b" :class="{ 'active-btn': offset === 1 }" @click="setOffset(1)">
               Tomorrow
             </button>
           </div>
         </div>
-        <table>
-          <thead>
-            <tr>
-              <th>League</th>
-              <th>TeamA</th>
-              <th>TeamB</th>
-              <th>scoreA</th>
-              <th>scoreB</th>
-              <th>tip</th>
-              <th>Edit</th>
-              <th>Delete</th>
-            </tr>
-          </thead>
-          <tbody v-for="item in upcomingData">
-            <tr v-for="data in item" :key="data._id">
-              <td>
-                <div class="game-tbl-img">
-                  <img :src="data.leagueIcon" alt="game-p" class="game-pi" />
-                  <span>{{ data.league }}</span>
-                </div>
-              </td>
-              <td>
-                <div class="game-tbl-img">
-                  <img :src="data.teamAIcon" alt="game-p" class="game-pi" />
-                  <span>{{ data.teamA }}</span>
-                </div>
-              </td>
-              <td>
-                <div class="game-tbl-img">
-                  <img :src="data.teamBIcon" alt="game-p" class="game-pi" />
-                  <span>{{ data.teamB }}</span>
-                </div>
-              </td>
-              <td>
-                <span>{{ data.teamAscore }}</span>
-              </td>
-              <td>
-                <span>{{ data.teamBscore }}</span>
-              </td>
-              <td>
-                <span>{{ data.tip }}</span>
-              </td>
-              <td>
-                <div class="game-delete" @click="editGame(UpcomingGames, data._id)">
-                  <FileIcon class="icon-delete" />
-                </div>
-              </td>
-              <td>
-                <div class="game-delete" @click="deletePrediction(data._id)">
-                  <DeleteIcon class="icon-delete" />
-                </div>
-              </td>
-            </tr>
-            <tr v-if="upcomingData.length === 0">
-              <td colspan="8">No games yet!</td>
-            </tr>
-          </tbody>
-        </table>
+        <div class="game-table">
+          <table>
+            <thead>
+              <tr>
+                <th>League</th>
+                <th>TeamA</th>
+                <th>TeamB</th>
+                <th>scoreA</th>
+                <th>scoreB</th>
+                <th>tip</th>
+                <th>Edit</th>
+                <th>Delete</th>
+              </tr>
+            </thead>
+            <tbody v-for="item in upcomingData">
+              <tr v-for="data in item" :key="data._id">
+                <td>
+                  <div class="game-tbl-img">
+                    <img :src="data.leagueIcon" alt="game-p" class="game-pi" />
+                    <span>{{ data.league }}</span>
+                  </div>
+                </td>
+                <td>
+                  <div class="game-tbl-img">
+                    <img :src="data.teamAIcon" alt="game-p" class="game-pi" />
+                    <span>{{ data.teamA }}</span>
+                  </div>
+                </td>
+                <td>
+                  <div class="game-tbl-img">
+                    <img :src="data.teamBIcon" alt="game-p" class="game-pi" />
+                    <span>{{ data.teamB }}</span>
+                  </div>
+                </td>
+                <td>
+                  <span>{{ data.teamAscore }}</span>
+                </td>
+                <td>
+                  <span>{{ data.teamBscore }}</span>
+                </td>
+                <td>
+                  <span>{{ data.tip }}</span>
+                </td>
+                <td>
+                  <div class="game-delete" @click="editGame(UpcomingGames, data._id)">
+                    <FileIcon class="icon-delete" />
+                  </div>
+                </td>
+                <td>
+                  <div class="game-delete" @click="deletePrediction(data._id)">
+                    <DeleteIcon class="icon-delete" />
+                  </div>
+                </td>
+              </tr>
+              <tr v-if="upcomingData.length === 0">
+                <td colspan="8">No games yet!</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
       </div>
 
       <div class="game-cf">
@@ -317,75 +325,77 @@
             <h1>Vip games ({{ currentDate }})</h1>
           </div>
           <div class="header-btn">
-            <button class="btn-h" :class="{ 'active-btn': offset > 0 }" @click="previousDay">
+            <button class="btn-h game-h-b" :class="{ 'active-btn': offset > 0 }" @click="previousDay">
               previous
             </button>
-            <button class="btn-h" :class="{ 'active-btn': offset === 0 }" @click="setOffset(0)">
+            <button class="btn-h game-h-b" :class="{ 'active-btn': offset === 0 }" @click="setOffset(0)">
               Today
             </button>
-            <button class="btn-h" :class="{ 'active-btn': offset === 1 }" @click="setOffset(1)">
+            <button class="btn-h game-h-b" :class="{ 'active-btn': offset === 1 }" @click="setOffset(1)">
               Tomorrow
             </button>
           </div>
         </div>
-        <table>
-          <thead>
-            <tr>
-              <th>League</th>
-              <th>TeamA</th>
-              <th>TeamB</th>
-              <th>scoreA</th>
-              <th>scoreB</th>
-              <th>tip</th>
-              <th>Edit</th>
-              <th>Delete</th>
-            </tr>
-          </thead>
-          <tbody v-for="item in vipData">
-            <tr v-for="data in item" :key="data._id">
-              <td>
-                <div class="game-tbl-img">
-                  <img :src="data.leagueIcon" alt="game-p" class="game-pi" />
-                  <span>{{ data.league }}</span>
-                </div>
-              </td>
-              <td>
-                <div class="game-tbl-img">
-                  <img :src="data.teamAIcon" alt="game-p" class="game-pi" />
-                  <span>{{ data.teamA }}</span>
-                </div>
-              </td>
-              <td>
-                <div class="game-tbl-img">
-                  <img :src="data.teamBIcon" alt="game-p" class="game-pi" />
-                  <span>{{ data.teamB }}</span>
-                </div>
-              </td>
-              <td>
-                <span>{{ data.teamAscore }}</span>
-              </td>
-              <td>
-                <span>{{ data.teamBscore }}</span>
-              </td>
-              <td>
-                <span>{{ data.tip }}</span>
-              </td>
-              <td>
-                <div class="game-delete" @click="editGame(VipGames, data._id)">
-                  <FileIcon class="icon-delete" />
-                </div>
-              </td>
-              <td>
-                <div class="game-delete" @click="deletePrediction(data._id)">
-                  <DeleteIcon class="icon-delete" />
-                </div>
-              </td>
-            </tr>
-            <tr v-if="vipData.length === 0">
-              <td colspan="8">No games yet!</td>
-            </tr>
-          </tbody>
-        </table>
+        <div class="game-table">
+          <table>
+            <thead>
+              <tr>
+                <th>League</th>
+                <th>TeamA</th>
+                <th>TeamB</th>
+                <th>scoreA</th>
+                <th>scoreB</th>
+                <th>tip</th>
+                <th>Edit</th>
+                <th>Delete</th>
+              </tr>
+            </thead>
+            <tbody v-for="item in vipData">
+              <tr v-for="data in item" :key="data._id">
+                <td>
+                  <div class="game-tbl-img">
+                    <img :src="data.leagueIcon" alt="game-p" class="game-pi" />
+                    <span>{{ data.league }}</span>
+                  </div>
+                </td>
+                <td>
+                  <div class="game-tbl-img">
+                    <img :src="data.teamAIcon" alt="game-p" class="game-pi" />
+                    <span>{{ data.teamA }}</span>
+                  </div>
+                </td>
+                <td>
+                  <div class="game-tbl-img">
+                    <img :src="data.teamBIcon" alt="game-p" class="game-pi" />
+                    <span>{{ data.teamB }}</span>
+                  </div>
+                </td>
+                <td>
+                  <span>{{ data.teamAscore }}</span>
+                </td>
+                <td>
+                  <span>{{ data.teamBscore }}</span>
+                </td>
+                <td>
+                  <span>{{ data.tip }}</span>
+                </td>
+                <td>
+                  <div class="game-delete" @click="editGame(VipGames, data._id)">
+                    <FileIcon class="icon-delete" />
+                  </div>
+                </td>
+                <td>
+                  <div class="game-delete" @click="deletePrediction(data._id)">
+                    <DeleteIcon class="icon-delete" />
+                  </div>
+                </td>
+              </tr>
+              <tr v-if="vipData.length === 0">
+                <td colspan="8">No games yet!</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
       </div>
       <div class="game-cf">
         <div class="main-header">
@@ -393,75 +403,77 @@
             <h1>Tennis bets ({{ currentDate }})</h1>
           </div>
           <div class="header-btn">
-            <button class="btn-h" :class="{ 'active-btn': offset > 0 }" @click="previousDay">
+            <button class="btn-h game-h-b" :class="{ 'active-btn': offset > 0 }" @click="previousDay">
               previous
             </button>
-            <button class="btn-h" :class="{ 'active-btn': offset === 0 }" @click="setOffset(0)">
+            <button class="btn-h game-h-b" :class="{ 'active-btn': offset === 0 }" @click="setOffset(0)">
               Today
             </button>
-            <button class="btn-h" :class="{ 'active-btn': offset === 1 }" @click="setOffset(1)">
+            <button class="btn-h game-h-b" :class="{ 'active-btn': offset === 1 }" @click="setOffset(1)">
               Tomorrow
             </button>
           </div>
         </div>
-        <table>
-          <thead>
-            <tr>
-              <th>League</th>
-              <th>TeamA</th>
-              <th>TeamB</th>
-              <th>scoreA</th>
-              <th>scoreB</th>
-              <th>tip</th>
-              <th>Edit</th>
-              <th>Delete</th>
-            </tr>
-          </thead>
-          <tbody v-for="item in tennisData">
-            <tr v-for="data in item" :key="data._id">
-              <td>
-                <div class="game-tbl-img">
-                  <img :src="data.leagueIcon" alt="game-p" class="game-pi" />
-                  <span>{{ data.league }}</span>
-                </div>
-              </td>
-              <td>
-                <div class="game-tbl-img">
-                  <img :src="data.teamAIcon" alt="game-p" class="game-pi" />
-                  <span>{{ data.teamA }}</span>
-                </div>
-              </td>
-              <td>
-                <div class="game-tbl-img">
-                  <img :src="data.teamBIcon" alt="game-p" class="game-pi" />
-                  <span>{{ data.teamB }}</span>
-                </div>
-              </td>
-              <td>
-                <span>{{ data.teamAscore }}</span>
-              </td>
-              <td>
-                <span>{{ data.teamBscore }}</span>
-              </td>
-              <td>
-                <span>{{ data.tip }}</span>
-              </td>
-              <td>
-                <div class="game-delete" @click="editSport(TennisGames, data._id)">
-                  <FileIcon class="icon-delete" />
-                </div>
-              </td>
-              <td>
-                <div class="game-delete" @click="deleteSport(data._id)">
-                  <DeleteIcon class="icon-delete" />
-                </div>
-              </td>
-            </tr>
-            <tr v-if="tennisData.length === 0">
-              <td colspan="8">No games yet!</td>
-            </tr>
-          </tbody>
-        </table>
+        <div class="game-table">
+          <table>
+            <thead>
+              <tr>
+                <th>League</th>
+                <th>TeamA</th>
+                <th>TeamB</th>
+                <th>scoreA</th>
+                <th>scoreB</th>
+                <th>tip</th>
+                <th>Edit</th>
+                <th>Delete</th>
+              </tr>
+            </thead>
+            <tbody v-for="item in tennisData">
+              <tr v-for="data in item" :key="data._id">
+                <td>
+                  <div class="game-tbl-img">
+                    <img :src="data.leagueIcon" alt="game-p" class="game-pi" />
+                    <span>{{ data.league }}</span>
+                  </div>
+                </td>
+                <td>
+                  <div class="game-tbl-img">
+                    <img :src="data.teamAIcon" alt="game-p" class="game-pi" />
+                    <span>{{ data.teamA }}</span>
+                  </div>
+                </td>
+                <td>
+                  <div class="game-tbl-img">
+                    <img :src="data.teamBIcon" alt="game-p" class="game-pi" />
+                    <span>{{ data.teamB }}</span>
+                  </div>
+                </td>
+                <td>
+                  <span>{{ data.teamAscore }}</span>
+                </td>
+                <td>
+                  <span>{{ data.teamBscore }}</span>
+                </td>
+                <td>
+                  <span>{{ data.tip }}</span>
+                </td>
+                <td>
+                  <div class="game-delete" @click="editSport(TennisGames, data._id)">
+                    <FileIcon class="icon-delete" />
+                  </div>
+                </td>
+                <td>
+                  <div class="game-delete" @click="deleteSport(data._id)">
+                    <DeleteIcon class="icon-delete" />
+                  </div>
+                </td>
+              </tr>
+              <tr v-if="tennisData.length === 0">
+                <td colspan="8">No games yet!</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
       </div>
       <div class="game-cf">
         <div class="main-header">
@@ -469,75 +481,77 @@
             <h1>Basketball bets ({{ currentDate }})</h1>
           </div>
           <div class="header-btn">
-            <button class="btn-h" :class="{ 'active-btn': offset > 0 }" @click="previousDay">
+            <button class="btn-h game-h-b" :class="{ 'active-btn': offset > 0 }" @click="previousDay">
               previous
             </button>
-            <button class="btn-h" :class="{ 'active-btn': offset === 0 }" @click="setOffset(0)">
+            <button class="btn-h game-h-b" :class="{ 'active-btn': offset === 0 }" @click="setOffset(0)">
               Today
             </button>
-            <button class="btn-h" :class="{ 'active-btn': offset === 1 }" @click="setOffset(1)">
+            <button class="btn-h game-h-b" :class="{ 'active-btn': offset === 1 }" @click="setOffset(1)">
               Tomorrow
             </button>
           </div>
         </div>
-        <table>
-          <thead>
-            <tr>
-              <th>League</th>
-              <th>TeamA</th>
-              <th>TeamB</th>
-              <th>scoreA</th>
-              <th>scoreB</th>
-              <th>tip</th>
-              <th>Edit</th>
-              <th>Delete</th>
-            </tr>
-          </thead>
-          <tbody v-for="item in basketBallData">
-            <tr v-for="data in item" :key="data._id">
-              <td>
-                <div class="game-tbl-img">
-                  <img :src="data.leagueIcon" alt="game-p" class="game-pi" />
-                  <span>{{ data.league }}</span>
-                </div>
-              </td>
-              <td>
-                <div class="game-tbl-img">
-                  <img :src="data.teamAIcon" alt="game-p" class="game-pi" />
-                  <span>{{ data.teamA }}</span>
-                </div>
-              </td>
-              <td>
-                <div class="game-tbl-img">
-                  <img :src="data.teamBIcon" alt="game-p" class="game-pi" />
-                  <span>{{ data.teamB }}</span>
-                </div>
-              </td>
-              <td>
-                <span>{{ data.teamAscore }}</span>
-              </td>
-              <td>
-                <span>{{ data.teamBscore }}</span>
-              </td>
-              <td>
-                <span>{{ data.tip }}</span>
-              </td>
-              <td>
-                <div class="game-delete" @click="editSport(BasketballGames, data._id)">
-                  <FileIcon class="icon-delete" />
-                </div>
-              </td>
-              <td>
-                <div class="game-delete" @click="deleteSport(data._id)">
-                  <DeleteIcon class="icon-delete" />
-                </div>
-              </td>
-            </tr>
-            <tr v-if="basketBallData.length === 0">
-              <td colspan="8">No games yet!</td>
-            </tr>
-          </tbody>
-        </table>
+        <div class="game-table">
+          <table>
+            <thead>
+              <tr>
+                <th>League</th>
+                <th>TeamA</th>
+                <th>TeamB</th>
+                <th>scoreA</th>
+                <th>scoreB</th>
+                <th>tip</th>
+                <th>Edit</th>
+                <th>Delete</th>
+              </tr>
+            </thead>
+            <tbody v-for="item in basketBallData">
+              <tr v-for="data in item" :key="data._id">
+                <td>
+                  <div class="game-tbl-img">
+                    <img :src="data.leagueIcon" alt="game-p" class="game-pi" />
+                    <span>{{ data.league }}</span>
+                  </div>
+                </td>
+                <td>
+                  <div class="game-tbl-img">
+                    <img :src="data.teamAIcon" alt="game-p" class="game-pi" />
+                    <span>{{ data.teamA }}</span>
+                  </div>
+                </td>
+                <td>
+                  <div class="game-tbl-img">
+                    <img :src="data.teamBIcon" alt="game-p" class="game-pi" />
+                    <span>{{ data.teamB }}</span>
+                  </div>
+                </td>
+                <td>
+                  <span>{{ data.teamAscore }}</span>
+                </td>
+                <td>
+                  <span>{{ data.teamBscore }}</span>
+                </td>
+                <td>
+                  <span>{{ data.tip }}</span>
+                </td>
+                <td>
+                  <div class="game-delete" @click="editSport(BasketballGames, data._id)">
+                    <FileIcon class="icon-delete" />
+                  </div>
+                </td>
+                <td>
+                  <div class="game-delete" @click="deleteSport(data._id)">
+                    <DeleteIcon class="icon-delete" />
+                  </div>
+                </td>
+              </tr>
+              <tr v-if="basketBallData.length === 0">
+                <td colspan="8">No games yet!</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
       </div>
       <div class="game-cf">
         <div class="main-header">
@@ -545,43 +559,45 @@
             <h1>Ads Posted</h1>
           </div>
         </div>
-        <table>
-          <thead>
-            <tr>
-              <th>Image</th>
-              <th>Type</th>
-              <th>Edit</th>
-              <th>Delete</th>
-            </tr>
-          </thead>
-          <tbody v-for="item in adData">
-            <tr v-for="data in item" :key="data._id">
-              <td>
-                <div class="game-tbl-img">
-                  <img :src="data.image" alt="game-p" class="game-pi pi-ads" />
-                </div>
-              </td>
-              <td>
-                <span>
-                  {{ data.title }}
-                </span>
-              </td>
-              <td>
-                <div class="game-delete" @click="editAds(AdsPage, data._id)">
-                  <FileIcon class="icon-delete" />
-                </div>
-              </td>
-              <td>
-                <div class="game-delete" @click="deleteAds(data._id)">
-                  <DeleteIcon class="icon-delete" />
-                </div>
-              </td>
-            </tr>
-            <tr v-if="adData.length === 0">
-              <td colspan="8">No Ads Posted!</td>
-            </tr>
-          </tbody>
-        </table>
+        <div class="game-table">
+          <table>
+            <thead>
+              <tr>
+                <th>Image</th>
+                <th>Type</th>
+                <th>Edit</th>
+                <th>Delete</th>
+              </tr>
+            </thead>
+            <tbody v-for="item in adData">
+              <tr v-for="data in item" :key="data._id">
+                <td>
+                  <div class="game-tbl-img">
+                    <img :src="data.image" alt="game-p" class="game-pi pi-ads" />
+                  </div>
+                </td>
+                <td>
+                  <span>
+                    {{ data.title }}
+                  </span>
+                </td>
+                <td>
+                  <div class="game-delete" @click="editAds(AdsPage, data._id)">
+                    <FileIcon class="icon-delete" />
+                  </div>
+                </td>
+                <td>
+                  <div class="game-delete" @click="deleteAds(data._id)">
+                    <DeleteIcon class="icon-delete" />
+                  </div>
+                </td>
+              </tr>
+              <tr v-if="adData.length === 0">
+                <td colspan="8">No Ads Posted!</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
       </div>
       <div class="game-cf">
         <div class="main-header">
@@ -589,35 +605,37 @@
             <h1>Time Posted</h1>
           </div>
         </div>
-        <table>
-          <thead>
-            <tr>
-              <th>Time</th>
-              <th>Edit</th>
-              <th>Delete</th>
-            </tr>
-          </thead>
-          <tbody v-for="item in TimeData">
-            <tr v-for="data in item" :key="data._id">
-              <td>
-                <span>{{ data.time }}</span>
-              </td>
-              <td>
-                <div class="game-delete" @click="editTime(TimePage, data._id)">
-                  <FileIcon class="icon-delete" />
-                </div>
-              </td>
-              <td>
-                <div class="game-delete" @click="deleteTime(data._id)">
-                  <DeleteIcon class="icon-delete" />
-                </div>
-              </td>
-            </tr>
-            <tr v-if="TimeData.length === 0">
-              <td colspan="8">No games yet!</td>
-            </tr>
-          </tbody>
-        </table>
+        <div class="game-table">
+          <table>
+            <thead>
+              <tr>
+                <th>Time</th>
+                <th>Edit</th>
+                <th>Delete</th>
+              </tr>
+            </thead>
+            <tbody v-for="item in TimeData">
+              <tr v-for="data in item" :key="data._id">
+                <td>
+                  <span>{{ data.time }}</span>
+                </td>
+                <td>
+                  <div class="game-delete" @click="editTime(TimePage, data._id)">
+                    <FileIcon class="icon-delete" />
+                  </div>
+                </td>
+                <td>
+                  <div class="game-delete" @click="deleteTime(data._id)">
+                    <DeleteIcon class="icon-delete" />
+                  </div>
+                </td>
+              </tr>
+              <tr v-if="TimeData.length === 0">
+                <td colspan="8">No games yet!</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
       </div>
       <div class="game-cf">
         <div class="main-header">
@@ -625,39 +643,41 @@
             <h1>Vip Result Posted</h1>
           </div>
         </div>
-        <table>
-          <thead>
-            <tr>
-              <th>Date&Day</th>
-              <th>Result</th>
-              <th>Edit</th>
-              <th>Delete</th>
-            </tr>
-          </thead>
-          <tbody v-for="item in vipResultData">
-            <tr v-for="data in item" :key="data._id">
-              <td>
-                <span>{{ data.gameName  }}</span>
-              </td>
+        <div class="game-table">
+          <table>
+            <thead>
+              <tr>
+                <th>Date&Day</th>
+                <th>Result</th>
+                <th>Edit</th>
+                <th>Delete</th>
+              </tr>
+            </thead>
+            <tbody v-for="item in vipResultData">
+              <tr v-for="data in item" :key="data._id">
                 <td>
-                <span>{{ data.gameScore }}</span>
-              </td>
-              <td>
-                <div class="game-delete" @click="editVipResult(VipEditPage, data._id)">
-                  <FileIcon class="icon-delete" />
-                </div>
-              </td>
-              <td>
-                <div class="game-delete" @click="deleteVipResult(data._id)">
-                  <DeleteIcon class="icon-delete" />
-                </div>
-              </td>
-            </tr>
-            <tr v-if="vipResultData.length === 0">
-              <td colspan="8">No Result yet!</td>
-            </tr>
-          </tbody>
-        </table>
+                  <span>{{ data.gameName }}</span>
+                </td>
+                <td>
+                  <span>{{ data.gameScore }}</span>
+                </td>
+                <td>
+                  <div class="game-delete" @click="editVipResult(VipEditPage, data._id)">
+                    <FileIcon class="icon-delete" />
+                  </div>
+                </td>
+                <td>
+                  <div class="game-delete" @click="deleteVipResult(data._id)">
+                    <DeleteIcon class="icon-delete" />
+                  </div>
+                </td>
+              </tr>
+              <tr v-if="vipResultData.length === 0">
+                <td colspan="8">No Result yet!</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
       </div>
     </div>
   </div>
@@ -695,7 +715,6 @@ import TennisGames from '../components/TennisGamesEdits.vue'
 import BasketballGames from '../components/BasketballEdit.vue'
 import VipEditPage from '../components/VipresultsComponentEdits.vue'
 import VipGames from './VipGamesEdits.vue'
-
 
 const username = ref(null)
 const currentDate = ref('')
@@ -829,7 +848,6 @@ const getVipResult = async () => {
   }
 }
 
-
 const showEdit = () => {
   isGameOpen.value = !isGameOpen.value
 }
@@ -845,7 +863,6 @@ const editGame = (game, id) => {
   activePage.value = game
   gameId.value = id
   showEdit()
-
 }
 
 const editSport = (sport, id) => {
@@ -853,23 +870,19 @@ const editSport = (sport, id) => {
   sportId.value = id
   showEdit()
   console.log(sport)
-
 }
 
 const editTime = (time, id) => {
   activePage.value = time
   TimeId.value = id
   showEdit()
-
 }
 
 const editVipResult = (vip, id) => {
   activePage.value = vip
   ScoreId.value = id
   showEdit()
-
 }
-
 
 const editAds = (ads, id) => {
   activePage.value = ads
@@ -952,8 +965,6 @@ async function updateGame(formData) {
   }
 }
 
-
-
 async function updateVipResult(formData) {
   try {
     const token = JSON.parse(localStorage.getItem('token'))
@@ -965,11 +976,15 @@ async function updateVipResult(formData) {
       formDatass.append('gameName', formDatass.dayDate)
     }
 
-    const response = await axios.put(`${SERVER_HOST}/score/updatescore/${ScoreId.value}`, formDatass, {
-      headers: {
-        Authorization: `Bearer ${token}`
+    const response = await axios.put(
+      `${SERVER_HOST}/score/updatescore/${ScoreId.value}`,
+      formDatass,
+      {
+        headers: {
+          Authorization: `Bearer ${token}`
+        }
       }
-    })
+    )
     // console.log(response.data)
     alert('Vip result updated')
     getVipGames()
@@ -997,10 +1012,6 @@ async function updateTime(formData) {
     console.error('Error updating game:', error)
   }
 }
-
-
-
-
 
 async function updateAds(formData) {
   try {

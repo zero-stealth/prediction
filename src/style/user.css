@@ -6,6 +6,31 @@
     flex-direction: column;
   }
 
+  .user-arrow-container {
+    padding: 10px;
+    display: flex;
+    cursor: pointer;
+    font-size: .8rem;
+    align-items: center;
+    justify-content: space-between;
+    color: var(--background-color);
+    background-color: var(--primary-color);
+  }
+
+  .user-arrow-container:hover {
+    background-color: var(--secondary-color);
+  }
+
+  .user-arrow {
+    height: 15px;
+    width: 15px;
+    transform: rotate(180deg);
+    fill: var(--background-color);
+  }
+  /* .hide-user {
+    display: none;
+  } */
+
   table {
     width: 100%;
   }
@@ -17,6 +42,7 @@
     border-radius: 12px;
     height: fit-content;
     flex-direction: column;
+    min-width: fit-content;
     box-shadow: rgba(100, 100, 111, 0.2) 0px 7px 29px 0px;
   }
 
@@ -306,10 +332,7 @@
 
 /* using it as global style for larger devices  */
 @media only screen and (min-width: 48em) {
-  .user-container {
-    padding: 20px 0;
-  }
- 
+
   .user-card {
     gap: 10px;
     height: 220px;

@@ -6,6 +6,12 @@
     flex-direction: column;
   }
 
+  .game-h-b {
+    width: 100%;
+    padding: 10px;
+    background-color: var(--light-color);
+  }
+
   .game-game-p {
     gap: 20px;
     display: flex;
@@ -58,12 +64,17 @@
   }
 
   .game-cf {
-    padding: 20px;
     height: 100%;
     width: 100%;
     overflow: hidden;
-    overflow-x: auto;
+    overflow-y: auto;
     background-color: var(--dark-primary-color);
+  }
+
+  .game-table {
+    overflow: hidden;
+    overflow-x: auto;
+
   }
 
   table {
@@ -232,8 +243,8 @@
   
   .game-cf {
     height: 100%;
+    padding: 20px;
     min-width: 100%;
-    overflow-x: auto;
     max-height: 650px;
   }
 

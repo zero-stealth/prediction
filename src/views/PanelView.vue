@@ -2,11 +2,17 @@
   <div class="panel-container">
     <div class="panel-bar" :class="[isOpen ? 'close-dash' : '']">
       <div class="panel-nav">
-        <div class="panel-profile">
-          <div class="panel-img" :style="{ backgroundImage: `url(${logo})` }"></div>
-          <div class="panel-profile-info">
-            <h1>SportyPredict</h1>
-            <span>Administrator</span>
+        <div>
+          <div class="pan-arrow-container " @click="goBack()">
+            <span>Go home</span>
+            <HomeIcon class="pan-arrow" />
+          </div>
+          <div class="panel-profile">
+            <div class="panel-img" :style="{ backgroundImage: `url(${logo})` }"></div>
+            <div class="panel-profile-info">
+              <h1>SportyPredict</h1>
+              <span>Administrator</span>
+            </div>
           </div>
         </div>
         <div class="panel-btn-container">
@@ -65,6 +71,8 @@ import AdsIcon from '../icons/adsPostIcon.vue'
 import VipIcon from '../icons/VipIcon.vue'
 import GameIcon from '../icons/gameIcon.vue'
 import DashIcon from '../icons/DashIcon.vue'
+import ArrowIcon from '../icons/ArrowIcon.vue'
+import HomeIcon from '../icons/homeIcon.vue'
 import logo from '../assets/logo.png'
 import { useRouter } from 'vue-router'
 
@@ -78,6 +86,14 @@ watchEffect(() => {
 
 const showMenu = () => {
   isOpen.value = !isOpen.value
+}
+
+// const goBack = () => {
+//   router.go(-1)
+// }
+
+const goBack = () => {
+  router.push({ name: 'Home' })
 }
 // pages
 import VipresultsComponent from '../components/VipresultsComponent.vue'
@@ -101,7 +117,6 @@ const logout = () => {
   localStorage.removeItem('token')
   router.push({ name: 'Home' })
 }
-
 </script>
 <style>
 @import '../style/panel.css';
