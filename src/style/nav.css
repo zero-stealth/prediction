@@ -28,6 +28,7 @@
 
   }
 
+
   .logo-spp {
     width: 140px;
   }
@@ -340,7 +341,7 @@
   }
 
   .icon-exit {
-    height: 28px;
+    height: 20px;
     fill: var(--background-color);
   }
 
@@ -468,6 +469,7 @@
     border-radius: 8px;
     flex-direction: column;
     border: 2px solid var(--light-color);
+
   }
 
   .language-btn {

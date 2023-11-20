@@ -120,14 +120,6 @@ function formatDate(inputDate) {
         </div>
         <div class="details-midd">
           {{ [time] }}
-
-          <div v-if="showScore" class="details-score">
-            <div class="score-p">
-              <span>{{ teamAscore }}</span>
-              <span>-</span>
-              <span>{{ teamBscore }}</span>
-            </div>
-          </div>
         </div>
         <div class="details-d">
           <img :src="teamBIcon" alt="" class="details-d-img" />

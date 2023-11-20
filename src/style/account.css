@@ -225,7 +225,7 @@
 /* using it as global style for larger devices  */
 @media only screen and (min-width: 48em) {
   .acc-m {
-    height: 500px;
+    max-height: 500px;
   }
 
   .acc-m td {

@@ -31,14 +31,12 @@
           </div>
           <div>
             <span>Date activation</span>
-            <h1>{{ formatDate(account.updatedAt) || 'not paid' }}</h1>
+            <h1>{{ formatDateTime(account.updatedAt) || 'not paid' }}</h1>
           </div>
           <div>
             <span>Date of deactivation</span>
             <h1>
-              {{
-                formatDate(new Date(new Date().getTime() - 31 * 24 * 60 * 60 * 1000))
-              }}
+              {{ formatDateTime(new Date(new Date().getTime() - 31 * 24 * 60 * 60 * 1000)) }}
             </h1>
           </div>
         </div>
@@ -136,7 +134,24 @@ const filteredAccountData = computed(() => {
   return accountInfo.value.filter((account) => account._id === props.id)
 })
 
-console.log(userData.value)
+function formatDateTime(date) {
+  if (!(date instanceof Date)) {
+    date = new Date(date);
+  }
+
+  const options = {
+    day: '2-digit',
+    month: '2-digit',
+    year: 'numeric',
+    hour: '2-digit',
+    minute: '2-digit',
+    second: '2-digit',
+    hour12: false, // Use 24-hour format
+  };
+
+  return date.toLocaleDateString(undefined, options);
+}
+
 
 function formatDate(date) {
   if (!(date instanceof Date)) {

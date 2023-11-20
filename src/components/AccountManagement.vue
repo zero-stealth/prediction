@@ -253,38 +253,44 @@ const selectCard = (cardId) => {
   }
 }
 
-const filterAccount = ref([])
+const filterAccount = ref([]);
 
 watchEffect(() => {
   filterAccount.value = computed(() => {
     if (selectedCard.value !== null) {
       switch (selectedCard.value) {
         case 1:
-          return accountData.value.filter((account) => account._id)
+          return accountData.value.filter((account) => account._id);
         case 2:
         case 3:
-          return accountData.value.filter((account) => account.paid)
+          return accountData.value.filter((account) => account.paid);
         case 4:
-          return accountData.value.filter((account) => !account.paid)
+          return accountData.value.filter((account) => !account.paid);
         case 5:
-          return accountData.value.filter((account) => account.isAdmin)
+          return accountData.value.filter((account) => account.isAdmin);
         default:
-          return accountData.value
+          return accountData.value;
       }
     }
 
-    if (searchAccount.value !== '') {
-      const searchValue = searchAccount.value.toLowerCase()
-      return accountData.value.filter(
-        (account) =>
-          account.email.toLowerCase().includes(searchValue) ||
-          account.email.toUpperCase().includes(searchValue)
-      )
-    }
+    return accountData.value;
+  }).value;
+});
 
-    return accountData.value
-  }).value
-})
+watchEffect(() => {
+  filterAccount.value = computed(() => {
+    if (searchAccount.value !== '') {
+      return accountData.value.filter((account) =>
+        account.email.includes(searchAccount.value) ||
+        account.email.toUpperCase().includes(searchAccount.value.toUpperCase())
+      );
+    } else {
+      return accountData.value;
+    }
+  }).value;
+});
+
+
 
 async function toggleStatus(account) {
   account.status = !account.status

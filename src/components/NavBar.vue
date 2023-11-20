@@ -67,6 +67,26 @@
         </button>
       </div>
       <div class="nav-btn-container" v-else>
+        <div class="language-dropdown">
+          <button @click="toggleDropdown" class="language-btn">
+            <img :src="getFlag(currentLanguage)" :alt="currentLanguage" class="language-img" />
+            <div class="language-inn">
+              {{ currentLanguage }}
+              <ArrowIcon class="Dropdown-arrowIcon" />
+            </div>
+          </button>
+          <div v-show="isDropdownOpen" class="dropdown-content">
+            <div
+              v-for="(flag, language) in flags"
+              :key="language"
+              @click="changeLanguage(language)"
+              class="content-dp"
+            >
+              <img :src="flag" alt="Language Flag" class="language-img" />
+              {{ language }}
+            </div>
+          </div>
+        </div>
         <button @click="goSignin()" class="nav-btn btn-r">
           <GroupIcon class="icon-nav r-icon" />
           {{ $t('nav.btn7') }}
