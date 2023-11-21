@@ -50,8 +50,8 @@
           <input v-model="date" type="text" class="form-g-input" placeholder="03-06-2023" id="date" />
         </div>
         <div class="form-group">
-          <label for="status">Game category:</label>
-          <select v-model="category" class="form-g-input" id="status">
+          <label for="category">Game category:</label>
+          <select v-model="category" class="form-g-input" id="category">
             <option disabled value="">Choose games category</option>
             <option value="Bet-of-the-day">Bet Of The day</option>
             <option value="Basketball">Basketball</option>
@@ -201,6 +201,7 @@ async function handleSubmit() {
       formData.append('teamAPosition', teamAPosition.value);
       formData.append('teamAscore', teamAscore.value);
       formData.append('teamB', teamB.value);
+      formData.append('category', category.value);
       formData.append('teamBIcon', teamBIcon.value);
       formData.append('formationB', formationB.value);
       formData.append('teamBPosition', teamBPosition.value);
@@ -221,7 +222,7 @@ async function handleSubmit() {
           },
         }
       );
-      alert('tip posted')
+      alert('game posted')
     } catch (err) {
       console.log(err);
     }

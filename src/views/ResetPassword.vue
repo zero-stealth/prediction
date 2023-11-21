@@ -49,19 +49,18 @@ const resetPassword = async () => {
         {
           password: password.value,
           token: token.value
-        },
+        }
       );
 
       router.push({ name: 'Login' });
+      alert('Password changed successfully');
     } catch (error) {
-      if (error.response && error.response.status === 401) {
-        errMsg.value = 'Invalid token or expired link';
-      } else {
-        errMsg.value = 'An error occurred while resetting the password';
-      }
+      errMsg.value = 'Invalid token or expired link';
+      alert(errMsg.value );
+
     }
   } else {
-    errMsg.value = 'Please enter a password';
+    alert(errMsg.value );
   }
 
   reset();
