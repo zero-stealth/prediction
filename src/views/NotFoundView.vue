@@ -1,6 +1,6 @@
 <template>
     <div class="container-not-found">
-      <img src="../assets/404.gif" alt="gif_ing" class="imag-gif" />
+      <img src="../assets/404.gif" alt="gif_image" class="imag-gif" />
       <button class="not-f-btn" @click="goHome">Go home</button>
     </div>
 </template>
