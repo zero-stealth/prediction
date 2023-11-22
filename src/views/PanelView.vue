@@ -71,7 +71,6 @@ import AdsIcon from '../icons/adsPostIcon.vue'
 import VipIcon from '../icons/VipIcon.vue'
 import GameIcon from '../icons/gameIcon.vue'
 import DashIcon from '../icons/DashIcon.vue'
-import ArrowIcon from '../icons/ArrowIcon.vue'
 import HomeIcon from '../icons/homeIcon.vue'
 import logo from '../assets/logo.png'
 import { useRouter } from 'vue-router'
@@ -116,6 +115,7 @@ const getButtonClass = (page) => {
 const logout = () => {
   localStorage.removeItem('token')
   router.push({ name: 'Home' })
+
 }
 </script>
 <style>

@@ -1,5 +1,5 @@
 <template>
-<div class="form-con">
+  <div class="form-con">
     <form @submit.prevent="handleSubmit" enctype="multipart/form-data" class="form-container">
       <div class="form-wrapper">
         <h1>Team A</h1>
@@ -85,10 +85,6 @@
           <label for="teamBscore">Score:</label>
           <input v-model="teamBscore" type="text" class="form-g-input" placeholder="5" id="teamBscore" />
         </div>
-        <div class="form-group">
-          <label for="description">Description</label>
-          <input v-model="description" type="text" class="form-g-input" placeholder="about game" id="description" />
-        </div>
         <button type="submit" class="btn-f-f f-mobile">Submit</button>
       </div>
     </form>
@@ -96,10 +92,9 @@
 </template>
 
 <script setup>
+const SERVER_HOST = import.meta.env.VITE_SERVER_HOST
 import { ref , watch } from 'vue';
 import axios from 'axios';
-const SERVER_HOST = import.meta.env.VITE_SERVER_HOST
-
 
 const teamA = ref('');
 const teamB = ref('');
@@ -119,27 +114,26 @@ const teamBscore = ref(0);
 const date = ref('');
 const tip = ref('');
 const url = ref(null);
-const description = ref('');
 
 watch(category, () => {
   switch (category.value) {
     case 'Bet-of-the-day':
-    url.value =  `${SERVER_HOST}predictions/create/bet/betOfTheDay`
+    url.value = `${SERVER_HOST}/predictions/create/bet/betOfTheDay`
       break;
       case 'Basketball':
-    url.value =  `${SERVER_HOST}sports/create/Basketball`
+    url.value = `${SERVER_HOST}/sports/create/Basketball`
       break;
       case 'Freetips':
-    url.value =  `${SERVER_HOST}predictions/create/tip/freeTip`
+    url.value = `${SERVER_HOST}/predictions/create/tip/freeTip`
       break;
       case 'Tennis':
-    url.value =  `${SERVER_HOST}sports/create/Tennis`
+    url.value = `${SERVER_HOST}/sports/create/Tennis`
       break;
       case 'vip':
-    url.value =  `${SERVER_HOST}predictions/create/vip`
+    url.value = `${SERVER_HOST}/predictions/create/vip`
       break;
       case 'Upcoming-games':
-    url.value =  `${SERVER_HOST}predictions/create/upcoming/upcoming`
+    url.value = `${SERVER_HOST}/predictions/create/upcoming/upcoming`
       break;
       case null || '':
       alert('No empty fields allowed');
@@ -188,7 +182,6 @@ async function handleSubmit() {
     time.value.trim() !== '' &&
     tip.value !== null &&
     league.value !== null &&
-    description.value !==  '',
     date.value !== null 
   ) {
     const user = JSON.parse(localStorage.getItem('token'));
@@ -201,7 +194,6 @@ async function handleSubmit() {
       formData.append('teamAPosition', teamAPosition.value);
       formData.append('teamAscore', teamAscore.value);
       formData.append('teamB', teamB.value);
-      formData.append('category', category.value);
       formData.append('teamBIcon', teamBIcon.value);
       formData.append('formationB', formationB.value);
       formData.append('teamBPosition', teamBPosition.value);

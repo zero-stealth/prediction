@@ -92,8 +92,8 @@
           <input v-model="date" type="text" class="form-g-input" placeholder="03-06-2023" id="date" />
         </div>
         <div class="form-group">
-          <label for="status">Match category:</label>
-          <select v-model="category" class="form-g-input" id="status">
+          <label for="category">Match category:</label>
+          <select v-model="category" class="form-g-input" id="category">
             <option disabled value="">Choose category</option>
             <option value="Double Chance">Double Chance</option>
             <option value="Over 2.5 Goals">Over 2.5 Goals</option>
@@ -263,7 +263,7 @@ async function handleSubmit() {
           }
         }
       )
-      alert('tip posted')
+      alert('prediction posted')
       // console.log(response.data)
     } catch (err) {
       console.log(err)
