@@ -81,6 +81,7 @@
 <script setup>
 import axios from 'axios'
 import { ref, watchEffect, onMounted, computed, watch } from 'vue'
+import { useToast } from 'vue-toastification'
 import DeleteIcon from '../icons/DeleteIcon.vue'
 import { useDrawerStore } from '../stores/drawer'
 import ProfileIcon from '../icons/profileIcon.vue'
@@ -88,10 +89,10 @@ import ArrowIcon from '../icons/ArrowIcon.vue'
 
 const accountInfo = ref([])
 const userData = ref([])
-const message = ref()
 const statusC = ref(null)
 const paidDate = ref(null)
 const futuresDate = ref(null)
+const toast = useToast()
 const endSub = ref(false)
 const drawerStore = useDrawerStore()
 const SERVER_HOST = import.meta.env.VITE_SERVER_HOST
@@ -126,7 +127,7 @@ const accountsData = async () => {
       status: account.paid
     }))
   } catch (err) {
-    console.error(err)
+    toast.error(err.response.data.error)
   }
 }
 
@@ -136,7 +137,7 @@ const filteredAccountData = computed(() => {
 
 function formatDateTime(date) {
   if (!(date instanceof Date)) {
-    date = new Date(date);
+    date = new Date(date)
   }
 
   const options = {
@@ -146,12 +147,11 @@ function formatDateTime(date) {
     hour: '2-digit',
     minute: '2-digit',
     second: '2-digit',
-    hour12: false, // Use 24-hour format
-  };
+    hour12: false // Use 24-hour format
+  }
 
-  return date.toLocaleDateString(undefined, options);
+  return date.toLocaleDateString(undefined, options)
 }
-
 
 function formatDate(date) {
   if (!(date instanceof Date)) {
@@ -193,12 +193,11 @@ const deleteAccount = async (id) => {
         Authorization: `Bearer ${token}`
       }
     })
-    message.value = response.data.message
+    toast.success(response.data.message)
     await accountsData()
   } catch (err) {
-    message.value = err.message
+    toast.error(err.response.data.error)
   }
-  alert(message.value)
 }
 
 async function toggleStatus(account) {
@@ -212,7 +211,8 @@ async function toggleStatus(account) {
     await accountsData()
     localStorage.setItem('paid', account.status.toString())
   } catch (err) {
-    console.log(err)
+    toast.error(err.response.data.error)
+
   }
 }
 

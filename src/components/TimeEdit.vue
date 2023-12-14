@@ -15,9 +15,11 @@
 <script setup>
 import { ref } from 'vue'
 const emit = defineEmits(['formSubmitTime'])
+import { useToast } from 'vue-toastification'
 
 
 const time = ref('');
+const toast = useToast()
 
 
 
@@ -29,7 +31,8 @@ function handleSubmit() {
 
     emit('formSubmitTime', formData)
   } catch (err) {
-    console.log(err)
+    toast.error(err.response.data.error)
+
   }
 }
 </script>

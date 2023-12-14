@@ -26,11 +26,12 @@
 <script setup>
 import { ref } from 'vue'
 import { defineEmits } from 'vue'
+import { useToast } from 'vue-toastification'
 
 const emit = defineEmits(['formVipResultSubmit'])
-
 const dayDate = ref('');
 const Result = ref('');
+const toast = useToast()
 
 function handleSubmit() {
   try {
@@ -41,7 +42,7 @@ function handleSubmit() {
 
     emit('formVipResultSubmit', formData)
   } catch (err) {
-    console.log(err)
+    toast.error(err.response.data.error)
   }
 }
 </script>

@@ -26,9 +26,11 @@
 <script setup>
 import { ref } from 'vue';
 import axios from 'axios';
+import { useToast } from 'vue-toastification'
 const SERVER_HOST = import.meta.env.VITE_SERVER_HOST;
 
 const dayDate = ref('');
+const toast = useToast()
 const Result = ref('');
 
 async function handleSubmit() {
@@ -48,13 +50,12 @@ async function handleSubmit() {
           },
         }
       );
-      alert('Vip result posted');
+      toast.success('Vip result posted')
     } catch (err) {
-      console.error(err);
-      alert('An error occurred while posting Vip result');
+      toast.error(err.response.data.error)
     }
   } else {
-    alert('No empty fields allowed');
+    toast.error('No empty fields allowed')
   }
 }
 </script>

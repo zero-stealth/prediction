@@ -170,6 +170,7 @@
 <script setup>
 import { ref } from 'vue'
 const emit = defineEmits(['formSubmit'])
+import { useToast } from 'vue-toastification'
 
 const teamA = ref('')
 const teamB = ref('')
@@ -183,6 +184,7 @@ const teamBPosition = ref('')
 const time = ref('')
 const status = ref('')
 const league = ref('')
+const toast = useToast()
 const teamAscore = ref('');
 const teamBscore = ref('');
 const date = ref('')
@@ -234,7 +236,7 @@ function handleSubmit() {
 
     emit('formSubmit', formData)
   } catch (err) {
-    console.log(err)
+    toast.error('No empty fields allowed')
   }
 }
 </script>

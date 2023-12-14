@@ -6,18 +6,18 @@
       <div class="main-h">
         <div class="main-header">
           <div class="header-info">
-            <h1>{{ $t('tennis.h1-1') }} {{ $t('bank.h1-5') }}</h1>
+            <h1>Tennis Betting Tips and Predictions</h1>
             <span>({{ currentDate }})</span>
           </div>
           <div class="header-btn">
             <button class="btn-h" :class="{ 'active-btn': offset > 0 }" @click="previousDay()">
-              {{ $t('bank.btn-1') }}
+              Previous
             </button>
             <button class="btn-h" :class="{ 'active-btn': offset === 0 }" @click="setOffset(0)">
-              {{ $t('bank.btn-2') }}
+              Today
             </button>
             <button class="btn-h" :class="{ 'active-btn': offset === 1 }" @click="setOffset(1)">
-              {{ $t('bank.btn-3') }}
+              Tomorrow
             </button>
           </div>
         </div>
@@ -48,7 +48,7 @@
         </template>
         <template v-else>
           <div class="home-freetip">
-            <h1>{{ $t('upcoming.h1-2') }}</h1>
+            <h1>No predictions yet! Check back later.</h1>
           </div>
         </template>
       </div>
@@ -57,9 +57,9 @@
       <vipads />
     </div>
     <div class="fp-class">
-      <h1>{{ $t('ten.h1') }}</h1>
-      <p>{{ $t('ten.p1') }}</p>
-      <p>{{ $t('ten.p2') }}</p>
+      <h1>Tennis Predictions.</h1>
+      <p>Get Today's Over 1.5 goals Predictions from our experts for free on this page.  Over 1.5 goals is a popular football (soccer) betting strategy one can use to make profit daily.</p>
+      <p>It's one of the simplest and more popular betting options for those looking to bet on the total number of goals in a game. We use various strategies to consider when making over 1.5 goals predictions. The predictions in this case are from Experts at <a href="https://sportypredict.com/" target="_blank">sportypredict.com</a> .</p>
     </div>
   </div>
   <PopUP v-if="showPop"> </PopUP>

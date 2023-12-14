@@ -3,26 +3,26 @@
     <div class="nav-important">
       <button class="nav-i-btn" @click="goVip">
         <VipIcon class="icon-nav nav-i" />
-        {{ $t('section10.vip1') }}
+        VIP PLAN
       </button>
       <button class="nav-i-btn" @click="openTelegram">
         <TelegramIcon class="icon-nav nav-i" />
-        {{ $t('section10.vip2') }}
+        JOIN TELEGRAM
       </button>
       <button class="nav-i-btn" @click="goPay">
         <PayIcon class="icon-nav nav-i" />
-        {{ $t('section10.vip3') }}
+        HOW TO PAY
       </button>
     </div>
     <div class="hero-s-contain">
       <div class="hero-info">
         <h1>
-          {{ $t('hero.span1') }} <span>{{ $t('hero.span2') }}</span> {{ $t('hero.span3') }}
-          <span>{{ $t('hero.span4') }}</span>
-          {{ $t('hero.span5') }}
-          <span>{{ $t('hero.span6') }}</span>
+          Enjoy our <span>daily top-notch</span> Sports
+          <span>Predictions</span>
+          and
+          <span>Tips</span>
         </h1>
-        <p>{{ $t('hero.bestBettingTips') }}</p>
+        <p>We provide the best betting tips and predictions for football, basketball, and tennis. Sit back, relax, and enjoy the benefits. We've taken care of all the hard work for you</p>
       </div>
       <div @click="goPay()" class="hero-img" :style="{ backgroundImage: `url(${ads})` }"></div>
     </div>

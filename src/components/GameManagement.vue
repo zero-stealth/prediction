@@ -8,13 +8,25 @@
             <h1>Bet of the day ({{ currentDate }})</h1>
           </div>
           <div class="header-btn">
-            <button class="btn-h game-h-b" :class="{ 'active-btn': offset > 0 }" @click="previousDay">
+            <button
+              class="btn-h game-h-b"
+              :class="{ 'active-btn': offset > 0 }"
+              @click="previousDay"
+            >
               previous
             </button>
-            <button class="btn-h game-h-b" :class="{ 'active-btn': offset === 0 }" @click="setOffset(0)">
+            <button
+              class="btn-h game-h-b"
+              :class="{ 'active-btn': offset === 0 }"
+              @click="setOffset(0)"
+            >
               Today
             </button>
-            <button class="btn-h game-h-b" :class="{ 'active-btn': offset === 1 }" @click="setOffset(1)">
+            <button
+              class="btn-h game-h-b"
+              :class="{ 'active-btn': offset === 1 }"
+              @click="setOffset(1)"
+            >
               Tomorrow
             </button>
           </div>
@@ -88,13 +100,25 @@
             <h1>Prediction Tips ({{ currentDate }})</h1>
           </div>
           <div class="header-btn">
-            <button class="btn-h game-h-b" :class="{ 'active-btn': offset > 0 }" @click="previousDay">
+            <button
+              class="btn-h game-h-b"
+              :class="{ 'active-btn': offset > 0 }"
+              @click="previousDay"
+            >
               previous
             </button>
-            <button class="btn-h game-h-b" :class="{ 'active-btn': offset === 0 }" @click="setOffset(0)">
+            <button
+              class="btn-h game-h-b"
+              :class="{ 'active-btn': offset === 0 }"
+              @click="setOffset(0)"
+            >
               Today
             </button>
-            <button class="btn-h game-h-b" :class="{ 'active-btn': offset === 1 }" @click="setOffset(1)">
+            <button
+              class="btn-h game-h-b"
+              :class="{ 'active-btn': offset === 1 }"
+              @click="setOffset(1)"
+            >
               Tomorrow
             </button>
           </div>
@@ -167,13 +191,25 @@
             <h1>Free tips ({{ currentDate }})</h1>
           </div>
           <div class="header-btn">
-            <button class="btn-h game-h-b" :class="{ 'active-btn': offset > 0 }" @click="previousDay">
+            <button
+              class="btn-h game-h-b"
+              :class="{ 'active-btn': offset > 0 }"
+              @click="previousDay"
+            >
               previous
             </button>
-            <button class="btn-h game-h-b" :class="{ 'active-btn': offset === 0 }" @click="setOffset(0)">
+            <button
+              class="btn-h game-h-b"
+              :class="{ 'active-btn': offset === 0 }"
+              @click="setOffset(0)"
+            >
               Today
             </button>
-            <button class="btn-h game-h-b" :class="{ 'active-btn': offset === 1 }" @click="setOffset(1)">
+            <button
+              class="btn-h game-h-b"
+              :class="{ 'active-btn': offset === 1 }"
+              @click="setOffset(1)"
+            >
               Tomorrow
             </button>
           </div>
@@ -246,13 +282,25 @@
             <h1>Upcoming games ({{ currentDate }})</h1>
           </div>
           <div class="header-btn">
-            <button class="btn-h game-h-b" :class="{ 'active-btn': offset > 0 }" @click="previousDay">
+            <button
+              class="btn-h game-h-b"
+              :class="{ 'active-btn': offset > 0 }"
+              @click="previousDay"
+            >
               previous
             </button>
-            <button class="btn-h game-h-b" :class="{ 'active-btn': offset === 0 }" @click="setOffset(0)">
+            <button
+              class="btn-h game-h-b"
+              :class="{ 'active-btn': offset === 0 }"
+              @click="setOffset(0)"
+            >
               Today
             </button>
-            <button class="btn-h game-h-b" :class="{ 'active-btn': offset === 1 }" @click="setOffset(1)">
+            <button
+              class="btn-h game-h-b"
+              :class="{ 'active-btn': offset === 1 }"
+              @click="setOffset(1)"
+            >
               Tomorrow
             </button>
           </div>
@@ -325,13 +373,25 @@
             <h1>Vip games ({{ currentDate }})</h1>
           </div>
           <div class="header-btn">
-            <button class="btn-h game-h-b" :class="{ 'active-btn': offset > 0 }" @click="previousDay">
+            <button
+              class="btn-h game-h-b"
+              :class="{ 'active-btn': offset > 0 }"
+              @click="previousDay"
+            >
               previous
             </button>
-            <button class="btn-h game-h-b" :class="{ 'active-btn': offset === 0 }" @click="setOffset(0)">
+            <button
+              class="btn-h game-h-b"
+              :class="{ 'active-btn': offset === 0 }"
+              @click="setOffset(0)"
+            >
               Today
             </button>
-            <button class="btn-h game-h-b" :class="{ 'active-btn': offset === 1 }" @click="setOffset(1)">
+            <button
+              class="btn-h game-h-b"
+              :class="{ 'active-btn': offset === 1 }"
+              @click="setOffset(1)"
+            >
               Tomorrow
             </button>
           </div>
@@ -403,13 +463,25 @@
             <h1>Tennis bets ({{ currentDate }})</h1>
           </div>
           <div class="header-btn">
-            <button class="btn-h game-h-b" :class="{ 'active-btn': offset > 0 }" @click="previousDay">
+            <button
+              class="btn-h game-h-b"
+              :class="{ 'active-btn': offset > 0 }"
+              @click="previousDay"
+            >
               previous
             </button>
-            <button class="btn-h game-h-b" :class="{ 'active-btn': offset === 0 }" @click="setOffset(0)">
+            <button
+              class="btn-h game-h-b"
+              :class="{ 'active-btn': offset === 0 }"
+              @click="setOffset(0)"
+            >
               Today
             </button>
-            <button class="btn-h game-h-b" :class="{ 'active-btn': offset === 1 }" @click="setOffset(1)">
+            <button
+              class="btn-h game-h-b"
+              :class="{ 'active-btn': offset === 1 }"
+              @click="setOffset(1)"
+            >
               Tomorrow
             </button>
           </div>
@@ -481,13 +553,25 @@
             <h1>Basketball bets ({{ currentDate }})</h1>
           </div>
           <div class="header-btn">
-            <button class="btn-h game-h-b" :class="{ 'active-btn': offset > 0 }" @click="previousDay">
+            <button
+              class="btn-h game-h-b"
+              :class="{ 'active-btn': offset > 0 }"
+              @click="previousDay"
+            >
               previous
             </button>
-            <button class="btn-h game-h-b" :class="{ 'active-btn': offset === 0 }" @click="setOffset(0)">
+            <button
+              class="btn-h game-h-b"
+              :class="{ 'active-btn': offset === 0 }"
+              @click="setOffset(0)"
+            >
               Today
             </button>
-            <button class="btn-h game-h-b" :class="{ 'active-btn': offset === 1 }" @click="setOffset(1)">
+            <button
+              class="btn-h game-h-b"
+              :class="{ 'active-btn': offset === 1 }"
+              @click="setOffset(1)"
+            >
               Tomorrow
             </button>
           </div>
@@ -705,6 +789,7 @@ import { ref, watchEffect, onMounted, watch, shallowRef } from 'vue'
 import ExitIcon from '../icons/ExitIcon.vue'
 import FileIcon from '../icons/FileIcon.vue'
 import AdsPage from '../components/AdsEdit.vue'
+import { useToast } from 'vue-toastification'
 import DeleteIcon from '../icons/DeleteIcon.vue'
 import BetOfTheDay from '../components/BetOfTheDayEdit.vue'
 import Predictionpicks from '../components/PredictionpicksEdits.vue'
@@ -719,11 +804,11 @@ import VipGames from './VipGamesEdits.vue'
 const username = ref(null)
 const currentDate = ref('')
 const offset = ref(0)
-const message = ref()
 const adData = ref([])
 const TimeData = ref([])
 const isGameOpen = ref(false)
 const cardData = ref([])
+const toast = useToast()
 const vipData = ref([])
 const predictionData = ref([])
 const freeTipData = ref([])
@@ -742,7 +827,7 @@ const getBetOfTheDay = async () => {
     // console.log(response.data)
     cardData.value = response.data.length > 0 ? [response.data] : []
   } catch (err) {
-    console.log(err)
+    toast.error(err.response.data.error)
   }
 }
 
@@ -754,7 +839,7 @@ const getVipGames = async () => {
     // console.log(response.data)
     vipData.value = response.data.length > 0 ? [response.data] : []
   } catch (err) {
-    console.log(err)
+    toast.error(err.response.data.error)
   }
 }
 
@@ -765,7 +850,7 @@ const getPredictions = async () => {
     // console.log(response.data)
     predictionData.value = response.data.length > 0 ? [response.data] : []
   } catch (err) {
-    console.log(err)
+    toast.error(err.response.data.error)
   }
 }
 
@@ -776,7 +861,7 @@ const getFreeTips = async () => {
     // console.log(response.data)
     freeTipData.value = response.data.length > 0 ? [response.data] : []
   } catch (err) {
-    console.log(err)
+    toast.error(err.response.data.error)
   }
 }
 
@@ -789,7 +874,7 @@ const getUpcoming = async () => {
     // console.log(response.data)
     upcomingData.value = response.data.length > 0 ? [response.data] : []
   } catch (err) {
-    console.log(err)
+    toast.error(err.response.data.error)
   }
 }
 
@@ -800,7 +885,7 @@ const getTennisBets = async () => {
     // console.log(response.data)
     tennisData.value = response.data.length > 0 ? [response.data] : []
   } catch (err) {
-    console.log(err)
+    toast.error(err.response.data.error)
   }
 }
 
@@ -811,7 +896,7 @@ const getBasketballBets = async () => {
     // console.log(response.data)
     basketBallData.value = response.data.length > 0 ? [response.data] : []
   } catch (err) {
-    console.log(err)
+    toast.error(err.response.data.error)
   }
 }
 
@@ -822,7 +907,7 @@ const getAds = async () => {
     // console.log(response.data)
     adData.value = response.data.length > 0 ? [response.data] : []
   } catch (err) {
-    console.log(err)
+    toast.error(err.response.data.error)
   }
 }
 
@@ -833,7 +918,7 @@ const getTime = async () => {
     // console.log(response.data)
     TimeData.value = response.data.length > 0 ? [response.data] : []
   } catch (err) {
-    console.log(err)
+    toast.error(err.response.data.error)
   }
 }
 
@@ -844,7 +929,7 @@ const getVipResult = async () => {
     // console.log(response.data)
     vipResultData.value = response.data.length > 0 ? [response.data] : []
   } catch (err) {
-    console.log(err)
+    toast.error(err.response.data.error)
   }
 }
 
@@ -869,7 +954,6 @@ const editSport = (sport, id) => {
   activePage.value = sport
   sportId.value = id
   showEdit()
-  console.log(sport)
 }
 
 const editTime = (time, id) => {
@@ -958,10 +1042,9 @@ async function updateGame(formData) {
         }
       }
     )
-    // console.log(response.data)
-    alert('game updated')
+    toast.success('game updated')
   } catch (error) {
-    console.error('Error updating game:', error)
+   toast.error(error.response.data.error)
   }
 }
 
@@ -985,11 +1068,11 @@ async function updateVipResult(formData) {
         }
       }
     )
-    // console.log(response.data)
-    alert('Vip result updated')
+    toast.success('Vip result updated')
     getVipGames()
   } catch (error) {
-    console.error('Error updating vip result:', error)
+    toast.error(err.response.data.message)
+
   }
 }
 
@@ -1006,10 +1089,9 @@ async function updateTime(formData) {
         Authorization: `Bearer ${token}`
       }
     })
-    // console.log(response.data)
-    alert('Time updated')
+    toast.success('Time updated')
   } catch (error) {
-    console.error('Error updating game:', error)
+   toast.error(error.response.data.error)
   }
 }
 
@@ -1027,9 +1109,9 @@ async function updateAds(formData) {
       }
     })
     // console.log(response.data)
-    alert('Ads updated')
+    toast.success('Ads updated')
   } catch (error) {
-    console.error('Error updating game:', error)
+   toast.error(error.response.data.error)
   }
 }
 
@@ -1098,10 +1180,9 @@ async function updateSport(formData) {
         Authorization: `Bearer ${token}`
       }
     })
-    // console.log(response.data)
-    alert('game updated')
+    toast.success('game updated')
   } catch (error) {
-    console.error('Error updating game:', error)
+   toast.error(error.response.data.error)
   }
 }
 
@@ -1153,16 +1234,16 @@ const deletePrediction = async (id) => {
     const response = await axios.delete(`${SERVER_HOST}/predictions/delete/${id}`, {
       headers: { Authorization: `Bearer ${token}` }
     })
-    message.value = response.data.message
+    toast.success(response.data.message)
     await getPredictions()
     await getFreeTips()
     await getUpcoming()
     await getBetOfTheDay()
     await getVipGames()
   } catch (err) {
-    message.value = 'deletion failed'
+  toast.error(err.response.data.error)
+
   }
-  alert('deleted')
 }
 
 const deleteSport = async (id) => {
@@ -1172,13 +1253,13 @@ const deleteSport = async (id) => {
     const response = await axios.delete(`${SERVER_HOST}/sports/delete/${id}`, {
       headers: { Authorization: `Bearer ${token}` }
     })
-    message.value = response.data.message
+    toast.success(response.data.message)
     await getTennisBets()
     await getBasketballBets()
   } catch (err) {
-    message.value = 'deletion failed'
+  toast.error(err.response.data.error)
+
   }
-  alert('deleted')
 }
 
 const deleteAds = async (id) => {
@@ -1188,12 +1269,12 @@ const deleteAds = async (id) => {
     const response = await axios.delete(`${SERVER_HOST}/ads/delete/${id}`, {
       headers: { Authorization: `Bearer ${token}` }
     })
-    message.value = response.data.message
+    toast.success(response.data.message)
     await getAds()
   } catch (err) {
-    message.value = 'deletion failed'
+  toast.error(err.response.data.error)
+
   }
-  alert('deleted')
 }
 
 const deleteTime = async (id) => {
@@ -1203,12 +1284,12 @@ const deleteTime = async (id) => {
     const response = await axios.delete(`${SERVER_HOST}/time/delete/${id}`, {
       headers: { Authorization: `Bearer ${token}` }
     })
-    message.value = response.data.message
+    toast.success(response.data.message)
     await getTime()
   } catch (err) {
-    message.value = 'deletion failed'
+  toast.error(err.response.data.error)
+
   }
-  alert('deleted')
 }
 
 const deleteVipResult = async (id) => {
@@ -1218,12 +1299,12 @@ const deleteVipResult = async (id) => {
     const response = await axios.delete(`${SERVER_HOST}/score/delete/${id}`, {
       headers: { Authorization: `Bearer ${token}` }
     })
-    message.value = response.data.message
+    toast.success(response.data.message)
     await getVipResult()
   } catch (err) {
-    message.value = 'deletion failed'
+  toast.error(err.response.data.error)
+
   }
-  alert('deleted')
 }
 
 const showscore = ref(localStorage.getItem('showscore') === 'true')

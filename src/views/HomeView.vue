@@ -5,18 +5,18 @@
     <div class="main-h">
       <div class="main-header">
         <div class="header-info">
-          <h1>{{ $t('bank.h1-3') }}</h1>
+          <h1>Football Betting Tips And Predictions</h1>
           <span>({{ currentDate }})</span>
         </div>
         <div class="header-btn">
           <button class="btn-h" :class="{ 'active-btn': offset > 0 }" @click="previousDay()">
-            {{ $t('bank.btn-1') }}
+            Previous
           </button>
           <button class="btn-h" :class="{ 'active-btn': offset === 0 }" @click="setOffset(0)">
-            {{ $t('bank.btn-2') }}
+            Today
           </button>
           <button class="btn-h" :class="{ 'active-btn': offset === 1 }" @click="setOffset(1)">
-            {{ $t('bank.btn-3') }}
+            Tomorrow
           </button>
         </div>
       </div>
@@ -46,7 +46,7 @@
       </template>
       <template v-else>
         <div class="home-freetip">
-          <h1>{{ $t('upcoming.h1-2') }}</h1>
+          <h1>No predictions yet! Check back later.</h1>
         </div>
       </template>
     </div>
@@ -56,7 +56,7 @@
     <div class="news-main">
       <div class="news-header">
         <div class="news-info">
-          <h1>{{ $t('news.h1-1') }}</h1>
+          <h1>Sport News</h1>
         </div>
         <div class="news-link">
           <Arrow class="news-icon icon-left" />

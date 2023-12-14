@@ -5,24 +5,18 @@
       <form @submit.prevent="login" class="l-form" v-if="!resetPage">
         <input type="email" class="input-l" placeholder="Email Address" v-model="email" />
         <input type="password" class="input-l" placeholder="Password" v-model="password" />
-        <p>{{ errMsg }}</p>
         <button class="btn-f" type="submit">Login</button>
-        <span @click="forgot">{{ $t('auth.span1') }}</span>
+        <span @click="forgot">Forgot password</span>
       </form>
       <form @submit.prevent="resetAuth" class="l-form" v-else>
         <input type="email" class="input-l" placeholder="Email Address" v-model="email" />
-        <p>{{ errMsg }}</p>
         <button class="btn-f" type="submit">Request reset</button>
       </form>
       <span>or</span>
       <div class="l-alternatives">
         <button class="alt-btn" @click="create">
-          {{ $t('auth.h1-1') }}
+          Create an account
         </button>
-        <!-- <div class="auth-google-contain" @click="loginInWithGoogle">
-          <googleIcon class="auth-google" />
-          <span> sign in with google</span>
-        </div> -->
       </div>
     </div>
   </div>
@@ -30,9 +24,9 @@
 <script setup>
 import { ref } from 'vue'
 import axios from 'axios'
-// import googleIcon from '../icons/googleIcon.vue'
 import { useRouter } from 'vue-router'
 import { useAuthStore } from '../stores/auth'
+import { useToast } from 'vue-toastification';
 
 
 const SERVER_HOST = import.meta.env.VITE_SERVER_HOST
@@ -40,7 +34,7 @@ const authStore = useAuthStore()
 const resetPage = ref(false)
 const router = useRouter()
 const title = ref('login')
-const errMsg = ref('')
+const toast = useToast();
 const email = ref('')
 const password = ref('')
 
@@ -73,17 +67,17 @@ const login = async () => {
         localStorage.setItem('token', JSON.stringify(token))
         localStorage.setItem('paid', isPaid)
         localStorage.setItem('id', id)
-
         router.push({ name: 'Vip' })
+        toast.success('Welcome back!');
       } else {
-        errMsg.value = 'Invalid email or password'
+        toast.error('Login failed');
       }
     } catch (error) {
-      errMsg.value = 'Login failed. Please check your email or password.'
+     toast.error(error.response.data.error)
+
     }
   } else {
-    errMsg.value = 'Please enter your email and password.'
-    alert(errMsg.value)
+    toast.error('Please enter your email and password.')
     reset()
   }
 }
@@ -100,23 +94,27 @@ const create = () => {
 const resetAuth = async () => {
   if (email.value !== '') {
     try {
-      await axios.post(`${SERVER_HOST}/auth/request-reset`, {
+      const response = await axios.post(`${SERVER_HOST}/auth/request-reset`, {
         email: email.value,
-      })
-      alert('Reset link sent to your email')
-      errMsg.value = 'Reset link sent to your email'
+      });
+
+      toast.success('Check your email for a link to reset your password');
+      if (response.data.message) {
+        toast.success(response.data.message);
+      }
     } catch (error) {
-      errMsg.value = 'Failed to send reset link'
+      if (error.response && error.response.status === 404) {
+        toast.error('Email not found');
+      } else {
+        toast.error('An error occurred while processing your request');
+        console.error(error);
+      }
     }
   } else {
-    errMsg.value = 'Write your email something'
-    reset()
+    toast.error('Please enter your email address');
+    reset(); 
   }
-}
-
-// const loginInWithGoogle = () => {
-  
-// }
+};
 
 </script>
 

@@ -5,18 +5,18 @@
     <div class="main-h">
       <div class="main-header">
         <div class="header-info">
-          <h1>{{ $t('bank.h1-3') }}</h1>
+          <h1>Football Betting Tips And Predictions</h1>
           <span>({{ currentDate }})</span>
         </div>
         <div class="header-btn">
           <button class="btn-h" :class="{ 'active-btn': offset > 0 }" @click="previousDay()">
-            {{ $t('bank.btn-1') }}
+            Previous
           </button>
           <button class="btn-h" :class="{ 'active-btn': offset === 0 }" @click="setOffset(0)">
-            {{ $t('bank.btn-2') }}
+            Today
           </button>
           <button class="btn-h" :class="{ 'active-btn': offset === 1 }" @click="setOffset(1)">
-            {{ $t('bank.btn-3') }}
+            Tomorrow
           </button>
         </div>
       </div>
@@ -46,7 +46,7 @@
       </template>
       <template v-else>
         <div class="home-freetip">
-          <h1>{{ $t('upcoming.h1-2') }}</h1>
+          <h1>No predictions yet! Check back later.</h1>
         </div>
       </template>
     </div>
@@ -55,9 +55,9 @@
       <vipads />
     </div>
     <div class="fp-class">
-      <h1>{{ $t('football.h1') }}</h1>
-      <p>{{ $t('football.p1') }}</p>
-      <p>{{ $t('football.p2') }}</p>
+      <h1>Football Predictions</h1>
+      <p>Football predictions involve trying to predict the outcome of football (soccer) matches. People make football predictions for various purposes, including betting, sports analysis, or simply for fun. Some common types of football predictions include: Match Outcome Predictions (1 for home team, 2 for away team, X for draw, Over/Under Predictions (i.e 0ver 1.5 goals under 2.5 goals), Both Teams to Score (BTTS) Predictions (i.e BTTS-Yes and BTTS-No), Double Chance Predictions (1X, 12,X2), and many more.</p>
+      <p>When making football predictions, it's essential to consider factors like team form, player injuries, head-to-head statistics, home-field advantage, weather conditions, and other relevant data. Keep in mind that predicting the outcome of sports events always carries an element of uncertainty, and responsible betting is crucial. Additionally, some people make predictions for fun or as part of sports analysis without involving betting.</p>
     </div>
   </div>
   <PopUP v-if="showPop"> </PopUP>

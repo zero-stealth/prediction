@@ -82,9 +82,9 @@ const reset = () => {
   <div class="contact-contain" id="foot">
     <div class="contact-wrapper">
       <div class="contact-d1">
-        <h1>{{ $t('footer.contactInformation') }}</h1>
+        <h1>Contact Information</h1>
         <p>
-          {{ $t('footer.queriesOrHelp') }}
+          For queries or help, please feel free to contact us on:
         </p>
         <div class="d1-contact">
           <div class="d1-icon" @click="openWhatsapp">
@@ -112,39 +112,35 @@ const reset = () => {
       <div class="contact-dp2">
         <div class="contact-d2">
           <div>
-            <h1>{{ $t('footer.quickLinks') }}</h1>
+            <h1>Quick Links</h1>
           </div>
           <div class="d2-con">
-            <RouterLink :to="{ name: 'Home' }" class="nav-link">{{ $t('footer.home') }}</RouterLink>
-            <RouterLink :to="{ name: 'Banker' }" class="nav-link">{{
-              $t('footer.betOfTheDay')
-            }}</RouterLink>
-            <RouterLink :to="{ name: 'Tennis' }" class="nav-link">{{ $t('footer.tennis') }}</RouterLink>
-            <RouterLink :to="{ name: 'Basketball' }" class="nav-link">{{
-              $t('footer.basketball')
-            }}</RouterLink>
+            <RouterLink :to="{ name: 'Home' }" class="nav-link">Home</RouterLink>
+            <RouterLink :to="{ name: 'Banker' }" class="nav-link">Bet of the day</RouterLink>
+            <RouterLink :to="{ name: 'Tennis' }" class="nav-link">Tennis</RouterLink>
+            <RouterLink :to="{ name: 'Basketball' }" class="nav-link">Basketball</RouterLink>
           </div>
         </div>
         <div class="contact-d2">
           <div>
-            <h1>{{ $t('footer.information') }}</h1>
+            <h1>Information</h1>
           </div>
           <div class="d2-con">
-            <RouterLink :to="{ name: 'Policy' }" class="nav-link">{{ $t('footer.policy') }}</RouterLink>
-            <!-- <RouterLink :to="{ name: 'Sitemap' }" class="nav-link">{{ $t('footer.Sitemap') }}</RouterLink> -->
-            <RouterLink :to="{ name: 'Disclaimer' }" class="nav-link">{{ $t('footer.disclaimer') }}</RouterLink>
-            <RouterLink :to="{ name: 'Refund' }" class="nav-link">{{ $t('footer.refundPolicy') }}</RouterLink>
-            <RouterLink :to="{ name: 'Terms' }" class="nav-link">{{ $t('footer.termsAndConditions') }}</RouterLink>
+            <RouterLink :to="{ name: 'Policy' }" class="nav-link">Policy</RouterLink>
+            <!-- <RouterLink :to="{ name: 'Sitemap' }" class="nav-link">Sitemap</RouterLink> -->
+            <RouterLink :to="{ name: 'Disclaimer' }" class="nav-link">Disclaimer</RouterLink>
+            <RouterLink :to="{ name: 'Refund' }" class="nav-link">Refund policy</RouterLink>
+            <RouterLink :to="{ name: 'Terms' }" class="nav-link">Terms & Conditions</RouterLink>
           </div>
         </div>
       </div>
       <div class="contact-d3">
-        <h1>{{ $t('footer.talkWithUs') }}</h1>
-        <p>{{ $t('footer.knowMore') }}</p>
+        <h1>Talk with us</h1>
+        <p>Know more about our service or consultancy in advance</p>
         <form @submit.prevent="book" class="book-f">
           <div class="book-con">
             <div class="con-s">
-              <input v-model="booknow" class="input-book" :placeholder="$t('footer.whatsappUs')" />
+              <input v-model="booknow" class="input-book" placeholder="Whatsapp us" />
             </div>
             <button type="submit" class="book-btn">
               <whatsappIcon class="book-icon" />
@@ -152,7 +148,7 @@ const reset = () => {
           </div>
         </form>
         <div class="book-social">
-          <!-- {{ $t('footer.socialMedia') }}: -->
+          <!-- Social Media: -->
           <facebookIcon class="bk-icon fb-icon" @click="openFacebook" />
           <twitterIcon class="bk-icon t-icon" @click="openTwitter" />
           <telegramIcon class="bk-icon" @click="openTelegram" />
@@ -163,7 +159,7 @@ const reset = () => {
       </div>
     </div>
     <div class="footer-x">
-      <span>© 2023 SportyPredict. {{ $t('footer.allRightsReserved') }}</span>
+      <span>© 2023 SportyPredict. All rights reserved</span>
     </div>
   </div>
 </template>

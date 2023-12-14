@@ -58,15 +58,15 @@ const getBackgroundImage = () => {
     <div class="nav-important">
       <button class="nav-i-btn" @click="goVip()">
         <VipIcon class="icon-nav nav-i" />
-        {{$t('section10.vip1')}}
+        Vip plan
       </button>
       <button class="nav-i-btn" @click="openTelegram()">
         <TelegramIcon class="icon-nav nav-i" />
-       {{$t('section10.vip2')}}
+        Join telegram
       </button>
       <button class="nav-i-btn" @click="goPay()">
         <PayIcon class="icon-nav nav-i" />
-        {{$t('section10.vip3')}}
+        How to pay
       </button>
     </div>
   </div>

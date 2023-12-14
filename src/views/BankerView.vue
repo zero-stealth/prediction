@@ -9,13 +9,13 @@
       </div>
       <div class="header-btn">
         <button class="btn-h" :class="{ 'active-btn': offset > 0 }" @click="previousDay()">
-          {{ $t('bank.btn-1') }}
+          Previous
         </button>
         <button class="btn-h" :class="{ 'active-btn': offset === 0 }" @click="setOffset(0)">
-          {{ $t('bank.btn-2') }}
+          Today
         </button>
         <button class="btn-h" :class="{ 'active-btn': offset === 1 }" @click="setOffset(1)">
-          {{ $t('bank.btn-3') }}
+          Tomorrow
         </button>
       </div>
     </div>
@@ -46,17 +46,17 @@
     </template>
     <template v-else>
       <div class="home-freetip">
-        <h1>{{ $t('upcoming.h1-2') }}</h1>
+        <h1>No predictions yet! Check back later.</h1>
       </div>
     </template>
     <div>
       <vipads />
     </div>
     <div class="fp-class">
-      <h1>{{ $t('BetF.h1') }}</h1>
-      <p>{{ $t('BetF.p1') }}</p>
-      <h1>{{ $t('BetF.h2') }}</h1>
-      <p>{{ $t('BetF.p2') }}</p>
+      <h1>Bet of the day</h1>
+      <p>On this page we offer Free Bet Of The Day in either football, basketball or tennis predictions from our experts, Once you get access to our Bet of The Day prediction you would get the opportunity to win huge. We ensure that our predictions are accurate and you can now get rid of all confusion. </p>
+      <h1>What does Bet of the day mean?}</h1>
+      <p>It's the safest tip, usually with low odds. They are perfect for accumulators/ rollovers.</p>
     </div>
   </div>
   <PopUP v-if="showPop" >

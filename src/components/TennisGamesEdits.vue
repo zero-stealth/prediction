@@ -173,6 +173,7 @@
 
 <script setup>
 import { ref } from 'vue'
+import { useToast } from 'vue-toastification'
 const emit = defineEmits(['formSubmitSport'])
 
 const teamA = ref('')
@@ -185,6 +186,7 @@ const formationB = ref('')
 const teamAPosition = ref('')
 const teamBPosition = ref('')
 const time = ref('')
+const toast = useToast()
 const status = ref('')
 const league = ref('')
 const teamAscore = ref('');
@@ -239,7 +241,8 @@ function handleSubmit() {
 
     emit('formSubmitSport', formData)
   } catch (err) {
-    console.log(err)
+    toast.error(err.response.data.error)
+
   }
 }
 </script>

@@ -170,6 +170,7 @@
 <script setup>
 import { ref } from 'vue'
 import axios from 'axios'
+import { useToast } from 'vue-toastification'
 const SERVER_HOST = import.meta.env.VITE_SERVER_HOST
 
 
@@ -184,6 +185,7 @@ const teamAPosition = ref('')
 const teamBPosition = ref('')
 const time = ref('')
 const status = ref('');
+const toast = useToast()
 const category = ref('')
 const league = ref('')
 const teamAscore = ref(0)
@@ -263,13 +265,14 @@ async function handleSubmit() {
           }
         }
       )
-      alert('prediction posted')
-      // console.log(response.data)
+      toast.success('prediction updated')
     } catch (err) {
-      console.log(err)
+      toast.error(err.response.data.error)
+
     }
   } else {
-    alert('No empty fields allowed')
+    toast.error('No empty fields allowed')
+
   }
 }
 </script>

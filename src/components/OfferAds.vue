@@ -1,9 +1,11 @@
 <script setup>
 import { ref, onMounted, computed } from 'vue'
 import ArrowIcon from '../icons/ArrowIcon.vue'
+import { useToast } from 'vue-toastification'
 import axios from 'axios'
 
 const adsData = ref([])
+const toast = useToast()
 const adsImage = ref(null)
 const description = ref(null)
 const offerAdsLink = ref(null)
@@ -15,7 +17,7 @@ const getAds = async () => {
     adsData.value = response.data
     showAds()
   } catch (err) {
-    console.error(err)
+    toast.error(err.response.data.error)
   }
 }
 
@@ -45,7 +47,7 @@ const openLink = () => {
 <template>
   <div class="offer-container">
     <div class="offerA-comp" @click="openLink()">
-      <h1>{{ $t('Offer.Oh1') }}</h1>
+      <h1>Exclusive offer</h1>
       <div class="offerA-inner">
         <img
           :src="adsImage"
@@ -53,13 +55,13 @@ const openLink = () => {
           class="bet-win"
           :class="[adsImage === null ? 'bet-win-skeleton' : '']"
         />
-        <h2>{{ $t('Offer.Oh2') }} {{ description }}</h2>
+        <h2>Bonus upto {{ description }}</h2>
         <div class="offerA-circle">
           <ArrowIcon class="offer-arrow" />
         </div>
       </div>
     </div>
-    <span>{{ $t('Offer.Ospan') }}</span>
+    <span>New customers only / Commercial content /  18+ age limit / T&C apply</span>
   </div>
 </template>
 

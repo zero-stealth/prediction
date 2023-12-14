@@ -46,13 +46,13 @@ const filteredNewsData = computed(() => {
       >
         <div class="details-h">
           <ArrowIcon class="details-arrow" @click="goBack" />
-          <h2>{{ $t('news.h1-1') }}</h2>
+          <h2>Sport News</h2>
           <span></span>
         </div>
       </div>
       <div class="news-details-i">
         <h1>{{ filteredNewsData[0].title }}</h1>
-        <a :href="filteredNewsData[0].url">{{ $t('news.a-1') }}</a>
+        <a :href="filteredNewsData[0].url">"more info</a>
       </div>
     </div>
   </div>

@@ -1,29 +1,22 @@
 <template>
-  <div
-    class="auth-container">
+  <div class="auth-container">
     <div class="form-l-wrapper">
       <h1>{{ title }}</h1>
       <form @submit.prevent="login" class="l-form" v-if="!resetPage">
         <input type="email" class="input-l" placeholder="Email Address" v-model="email" />
         <input type="password" class="input-l" placeholder="Password" v-model="password" />
-        <p>{{ errMsg }}</p>
-        <button class="btn-f" type="submit">{{$t('auth.btn-1')}}</button>
-        <span @click="forgot">{{$t('auth.span1')}}</span>
+        <button class="btn-f" type="submit">Log in</button>
+        <span @click="forgot">Forgot password</span>
       </form>
       <form @submit.prevent="resetAuth" class="l-form" v-else>
         <input type="email" class="input-l" placeholder="Email Address" v-model="email" />
-        <p>{{ errMsg }}</p>
         <button class="btn-f" type="submit">Request reset</button>
       </form>
       <span>or</span>
       <div class="l-alternatives">
         <button class="alt-btn" @click="create">
-          {{$t('auth.h1-1')}}
+          Create an account
         </button>
-        <!-- <div class="auth-google-contain" @click="loginInWithGoogle">
-          <googleIcon class="auth-google" />
-          <span> sign in with google</span>
-        </div> -->
       </div>
     </div>
   </div>
@@ -32,18 +25,18 @@
 <script setup>
 import { ref } from 'vue'
 import axios from 'axios'
-import { useAuthStore } from '../stores/auth'
 import { useRouter } from 'vue-router'
-// import googleIcon from '../icons/googleIcon.vue'
+import { useAuthStore } from '../stores/auth'
+import { useToast } from 'vue-toastification';
+
 const SERVER_HOST = import.meta.env.VITE_SERVER_HOST
 const authStore = useAuthStore()
 const resetPage = ref(false)
 const router = useRouter()
-const password = ref('')
 const title = ref('Login')
-const errMsg = ref('')
+const toast = useToast();
+const password = ref('')
 const email = ref('')
-
 
 const reset = () => {
   password.value = ''
@@ -56,32 +49,31 @@ const login = async () => {
       const response = await axios.post(`${SERVER_HOST}/auth/login`, {
         email: email.value,
         password: password.value
-      });
+      })
 
-      console.log(response.data); 
-      
-      const token = response.data.token;
+
+      const token = response.data.token
       if (token) {
-        const isAdmin = response.data.isAdmin;
-        const adminusername = response.data.username;
+        const isAdmin = response.data.isAdmin
+        const adminusername = response.data.username
         authStore.toggleToken(JSON.stringify(token))
-        localStorage.setItem('admin', isAdmin);
-        localStorage.setItem('username', adminusername);
-        localStorage.setItem('token', JSON.stringify(token));
+        localStorage.setItem('admin', isAdmin)
+        localStorage.setItem('username', adminusername)
+        localStorage.setItem('token', JSON.stringify(token))
 
-        router.push({ name: 'Panel' });
+        router.push({ name: 'Panel' })
+        toast.success('Welcome Admin')
       } else {
-        errMsg.value = 'Invalid email or password';
+        toast.error('Login failed')
       }
     } catch (error) {
-      console.error(error);
-      errMsg.value = 'Login failed. Please check your email and password.';
+      toast.error(error.response.data.error)
     }
   } else {
-    errMsg.value = 'Please enter your email and password.';
-    alert(errMsg.value);
+    toast.error('Please enter your email and password.')
+
   }
-};
+}
 const forgot = () => {
   title.value = 'Reset Your Account'
   resetPage.value = !resetPage.value
@@ -94,22 +86,19 @@ const create = () => {
 const resetAuth = async () => {
   if (email.value !== '') {
     try {
-      await axios.post(`${SERVER_HOST}/auth/request-reset`, {
-        email: email.value,
+      const response = await axios.post(`${SERVER_HOST}/auth/request-reset`, {
+        email: email.value
       })
-      alert('Reset link sent to your email')
+      toast.success(response.data.message)
     } catch (error) {
-      errMsg.value = 'Failed to send reset link'
+      toast.error(error.response.data.error)
     }
   } else {
-    errMsg.value = 'Write your email something'
+    toast.error('Write your email something')
     reset()
   }
 }
 
-// const loginInWithGoogle = () => {
-  
-// }
 </script>
 
 <style>

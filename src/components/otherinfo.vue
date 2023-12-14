@@ -1,12 +1,12 @@
 <template>
   <div class="abt-info-p">
     <div class="abt-p-in">
-      <h1>{{ $t('info.h1-1') }}</h1>
-      <p>{{ $t('info.p-1') }}</p>
+      <h1>Other Sports Predictions and Tips</h1>
+      <p>Are you looking for free betting tips and sports predictions to help you boost your betting profits? You’ve come to the right place. On this page, you will find betting tips for all other sports to help you find the picks you need.</p>
     </div>
     <div class="abt-p-in">
-      <h1>{{ $t('info.h1-2') }}</h1>
-      <p>{{ $t('info.p-2') }}</p>
+      <h1>What are Other xports Predictions?</h1>
+      <p>These are predictions from every other sport excluding football. This page shows all other sports predictions from our tipsters/experts. All our predictions contain the country or continent, the league, and bet tips. You can also check other betting markets by clicking on the betting market below the predictions.</p>
     </div>
   </div>
 </template>

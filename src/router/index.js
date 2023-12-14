@@ -57,14 +57,14 @@ const router = createRouter({
       path: '/reset-password/:token',
       name: 'reset',
       component: () => import('../views/ResetPassword.vue'),
-      props: true
+      
 
     },
     {
       path: '/verify-user/:token',
       name: 'verify',
       component: () => import('../views/VerifyView.vue'),
-      props: true
+      
 
     },
     {
@@ -75,7 +75,7 @@ const router = createRouter({
         title: "Tips - Free Sport Tips and daily free betting tips",
         description: "sportypredict offers accurate and free football predictions daily. Discover sure home win tips, bet of the day bets, tennis & basketball BTTS/GG predictions, and more. Start making informed bets with sportypredict.",
       },
-      props: true
+      
     },
     {
       path: '/basketball/:basketballName',
@@ -85,7 +85,7 @@ const router = createRouter({
         title: "Tips - Free Sport Tips and daily free betting tips",
         description: "sportypredict offers accurate and free football predictions daily. Discover sure home win tips, bet of the day bets, tennis & basketball BTTS/GG predictions, and more. Start making informed bets with sportypredict.",
       },
-      props: true
+      
     },
 
     {
@@ -96,7 +96,7 @@ const router = createRouter({
         title: "Tips - Free Sport Tips and daily free betting tips",
         description: "sportypredict offers accurate and free football predictions daily. Discover sure home win tips, bet of the day bets, tennis & basketball BTTS/GG predictions, and more. Start making informed bets with sportypredict.",
       },
-      props: true
+      
     },
    
     {
@@ -107,7 +107,7 @@ const router = createRouter({
         title: "Free Predictions and daily free betting tips",
         description: "sportypredict offers accurate and free football predictions daily.",
       },
-      props: true
+      
 
     },
     {
@@ -137,7 +137,7 @@ const router = createRouter({
         title: "News - Free sport news",
         description: "sportypredict offers spors news ",
       },
-      props: true,
+    
     },
     {
       path: '/bet-of-day',
@@ -156,7 +156,7 @@ const router = createRouter({
         title: route.params.betName,
         description: getDescription(route.params.betName),
       }),
-      props: true,
+    
     },
     {
       path: '/basketball',

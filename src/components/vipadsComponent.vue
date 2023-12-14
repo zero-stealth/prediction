@@ -2,18 +2,17 @@
   <div class="ads-v-main">
     <div class="ads-m1">
       <div class="ads-m1-h">
-        <h1>{{ $t('ads.h1-1') }}</h1>
+        <h1>Don't gamble, invest instead</h1>
       </div>
       <p>
-        {{ $t('ads.span-1') }} {{ $t('ads.span-2') }} from our sure {{ $t('ads.span-4') }}
-        {{ $t('ads.span-5') }}.
+        Make 100% profits from our sure VIP football subscription 
       </p>
-      <p>{{ $t('ads.p1-1') }}</p>
-      <button class="ads-m-btn" @click="goVip">{{ $t('ads.span-4') }}</button>
+      <p>Enjoy up to 96% accuracy on our premium plan</p>
+      <button class="ads-m-btn" @click="goVip">VIP subscription</button>
     </div>
     <div class="ads-m1 m1-ads">
       <p>
-        {{ $t('ads.p1-2') }}
+        VIP is recommended by our team of experts for those who consider betting as a way of gaining profit.
       </p>
       <div class="m1-ads-info">
         <h2>Vip results</h2>
@@ -35,19 +34,19 @@
             </div>
           </div>
         </div>
-        <h1>{{ $t('ads.h1-2') }}</h1>
+        <h1>Today's match starts:</h1>
         <div class="m1-ads-time">
           <div class="ads-time">
             <h1>{{ hours }}</h1>
-            <span>{{ $t('ads.span-6') }}</span>
+            <span>Hours</span>
           </div>
           <div class="ads-time">
             <h1>{{ minutes }}</h1>
-            <span>{{ $t('ads.span-7') }}</span>
+            <span>Minutes</span>
           </div>
           <div class="ads-time">
             <h1>{{ seconds }}</h1>
-            <span>{{ $t('ads.span-8') }}</span>
+            <span>Seconds</span>
           </div>
         </div>
       </div>
@@ -56,12 +55,12 @@
 </template>
 <script setup>
 import axios from 'axios'
+import { useRouter } from 'vue-router'
+import { ref, onMounted, watch } from 'vue'
 import PassedIcon from '../icons/PassedIcon.vue'
 import FailedIcon from '../icons/FailedIcon.vue'
 import EmptyIcon from '../icons/emptyIcon.vue'
 import CanceledIcon from '../icons/canceledIcon.vue'
-import { ref, onMounted, watch } from 'vue'
-import { useRouter } from 'vue-router'
 
 const router = useRouter()
 

@@ -4,15 +4,11 @@
       <router-link :to="{ name: 'Home' }" class="quick-link sos-link">
         <HomeIcon class="nav-home-icon" />
       </router-link>
-      <router-link :to="{ name: 'Football' }" class="quick-link">{{
-        $t('nav.link10')
-      }}</router-link>
-      <router-link :to="{ name: 'Basketball' }" class="quick-link">{{
-        $t('nav.link4')
-      }}</router-link>
-      <router-link :to="{ name: 'Tennis' }" class="quick-link">{{ $t('nav.link9') }}</router-link>
-      <router-link :to="{ name: 'Bonus' }" class="quick-link">{{ $t('nav.link2') }}</router-link>
-      <router-link :to="{ name: 'Banker' }" class="quick-link">{{ $t('nav.link3') }}</router-link>
+      <router-link :to="{ name: 'Football' }" class="quick-link">Football</router-link>
+      <router-link :to="{ name: 'Basketball' }" class="quick-link">Basketball</router-link>
+      <router-link :to="{ name: 'Tennis' }" class="quick-link">Tennis</router-link>
+      <router-link :to="{ name: 'Bonus' }" class="quick-link">Betting Offers</router-link>
+      <router-link :to="{ name: 'Banker' }" class="quick-link">Bet of the day</router-link>
       <span
         v-for="betItem in betItems"
         :key="betItem.name"
@@ -20,7 +16,7 @@
         :class="{ active: isBetActive(betItem.name) }"
         @click="goToC(betItem.name)"
       >
-        {{ $t(betItem.translationKey) }}
+        {{ betItem.translationKey }}
       </span>
     </div>
   </div>
@@ -36,11 +32,11 @@ const router = useRouter()
 const route = useRoute()
 
 const betItems = [
-  { name: 'Double Chance', translationKey: 'nav.span1' },
-  { name: 'Over 2.5 Goals', translationKey: 'nav.span2' },
-  { name: 'Over 1.5 Goals', translationKey: 'nav.span3' },
-  { name: 'Both Teams To Score', translationKey: 'nav.span4' },
-  { name: 'Under 2.5 Goals', translationKey: 'nav.span5' }
+  { name: 'Double Chance', translationKey: 'Double Chance' },
+  { name: 'Over 2.5 Goals', translationKey: 'Over 2.5 Goals' },
+  { name: 'Over 1.5 Goals', translationKey: 'Over 1.5 Goals' },
+  { name: 'Both Teams To Score', translationKey: 'Both Teams To Score' },
+  { name: 'Under 2.5 Goals', translationKey: 'Under 2.5 Goals' }
 ]
 
 const isBetActive = (betName) => {

@@ -3,7 +3,7 @@
     <div class="main-h">
       <div class="main-header home-up">
         <div class="header-info home-up">
-          <h1>{{ $t('upcoming.h1-1') }}</h1>
+          <h1>Upcoming Tips</h1>
         </div>
       </div>
       <template v-if="cardData.length > 0">
@@ -31,7 +31,7 @@
       </template>
         <template v-else>
           <div class="home-freetip">
-            <h1>{{ $t('upcoming.h1-2') }}</h1>
+            <h1>No predictions yet! Check back later.</h1>
           </div>
         </template>
       </div>
@@ -42,10 +42,12 @@
 import axios from 'axios';
 import { ref, onMounted } from 'vue';
 import { useRouter } from 'vue-router';
+import { useToast } from 'vue-toastification'
 import Card from '../components/CardComponent.vue';
 const SERVER_HOST = import.meta.env.VITE_SERVER_HOST
 
 
+const toast = useToast()
 const router = useRouter();
 const currentDate = ref('');
 
@@ -62,7 +64,7 @@ const getPrediction = async () => {
     );
     cardData.value = response.data;
   } catch (err) {
-    console.log(err);
+    toast.error(err.response.data.error)
   }
 };
 

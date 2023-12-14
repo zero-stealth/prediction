@@ -21,7 +21,7 @@
       </div>
 
       <span
-        >{{ $t('BonusInfo.span1') }}<b>{{ bonusData.code }}</b> {{ $t('BonusInfo.span2') }}</span
+        >The bonus code<b>{{ bonusData.code }}</b> is used during registration but the offer amount doesn't change</span
       >
     </div>
     <a :href="bonusData.link" class="btn-offer-spy">See the offer</a>

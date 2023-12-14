@@ -78,6 +78,7 @@
 <script setup>
 import { ref } from 'vue';
 import axios from 'axios';
+import { useToast } from 'vue-toastification'
 
 const teamA = ref('');
 const teamB = ref('');
@@ -89,6 +90,7 @@ const formationB = ref('l-d-w-d');
 const teamAPosition = ref('');
 const teamBPosition = ref('');
 const time = ref('');
+const toast = useToast()
 const league = ref('');
 const teamAscore = ref(0);
 const teamBscore = ref(0);
@@ -163,13 +165,13 @@ async function handleSubmit() {
           },
         }
       );
-      alert('tip posted')
-      // console.log(response.data);
+      toast.success('tip posted')
     } catch (err) {
-      console.log(err);
+      toast.error(err.response.data.error)
+
     }
   } else {
-    alert('No empty fields allowed');
+    toast.error('No empty fields allowed')
   }
 }
 </script>

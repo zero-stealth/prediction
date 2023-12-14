@@ -3,23 +3,23 @@
     <div class="vip-wrapper">
       <div class="vip-notpaid" :style="{ backgroundImage: `linear-gradient(to bottom, rgba(0, 0, 0, 0.4), #042f59), url(${banner})` }" v-if="!paid">
         <div v-if="!username" class="vip-p">
-          <h1>{{ $t('vip.h1-1') }} 🌵</h1>
+          <h1>Create an account 🌵</h1>
           <div class="vip-sp">
             <button class="vip-btn" @click="goSignin()">
               <ProfileIcon class="vip-pay-icon" />
-              {{ $t('auth.btn-2') }}
+              Sign up
             </button>
             <button class="vip-btn" @click="goLogin()">
-              {{ $t('auth.btn-1') }}
+              Log in
               <ProfileIcon class="vip-pay-icon" />
             </button>
           </div>
         </div>
         <div class="vip-p" v-else>
-          <h1> {{ $t('bank.h1-4') }}🌵</h1>
+          <h1> Your're currently on free plan 🌵</h1>
           <button class="vip-btn" @click="payPage()">
             <MoneyIcon class="vip-pay-icon" />
-            {{ $t('vip.btn1') }}
+            Pay now
           </button>
         </div>
       </div>
@@ -30,13 +30,13 @@
           </div>
           <div class="header-btn">
             <button class="btn-h" :class="{ 'active-btn': offset > 0 }" @click="previousDay()">
-            {{ $t('bank.btn-1') }}
+              Previous
             </button>
             <button class="btn-h" :class="{ 'active-btn': offset === 0 }" @click="setOffset(0)">
-            {{ $t('bank.btn-2') }}
+              Today
             </button>
             <button class="btn-h" :class="{ 'active-btn': offset === 1 }" @click="setOffset(1)">
-            {{ $t('bank.btn-3') }}
+              Tomorrow
             </button>
           </div>
         </div>
@@ -65,7 +65,7 @@
         </template>
         <template v-else-if="paid && username && cardData.length === 0">
           <div class="home-freetip">
-            <h1>{{ $t('upcoming.h1-2') }}</h1>
+            <h1>No predictions yet! Check back later.</h1>
           </div>
         </template>
       </div>
@@ -81,6 +81,7 @@ import MoneyIcon from '../icons/payIcon.vue'
 import Card from '../components/CardComponent.vue'
 import ProfileIcon from '../icons/profileIcon.vue'
 import { ref, onMounted, watch } from 'vue'
+
 const router = useRouter()
 const username = ref(null)
 const cardData = ref([])
@@ -90,13 +91,9 @@ const offset = ref(0)
 const SERVER_HOST = import.meta.env.VITE_SERVER_HOST
 
 
-console.log(paid.value)
 const updateAuthStatus = () => {
   const token = JSON.parse(localStorage.getItem('token'))
-
   username.value = localStorage.getItem('username')
-
-  // Clear cardData if token does not exist
   if (!token) {
     cardData.value = []
   }
@@ -161,10 +158,8 @@ const getAccountDetails = async () => {
         Authorization: `Bearer ${token}`
       }
     })
-    // console.log(response.data)
     username.value = response.data.username
     paid.value = response.data.paid
-    // console.log(response.data.paid)
     localStorage.setItem('paid', paid.value)
   } catch (err) {
     console.log(err)

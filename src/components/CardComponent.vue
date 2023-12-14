@@ -28,7 +28,7 @@
         </div>
         <span class="status-p">{{ status }}</span>
         <div v-if="!showScore">
-          <span>{{ $t('section11.vc') }} </span>
+          <span>vs</span>
         </div>
         <div v-if="shouldShowScore" class="card-score">
           <span class="card-s">{{ teamAscore }}</span>
