@@ -3,7 +3,7 @@
     <div class="form-l-wrapper">
       <h1>Reset Password</h1>
       <form @submit.prevent="resetPassword" class="l-form">
-        <input type="password" class="input-l" placeholder="Password" v-model="password" />
+        <input type="password" class="input-l" placeholder="New Password" v-model="password" />
         <input type="password" class="input-l" placeholder="Confirm password" v-model="confirmPassword" />
         <button class="btn-f" type="submit">Reset</button>
       </form>
@@ -37,7 +37,7 @@ const reset = () => {
 };
 
 onMounted(() => {
-  token.value = route.params.id;
+  token.value = route.params.token;
 });
 
 const resetPassword = async () => {
@@ -46,6 +46,7 @@ const resetPassword = async () => {
       const response = await axios.post(
         `${SERVER_HOST}/auth/change-password`,
         {
+          confirmPassword: confirmPassword.value,
           password: password.value,
           token: token.value
         }

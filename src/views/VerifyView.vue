@@ -28,6 +28,7 @@ const verifyAccount = async () => {
   try {
     const response = await axios.post(`${SERVER_HOST}/verify/${token.value}`, {})
     isVerified.value = true
+    
     toast.success('Account Verified')
     setTimeout(() => router.push({ name: 'Login' }), 2000)
   } catch (error) {

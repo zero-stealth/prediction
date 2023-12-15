@@ -4,7 +4,7 @@
   <div class="main-bet">
     <div class="main-header">
       <div class="header-info">
-        <h1> {{ $t('bank.h1-1') }}</h1>
+        <h1> Bet Of The Day Betting Tips And Predictions</h1>
         <span>({{ currentDate }})</span>
       </div>
       <div class="header-btn">

@@ -15,7 +15,7 @@
         default-language-code="en"
         default-page-language-code="en"
         :fetch-browser-language="true"
-        trigger="hover"
+        trigger="click"
 
         @select="handleGoogleTranslateSelect"
       />
@@ -101,7 +101,7 @@
         <RouterLink :to="{ name: 'Bonus' }" @click="showMenu()" class="mobile-link">
           Betting Offers
         </RouterLink>
-        <div @click="openTelegramX" class="mobile-link">Log in</div>
+        <div @click="openTelegramX" class="mobile-link">Telegram</div>
         <div @click="openBetOfDay" class="mobile-link">Bet of the day</div>
         <div class="drop-container">
           <div class="drop-down" @click="showDrp()">

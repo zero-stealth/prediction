@@ -11,13 +11,13 @@
           </div>
           <div class="header-btn">
             <button class="btn-h" :class="{ 'active-btn': offset > 0 }" @click="previousDay()">
-              {{ $t('bank.btn-1') }}
+              Previous
             </button>
             <button class="btn-h" :class="{ 'active-btn': offset === 0 }" @click="setOffset(0)">
-              {{ $t('bank.btn-2') }}
+              Today
             </button>
             <button class="btn-h" :class="{ 'active-btn': offset === 1 }" @click="setOffset(1)">
-              {{ $t('bank.btn-3') }}
+              Tomorrow
             </button>
           </div>
         </div>

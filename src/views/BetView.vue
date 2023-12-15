@@ -15,7 +15,7 @@
           Today
         </button>
         <button class="btn-h" :class="{ 'active-btn': offset === 1 }" @click="setOffset(1)">
-          Tomorrow {{ $t('bank.btn-3') }}
+          Tomorrow 
         </button>
       </div>
     </div>

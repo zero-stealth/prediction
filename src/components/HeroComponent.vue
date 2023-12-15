@@ -9,7 +9,7 @@
         <TelegramIcon class="icon-nav nav-i" />
         JOIN TELEGRAM
       </button>
-      <button class="nav-i-btn" @click="goPay">
+      <button class="nav-i-btn" @click="goPayNow">
         <PayIcon class="icon-nav nav-i" />
         HOW TO PAY
       </button>
@@ -73,6 +73,11 @@ const goPay = () => {
   } else {
     window.open(`${bannerLink.value}`, '_blank')
   }
+}
+
+const goPayNow = () => {
+  router.push({ name: 'Pay' })
+
 }
 
 const openTelegram = () => {
