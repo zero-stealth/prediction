@@ -1,7 +1,13 @@
 <template>
   <div class="vip-container">
     <div class="vip-wrapper">
-      <div class="vip-notpaid" :style="{ backgroundImage: `linear-gradient(to bottom, rgba(0, 0, 0, 0.4), #042f59), url(${banner})` }" v-if="!paid">
+      <div
+        class="vip-notpaid"
+        :style="{
+          backgroundImage: `linear-gradient(to bottom, rgba(0, 0, 0, 0.4), #042f59), url(${banner})`
+        }"
+        v-if="!paid"
+      >
         <div v-if="!username" class="vip-p">
           <h1>Create an account 🌵</h1>
           <div class="vip-sp">
@@ -16,7 +22,7 @@
           </div>
         </div>
         <div class="vip-p" v-else>
-          <h1> Your're currently on free plan 🌵</h1>
+          <h1>Your're currently on free plan 🌵</h1>
           <button class="vip-btn" @click="payPage()">
             <MoneyIcon class="vip-pay-icon" />
             Pay now
@@ -43,7 +49,7 @@
         <template v-if="paid && username && cardData.length > 0">
           <div class="main-h-card booom-h">
             <Card
-              v-for="(card) in cardData"
+              v-for="card in cardData"
               :key="card._id"
               :tip="card.tip"
               :status="card.status"
@@ -53,13 +59,13 @@
               :teamA="card.teamA"
               :teamB="card.teamB"
               :league="card.league"
+              showBtn="false"
               :showScore="card.showScore"
               :teamAscore="card.teamAscore"
               :teamBscore="card.teamBscore"
               :formationA="formatFormation(card.formationA)"
               :formationB="formatFormation(card.formationB)"
               :time="card.time"
-              @click="showCard(card._id)"
             />
           </div>
         </template>
@@ -90,7 +96,6 @@ const paid = ref(false)
 const offset = ref(0)
 const SERVER_HOST = import.meta.env.VITE_SERVER_HOST
 
-
 const updateAuthStatus = () => {
   const token = JSON.parse(localStorage.getItem('token'))
   username.value = localStorage.getItem('username')
@@ -102,31 +107,24 @@ const updateAuthStatus = () => {
 const payPage = () => {
   router.push({ name: 'Pay' })
   scrollToTop()
-
 }
 
 const goSignin = () => {
   router.push({ name: 'Signin' })
   scrollToTop()
-
 }
 
 const goLogin = () => {
   router.push({ name: 'Login' })
   scrollToTop()
-
 }
 
 const scrollToTop = () => {
   // Scroll to the top of the page
   window.scrollTo({
     top: 0,
-    behavior: "smooth", 
-  });
-}
-
-const showCard = (cardID) => {
-  router.push({ name: 'Tips', params: { id: cardID } })
+    behavior: 'smooth'
+  })
 }
 
 const getPrediction = async () => {
@@ -153,7 +151,7 @@ const getAccountDetails = async () => {
   const id = localStorage.getItem('id')
 
   try {
-    const response = await axios.get( `${SERVER_HOST}/auth/${id}`, {
+    const response = await axios.get(`${SERVER_HOST}/auth/${id}`, {
       headers: {
         Authorization: `Bearer ${token}`
       }
@@ -183,7 +181,6 @@ const previousDay = () => {
 //     updateCurrentDate()
 //   }
 // }
-
 
 const setOffset = (value) => {
   offset.value = value

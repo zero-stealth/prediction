@@ -35,6 +35,7 @@
               :teamA="card.teamA"
               :teamB="card.teamB"
               :league="card.league"
+              showBtn="false"
               :showScore="card.showScore"
               :teamAscore="card.teamAscore"
               :teamBscore="card.teamBscore"
@@ -69,7 +70,6 @@
 <script setup>
 import axios from 'axios'
 import { useRouter } from 'vue-router'
-import { useGameStore } from '../stores/game'
 import { useDrawerStore } from '../stores/drawer'
 import OfferAds from '../components/OfferAds.vue'
 import Card from '../components/CardComponent.vue'
@@ -82,7 +82,6 @@ import ButtonComponent from '../components/ButtonComponent.vue'
 
 
 const SERVER_HOST = import.meta.env.VITE_SERVER_HOST
-const gameStore = useGameStore()
 const currentDate = ref('')
 const router = useRouter()
 const cardData = ref([])
@@ -95,9 +94,8 @@ watchEffect(() => {
   showPop.value = drawerStore.popDrawer
 })
 
-const showCard = (gameA, gameB ,cardID) => {
+const showCard = (gameA, gameB ) => {
   router.push({ name: 'TennisTips', params: { tennisName: `${gameA} vs ${gameB} prediction`  } })
-  gameStore.updateGameId(cardID)
 }
 
 async function getPrediction() {

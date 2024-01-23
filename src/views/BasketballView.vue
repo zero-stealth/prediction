@@ -38,6 +38,7 @@
               :teamAscore="card.teamAscore"
               :teamBscore="card.teamBscore"
               :showScore="card.showScore"
+              showBtn="false"
               :formationA="formatFormation(card.formationA) ? card.formationA[0]?.split('-') : []"
               :formationB="formatFormation(card.formationB) ? card.formationB[0]?.split('-') : []"
               @click="showCard(card.teamA, card.teamB, card._id)"
@@ -57,8 +58,18 @@
     </div>
     <div class="fp-class">
       <h1>Basketball Predictions.</h1>
-      <p>Basketball predictions involve attempting to forecast the outcome of basketball games, such as those in the NBA (National Basketball Association) or other professional leagues, college basketball, or international competitions.</p>
-      <p>When making basketball predictions, we consider factors like team form, player injuries, head-to-head records, home-court advantage, and recent performance. Advanced statistical analysis, historical data, and expert opinions are often used to inform predictions. Keep in mind that sports predictions are subject to uncertainty, and outcomes can be influenced by unexpected events during the game.</p>
+      <p>
+        Basketball predictions involve attempting to forecast the outcome of basketball games, such
+        as those in the NBA (National Basketball Association) or other professional leagues, college
+        basketball, or international competitions.
+      </p>
+      <p>
+        When making basketball predictions, we consider factors like team form, player injuries,
+        head-to-head records, home-court advantage, and recent performance. Advanced statistical
+        analysis, historical data, and expert opinions are often used to inform predictions. Keep in
+        mind that sports predictions are subject to uncertainty, and outcomes can be influenced by
+        unexpected events during the game.
+      </p>
     </div>
   </div>
   <PopUP v-if="showPop"> </PopUP>
@@ -68,7 +79,6 @@
 <script setup>
 import axios from 'axios'
 import { useRouter } from 'vue-router'
-import { useGameStore } from '../stores/game'
 import { useDrawerStore } from '../stores/drawer'
 import OfferAds from '../components/OfferAds.vue'
 import Card from '../components/CardComponent.vue'
@@ -86,18 +96,18 @@ const router = useRouter()
 const cardData = ref([])
 
 const showPop = ref(null)
-const gameStore = useGameStore()
 const drawerStore = useDrawerStore()
 
 watchEffect(() => {
   showPop.value = drawerStore.popDrawer
 })
 
-const showCard = (gameA, gameB, cardID) => {
-  router.push({ name: 'BasketballTips', params: { basketballName: `${gameA} vs ${gameB} prediction` } })
-  gameStore.updateGameId(cardID)
+const showCard = (gameA, gameB) => {
+  router.push({
+    name: 'BasketballTips',
+    params: { basketballName: `${gameA} vs ${gameB} prediction` }
+  })
 }
-
 
 async function getPrediction() {
   const token = JSON.parse(localStorage.getItem('token'))
@@ -111,7 +121,7 @@ async function getPrediction() {
         }
       }
     )
-    cardData.value = response.data.length > 0 ? [response.data] : [] 
+    cardData.value = response.data.length > 0 ? [response.data] : []
   } catch (err) {
     console.log(err)
   }

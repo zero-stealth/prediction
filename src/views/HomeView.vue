@@ -40,7 +40,7 @@
             :formationA="formatFormation(card.formationA)"
             :formationB="formatFormation(card.formationB)"
             :time="card.time"
-            @click="showCard(card.teamA, card.teamB, card._id)"
+            @click="showCard(card.date, card.teamA, card.teamB)"
           />
         </div>
       </template>
@@ -97,7 +97,6 @@
 import axios from 'axios'
 import Arrow from '../icons/arrow.vue'
 import { useRouter } from 'vue-router'
-import { useGameStore } from '../stores/game'
 // import ScrollUp from '../components/ScrollUp.vue'
 import NewsCard from '../components/NewsCard.vue'
 import OfferAds from '../components/OfferAds.vue'
@@ -115,7 +114,6 @@ import { ref, watch, computed, watchEffect, onMounted } from 'vue'
 
 const SERVER_HOST = import.meta.env.VITE_SERVER_HOST
 const drawerStore = useDrawerStore()
-const gameStore = useGameStore()
 const showMoreButton = ref(true)
 const adsMiddleImage = ref(null)
 const adsMiddleLink = ref(null)
@@ -131,10 +129,17 @@ watchEffect(() => {
   showPop.value = drawerStore.popDrawer
 })
 
-const showCard = (gameA, gameB ,cardID) => {
-  router.push({ name: 'Tips', params: { gameName: `${gameA} vs ${gameB} prediction`  } })
-  gameStore.updateGameId(cardID)
-}
+const showCard = (date, teamA, teamB) => {
+  router.push({
+    name: 'Tips',
+    params: {
+      date: date,
+      teamA: teamA,
+      teamB: teamB,
+    },
+  });
+};
+
 
 const newsInfo = (newsTitle) => {
   router.push({ name: 'News', params: { title: newsTitle } })
