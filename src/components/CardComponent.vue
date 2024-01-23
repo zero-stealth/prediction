@@ -2,7 +2,12 @@
   <div class="card-container" :class="[league === '' ? 'card-skeleton ' : '']">
     <div class="card-title">
       <div class="title-m">
-        <img :src="leagueIcon" alt="league-img" class="league-c-img" :class="[leagueIcon === '' ? 'card-img-skeleton' : '']" />
+        <img
+          :src="leagueIcon"
+          alt="league-img"
+          class="league-c-img"
+          :class="[leagueIcon === '' ? 'card-img-skeleton' : '']"
+        />
         <span>{{ league }}</span>
       </div>
     </div>
@@ -58,8 +63,11 @@
       </div>
     </div>
     <div class="Tip">
-      <h4>Predictions and Preview:</h4>
-      <span>{{ tip }}</span>
+      <button class="btn-preview" v-if="!showBtn">Predictions and Preview</button>
+      <div v-else>
+        <h4>Tip:</h4>
+        <span>{{ tip }}</span>
+      </div>
     </div>
     <div class="card-footer">
       <div class="card-f" v-for="formationA in formationsA" :key="formationA">
@@ -147,6 +155,10 @@ const props = defineProps({
     required: false
   },
   showScore: {
+    type: Boolean,
+    default: false
+  },
+  showBtn: {
     type: Boolean,
     default: false
   }

@@ -1,5 +1,6 @@
 @media screen {
-  .card-container, .card-skeleton {
+  .card-container,
+  .card-skeleton {
     width: 100%;
     display: flex;
     padding: 10px;
@@ -21,7 +22,7 @@
     background-position: -315px 0, 0 0, 0px 190px, 50px 195px;
     animation: loading 2s infinite;
   }
-  
+
   @keyframes loading {
     to {
       background-position: 315px 0, 0 0, 0 190px, 50px 195px;
@@ -74,10 +75,25 @@
   }
 
   .Tip {
+    width:100%;
     display: flex;
     font-weight: 600;
     text-align: center;
+    align-items: center;
     flex-direction: column;
+  }
+
+  .btn-preview {
+    padding: 10px;
+    width:fit-content;
+    border-radius: 4px;
+    text-transform: capitalize;
+    color: var(--background-color);
+    background-color: var(--secondary-color);
+  }
+
+  .btn-preview:hover {
+    background-color: var(--primary-color);
   }
 
   .card-center {
@@ -86,8 +102,6 @@
     align-items: center;
     justify-content: space-around;
   }
-
-
 
   .card-a {
     gap: 10px;
@@ -134,13 +148,13 @@
     background-repeat: no-repeat;
   }
 
-  .card-img, .card-img-skeleton  {
+  .card-img,
+  .card-img-skeleton {
     height: 60px;
     object-fit: contain;
     object-position: center;
     /* background-color: var(--fade-color); */
   }
-
 
   .card-img-skeleton {
     cursor: progress;
