@@ -160,7 +160,7 @@ const props = defineProps({
   },
   showBtn: {
     type: Boolean,
-    default: false
+    default: true
   }
 })
 
