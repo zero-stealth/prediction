@@ -68,7 +68,7 @@ const router = createRouter({
 
     },
     {
-      path: '/game/:date/:teamA/vs/:teamB',
+      path: '/matchpreview/:date/:teamA/vs/:teamB',
       name: 'Tips',
       component: () => import('../views/TipsView.vue'),
       meta: {
