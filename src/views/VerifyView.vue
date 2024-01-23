@@ -26,21 +26,21 @@ const token = ref(route.params.token)
 
 const verifyAccount = async () => {
   try {
-    const response = await axios.post(`${SERVER_HOST}/verify/${token.value}`, {})
-    isVerified.value = true
-    
-    toast.success('Account Verified')
-    setTimeout(() => router.push({ name: 'Login' }), 2000)
+    const response = await axios.post(`${SERVER_HOST}/verify/${token.value}`)
+    isVerified.value = response.data.description
+    if(isVerified.value === true) {
+      toast.success('Account Verified')
+      setTimeout(() => router.push({ name: 'Login' }), 1000)
+    } else {
+      toast.error('Account Verified')
+      setTimeout(() => router.push({ name: 'Signin' }), 1000)
+    }
+
   } catch (error) {
-    handleVerificationError(error)
+    toast.error(error.response.data.message)
   }
 }
 
-const handleVerificationError = (error) => {
-  toast.success('Account not verified')
-  toast.success(error.response.data.message)
-  setTimeout(() => router.push({ name: 'Login' }), 2000)
-}
 
 onMounted(verifyAccount())
 </script>

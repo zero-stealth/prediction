@@ -68,7 +68,7 @@ const router = createRouter({
 
     },
     {
-      path: '/game/:gameName',
+      path: '/game/:date/:teamA/vs/:teamB',
       name: 'Tips',
       component: () => import('../views/TipsView.vue'),
       meta: {
@@ -78,7 +78,7 @@ const router = createRouter({
       
     },
     {
-      path: '/basketball/:basketballName',
+      path: '/basketball/:date/:teamA/vs/:teamB',
       name: 'BasketballTips',
       component: () => import('../views/BasketballTipsView.vue'),
       meta: {
@@ -89,7 +89,7 @@ const router = createRouter({
     },
 
     {
-      path: '/tennis/:tennisName',
+      path: '/tennis/:date/:teamA/vs/:teamB',
       name: 'TennisTips',
       component: () => import('../views/TennisTipsView.vue'),
       meta: {

@@ -39,7 +39,7 @@
           :formationA="formatFormation(card.formationA) ? card.formationA[0].split('-') : []"
           :formationB="formatFormation(card.formationB) ? card.formationB[0].split('-') : []"
           :time="card.time"
-          @click="showCard(card.teamA, card.teamB, card._id)"
+          @click="showCard(card.date, card.teamA, card.teamB)"
 
         />
       </div>
@@ -55,7 +55,7 @@
     <div class="fp-class">
       <h1>Bet of the day</h1>
       <p>On this page we offer Free Bet Of The Day in either football, basketball or tennis predictions from our experts, Once you get access to our Bet of The Day prediction you would get the opportunity to win huge. We ensure that our predictions are accurate and you can now get rid of all confusion. </p>
-      <h1>What does Bet of the day mean?}</h1>
+      <h1>What does Bet of the day mean?</h1>
       <p>It's the safest tip, usually with low odds. They are perfect for accumulators/ rollovers.</p>
     </div>
   </div>
@@ -73,7 +73,6 @@ import Card from '../components/CardComponent.vue'
 import { useDrawerStore } from "../stores/drawer"
 import { ref, watchEffect, onMounted } from 'vue'
 import OfferAds from '../components/OfferAds.vue'
-import { useGameStore } from '../stores/game'
 import { useRouter } from 'vue-router'
 import axios from 'axios'
 
@@ -82,7 +81,6 @@ const offset = ref(0)
 const cardData = ref([])
 const showPop = ref(null)
 const router = useRouter()
-const gameStore = useGameStore()
 const drawerStore = useDrawerStore();
 const SERVER_HOST = import.meta.env.VITE_SERVER_HOST
 
@@ -92,10 +90,20 @@ watchEffect(() => {
   showPop.value = drawerStore.popDrawer;
 })
 
-const showCard = (gameA, gameB ,cardID) => {
-  router.push({ name: 'Tips', params: { gameName: `${gameA} vs ${gameB} prediction`  } })
-  gameStore.updateGameId(cardID)
-}
+
+const showCard = (date, teamA, teamB) => {
+  router.push({
+    name: 'Tips',
+    params: {
+      date: date,
+      teamA: teamA,
+      teamB: teamB,
+    },
+  });
+};
+
+
+
 
 
 const predictions = async () => {

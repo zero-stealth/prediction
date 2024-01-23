@@ -79,7 +79,7 @@ if (password.value !== confirmPassword.value) {
       localStorage.setItem('token', token)
       localStorage.setItem('paid', isPaid)
       localStorage.setItem('id', id)
-      router.push({ name: 'Home' })
+      router.push({ name: 'Login' })
       toast.success('verification link sent to your email')
     } catch (error) {
       if (error.response && error.response.data && error.response.data.message) {

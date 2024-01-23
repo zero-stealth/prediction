@@ -58,7 +58,7 @@
       </div>
     </div>
     <div class="Tip">
-      <h4>Tip:</h4>
+      <h4>Predictions and Preview:</h4>
       <span>{{ tip }}</span>
     </div>
     <div class="card-footer">

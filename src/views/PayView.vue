@@ -53,7 +53,7 @@ const showPayment = () => {
         reveal.value = 'Cameroon'
         break
       case 'GH':
-        reveal.value = 'ghana'
+        reveal.value = 'Ghana'
         break
       case 'ZA':
         reveal.value = 'southA'
@@ -310,7 +310,7 @@ const filteredCountries = computed(() => {
           </div>
         </div>
       </div>
-      <div class="pay-info" v-else-if="reveal === 'ghana'">
+      <div class="pay-info" v-else-if="reveal === 'Ghana'">
         <div class="info-pay-h">
           <h1>
             Duration of <span>30 days</span> <br />
@@ -328,7 +328,7 @@ const filteredCountries = computed(() => {
           <h1>Available Payment Methods for your country: Ghana:</h1>
         </div>
         <div class="method-pay">
-          <h1>{{ $t('pay.spanh7') }}</h1>
+          <h1>Pay </h1>
           <ul>
             <li>Name <span>David Agyevi</span></li>
             <li>Mobile Number : <span>0594577146</span></li>

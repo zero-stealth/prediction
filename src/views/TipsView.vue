@@ -1,10 +1,9 @@
 <script setup>
 import axios from 'axios'
-import { useRouter } from 'vue-router'
+import { useRoute ,useRouter} from 'vue-router'
 import banner from '@/assets/banner.jpeg'
 import ArrowIcon from '@/icons/ArrowIcon.vue'
 import { onMounted, ref, shallowRef } from 'vue'
-import { useGameStore } from '../stores/game'
 
 // pages
 import formationSection from '../components/tips/formationSection.vue'
@@ -13,16 +12,16 @@ import standingsSection from '../components/tips/standingsSection.vue'
 import tipsSection from '../components/tips/tipsSection.vue'
 
 const SERVER_HOST = import.meta.env.VITE_SERVER_HOST
-const gameStore = useGameStore()
 const router = useRouter()
+const route = useRoute()
 
 const teamA = ref('')
 const teamB = ref('')
+const league = ref('')
 const teamAscore = ref('')
 const teamBscore = ref('')
 const teamAIcon = ref('')
 const teamBIcon = ref('')
-const league = ref('')
 const leagueIcon = ref('')
 const teamAPosition = ref('')
 const teamBPosition = ref('')
@@ -41,7 +40,9 @@ const getButtonClass = (page) => {
 }
 
 async function getTip() {
-  const response = await axios.get(`${SERVER_HOST}/predictions/single/${gameStore.gameId}`)
+  const response = await axios.get(
+    `${SERVER_HOST}/predictions/single/${route.params.date}/${route.params.teamA}/${route.params.teamB}`
+  )
   teamA.value = response.data.teamA
   teamB.value = response.data.teamB
   showScore.value = response.data.showScore
@@ -128,17 +129,17 @@ function formatDate(inputDate) {
     </div>
     <div class="nav-tips">
       <button @click="setActivePage(overviewSection)" :class="getButtonClass(overviewSection)">
-        <span>Summary</span>
+        <span>Preview</span>
       </button>
-      <button @click="setActivePage(standingsSection)" :class="getButtonClass(standingsSection)">
+      <button @click="setActivePage(tipsSection)" :class="getButtonClass(tipsSection)">
+        <span>Prediction</span>
+      </button> <button @click="setActivePage(standingsSection)" :class="getButtonClass(standingsSection)">
         <span>Standing</span>
       </button>
       <button @click="setActivePage(formationSection)" :class="getButtonClass(formationSection)">
         <span>H2H</span>
       </button>
-      <button @click="setActivePage(tipsSection)" :class="getButtonClass(tipsSection)">
-        <span>Tips</span>
-      </button>
+
     </div>
     <div class="tips-main">
       <component :is="activePage" />

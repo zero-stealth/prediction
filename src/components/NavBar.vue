@@ -11,15 +11,14 @@
         />
       </a>
       <GoogleTranslateSelect
-      class="mb-locale"
+        class="mb-locale"
         default-language-code="en"
         default-page-language-code="en"
-        :fetch-browser-language="true"
+        :fetch-browser-language="false"
         trigger="click"
-
         @select="handleGoogleTranslateSelect"
       />
-      <a href="https://sportypredict.com/" class=" mb-locale">
+      <a href="https://sportypredict.com/" class="mb-locale">
         <img
           src="@/assets/logo-spp.png"
           alt="logo"
@@ -28,6 +27,7 @@
           draggable="false"
         />
       </a>
+    
       <div class="nav-link-container">
         <RouterLink :to="{ name: 'Home' }" class="nav-link">Home</RouterLink>
         <RouterLink :to="{ name: 'Bonus' }" class="nav-link">Betting Offers</RouterLink>
@@ -36,7 +36,7 @@
         <RouterLink :to="{ name: 'Basketball' }" class="nav-link">Basketball</RouterLink>
         <RouterLink :to="{ name: 'Tennis' }" class="nav-link">Tennis</RouterLink>
         <div class="drop-container">
-          <div class="drop-down" @click="showDrop()">
+          <div class="drop-down" @click="showDrop">
             <span>Extra Predictions</span>
             <ArrowIcon class="drop-icon" />
           </div>
@@ -50,19 +50,26 @@
         </div>
       </div>
       <div class="nav-btn-container cs-btn" v-if="authStore.token !== null">
-        <button @click="logOut" class="nav-btn btn-l btn-logout">
+        <GoogleTranslateSelect
+          default-language-code="en"
+          default-page-language-code="en"
+          :fetch-browser-language="false"
+          trigger="click"
+          @select="handleGoogleTranslateSelect"
+        /> <button @click="logOut" class="nav-btn btn-l btn-logout">
           <LogoutIcon class="icon-nav l-icon" />
           Logout
         </button>
-        <GoogleTranslateSelect
-        default-language-code="en"
-        default-page-language-code="en"
-        :fetch-browser-language="true"
-        trigger="hover"
-        @select="handleGoogleTranslateSelect"
-      />
+   
       </div>
       <div class="nav-btn-container" v-else>
+        <GoogleTranslateSelect
+          default-language-code="en"
+          default-page-language-code="en"
+          :fetch-browser-language="false"
+          trigger="click"
+          @select="handleGoogleTranslateSelect"
+        />
         <button @click="goSignin()" class="nav-btn btn-r">
           <GroupIcon class="icon-nav r-icon" />
           Sign up
@@ -71,13 +78,6 @@
           <ProfileIcon class="icon-nav l-icon" />
           Login
         </button>
-        <GoogleTranslateSelect
-        default-language-code="en"
-        default-page-language-code="en"
-        :fetch-browser-language="true"
-        trigger="hover"
-        @select="handleGoogleTranslateSelect"
-      />
       </div>
       <div class="nav-menu" @click="showMenu()" v-if="!isOpen">
         <MobileMenuIcon class="menu-icon-nav" />
@@ -148,7 +148,7 @@
 </template>
 
 <script setup>
-import GoogleTranslateSelect from '@google-translate-select/vue3';
+import GoogleTranslateSelect from '@google-translate-select/vue3'
 import MobileMenuIcon from '../icons/mobileMenuIcon.vue'
 import { RouterLink, useRouter } from 'vue-router'
 import ProfileIcon from '../icons/profileIcon.vue'
@@ -171,7 +171,6 @@ const router = useRouter()
 const isDrpOpen = ref(false)
 const isDropOpen = ref(false)
 const authStore = useAuthStore()
-
 
 const handleGoogleTranslateSelect = () => {
   // console.log(language)
@@ -207,7 +206,6 @@ const openWhatsapp = () => {
     '_blank'
   )
 }
-
 
 const showMenu = () => {
   isOpen.value = !isOpen.value
