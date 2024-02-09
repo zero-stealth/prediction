@@ -1,7 +1,25 @@
 @media screen {
-  .details-container {
-    color: var(--background-color);
+  .detail-apx{
+    gap: 10px;
+    display: flex;
+    padding: 10px;
+    flex-direction: column;
     background-color: var(--primary-color);
+    
+  }
+
+  .apx-byt {
+    flex: 50%;
+
+  }
+
+  .apx-pin {
+    flex: 50%;
+  }
+
+  .details-container {
+    flex: 50%;
+    color: var(--background-color);
   }
 
   .news-pin {
@@ -23,7 +41,7 @@
     justify-content: center;
     flex-direction: column;
     color: var(--background-color);
-    background-color: var(--secondary-color);
+    background-color: var(--light-primary-color);
   }
 
   .details-header-title {
@@ -48,6 +66,7 @@
     border-right: 0;
     background-color: var(--primary-color);
   }
+
 
   .pulse {
     margin: 10px;
@@ -234,9 +253,10 @@
   }
 
   .description-info p {
-    color: var(--primary-color);
-    text-align: justify;
     font-size: .8rem;
+    text-align: justify;
+    color: var(--primary-color);
+    background-color: var(--background-color);
 
   }
 
@@ -246,6 +266,7 @@
     display: flex;
     align-items: center;
     justify-content: center;
+    background-color: var(--background-color);
   }
 
   .description-nop p {
@@ -255,8 +276,10 @@
 
 /* using it as global style for larger devices  */
 @media only screen and (min-width: 48em) {
+  .detail-apx{
+    flex-direction: row;
+  }
   .details-container {
-    height: 100%;
     padding-bottom: 0;
   }
 
@@ -264,10 +287,7 @@
     font-size: 1rem;
   }
 
-  .details-header-title h1 {
-    font-size: 1.2rem;
 
-  }
   .description-info p {
     font-size: .9rem;
 

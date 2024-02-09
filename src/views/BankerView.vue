@@ -39,9 +39,15 @@
           :formationA="formatFormation(card.formationA) ? card.formationA[0].split('-') : []"
           :formationB="formatFormation(card.formationB) ? card.formationB[0].split('-') : []"
           :time="card.time"
-          @click="showCard(card.date, card.teamA, card.teamB)"
-
-        />
+        >
+        <template v-slot:button>
+              <div class="Tip">
+                <button class="btn-preview" @click="showCard(card.date, card.teamA, card.teamB)">
+                  Predictions and Preview >>
+                </button>
+              </div>
+            </template>
+          </Card>
       </div>
     </template>
     <template v-else>

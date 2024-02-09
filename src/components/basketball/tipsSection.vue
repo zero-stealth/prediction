@@ -9,7 +9,7 @@ const tip = ref('')
 
 
 async function getTip() {
-  const response = await axios.get(`${SERVER_HOST}/sports/prediction/${route.params.date}/${route.params.teamA}/${route.params.teamB}`)
+  const response = await axios.get(`${SERVER_HOST}/sports/single/${route.params.date}/${route.params.teamA}/${route.params.teamB}`)
   tip.value = response.data.tip
 }
 

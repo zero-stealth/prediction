@@ -41,9 +41,16 @@
               showBtn="false"
               :formationA="formatFormation(card.formationA) ? card.formationA[0]?.split('-') : []"
               :formationB="formatFormation(card.formationB) ? card.formationB[0]?.split('-') : []"
-              @click="showCard(card.teamA, card.teamB, card._id)"
               :time="card.time"
-            />
+            >
+            <template v-slot:button>
+              <div class="Tip">
+                <button class="btn-preview" @click="showCard(card.date, card.teamA, card.teamB)">
+                  Predictions and Preview >>
+                </button>
+              </div>
+            </template>
+          </Card>
           </div>
         </template>
         <template v-else>
@@ -102,12 +109,17 @@ watchEffect(() => {
   showPop.value = drawerStore.popDrawer
 })
 
-const showCard = (gameA, gameB) => {
+
+const showCard = (date, teamA, teamB) => {
   router.push({
     name: 'BasketballTips',
-    params: { basketballName: `${gameA} vs ${gameB} prediction` }
-  })
-}
+    params: {
+      date: date,
+      teamA: teamA,
+      teamB: teamB,
+    },
+  });
+};
 
 async function getPrediction() {
   const token = JSON.parse(localStorage.getItem('token'))

@@ -12,7 +12,7 @@ const teamAIcon = ref('')
 const teamBIcon = ref('')
 
 async function getTip() {
-  const response = await axios.get(`${SERVER_HOST}/sports/prediction/${route.params.date}/${route.params.teamA}/${route.params.teamB}`)
+  const response = await axios.get(`${SERVER_HOST}/sports/single/${route.params.date}/${route.params.teamA}/${route.params.teamB}`)
   teamAIcon.value = response.data.teamAIcon
   teamBIcon.value = response.data.teamBIcon
   formationsA.value = formatFormation(response.data.formationA)

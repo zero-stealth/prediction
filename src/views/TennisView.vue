@@ -41,10 +41,17 @@
               :teamBscore="card.teamBscore"
               :formationA="formatFormation(card.formationA) ? card.formationA[0]?.split('-') : []"
               :formationB="formatFormation(card.formationB) ? card.formationB[0]?.split('-') : []"
-              @click="showCard(card.teamA, card.teamB, card._id)"
               :time="card.time"
               :sport="card.sport"
-            />
+            >
+            <template v-slot:button>
+              <div class="Tip">
+                <button class="btn-preview" @click="showCard(card.date, card.teamA, card.teamB)">
+                  Predictions and Preview >>
+                </button>
+              </div>
+            </template>
+          </Card>
           </div>
         </template>
         <template v-else>
@@ -99,7 +106,7 @@ const showCard = (gameA, gameB ) => {
 }
 
 async function getPrediction() {
-  url.value =`${SERVER_HOST}/sports/sport/Tennis/${currentDate.value}`
+  url.value =`${SERVER_HOST}/sports/sport/Tennis/single/${currentDate.value}`
 
   try {
     const response = await axios.get(url.value)

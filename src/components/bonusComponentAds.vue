@@ -19,21 +19,20 @@
           <copyIcon class="icon-bonus" />
         </button>
       </div>
-
-      <span
-        >The bonus code<b>{{ bonusData.code }}</b> is used during registration but the offer amount doesn't change</span
-      >
     </div>
-    <a :href="bonusData.link" class="btn-offer-spy">See the offer</a>
+    <a :href="bonusData.link" class="btn-offer-spy">get offer</a>
   </div>
 </template>
 <script setup>
 import { ref } from 'vue'
 import { useToast } from 'vue-toastification'
+
 import copyIcon from '../icons/COPYIcon.vue'
 
-const props = defineProps(['bonusData'])
 const toast = useToast()
+
+
+const props = defineProps(['bonusData'])
 
 const bonusCode = ref(props.bonusData.code)
 
@@ -48,9 +47,10 @@ const copyCode = () => {
 
   document.body.removeChild(tempElement)
   toast.success('Copied to clipboard')
+  
 }
 </script>
 
-<style>
-@import '../style/bonus.css';
+<style scoped>
+@import '../style/bonusAds.css';
 </style>

@@ -22,26 +22,34 @@
       </div>
       <OfferAds />
       <template v-if="cardData.length > 0">
-        <div class="main-h-card">
-          <Card
-            v-for="card in cardData"
-            :key="card._id"
-            :tip="card.tip"
-            :status="card.status"
-            :leagueIcon="card.leagueIcon"
-            :teamAIcon="card.teamAIcon"
-            :teamBIcon="card.teamBIcon"
-            :teamA="card.teamA"
-            :teamB="card.teamB"
-            :league="card.league"
-            :showScore="card.showScore"
-            :teamAscore="card.teamAscore"
-            :teamBscore="card.teamBscore"
-            :formationA="formatFormation(card.formationA)"
-            :formationB="formatFormation(card.formationB)"
-            :time="card.time"
-            @click="showCard(card.date, card.teamA, card.teamB)"
-          />
+        <div class="main-h-card booom-h">
+          <div v-for="card in cardData" :key="card._id">
+            <Card
+              :key="card._id"
+              :tip="card.tip"
+              :status="card.status"
+              :leagueIcon="card.leagueIcon"
+              :teamAIcon="card.teamAIcon"
+              :teamBIcon="card.teamBIcon"
+              :teamA="card.teamA"
+              :teamB="card.teamB"
+              :league="card.league"
+              :showScore="card.showScore"
+              :teamAscore="card.teamAscore"
+              :teamBscore="card.teamBscore"
+              :formationA="formatFormation(card.formationA)"
+              :formationB="formatFormation(card.formationB)"
+              :time="card.time"
+            >
+              <template v-slot:button>
+                <div class="Tip">
+                  <button class="btn-preview" @click="showCard(card.date, card.teamA, card.teamB)">
+                    Predictions and Preview >>
+                  </button>
+                </div>
+              </template>
+            </Card>
+          </div>
         </div>
       </template>
       <template v-else>
@@ -58,18 +66,12 @@
         <div class="news-info">
           <h1>Sport News</h1>
         </div>
-        <div class="news-link">
-          <Arrow class="news-icon icon-left" />
-          <span v-if="showMoreButton" @click="showMoreNews">see more</span>
-          <span v-else @click="showLessNews">see less</span>
-          <Arrow class="news-icon" />
-        </div>
       </div>
       <div class="news-wrapper">
         <NewsCard
           v-for="(newsItem, index) in visibleNews"
           :key="index"
-          :banner="newsItem.img"
+          :banner="newsItem.enclosure.url"
           @click="newsInfo(newsItem.title)"
         >
           <h2>{{ newsItem.title }}</h2>
@@ -95,7 +97,6 @@
 </template>
 <script setup>
 import axios from 'axios'
-import Arrow from '../icons/arrow.vue'
 import { useRouter } from 'vue-router'
 // import ScrollUp from '../components/ScrollUp.vue'
 import NewsCard from '../components/NewsCard.vue'
@@ -114,7 +115,6 @@ import { ref, watch, computed, watchEffect, onMounted } from 'vue'
 
 const SERVER_HOST = import.meta.env.VITE_SERVER_HOST
 const drawerStore = useDrawerStore()
-const showMoreButton = ref(true)
 const adsMiddleImage = ref(null)
 const adsMiddleLink = ref(null)
 const maxNewsToShow = ref(8)
@@ -135,11 +135,10 @@ const showCard = (date, teamA, teamB) => {
     params: {
       date: date,
       teamA: teamA,
-      teamB: teamB,
-    },
-  });
-};
-
+      teamB: teamB
+    }
+  })
+}
 
 const newsInfo = (newsTitle) => {
   router.push({ name: 'News', params: { title: newsTitle } })
@@ -180,22 +179,12 @@ const visibleNews = computed(() => {
   return newsData.value.slice(0, maxNewsToShow.value)
 })
 
-const showMoreNews = () => {
-  maxNewsToShow.value += 8
-  showMoreButton.value = false
-}
 
-const showLessNews = () => {
-  maxNewsToShow.value -= 8
-  if (maxNewsToShow.value <= 8) {
-    showMoreButton.value = true
-  }
-}
 
 const getNews = async () => {
   try {
     const { data } = await axios.get(
-      'https://football-news-aggregator-live.p.rapidapi.com/news/onefootball',
+      'https://real-time-sports-news-api.p.rapidapi.com/live-articles',
       {
         headers: {
           'X-RapidAPI-Key': import.meta.env.VITE_RAPIDAPI_KEY,
@@ -208,8 +197,6 @@ const getNews = async () => {
     console.log(err)
   }
 }
-
-
 
 const getPrediction = async () => {
   // const token = JSON.parse(localStorage.getItem('token'))

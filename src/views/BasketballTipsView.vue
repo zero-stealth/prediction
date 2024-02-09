@@ -1,10 +1,10 @@
 <script setup>
 import axios from 'axios'
-import { useRoute ,useRouter} from 'vue-router'
+import { useRoute, useRouter } from 'vue-router'
 import banner from '@/assets/banner.jpeg'
 import ArrowIcon from '@/icons/ArrowIcon.vue'
 import { onMounted, ref, shallowRef } from 'vue'
-
+import AdsTipComponent from '../components/adsTipComponent.vue'
 // pages
 import formationSection from '../components/basketball/formationSection.vue'
 import overviewSection from '../components/basketball/overviewSection.vue'
@@ -17,11 +17,11 @@ const route = useRoute()
 
 const teamA = ref('')
 const teamB = ref('')
+const league = ref('')
 const teamAscore = ref('')
 const teamBscore = ref('')
 const teamAIcon = ref('')
 const teamBIcon = ref('')
-const league = ref('')
 const leagueIcon = ref('')
 const teamAPosition = ref('')
 const teamBPosition = ref('')
@@ -40,7 +40,9 @@ const getButtonClass = (page) => {
 }
 
 async function getTip() {
-  const response = await axios.get(`${SERVER_HOST}/sports/prediction/${route.params.date}/${route.params.teamA}/${route.params.teamB}`)
+  const response = await axios.get(
+    `${SERVER_HOST}/sports/single/${route.params.date}/${route.params.teamA}/${route.params.teamB}`
+  )
   teamA.value = response.data.teamA
   teamB.value = response.data.teamB
   showScore.value = response.data.showScore
@@ -54,7 +56,6 @@ async function getTip() {
   leagueIcon.value = response.data.leagueIcon
   time.value = response.data.time
   date.value = response.data.date
-
 }
 
 onMounted(() => {
@@ -64,6 +65,7 @@ onMounted(() => {
 const goBack = () => {
   router.go(-1)
 }
+
 
 function formatDate(inputDate) {
   const parts = inputDate.split('-')
@@ -89,60 +91,67 @@ function formatDate(inputDate) {
   const formattedDate = `${day} | ${months[parseInt(month, 10) - 1]} | ${year}`
   return formattedDate
 }
-
 </script>
 
 <template>
-  <div class="details-container">
-    <div class="details-h-conx">
-       <div class="details-header-title">
-        <h1>{{ teamA }} vs {{ teamB }} prediction {{ formatDate(date) }}</h1>
-      </div>
-      <div class="details-h">
-        <ArrowIcon class="details-arrow" @click="goBack()" />
-        <div class="details-h-inn">
-          <img :src="leagueIcon" alt="" class="tbl-f-image tbl-l-i" />
-          <h2>{{ league }}</h2>
+  <div class="detail-apx">
+    <div class="apx-byt">
+      <div class="details-container">
+      <div class="details-h-conx">
+        <div class="details-header-title">
+          <h1>{{ teamA }} vs {{ teamB }} prediction {{ formatDate(date) }}</h1>
         </div>
-        <span class="pulse"></span>
-      </div>
-    </div>
-    <div
-      class="details-image"
-      :style="{
-        backgroundImage: `linear-gradient(to bottom, rgba(0, 0, 0, 0.9), #042f59), url(${banner})`
-      }"
-    >
-      <div class="details-image-d">
-        <div class="details-d">
-          <img :src="teamAIcon" alt="" class="details-d-img" />
-          <span>{{ teamA }}</span>
-        </div>
-        <div class="details-midd">
-          {{ [time] }}
-        </div>
-        <div class="details-d">
-          <img :src="teamBIcon" alt="" class="details-d-img" />
-          <span>{{ teamB }}</span>
+        <div class="details-h">
+          <ArrowIcon class="details-arrow" @click="goBack()" />
+          <div class="details-h-inn">
+            <img :src="leagueIcon" alt="" class="tbl-f-image tbl-l-i" />
+            <h2>{{ league }}</h2>
+          </div>
+          <span class="pulse"></span>
         </div>
       </div>
-    </div>
-    <div class="nav-tips">
-      <button @click="setActivePage(overviewSection)" :class="getButtonClass(overviewSection)">
-        <span>Summary</span>
-      </button>
-      <button @click="setActivePage(standingsSection)" :class="getButtonClass(standingsSection)">
-        <span>Standing</span>
-      </button>
-      <button @click="setActivePage(formationSection)" :class="getButtonClass(formationSection)">
-        <span>H2H</span>
-      </button>
-      <button @click="setActivePage(tipsSection)" :class="getButtonClass(tipsSection)">
-        <span>Tips</span>
-      </button>
+      <div
+        class="details-image"
+        :style="{
+          backgroundImage: `linear-gradient(to bottom, rgba(0, 0, 0, 0.9), #042f59), url(${banner})`
+        }"
+      >
+        <div class="details-image-d">
+          <div class="details-d">
+            <img :src="teamAIcon" alt="" class="details-d-img" />
+            <span>{{ teamA }}</span>
+          </div>
+          <div class="details-midd">
+            {{ [time] }}
+          </div>
+          <div class="details-d">
+            <img :src="teamBIcon" alt="" class="details-d-img" />
+            <span>{{ teamB }}</span>
+          </div>
+        </div>
+      </div>
+      <div class="nav-tips">
+        <button @click="setActivePage(overviewSection)" :class="getButtonClass(overviewSection)">
+          <span>Preview</span>
+        </button>
+        <button @click="setActivePage(tipsSection)" :class="getButtonClass(tipsSection)">
+          <span>Prediction</span>
+        </button>
+        <button @click="setActivePage(standingsSection)" :class="getButtonClass(standingsSection)">
+          <span>Standing</span>
+        </button>
+        <button @click="setActivePage(formationSection)" :class="getButtonClass(formationSection)">
+          <span>H2H</span>
+        </button>
+      </div>
     </div>
     <div class="tips-main">
       <component :is="activePage" />
+    </div>
+    </div>
+  
+    <div class="apx-pin">
+      <AdsTipComponent />
     </div>
   </div>
 </template>

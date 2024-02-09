@@ -39,9 +39,16 @@
             :teamBscore="card.teamBscore"
             :formationA="formatFormation(card.formationA) ? card.formationA[0].split('-') : []"
             :formationB="formatFormation(card.formationB) ? card.formationB[0].split('-') : []"
-            @click="showCard(card.date, card.teamA, card.teamB)"
             :time="card.time"
-          />
+          >
+            <template v-slot:button>
+              <div class="Tip">
+                <button class="btn-preview" @click="showCard(card.date, card.teamA, card.teamB)">
+                  Predictions and Preview >>
+                </button>
+              </div>
+            </template>
+          </Card>
         </div>
       </template>
       <template v-else>
@@ -56,8 +63,21 @@
     </div>
     <div class="fp-class">
       <h1>Football Predictions</h1>
-      <p>Football predictions involve trying to predict the outcome of football (soccer) matches. People make football predictions for various purposes, including betting, sports analysis, or simply for fun. Some common types of football predictions include: Match Outcome Predictions (1 for home team, 2 for away team, X for draw, Over/Under Predictions (i.e 0ver 1.5 goals under 2.5 goals), Both Teams to Score (BTTS) Predictions (i.e BTTS-Yes and BTTS-No), Double Chance Predictions (1X, 12,X2), and many more.</p>
-      <p>When making football predictions, it's essential to consider factors like team form, player injuries, head-to-head statistics, home-field advantage, weather conditions, and other relevant data. Keep in mind that predicting the outcome of sports events always carries an element of uncertainty, and responsible betting is crucial. Additionally, some people make predictions for fun or as part of sports analysis without involving betting.</p>
+      <p>
+        Football predictions involve trying to predict the outcome of football (soccer) matches.
+        People make football predictions for various purposes, including betting, sports analysis,
+        or simply for fun. Some common types of football predictions include: Match Outcome
+        Predictions (1 for home team, 2 for away team, X for draw, Over/Under Predictions (i.e 0ver
+        1.5 goals under 2.5 goals), Both Teams to Score (BTTS) Predictions (i.e BTTS-Yes and
+        BTTS-No), Double Chance Predictions (1X, 12,X2), and many more.
+      </p>
+      <p>
+        When making football predictions, it's essential to consider factors like team form, player
+        injuries, head-to-head statistics, home-field advantage, weather conditions, and other
+        relevant data. Keep in mind that predicting the outcome of sports events always carries an
+        element of uncertainty, and responsible betting is crucial. Additionally, some people make
+        predictions for fun or as part of sports analysis without involving betting.
+      </p>
     </div>
   </div>
   <PopUP v-if="showPop"> </PopUP>
@@ -94,10 +114,10 @@ const showCard = (date, teamA, teamB) => {
     params: {
       date: date,
       teamA: teamA,
-      teamB: teamB,
-    },
-  });
-};
+      teamB: teamB
+    }
+  })
+}
 
 const predictions = async () => {
   try {

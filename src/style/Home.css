@@ -107,6 +107,9 @@
     justify-content: space-around;
   }
 
+
+  
+
   .home-freetip {
     height: 20vh;
     display: flex;
@@ -172,9 +175,16 @@
     justify-content: space-between;
   }
 
+
+
   .news-wrapper h2 {
     font-size: 0.9rem;
+    text-decoration: underline;
     text-transform: capitalize;
+    color: var(--primary-color);
+  }
+
+  .news-wrapper h2:hover {
     color: var(--secondary-color);
   }
 

@@ -1,0 +1,36 @@
+@media screen {
+  .ads-tip-contain {
+    gap: 10px;
+    display: flex;
+    flex-direction: column;
+  }
+
+  .tips-telegram {
+    background-color: var(--background-color);
+    align-items: center;
+    cursor: pointer;
+    padding: 10px;
+    display: flex;
+    gap: 10px;
+  }
+
+  .tips-telegram:hover h3 {
+    color: var(--secondary-color);
+  }
+
+  .tips-telegram h3 {
+    text-transform: capitalize;
+    font-weight: 400;
+    font-size: 1rem;
+  }
+
+  .ads-show {
+    gap: 10px;
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+  }
+}
+/* using it as global style for larger devices  */
+@media only screen and (min-width: 48em) {
+}

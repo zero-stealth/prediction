@@ -1,5 +1,5 @@
 <template>
-  <div class="card-container" :class="[league === '' ? 'card-skeleton ' : '']">
+  <div class="card-container" :class="[league === '' ? 'card-skeleton' : '', showScore === true ? 'game-played' : '']">
     <div class="card-title">
       <div class="title-m">
         <img
@@ -62,13 +62,7 @@
         <h2>{{ teamB }}</h2>
       </div>
     </div>
-    <div class="Tip">
-      <button class="btn-preview" v-if="!showBtn">Predictions and Preview</button>
-      <div v-else>
-        <h4>Tip:</h4>
-        <span>{{ tip }}</span>
-      </div>
-    </div>
+   <slot name="button"></slot>
     <div class="card-footer">
       <div class="card-f" v-for="formationA in formationsA" :key="formationA">
         <span :class="[formationA === 'l' ? 'loose' : formationA === 'w' ? 'win' : 'draw']">{{

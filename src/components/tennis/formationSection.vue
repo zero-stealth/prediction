@@ -2,17 +2,17 @@
 import axios from 'axios'
 import { onMounted, ref } from 'vue'
 import { useRoute } from 'vue-router'
-
 const SERVER_HOST = import.meta.env.VITE_SERVER_HOST
 const route = useRoute()
-
 const formationsA = ref([])
 const formationsB = ref([])
 const teamAIcon = ref('')
 const teamBIcon = ref('')
 
 async function getTip() {
-  const response = await axios.get(`${SERVER_HOST}/sports/prediction/${route.params.date}/${route.params.teamA}/${route.params.teamB}`)
+  const response = await axios.get(
+    `${SERVER_HOST}/sports/single/${route.params.date}/${route.params.teamA}/${route.params.teamB}`
+  )
   teamAIcon.value = response.data.teamAIcon
   teamBIcon.value = response.data.teamBIcon
   formationsA.value = formatFormation(response.data.formationA)
@@ -36,26 +36,26 @@ const formatFormation = (formation) => {
 </script>
 
 <template>
-    <div class="team-form-u">
-      <div class="team-header">
-        <h1>team Formation</h1>
-      </div>
-      <div class="Cf-p">
-        <div class="cp-sp">
-          <img :src="teamAIcon" alt="" class="details-d-img" />
-          <div class="card-f" v-for="formationA in formationsA" :key="formationA">
-            <span :class="[formationA === 'l' ? 'loose' : formationA === 'w' ? 'win' : 'draw']">{{
-              formationA
-            }}</span>
-          </div>
+  <div class="team-form-u">
+    <div class="team-header">
+      <h1>team Formation</h1>
+    </div>
+    <div class="Cf-p">
+      <div class="cp-sp">
+        <img :src="teamAIcon" alt="" class="details-d-img" />
+        <div class="card-f" v-for="formationA in formationsA" :key="formationA">
+          <span :class="[formationA === 'l' ? 'loose' : formationA === 'w' ? 'win' : 'draw']">{{
+            formationA
+          }}</span>
         </div>
-        <div class="cp-sp">
-          <img :src="teamBIcon" alt="" class="details-d-img" />
-          <div class="card-f" v-for="formationB in formationsB" :key="formationB">
-            <span :class="[formationB === 'l' ? 'loose' : formationB === 'w' ? 'win' : 'draw']">{{
-              formationB
-            }}</span>
-          </div>
+      </div>
+      <div class="cp-sp">
+        <img :src="teamBIcon" alt="" class="details-d-img" />
+        <div class="card-f" v-for="formationB in formationsB" :key="formationB">
+          <span :class="[formationB === 'l' ? 'loose' : formationB === 'w' ? 'win' : 'draw']">{{
+            formationB
+          }}</span>
+        </div>
       </div>
     </div>
   </div>

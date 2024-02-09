@@ -1,0 +1,207 @@
+@media screen {
+  .bon-comp {
+    gap: 20px;
+    display: flex;
+    flex-direction: column;
+  }
+
+  .bonus-h {
+    text-align: center;
+  }
+
+  .bo-off {
+    width: 100%;
+    height: 50px;
+    display: flex;
+    text-align: center;
+    border-radius: 4px;
+    align-items: center;
+    justify-content: center;
+  }
+
+  
+  .bo-off span {
+    font-size: 1rem;
+    color: var(--background-color);
+   
+  }
+
+  .bonus-h h1 {
+    font-size: 1.6rem;
+    text-decoration: underline;
+  }
+
+  .bonus-h span {
+    font-size: .7rem;
+  }
+
+  .bonus-component {
+    gap: 10px;
+    display: flex;
+    flex-direction: column;
+  }
+
+  .bonus {
+    gap: 10px;
+    padding: 10px;
+    display: flex;
+    border-radius: 0;
+    align-items: center;
+    flex-direction: column;
+    justify-content: center;
+    border: 1px solid var(--background-color);
+  }
+
+  .bo-img {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+
+  .bonus:hover {
+    box-shadow: rgba(50, 50, 93, 0.25) 0px 6px 12px -2px, rgba(0, 0, 0, 0.3) 0px 3px 7px -3px;
+  }
+
+  .img-offer, .img-offer-skeleton {
+    height: 80px;
+  }
+
+  .img-offer-skeleton {
+    cursor: progress;
+    background: linear-gradient(0.25turn, transparent, #fff, transparent),
+      linear-gradient(#eee, #eee),
+      radial-gradient(38px circle at 19px 19px, #eee 50%, transparent 51%),
+      linear-gradient(#eee, #eee);
+    background-repeat: no-repeat;
+    background-position: -315px 0, 0 0, 0px 190px, 50px 195px;
+    animation: loading 2s infinite;
+  }
+
+  @keyframes loading {
+    to {
+      background-position: 315px 0, 0 0, 0 190px, 50px 195px;
+    }
+  }
+
+  .bonus-form-c {
+    width: 100%;
+    display: flex;
+    text-align: center;
+    flex-direction: column;
+    color: var(--background-color);
+  }
+
+  .bonus-noc {
+    padding: 14px;
+    border-radius: 12px;
+    border: 3px dotted var(--background-color);
+
+  }
+  
+  .bonus-noc span {
+    font-size: 1.5rem;
+  }
+
+  .bonus-form-c span {
+    font-size: 0.8rem;
+  }
+
+  .bonus-form {
+    display: flex;
+    justify-content: space-between;
+  }
+
+  .Promo-h {
+    width: 100%;
+    display: flex;
+    border-radius: 0;
+    align-items: center;
+    flex-direction: column;
+    justify-content: center;
+    border: 2px dotted var(--background-color);
+    border-right: 0;
+  }
+
+  .input-code{
+    font-size: 1rem;
+  }
+
+  .bonus-btn {
+    width: 20%;
+    display: flex;
+    border-radius: 0;
+    align-items: center;
+    justify-content: center;
+    background-color: var(--background-color);
+  }
+
+  .icon-bonus {
+    height: 20px;
+    width: 20px;
+    fill: var(--primary-color);
+  }
+
+  .btn-offer-spy {
+    height: 50px;
+    width: 100%;
+    display: flex;
+    border-radius: 0;
+    font-size: .8rem;
+    text-align: center;
+    align-items: center;
+    text-transform: capitalize;
+    justify-content: center;
+    color: var(--background-color);
+    background-color: var(--secondary-color);
+  }
+}
+
+/* using it as global style for larger devices  */
+@media only screen and (min-width: 48em) {
+
+  .bonus {
+    gap: 10px;
+    flex-direction: row;
+  }
+
+   
+  .bo-off span {
+    font-size: .8rem;
+  }
+
+  .bo-off {
+    height: 40px;
+    width: 150px;
+  }
+
+  .bonus-h {
+    text-align: start;
+  }
+
+  .bonus-h h1 {
+    font-size: 2rem;
+  }
+
+  .img-offer, .img-offer-skeleton {
+    height: 40px;
+  }
+
+  .bonus-h span {
+    font-size: .8rem;
+  }
+
+  .bo-img {
+    width: 100px;
+    display: flex;
+    align-items: start;
+    justify-content: start;
+  }
+
+  .btn-offer-spy {
+    width: 130px;
+  }
+
+  .bonus-form-c {
+    width: 80%;
+  }
+}
