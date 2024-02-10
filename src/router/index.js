@@ -130,7 +130,18 @@ const router = createRouter({
       },
     },
     {
-      path: '/news/:title',
+      path: '/news/"title"',
+      name: 'NewsInfo',
+      component: () => import('../views/NewsInfoView.vue'),
+      meta: {
+        title: "News - Free sport news",
+        description: "sportypredict offers spors news ",
+      },
+    
+    },
+
+    {
+      path: '/news',
       name: 'News',
       component: () => import('../views/NewsView.vue'),
       meta: {

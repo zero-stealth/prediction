@@ -101,12 +101,20 @@ watchEffect(() => {
   showPop.value = drawerStore.popDrawer
 })
 
-const showCard = (gameA, gameB ) => {
-  router.push({ name: 'TennisTips', params: { tennisName: `${gameA} vs ${gameB} prediction`  } })
-}
+
+const showCard = (date, teamA, teamB) => {
+  router.push({
+    name: 'TennisTips',
+    params: {
+      date: date,
+      teamA: teamA,
+      teamB: teamB,
+    },
+  });
+};
 
 async function getPrediction() {
-  url.value =`${SERVER_HOST}/sports/sport/Tennis/single/${currentDate.value}`
+  url.value =`${SERVER_HOST}/sports/sport/Tennis/${currentDate.value}`
 
   try {
     const response = await axios.get(url.value)

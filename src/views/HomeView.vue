@@ -66,6 +66,11 @@
         <div class="news-info">
           <h1>Sport News</h1>
         </div>
+        <div class="news-link">
+          <Arrow class="news-icon icon-left" />
+         <button class="btn-h" @click="goToNews">Show More</button>
+          <Arrow class="news-icon" />
+        </div>
       </div>
       <div class="news-wrapper">
         <NewsCard
@@ -97,6 +102,7 @@
 </template>
 <script setup>
 import axios from 'axios'
+import Arrow from '../icons/arrow.vue'
 import { useRouter } from 'vue-router'
 // import ScrollUp from '../components/ScrollUp.vue'
 import NewsCard from '../components/NewsCard.vue'
@@ -141,7 +147,7 @@ const showCard = (date, teamA, teamB) => {
 }
 
 const newsInfo = (newsTitle) => {
-  router.push({ name: 'News', params: { title: newsTitle } })
+  router.push({ name: 'NewsInfo', params: { title: newsTitle } })
 }
 
 const getMiddleAds = async () => {
@@ -179,7 +185,9 @@ const visibleNews = computed(() => {
   return newsData.value.slice(0, maxNewsToShow.value)
 })
 
-
+const goToNews = () => {
+ router.push({ name: 'News' })
+}
 
 const getNews = async () => {
   try {
