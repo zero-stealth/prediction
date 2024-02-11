@@ -68,19 +68,31 @@
         </div>
         <div class="news-link">
           <Arrow class="news-icon icon-left" />
-         <button class="btn-h" @click="goToNews">Show More</button>
+          <button class="btn-h" @click="goToNews">Show More</button>
           <Arrow class="news-icon" />
         </div>
       </div>
       <div class="news-wrapper">
-        <NewsCard
-          v-for="(newsItem, index) in visibleNews"
-          :key="index"
-          :banner="newsItem.enclosure.url"
-          @click="newsInfo(newsItem.title)"
-        >
-          <h2>{{ newsItem.title }}</h2>
-        </NewsCard>
+        <div class="news-pack">
+          <div
+            class="news-pack-img"
+            v-if="filteredData.length >= 10 && filteredData[9]?.enclosure?.url"
+            :style="{ backgroundImage: `url('${filteredData[9].enclosure.url}')` }"
+            @click="newsInfo(filteredData[9].title)"
+          >
+            <h1>{{ filteredData[9].title }}</h1>
+          </div>
+        </div>
+        <div class="news-pack-cards">
+          <NewsCard
+            v-for="(newsItem, index) in newsData"
+            :key="index"
+            :banner="newsItem.enclosure?.url"
+            @click="newsInfo(newsItem.title)"
+          >
+            <h2>{{ newsItem.title }}</h2>
+          </NewsCard>
+        </div>
       </div>
     </div>
     <Upcoming />
@@ -98,13 +110,11 @@
     <PopUP v-if="showPop"> </PopUP>
     <Sticky />
   </div>
-  <!-- <ScrollUp/> -->
 </template>
 <script setup>
 import axios from 'axios'
 import Arrow from '../icons/arrow.vue'
 import { useRouter } from 'vue-router'
-// import ScrollUp from '../components/ScrollUp.vue'
 import NewsCard from '../components/NewsCard.vue'
 import OfferAds from '../components/OfferAds.vue'
 import { useDrawerStore } from '../stores/drawer'
@@ -123,7 +133,7 @@ const SERVER_HOST = import.meta.env.VITE_SERVER_HOST
 const drawerStore = useDrawerStore()
 const adsMiddleImage = ref(null)
 const adsMiddleLink = ref(null)
-const maxNewsToShow = ref(8)
+const filteredData = ref([])
 const currentDate = ref('')
 const router = useRouter()
 const showPop = ref(null)
@@ -146,8 +156,8 @@ const showCard = (date, teamA, teamB) => {
   })
 }
 
-const newsInfo = (newsTitle) => {
-  router.push({ name: 'NewsInfo', params: { title: newsTitle } })
+const newsInfo = (Title) => {
+  router.push({ name: 'NewsInfo', params: { title: Title } })
 }
 
 const getMiddleAds = async () => {
@@ -181,17 +191,13 @@ const goAds = () => {
   })
 }
 
-const visibleNews = computed(() => {
-  return newsData.value.slice(0, maxNewsToShow.value)
-})
-
 const goToNews = () => {
- router.push({ name: 'News' })
+  router.push({ name: 'News' })
 }
 
 const getNews = async () => {
   try {
-    const { data } = await axios.get(
+    const response = await axios.get(
       'https://real-time-sports-news-api.p.rapidapi.com/live-articles',
       {
         headers: {
@@ -200,14 +206,18 @@ const getNews = async () => {
         }
       }
     )
-    newsData.value = data
+
+    filteredData.value = response.data.filter(
+      (newsItem) => newsItem.enclosure && newsItem.enclosure.url
+    )
+
+    newsData.value = filteredData.value.slice(0, 8)
   } catch (err) {
     console.log(err)
   }
 }
 
 const getPrediction = async () => {
-  // const token = JSON.parse(localStorage.getItem('token'))
   try {
     const response = await axios.get(`${SERVER_HOST}/predictions/tips/freeTip/${currentDate.value}`)
     cardData.value = response.data

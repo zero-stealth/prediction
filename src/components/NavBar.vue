@@ -56,11 +56,14 @@
           :fetch-browser-language="false"
           trigger="click"
           @select="handleGoogleTranslateSelect"
-        /> <button @click="logOut" class="nav-btn btn-l btn-logout">
+        /> 
+        <button @click="logOut" class="nav-btn btn-l btn-logout">
           <LogoutIcon class="icon-nav l-icon" />
           Logout
         </button>
-   
+        <button @click="goToPanel" v-if="isAdmin" class="mobile-btn btn-l btn-logout">
+          Go to panel
+        </button>
       </div>
       <div class="nav-btn-container" v-else>
         <GoogleTranslateSelect
@@ -122,6 +125,9 @@
           <LogoutIcon class="icon-nav l-icon" />
           Log out
         </button>
+        <button @click="goToPanel" v-if="isAdmin" class="mobile-btn btn-l btn-logout">
+          Go to panel
+        </button>
       </div>
       <div class="mobile-btn-container" v-else>
         <button @click="goSignin" class="mobile-btn btn-r">
@@ -171,9 +177,14 @@ const router = useRouter()
 const isDrpOpen = ref(false)
 const isDropOpen = ref(false)
 const authStore = useAuthStore()
+const isAdmin = ref(localStorage.getItem('admin') || 'false')
 
 const handleGoogleTranslateSelect = () => {
   // console.log(language)
+}
+
+const goToPanel = () => {
+  router.push({ name: 'Panel' })
 }
 
 const openTelegram = () => {

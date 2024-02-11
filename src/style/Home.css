@@ -14,9 +14,6 @@
     flex-direction: column;
   }
 
-  .booom-h {
-    margin: 10px;
-  }
 
 
 
@@ -130,9 +127,9 @@
 
   .news-main {
     gap: 20px;
+    height: 100%;
     display: flex;
     padding: 20px;
-    flex-wrap: wrap;
     flex-direction: column;
     color: var(--background-color);
     background-color: var(--primary-color);
@@ -169,7 +166,42 @@
   }
 
   .news-wrapper {
+    gap: 10px;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+  }
+
+  .news-pack {
+    flex: 20%;
+    cursor: pointer;
+  }
+
+  .news-pack-img:hover h1 {
+    color: var(--secondary-color);
+  }
+
+  .news-pack-img {
+    height: 250px;
+    display: flex;
+    align-items: end;
+    border-radius:4px;
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+
+  }
+
+  .news-pack-img h2 {
+    font-size: 1rem;
+    text-decoration: underline;
+    text-transform: capitalize;
+    color: var(--background-color);
+  }
+
+  .news-pack-cards {
     gap: 20px;
+    flex: 80%;
     display: flex;
     flex-wrap: wrap;
     justify-content: space-between;
@@ -178,14 +210,22 @@
 
 
   .news-wrapper h2 {
-    font-size: 0.9rem;
+    font-size: 0.8rem;
     text-decoration: underline;
     text-transform: capitalize;
     color: var(--primary-color);
   }
 
-  .news-wrapper h2:hover {
-    color: var(--secondary-color);
+  .news-wrapper h1 {
+    padding: 5px;
+    width: 100%;
+    font-size: 0.9rem;
+    height: fit-content;
+    text-decoration: underline;
+    text-transform: capitalize;
+    border-radius: 0 0 4px 4px;
+    color: var(--primary-color);
+    background-color: var(--background-color);
   }
 
   .news-wrapper p {
@@ -241,13 +281,32 @@
     padding: 0 30px;
   }
 
- 
+  .booom-h {
+    margin: 10px;
+  }
+
 
   .main-header {
     padding: 20px 0;
     flex-direction: row;
   }
 
+  .news-main {
+    height: 100vh;
+  }
+
+  .news-wrapper {
+    flex-wrap: nowrap;
+  }
+
+  .news-pack-img {
+    height: 100%;
+  }
+
+  .card-n-info:hover h2 {
+    color: var(--secondary-color);
+  }
+  
  .main-h-card {
   padding: 40px 0;
   

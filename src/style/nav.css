@@ -218,6 +218,10 @@
     text-transform: uppercase;
   }
 
+  .btn-logout:hover {
+    background-color: var(--tertiary-color);
+  }
+
   .mobile-btn {
     width: 100%;
   }
@@ -422,7 +426,7 @@
 
   .open {
     height: 100%;
-    width: 80%;
+    width: 100%;
   }
 
   .close {

@@ -1,0 +1,73 @@
+@media screen {
+.news-info-contain {
+   height: 90vh;
+   display: flex;
+   padding: 10px;
+   align-items: end;
+   position: relative;
+   background-size: cover;
+   background-position: center top;
+   background-repeat: no-repeat;
+
+}
+
+.news-info-contain span {
+   top: 10px;
+   right: 10px;
+   padding: 10px;
+   font-size: .8rem;
+   position: absolute;
+   color: var(--background-color);
+   background: #031e3c;
+   backdrop-filter: blur( 2px );
+   -webkit-backdrop-filter: blur( 2px );
+}
+
+.news-info-content {
+   gap: 5px;
+   display: flex;
+   width: 100%;
+   flex-direction: column;
+   background-color: var(--background-color);
+}
+
+.news-info-content h1 {
+   padding: 10px;
+   font-size: .8rem;
+   width: fit-content;
+   text-transform: uppercase;
+   color: var(--background-color);
+   background-color: var(--secondary-color);
+
+}
+
+.news-info-content p {
+   color: var(--primary-color);
+   font-size: 1rem;
+   padding: 10px;
+   width: 100%;
+}
+
+
+.news-no {
+   display: flex;
+   height: 100vh;
+   text-align: center;
+   align-items: center;
+   justify-content: center;
+   color: var(--background-color);
+   background-color: var(--primary-color);
+
+}
+
+.news-no span {
+   font-size: 1rem;
+   text-transform: capitalize;
+}
+
+}
+/* using it as global style for larger devices  */
+@media only screen and (min-width: 48em) {
+ 
+    
+}
