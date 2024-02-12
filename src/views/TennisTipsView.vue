@@ -19,8 +19,6 @@ const teamA = ref('')
 const teamB = ref('')
 const league = ref('')
 const cardAdsData = ref([])
-const formationsA = ref([])
-const formationsB = ref([])
 const teamAscore = ref('')
 const teamBscore = ref('')
 const teamAIcon = ref('')
@@ -76,12 +74,6 @@ async function getTip() {
   teamAscore.value = response.data.teamAscore
   teamAPosition.value = response.data.teamAPosition
   teamBPosition.value = response.data.teamBPosition
-  formationsA.value = formatFormation(response.data.formationA)
-    ? response.data.formationA[0].split('-')
-    : []
-  formationsB.value = formatFormation(response.data.formationB)
-    ? response.data.formationB[0].split('-')
-    : []
   teamBscore.value = response.data.teamBscore
   league.value = response.data.league
   leagueIcon.value = response.data.leagueIcon
@@ -89,12 +81,7 @@ async function getTip() {
   date.value = response.data.date
 }
 
-const formatFormation = (formation) => {
-  if (Array.isArray(formation)) {
-    return formation[0].split('-')
-  }
-  return []
-}
+
 
 onMounted(() => {
   getTip()
@@ -225,19 +212,6 @@ onMounted(() => {
             </div>
             
           </div>
-          <div class="card-footer">
-      <div class="card-f" v-for="formationA in formationsA" :key="formationA">
-        <span :class="[formationA === 'l' ? 'loose' : formationA === 'w' ? 'win' : 'draw']">{{
-          formationA
-        }}</span>
-      </div>
-      <div class="card-fi">Recent form</div>
-      <div class="card-f" v-for="formationB in formationsB" :key="formationB">
-        <span :class="[formationB === 'l' ? 'loose' : formationB === 'w' ? 'win' : 'draw']">{{
-          formationB
-        }}</span>
-      </div>
-    </div>
         </div>
 
         <div class="nav-tips">
