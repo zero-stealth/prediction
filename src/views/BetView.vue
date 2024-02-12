@@ -40,7 +40,14 @@
           :formationA="formatFormation(card.formationA) ? card.formationA[0].split('-') : []"
           :formationB="formatFormation(card.formationB) ? card.formationB[0].split('-') : []"
           :time="card.time"
-        />
+        >
+          <template v-slot:button>
+            <div class="Tip">
+            <h4>Tip:</h4>
+            <span>{{ card.tip }}</span>
+          </div>
+          </template>
+        </Card>
       </div>
     </template>
     <template v-else>

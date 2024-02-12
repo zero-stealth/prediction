@@ -14,7 +14,7 @@ import tipsSection from '../components/basketball/tipsSection.vue'
 const SERVER_HOST = import.meta.env.VITE_SERVER_HOST
 const router = useRouter()
 const route = useRoute()
-
+const tip = ref('')
 const teamA = ref('')
 const teamB = ref('')
 const league = ref('')
@@ -79,8 +79,8 @@ async function getTip() {
   leagueIcon.value = response.data.leagueIcon
   time.value = response.data.time
   date.value = response.data.date
+  tip.value = response.data.tip
 }
-
 
 onMounted(() => {
   getTip()
@@ -151,14 +151,14 @@ onMounted(() => {
           class="card-container tips-card"
           :class="[league === '' ? 'card-skeleton' : '', showScore === true ? 'game-played' : '']"
         >
-            <div class="details-h">
-              <ArrowIcon class="details-arrow" @click="goBack()" />
-              <div class="details-h-inn">
-                <img :src="leagueIcon" alt="" class="tbl-f-image tbl-l-i" />
-                <h2>{{ league }}</h2>
-              </div>
-              <span class="pulse"></span>
+          <div class="details-h">
+            <ArrowIcon class="details-arrow" @click="goBack()" />
+            <div class="details-h-inn">
+              <img :src="leagueIcon" alt="" class="tbl-f-image tbl-l-i" />
+              <h2>{{ league }}</h2>
             </div>
+            <span class="pulse"></span>
+          </div>
           <div class="card-center">
             <div class="card-a">
               <div class="card-fade">
@@ -209,7 +209,10 @@ onMounted(() => {
               </div>
               <h2>{{ teamB }}</h2>
             </div>
-            
+          </div>
+          <div class="Tip">
+            <h4>Tip:</h4>
+            <span>{{ tip }}</span>
           </div>
         </div>
         <div class="nav-tips">
