@@ -6,7 +6,7 @@
   }
 
   .tips-telegram {
-    background-color: var(--background-color);
+    background-color: var(--primary-color);
     align-items: center;
     cursor: pointer;
     padding: 10px;
@@ -19,6 +19,7 @@
   }
 
   .tips-telegram h3 {
+    color: var(--background-color);
     text-transform: capitalize;
     font-weight: 400;
     font-size: 1rem;

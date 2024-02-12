@@ -4,8 +4,7 @@
     display: flex;
     padding: 10px;
     flex-direction: column;
-    background-color: var(--primary-color);
-    
+    background-color: var(--background-color);
   }
 
   .apx-byt {
@@ -19,7 +18,14 @@
 
   .details-container {
     flex: 50%;
-    color: var(--background-color);
+    gap: 10px;
+    display: flex;
+    flex-direction: column;
+
+  }
+
+  .details-h {
+    border-bottom: 1px solid var(--played-color);
   }
 
   .news-pin {
@@ -41,7 +47,7 @@
     justify-content: center;
     flex-direction: column;
     color: var(--background-color);
-    background-color: var(--light-primary-color);
+    background-color: var(--secondary-color);
   }
 
   .details-header-title {
@@ -58,13 +64,11 @@
   .details-h {
     height: inherit;
     display: flex;
-    padding: 15px 8px;
+    padding: 10px 8px;
     align-items: center;
     justify-content: space-between;
-    border: 1px solid var(--light-color);
     border-left: 0;
     border-right: 0;
-    background-color: var(--primary-color);
   }
 
 
@@ -109,7 +113,7 @@
   }
 
   .details-arrow {
-    fill: var(--light-color);
+    fill: var(--grey-color);
     transform: rotate(180deg);
     cursor: pointer;
     height: 20px;
@@ -244,6 +248,7 @@
     font-size: 0.8rem;
     text-align: center;
     text-transform: capitalize;
+    color: var(--background-color);
     background-color: var(--tertiary-color);
   }
 
