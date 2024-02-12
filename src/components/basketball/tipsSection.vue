@@ -21,7 +21,7 @@ onMounted(() => {
 
 <template>
   <div class="description-container">
-    <h1>Predictions and Preview</h1>
+    <h1>Tip</h1>
     <div class="description-nop">
         <p >{{  tip  }}</p>
     </div>

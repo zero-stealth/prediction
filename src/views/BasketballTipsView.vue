@@ -132,6 +132,10 @@ const formattedTime = computed(() => {
   }
 })
 
+const shouldShowScore = computed(() => {
+  return showScore.value && teamAscore.value !== undefined && teamBscore.value !== undefined
+})
+
 onMounted(() => {
   getAds()
 })
