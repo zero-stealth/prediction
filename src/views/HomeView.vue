@@ -61,7 +61,7 @@
     <div>
       <vipads />
     </div>
-    <div class="news-main">
+    <div class="news-main" v-if="newsData.length >0">
       <div class="news-header">
         <div class="news-info">
           <h1>Sport News</h1>
@@ -94,6 +94,9 @@
           </NewsCard>
         </div>
       </div>
+    </div>
+    <div class="news-main" v-else>
+      <span>...loading news</span>
     </div>
     <Upcoming />
     <div class="ads-p">

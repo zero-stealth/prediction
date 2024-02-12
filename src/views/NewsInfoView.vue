@@ -6,9 +6,12 @@
       backgroundImage: `linear-gradient(to bottom, rgba(0, 0, 0, 0.2), #042f59), url('${newsData[0].enclosure.url}')`
     }"
   >
+  <div class="info-bar">
+    <ArrowIcon class="back-arrow" @click="goBack()" />
     <span>
       {{ newsData[0].pubDate }}
-    </span>
+    </span>  
+  </div>
     <div class="news-info-content">
       <h1>{{ newsData[0].title }}</h1>
       <p>{{ newsData[0].content }}</p>
@@ -22,10 +25,16 @@
 <script setup>
 import axios from 'axios'
 import { onMounted, ref } from 'vue'
-import { useRoute } from 'vue-router'
+import { useRoute, useRouter } from 'vue-router'
+import ArrowIcon from '@/icons/ArrowIcon.vue'
 
 const newsData = ref([])
 const route = useRoute()
+const router = useRouter()
+
+const goBack = () => {
+  router.go(-1)
+}
 
 const getNews = async () => {
   try {

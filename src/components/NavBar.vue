@@ -29,7 +29,9 @@
       </a>
     
       <div class="nav-link-container">
+
         <RouterLink :to="{ name: 'Home' }" class="nav-link">Home</RouterLink>
+        <RouterLink :to="{ name: 'News' }" class="nav-link">News</RouterLink>
         <RouterLink :to="{ name: 'Bonus' }" class="nav-link">Betting Offers</RouterLink>
         <RouterLink :to="{ name: 'Banker' }" class="nav-link">Bet Of The Day</RouterLink>
         <RouterLink :to="{ name: 'Football' }" class="nav-link">Football</RouterLink>
@@ -98,6 +100,7 @@
         <RouterLink :to="{ name: 'Home' }" @click="showMenu()" class="mobile-link">
           Home
         </RouterLink>
+        <RouterLink :to="{ name: 'News' }" @click="showMenu()" class="mobile-link">News</RouterLink>
 
         <span @click="goTennis()" class="nav-link">Tennis </span>
         <span @click="goBasketball()" class="nav-link">Basketball</span>

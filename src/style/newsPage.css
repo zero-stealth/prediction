@@ -1,0 +1,214 @@
+@media screen {
+.news-page-contain {
+   gap: 40px;
+   padding: 10px;
+   display: flex;
+   flex-direction: column;
+} 
+
+.news-page-top-contain {
+   gap: 10px;
+   display: flex;
+   flex-direction: column;
+}
+
+.news-page-top{
+   height: 300px;
+   display: flex;
+   border-radius: 12px;
+   justify-content: end;
+   flex-direction: column;
+   background-size: cover;
+   background-position: center;
+   background-repeat: no-repeat;
+}
+
+.top-contain {
+   gap: 20px;
+   display: flex;
+   padding: 10px;
+   flex-direction: column;
+}
+
+.top-contain span {
+   padding: 10px;
+   font-size: .8rem;
+   width: fit-content;
+   border-radius: 12px;
+   text-transform: capitalize;
+   color: var(--background-color);
+   background-color: var(--secondary-color);
+}
+
+.top-contain h1 {
+   font-size: 1rem;
+   font-weight: 400;
+   color: var(--background-color);
+}
+
+.top-card-contain{
+   flex: 40%;
+   display: flex;
+   flex-direction: column;
+}
+
+.top-card-contain h1 {
+   font-size: 1rem;
+   font-weight: 400;
+
+}
+
+.top-card-wrapper{
+   gap: 10px;
+   display: flex;
+   padding: 10px 0;
+   overflow: hidden;
+   overflow-y: auto;
+   overflow-x: auto;
+   padding-right: 10px;
+   flex-direction: row;
+}
+
+.top-card-info {
+   gap: 10px;
+   display: flex;
+   padding: 5px;
+   min-width: 400px;
+   border-radius: 12px;
+   align-items: center;
+   justify-content: space-between;
+}
+
+.top-card-info:hover {
+   cursor: pointer;
+   color: var(--background-color);
+   background-color: var(--tertiary-color);
+}
+   
+
+.top-card-info-active{
+   color: var(--background-color);
+   background-color: var(--tertiary-color);
+}
+
+
+.card-top-img{
+   height: 130px;
+   min-width: 100px;
+   border-radius: 8px;
+   object-fit: cover;
+   object-position: center top;
+}
+
+.card-info-top {
+   gap: 5px;
+   width: 100%;
+   display: flex;
+   flex-direction: column;
+}
+
+.card-info-top span {
+   font-size: .6rem;
+}
+
+.card-info-top h1 {
+   font-size: .8rem;
+}
+
+.news-down {
+   gap: 15px;
+   display: flex;
+   flex-direction: column;
+}
+
+.news-down h1 {
+   font-size: 1rem;
+}
+
+.news-down-wrap {
+   gap: 20px;
+   display: flex;
+   flex-wrap: wrap;
+   justify-content: space-between;
+
+}
+
+.news-down-card {
+   gap: 10px;
+   display: flex;
+   cursor: pointer;
+   min-height: 300px;
+   align-items: center;   
+   flex-direction: column;
+   justify-content: space-around;
+
+}
+
+.news-down-card:hover  {
+   padding: 10px;
+   border-radius: 12px;
+   color: var(--background-color);
+   background-color: var(--tertiary-color);
+}
+
+.card-img-down {
+   width: 100%;
+   height: 250px;
+   object-fit: cover;
+   border-radius: 12px;
+   object-position: center top;
+}
+
+.card-info-down {
+   gap: 5px;
+   display: flex;
+   flex-direction: column;
+   
+}
+
+.card-info-down span {
+   font-size: .8rem;
+}
+.card-info-down h1 {
+   font-size: 1rem;
+}
+
+}
+/* using it as global style for larger devices  */
+@media only screen and (min-width: 48em) {
+    .news-card-con {
+        width: 240px;
+        height: 220px;
+     }
+     
+     .news-page-top-contain { 
+      
+      height: 400px;
+      flex-direction: row;
+
+     }
+    
+     .news-page-top{
+      height: 100%;
+      flex: 60%;
+     }
+
+     .top-card-wrapper {
+      flex-direction: column;
+     }
+
+     .card-top-img{
+      min-width: 150px;
+     }
+
+     .news-down-card {
+      max-width: 300px;
+      min-width: 300px;
+      }
+
+      .card-img-down {
+         height: 190px;
+      }
+
+    
+}
