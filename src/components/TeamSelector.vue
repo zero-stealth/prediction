@@ -15,7 +15,7 @@
       </div>
     <div class="drop-down-panel" :class="{ show: isDropOpen, hide: !isDropOpen }">
       <div v-for="t in teamData" :key="t.id" class="drop-item">
-        <span @click="setTeam(t.team.country, t.team.name, t.team.logo)">{{ t.team.name }}</span>
+        <span @click="setTeam(t.team.name, t.team.logo)">{{ t.team.name }}</span>
         <img :src="t.team.logo" :alt="t.team.name + ' logo'" class="drop-img" />
       </div>
     </div>
@@ -64,8 +64,8 @@ const searchTeams = async () => {
   }
 }
 
-const setTeam = (country, name, logo) => {
-  emit('teamSelected', name, country, logo)
+const setTeam = (name, logo) => {
+  emit('teamSelected', name, logo)
   showDrop()
 }
 </script>

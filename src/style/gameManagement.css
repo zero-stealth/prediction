@@ -77,6 +77,10 @@
 
   }
 
+  .game-table td {
+    font-size: .8rem;
+  }
+
   table {
     width: 100%;
   }

@@ -1,8 +1,68 @@
 @media screen {
   .con-f {
-    display: flex;  
+    display: flex;
     flex-wrap: wrap;
-    justify-content: space-between;   
+    justify-content: space-between;
+  }
+
+  .form-con {
+    background-color: var(--primary-color);
+  }
+
+  .drop-container-l {
+    width: 100%;
+    display: flex;
+    position: relative;
+    flex-direction: column;
+    color: var(--background-color);
+  }
+
+  .game-drop-down{
+    top: 50px;
+    width: 100%;
+    z-index: 999;
+    display: flex;
+    cursor: pointer;
+    position: absolute;
+    flex-direction: column;
+    background-color: var(--light-primary-color);
+  }
+
+  .drop-item {
+    padding: 10px;
+  }
+  
+  .drop-item span {
+    font-size: .8rem;
+  }
+
+  .drop-item:hover {
+    color: var(--secondary-color);
+    
+  }
+
+  .drop-down-panel{
+    width: 100%;
+    border: 2px solid saddlebrown;
+
+  }
+
+  .drop-down {
+    width: 100%;
+    padding: 10px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    background-color: var(--light-primary-color);
+  }
+
+  .sd-container {
+    gap: 10px;
+    display: flex;
+    padding: 10px;
+    flex-wrap: wrap;
+    align-items: top;
+    justify-content: space-between;
   }
 
   .form-container-h {
@@ -15,7 +75,6 @@
     color: var(--secondary-color);
   }
 
- 
   .form-container {
     gap: 20px;
     width: 100%;
@@ -26,7 +85,6 @@
     align-items: start;
     justify-content: space-between;
     background-color: var(--dark-primary-color);
-
   }
 
   .form-wrapper {
@@ -89,8 +147,9 @@
 
 /* using it as global style for larger devices  */
 @media only screen and (min-width: 48em) {
- 
-
+  .drop-container-l {
+    width: 300px;
+  }
   .form-con {
     height: 100%;
   }

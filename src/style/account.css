@@ -105,9 +105,10 @@
   }
 
   .acc-m td {
-    font-weight: 200;
-    border-bottom: none;
     cursor: pointer;
+    font-weight: 200;
+    font-size: .8rem;
+    border-bottom: none;
     text-transform: capitalize;
     color: var(--background-color);
     border: 3px solid var(--primary-color);

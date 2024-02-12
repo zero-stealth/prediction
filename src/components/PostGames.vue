@@ -1,13 +1,13 @@
 <template>
   <div class="form-con">
     <div class="sd-container">
-      <div class="drop-container">
+      <div class="drop-container-l">
         <div class="drop-down" @click="showDrop" :class="[isDropOpen ? 'active' : '']">
           <span>{{ postType }}</span>
           <ArrowIcon class="drop-icon" />
         </div>
         <div
-          class="drop-down-panel game-drop-down"
+          class="game-drop-down"
           :class="[isDropOpen ? 'show' : 'hide']"
           v-show="isDropOpen"
         >
@@ -19,13 +19,13 @@
           </div>
         </div>
       </div>
-      <div class="drop-container">
+      <div class="drop-container-l">
         <div class="drop-down" @click="showDrp" :class="[isDrpOpen ? 'active' : '']">
           <span>{{ category ? category : 'Game category' }}</span>
           <ArrowIcon class="drop-icon" />
         </div>
         <div
-          class="drop-down-panel game-drop-down"
+          class="game-drop-down"
           :class="[isDrpOpen ? 'show' : 'hide']"
           v-show="isDrpOpen"
         >
@@ -209,16 +209,7 @@
               accept="image/*"
             />
           </div>
-          <div class="form-group">
-            <label for="jackpot">Jackpot name:</label>
-            <input
-              v-model="jackpot"
-              type="text"
-              class="form-g-input"
-              placeholder="jackpot name"
-              id="jackpot"
-            />
-          </div>
+
           <div class="form-group">
             <label for="formationA">Formation:</label>
             <input
@@ -309,16 +300,6 @@
             />
           </div>
           <div class="form-group">
-            <label for="country">Country:</label>
-            <input
-              v-model="countryName"
-              type="text"
-              class="form-g-input"
-              placeholder="England"
-              id="country"
-            />
-          </div>
-          <div class="form-group">
             <label for="formationB">Formation:</label>
             <input
               v-model="formationB"
@@ -369,9 +350,7 @@ const formationB = ref('')
 const teamAPosition = ref('')
 const teamBPosition = ref('')
 const time = ref('')
-const countryName = ref('')
 const league = ref('')
-const jackpot = ref('')
 const toast = useToast()
 const status = ref('')
 const currentDate = ref('')
@@ -379,16 +358,14 @@ const fixtureData = ref([])
 const tip = ref('')
 const url = ref(null)
 
-const handleTeamASelected = (name, country, logo) => {
+const handleTeamASelected = (name, logo) => {
   teamA.value = name
   teamAIcon.value = logo
-  countryName.value = country
 }
 
-const handleTeamBSelected = (name, country, logo) => {
+const handleTeamBSelected = (name, logo) => {
   teamB.value = name
   teamBIcon.value = logo
-  countryName.value = country
 }
 
 const showDrop = () => {
@@ -410,10 +387,12 @@ const updateUrl = (name) => {
 }
 
 const categories = [
-  { name: 'Sports', endpoint: 'sports/create' },
-  { name: 'Jackpot', endpoint: 'predictions/create/jackpot-prediction/jackpot' },
-  { name: 'Freetips', endpoint: 'predictions/create/tip/freeTip' },
-  { name: 'Vip', endpoint: 'predictions/create/vip' }
+  { name: 'Upcoming games', endpoint: '/predictions/create/upcoming/upcoming' },
+  { name: 'Bet of the day', endpoint: '/predictions/create/bet/betOfTheDay' },
+  { name: 'Basketball', endpoint: '/sports/create/Basketball' },
+  { name: 'Freetips', endpoint: '/predictions/create/tip/freeTip' },
+  { name: 'Tennis', endpoint: '/sports/create/Tennis' },
+  { name: 'vip', endpoint: '/predictions/create/vip' }
 ]
 
 watch(category, () => {
@@ -488,14 +467,6 @@ async function handleSubmit() {
       formData.append('league', league.value)
       formData.append('date', currentDate.value)
       formData.append('tip', tip.value)
-      if (category.value == 'Jackpot') {
-        formData.append('jackpotName', jackpot.value)
-      }
-
-      if (countryName.value !== '') {
-        formData.append('country', countryName.value)
-      }
-
       const response = await axios.post(`${url.value}`, formData, {
         headers: {
           'Content-Type': 'multipart/form-data',
@@ -504,8 +475,7 @@ async function handleSubmit() {
       })
       toast.success('game updated')
     } catch (err) {
-      toast.error(err)
-      console.log(err)
+      toast.error(err.response.data.error)
     }
   } else {
     toast.error('No empty fields allowed')
