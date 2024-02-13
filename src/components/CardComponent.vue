@@ -40,11 +40,11 @@
           <span class="card-p">:</span>
           <span class="card-s">{{ teamBscore }}</span>
         </div>
-        <div v-if="cardAdsImg" class="bet-adv">
+        <!-- <div v-if="cardAdsImg" class="bet-adv">
           <a :href="cardAdsLink">
             <img :src="cardAdsImg" alt="image" class="bet-winner-logo" />
           </a>
-        </div>
+        </div> -->
       </div>
       <div class="card-a">
         <div class="card-fade">
