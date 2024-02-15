@@ -1,5 +1,8 @@
 <template>
-  <div class="card-container" :class="[league === '' ? 'card-skeleton' : '', showScore === true ? 'game-played' : '']">
+  <div
+    class="card-container"
+    :class="[league === '' ? 'card-skeleton' : '', showScore === true ? 'game-played' : '']"
+  >
     <div class="card-title">
       <div class="title-m">
         <img
@@ -40,11 +43,7 @@
           <span class="card-p">:</span>
           <span class="card-s">{{ teamBscore }}</span>
         </div>
-        <!-- <div v-if="cardAdsImg" class="bet-adv">
-          <a :href="cardAdsLink">
-            <img :src="cardAdsImg" alt="image" class="bet-winner-logo" />
-          </a>
-        </div> -->
+        <slot name="ads"> </slot>
       </div>
       <div class="card-a">
         <div class="card-fade">
@@ -61,8 +60,8 @@
         </div>
         <h2>{{ teamB }}</h2>
       </div>
-    </div>
-   <slot name="button"></slot>
+      </div>
+      <slot name="button"></slot>
     <div class="card-footer">
       <div class="card-f" v-for="formationA in formationsA" :key="formationA">
         <span :class="[formationA === 'l' ? 'loose' : formationA === 'w' ? 'win' : 'draw']">{{

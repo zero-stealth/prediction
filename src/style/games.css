@@ -6,6 +6,8 @@
   }
 
   .form-con {
+    overflow: hidden;
+    overflow-y: auto;
     background-color: var(--primary-color);
   }
 
@@ -43,7 +45,6 @@
 
   .drop-down-panel{
     width: 100%;
-    border: 2px solid saddlebrown;
 
   }
 
@@ -63,6 +64,27 @@
     flex-wrap: wrap;
     align-items: top;
     justify-content: space-between;
+  }
+
+  .fx-container {
+    gap: 10px;
+    display: flex;
+    padding: 10px;
+    flex-wrap: wrap;
+    align-items: top;
+    color: var(--background-color);
+    justify-content: space-between;
+    background-color: var(--light-primary-color);
+  }
+
+  .date-fixt {
+    border: none;
+    width: 100%;
+    padding: 10px 0;
+    color: var(--background-color);
+    border: 1px solid var(--light-color);
+    background-color: var(--light-primary-color);
+
   }
 
   .form-container-h {

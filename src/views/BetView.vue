@@ -41,11 +41,18 @@
           :formationB="formatFormation(card.formationB) ? card.formationB[0].split('-') : []"
           :time="card.time"
         >
+          <template v-slot:ads>
+            <div v-if="cardAdsImg" class="bet-adv">
+              <a :href="cardAdsLink">
+                <img :src="cardAdsImg" alt="image" class="bet-winner-logo" />
+              </a>
+            </div>
+          </template>
           <template v-slot:button>
             <div class="Tip">
-            <h4>Tip:</h4>
-            <span>{{ card.tip }}</span>
-          </div>
+              <h4>Tip:</h4>
+              <span>{{ card.tip }}</span>
+            </div>
           </template>
         </Card>
       </div>
@@ -167,21 +174,24 @@
 <script setup>
 import ButtonComponent from '../components/ButtonComponent.vue'
 import QuickComponent from '../components/QuickComponent.vue'
+import { ref, watchEffect, onMounted, computed } from 'vue'
 import vipads from '../components/vipadsComponent.vue'
 import Sticky from '../components/stickyComponent.vue'
 import PopUP from '../components/popupComponent.vue'
 import Card from '../components/CardComponent.vue'
 import { useDrawerStore } from '../stores/drawer'
 import OfferAds from '../components/OfferAds.vue'
-import { ref, watchEffect, onMounted } from 'vue'
 import { useRouter } from 'vue-router'
 import axios from 'axios'
 
-const router = useRouter()
+const cardAdsLink = ref(null)
+const cardAdsImg = ref(null)
+const cardAdsData = ref([])
 const currentDate = ref('')
-const offset = ref(0)
+const router = useRouter()
 const paramValue = ref('')
 const betName = ref('')
+const offset = ref(0)
 
 const cardData = ref([])
 const showPop = ref(null)
@@ -205,15 +215,36 @@ const predictions = async () => {
   }
 }
 
+const getAds = async () => {
+  try {
+    const response = await axios.get(`${SERVER_HOST}/ads`)
+    cardAdsData.value = response.data
+    showAds()
+  } catch (err) {
+    console.error(err)
+  }
+}
+
 const handleBetNameChange = async (newBetName) => {
   betName.value = newBetName
   await predictions()
+}
+
+const filteredAds = computed(() => {
+  const AdTitle = 'Card'
+  return cardAdsData.value ? cardAdsData.value.filter((Ads) => Ads.title === AdTitle) : []
+})
+
+const showAds = () => {
+  cardAdsImg.value = filteredAds.value[0]?.description || null
+  cardAdsLink.value = filteredAds.value[0]?.link || null
 }
 
 onMounted(() => {
   watchEffect(() => {
     predictions()
   })
+  getAds()
 })
 
 const previousDay = () => {
@@ -258,4 +289,5 @@ updateCurrentDate()
 <style>
 @import '../style/Home.css';
 @import '../style/Bet.css';
+@import '../style/card.css';
 </style>
