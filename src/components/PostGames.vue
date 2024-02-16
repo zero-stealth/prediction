@@ -2,7 +2,7 @@
     <div class="form-con">
       <div class="sd-container">
         <div class="fx-container" v-if="postType === 'Automatic'">
-          <label for="date">Choose fixture date</label>
+          <label for="date">Select fixture date</label>
           <input
             type="date"
             @change="onFixtureDateChange"
