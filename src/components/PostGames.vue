@@ -1,16 +1,6 @@
 <template>
   <div class="form-con">
     <div class="sd-container">
-      <div class="fx-container" v-if="postType === 'Automatic'">
-        <label for="date">Select fixture date</label>
-        <input
-          type="date"
-          @change="onFixtureDateChange"
-          v-model="fixtureDate"
-          class="date-fixt"
-          id="date"
-        />
-      </div>
       <div class="drop-container-l">
         <div class="drop-down-k" @click="showDropType" :class="[isDropOpenType ? 'active' : '']">
           <span>{{ postType }}</span>
@@ -44,87 +34,22 @@
           </div>
         </div>
       </div>
-      <div class="drop-container-l" v-if="postType === 'Automatic'">
-        <div class="drop-down-k" @click="showDrop" :class="[isDropOpen ? 'active' : '']">
-          <span>{{ leagueName ? leagueName : 'Choose fixture league' }}</span>
-          <ArrowIcon class="drop-icon" />
-        </div>
-        <div
-          class="drop-down-panel-g game-drop-down"
-          :class="[isDropOpen ? 'show' : 'hide']"
-          v-show="isDropOpen"
-          v-if="fixtureData && fixtureData.length"
-        >
-        <div class="league-s-contain">
-          <searchIcon class="search-icon-l" />
-          <input
-            type="text"
-            v-model="searchQuery"
-            placeholder="Search leagues..."
-            class="search-leagues"
-          />
-        </div>
-     
-          <div
-            v-for="f in filteredFixtures"
-            :key="f.id"
-            v-show="matchesSearchQuery(f.league.name)"
-            class="drop-down down-side"
-            @click="loadFixtures(f.league.id, f.league.season, f.league.name)"
-          >
-            <span>{{ f.league.name }}</span>
-            <img :src="f.league.logo" :alt="f.league.name + ' logo'" class="drop-img" />
-          </div>
-        </div>
-
-        <div class="no-data" :class="[isDropOpen ? 'show' : 'hide']" v-show="isDropOpen" v-else>
-          Select a fixture date first
-        </div>
-      </div>
     </div>
     <div v-if="postType === 'Automatic'">
       <form @submit.prevent="handleSubmit" enctype="multipart/form-data" class="form-container">
         <div class="form-wrapper">
           <h1>Team A</h1>
-          <div class="form-group">
-            <label for="teamA">Name:</label>
-            <span class="form-g-input" v-if="fixtureData && fixtureData.length">{{ teamA }}</span>
-            <input
-              v-if="!fixtureData || !fixtureData.length"
-              type="text"
-              class="form-g-input"
-              placeholder="Man City"
-              id="teamA"
-              v-model="teamA"
-            />
+          <TeamSelector v-if="teamA.length === 0" @teamSelected="handleTeamASelected" />
+          <div class="form-g-input" v-else>
+            <span>{{ teamA }}</span>
           </div>
           <div class="form-group">
             <label for="teamAIcon">Logo:</label>
-            <img
-              :src="teamAIcon"
-              :alt="teamA"
-              class="form-i-image"
-              v-if="fixtureData && fixtureData.length"
-            />
-            <input
-              v-if="!fixtureData || !fixtureData.length"
-              @change="handleTeamALogo"
-              type="file"
-              class="form-g-input"
-              id="teamAIcon"
-              accept="image/*"
-            />
+            <img :src="teamAIcon" :alt="teamA" class="form-i-image" />
           </div>
           <div class="form-group">
             <label for="formationA">Formation:</label>
-            <input
-              v-model="formationA"
-              type="text"
-              class="form-g-input"
-              :placeholder="formationA"
-              id="formationA"
-              
-            />
+            <span class="form-g-input">{{ formationA }}</span>
           </div>
           <div class="form-group">
             <label for="Status">Status:</label>
@@ -146,34 +71,32 @@
             <label for="tip">Match Tip:</label>
             <input v-model="tip" type="text" class="form-g-input" placeholder="1" id="tip" />
           </div>
-          <div class="form-group">
-            <label for="leagueIcon">League logo</label>
-            <img
-              :src="leagueIcon"
-              :alt="league"
-              class="form-i-image"
-              v-if="fixtureData && fixtureData.length"
-            />
-            <input
-              v-if="!fixtureData || !fixtureData.length"
-              @change="handleLeagueLogo"
-              type="file"
-              class="form-g-input"
-              id="leagueIcon"
-              accept="image/*"
-            />
-          </div>
-          <div class="form-group">
-            <label for="league">Match league:</label>
-            <span class="form-g-input" v-if="fixtureData && fixtureData.length">{{ league }}</span>
-            <input
-              v-if="!fixtureData || !fixtureData.length"
-              type="text"
-              class="form-g-input"
-              placeholder="Premier League"
-              id="league"
-              v-model="league"
-            />
+          <div class="form-group-l">
+            <label v-if="league === ''">Choose a league</label>
+            <span>{{ league }}</span>
+            <img :src="leagueIcon" :alt="league" class="form-i-image" />
+            <div
+              class="drop-down-panel-l"
+              v-show="leagueData.length > 0"
+              :class="[isLeagueOpen ? 'show' : 'hide']"
+            >
+              <div v-for="l in leagueData" :key="l.id" class="drop-item-k">
+                <div
+                  v-for="(ln, index) in l"
+                  class="drop-k"
+                  :key="index"
+                  @click="setLeague(ln.id, ln.name, ln.logo)"
+                >
+                  <span v-if="ln.logo != undefined">{{ ln.name }}</span>
+                  <img
+                    v-if="ln.logo !== undefined"
+                    :src="ln.logo"
+                    :alt="ln.name + ' logo'"
+                    class="drop-img"
+                  />
+                </div>
+              </div>
+            </div>
           </div>
           <div class="form-group">
             <label for="time">Match Time:</label>
@@ -194,45 +117,17 @@
         </div>
         <div class="form-wrapper">
           <h1>Team B</h1>
-          <div class="form-group">
-            <label for="teamB">Name:</label>
-            <span class="form-g-input" v-if="fixtureData && fixtureData.length">{{ teamB }}</span>
-            <input
-              v-if="!fixtureData || !fixtureData.length"
-              type="text"
-              class="form-g-input"
-              placeholder="Man City"
-              id="teamB"
-              v-model="teamB"
-            />
+          <TeamSelector v-if="teamB.length === 0" @teamSelected="handleTeamBSelected" />
+          <div class="form-g-input" v-else>
+            <span>{{ teamB }}</span>
           </div>
           <div class="form-group">
             <label for="teamBIcon">Logo:</label>
-            <img
-              :src="teamBIcon"
-              :alt="teamB"
-              class="form-i-image"
-              v-if="fixtureData && fixtureData.length"
-            />
-            <input
-              v-if="!fixtureData || !fixtureData.length"
-              @change="handleTeamBLogo"
-              type="file"
-              class="form-g-input"
-              id="teamBIcon"
-              accept="image/*"
-            />
+            <img :src="teamBIcon" :alt="teamB" class="form-i-image" />
           </div>
           <div class="form-group">
             <label for="formationB">Formation:</label>
-            <input
-              v-model="formationB"
-              type="text"
-              class="form-g-input"
-              :placeholder="formationB"
-              id="formationB"
-              
-            />
+            <span class="form-g-input">{{ formationB }}</span>
           </div>
           <div class="form-group">
             <label for="teamBPosition">Position:</label>
@@ -395,31 +290,31 @@
     </div>
   </div>
 </template>
-
 <script setup>
-import { ref, watch, onMounted, computed } from 'vue'
-import ArrowIcon from '../icons/ArrowIcon.vue'
-import searchIcon from '../icons/searchIcon.vue'
-import { useToast } from 'vue-toastification'
 import axios from 'axios'
-
+import { ref, watch, onMounted } from 'vue'
+import TeamSelector from './TeamSelector.vue'
+import ArrowIcon from '../icons/ArrowIcon.vue'
+import { useToast } from 'vue-toastification'
 const SERVER_HOST = import.meta.env.VITE_SERVER_HOST
-const SPORT_API = import.meta.env.VITE_SPORT_API
-const SPORT_KEY = import.meta.env.VITE_SPORT_KEY
+const RAPIDAPI_KEY = import.meta.env.VITE_RAPIDAPI_KEY
+const SPORT_HOST = import.meta.env.VITE_RAPIDAPI_SPORT_HOST
 
 const teamA = ref('')
 const teamB = ref('')
 const postType = ref('Manual')
-const leagueName = ref(null)
-const isDropOpen = ref(false)
+const leagueData = ref([])
+const leagueDataA = ref([])
+const leagueDataB = ref([])
+const isLeagueOpen = ref(false)
 const isDrpOpen = ref(false)
 const isDropOpenType = ref(false)
 const category = ref(null)
 const teamAIcon = ref(null)
 const teamBIcon = ref(null)
 const leagueIcon = ref(null)
-const formationA = ref('l-w-d-w')
-const formationB = ref('l-w-d-w')
+const formationA = ref('')
+const formationB = ref('')
 const statistics = ref([])
 const teamAPosition = ref('')
 const teamBPosition = ref('')
@@ -428,16 +323,147 @@ const league = ref('')
 const jackpot = ref('')
 const toast = useToast()
 const status = ref('')
-const searchQuery = ref('');
+const year = ref(new Date().getFullYear() - 1)
+const teamIdA = ref('')
+const teamIdB = ref('')
 const currentDate = ref('')
-const fixtureDate = ref('')
-const fixtureData = ref([])
-const selectedFixture = ref(null)
 const tip = ref('')
 const url = ref(null)
 
-const showDrop = () => {
-  isDropOpen.value = !isDropOpen.value
+const handleTeamASelected = (teamId, name, logo) => {
+  teamA.value = name
+  teamAIcon.value = logo
+  teamIdA.value = teamId
+  getLeagueA(teamId)
+}
+
+const handleTeamBSelected = (teamId, name, logo) => {
+  teamB.value = name
+  teamBIcon.value = logo
+  teamIdB.value = teamId
+  getLeagueB(teamId)
+}
+
+const showLeague = () => {
+  isLeagueOpen.value = !isLeagueOpen.value
+}
+
+const getLeagueA = async (teamId) => {
+  try {
+    const response = await axios.get(`${SPORT_HOST}/leagues`, {
+      params: {
+        team: teamId
+      },
+      headers: {
+        'X-RapidAPI-Key': RAPIDAPI_KEY,
+        'X-RapidAPI-Host': 'api-football-v1.p.rapidapi.com'
+      }
+    })
+
+    const leaguesWithLogo = response.data.response.map((league) => ({
+      ...league,
+      logo: league.logo || ''
+    }))
+
+    leagueDataA.value.push(...leaguesWithLogo)
+    showLeague()
+    toast.success('League data fetched successfully')
+  } catch (error) {
+    toast.error('Error fetching league data')
+  }
+}
+
+const getLeagueB = async (teamId) => {
+  try {
+    const response = await axios.get(`${SPORT_HOST}/leagues`, {
+      params: {
+        team: teamId
+      },
+      headers: {
+        'X-RapidAPI-Key': RAPIDAPI_KEY,
+        'X-RapidAPI-Host': 'api-football-v1.p.rapidapi.com'
+      }
+    })
+
+    const leaguesWithLogo = response.data.response.map((league) => ({
+      ...league,
+      logo: league.logo || ''
+    }))
+
+    leagueDataB.value.push(...leaguesWithLogo)
+    leagueData.value = [...leagueDataA.value, ...leagueDataB.value]
+
+    showLeague()
+    toast.success('League data fetched successfully')
+  } catch (error) {
+    toast.error('Error fetching league data')
+  }
+}
+
+const setLeague = (id, name, logo) => {
+  league.value = name
+  leagueIcon.value = logo
+  leagueData.value = []
+  showLeague()
+  getTeamStatisticsA(id)
+  getTeamStatisticsB(id)
+}
+
+const getTeamStatisticsA = async (id) => {
+  try {
+    const response = await axios.get(`${SPORT_HOST}/teams/statistics`, {
+      params: {
+        league: id,
+        season: year.value,
+        team: teamIdA.value
+      },
+      headers: {
+        'X-RapidAPI-Key': RAPIDAPI_KEY,
+        'X-RapidAPI-Host': 'api-football-v1.p.rapidapi.com'
+      }
+    })
+
+    const form = response.data.response && typeof response.data.response.form === 'string' ? response.data.response.form : '';
+    if (form.length >= 2) {
+      const formattedForm = form.slice(-5).split('').join('-'); 
+      formationA.value = formattedForm;
+    } else {
+      console.error('Form data is not available or is too short');
+    }
+    statistics.value.push(response.data.response)
+    toast.success('Team statistics fetched successfully')
+  } catch (error) {
+    toast.error('Error fetching team statistics')
+    console.log(error)
+  }
+}
+
+const getTeamStatisticsB = async (id) => {
+  try {
+    const response = await axios.get(`${SPORT_HOST}/teams/statistics`, {
+      params: {
+        league: id,
+        season: year.value,
+        team: teamIdA.value
+      },
+      headers: {
+        'X-RapidAPI-Key': RAPIDAPI_KEY,
+        'X-RapidAPI-Host': 'api-football-v1.p.rapidapi.com'
+      }
+    })
+    const form = response.data.response && typeof response.data.response.form === 'string' ? response.data.response.form : '';
+    if (form.length >= 2) {
+      const formattedForm = form.slice(-5).split('').join('-'); 
+      formationB.value = formattedForm;
+    } else {
+      console.error('Form data is not available or is too short');
+    }
+    statistics.value.push(response.data)
+    toast.success('Team statistics fetched successfully')
+  } catch (error) {
+    toast.error('Error fetching team statistics')
+    console.log(error)
+  }
 }
 
 const showDrp = () => {
@@ -452,21 +478,9 @@ const updateUrl = (name) => {
 const showDropType = () => {
   isDropOpenType.value = !isDropOpenType.value
 }
-
 const updatePostType = (type) => {
   postType.value = type
   showDropType()
-}
-
-
-const filteredFixtures = computed(() => {
-  return fixtureData.value.filter(f => {
-    return matchesSearchQuery(f.league.name);
-  });
-});
-
-function matchesSearchQuery(leagueName) {
-  return leagueName.toLowerCase().includes(searchQuery.value.toLowerCase());
 }
 
 const categories = [
@@ -488,16 +502,24 @@ watch(category, () => {
   }
 })
 
-async function handleFileUpload(event, targetRef) {
+function handleFileUpload(event, targetRef) {
   const file = event.target.files[0]
   if (file) {
     targetRef.value = file
   }
 }
 
-const handleTeamALogo = (event) => handleFileUpload(event, teamAIcon)
-const handleTeamBLogo = (event) => handleFileUpload(event, teamBIcon)
-const handleLeagueLogo = (event) => handleFileUpload(event, leagueIcon)
+function handleTeamALogo(event) {
+  handleFileUpload(event, teamAIcon)
+}
+
+function handleTeamBLogo(event) {
+  handleFileUpload(event, teamBIcon)
+}
+
+function handleLeagueLogo(event) {
+  handleFileUpload(event, leagueIcon)
+}
 
 const onDateChange = () => {
   currentDate.value = formatDate(new Date(currentDate.value))
@@ -505,103 +527,6 @@ const onDateChange = () => {
 
 const updateCurrentDate = () => {
   currentDate.value = formatDate(new Date())
-}
-
-const onFixtureDateChange = () => {
-  fixtureDate.value = formatFixtureDate(new Date(fixtureDate.value))
-  getFixture(fixtureDate.value)
-}
-
-const loadFixtures = (leagueID, seasonID, Name) => {
-  leagueName.value = Name
-  getSpecificFixture(fixtureDate.value, leagueID, seasonID)
-  showDrop()
-}
-
-const getFixture = async (fdate) => {
-  try {
-    const response = await axios.get(`${SPORT_API}/fixtures`, {
-      params: { date: fdate },
-      headers: { 'x-apisports-key': SPORT_KEY }
-    })
-
-    fixtureData.value = response.data.response
-    toast.success('Fixture data fetched')
-    showDrop()
-  } catch (error) {
-    toast.error('Error fetching fixture data')
-  }
-}
-
-const getSpecificFixture = async (fdate, fid, sid) => {
-  try {
-    const response = await axios.get(`${SPORT_API}/fixtures`, {
-      params: {
-        date: fdate,
-        league: fid,
-        season: sid
-      },
-      headers: {
-        'x-apisports-key': SPORT_KEY
-      }
-    })
-
-    selectedFixture.value = response.data.response
-    postAFormation(
-      selectedFixture.value[0].fixture.id,
-      selectedFixture.value[0].league.season,
-      selectedFixture.value[0].teams.home.id,
-      fdate
-    )
-    postBFormation(
-      selectedFixture.value[0].fixture.id,
-      selectedFixture.value[0].league.season,
-      selectedFixture.value[0].teams.away.id,
-      fdate
-    )
-    teamA.value = selectedFixture.value[0].teams.home.name
-    teamB.value = selectedFixture.value[0].teams.away.name
-    league.value = selectedFixture.value[0].league.name
-    teamAIcon.value = selectedFixture.value[0].teams.home.logo
-    teamBIcon.value = selectedFixture.value[0].teams.away.logo
-    leagueIcon.value = selectedFixture.value[0].league.logo
-    toast.success('Fixture data fetched')
-  } catch (error) {
-    toast.error('Error fetching fixture data')
-  }
-}
-
-const postAFormation = async (leagueID, seasonID, teamID, fdate) => {
-  try {
-    const response = await axios.get(`${SPORT_API}/teams/statistics`, {
-      params: { league: leagueID, season: seasonID, team: teamID, date: fdate },
-      headers: { 'x-apisports-key': SPORT_KEY }
-    })
-
-    formationA.value = response.data.response.form
-    statistics.value.push(response.data.response)
-    console.log(response.data.response)
-    toast.success('Team A formation fetched')
-  } catch (error) {
-    toast.error('Error fetching team A formation')
-    console.log(error)
-  }
-}
-
-const postBFormation = async (leagueID, seasonID, teamID, fdate) => {
-  try {
-    const response = await axios.get(`${SPORT_API}/teams/statistics`, {
-      params: { league: leagueID, season: seasonID, team: teamID, date: fdate },
-      headers: { 'x-apisports-key': SPORT_KEY }
-    })
-
-    formationB.value = response.data.response.form
-    statistics.value.push(response.data.response)
-    console.log(response.data.response)
-    toast.success('Team B formation fetched')
-  } catch (error) {
-    toast.error('Error fetching team B formation')
-  }
 }
 
 async function handleSubmit() {
@@ -652,7 +577,8 @@ async function handleSubmit() {
       })
       toast.success('game updated')
     } catch (err) {
-      toast.error(err.response.data.error)
+      toast.error(err)
+      console.log(err)
     }
   } else {
     toast.error('No empty fields allowed')
@@ -669,13 +595,6 @@ const formatDate = (date) => {
   const month = String(date.getMonth() + 1).padStart(2, '0')
   const year = date.getFullYear()
   return `${day}-${month}-${year}`
-}
-
-const formatFixtureDate = (date) => {
-  const day = String(date.getDate()).padStart(2, '0')
-  const month = String(date.getMonth() + 1).padStart(2, '0')
-  const year = date.getFullYear()
-  return `${year}-${month}-${day}`
 }
 </script>
 

@@ -3,19 +3,22 @@
     <div class="form-group">
       <label for="team">Team</label>
       <input
-       
         v-model="searchInput"
         @change="searchTeams"
         id="team"
         type="text"
         class="form-g-input"
-        placeholder="Search for teams (min 4 characters, e.g., 'manch')"
+        placeholder="Search (min 4 characters, e.g., 'manch')"
       />
-    
-      </div>
+    </div>
     <div class="drop-down-panel" :class="{ show: isDropOpen, hide: !isDropOpen }">
-      <div v-for="t in teamData" :key="t.id" class="drop-item">
-        <span @click="setTeam(t.team.name, t.team.logo)">{{ t.team.name }}</span>
+      <div
+        v-for="t in teamData"
+        :key="t.id"
+        class="drop-item"
+        @click="setTeam(t.team.id, t.team.name, t.team.logo)"
+      >
+        <span>{{ t.team.name }}</span>
         <img :src="t.team.logo" :alt="t.team.name + ' logo'" class="drop-img" />
       </div>
     </div>
@@ -27,8 +30,8 @@ import { ref, defineEmits } from 'vue'
 import axios from 'axios'
 import { useToast } from 'vue-toastification'
 
-const SPORT_API = import.meta.env.VITE_SPORT_API
-const SPORT_KEY = import.meta.env.VITE_SPORT_KEY
+const RAPIDAPI_KEY = import.meta.env.VITE_RAPIDAPI_KEY
+const SPORT_HOST = import.meta.env.VITE_RAPIDAPI_SPORT_HOST
 
 const emit = defineEmits(['teamSelected'])
 
@@ -47,12 +50,13 @@ const searchTeams = async () => {
   } else {
     try {
       showDrop()
-      const response = await axios.get(`${SPORT_API}/teams`, {
+      const response = await axios.get(`${SPORT_HOST}/teams`, {
         params: {
           search: searchInput.value
         },
         headers: {
-          'x-apisports-key': SPORT_KEY
+          'X-RapidAPI-Key': RAPIDAPI_KEY,
+          'X-RapidAPI-Host': 'api-football-v1.p.rapidapi.com'
         }
       })
 
@@ -64,8 +68,8 @@ const searchTeams = async () => {
   }
 }
 
-const setTeam = (name, logo) => {
-  emit('teamSelected', name, logo)
+const setTeam = (teamId, name, logo) => {
+  emit('teamSelected', teamId, name, logo)
   showDrop()
 }
 </script>
