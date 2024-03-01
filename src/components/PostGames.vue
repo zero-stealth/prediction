@@ -39,13 +39,10 @@
       <form @submit.prevent="handleSubmit" enctype="multipart/form-data" class="form-container">
         <div class="form-wrapper">
           <h1>Team A</h1>
-          <TeamSelector v-if="teamA.length === 0" @teamSelected="handleTeamASelected" />
-          <div class="form-g-input" v-else>
-            <span>{{ teamA }}</span>
-          </div>
+          <TeamSelector @teamSelected="handleTeamASelected" />
           <div class="form-group">
             <label for="teamAIcon">Logo:</label>
-            <img :src="teamAIcon" :alt="teamA" class="form-i-image" />
+            <img :src="teamAIcon" :alt="teamA"  class="form-i-image" />
           </div>
           <div class="form-group">
             <label for="formationA">Formation:</label>
@@ -117,10 +114,7 @@
         </div>
         <div class="form-wrapper">
           <h1>Team B</h1>
-          <TeamSelector v-if="teamB.length === 0" @teamSelected="handleTeamBSelected" />
-          <div class="form-g-input" v-else>
-            <span>{{ teamB }}</span>
-          </div>
+          <TeamSelector  @teamSelected="handleTeamBSelected" />
           <div class="form-group">
             <label for="teamBIcon">Logo:</label>
             <img :src="teamBIcon" :alt="teamB" class="form-i-image" />
@@ -427,10 +421,12 @@ const getTeamStatisticsA = async (id) => {
     if (form.length >= 2) {
       const formattedForm = form.slice(-5).split('').join('-'); 
       formationA.value = formattedForm;
+      console.log(formationA.value)
     } else {
       console.error('Form data is not available or is too short');
     }
-    statistics.value.push(response.data.response)
+    statistics.value.push(response.data.response.fixtures)
+    console.log('stat A' +response.data.response.fixtures)
     toast.success('Team statistics fetched successfully')
   } catch (error) {
     toast.error('Error fetching team statistics')
@@ -444,7 +440,7 @@ const getTeamStatisticsB = async (id) => {
       params: {
         league: id,
         season: year.value,
-        team: teamIdA.value
+        team:  teamIdB.value
       },
       headers: {
         'X-RapidAPI-Key': RAPIDAPI_KEY,
@@ -455,10 +451,12 @@ const getTeamStatisticsB = async (id) => {
     if (form.length >= 2) {
       const formattedForm = form.slice(-5).split('').join('-'); 
       formationB.value = formattedForm;
+      console.log(formationB.value)
     } else {
       console.error('Form data is not available or is too short');
     }
-    statistics.value.push(response.data)
+    statistics.value.push(response.data.response.fixtures)
+    console.log(response.data.response)
     toast.success('Team statistics fetched successfully')
   } catch (error) {
     toast.error('Error fetching team statistics')
@@ -484,12 +482,12 @@ const updatePostType = (type) => {
 }
 
 const categories = [
-  { name: 'Upcoming games', endpoint: '/predictions/create/upcoming/upcoming' },
-  { name: 'Bet of the day', endpoint: '/predictions/create/bet/betOfTheDay' },
-  { name: 'Basketball', endpoint: '/sports/create/Basketball' },
-  { name: 'Freetips', endpoint: '/predictions/create/tip/freeTip' },
-  { name: 'Tennis', endpoint: '/sports/create/Tennis' },
-  { name: 'vip', endpoint: '/predictions/create/vip' }
+  { name: 'Upcoming games', endpoint: 'predictions/create/upcoming/upcoming' },
+  { name: 'Bet of the day', endpoint: 'predictions/create/bet/betOfTheDay' },
+  { name: 'Basketball', endpoint: 'sports/create/Basketball' },
+  { name: 'Freetips', endpoint: 'predictions/create/tip/freeTip' },
+  { name: 'Tennis', endpoint: 'sports/create/Tennis' },
+  { name: 'vip', endpoint: 'predictions/create/vip' }
 ]
 
 watch(category, () => {
@@ -569,7 +567,7 @@ async function handleSubmit() {
       formData.append('tip', tip.value)
       formData.append('jackpot', jackpot.value)
 
-      const response = await axios.post(`${url.value}`, formData, {
+      await axios.post(`${url.value}`, formData, {
         headers: {
           'Content-Type': 'multipart/form-data',
           Authorization: `Bearer ${user}`
@@ -582,6 +580,7 @@ async function handleSubmit() {
     }
   } else {
     toast.error('No empty fields allowed')
+    console.log(`team A: ${teamA.value}, team A icon: ${teamAIcon.value}, league icon: ${leagueIcon.value}, formation A: ${formationA.value}, team A position: ${teamAPosition.value}, team B: ${teamB.value}, team B icon: ${teamBIcon.value}, formation B: ${formationB.value}, team B position: ${teamBPosition.value}, time: ${time.value}, tip: ${tip.value}, league: ${league.value}, statistics: ${statistics.value}, date: ${currentDate.value}`)
   }
 }
 
