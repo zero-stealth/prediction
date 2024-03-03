@@ -21,6 +21,7 @@
             id="adsImage"
             accept="image/*"
           />
+          <img v-if="adsImage" :src="adsImageUrl" alt="img" class="form-i-image" />
         </div>
         <div class="form-group">
           <label for="link">Link:</label>
@@ -32,7 +33,7 @@
             v-model="description"
             type="text"
             class="form-g-input"
-            placeholder="description or link image for bottom"
+            placeholder="description"
             id="description"
           />
         </div>
@@ -42,7 +43,6 @@
             <option value="" disabled>Choose category</option>
             <option value="Top">Top</option>
             <option value="Popup">Popup</option>
-            p
             <option value="Middle">Middle</option>
             <option value="Banner">Banner</option>
             <option value="Card">Card</option>
@@ -56,8 +56,8 @@
 </template>
 
 <script setup>
-import { ref } from 'vue'
 import axios from 'axios'
+import { ref, computed } from 'vue'
 import { useToast } from 'vue-toastification'
 const SERVER_HOST = import.meta.env.VITE_SERVER_HOST
 
@@ -79,6 +79,10 @@ function handleAdsimage(event) {
   handleFileUpload(event, adsImage)
 }
 
+const adsImageUrl = computed(() => {
+  return adsImage.value ? URL.createObjectURL(adsImage.value) : null
+})
+
 async function handleSubmit() {
   if (category.value !== '') {
     const user = JSON.parse(localStorage.getItem('token'))
@@ -95,13 +99,16 @@ async function handleSubmit() {
         }
       })
       toast.success('Ads posted')
+      description.value = ''
+      adsImage.value = null
+      category.value = ''
+      link.value = ''
+      time.value = ''
     } catch (err) {
       toast.error(err.response.data.error)
-
     }
   } else {
     toast.error('Please enter all the required fields')
-
   }
 }
 
@@ -127,7 +134,6 @@ async function handleSubmitT() {
     }
   } else {
     toast.error('Please enter all the required fields')
-
   }
 }
 </script>

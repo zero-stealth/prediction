@@ -573,14 +573,13 @@ async function handleSubmit() {
           Authorization: `Bearer ${user}`
         }
       })
-      toast.success('game updated')
+      toast.success('game posted')
     } catch (err) {
       toast.error(err)
       console.log(err)
     }
   } else {
     toast.error('No empty fields allowed')
-    console.log(`team A: ${teamA.value}, team A icon: ${teamAIcon.value}, league icon: ${leagueIcon.value}, formation A: ${formationA.value}, team A position: ${teamAPosition.value}, team B: ${teamB.value}, team B icon: ${teamBIcon.value}, formation B: ${formationB.value}, team B position: ${teamBPosition.value}, time: ${time.value}, tip: ${tip.value}, league: ${league.value}, statistics: ${statistics.value}, date: ${currentDate.value}`)
   }
 }
 

@@ -47,7 +47,7 @@ const filteredAds = computed(() => {
 })
 
 const showAds = () => {
-  adsImage.value = filteredAds.value[0]?.description || null
+  adsImage.value = filteredAds.value[0]?.image || null
   adsLink.value = filteredAds.value[0]?.link || null
   autoClose()
 }
