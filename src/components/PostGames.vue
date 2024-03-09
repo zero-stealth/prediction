@@ -35,7 +35,10 @@
         </div>
       </div>
     </div>
-    <div v-if="postType === 'Automatic'">
+    <div v-if="category === 'Basketball' && postType === 'Automatic'">
+  <PostBasketball/>
+    </div>
+    <div v-if="postType === 'Automatic' && category !== 'Basketball'">
       <form @submit.prevent="handleSubmit" enctype="multipart/form-data" class="form-container">
         <div class="form-wrapper">
           <h1>Team A</h1>
@@ -287,9 +290,10 @@
 <script setup>
 import axios from 'axios'
 import { ref, watch, onMounted } from 'vue'
+import { useToast } from 'vue-toastification'
 import TeamSelector from './TeamSelector.vue'
 import ArrowIcon from '../icons/ArrowIcon.vue'
-import { useToast } from 'vue-toastification'
+import PostBasketball from './PostBasketball.vue'
 const SERVER_HOST = import.meta.env.VITE_SERVER_HOST
 const RAPIDAPI_KEY = import.meta.env.VITE_RAPIDAPI_KEY
 const SPORT_HOST = import.meta.env.VITE_RAPIDAPI_SPORT_HOST
@@ -309,12 +313,11 @@ const teamBIcon = ref(null)
 const leagueIcon = ref(null)
 const formationA = ref('')
 const formationB = ref('')
-const statistics = ref([])
+const statistics = ref('')
 const teamAPosition = ref('')
 const teamBPosition = ref('')
 const time = ref('')
 const league = ref('')
-const jackpot = ref('')
 const toast = useToast()
 const status = ref('')
 const year = ref(new Date().getFullYear() - 1)
@@ -417,6 +420,7 @@ const getTeamStatisticsA = async (id) => {
       }
     })
 
+    statistics.value = id
     const form = response.data.response && typeof response.data.response.form === 'string' ? response.data.response.form : '';
     if (form.length >= 2) {
       const formattedForm = form.slice(-5).split('').join('-'); 
@@ -425,8 +429,7 @@ const getTeamStatisticsA = async (id) => {
     } else {
       console.error('Form data is not available or is too short');
     }
-    statistics.value.push(response.data.response.fixtures)
-    console.log('stat A' +response.data.response.fixtures)
+
     toast.success('Team statistics fetched successfully')
   } catch (error) {
     toast.error('Error fetching team statistics')
@@ -447,6 +450,7 @@ const getTeamStatisticsB = async (id) => {
         'X-RapidAPI-Host': 'api-football-v1.p.rapidapi.com'
       }
     })
+    statistics.value = id
     const form = response.data.response && typeof response.data.response.form === 'string' ? response.data.response.form : '';
     if (form.length >= 2) {
       const formattedForm = form.slice(-5).split('').join('-'); 
@@ -455,8 +459,6 @@ const getTeamStatisticsB = async (id) => {
     } else {
       console.error('Form data is not available or is too short');
     }
-    statistics.value.push(response.data.response.fixtures)
-    console.log(response.data.response)
     toast.success('Team statistics fetched successfully')
   } catch (error) {
     toast.error('Error fetching team statistics')
@@ -542,7 +544,7 @@ async function handleSubmit() {
     time.value.trim() !== '' &&
     tip.value.trim() !== '' &&
     league.value.trim() !== '' &&
-    statistics.value.length !== 0 &&
+    statistics.value.trim() !== '' &&
     currentDate.value.trim() !== ''
   ) {
     const user = JSON.parse(localStorage.getItem('token'))
@@ -551,21 +553,20 @@ async function handleSubmit() {
       formData.append('teamA', teamA.value)
       formData.append('teamAIcon', teamAIcon.value)
       formData.append('leagueIcon', leagueIcon.value)
-      formData.append('formationA', formationA.value)
+      formData.append('formationA', formationA.value.toLocaleLowerCase)
       formData.append('teamAPosition', teamAPosition.value)
       formData.append('teamAscore', '0')
       formData.append('teamB', teamB.value)
       formData.append('teamBIcon', teamBIcon.value)
-      formData.append('formationB', formationB.value)
+      formData.append('formationB', formationB.value.toLocaleLowerCase)
       formData.append('teamBPosition', teamBPosition.value)
-      formData.append('statistics', JSON.stringify(statistics.value))
+      formData.append('statistics', statistics.value)
       formData.append('teamBscore', '0')
       formData.append('time', time.value)
       formData.append('status', status.value)
       formData.append('league', league.value)
       formData.append('date', currentDate.value)
       formData.append('tip', tip.value)
-      formData.append('jackpot', jackpot.value)
 
       await axios.post(`${url.value}`, formData, {
         headers: {

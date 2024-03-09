@@ -225,6 +225,7 @@ const getPrediction = async () => {
     const response = await axios.get(`${SERVER_HOST}/predictions/tips/freeTip/${currentDate.value}`)
     cardData.value = response.data
     // console.log(cardData.value)
+
   } catch (err) {
     console.log(err)
   }

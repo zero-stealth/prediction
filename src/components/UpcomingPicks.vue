@@ -9,7 +9,7 @@
       <template v-if="cardData.length > 0">
         <div class="main-h-card">
           <Card
-            v-for="(card, index) in cardData"
+            v-for="(card) in cardData"
             :key="card._id"
             :tip="card.tip"
             :status="card.status"

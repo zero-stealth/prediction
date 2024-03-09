@@ -33,10 +33,7 @@
             <label for="formationA">Formation:</label>
             <span class="form-g-input">{{ formationA }}</span>
           </div>
-          <div class="form-group">
-            <label for="Status">Status:</label>
-            <input v-model="status" type="text" class="form-g-input" placeholder="1" id="status" />
-          </div>
+     
           <div class="form-group">
             <label for="teamAPosition">Position:</label>
             <input
@@ -46,6 +43,10 @@
               placeholder="1"
               id="teamAPosition"
             />
+          </div>
+          <div class="form-group">
+            <label for="Status">Status:</label>
+            <input v-model="status" type="text" class="form-g-input" placeholder="1" id="status" />
           </div>
         </div>
         <div class="form-wrapper">
@@ -96,16 +97,16 @@
             <input type="date" @change="onDateChange" v-model="currentDate" class="form-g-input" />
           </div>
           <div class="form-group">
-            <label for="category">Match category:</label>
-            <select v-model="category" class="form-g-input" id="category">
-              <option disabled value="">Choose category</option>
-              <option value="Double Chance">Double Chance</option>
-              <option value="Over 2.5 Goals">Over 2.5 Goals</option>
-              <option value="Over 1.5 Goals">Over 1.5 Goals</option>
-              <option value="Both Teams To Score">Both Team To Score</option>
-              <option value="Under 2.5 Goals">Under 2.5 Goals</option>
-            </select>
-          </div>
+          <label for="category">Match category:</label>
+          <select v-model="category" class="form-g-input" id="category">
+            <option disabled value="">Choose category</option>
+            <option value="Double Chance">Double Chance</option>
+            <option value="Over 2.5 Goals">Over 2.5 Goals</option>
+            <option value="Over 1.5 Goals">Over 1.5 Goals</option>
+            <option value="Both Teams To Score">Both Team To Score</option>
+            <option value="Under 2.5 Goals">Under 2.5 Goals</option>
+          </select>
+        </div>
           <button type="submit" class="btn-f-f f-desktop">Submit</button>
         </div>
         <div class="form-wrapper">
@@ -129,16 +130,7 @@
               id="teamBPosition"
             />
           </div>
-          <div class="form-group">
-            <label for="teamBscore">Score:</label>
-            <input
-              v-model="teamBscore"
-              type="text"
-              class="form-g-input"
-              placeholder="5"
-              id="teamBscore"
-            />
-          </div>
+       
           <div class="form-group">
             <label for="description">Description</label>
             <input v-model="description" type="text" class="form-g-input" placeholder="about game" id="description" />
@@ -197,16 +189,7 @@
             <label for="Status">Status:</label>
             <input v-model="status" type="text" class="form-g-input" placeholder="1" id="status" />
           </div>
-          <div class="form-group">
-            <label for="teamAscore">Score:</label>
-            <input
-              v-model="teamAscore"
-              type="text"
-              class="form-g-input"
-              placeholder="2"
-              id="teamAscore"
-            />
-          </div>
+       
         </div>
         <div class="form-wrapper">
           <div class="form-group">
@@ -251,16 +234,16 @@
             <input type="date" @change="onDateChange" v-model="currentDate" class="form-g-input" />
           </div>
           <div class="form-group">
-            <label for="category">Match category:</label>
-            <select v-model="category" class="form-g-input" id="category">
-              <option disabled value="">Choose category</option>
-              <option value="Double Chance">Double Chance</option>
-              <option value="Over 2.5 Goals">Over 2.5 Goals</option>
-              <option value="Over 1.5 Goals">Over 1.5 Goals</option>
-              <option value="Both Teams To Score">Both Team To Score</option>
-              <option value="Under 2.5 Goals">Under 2.5 Goals</option>
-            </select>
-          </div>
+          <label for="category">Match category:</label>
+          <select v-model="category" class="form-g-input" id="category">
+            <option disabled value="">Choose category</option>
+            <option value="Double Chance">Double Chance</option>
+            <option value="Over 2.5 Goals">Over 2.5 Goals</option>
+            <option value="Over 1.5 Goals">Over 1.5 Goals</option>
+            <option value="Both Teams To Score">Both Team To Score</option>
+            <option value="Under 2.5 Goals">Under 2.5 Goals</option>
+          </select>
+        </div>
           <button type="submit" class="btn-f-f f-desktop">Submit</button>
         </div>
         <div class="form-wrapper">
@@ -307,16 +290,7 @@
               id="teamBPosition"
             />
           </div>
-          <div class="form-group">
-            <label for="teamBscore">Score:</label>
-            <input
-              v-model="teamBscore"
-              type="text"
-              class="form-g-input"
-              placeholder="5"
-              id="teamBscore"
-            />
-          </div>
+        
            <div class="form-group">
             <label for="description">Description</label>
             <input v-model="description" type="text" class="form-g-input" placeholder="about game" id="description" />
@@ -344,21 +318,19 @@ const leagueData = ref([])
 const leagueDataA = ref([])
 const leagueDataB = ref([])
 const isLeagueOpen = ref(false)
-const isDrpOpen = ref(false)
 const isDropOpenType = ref(false)
-const category = ref(null)
+const category = ref('')
 const teamAIcon = ref(null)
 const teamBIcon = ref(null)
 const leagueIcon = ref(null)
 const formationA = ref('')
 const formationB = ref('')
-const statistics = ref([])
+const statistics = ref('')
 const teamAPosition = ref('')
 const teamBPosition = ref('')
 const description = ref('');
 const time = ref('')
 const league = ref('')
-const jackpot = ref('')
 const toast = useToast()
 const status = ref('')
 const year = ref(new Date().getFullYear() - 1)
@@ -460,16 +432,14 @@ const getTeamStatisticsA = async (id) => {
       }
     })
 
+    statistics.value = id
     const form = response.data.response && typeof response.data.response.form === 'string' ? response.data.response.form : '';
     if (form.length >= 2) {
-      const formattedForm = form.slice(-5).split('').join('-'); 
+      const formattedForm = form.slice(-5).split('').join('-').toLowerCase();
       formationA.value = formattedForm;
-      console.log(formationA.value)
     } else {
       console.error('Form data is not available or is too short');
     }
-    statistics.value.push(response.data.response.fixtures)
-    console.log('stat A' +response.data.response.fixtures)
     toast.success('Team statistics fetched successfully')
   } catch (error) {
     toast.error('Error fetching team statistics')
@@ -490,16 +460,16 @@ const getTeamStatisticsB = async (id) => {
         'X-RapidAPI-Host': 'api-football-v1.p.rapidapi.com'
       }
     })
+    statistics.value = id
     const form = response.data.response && typeof response.data.response.form === 'string' ? response.data.response.form : '';
     if (form.length >= 2) {
-      const formattedForm = form.slice(-5).split('').join('-'); 
+      const formattedForm = form.slice(-5).split('').join('-').toLowerCase();
+
       formationB.value = formattedForm;
-      console.log(formationB.value)
     } else {
       console.error('Form data is not available or is too short');
     }
-    statistics.value.push(response.data.response.fixtures)
-    console.log(response.data.response)
+ 
     toast.success('Team statistics fetched successfully')
   } catch (error) {
     toast.error('Error fetching team statistics')
@@ -507,9 +477,6 @@ const getTeamStatisticsB = async (id) => {
   }
 }
 
-const showDrp = () => {
-  isDrpOpen.value = !isDrpOpen.value
-}
 
 
 const showDropType = () => {
@@ -557,13 +524,13 @@ async function handleSubmit() {
     teamAPosition.value.trim() !== '' &&
     teamB.value.trim() !== '' &&
     teamBIcon.value !== null &&
-    category.value !== null &&
+    category.value !== '' &&
     formationB.value.trim() !== '' &&
     teamBPosition.value.trim() !== '' &&
     time.value.trim() !== '' &&
     tip.value.trim() !== '' &&
     league.value.trim() !== '' &&
-    statistics.value.length !== 0 &&
+    statistics.value !== ' ' &&
     currentDate.value.trim() !== ''
   ) {
     const user = JSON.parse(localStorage.getItem('token'))
@@ -579,16 +546,15 @@ async function handleSubmit() {
       formData.append('teamBIcon', teamBIcon.value)
       formData.append('formationB', formationB.value)
       formData.append('teamBPosition', teamBPosition.value)
-      formData.append('statistics', JSON.stringify(statistics.value))
+      formData.append('statistics', statistics.value)
       formData.append('teamBscore', '0')
       formData.append('time', time.value)
       formData.append('status', status.value)
       formData.append('league', league.value)
       formData.append('date', currentDate.value)
+      formData.append('category', category.value)
       formData.append('tip', tip.value)
-      formData.append('jackpot', jackpot.value)
       formData.append('description', description.value);
-
       const response = await axios.post(
         `${SERVER_HOST}/predictions/create`,
         formData,
@@ -599,14 +565,13 @@ async function handleSubmit() {
           }
         }
       )
-      toast.success('game updated')
+      toast.success('prediction  updated')
+      console.log(response.data)
     } catch (err) {
-      toast.error(err)
-      console.log(err)
+      toast.error(err.response.data.error)
     }
   } else {
     toast.error('No empty fields allowed')
-    console.log(`team A: ${teamA.value}, team A icon: ${teamAIcon.value}, league icon: ${leagueIcon.value}, formation A: ${formationA.value}, team A position: ${teamAPosition.value}, team B: ${teamB.value}, team B icon: ${teamBIcon.value}, formation B: ${formationB.value}, team B position: ${teamBPosition.value}, time: ${time.value}, tip: ${tip.value}, league: ${league.value}, statistics: ${statistics.value}, date: ${currentDate.value}`)
   }
 }
 
