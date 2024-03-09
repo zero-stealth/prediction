@@ -45,7 +45,7 @@ const showDrop = () => {
 
 const searchTeams = async () => {
   if (searchInput.value.length < 4) {
-    // toast.error('Team search query must be 4 characters or more (e.g., "manch").')
+    toast.error('Team search query must be 4 characters or more (e.g., "manch").')
   } else {
     try {
       showDrop()
