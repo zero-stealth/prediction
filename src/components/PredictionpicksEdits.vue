@@ -161,10 +161,7 @@
             id="teamBscore"
           />
         </div>
-        <div class="form-group">
-          <label for="description">Description</label>
-          <input v-model="description" type="text" class="form-g-input" placeholder="about game" id="description" />
-        </div>
+
         <button type="submit" class="btn-f-f f-mobile">Submit</button>
       </div>
     </form>
@@ -194,7 +191,6 @@ const teamBscore = ref('');
 const date = ref('')
 const tip = ref('')
 const ShowScore = ref(false)
-const description = ref('');
 
 
 function handleFileUpload(event, targetRef) {
@@ -238,8 +234,7 @@ function handleSubmit() {
       teamAPosition: teamAPosition.value,
       teamBPosition: teamBPosition.value,
       teamAIcon: teamAIcon.value,
-      teamBIcon: teamBIcon.value,
-      description:description.value
+      teamBIcon: teamBIcon.value
     }
 
     emit('formSubmit', formData)

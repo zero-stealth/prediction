@@ -136,7 +136,10 @@
               id="teamBPosition"
             />
           </div>
-
+          <div class="form-group">
+            <label for="description">Description</label>
+            <input v-model="description" type="text" class="form-g-input" placeholder="about game" id="description" />
+          </div>
           <button type="submit" class="btn-f-f f-mobile">Submit</button>
         </div>
       </form>
@@ -281,6 +284,10 @@
               id="teamBPosition"
             />
           </div>
+          <div class="form-group">
+            <label for="description">Description</label>
+            <input v-model="description" type="text" class="form-g-input" placeholder="about game" id="description" />
+          </div>
           <button type="submit" class="btn-f-f f-mobile">Submit</button>
         </div>
       </form>
@@ -316,6 +323,7 @@ const formationB = ref('')
 const statistics = ref('')
 const teamAPosition = ref('')
 const teamBPosition = ref('')
+const description = ref('');
 const time = ref('')
 const league = ref('')
 const toast = useToast()
@@ -561,6 +569,7 @@ async function handleSubmit() {
       formData.append('formationB', formationB.value.toLocaleLowerCase)
       formData.append('teamBPosition', teamBPosition.value)
       formData.append('statistics', statistics.value)
+      formData.append('description', description.value);
       formData.append('teamBscore', '0')
       formData.append('time', time.value)
       formData.append('status', status.value)

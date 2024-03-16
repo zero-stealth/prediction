@@ -130,11 +130,7 @@
               id="teamBPosition"
             />
           </div>
-       
-          <div class="form-group">
-            <label for="description">Description</label>
-            <input v-model="description" type="text" class="form-g-input" placeholder="about game" id="description" />
-          </div>
+
           <button type="submit" class="btn-f-f f-mobile">Submit</button>
         </div>
       </form>
@@ -290,11 +286,6 @@
               id="teamBPosition"
             />
           </div>
-        
-           <div class="form-group">
-            <label for="description">Description</label>
-            <input v-model="description" type="text" class="form-g-input" placeholder="about game" id="description" />
-          </div>
           <button type="submit" class="btn-f-f f-mobile">Submit</button>
         </div>
       </form>
@@ -328,7 +319,6 @@ const formationB = ref('')
 const statistics = ref('')
 const teamAPosition = ref('')
 const teamBPosition = ref('')
-const description = ref('');
 const time = ref('')
 const league = ref('')
 const toast = useToast()
@@ -554,7 +544,6 @@ async function handleSubmit() {
       formData.append('date', currentDate.value)
       formData.append('category', category.value)
       formData.append('tip', tip.value)
-      formData.append('description', description.value);
       const response = await axios.post(
         `${SERVER_HOST}/predictions/create`,
         formData,
