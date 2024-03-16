@@ -326,8 +326,8 @@ const time = ref('')
 const league = ref('')
 const toast = useToast()
 const status = ref('')
-const formationA = ref('').toLowerCase()
-const formationB = ref('').toLowerCase()
+const formationA = ref('')
+const formationB = ref('')
 const year = ref(new Date().getFullYear() - 1)
 const teamIdA = ref('')
 const teamIdB = ref('')
@@ -432,7 +432,7 @@ const getTeamStatisticsA = async (id) => {
     const form = response.data.response && typeof response.data.response.form === 'string' ? response.data.response.form : '';
     if (form.length >= 2) {
       const formattedForm = form.slice(-5).split('').join('-'); 
-      formationA.value = formattedForm;
+      formationA.value = formattedForm.toLowerCase();
       console.log(formationA.value)
     } else {
       console.error('Form data is not available or is too short');
@@ -462,7 +462,7 @@ const getTeamStatisticsB = async (id) => {
     const form = response.data.response && typeof response.data.response.form === 'string' ? response.data.response.form : '';
     if (form.length >= 2) {
       const formattedForm = form.slice(-5).split('').join('-'); 
-      formationB.value = formattedForm;
+      formationB.value = formattedForm.toLowerCase();
       console.log(formationB.value)
     } else {
       console.error('Form data is not available or is too short');
