@@ -63,6 +63,7 @@ const searchTeams = async () => {
       toast.success('Team data fetched successfully')
     } catch (error) {
       toast.error('Error fetching team data')
+      console.log(error)
     }
   }
 }

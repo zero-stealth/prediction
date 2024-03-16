@@ -22,10 +22,9 @@
       </div>
       <OfferAds />
       <template v-if="cardData.length > 0">
-        <div class="main-h-card booom-h">
-          <div v-for="card in cardData" :key="card._id">
+          <div class="main-h-card booom-h">
             <Card
-              :key="card._id"
+             v-for="card in cardData" :key="card._id"
               :tip="card.tip"
               :status="card.status"
               :leagueIcon="card.leagueIcon"
@@ -49,7 +48,6 @@
                 </div>
               </template>
             </Card>
-          </div>
         </div>
       </template>
       <template v-else>
