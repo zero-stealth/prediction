@@ -1071,7 +1071,7 @@ async function updateVipResult(formData) {
     toast.success('Vip result updated')
     getVipGames()
   } catch (error) {
-    toast.error(err.response.data.message)
+    toast.error(error.response.data.message)
 
   }
 }

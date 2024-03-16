@@ -552,7 +552,6 @@ async function handleSubmit() {
     time.value.trim() !== '' &&
     tip.value.trim() !== '' &&
     league.value.trim() !== '' &&
-    statistics.value.trim() !== '' &&
     currentDate.value.trim() !== ''
   ) {
     const user = JSON.parse(localStorage.getItem('token'))
