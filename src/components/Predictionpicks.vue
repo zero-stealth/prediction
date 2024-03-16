@@ -426,7 +426,7 @@ const getTeamStatisticsA = async (id) => {
     const form = response.data.response && typeof response.data.response.form === 'string' ? response.data.response.form : '';
     if (form.length >= 2) {
       const formattedForm = form.slice(-5).split('').join('-').toLowerCase();
-      formationA.value = formattedForm;
+      formationA.value = formattedForm.toLowerCase();
     } else {
       console.error('Form data is not available or is too short');
     }
@@ -455,7 +455,7 @@ const getTeamStatisticsB = async (id) => {
     if (form.length >= 2) {
       const formattedForm = form.slice(-5).split('').join('-').toLowerCase();
 
-      formationB.value = formattedForm;
+      formationB.value = formattedForm.toLowerCase();
     } else {
       console.error('Form data is not available or is too short');
     }
