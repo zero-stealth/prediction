@@ -66,7 +66,21 @@
               :formationA="formatFormation(card.formationA)"
               :formationB="formatFormation(card.formationB)"
               :time="card.time"
-            />
+            >
+              <template v-slot:ads>
+                <div v-if="cardAdsImg" class="bet-adv">
+                  <a :href="cardAdsLink">
+                    <img :src="cardAdsImg" alt="image" class="bet-winner-logo" />
+                  </a>
+                </div>
+              </template>
+              <template v-slot:button>
+                <div class="Tip">
+                  <h4>Tip:</h4>
+                  <span>{{ card.tip }}</span>
+                </div>
+              </template>
+            </Card>
           </div>
         </template>
         <template v-else-if="paid && username && cardData.length === 0">
@@ -139,7 +153,6 @@ const getPrediction = async () => {
         }
       }
     )
-    console.log(response.data)
     cardData.value = response.data
   } catch (err) {
     console.log(err)
