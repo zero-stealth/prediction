@@ -292,6 +292,12 @@
     font-size: 1rem;
   }
 
+  .description-info{
+    max-height: 200px;
+    overflow: hidden;
+    overflow-y: scroll;
+    overflow-x: hidden;
+  }
 
   .description-info p {
     font-size: .9rem;
