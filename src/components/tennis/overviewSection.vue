@@ -21,7 +21,7 @@ onMounted(() => {
   <div class="description-container">
     <h1>Description</h1>
     <div class="description-info"  v-if="description">
-      <p>{{ description }}</p>
+      <p v-html="description"></p>
     </div>
     <div class="description-nop"  v-else>
         <p >No description added</p>
