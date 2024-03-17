@@ -55,19 +55,15 @@
 <script setup>
 import axios from 'axios';
 import { ref, onMounted } from 'vue';
-import { useRouter } from 'vue-router';
 import { useToast } from 'vue-toastification'
 import Card from '../components/CardComponent.vue';
 const SERVER_HOST = import.meta.env.VITE_SERVER_HOST
 
 
 const toast = useToast()
-const router = useRouter();
 const currentDate = ref('');
 
-const showCard = (cardID) => {
-  router.push({ name: 'Tips', params: { id: cardID } });
-};
+
 
 const cardData = ref([]);
 
