@@ -107,7 +107,7 @@
 
 /* Works on Firefox */
 * {
-  scrollbar-width: thin;
+  scrollbar-width: auto;
   scrollbar-color: var(--secondary-color) var(--primary-color);
 }
 
