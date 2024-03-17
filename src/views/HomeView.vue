@@ -93,7 +93,7 @@
         </div>
       </div>
     </div>
-    <div class="news-main" v-else>
+    <div class="news-loading" v-else>
       <span>...loading news</span>
     </div>
     <Upcoming />
