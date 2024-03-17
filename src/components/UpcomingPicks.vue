@@ -7,28 +7,42 @@
         </div>
       </div>
       <template v-if="cardData.length > 0">
-        <div class="main-h-card">
-          <Card
-            v-for="(card) in cardData"
-            :key="card._id"
-            :tip="card.tip"
-            :status="card.status"
-            :leagueIcon="card.leagueIcon"
-            :teamAIcon="card.teamAIcon"
-            :teamBIcon="card.teamBIcon"
-            :teamA="card.teamA"
-            :teamB="card.teamB"
-            :league="card.league"
-            :showScore="card.showScore"
-            :teamAscore="card.teamAscore"
-            :teamBscore="card.teamBscore"
-            :formationA="formatFormation(card.formationA)"
+      <div  class="main-h-card booom-h">
+        <Card
+        v-for="(card) in cardData"
+          :key="card._id"
+          :tip="card.tip"
+          :status="card.status"
+          :leagueIcon="card.leagueIcon"
+          :teamAIcon="card.teamAIcon"
+          :teamBIcon="card.teamBIcon"
+          :teamA="card.teamA"
+          :teamB="card.teamB"
+          :league="card.league"
+          showBtn="false"
+          :showScore="card.showScore"
+          :teamAscore="card.teamAscore"
+          :teamBscore="card.teamBscore"
+          :formationA="formatFormation(card.formationA)"
             :formationB="formatFormation(card.formationB)"
-            :time="card.time"
-            @click="showCard(card._id)"
-          />
-        </div>
-      </template>
+          :time="card.time"
+        >
+          <template v-slot:ads>
+            <div v-if="cardAdsImg" class="bet-adv">
+              <a :href="cardAdsLink">
+                <img :src="cardAdsImg" alt="image" class="bet-winner-logo" />
+              </a>
+            </div>
+          </template>
+          <template v-slot:button>
+            <div class="Tip">
+              <h4>Tip:</h4>
+              <span>{{ card.tip }}</span>
+            </div>
+          </template>
+        </Card>
+      </div>
+    </template>
         <template v-else>
           <div class="home-freetip">
             <h1>No predictions yet! Check back later.</h1>

@@ -129,7 +129,7 @@
 @media only screen and (min-width: 48em) {
   /* Works on Chrome, Edge, and Safari */
   *::-webkit-scrollbar {
-    width: 10px;
+    width: 15px;
   }
 
 
