@@ -47,12 +47,12 @@
           </div>
         </div>
         <template v-if="paid && username && cardData.length > 0">
-          <div class="main-h-card booom-h">
+          <div class="main-h-card vip-h-card  booom-h">
             <Card
               v-for="card in cardData"
               :key="card._id"
               :tip="card.tip"
-              :status="card.status"
+              :status="card.status"jjjjjjjjjjjjj
               :leagueIcon="card.leagueIcon"
               :teamAIcon="card.teamAIcon"
               :teamBIcon="card.teamBIcon"
@@ -100,11 +100,14 @@ import banner from '../assets/back.jpeg'
 import MoneyIcon from '../icons/payIcon.vue'
 import Card from '../components/CardComponent.vue'
 import ProfileIcon from '../icons/profileIcon.vue'
-import { ref, onMounted, watch } from 'vue'
+import { ref, onMounted, watch , computed} from 'vue'
 
+const cardAdsData = ref([])
 const router = useRouter()
 const username = ref(null)
 const cardData = ref([])
+const cardAdsLink = ref(null)
+const cardAdsImg = ref(null)
 const currentDate = ref('')
 const paid = ref(false)
 const offset = ref(0)
@@ -139,6 +142,26 @@ const scrollToTop = () => {
     top: 0,
     behavior: 'smooth'
   })
+}
+const filteredAds = computed(() => {
+  const AdTitle = 'Card'
+  return cardAdsData.value ? cardAdsData.value.filter((Ads) => Ads.title === AdTitle) : []
+})
+
+
+const getAds = async () => {
+  try {
+    const response = await axios.get(`${SERVER_HOST}/ads`)
+    cardAdsData.value = response.data
+    showAds()
+  } catch (err) {
+    console.error(err)
+  }
+}
+
+const showAds = () => {
+  cardAdsImg.value = filteredAds.value[0]?.description || null
+  cardAdsLink.value = filteredAds.value[0]?.link || null
 }
 
 const getPrediction = async () => {
@@ -178,6 +201,7 @@ const getAccountDetails = async () => {
 }
 
 onMounted(() => {
+  getAds()
   getPrediction()
   updateAuthStatus()
   getAccountDetails()
@@ -226,6 +250,7 @@ watch([offset, username, paid], () => {
 </script>
 
 <style scoped>
+@import '../style/card.css';
 @import '../style/vip.css';
 @import '../style/Home.css';
 </style>
