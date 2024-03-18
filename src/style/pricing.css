@@ -1,0 +1,125 @@
+@media screen {
+.pay-main-contain{
+  height: 100%;
+  display: flex;
+  padding-top:50px ;
+  flex-direction: column;
+  background-color: var(--primary-color);
+  background-image: url('../assets/sport-bg.png');
+}
+
+.pay-main-contain h1 {
+  font-size: 1.5rem;
+  text-align: center;
+  text-decoration: underline;
+  text-transform: capitalize;
+  color: var(--background-color);
+}
+
+.main-contain-card {
+  gap: 20px;
+  padding: 10px;
+  display: flex;
+  flex-wrap: wrap;
+  padding-top: 50px;
+  align-items: center;
+  justify-content: space-around;
+}
+
+.pricing-card {
+  gap: 30px;
+  width: 100%;
+  padding: 10px;
+  display: flex;
+  cursor: pointer;
+  border-radius: 8px;
+  flex-direction: column;
+  color: var(--background-color);
+  border: 1px solid var(--light-color);
+  background-color: var(--primary-color);
+}
+
+.pricing-card:hover {
+  background-color: 1px solid var(--primary-color);
+}
+
+.popular-card {
+  color: var(--green-color);
+  border-radius: 4px;
+  text-align: center;
+  padding: 5px;
+}
+
+.popular-card h1 {
+  font-size: 1.2rem;
+}
+
+.pricing-card-h {
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+}
+
+.pricing-card-h h1 {
+  font-weight: 500;
+  font-size: 1.3rem;
+  text-decoration: none;
+}
+
+.pricing-card-h h3 {
+  font-size: .8rem;
+  font-weight: 300;
+}
+
+.pricing{
+  gap: 4px;
+  display: flex;
+  justify-content: center;
+}
+
+.pricing h1 {
+  font-weight: 600;
+  font-size: 2.4rem;
+  text-decoration: none;
+}
+
+.pricing span {
+  font-size: 1rem;
+  font-weight: 300;
+}
+
+.pricing h5 {
+  font-weight: 300;
+  font-size: .8rem;
+  padding-top:30px;
+  align-items: start;
+} 
+
+.pricingBtn-card {
+  padding: 10px;
+  border-radius: 8px;
+  color: var(--background-color);
+  background-color: var(--secondary-color);
+}
+
+.pricingBtn-card:hover {
+  background-color: var(--secondary-dark-color);
+}
+}
+
+/* using it as global style for larger devices  */
+@media only screen and (min-width: 48em) {
+  .pay-main-contain{
+    height: 100vh;
+  }
+
+  .pricing-card {
+    gap: 30px;
+    width: 300px;
+    padding: 10px;
+    display: flex;
+    cursor: pointer;
+    min-width: 300px;
+
+  }
+}

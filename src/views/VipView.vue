@@ -122,7 +122,7 @@ const updateAuthStatus = () => {
 }
 
 const payPage = () => {
-  router.push({ name: 'Pay' })
+  router.push({ name: 'Pricing' })
   scrollToTop()
 }
 

@@ -233,7 +233,16 @@ const router = createRouter({
       },
     },
     {
-      path: '/how-to-pay',
+      path: '/pricing',
+      name: 'Pricing',
+      component: () => import('../views/PricingView.vue'),
+      meta: {
+        title: "Pricing -Choose subscription",
+        description: "Choose your prefereed subscription",
+      },
+    },
+    {
+      path: '/pay/:plan',
       name: 'Pay',
       component: () => import('../views/PayView.vue'),
       meta: {

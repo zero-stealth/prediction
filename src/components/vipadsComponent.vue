@@ -73,7 +73,7 @@ const vipResultData = ref([])
 const SERVER_HOST = import.meta.env.VITE_SERVER_HOST
 
 const goVip = () => {
-  router.push({ name: 'Pay' })
+  router.push({ name: 'Pricing' })
   scrollToTop()
 }
 

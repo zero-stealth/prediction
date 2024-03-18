@@ -783,5 +783,5 @@ const filteredCountries = computed(() => {
 
 <style>
 @import '../style/Home.css';
-@import '../style/Pay.css';
+@import '../style/pay.css';
 </style>

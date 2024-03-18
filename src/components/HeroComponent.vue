@@ -45,7 +45,7 @@ const SERVER_HOST = import.meta.env.VITE_SERVER_HOST
 const router = useRouter()
 
 const goVip = () => {
-  router.push({ name: 'Vip' })
+  router.push({ name: 'Pricing' })
   scrollToTop()
 
 }
