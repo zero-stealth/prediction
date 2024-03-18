@@ -52,7 +52,7 @@
               v-for="card in cardData"
               :key="card._id"
               :tip="card.tip"
-              :status="card.status"jjjjjjjjjjjjj
+              :status="card.status"
               :leagueIcon="card.leagueIcon"
               :teamAIcon="card.teamAIcon"
               :teamBIcon="card.teamBIcon"
