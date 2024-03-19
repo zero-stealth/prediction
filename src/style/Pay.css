@@ -7,6 +7,13 @@
 
   }
 
+  .pay-payment{
+    height: 100%;
+    color: var(--background-color);
+    background-color: var(--primary-color);
+
+  }
+
   .pay-contain {
     gap: 20px;
     height: 100%;
@@ -29,12 +36,20 @@
   .sport-s-contain {
     gap: 10px;
     display: flex;
+    padding: 14px;
+    border-radius: 8px;
     flex-direction: column;
+    border: 1px solid var(--light-color);
+  }
+
+  .sport-s-contain p {
+    text-align: center;
   }
 
   .sport-s-contain p, .pay-main p {
     font-size: .8rem;
     font-weight: 300;
+    
     color: var(--secondary-color);
   }
 
@@ -59,7 +74,10 @@
     border-radius: 4px;
     color: var(--light-color);
     border: 1px solid var(--light-color);
-    background-color: var(--primary-color);
+  }
+
+  .sport-selector option {
+    color: var(--primary-color);
   }
 
   .pay-op {
@@ -98,7 +116,7 @@
   }
 
   .pay-btn {
-    padding: 10px;
+    padding: 15px;
     font-size: 0.8rem;
     font-weight: 100;
     border-radius: 4px;
@@ -230,6 +248,7 @@
   .pay-header {
     padding: 20px;
   }
+
 
   .pay-contain {
     padding: 20px;

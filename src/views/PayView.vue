@@ -1,91 +1,29 @@
 <script setup>
-import countriesData from '../components/countries.json'
+import { useRouter, useRoute } from 'vue-router';
 import MoneyIcon from '../icons/payIcon.vue'
-import { ref, computed } from 'vue'
-import { useRouter } from 'vue-router'
+import { ref } from 'vue'
 
+const route = useRoute();
 const router = useRouter()
 
-const Selectedcountry = ref('')
-const reveal = ref('')
-const errMsg = ref('')
-const searchTerm = ref('')
+const reveal = ref(route.params.currency)
 
 const logIn = () => {
   router.push({ name: 'Login' })
-  scrollToTop()
 
 }
 
 const signIn = () => {
   router.push({ name: 'Signin' })
-  scrollToTop()
 
 }
 
 const goVip = () => {
   router.push({ name: 'Vip' })
-  scrollToTop()
 
 }
 
 
-const scrollToTop = () => {
-  // Scroll to the top of the page
-  window.scrollTo({
-    top: 0,
-    behavior: "smooth", 
-  });
-}
-
-const showPayment = () => {
-  if (Selectedcountry.value === '') {
-    errMsg.value = 'Empty field is not supported'
-  } else {
-    switch (Selectedcountry.value) {
-      case 'KE':
-        reveal.value = 'kenya'
-        break
-      case 'NG':
-        reveal.value = 'Nigeria'
-        break
-      case 'CM':
-        reveal.value = 'Cameroon'
-        break
-      case 'GH':
-        reveal.value = 'Ghana'
-        break
-      case 'ZA':
-        reveal.value = 'southA'
-        break
-      case 'TZ':
-        reveal.value = 'Tanzania'
-        break
-      case 'UG':
-        reveal.value = 'Uganda'
-        break
-      case 'ZM':
-        reveal.value = 'Zambia'
-        break
-      case 'RW':
-        reveal.value = 'Rwanda'
-        break
-      case 'MW':
-        reveal.value = 'Malawi'
-        break
-      default:
-        reveal.value = 'others'
-    }
-  }
-}
-
-const filteredCountries = computed(() => {
-  const term = searchTerm.value.toLowerCase()
-  return countriesData.filter(
-    (country) =>
-      country.name.toLowerCase().includes(term) || country.code.toUpperCase().includes(term)
-  )
-})
 </script>
 
 <template>
@@ -103,25 +41,6 @@ const filteredCountries = computed(() => {
         </h1>
         <p>Your SportyPredict VIP account will be activated once your payment is received.</p>
         <p>Choose your country to get payment details:</p>
-      </div>
-      <div class="pay-main">
-        <div class="sport-s-contain">
-          <label>Please select your country</label>
-          <input
-            type="text"
-            class="sport-selector"
-            v-model="searchTerm"
-            placeholder="Search country"
-          />
-          <select class="sport-selector" v-model="Selectedcountry">
-            <option disabled value="">Select a country</option>
-            <option v-for="country in filteredCountries" :key="country.code" :value="country.code">
-              {{ country.name }}
-            </option>
-          </select>
-          <button class="pay-btn" @click="showPayment">Proceed</button>
-        </div>
-        <p>{{ errMsg }}</p>
       </div>
       <div class="pay-info" v-if="reveal === 'others'">
         <div class="info-pay-h">
@@ -254,7 +173,7 @@ const filteredCountries = computed(() => {
           </div>
         </div>
       </div>
-      <div class="pay-info" v-else-if="reveal === 'Nigeria'">
+      <div class="pay-info" v-else-if="reveal === 'nigeria'">
         <div class="info-pay-h">
           <h1>
             Duration of <span>30 days</span> <br />
@@ -310,7 +229,7 @@ const filteredCountries = computed(() => {
           </div>
         </div>
       </div>
-      <div class="pay-info" v-else-if="reveal === 'Ghana'">
+      <div class="pay-info" v-else-if="reveal === 'ghana'">
         <div class="info-pay-h">
           <h1>
             Duration of <span>30 days</span> <br />
@@ -365,7 +284,7 @@ const filteredCountries = computed(() => {
           </div>
         </div>
       </div>
-      <div class="pay-info" v-else-if="reveal === 'Cameroon'">
+      <div class="pay-info" v-else-if="reveal === 'cameroon'">
         <div class="info-pay-h">
           <h1>
             Duration of <span>30 days</span> <br />
@@ -420,7 +339,7 @@ const filteredCountries = computed(() => {
           </div>
         </div>
       </div>
-      <div class="pay-info" v-else-if="reveal === 'Uganda'">
+      <div class="pay-info" v-else-if="reveal === 'uganda'">
         <div class="info-pay-h">
           <h1>
             Duration of <span>30 days</span> <br />
@@ -476,7 +395,7 @@ const filteredCountries = computed(() => {
           </div>
         </div>
       </div>
-      <div class="pay-info" v-else-if="reveal === 'Tanzania'">
+      <div class="pay-info" v-else-if="reveal === 'tanzania'">
         <div class="info-pay-h">
           <h1>
             Duration of <span>30 days</span> <br />
@@ -605,7 +524,7 @@ const filteredCountries = computed(() => {
           </div>
         </div>
       </div>
-      <div class="pay-info" v-else-if="reveal === 'Zambia'">
+      <div class="pay-info" v-else-if="reveal === 'zambia'">
         <div class="info-pay-h">
           <h1>
             Duration of <span>30 days</span> <br />
@@ -662,7 +581,7 @@ const filteredCountries = computed(() => {
           </div>
         </div>
       </div>
-      <div class="pay-info" v-else-if="reveal === 'Malawi'">
+      <div class="pay-info" v-else-if="reveal === 'malawi'">
         <div class="info-pay-h">
           <h1>
             Duration of <span>30 days</span> <br />
@@ -719,7 +638,7 @@ const filteredCountries = computed(() => {
           </div>
         </div>
       </div>
-      <div class="pay-info" v-else-if="reveal === 'Rwanda'">
+      <div class="pay-info" v-else-if="reveal === 'rwanda'">
         <div class="info-pay-h">
           <h1>
             Duration of <span>30 days</span> <br />

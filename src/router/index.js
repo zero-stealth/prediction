@@ -233,16 +233,16 @@ const router = createRouter({
       },
     },
     {
-      path: '/pricing',
+      path: '/pricing/:country',
       name: 'Pricing',
       component: () => import('../views/PricingView.vue'),
       meta: {
-        title: "Pricing -Choose subscription",
+        title: "Pricing - Choose subscription",
         description: "Choose your prefereed subscription",
       },
     },
     {
-      path: '/pay/:plan',
+      path: '/pay/:currency/:plan',
       name: 'Pay',
       component: () => import('../views/PayView.vue'),
       meta: {
@@ -250,6 +250,16 @@ const router = createRouter({
         description: "how to pay for our vip services",
       },
     },
+    {
+      path: '/choose-country/',
+      name: 'Country',
+      component: () => import('../views/CountryView.vue'),
+      meta: {
+        title: "Country - Choose your country",
+        description: "Choose your country to get payment",
+      },
+    },
+
     {
       path: '/sitemap.xml',
       name: 'Sitemap',

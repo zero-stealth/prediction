@@ -11,7 +11,7 @@
       </button>
       <button class="nav-i-btn" @click="goPayNow">
         <PayIcon class="icon-nav nav-i" />
-        HOW TO PAY
+       Pricing
       </button>
     </div>
     <div class="hero-s-contain">
@@ -45,7 +45,7 @@ const SERVER_HOST = import.meta.env.VITE_SERVER_HOST
 const router = useRouter()
 
 const goVip = () => {
-  router.push({ name: 'Pricing' })
+  router.push({ name: 'Vip' })
   scrollToTop()
 
 }
@@ -69,14 +69,14 @@ const getAds = async () => {
 
 const goPay = () => {
   if (bannerLink.value === null) {
-    router.push({ name: 'Pay' })
+    router.push({ name: 'Country' })
   } else {
     window.open(`${bannerLink.value}`, '_blank')
   }
 }
 
 const goPayNow = () => {
-  router.push({ name: 'Pay' })
+  router.push({ name: 'Country' })
 
 }
 

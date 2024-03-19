@@ -32,6 +32,7 @@
   padding: 10px;
   display: flex;
   cursor: pointer;
+  position: relative;
   border-radius: 8px;
   flex-direction: column;
   color: var(--background-color);
@@ -44,14 +45,20 @@
 }
 
 .popular-card {
-  color: var(--green-color);
+  background-color: var(--ads-color2);
+  color: var(--background-color);
+  transform: rotate(-45deg);
+  position: absolute;
   border-radius: 4px;
   text-align: center;
+  font-size: .8rem;
   padding: 5px;
+  top: 30px;
+
 }
 
 .popular-card h1 {
-  font-size: 1.2rem;
+  font-size: 1rem;
 }
 
 .pricing-card-h {
