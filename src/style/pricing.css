@@ -36,7 +36,7 @@
   border-radius: 8px;
   flex-direction: column;
   color: var(--background-color);
-  background-color: var(--ads-color1);
+  background-color: var(--secondary-color);
 }
 
 
@@ -103,8 +103,8 @@
   padding: 10px;
   border-radius: 8px;
   color: var(--background-color);
-  background-color: #116444;
-  border: 1px solid #116444;
+  background-color:#08b5d8;
+  border: 1px solid #08b5d8;
 }
 
 .pricingBtn-card:hover {
