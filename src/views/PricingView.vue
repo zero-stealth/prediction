@@ -69,12 +69,11 @@ const goToPricing = (plan) => {
 
 <template>
   <div class="pay-main-contain">
-    <h1>Choose your pricing plan</h1>
+    <h1>Choose your vip plan</h1>
     <div class="main-contain-card">
       <div class="pricing-card">
         <div class="pricing-card-h">
-          <h1>Standard</h1>
-          <h3>Better results</h3>
+          <h1>Weekly Plan</h1>
         </div>
         <div class="pricing">
           <span>{{ currencyCode }}</span>
@@ -85,8 +84,7 @@ const goToPricing = (plan) => {
       </div>
       <div class="pricing-card">
         <div class="pricing-card-h">
-          <h1>Premium</h1>
-          <h3>Amaizing results</h3>
+          <h1>Monthly Plan</h1>
         </div>
         <div class="pricing">
           <span>{{ currencyCode }}</span>

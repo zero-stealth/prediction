@@ -66,7 +66,7 @@ const showPricing = (country) => {
     <div class="pay-contain">
       <div class="pay-main">
         <div class="sport-s-contain">
-          <label>Choose your country to get payment method</label>
+          <label>Choose your country to get payment details</label>
           <input type="text" class="sport-selector" v-model="searchTerm" placeholder="Search country" />
           <select class="sport-selector" v-model="Selectedcountry">
             <option disabled value="">Select a country</option>
