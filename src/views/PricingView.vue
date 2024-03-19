@@ -80,7 +80,7 @@ const goToPricing = (plan) => {
           <h1>{{ weeklyPrice }}</h1>
           <h5>/weekly</h5>
         </div>
-        <button class="pricingBtn-card" @click="goToPricing('popular')">Choose plan</button>
+        <button class="pricingBtn-card" @click="goToPricing('weekly')">Choose plan</button>
       </div>
       <div class="pricing-card">
         <div class="pricing-card-h">
@@ -92,7 +92,7 @@ const goToPricing = (plan) => {
           <h5>/monthly</h5>
         </div>
         <div class="popular-card">Popular</div>
-        <button class="pricingBtn-card" @click="goToPricing('premium')">Choose plan</button>
+        <button class="pricingBtn-card" @click="goToPricing('monthly')">Choose plan</button>
       </div>
     </div>
   </div>

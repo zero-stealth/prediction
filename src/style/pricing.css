@@ -36,13 +36,10 @@
   border-radius: 8px;
   flex-direction: column;
   color: var(--background-color);
-  border: 1px solid var(--light-color);
-  background-color: var(--primary-color);
+  background-color: var(--ads-color1);
 }
 
-.pricing-card:hover {
-  background-color: 1px solid var(--primary-color);
-}
+
 
 .popular-card {
   background-color: var(--ads-color2);
@@ -106,12 +103,14 @@
   padding: 10px;
   border-radius: 8px;
   color: var(--background-color);
-  background-color: var(--secondary-color);
+  background-color: #116444;
+  border: 1px solid #116444;
 }
 
 .pricingBtn-card:hover {
-  background-color: var(--secondary-dark-color);
+  border: 1px solid var(--background-color);
 }
+
 }
 
 /* using it as global style for larger devices  */
