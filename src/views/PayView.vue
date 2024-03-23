@@ -6,7 +6,7 @@ import { ref } from 'vue'
 const route = useRoute();
 const router = useRouter()
 
-const reveal = ref(route.params.currency)
+const reveal = ref(route.params.country)
 
 const logIn = () => {
   router.push({ name: 'Login' })

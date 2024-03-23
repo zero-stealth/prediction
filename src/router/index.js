@@ -99,6 +99,7 @@ const router = createRouter({
       
     },
    
+
     {
       path: '/predictions/:id ',
       name: 'Predictions',
@@ -242,12 +243,21 @@ const router = createRouter({
       },
     },
     {
-      path: '/pay/:currency/:plan',
+      path: '/pay/:country/:plan',
       name: 'Pay',
       component: () => import('../views/PayView.vue'),
       meta: {
         title: "Pay - Pay for vip",
         description: "how to pay for our vip services",
+      },
+    },
+    {
+      path: '/payment-method/:currency/:plan',
+      name: 'Method',
+      component: () => import('../views/PaymentMethods.vue'),
+      meta: {
+        title: "Payment method - Choose your payment method",
+        description: "Choose your preferred payment method ",
       },
     },
     {

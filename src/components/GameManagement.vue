@@ -763,6 +763,52 @@
           </table>
         </div>
       </div>
+      <div class="game-cf">
+        <div class="main-header">
+          <div class="header-info">
+            <h1>Payment Posted</h1>
+          </div>
+        </div>
+        <div class="game-table">
+          <table>
+            <thead>
+              <tr>
+                <th>Country</th>
+                <th>Weekly price</th>
+                <th>Monthly price</th>
+                <th>Edit</th>
+                <th>Delete</th>
+              </tr>
+            </thead>
+            <tbody v-for="item in paymentData">
+              <tr v-for="data in item" :key="data._id">
+                <td>
+                  <span>{{ data.country }}</span>
+                </td>
+                <td>
+                  <span>{{ data.weeklyPrice }}</span>
+                </td>
+                <td>
+                  <span>{{ data.monthlyPrice }}</span>
+                </td>
+                <td>
+                  <div class="game-delete" @click="editPayment(PaymentEditsPage, data._id)">
+                    <FileIcon class="icon-delete" />
+                  </div>
+                </td>
+                <td>
+                  <div class="game-delete" @click="deletePayment(data._id)">
+                    <DeleteIcon class="icon-delete" />
+                  </div>
+                </td>
+              </tr>
+              <tr v-if="paymentData.length === 0">
+                <td colspan="8">No payment yet!</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
     </div>
   </div>
   <Teleport to="body">
@@ -776,6 +822,7 @@
           @formSubmitSport="updateSport"
           @formSubmitTime="updateTime"
           @formSubmitAds="updateAds"
+          @formPaymentSubmit="updatePayment"
           @formVipResultSubmit="updateVipResult"
           :is="activePage"
         />
@@ -800,6 +847,7 @@ import TennisGames from '../components/TennisGamesEdits.vue'
 import BasketballGames from '../components/BasketballEdit.vue'
 import VipEditPage from '../components/VipresultsComponentEdits.vue'
 import VipGames from './VipGamesEdits.vue'
+import PaymentEditsPage from './PostPaymentsEdits.vue'
 
 const username = ref(null)
 const currentDate = ref('')
@@ -810,6 +858,7 @@ const isGameOpen = ref(false)
 const cardData = ref([])
 const toast = useToast()
 const vipData = ref([])
+const paymentData = ref([])
 const predictionData = ref([])
 const freeTipData = ref([])
 const upcomingData = ref([])
@@ -849,6 +898,17 @@ const getPredictions = async () => {
     const response = await axios.get(`${SERVER_HOST}/predictions/${currentDate.value}`)
     // console.log(response.data)
     predictionData.value = response.data.length > 0 ? [response.data] : []
+  } catch (err) {
+    toast.error(err.response.data.error)
+  }
+}
+
+const getPayment = async () => {
+  try {
+    // const token = JSON.parse(localStorage.getItem('token'));
+    const response = await axios.get(`${SERVER_HOST}/currencyPrices`)
+    // console.log(response.data)
+    paymentData.value = response.data.length > 0 ? [response.data] : []
   } catch (err) {
     toast.error(err.response.data.error)
   }
@@ -938,6 +998,7 @@ const showEdit = () => {
 }
 
 const activePage = shallowRef(BetOfTheDay)
+const paymentId = ref('')
 const gameId = ref('')
 const sportId = ref('')
 const ScoreId = ref('')
@@ -947,6 +1008,12 @@ const AdsId = ref('')
 const editGame = (game, id) => {
   activePage.value = game
   gameId.value = id
+  showEdit()
+}
+
+const editPayment = (payment, id) => {
+  activePage.value = payment
+  paymentId.value = id
   showEdit()
 }
 
@@ -972,6 +1039,35 @@ const editAds = (ads, id) => {
   activePage.value = ads
   AdsId.value = id
   showEdit()
+}
+
+async function updatePayment(formData) {
+  try {
+    const token = JSON.parse(localStorage.getItem('token'))
+    const formDataa = new FormData()
+    if (formData.country !== '') {
+      formDataa.append('country', formData.country)
+    }
+    if (formData.weeklyPrice !== '') {
+      formDataa.append('weeklyPrice', formData.weeklyPrice)
+    }
+    if (formData.monthlyPrice !== '') {
+      formDataa.append('monthlyPrice', formData.monthlyPrice)
+    }
+    const response = await axios.put(
+      `${SERVER_HOST}/single/currencyPrices/update/${paymentId.value}`,
+      formDataa,
+      {
+        headers: {
+          Authorization: `Bearer ${token}`,
+          'Content-Type': 'multipart/form-data'
+        }
+      }
+    )
+    toast.success('payment updated')
+  } catch (error) {
+   toast.error(error.response.data.error)
+  }
 }
 
 async function updateGame(formData) {
@@ -1217,6 +1313,7 @@ watchEffect(() => {
 onMounted(() => {
   getAds()
   getTime()
+  getPayment()
   getBetOfTheDay()
   getPredictions()
   getVipGames()
@@ -1240,6 +1337,7 @@ const deletePrediction = async (id) => {
     await getUpcoming()
     await getBetOfTheDay()
     await getVipGames()
+
   } catch (err) {
   toast.error(err.response.data.error)
 
@@ -1271,6 +1369,21 @@ const deleteAds = async (id) => {
     })
     toast.success(response.data.message)
     await getAds()
+  } catch (err) {
+  toast.error(err.response.data.error)
+
+  }
+}
+
+const deletePayment = async (id) => {
+  try {
+    const token = JSON.parse(localStorage.getItem('token'))
+
+    const response = await axios.delete(`${SERVER_HOST}/currencyPrices/delete/${id}`, {
+      headers: { Authorization: `Bearer ${token}` }
+    })
+    toast.success(response.data.message)
+    await getPayment()
   } catch (err) {
   toast.error(err.response.data.error)
 

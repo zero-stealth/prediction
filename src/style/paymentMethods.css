@@ -1,0 +1,131 @@
+@media screen {
+  .payment-layout-container {
+    gap: 10px;
+    display: flex;
+    padding: 10px;
+    flex-direction: column;
+  }
+
+  .payment-layout-container h1 {
+    font-size: 1rem;
+    text-decoration: underline;
+    text-transform: capitalize;
+  }
+
+  .payment-layout {
+    gap: 10px;
+    display: flex;
+    flex-wrap: wrap;
+    padding-bottom: 100px;
+  }
+
+
+  .payment-layout P span {
+    font-size: .8rem;
+    font-weight: 600;
+    text-transform: uppercase;
+    color: var(--dark-primary-color);
+  }
+
+
+
+  .pay-input {
+    border: none;
+    padding: 10px;
+    border-radius: 4px;
+    color: var(--background-color);
+    background-color: var(--dark-primary-color);
+    border: 1px solid var(--tertiary-color);
+  }
+
+  .pay-input option {
+    color: var(--background-color);
+  }
+
+  .pay-input::placeholder {
+    color: var(--tertiary-color);
+    text-transform: capitalize;
+  }
+
+  .pay-controller {
+    gap: 10px;
+    width: 100%;
+    display: flex;
+    padding: 10px;
+    min-height: 200px;
+    border-radius: 8px;
+    align-items: center;
+    flex-direction: column;
+    justify-content: space-between;
+    border: 1px solid var(--tertiary-color);
+    background-color: var(--dark-primary-color);
+  }
+
+  .pay-controller h1 {
+    font-size: 1.2rem;
+    text-decoration: none;
+    color: var(--background-color);
+  }
+
+  .pay-controller p { 
+    gap: 10px;
+    display: flex;
+    font-size: .8rem;
+    color: var(--background-color);
+  }
+
+  .pay-controller p span {
+    font-weight: bold;
+    text-transform: uppercase;
+    color: var(--secondary-color);
+  }
+
+  .payment-image {
+    height: 100px;
+  }
+
+  .pay-input-container {
+    gap: 10px;
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+  }
+
+  .btn-pay,
+  .btn-wp {
+    width: 100%;
+    display: flex;
+    border-radius: 4px;
+    align-items: center;
+    justify-content: center;
+  }
+
+  .btn-pay {
+    padding: 10px;
+    color: var(--background-color);
+    background-color: var(--tertiary-color);
+  }
+
+  .btn-pay:hover {
+    background-color: var(--tertiary-color);
+  }
+}
+
+/* using it as global style for larger devices  */
+@media only screen and (min-width: 48em) {
+
+  .payment-layout h1 {
+    text-align: start;
+  }
+  .payment-layout P {
+    text-align: start;
+  }
+
+  .pay-controller {
+    width: 300px;
+    min-width: 300px;
+    min-height: 100%;
+  }
+
+}

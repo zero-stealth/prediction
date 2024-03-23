@@ -63,7 +63,7 @@ const monthlyPrice = computed(() => {
 });
 
 const goToPricing = (plan) => {
-  router.push({ name: 'Pay', params: { plan: plan, currency: route.params.country } });
+  router.push({ name: 'Method', params: { plan: plan, currency: route.params.country } });
 };
 </script>
 

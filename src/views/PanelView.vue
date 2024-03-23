@@ -42,6 +42,10 @@
             <GamePostIcon class="icon-panel" />
             <span> Post Games </span>
           </button>
+          <button @click="setActivePage(PostPayments)" :class="getButtonClass(PostPayments)">
+            <PayIcon class="icon-panel" />
+            <span>Payments </span>
+          </button>
           <button @click="setActivePage(PostAds)" :class="getButtonClass(PostAds)">
             <AdsIcon class="icon-panel" />
             <span> Post Ads </span>
@@ -70,6 +74,7 @@ import GroupIcon from '../icons/GroupIcon.vue'
 import AdsIcon from '../icons/adsPostIcon.vue'
 import VipIcon from '../icons/VipIcon.vue'
 import GameIcon from '../icons/gameIcon.vue'
+import PayIcon from '../icons/payIcon.vue'
 import DashIcon from '../icons/DashIcon.vue'
 import HomeIcon from '../icons/homeIcon.vue'
 import logo from '../assets/logo.png'
@@ -97,8 +102,9 @@ const goBack = () => {
 // pages
 import VipresultsComponent from '../components/VipresultsComponent.vue'
 import AccountManagement from '../components/AccountManagement.vue'
-import GameManagement from '../components/GameManagement.vue'
 import Predictionpicks from '../components/Predictionpicks.vue'
+import GameManagement from '../components/GameManagement.vue'
+import PostPayments from '../components/PostPayments.vue'
 import PostGames from '../components/PostGames.vue'
 import PostAds from '../components/AdsComponent.vue'
 
