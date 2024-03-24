@@ -1,12 +1,17 @@
 @media screen {
-.pay-main-contain{
+
+.pay-main-wrapper {
+  gap: 20px;
   height: 100%;
   display: flex;
   padding-top:50px ;
   flex-direction: column;
   background-color: var(--primary-color);
   background-image: url('../assets/sport-bg.png');
+
 }
+
+
 
 .pay-main-contain h1 {
   font-size: 1.5rem;
@@ -111,13 +116,45 @@
   border: 1px solid var(--background-color);
 }
 
+.Question {
+  margin: 10px;
+  padding: 10px;
+  border-radius: 12px;
+  color: var(--background-color);
+  background-color: var(--tertiary-color);
+}
+
+.Question-con  {
+  gap: 10px;
+  display: flex;
+  flex-direction: column;
+}
+
+.Question-con  a {
+  color: var(--secondary-color);
+}
+
+.Question-con  h1 {
+  text-align: start;
+  font-size: 1rem;
+}
+
+.Question-con  p {
+  font-size: 1rem;
+}
+
+.Question-con  p span {
+  font-weight: 600;
+  color: var(--secondary-color);
+}
 }
 
 /* using it as global style for larger devices  */
 @media only screen and (min-width: 48em) {
-  .pay-main-contain{
-    height: 100vh;
-  }
+  .pay-main-wrapper {
+    gap: 100px;
+    justify-content: space-between;
+   }
 
   .pricing-card {
     gap: 30px;
