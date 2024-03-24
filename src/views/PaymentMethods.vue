@@ -2,24 +2,23 @@
   <div class="payment-layout-container">
     <h1>Choose your preferred payment method</h1>
     <div class="payment-layout">
-      <div v-if="showMpesa" class="pay-controller">
-        <img :src="mpesa" alt="mpesa logo" class="payment-image" />
-        <div class="btn-wp">
-          <button type="submit" @click="payMpesa" class="btn-pay">Pay Now</button>
-        </div>
+      <div v-if="showStripe" class="pay-controller" id="paypal-button-container">
+        <img :src="stripeImg" alt="paypal logo" class="payment-image" />
+        <button type="button" @click="payPaypal" class="btn-pay">Pay with card</button>
+      </div>
+      <div v-if="showPaypal" class="pay-controller" id="paypal-button-container">
+        <img :src="paypalImg" alt="paypal logo" class="payment-image" />
+        <button type="button" @click="payPaypal" class="btn-pay">Pay with paypal</button>
       </div>
       <div v-if="showCoinbase" class="pay-controller">
         <img :src="coinbase" alt="coinbase logo" class="payment-image" />
         <button type="button" @click="coinbasePay" class="btn-pay">Pay with crypto</button>
       </div>
-
-      <div v-if="showPaypal" class="pay-controller" id="paypal-button-container">
-        <img :src="paypalImg" alt="paypal logo" class="payment-image" />
-        <button type="button" @click="payPaypal" class="btn-pay">Pay with paypal</button>
-      </div>
-      <div v-if="showStripe" class="pay-controller" id="paypal-button-container">
-        <img :src="stripeImg" alt="paypal logo" class="payment-image" />
-        <button type="button" @click="payPaypal" class="btn-pay">Pay with card</button>
+        <div v-if="showMpesa" class="pay-controller">
+        <img :src="mpesa" alt="mpesa logo" class="payment-image" />
+        <div class="btn-wp">
+          <button type="submit" @click="payMpesa" class="btn-pay">Pay Now</button>
+        </div>
       </div>
       <div v-if="showManual" class="pay-controller">
         <h1>Manual payment</h1>
