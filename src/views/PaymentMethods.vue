@@ -128,7 +128,7 @@ const payPaypal = async () => {
   paypal
     .Buttons({
       createOrder: (data, actions) => {
-        // Create an order with your purchase details
+        // Create an order with your purchase details dddddd
         return actions.order.create({
           purchase_units: [
             {
