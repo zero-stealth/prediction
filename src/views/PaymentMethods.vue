@@ -66,7 +66,7 @@ watchEffect(() => {
   showMpesa = ['kenya'].includes(selectedCountry)
   showManual = !['others'].includes(selectedCountry) && selectedCountry !== ''
   showCoinbase = !['kenya', 'nigeria', 'cameroon', 'ghana', 'southA', 'tanzania', 'uganda', 'zambia', 'rwanda', 'malawi'].includes(selectedCountry) && selectedCountry !== ''
-  showStripe = ['kenya', 'showStripe','nigeria', 'cameroon', 'ghana', 'southA', 'tanzania', 'uganda', 'zambia', 'rwanda', 'malawi'].includes(selectedCountry) && selectedCountry !== ''
+  showStripe = ['kenya', 'others','nigeria', 'cameroon', 'ghana', 'southA', 'tanzania', 'uganda', 'zambia', 'rwanda', 'malawi'].includes(selectedCountry) && selectedCountry !== ''
   showPaypal = ['others'].includes(selectedCountry) && selectedCountry !== ''
 })
 
