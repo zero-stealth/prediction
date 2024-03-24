@@ -101,8 +101,6 @@ const coinbasePay = async () => {
         },
       }
     );
-    console.log(response.data);
-    console.log(response.data.data.hosted_url);
 
     window.open(response.data.data.hosted_url, '_blank');
 
@@ -128,7 +126,6 @@ const payPaypal = async () => {
   paypal
     .Buttons({
       createOrder: (data, actions) => {
-        // Create an order with your purchase details dddddd
         return actions.order.create({
           purchase_units: [
             {
@@ -140,7 +137,6 @@ const payPaypal = async () => {
         })
       },
       onApprove: (data, actions) => {
-        // Capture the payment when the user approves
         return actions.order.capture().then((details) => {
           paymentResult.value = details
           toast.success('Payment Successful')
