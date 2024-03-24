@@ -130,6 +130,5 @@ const goToPricing = (plan, price) => {
 </template>
 <style>
 @import '../style/pricing.css';
-@import '../style/Pay.css';
 
 </style>
