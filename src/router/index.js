@@ -243,7 +243,7 @@ const router = createRouter({
       },
     },
     {
-      path: '/pay/:country/:plan',
+      path: '/pay/:country/:plan:/:price',
       name: 'Pay',
       component: () => import('../views/PayView.vue'),
       meta: {
@@ -252,7 +252,7 @@ const router = createRouter({
       },
     },
     {
-      path: '/payment-method/:currency/:plan',
+      path: '/payment-method/:currency/:plan/:price',
       name: 'Method',
       component: () => import('../views/PaymentMethods.vue'),
       meta: {

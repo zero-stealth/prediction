@@ -7,6 +7,8 @@ const route = useRoute();
 const router = useRouter()
 
 const reveal = ref(route.params.country)
+const plan = ref(route.params.plan)
+const price = ref(route.params.price)
 
 const logIn = () => {
   router.push({ name: 'Login' })
@@ -42,89 +44,12 @@ const goVip = () => {
         <p>Your SportyPredict VIP account will be activated once your payment is received.</p>
         <p>Choose your country to get payment details:</p>
       </div>
-      <div class="pay-info" v-if="reveal === 'others'">
+      <div class="pay-info" v-if="reveal === 'kenya'">
         <div class="info-pay-h">
           <h1>
             Duration of <span>30 days</span> <br />
-            Amount paid:<span>( 35 USD ) </span> <br />
-            <span>"2 - 4" odds</span> daily
-          </h1>
-        </div>
-        <div class="step-pay">
-          <h1>Login or Register</h1>
-          <p>
-           <span @click="logIn()"> Log in</span> or <span @click="signIn()">Create an account</span>
-          </p>
-        </div>
-        <div class="method-head">
-          <h1>Available Payment Methods for your country:</h1>
-        </div>
-        <div class="method-pay">
-          <h1>PAY USING SKRILL</h1>
-          <ul>
-            <li>Go to your account</li>
-            <li>Use <span>contact@sportypredict.com</span></li>
-            <li>Pay the required amount</li>
-            <li>Your VIP account will be activated once we receive your payment.</li>
-          </ul>
-        </div>
-        <div class="method-pay">
-          <h1>PAY USING CRYPTO (BITCOIN)</h1>
-          <ul>
-            <li>Go to your bitcoin wallet</li>
-            <li>Pay using this bitcoin address: <span>bc1qvzny5ffjym462y35qw7qqr6ucgtkcqcu402dl5</span></li>
-            <li>Pay the required amount</li>
-            <li>Your VIP account will be activated once we receive your payment.</li>
-          </ul>
-        </div>
-        <div class="method-pay">
-          <h1>PAY USING PAYPAL</h1>
-          <ul>
-            <li>Go to your account</li>
-            <li>Use <span>contact@sportypredict.com</span></li>
-            <li>Pay the required amount</li>
-            <li>Your VIP account will be activated once we receive your payment.</li>
-          </ul>
-        </div>
-        <p>
-          <span>Moneygram and Western Union are available for those who want to make payment.</span>
-        </p>
-        <div class="Question">
-          <div class="Question-con">
-            <h1>Q: How guaranteed are your games?</h1>
-            <p>
-              <span>Answer:</span> We have a team of top-notch, well-researched/informed experts that score up to 96% in their accuracy rate. You are guaranteed to make substantial profits.
-            </p>
-          </div>
-          <div class="Question-con">
-            <h1>Q: What happens for failed predictions?</h1>
-            <p>
-              <span>Answer:</span> Keep in mind that in case of any loss, we will add an extra one day FREE as a replacement on your subscription. We will keep adding an extra day until you WIN! This is exclusive for VIP subscribers ONLY.
-            </p>
-          </div>
-          <div class="Question-con">
-            <h1>Q: How do I get these daily games sent to me?</h1>
-            <p>
-              <span>Answer:</span> We post games on our platform:
-              <span> <a href="https://sportyPredict.com/vip">https://sportyPredict.com/vip</a> </span
-              >.
-              You need to log in on the website using your email and password or through social accounts to view games.
-            </p>
-          </div>
-          <div class="Question-con">
-            <h1>Q: Why don't we post results?</h1>
-            <p>
-              <span>Answer:</span>We don't disclose results because fraudsters take screenshots and swindle unsuspecting victims.
-            </p>
-          </div>
-        </div>
-      </div>
-      <div class="pay-info" v-else-if="reveal === 'kenya'">
-        <div class="info-pay-h">
-          <h1>
-            Duration of <span>30 days</span> <br />
-            Amount paid: <span>(1,500ksh)</span> <br />
-            <span>"2 - 4" odds</span> daily
+            Amount paid:  <span>({{price}} ksh)</span> <br />
+            <span>"2 - 4" odds</span> {{ plan }}
           </h1>
         </div>
         <div class="step-pay">
@@ -177,8 +102,8 @@ const goVip = () => {
         <div class="info-pay-h">
           <h1>
             Duration of <span>30 days</span> <br />
-            Amount paid: <span>(8,500 NGN)</span> <br />
-            <span>"2 - 4" odds</span> daily
+            Amount paid:   <span>({{price}} NGN)</span> <br />
+            <span>"2 - 4" odds</span> {{ plan }}
           </h1>
         </div>
         <div class="step-pay">
@@ -233,8 +158,8 @@ const goVip = () => {
         <div class="info-pay-h">
           <h1>
             Duration of <span>30 days</span> <br />
-            Amount paid: <span>(130 GHC)</span> <br />
-            <span>"2 - 4" odds</span> daily
+            Amount paid:<span>({{price}} GHC)</span>  <br />
+            <span>"2 - 4" odds</span> {{ plan }}
           </h1>
         </div>
         <div class="step-pay">
@@ -288,8 +213,8 @@ const goVip = () => {
         <div class="info-pay-h">
           <h1>
             Duration of <span>30 days</span> <br />
-            Amount paid: <span>(11500 CFA)</span> <br />
-            <span>"2 - 4" odds</span> daily
+            Amount paid: <span>({{price}} CFA)</span><br />
+            <span>"2 - 4" odds</span> {{ plan }}
           </h1>
         </div>
         <div class="step-pay">
@@ -343,8 +268,8 @@ const goVip = () => {
         <div class="info-pay-h">
           <h1>
             Duration of <span>30 days</span> <br />
-            Amount paid: <span>(70,000 UGX)</span> <br />
-            <span>"2 - 4" odds</span> daily
+            Amount paid:  <span>({{price}} UGX)</span> <br />
+            <span>"2 - 4" odds</span> {{ plan }}
           </h1>
         </div>
         <div class="step-pay">
@@ -399,8 +324,8 @@ const goVip = () => {
         <div class="info-pay-h">
           <h1>
             Duration of <span>30 days</span> <br />
-            Amount paid: <span>(45000 TZS)</span> <br />
-            <span>"2 - 4" odds</span> daily
+            Amount paid:  <span>({{price}} TZS)</span> <br />
+            <span>"2 - 4" odds</span> {{ plan }}
           </h1>
         </div>
         <div class="step-pay">
@@ -454,8 +379,8 @@ const goVip = () => {
         <div class="info-pay-h">
           <h1>
             Duration of <span>30 days</span> <br />
-            Amount paid: <span>(620 ZAR)</span> <br />
-            <span>"2 - 4" odds</span> daily
+            Amount paid:  <span>({{price}} ZAR)</span> <br />
+            <span>"2 - 4" odds</span> {{ plan }}
           </h1>
         </div>
         <div class="step-pay">
@@ -528,8 +453,8 @@ const goVip = () => {
         <div class="info-pay-h">
           <h1>
             Duration of <span>30 days</span> <br />
-            Amount paid: <span>(550 ZMW)</span> <br />
-            <span>"2 - 4" odds</span> daily
+            Amount paid:<span>({{price}} ZMW)</span> <br />
+            <span>"2 - 4" odds</span> {{ plan }}
           </h1>
         </div>
         <div class="step-pay">
@@ -585,8 +510,8 @@ const goVip = () => {
         <div class="info-pay-h">
           <h1>
             Duration of <span>30 days</span> <br />
-            Amount paid: <span>(30,000 MWK )</span> <br />
-            <span>"2 - 4" odds</span> daily
+            Amount paid:  <span>({{price}} MWK)</span> <br />
+            <span>"2 - 4" odds</span> {{ plan }}
           </h1>
         </div>
         <div class="step-pay">
@@ -642,8 +567,8 @@ const goVip = () => {
         <div class="info-pay-h">
           <h1>
             Duration of <span>30 days</span> <br />
-            Amount paid: <span>(35,0000 RWF )</span> <br />
-            <span>"2 - 4" odds</span> daily
+            Amount paid: <span>({{price}} RWF)</span><br />
+            <span>"2 - 4" odds</span> {{ plan }}
           </h1>
         </div>
         <div class="step-pay">

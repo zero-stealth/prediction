@@ -1,9 +1,14 @@
 <script setup>
-import {  computed } from 'vue';
+import axios from 'axios'
+import { useToast } from 'vue-toastification'
 import { useRouter, useRoute } from 'vue-router';
+import { computed, ref, onMounted } from 'vue';
 
+const toast = useToast()
 const route = useRoute();
 const router = useRouter();
+const paymentData = ref([])
+const SERVER_HOST = import.meta.env.VITE_SERVER_HOST
 
 const countryCurrencies = {
   'kenya': 'KES',
@@ -24,46 +29,33 @@ const currencyCode = computed(() => {
   return countryCurrencies[country] || 'USD';
 });
 
-const weeklyPrices = {
-  'kenya': 500,
-  'nigeria': 2500,
-  'cameroon': 2500,
-  'ghana': 30,
-  'southA': 75,
-  'tanzania': 10000,
-  'uganda': 18000,
-  'zambia': 50,
-  'rwanda': 4000,
-  'malawi': 35000,
-  'others': 4.5
-};
+const getPayment = async () => {
+  try {
+    const response = await axios.get(`${SERVER_HOST}/currencyPrices`)
+    paymentData.value = response.data || [];
+  } catch (err) {
+    toast.error(err.response?.data?.error || 'Failed to fetch payment data');
+  }
+}
 
-const monthlyPrices = {
-  'kenya': 1500,
-  'nigeria': 7500,
-  'cameroon': 7500,
-  'ghana': 90,
-  'southA': 225,
-  'tanzania': 30000,
-  'uganda': 54000,
-  'zambia': 150,
-  'rwanda': 12000,
-  'malawi': 105000,
-  'others': 11.19
-};
+onMounted(() => {
+  getPayment()
+})
 
 const weeklyPrice = computed(() => {
-  const country = route.params.country ? route.params.country : 'others';
-  return weeklyPrices[country] || 0;
+  const country = route.params.country ? route.params.country.toLowerCase() : 'others';
+  const countryData = paymentData.value.find(data => data.country.toLowerCase() === country);
+  return countryData ? countryData.weeklyPrice : 0;
 });
 
 const monthlyPrice = computed(() => {
-  const country = route.params.country ? route.params.country : 'others';
-  return monthlyPrices[country] || 0;
+  const country = route.params.country ? route.params.country.toLowerCase() : 'others';
+  const countryData = paymentData.value.find(data => data.country.toLowerCase() === country);
+  return countryData ? countryData.monthlyPrice : 0;
 });
 
-const goToPricing = (plan) => {
-  router.push({ name: 'Method', params: { plan: plan, currency: route.params.country } });
+const goToPricing = (plan, price) => {
+  router.push({ name: 'Method', params: { plan: plan,  price: price, currency: route.params.country } });
 };
 </script>
 
@@ -80,7 +72,7 @@ const goToPricing = (plan) => {
           <h1>{{ weeklyPrice }}</h1>
           <h5>/weekly</h5>
         </div>
-        <button class="pricingBtn-card" @click="goToPricing('weekly')">Choose plan</button>
+        <button class="pricingBtn-card" @click="goToPricing('weekly', weeklyPrice )">Choose plan</button>
       </div>
       <div class="pricing-card">
         <div class="pricing-card-h">
@@ -92,12 +84,11 @@ const goToPricing = (plan) => {
           <h5>/monthly</h5>
         </div>
         <div class="popular-card">Popular</div>
-        <button class="pricingBtn-card" @click="goToPricing('monthly')">Choose plan</button>
+        <button class="pricingBtn-card" @click="goToPricing('monthly', monthlyPrice)">Choose plan</button>
       </div>
     </div>
   </div>
 </template>
-
 <style>
 @import '../style/pricing.css';
 </style>

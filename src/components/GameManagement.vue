@@ -907,8 +907,8 @@ const getPayment = async () => {
   try {
     // const token = JSON.parse(localStorage.getItem('token'));
     const response = await axios.get(`${SERVER_HOST}/currencyPrices`)
-    // console.log(response.data)
     paymentData.value = response.data.length > 0 ? [response.data] : []
+    console.log(paymentData.value.data)
   } catch (err) {
     toast.error(err.response.data.error)
   }

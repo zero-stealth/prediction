@@ -10,17 +10,18 @@
       </div>
       <div v-if="showCoinbase" class="pay-controller">
         <img :src="coinbase" alt="coinbase logo" class="payment-image" />
-        <button type="button" @click="coinbasePay" class="btn-pay">Pay Now</button>
+        <button type="button" @click="coinbasePay" class="btn-pay">Pay with crypto</button>
       </div>
-      <div v-if="showPaystack" class="pay-controller">
-        <img :src="paystack" alt="paystack logo" class="payment-image" />
-        <button type="button" @click="paystackPay" class="btn-pay">Pay Now</button>
-      </div>
+
       <div v-if="showPaypal" class="pay-controller" id="paypal-button-container">
         <img :src="paypalImg" alt="paypal logo" class="payment-image" />
-        <button type="button" @click="payPaypal" class="btn-pay">Pay Now</button>
+        <button type="button" @click="payPaypal" class="btn-pay">Pay with paypal</button>
       </div>
-      <div class="pay-controller">
+      <div v-if="showStripe" class="pay-controller" id="paypal-button-container">
+        <img :src="stripeImg" alt="paypal logo" class="payment-image" />
+        <button type="button" @click="payPaypal" class="btn-pay">Pay with card</button>
+      </div>
+      <div v-if="showManual" class="pay-controller">
         <h1>Manual payment</h1>
         <p><span>Note:</span>Manual payment takes longer to process</p>
         <button type="button" @click="payManually" class="btn-pay">Pay Now</button>
@@ -36,7 +37,7 @@ import { useToast } from 'vue-toastification'
 import coinbase from '../assets/coinbase.png'
 import mpesa from '../assets/mpesa.png'
 import paypalImg from '../assets/paypal.png'
-import paystack from '../assets/paystack.png'
+import stripeImg from '../assets/stripe.png'
 
 const reveal = ref('')
 const toast = useToast()
@@ -47,23 +48,26 @@ const paymentResult = ref(null)
 const payManually = () => {
   router.push({ name: 'Pay', params: {
     country: route.params.currency,
-    plan: route.params.plan
+    plan: route.params.plan,
+    price:route.params.price
   } })
 }
 
 let showMpesa = false
 let showCoinbase = false
-let showPaystack = false
 let showPaypal = false
+let showStripe = false
+let showManual = false
 
 watchEffect(() => {
   const selectedCountry = route.params.currency || 'others'
   reveal.value = selectedCountry
 
-  showMpesa = ['kenya', 'tanzania', 'uganda'].includes(selectedCountry)
+  showMpesa = ['kenya'].includes(selectedCountry)
+  showManual = !['others'].includes(selectedCountry) && selectedCountry !== ''
   showCoinbase = !['kenya', 'nigeria', 'cameroon', 'ghana', 'southA', 'tanzania', 'uganda', 'zambia', 'rwanda', 'malawi'].includes(selectedCountry) && selectedCountry !== ''
-  showPaystack = !['kenya', 'nigeria', 'cameroon', 'ghana', 'southA', 'tanzania', 'uganda', 'zambia', 'rwanda', 'malawi'].includes(selectedCountry) && selectedCountry !== ''
-  showPaypal = ['nigeria', 'cameroon', 'ghana', 'southA', 'zambia', 'rwanda', 'malawi'].includes(selectedCountry) && selectedCountry !== ''
+  showStripe = ['kenya', 'showStripe','nigeria', 'cameroon', 'ghana', 'southA', 'tanzania', 'uganda', 'zambia', 'rwanda', 'malawi'].includes(selectedCountry) && selectedCountry !== ''
+  showPaypal = ['others'].includes(selectedCountry) && selectedCountry !== ''
 })
 
 const payMpesa = () => {
@@ -79,10 +83,6 @@ const coinbasePay = () => {
   )
 }
 
-const paystackPay = () => {
-  toast.success('redirected successfully')
-  window.open('https://paystack.com/pay/82o4airsxo', '_blank')
-}
 
 const payPaypal = async () => {
   paypal

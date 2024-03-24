@@ -81,7 +81,9 @@
   }
 
   .payment-image {
-    height: 100px;
+    height: 90px;
+    object-fit: fill;
+    object-position: center;
   }
 
   .pay-input-container {
@@ -103,12 +105,13 @@
 
   .btn-pay {
     padding: 10px;
+    text-transform: capitalize;
     color: var(--background-color);
     background-color: var(--tertiary-color);
   }
 
   .btn-pay:hover {
-    background-color: var(--tertiary-color);
+    background-color: var(--secondary-color);
   }
 }
 
