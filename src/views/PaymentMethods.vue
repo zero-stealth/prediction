@@ -31,6 +31,7 @@
 </template>
 
 <script setup>
+import axios from 'axios';
 import { ref, watchEffect } from 'vue'
 import { useRoute, useRouter } from 'vue-router'
 import { useToast } from 'vue-toastification'
@@ -38,8 +39,12 @@ import coinbase from '../assets/coinbase.png'
 import mpesa from '../assets/mpesa.png'
 import paypalImg from '../assets/paypal.png'
 import stripeImg from '../assets/stripe.png'
+const COINBASE_KEY = import.meta.env.VITE_COINBASE_KEY
+
 
 const reveal = ref('')
+const isPaid = ref('')
+const isCancel = ref('')
 const toast = useToast()
 const route = useRoute()
 const router = useRouter()
@@ -75,13 +80,48 @@ const payMpesa = () => {
   window.open('https://paystack.com/pay/82o4airsxo', '_blank')
 }
 
-const coinbasePay = () => {
-  toast.success('redirected successfully')
-  window.open(
-    'https://commerce.coinbase.com/checkout/e3707e6f-689f-4309-b5db-5bf9b5f6f5de',
-    '_blank'
-  )
-}
+
+const coinbasePay = async () => {
+  try {
+    const response = await axios.post(
+      'https://api.commerce.coinbase.com/charges/',
+      {
+        name: 'Vip subscription',
+        description: 'Subscribe for vip',
+        pricing_type: 'fixed_price',
+        local_price: {
+          amount: route.params.price,
+          currency: 'USD',
+        },
+      },
+      {
+        headers: {
+          'Content-Type': 'application/json',
+          'X-CC-Api-Key': COINBASE_KEY,
+        },
+      }
+    );
+    console.log(response.data);
+    console.log(response.data.data.hosted_url);
+
+    window.open(response.data.data.hosted_url, '_blank');
+
+    const redirects = response.data.redirects;
+    const cancel_url = redirects ? redirects.cancel_url : '';
+    const success_url = redirects ? redirects.success_url : '';
+    const will_redirect_after_success = redirects ? redirects.will_redirect_after_success : false;
+
+     isPaid.value = success_url ? true : false;
+     isCancel.value = cancel_url ? true : false;
+
+
+    toast.success('redirected successfully');
+  } catch (error) {
+    console.error(error);
+    toast.error('An error occurred');
+  }
+};
+
 
 
 const payPaypal = async () => {
