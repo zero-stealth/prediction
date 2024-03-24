@@ -98,19 +98,7 @@ const router = createRouter({
       },
       
     },
-   
-
-    {
-      path: '/predictions/:id ',
-      name: 'Predictions',
-      component: () => import('../views/predictionView.vue'),
-      meta: {
-        title: "Free Predictions and daily free betting tips",
-        description: "sportypredict offers accurate and free football predictions daily.",
-      },
-      
-
-    },
+  
     {
       path: '/vip',
       name: 'Vip',
