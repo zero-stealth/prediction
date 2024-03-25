@@ -8,19 +8,18 @@
           <button type="submit" @click="payMpesa" class="btn-pay">Pay Now</button>
         </div>
       </div>
-       <div v-if="showStripe" class="pay-controller" id="paypal-button-container">
+      <div v-if="showStripe" class="pay-controller" id="stripe-button-container">
         <img :src="stripeImg" alt="paypal logo" class="payment-image" />
-        <button type="button" @click="payPaypal" class="btn-pay">Pay with card</button>
+        <button type="button" @click="payWithStripe" class="btn-pay">Pay with card</button>
       </div>
       <div v-if="showPaypal" class="pay-controller" id="paypal-button-container">
         <img :src="paypalImg" alt="paypal logo" class="payment-image" />
-        <button type="button" @click="payPaypal" class="btn-pay">Pay with paypal</button>
+      
       </div>
       <div v-if="showCoinbase" class="pay-controller">
         <img :src="coinbase" alt="coinbase logo" class="payment-image" />
         <button type="button" @click="coinbasePay" class="btn-pay">Pay with crypto</button>
       </div>
-   
       <div v-if="showManual" class="pay-controller">
         <h1>Manual payment</h1>
         <p><span>Note:</span>Manual payment takes longer to process</p>
@@ -32,7 +31,7 @@
 
 <script setup>
 import axios from 'axios';
-import { ref, watchEffect } from 'vue'
+import { ref, watchEffect, onMounted } from 'vue'
 import { useRoute, useRouter } from 'vue-router'
 import { useToast } from 'vue-toastification'
 import coinbase from '../assets/coinbase.png'
@@ -40,7 +39,6 @@ import mpesa from '../assets/mpesa.png'
 import paypalImg from '../assets/paypal.png'
 import stripeImg from '../assets/stripe.png'
 const COINBASE_KEY = import.meta.env.VITE_COINBASE_KEY
-
 
 const reveal = ref('')
 const isPaid = ref('')
@@ -54,7 +52,7 @@ const payManually = () => {
   router.push({ name: 'Pay', params: {
     country: route.params.currency,
     plan: route.params.plan,
-    price:route.params.price
+    price: route.params.price
   } })
 }
 
@@ -71,7 +69,7 @@ watchEffect(() => {
   showMpesa = ['kenya'].includes(selectedCountry)
   showManual = !['others'].includes(selectedCountry) && selectedCountry !== ''
   showCoinbase = ['kenya', 'others', 'nigeria', 'cameroon', 'ghana', 'southA', 'tanzania', 'uganda', 'zambia', 'rwanda', 'malawi'].includes(selectedCountry) && selectedCountry !== ''
-  showStripe = ['kenya', 'others','nigeria', 'cameroon', 'ghana', 'southA', 'tanzania', 'uganda', 'zambia', 'rwanda', 'malawi'].includes(selectedCountry) && selectedCountry !== ''
+  showStripe = ['kenya', 'others', 'nigeria', 'cameroon', 'ghana', 'southA', 'tanzania', 'uganda', 'zambia', 'rwanda', 'malawi'].includes(selectedCountry) && selectedCountry !== ''
   showPaypal = ['others', 'kenya', 'nigeria', 'cameroon', 'ghana', 'southA', 'tanzania', 'uganda', 'zambia', 'rwanda', 'malawi'].includes(selectedCountry) && selectedCountry !== ''
 })
 
@@ -79,7 +77,6 @@ const payMpesa = () => {
   toast.success('redirected successfully')
   window.open('https://paystack.com/pay/82o4airsxo', '_blank')
 }
-
 
 const coinbasePay = async () => {
   try {
@@ -109,9 +106,8 @@ const coinbasePay = async () => {
     const success_url = redirects ? redirects.success_url : '';
     const will_redirect_after_success = redirects ? redirects.will_redirect_after_success : false;
 
-     isPaid.value = success_url ? true : false;
-     isCancel.value = cancel_url ? true : false;
-
+    isPaid.value = success_url ? true : false;
+    isCancel.value = cancel_url ? true : false;
 
     toast.success('redirected successfully');
   } catch (error) {
@@ -120,31 +116,50 @@ const coinbasePay = async () => {
   }
 };
 
+onMounted(async () => {
+  try {
+    const paypalScript = await loadScript('https://www.paypal.com/sdk/js?client-id=YOUR_PAYPAL_CLIENT_ID&currency=USD');
 
+    if (paypalScript && window.paypal) {
+      window.paypal
+        .Buttons({
+          createOrder: (data, actions) => {
+            return actions.order.create({
+              purchase_units: [
+                {
+                  amount: {
+                    value: route.params.price,
+                  },
+                },
+              ],
+            });
+          },
+          onApprove: (data, actions) => {
+            return actions.order.capture().then((details) => {
+              paymentResult.value = details;
+              toast.success('Payment Successful');
+            });
+          },
+        })
+        .render('#paypal-button-container');
+    } else {
+      console.error('PayPal SDK is not available');
+      toast.error('An error occurred while loading PayPal SDK');
+    }
+  } catch (error) {
+    console.error('Error loading PayPal SDK:', error);
+    toast.error('An error occurred while loading PayPal SDK');
+  }
+});
 
-const payPaypal = async () => {
-  paypal
-    .Buttons({
-      createOrder: (data, actions) => {
-        return actions.order.create({
-          purchase_units: [
-            {
-              amount: {
-                value: '43.00'
-              }
-            }
-          ]
-        })
-      },
-      onApprove: (data, actions) => {
-        return actions.order.capture().then((details) => {
-          paymentResult.value = details
-          toast.success('Payment Successful')
-        })
-      }
-    })
-    .render('#paypal-button-container')
-}
+const loadScript = (src) =>
+  new Promise((resolve, reject) => {
+    const script = document.createElement('script');
+    script.src = src;
+    script.onload = resolve;
+    script.onerror = reject;
+    document.head.appendChild(script);
+  });
 </script>
 <style>
 @import '../style/paymentMethods.css';
