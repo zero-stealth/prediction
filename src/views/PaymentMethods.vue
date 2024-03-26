@@ -25,6 +25,10 @@
         <p><span>Note:</span>Manual payment takes longer to process</p>
         <button type="button" @click="payManually" class="btn-pay">Pay Now</button>
       </div>
+      <div v-if="showSkrill" class="pay-controller">
+        <img :src="skrill" alt="skrill logo" class="payment-image" />
+        <button type="button" @click="payManually" class="btn-pay">Pay Now</button>
+      </div>
     </div>
   </div>
 </template>
@@ -35,9 +39,11 @@ import { ref, watchEffect, onMounted } from 'vue'
 import { useRoute, useRouter } from 'vue-router'
 import { useToast } from 'vue-toastification'
 import coinbase from '../assets/coinbase.png'
+import skrill from '../assets/skrill.png'
 import mpesa from '../assets/mpesa.png'
 import paypalImg from '../assets/paypal.png'
 import stripeImg from '../assets/stripe.png'
+const CLIENT_ID = import.meta.env.VITE_CLIENT_ID
 const COINBASE_KEY = import.meta.env.VITE_COINBASE_KEY
 
 const reveal = ref('')
@@ -61,13 +67,15 @@ let showCoinbase = false
 let showPaypal = false
 let showStripe = false
 let showManual = false
+let showSkrill = false
 
 watchEffect(() => {
   const selectedCountry = route.params.currency || 'others'
   reveal.value = selectedCountry
 
-  showMpesa = ['kenya'].includes(selectedCountry)
+  showMpesa = ['kenya'].includes(selectedCountry) && selectedCountry !== ''
   showManual = !['others'].includes(selectedCountry) && selectedCountry !== ''
+  showSkrill = ['others'].includes(selectedCountry) && selectedCountry !== ''
   showCoinbase = ['kenya', 'others', 'nigeria', 'cameroon', 'ghana', 'southA', 'tanzania', 'uganda', 'zambia', 'rwanda', 'malawi'].includes(selectedCountry) && selectedCountry !== ''
   showStripe = ['kenya', 'others', 'nigeria', 'cameroon', 'ghana', 'southA', 'tanzania', 'uganda', 'zambia', 'rwanda', 'malawi'].includes(selectedCountry) && selectedCountry !== ''
   showPaypal = ['others', 'kenya', 'nigeria', 'cameroon', 'ghana', 'southA', 'tanzania', 'uganda', 'zambia', 'rwanda', 'malawi'].includes(selectedCountry) && selectedCountry !== ''
@@ -118,7 +126,7 @@ const coinbasePay = async () => {
 
 onMounted(async () => {
   try {
-    const paypalScript = await loadScript('https://www.paypal.com/sdk/js?client-id=YOUR_PAYPAL_CLIENT_ID&currency=USD');
+    const paypalScript = await loadScript(`https://www.paypal.com/sdk/js?client-id=${CLIENT_ID}&currency=USD`);
 
     if (paypalScript && window.paypal) {
       window.paypal

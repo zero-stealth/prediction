@@ -25,7 +25,7 @@ const countryCurrencies = {
 };
 
 const currencyCode = computed(() => {
-  const country = route.params.country ? route.params.country.toLowerCase() : 'others';
+  const country = route.params.country ? route.params.country : 'others';
   return countryCurrencies[country] || 'USD';
 });
 

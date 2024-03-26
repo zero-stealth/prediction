@@ -6,16 +6,12 @@ const route = useRoute()
 const router = useRouter()
 
 const reveal = ref(route.params.country)
-const plan = ref(route.params.plan)
 const price = ref(route.params.price)
 
 const logIn = () => {
   router.push({ name: 'Login' })
 }
 
-const signIn = () => {
-  router.push({ name: 'Signin' })
-}
 
 
 </script>
@@ -46,12 +42,12 @@ const signIn = () => {
         </div>
         <div class="method-pay">
           <ul>
-            <li>Bank Name <span>FirstBank</span></li>
-            <li>Account Number : <span>3087875918</span></li>
+            <li>Bank Name <span> Access bank</span></li>
+            <li>Account Number : <span>0046776317</span></li>
             <li>
               Amount to pay : <span>{{ price }} NGN</span>
             </li>
-            <li>Account Name : <span>Mboutidem akpan</span></li>
+            <li>Account Name : <span>Daniel Joy</span></li>
             <li>Your VIP account will be activated once we receive your payment.</li>
           </ul>
         </div>
@@ -119,6 +115,20 @@ const signIn = () => {
       </div>
       <div class="pay-info" v-else-if="reveal === 'southA'">
         <div class="method-head">
+          <h1>PAY WITH BANK</h1>
+        </div>
+        <div class="method-pay">
+          <ul>
+            <li>Bank Name <span> Capitec</span></li>
+            <li>Account Number : <span>1383649934</span></li>
+            <li>
+              Amount to pay : <span>{{ price }} ZAR</span>
+            </li>
+            <li>Account Name : <span>Tamsanqa Matshitshi</span></li>
+            <li>Your VIP account will be activated once we receive your payment.</li>
+          </ul>
+        </div>
+        <div class="method-head">
           <h1>PAY USING CRYPTO</h1>
         </div>
         <div class="method-pay">
@@ -154,6 +164,22 @@ const signIn = () => {
             <li>Use <span>contact@sportypredict.com</span></li>
             <li>
               Amount to pay : <span>{{ price }} ZAR</span>
+            </li>
+            <li>Your VIP account will be activated once we receive your payment.</li>
+          </ul>
+        </div>
+      </div>
+      <div class="pay-info" v-else-if="reveal === 'others'">
+        <div class="method-head">
+          <h1>PAY USING CRYPTO</h1>
+        </div>
+        <div class="method-pay">
+          <h1>PAY USING SKRILL</h1>
+          <ul>
+            <li @click="logIn()">Go to your account</li>
+            <li>Use <span>contact@sportypredict.com</span></li>
+            <li>
+              Amount to pay : <span>{{ price }} </span>
             </li>
             <li>Your VIP account will be activated once we receive your payment.</li>
           </ul>
