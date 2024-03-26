@@ -82,11 +82,16 @@ watchEffect(() => {
 })
 
 const payMpesa = () => {
-  toast.success('redirected successfully')
   window.open('https://paystack.com/pay/82o4airsxo', '_blank')
 }
 
+
 const coinbasePay = async () => {
+  let amount = route.params.price;
+  if (['kenya', 'others', 'nigeria', 'cameroon', 'ghana', 'southA', 'tanzania', 'uganda', 'zambia', 'rwanda', 'malawi'].includes(route.params.currency)) {
+    amount = route.params.plan === 'weekly' ? 25 : 45;
+  }
+
   try {
     const response = await axios.post(
       'https://api.commerce.coinbase.com/charges/',
@@ -95,7 +100,7 @@ const coinbasePay = async () => {
         description: 'Subscribe for vip',
         pricing_type: 'fixed_price',
         local_price: {
-          amount: route.params.price,
+          amount: amount,
           currency: 'USD',
         },
       },
@@ -107,7 +112,15 @@ const coinbasePay = async () => {
       }
     );
 
-    window.open(response.data.data.hosted_url, '_blank');
+    const hostedUrl = response.data.data.hosted_url;
+    const newWindow = window.open(hostedUrl, '_blank');
+
+    if (newWindow) {
+      newWindow.focus();
+    } else {
+
+      toast.error('Please enable pop-ups for this website to complete the payment process.');
+    }
 
     const redirects = response.data.redirects;
     const cancel_url = redirects ? redirects.cancel_url : '';
@@ -117,7 +130,6 @@ const coinbasePay = async () => {
     isPaid.value = success_url ? true : false;
     isCancel.value = cancel_url ? true : false;
 
-    toast.success('redirected successfully');
   } catch (error) {
     console.error(error);
     toast.error('An error occurred');
@@ -125,6 +137,11 @@ const coinbasePay = async () => {
 };
 
 onMounted(async () => {
+  let amount = route.params.price;
+  if (['kenya', 'others', 'nigeria', 'cameroon', 'ghana', 'southA', 'tanzania', 'uganda', 'zambia', 'rwanda', 'malawi'].includes(route.params.currency)) {
+    amount = route.params.plan === 'weekly' ? 25 : 45;
+  }
+
   try {
     const paypalScript = await loadScript(`https://www.paypal.com/sdk/js?client-id=${CLIENT_ID}&currency=USD`);
 
@@ -136,7 +153,7 @@ onMounted(async () => {
               purchase_units: [
                 {
                   amount: {
-                    value: route.params.price,
+                    value: amount,
                   },
                 },
               ],
@@ -145,7 +162,6 @@ onMounted(async () => {
           onApprove: (data, actions) => {
             return actions.order.capture().then((details) => {
               paymentResult.value = details;
-              toast.success('Payment Successful');
             });
           },
         })
