@@ -56,7 +56,7 @@
     border-radius: 8px;
     align-items: center;
     flex-direction: column;
-    justify-content: space-between;
+    justify-content: space-around;
     border: 1px solid var(--tertiary-color);
     background-color: var(--dark-primary-color);
   }
@@ -82,6 +82,12 @@
 
   .payment-image {
     height: 90px;
+    object-fit: fill;
+    object-position: center;
+  }
+
+  .payment-paypal-image{
+    height: 50px;
     object-fit: fill;
     object-position: center;
   }
@@ -127,8 +133,7 @@
 
   .pay-controller {
     width: 300px;
-    min-width: 300px;
-    min-height: 100%;
+    height: fit-content;
   }
 
 }

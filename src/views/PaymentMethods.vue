@@ -13,8 +13,7 @@
         <button type="button" @click="payWithStripe" class="btn-pay">Pay with card</button>
       </div>
       <div v-if="showPaypal" class="pay-controller" id="paypal-button-container">
-        <img :src="paypalImg" alt="paypal logo" class="payment-image" />
-      
+        <img :src="paypalImg" alt="paypal logo" class="payment-paypal-image" />
       </div>
       <div v-if="showCoinbase" class="pay-controller">
         <img :src="coinbase" alt="coinbase logo" class="payment-image" />
@@ -47,8 +46,9 @@ const CLIENT_ID = import.meta.env.VITE_CLIENT_ID
 const COINBASE_KEY = import.meta.env.VITE_COINBASE_KEY
 
 const reveal = ref('')
-const isPaid = ref('')
-const isCancel = ref('')
+const isPaid = ref(false)
+const isCancel = ref(false)
+const paymentStatus = ref('')
 const toast = useToast()
 const route = useRoute()
 const router = useRouter()
@@ -81,14 +81,49 @@ watchEffect(() => {
   showPaypal = ['others', 'kenya', 'nigeria', 'cameroon', 'ghana', 'southA', 'tanzania', 'uganda', 'zambia', 'rwanda', 'malawi'].includes(selectedCountry) && selectedCountry !== ''
 })
 
-const payMpesa = () => {
-  window.open('https://paystack.com/pay/82o4airsxo', '_blank')
-}
+// const payMpesa = () => {
+//   const currencyCode = route.params.currency === 'kenya' ? 'KES' : 'NGN';
+//   const handler = PaystackPop.setup({
+//     key: 'YOUR_PAYSTACK_PUBLIC_KEY', // Replace with your public key
+//     email: 'user@email.com', // Replace with the user's email
+//     amount: route.params.price * 100, // Amount in kobo or cents
+//     currency: currencyCode, // Currency code
+//     ref: `ref_${Math.floor(Math.random() * 1000000000 + 1)}`, // Generate a unique reference
+//     callback: (response) => {
+//       if (response.status === 'success') {
+//         isPaid.value = true;
+//         paymentStatus.value = 'success';
+//       } else {
+//         isCancel.value = true;
+//         paymentStatus.value = 'cancelled';
+//       }
+//     },
+//     onClose: () => {
+//       isCancel.value = true;
+//       paymentStatus.value = 'cancelled';
+//     },
+//   });
 
+//   handler.openIframe();
+// }
+
+
+
+
+// const handlePayStackResponse = (event) => {
+//   if (event.data && event.data.status) {
+//     paymentStatus.value = event.data.status
+//     if (event.data.status === 'success') {
+//       isPaid.value = true
+//     } else {
+//       isCancel.value = true
+//     }
+//   }
+// }
 
 const coinbasePay = async () => {
   let amount = route.params.price;
-  if (['kenya','nigeria', 'cameroon', 'ghana', 'southA', 'tanzania', 'uganda', 'zambia', 'rwanda', 'malawi'].includes(route.params.currency)) {
+  if (['kenya', 'nigeria', 'cameroon', 'ghana', 'southA', 'tanzania', 'uganda', 'zambia', 'rwanda', 'malawi'].includes(route.params.currency)) {
     amount = route.params.plan === 'weekly' ? 25 : 45;
   }
 
@@ -118,7 +153,6 @@ const coinbasePay = async () => {
     if (newWindow) {
       newWindow.focus();
     } else {
-
       toast.error('Please enable pop-ups for this website to complete the payment process.');
     }
 
@@ -134,7 +168,16 @@ const coinbasePay = async () => {
     console.error(error);
     toast.error('An error occurred');
   }
-};
+
+  window.addEventListener('beforeunload', handleCoinbaseClose)
+}
+
+const handleCoinbaseClose = () => {
+  if (!isPaid.value && !isCancel.value) {
+    isCancel.value = true
+    paymentStatus.value = 'cancelled'
+  }
+}
 
 onMounted(async () => {
   let amount = route.params.price;
@@ -161,8 +204,19 @@ onMounted(async () => {
           },
           onApprove: (data, actions) => {
             return actions.order.capture().then((details) => {
-              paymentResult.value = details;
-            });
+              paymentResult.value = details
+              isPaid.value = true
+              paymentStatus.value = 'success'
+            })
+          },
+          onError: (err) => {
+            isCancel.value = true
+            paymentStatus.value = 'error'
+            console.error('PayPal error:', err)
+          },
+          onCancel: () => {
+            isCancel.value = true
+            paymentStatus.value = 'cancelled'
           },
         })
         .render('#paypal-button-container');
