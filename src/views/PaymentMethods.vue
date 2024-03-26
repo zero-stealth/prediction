@@ -88,7 +88,7 @@ const payMpesa = () => {
 
 const coinbasePay = async () => {
   let amount = route.params.price;
-  if (['kenya', 'others', 'nigeria', 'cameroon', 'ghana', 'southA', 'tanzania', 'uganda', 'zambia', 'rwanda', 'malawi'].includes(route.params.currency)) {
+  if (['kenya','nigeria', 'cameroon', 'ghana', 'southA', 'tanzania', 'uganda', 'zambia', 'rwanda', 'malawi'].includes(route.params.currency)) {
     amount = route.params.plan === 'weekly' ? 25 : 45;
   }
 
@@ -138,7 +138,7 @@ const coinbasePay = async () => {
 
 onMounted(async () => {
   let amount = route.params.price;
-  if (['kenya', 'others', 'nigeria', 'cameroon', 'ghana', 'southA', 'tanzania', 'uganda', 'zambia', 'rwanda', 'malawi'].includes(route.params.currency)) {
+  if (['kenya', 'nigeria', 'cameroon', 'ghana', 'southA', 'tanzania', 'uganda', 'zambia', 'rwanda', 'malawi'].includes(route.params.currency)) {
     amount = route.params.plan === 'weekly' ? 25 : 45;
   }
 
