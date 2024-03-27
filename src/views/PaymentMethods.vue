@@ -133,7 +133,7 @@ const payMpesa = () => {
     paystack.newTransaction({
       key: 'pk_live_b8f996a3d6fed05146cbe8bd5228651a0723e8ee',
       email: email,
-      amount: route.params.price,
+      amount: route.params.price * 100,
       currency: 'KES',
       ref: `ref_${Math.floor(Math.random() * 1000000000 + 1)}`,
       callback: (response) => {
