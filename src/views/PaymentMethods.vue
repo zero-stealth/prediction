@@ -33,13 +33,14 @@
 </template>
 
 <script setup>
-import axios from 'axios';
+import axios from 'axios'
 import { ref, watchEffect, onMounted } from 'vue'
 import { useRoute, useRouter } from 'vue-router'
 import { useToast } from 'vue-toastification'
 import coinbase from '../assets/coinbase.png'
 import skrill from '../assets/skrill.png'
 import mpesa from '../assets/mpesa.png'
+import PaystackPop from '@paystack/inline-js'
 import paypalImg from '../assets/paypal.png'
 import stripeImg from '../assets/stripe.png'
 const CLIENT_ID = import.meta.env.VITE_CLIENT_ID
@@ -55,11 +56,14 @@ const router = useRouter()
 const paymentResult = ref(null)
 
 const payManually = () => {
-  router.push({ name: 'Pay', params: {
-    country: route.params.currency,
-    plan: route.params.plan,
-    price: route.params.price
-  } })
+  router.push({
+    name: 'Pay',
+    params: {
+      country: route.params.currency,
+      plan: route.params.plan,
+      price: route.params.price
+    }
+  })
 }
 
 let showMpesa = false
@@ -76,55 +80,99 @@ watchEffect(() => {
   showMpesa = ['kenya'].includes(selectedCountry) && selectedCountry !== ''
   showManual = !['others'].includes(selectedCountry) && selectedCountry !== ''
   showSkrill = ['others'].includes(selectedCountry) && selectedCountry !== ''
-  showCoinbase = ['kenya', 'others', 'nigeria', 'cameroon', 'ghana', 'southA', 'tanzania', 'uganda', 'zambia', 'rwanda', 'malawi'].includes(selectedCountry) && selectedCountry !== ''
-  showStripe = ['kenya', 'others', 'nigeria', 'cameroon', 'ghana', 'southA', 'tanzania', 'uganda', 'zambia', 'rwanda', 'malawi'].includes(selectedCountry) && selectedCountry !== ''
-  showPaypal = ['others', 'kenya', 'nigeria', 'cameroon', 'ghana', 'southA', 'tanzania', 'uganda', 'zambia', 'rwanda', 'malawi'].includes(selectedCountry) && selectedCountry !== ''
+  showCoinbase =
+    [
+      'kenya',
+      'others',
+      'nigeria',
+      'cameroon',
+      'ghana',
+      'southA',
+      'tanzania',
+      'uganda',
+      'zambia',
+      'rwanda',
+      'malawi'
+    ].includes(selectedCountry) && selectedCountry !== ''
+  showStripe =
+    [
+      'kenya',
+      'others',
+      'nigeria',
+      'cameroon',
+      'ghana',
+      'southA',
+      'tanzania',
+      'uganda',
+      'zambia',
+      'rwanda',
+      'malawi'
+    ].includes(selectedCountry) && selectedCountry !== ''
+  showPaypal =
+    [
+      'others',
+      'kenya',
+      'nigeria',
+      'cameroon',
+      'ghana',
+      'southA',
+      'tanzania',
+      'uganda',
+      'zambia',
+      'rwanda',
+      'malawi'
+    ].includes(selectedCountry) && selectedCountry !== ''
 })
 
-// const payMpesa = () => {
-//   const currencyCode = route.params.currency === 'kenya' ? 'KES' : 'NGN';
-//   const handler = PaystackPop.setup({
-//     key: 'YOUR_PAYSTACK_PUBLIC_KEY', // Replace with your public key
-//     email: 'user@email.com', // Replace with the user's email
-//     amount: route.params.price * 100, // Amount in kobo or cents
-//     currency: currencyCode, // Currency code
-//     ref: `ref_${Math.floor(Math.random() * 1000000000 + 1)}`, // Generate a unique reference
-//     callback: (response) => {
-//       if (response.status === 'success') {
-//         isPaid.value = true;
-//         paymentStatus.value = 'success';
-//       } else {
-//         isCancel.value = true;
-//         paymentStatus.value = 'cancelled';
-//       }
-//     },
-//     onClose: () => {
-//       isCancel.value = true;
-//       paymentStatus.value = 'cancelled';
-//     },
-//   });
+const payMpesa = () => {
 
-//   handler.openIframe();
-// }
+  const email = localStorage.getItem('email') || null;
+  console.log(email)
+  if (email !== null) {
+    const paystack = new PaystackPop();
+    paystack.newTransaction({
+      key: 'pk_live_b8f996a3d6fed05146cbe8bd5228651a0723e8ee',
+      email: email,
+      amount: route.params.price,
+      currency: 'KES',
+      ref: `ref_${Math.floor(Math.random() * 1000000000 + 1)}`,
+      callback: (response) => {
+        if (response.status === 'success') {
+          isPaid.value = true;
+          paymentStatus.value = 'success';
+        } else {
+          isCancel.value = true;
+          paymentStatus.value = 'cancelled';
+        }
+      },
+      onClose: () => {
+        isCancel.value = true;
+        paymentStatus.value = 'cancelled';
+      }
+    });
+  } else {
+    toast.error('login or create an account to pay')
+  }
+};
 
-
-
-
-// const handlePayStackResponse = (event) => {
-//   if (event.data && event.data.status) {
-//     paymentStatus.value = event.data.status
-//     if (event.data.status === 'success') {
-//       isPaid.value = true
-//     } else {
-//       isCancel.value = true
-//     }
-//   }
-// }
 
 const coinbasePay = async () => {
-  let amount = route.params.price;
-  if (['kenya', 'nigeria', 'cameroon', 'ghana', 'southA', 'tanzania', 'uganda', 'zambia', 'rwanda', 'malawi'].includes(route.params.currency)) {
-    amount = route.params.plan === 'weekly' ? 25 : 45;
+  let amount = route.params.price
+  if (
+    [
+      'kenya',
+      'nigeria',
+      'cameroon',
+      'ghana',
+      'southA',
+      'tanzania',
+      'uganda',
+      'zambia',
+      'rwanda',
+      'malawi'
+    ].includes(route.params.currency)
+  ) {
+    amount = route.params.plan === 'weekly' ? 25 : 45
   }
 
   try {
@@ -136,37 +184,36 @@ const coinbasePay = async () => {
         pricing_type: 'fixed_price',
         local_price: {
           amount: amount,
-          currency: 'USD',
-        },
+          currency: 'USD'
+        }
       },
       {
         headers: {
           'Content-Type': 'application/json',
-          'X-CC-Api-Key': COINBASE_KEY,
-        },
+          'X-CC-Api-Key': COINBASE_KEY
+        }
       }
-    );
+    )
 
-    const hostedUrl = response.data.data.hosted_url;
-    const newWindow = window.open(hostedUrl, '_blank');
+    const hostedUrl = response.data.data.hosted_url
+    const newWindow = window.open(hostedUrl, '_blank')
 
     if (newWindow) {
-      newWindow.focus();
+      newWindow.focus()
     } else {
-      toast.error('Please enable pop-ups for this website to complete the payment process.');
+      toast.error('Please enable pop-ups for this website to complete the payment process.')
     }
 
-    const redirects = response.data.redirects;
-    const cancel_url = redirects ? redirects.cancel_url : '';
-    const success_url = redirects ? redirects.success_url : '';
-    const will_redirect_after_success = redirects ? redirects.will_redirect_after_success : false;
+    const redirects = response.data.redirects
+    const cancel_url = redirects ? redirects.cancel_url : ''
+    const success_url = redirects ? redirects.success_url : ''
+    const will_redirect_after_success = redirects ? redirects.will_redirect_after_success : false
 
-    isPaid.value = success_url ? true : false;
-    isCancel.value = cancel_url ? true : false;
-
+    isPaid.value = success_url ? true : false
+    isCancel.value = cancel_url ? true : false
   } catch (error) {
-    console.error(error);
-    toast.error('An error occurred');
+    console.error(error)
+    toast.error('An error occurred')
   }
 
   window.addEventListener('beforeunload', handleCoinbaseClose)
@@ -180,13 +227,28 @@ const handleCoinbaseClose = () => {
 }
 
 onMounted(async () => {
-  let amount = route.params.price;
-  if (['kenya', 'nigeria', 'cameroon', 'ghana', 'southA', 'tanzania', 'uganda', 'zambia', 'rwanda', 'malawi'].includes(route.params.currency)) {
-    amount = route.params.plan === 'weekly' ? 25 : 45;
+  let amount = route.params.price
+  if (
+    [
+      'kenya',
+      'nigeria',
+      'cameroon',
+      'ghana',
+      'southA',
+      'tanzania',
+      'uganda',
+      'zambia',
+      'rwanda',
+      'malawi'
+    ].includes(route.params.currency)
+  ) {
+    amount = route.params.plan === 'weekly' ? 25 : 45
   }
 
   try {
-    const paypalScript = await loadScript(`https://www.paypal.com/sdk/js?client-id=${CLIENT_ID}&currency=USD`);
+    const paypalScript = await loadScript(
+      `https://www.paypal.com/sdk/js?client-id=${CLIENT_ID}&currency=USD`
+    )
 
     if (paypalScript && window.paypal) {
       window.paypal
@@ -196,11 +258,11 @@ onMounted(async () => {
               purchase_units: [
                 {
                   amount: {
-                    value: amount,
-                  },
-                },
-              ],
-            });
+                    value: amount
+                  }
+                }
+              ]
+            })
           },
           onApprove: (data, actions) => {
             return actions.order.capture().then((details) => {
@@ -217,27 +279,27 @@ onMounted(async () => {
           onCancel: () => {
             isCancel.value = true
             paymentStatus.value = 'cancelled'
-          },
+          }
         })
-        .render('#paypal-button-container');
+        .render('#paypal-button-container')
     } else {
-      console.error('PayPal SDK is not available');
-      toast.error('An error occurred while loading PayPal SDK');
+      console.error('PayPal SDK is not available')
+      toast.error('An error occurred while loading PayPal SDK')
     }
   } catch (error) {
-    console.error('Error loading PayPal SDK:', error);
-    toast.error('An error occurred while loading PayPal SDK');
+    console.error('Error loading PayPal SDK:', error)
+    toast.error('An error occurred while loading PayPal SDK')
   }
-});
+})
 
 const loadScript = (src) =>
   new Promise((resolve, reject) => {
-    const script = document.createElement('script');
-    script.src = src;
-    script.onload = resolve;
-    script.onerror = reject;
-    document.head.appendChild(script);
-  });
+    const script = document.createElement('script')
+    script.src = src
+    script.onload = resolve
+    script.onerror = reject
+    document.head.appendChild(script)
+  })
 </script>
 <style>
 @import '../style/paymentMethods.css';

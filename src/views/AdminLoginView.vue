@@ -51,13 +51,13 @@ const login = async () => {
         password: password.value
       })
 
-
       const token = response.data.token
       if (token) {
         const isAdmin = response.data.isAdmin
         const adminusername = response.data.username
         authStore.toggleToken(JSON.stringify(token))
         localStorage.setItem('admin', isAdmin)
+  localStorage.setItem('email', email.value)
         localStorage.setItem('username', adminusername)
         localStorage.setItem('token', JSON.stringify(token))
 

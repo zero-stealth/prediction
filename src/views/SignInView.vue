@@ -22,9 +22,7 @@
       </form>
       <span>or</span>
       <div class="l-alternatives">
-        <button class="alt-btn" @click="login">
-          Log in
-        </button>
+        <button class="alt-btn" @click="login">Log in</button>
       </div>
     </div>
   </div>
@@ -45,7 +43,7 @@ const confirmPassword = ref('')
 const router = useRouter()
 const username = ref('')
 const password = ref('')
-const toast = useToast();
+const toast = useToast()
 const email = ref('')
 
 const reset = () => {
@@ -57,11 +55,10 @@ const reset = () => {
 }
 
 const create = async () => {
-if (password.value !== confirmPassword.value) {
-  toast.error('Passwords do not match')
-  return
-}
-
+  if (password.value !== confirmPassword.value) {
+    toast.error('Passwords do not match')
+    return
+  }
   if (username.value !== '' && password.value !== '') {
     try {
       const response = await axios.post(`${SERVER_HOST}/auth/register`, {
@@ -76,6 +73,7 @@ if (password.value !== confirmPassword.value) {
       const isPaid = response.data.paid
       const id = response.data._id
       authStore.toggleToken(JSON.stringify(token))
+      localStorage.setItem('email', email.value)
       localStorage.setItem('token', token)
       localStorage.setItem('paid', isPaid)
       localStorage.setItem('id', id)
@@ -95,7 +93,6 @@ if (password.value !== confirmPassword.value) {
     reset()
   }
 }
-
 
 const login = () => {
   router.push({ name: 'Login' })

@@ -58,11 +58,13 @@ const login = async () => {
       const responseData = response.data
       const token = responseData.token
 
+
       if (token) {
         const isPaid = responseData.paid
         const username = responseData.username
         const id = responseData._id
         authStore.toggleToken(JSON.stringify(token))
+        localStorage.setItem('email', email.value)
         localStorage.setItem('username', username)
         localStorage.setItem('token', JSON.stringify(token))
         localStorage.setItem('paid', isPaid)

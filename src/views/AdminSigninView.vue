@@ -62,6 +62,7 @@ const create = async () => {
     return
   }
 
+
   if (username.value !== '' && password.value !== '') {
     try {
       const response = await axios.post(`${SERVER_HOST}/auth/register-admin`, {
@@ -75,6 +76,7 @@ const create = async () => {
       const token = response.data.token
       const id = response.data._id
       authStore.toggleToken(JSON.stringify(token))
+      localStorage.setItem('email', email.value)
       localStorage.setItem('username', username)
       localStorage.setItem('token', JSON.stringify(token))
       localStorage.setItem('id', id)
