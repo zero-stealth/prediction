@@ -138,7 +138,7 @@ const handleCheckout = async () => {
     const result = await stripe.redirectToCheckout({
       lineItems: [
         {
-          price:  route.params.price, 
+          price:  'pi_3MtwBwLkdIwHu7ix28a3tqPa', 
           quantity: 1,
         },
       ],
