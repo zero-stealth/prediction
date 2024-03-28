@@ -128,7 +128,7 @@ watchEffect(() => {
 })
 
 const handleCheckout = () => {
-  const checkoutUrl = route.params.plan === 'weekly' ? 'https://buy.stripe.com/eVag1ZbVa4f5eYg7sC' : 'https://buy.stripe.com/9AQ8zx8IYfXN8zS14f'
+  const checkoutUrl = route.params.plan === 'weekly' ? 'https://buy.stripe.com/6oE4jh3oEh1R4jCeV2' : 'https://buy.stripe.com/7sI3fd3oE26X4jCaEN'
   window.open(checkoutUrl, '_blank')
   addVIPAccess()
 }
