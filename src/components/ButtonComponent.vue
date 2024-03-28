@@ -17,7 +17,7 @@ const goVip = () => {
 }
 
 const goPay = () => {
-  router.push({ name: 'Pay' })
+  router.push({ name: 'Country' })
   scrollToTop()
 
 }

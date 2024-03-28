@@ -48,7 +48,7 @@
             </td>
             <td>{{ account.country }}</td>
             <td>{{ account.paid ? 'paid' : 'not paid' }}</td>
-            <td>{{ account.plan === 'weekly' ? '7 days' : '30 days' }}</td>
+            <td>{{ account.plan === ''   ? 'not plan' : account.plan}}</td>
             <td>{{ account.activationDate }}</td>
             <td>
               <div class="Account-t-con">
@@ -267,7 +267,6 @@ watchEffect(() => {
 })
 
 async function toggleStatus(account) {
-  // also add deactivationDate on the server
   if (plan.value !== '') {
     account.status = !account.status
     const getDate = new Date()
@@ -293,7 +292,13 @@ async function toggleStatus(account) {
       console.log(err)
     }
   } else {
-    toast.error('Choose a plan first')
+    if( account.status !== false) {
+      account.status = !account.status
+      
+    } else {
+      toast.error('Choose a plan first')
+
+    }
   }
 }
 </script>

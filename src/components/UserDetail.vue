@@ -27,16 +27,16 @@
           </div>
           <div>
             <span>Payment period</span>
-            <h1>{{account.plan === 'weekly'  ? '7 days' : '30 days' }}</h1>
+            <h1>{{ account.plan }}</h1>
           </div>
           <div>
             <span>Date activation</span>
-            <h1>{{ account.activationDate  }}</h1>
+            <h1>{{ account.activationDate }}</h1>
           </div>
           <div>
             <span>Date of deactivation</span>
             <h1>
-              {{ account.deactivationDate  }}
+              {{ formatDate(account.activationDate, account.plan) }}
             </h1>
           </div>
         </div>
@@ -136,11 +136,19 @@ const filteredAccountData = computed(() => {
   return accountInfo.value.filter((account) => account._id === props.id)
 })
 
-
-
 onMounted(() => {
   accountsData()
 })
+
+const formatDate = (activationDate, plan) => {
+  const activationDateObj = new Date(activationDate)
+  const daysToAdd = plan === 'weekly' ? 7 : 30
+  const expiryDateObj = new Date(activationDateObj.setDate(activationDateObj.getDate() + daysToAdd))
+  const year = expiryDateObj.getFullYear()
+  const month = String(expiryDateObj.getMonth() + 1).padStart(2, '0')
+  const day = String(expiryDateObj.getDate()).padStart(2, '0')
+  return `${year}-${month}-${day}T00:00:00Z`
+}
 
 const deleteAccount = async (id) => {
   try {
@@ -183,11 +191,15 @@ async function toggleStatus(account) {
       console.log(err)
     }
   } else {
-    toast.error('Choose a plan first')
+    if( account.status !== false) {
+      account.status = !account.status
+      
+    } else {
+      toast.error('Choose a plan first')
+
+    }
   }
 }
-
-
 </script>
 <style scoped>
 @import '../style/user.css';

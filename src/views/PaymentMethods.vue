@@ -152,11 +152,13 @@ const payMpesa = () => {
         } else {
           isCancel.value = true
           paymentStatus.value = 'cancelled'
+          toast.error('Payment failed')
         }
       },
       onClose: () => {
         isCancel.value = true
         paymentStatus.value = 'cancelled'
+        toast.error('Payment failed')
       }
     })
   } else {
@@ -212,6 +214,8 @@ const coinbasePay = async () => {
 
     if (success_url && !isCancel.value) {
       addVIPAccess()
+    } else {
+      toast.error('Payment failed')
     }
 
     window.addEventListener('beforeunload', handleCoinbaseClose)
@@ -225,6 +229,7 @@ const handleCoinbaseClose = () => {
   if (!isPaid.value && !isCancel.value) {
     isCancel.value = true
     paymentStatus.value = 'cancelled'
+    toast.error('Payment failed')
   }
 }
 
@@ -277,11 +282,13 @@ onMounted(async () => {
           onError: (err) => {
             isCancel.value = true
             paymentStatus.value = 'error'
+            toast.error('Payment failed')
             console.error('PayPal error:', err)
           },
           onCancel: () => {
             isCancel.value = true
             paymentStatus.value = 'cancelled'
+            toast.error('Payment failed')
           }
         })
         .render('#paypal-button-container')
@@ -305,38 +312,35 @@ const loadScript = (src) =>
   })
 
 const addVIPAccess = async () => {
-  toast.success(paymentResult.value)
-  if (customerID.value !== null) {
-    try {
-      const getDate = new Date()
-        .toLocaleDateString('en-GB', {
-          year: 'numeric',
-          month: '2-digit',
-          day: '2-digit'
+  if (isPaid.value) {
+    if (customerID.value !== null) {
+      try {
+        const getDate = new Date()
+          .toISOString()
+          .slice(0, 10)
+
+        const account = JSON.parse(localStorage.getItem('account'))
+
+        const response = await axios.put(`${SERVER_HOST}/auth/update/${customerID.value}`, {
+          paid: true,
+          plan: route.params.plan,
+          activationDate: `${getDate}T00:00:00Z`,
+          days: route.params.plan === 'weekly' ? 7 : 30
         })
-        .split('/')
-        .reverse()
-        .join('/')
+        account.status = true
+        localStorage.setItem('account', JSON.stringify(account))
+        localStorage.setItem('paid', 'true')
 
-      const account = JSON.parse(localStorage.getItem('account'))
-
-      const response = await axios.put(`${SERVER_HOST}/auth/update/${customerID.value}`, {
-        paid: true,
-        plan: route.params.plan,
-        activationDate: getDate,
-        day: route.params.plan === 'weekly' ? 7 : 30
-      })
-console.log( route.params.plan,getDate, route.params.plan === 'weekly' ? 7 : 30)
-      account.status = true
-      localStorage.setItem('account', JSON.stringify(account))
-      localStorage.setItem('paid', 'true')
-
-      toast.success('Payment successful! You are now a VIP member.')
-    } catch (err) {
-      toast.error('An error occurred while updating your account.')
+        toast.success('Payment successful!')
+        window.location.href = 'https://sportypredict.com/vip'
+      } catch (err) {
+        toast.error('An error occurred while updating your account.')
+      }
+    } else {
+      toast.error('Login or create an account to pay')
     }
   } else {
-    toast.error('Login or create an account to pay')
+    toast.error('Payment failed')
   }
 }
 </script>
