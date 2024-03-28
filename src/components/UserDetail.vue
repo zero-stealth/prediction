@@ -23,20 +23,20 @@
         <div class="user-span">
           <div>
             <span>Paid</span>
-            <h1>{{ account.paid ? 'Yes' : 'No' }}</h1>
+            <h1>{{ account.paid ? 'paid' : 'not paid' }}</h1>
           </div>
           <div>
             <span>Payment period</span>
-            <h1>{{ account.paid ? '31 days' : '0 days' }}</h1>
+            <h1>{{account.plan === 'weekly'  ? '7 days' : '30 days' }}</h1>
           </div>
           <div>
             <span>Date activation</span>
-            <h1>{{ formatDateTime(account.updatedAt) || 'not paid' }}</h1>
+            <h1>{{ account.activationDate  }}</h1>
           </div>
           <div>
             <span>Date of deactivation</span>
             <h1>
-              {{ formatDateTime(new Date(new Date().getTime() - 31 * 24 * 60 * 60 * 1000)) }}
+              {{ account.deactivationDate  }}
             </h1>
           </div>
         </div>
@@ -54,6 +54,13 @@
           <tr v-for="account in filteredAccountData" :key="account.id">
             <td>
               <div class="Account-t-con">
+                <div class="form-group">
+                  <select v-model="plan" class="frm-g-input" id="plan">
+                    <option disabled value="">Choose a plan</option>
+                    <option value="weekly">Weekly</option>
+                    <option value="monthly">Monthly</option>
+                  </select>
+                </div>
                 <div
                   class="Account-toggle"
                   @click="toggleStatus(account)"
@@ -80,7 +87,7 @@
 </template>
 <script setup>
 import axios from 'axios'
-import { ref, watchEffect, onMounted, computed, watch } from 'vue'
+import { ref, onMounted, computed } from 'vue'
 import { useToast } from 'vue-toastification'
 import DeleteIcon from '../icons/DeleteIcon.vue'
 import { useDrawerStore } from '../stores/drawer'
@@ -90,10 +97,8 @@ import ArrowIcon from '../icons/ArrowIcon.vue'
 const accountInfo = ref([])
 const userData = ref([])
 const statusC = ref(null)
-const paidDate = ref(null)
-const futuresDate = ref(null)
+const plan = ref('')
 const toast = useToast()
-const endSub = ref(false)
 const drawerStore = useDrawerStore()
 const SERVER_HOST = import.meta.env.VITE_SERVER_HOST
 
@@ -117,10 +122,6 @@ const accountsData = async () => {
       }
     })
     statusC.value = response.data.paid
-    if (response.data.updatedAt) {
-      getFutureDate(response.data.updatedAt)
-    }
-    console.log(response.data)
     userData.value = response.data
     accountInfo.value = response.data.map((account) => ({
       ...account,
@@ -135,51 +136,7 @@ const filteredAccountData = computed(() => {
   return accountInfo.value.filter((account) => account._id === props.id)
 })
 
-function formatDateTime(date) {
-  if (!(date instanceof Date)) {
-    date = new Date(date)
-  }
 
-  const options = {
-    day: '2-digit',
-    month: '2-digit',
-    year: 'numeric',
-    hour: '2-digit',
-    minute: '2-digit',
-    second: '2-digit',
-    hour12: false // Use 24-hour format
-  }
-
-  return date.toLocaleDateString(undefined, options)
-}
-
-function formatDate(date) {
-  if (!(date instanceof Date)) {
-    date = new Date(date)
-  }
-
-  const options = { day: '2-digit', month: '2-digit', year: 'numeric' }
-  return date.toLocaleDateString(undefined, options)
-}
-
-function getFutureDate(date) {
-  const parsedDate = new Date(date)
-  paidDate.value = formatDate(parsedDate)
-  const futureDate = new Date(parsedDate)
-  futureDate.setDate(parsedDate.getDate() + 30)
-  futuresDate.value = futureDate.toISOString()
-
-  const currentDate = new Date()
-  const currentDateInISOFormat = currentDate.toISOString()
-
-  const match = futureDate.toISOString() === currentDateInISOFormat
-
-  endSub.value = match
-}
-
-watch([statusC], () => {
-  getFutureDate(accountInfo.value[0]?.updatedAt)
-})
 
 onMounted(() => {
   accountsData()
@@ -201,38 +158,38 @@ const deleteAccount = async (id) => {
 }
 
 async function toggleStatus(account) {
-  account.status = !account.status
+  if (plan.value !== '') {
+    account.status = !account.status
+    const getDate = new Date()
+      .toLocaleDateString('en-GB', {
+        year: 'numeric',
+        month: '2-digit',
+        day: '2-digit'
+      })
+      .split('/')
+      .reverse()
+      .join('/')
 
-  try {
-    const response = await axios.put(`${SERVER_HOST}/auth/update/${account._id}`, {
-      paid: account.status
-    })
-
-    await accountsData()
-    localStorage.setItem('paid', account.status.toString())
-  } catch (err) {
-    toast.error(err.response.data.error)
-
+    try {
+      const response = await axios.put(`${SERVER_HOST}/auth/update/${account._id}`, {
+        paid: account.status,
+        plan: plan.value,
+        activationDate: getDate,
+        day: plan.value === 'weekly' ? 7 : 30
+      })
+      await accountsData()
+      localStorage.setItem('paid', account.status.toString())
+    } catch (err) {
+      console.log(err)
+    }
+  } else {
+    toast.error('Choose a plan first')
   }
 }
 
-watchEffect(() => {
-  if (accountInfo.value.length > 0) {
-    getFutureDate(accountInfo.value[0]?.updatedAt)
-    paidDate.value = formatDate(accountInfo.value[0]?.updatedAt) || 'no change'
 
-    if (endSub.value) {
-      const currentDate = new Date()
-      const futureDate = new Date(futuresDate.value)
-
-      if (currentDate >= futureDate) {
-        toggleStatus(accountInfo.value[0])
-        endSub.value = false
-      }
-    }
-  }
-})
 </script>
 <style scoped>
 @import '../style/user.css';
+@import '../style/account.css';
 </style>

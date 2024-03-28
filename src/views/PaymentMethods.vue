@@ -10,12 +10,8 @@
       </div>
       <div v-if="showStripe" class="pay-controller">
         <img :src="stripeImg" alt="mpesa logo" class="payment-image" />
-
         <button @click="handleCheckout" class="btn-pay">Pay with card</button>
       </div>
-      <form v-if="showStripe" @submit.prevent="createCheckoutSession" lass="pay-controller">
-        <button id="checkout-and-portal-button" type="submit" class="btn-pay">Checkout</button>
-      </form>
       <div v-if="showPaypal" class="pay-controller" id="paypal-button-container">
         <img :src="paypalImg" alt="paypal logo" class="payment-paypal-image" />
       </div>
@@ -50,7 +46,6 @@ import stripeImg from '../assets/stripe.png'
 const CLIENT_ID = import.meta.env.VITE_CLIENT_ID
 const COINBASE_KEY = import.meta.env.VITE_COINBASE_KEY
 const PAYSTACK_KEY = import.meta.env.VITE_PAYSTACK_KEY
-const STRIPE_KEY = import.meta.env.VITE_STRIPE_PUBLISHABLE_KEY
 
 const reveal = ref('')
 const isPaid = ref(false)
@@ -60,6 +55,8 @@ const toast = useToast()
 const route = useRoute()
 const router = useRouter()
 const paymentResult = ref(null)
+const customerID = ref(localStorage.getItem('id') || null)
+const SERVER_HOST = import.meta.env.VITE_SERVER_HOST
 
 const payManually = () => {
   router.push({
@@ -78,13 +75,10 @@ let showPaypal = false
 let showStripe = false
 let showManual = false
 let showSkrill = false
-const priceLookupKey = '{{PRICE_LOOKUP_KEY}}';
 
 watchEffect(() => {
   const selectedCountry = route.params.currency || 'others'
   reveal.value = selectedCountry
-
-  
 
   showMpesa = ['kenya'].includes(selectedCountry) && selectedCountry !== ''
   showManual = !['others'].includes(selectedCountry) && selectedCountry !== ''
@@ -133,23 +127,15 @@ watchEffect(() => {
     ].includes(selectedCountry) && selectedCountry !== ''
 })
 
-const createCheckoutSession = async () => {
-  try {
-    const response = await axios.post('/stripe/create-checkout-session', {
-      lookup_key: priceLookupKey
-    });
-
-    // Redirect the customer to the Checkout Session
-    window.location.href = response.data.sessionUrl;
-  } catch (error) {
-    console.error('Error creating Checkout Session:', error);
-    // Handle error
-  }
-};
+const handleCheckout = () => {
+  const checkoutUrl = route.params.plan === 'weekly' ? 'https://buy.stripe.com/eVag1ZbVa4f5eYg7sC' : 'https://buy.stripe.com/9AQ8zx8IYfXN8zS14f'
+  window.open(checkoutUrl, '_blank')
+  addVIPAccess()
+}
 
 const payMpesa = () => {
   const email = localStorage.getItem('email') || null
-  console.log(email)
+
   if (email !== null) {
     const paystack = new PaystackPop()
     paystack.newTransaction({
@@ -162,6 +148,7 @@ const payMpesa = () => {
         if (response.status === 'success') {
           isPaid.value = true
           paymentStatus.value = 'success'
+          addVIPAccess()
         } else {
           isCancel.value = true
           paymentStatus.value = 'cancelled'
@@ -173,7 +160,7 @@ const payMpesa = () => {
       }
     })
   } else {
-    toast.error('login or create an account to pay')
+    toast.error('Login or create an account to pay')
   }
 }
 
@@ -217,27 +204,21 @@ const coinbasePay = async () => {
     )
 
     const hostedUrl = response.data.data.hosted_url
-    const newWindow = window.open(hostedUrl, '_blank')
-
-    if (newWindow) {
-      newWindow.focus()
-    } else {
-      toast.error('Please enable pop-ups for this website to complete the payment process.')
-    }
-
+    window.location.href = hostedUrl
     const redirects = response.data.redirects
     const cancel_url = redirects ? redirects.cancel_url : ''
     const success_url = redirects ? redirects.success_url : ''
     const will_redirect_after_success = redirects ? redirects.will_redirect_after_success : false
 
-    isPaid.value = success_url ? true : false
-    isCancel.value = cancel_url ? true : false
+    if (success_url && !isCancel.value) {
+      addVIPAccess()
+    }
+
+    window.addEventListener('beforeunload', handleCoinbaseClose)
   } catch (error) {
     console.error(error)
     toast.error('An error occurred')
   }
-
-  window.addEventListener('beforeunload', handleCoinbaseClose)
 }
 
 const handleCoinbaseClose = () => {
@@ -290,6 +271,7 @@ onMounted(async () => {
               paymentResult.value = details
               isPaid.value = true
               paymentStatus.value = 'success'
+              addVIPAccess()
             })
           },
           onError: (err) => {
@@ -321,7 +303,44 @@ const loadScript = (src) =>
     script.onerror = reject
     document.head.appendChild(script)
   })
+
+const addVIPAccess = async () => {
+  toast.success(paymentResult.value)
+  if (customerID.value !== null) {
+    try {
+      const getDate = new Date()
+        .toLocaleDateString('en-GB', {
+          year: 'numeric',
+          month: '2-digit',
+          day: '2-digit'
+        })
+        .split('/')
+        .reverse()
+        .join('/')
+
+      const account = JSON.parse(localStorage.getItem('account'))
+
+      const response = await axios.put(`${SERVER_HOST}/auth/update/${customerID.value}`, {
+        paid: true,
+        plan: route.params.plan,
+        activationDate: getDate,
+        day: route.params.plan === 'weekly' ? 7 : 30
+      })
+console.log( route.params.plan,getDate, route.params.plan === 'weekly' ? 7 : 30)
+      account.status = true
+      localStorage.setItem('account', JSON.stringify(account))
+      localStorage.setItem('paid', 'true')
+
+      toast.success('Payment successful! You are now a VIP member.')
+    } catch (err) {
+      toast.error('An error occurred while updating your account.')
+    }
+  } else {
+    toast.error('Login or create an account to pay')
+  }
+}
 </script>
+
 <style>
 @import '../style/paymentMethods.css';
 </style>

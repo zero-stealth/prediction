@@ -14,9 +14,7 @@
       </form>
       <span>or</span>
       <div class="l-alternatives">
-        <button class="alt-btn" @click="create">
-          Create an account
-        </button>
+        <button class="alt-btn" @click="create">Create an account</button>
       </div>
     </div>
   </div>
@@ -27,14 +25,14 @@ import { ref } from 'vue'
 import axios from 'axios'
 import { useRouter } from 'vue-router'
 import { useAuthStore } from '../stores/auth'
-import { useToast } from 'vue-toastification';
+import { useToast } from 'vue-toastification'
 
 const SERVER_HOST = import.meta.env.VITE_SERVER_HOST
 const authStore = useAuthStore()
 const resetPage = ref(false)
 const router = useRouter()
 const title = ref('Login')
-const toast = useToast();
+const toast = useToast()
 const password = ref('')
 const email = ref('')
 
@@ -53,11 +51,13 @@ const login = async () => {
 
       const token = response.data.token
       if (token) {
+        const id = response.data._id
         const isAdmin = response.data.isAdmin
         const adminusername = response.data.username
         authStore.toggleToken(JSON.stringify(token))
+        localStorage.setItem('id', id)
         localStorage.setItem('admin', isAdmin)
-  localStorage.setItem('email', email.value)
+        localStorage.setItem('email', email.value)
         localStorage.setItem('username', adminusername)
         localStorage.setItem('token', JSON.stringify(token))
 
@@ -71,7 +71,6 @@ const login = async () => {
     }
   } else {
     toast.error('Please enter your email and password.')
-
   }
 }
 const forgot = () => {
@@ -98,7 +97,6 @@ const resetAuth = async () => {
     reset()
   }
 }
-
 </script>
 
 <style>

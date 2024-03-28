@@ -137,10 +137,24 @@
   }
 
   .Account-t-con {
+    gap: 10px;
     display: flex;
     cursor: pointer;
     align-items: center;
     justify-content: center;
+    flex-direction: column;
+  }
+
+  .frm-g-input{
+    width: 130px;
+    padding: 10px;
+    border: none;
+    outline: none;
+    cursor: pointer;
+    border-radius: 360px;
+    color: var(--light-color);
+    background-color: var(--primary-color);
+
   }
 
   .Account-toggle {

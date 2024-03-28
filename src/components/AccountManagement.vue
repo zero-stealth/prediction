@@ -47,11 +47,18 @@
               </div>
             </td>
             <td>{{ account.country }}</td>
-            <td>{{ account.paid }}</td>
-            <td>{{ account.paid ? '1 Month' : '0 Month' }}</td>
-            <td>{{ formatDate(account.updatedAt) || 'not paid' }}</td>
+            <td>{{ account.paid ? 'paid' : 'not paid' }}</td>
+            <td>{{ account.plan === 'weekly' ? '7 days' : '30 days' }}</td>
+            <td>{{ account.activationDate }}</td>
             <td>
               <div class="Account-t-con">
+                <div class="form-group">
+                  <select v-model="plan" class="frm-g-input" id="plan">
+                    <option disabled value="">Choose a plan</option>
+                    <option value="weekly">Weekly</option>
+                    <option value="monthly">Monthly</option>
+                  </select>
+                </div>
                 <div
                   class="Account-toggle"
                   @click="toggleStatus(account)"
@@ -84,7 +91,7 @@
         </thead>
         <tbody>
           <tr v-for="account in filterAccount" :key="account.id">
-            <td  @click="showUserData(account._id)">
+            <td @click="showUserData(account._id)">
               <div class="Account-tbl-img">
                 <span>{{ account.username }}</span>
               </div>
@@ -104,9 +111,10 @@
   </div>
   <UserDetail :id="userID" :show="drawerStore.showUserSpecific" v-else />
 </template>
+
 <script setup>
 import axios from 'axios'
-import { ref, watchEffect, onMounted, computed, watch } from 'vue'
+import { ref, watchEffect, onMounted, computed } from 'vue'
 import NotPaid from '../icons/NotPaid.vue'
 import VipIcon from '../icons/VipIcon.vue'
 import PaidIcon from '../icons/PaidIcon.vue'
@@ -120,13 +128,11 @@ import { useDrawerStore } from '../stores/drawer'
 const drawerStore = useDrawerStore()
 const accountCards = ref([])
 const accountInfo = ref([])
+const plan = ref('')
 const searchAccount = ref('')
 const userID = ref(null)
-const toast = useToast();
+const toast = useToast()
 const statusC = ref(null)
-const paidDate = ref(null)
-const futuresDate = ref(null)
-const endSub = ref(false)
 const SERVER_HOST = import.meta.env.VITE_SERVER_HOST
 
 const showUserData = (id) => {
@@ -135,7 +141,6 @@ const showUserData = (id) => {
     drawerStore.toggleUserSpecific()
   }
 }
-
 
 const accountsData = async () => {
   try {
@@ -146,9 +151,6 @@ const accountsData = async () => {
       }
     })
     statusC.value = response.data.paid
-    if (response.data.updatedAt) {
-      getFutureDate(response.data.updatedAt)
-    }
     accountInfo.value = response.data.map((account) => ({
       ...account,
       status: account.paid
@@ -157,34 +159,6 @@ const accountsData = async () => {
     console.error(err)
   }
 }
-
-function formatDate(date) {
-  if (!(date instanceof Date)) {
-    date = new Date(date)
-  }
-
-  const options = { day: '2-digit', month: '2-digit', year: 'numeric' }
-  return date.toLocaleDateString(undefined, options)
-}
-
-function getFutureDate(date) {
-  const parsedDate = new Date(date)
-  paidDate.value = formatDate(parsedDate)
-  const futureDate = new Date(parsedDate)
-  futureDate.setDate(parsedDate.getDate() + 31)
-  futuresDate.value = futureDate.toISOString()
-
-  const currentDate = new Date()
-  const currentDateInISOFormat = currentDate.toISOString()
-
-  const match = futureDate.toISOString() === currentDateInISOFormat
-
-  endSub.value = match
-}
-
-watch([statusC], () => {
-  getFutureDate(accountInfo.value[0]?.updatedAt)
-})
 
 onMounted(() => {
   accountsData()
@@ -254,77 +228,76 @@ const selectCard = (cardId) => {
   }
 }
 
-const filterAccount = ref([]);
+const filterAccount = ref([])
 
 watchEffect(() => {
   filterAccount.value = computed(() => {
     if (selectedCard.value !== null) {
       switch (selectedCard.value) {
         case 1:
-          return accountData.value.filter((account) => account._id);
+          return accountData.value.filter((account) => account._id)
         case 2:
         case 3:
-          return accountData.value.filter((account) => account.paid);
+          return accountData.value.filter((account) => account.paid)
         case 4:
-          return accountData.value.filter((account) => !account.paid);
+          return accountData.value.filter((account) => !account.paid)
         case 5:
-          return accountData.value.filter((account) => account.isAdmin);
+          return accountData.value.filter((account) => account.isAdmin)
         default:
-          return accountData.value;
+          return accountData.value
       }
     }
 
-    return accountData.value;
-  }).value;
-});
+    return accountData.value
+  }).value
+})
 
 watchEffect(() => {
   filterAccount.value = computed(() => {
     if (searchAccount.value !== '') {
-      return accountData.value.filter((account) =>
-        account.email.includes(searchAccount.value) ||
-        account.email.toUpperCase().includes(searchAccount.value.toUpperCase())
-      );
+      return accountData.value.filter(
+        (account) =>
+          account.email.includes(searchAccount.value) ||
+          account.email.toUpperCase().includes(searchAccount.value.toUpperCase())
+      )
     } else {
-      return accountData.value;
+      return accountData.value
     }
-  }).value;
-});
-
-
+  }).value
+})
 
 async function toggleStatus(account) {
-  account.status = !account.status
+  // also add deactivationDate on the server
+  if (plan.value !== '') {
+    account.status = !account.status
+    const getDate = new Date()
+      .toLocaleDateString('en-GB', {
+        year: 'numeric',
+        month: '2-digit',
+        day: '2-digit'
+      })
+      .split('/')
+      .reverse()
+      .join('/')
 
-  try {
-    const response = await axios.put(`${SERVER_HOST}/auth/update/${account._id}`, {
-      paid: account.status
-    })
-
-    await accountsData()
-    localStorage.setItem('paid', account.status.toString())
-  } catch (err) {
-    console.log(err)
+    try {
+      const response = await axios.put(`${SERVER_HOST}/auth/update/${account._id}`, {
+        paid: account.status,
+        plan: plan.value,
+        activationDate: getDate,
+        day: plan.value === 'weekly' ? 7 : 30
+      })
+      await accountsData()
+      localStorage.setItem('paid', account.status.toString())
+    } catch (err) {
+      console.log(err)
+    }
+  } else {
+    toast.error('Choose a plan first')
   }
 }
-
-watchEffect(() => {
-  if (accountInfo.value.length > 0) {
-    getFutureDate(accountInfo.value[0]?.updatedAt)
-    paidDate.value = formatDate(accountInfo.value[0]?.updatedAt) || 'no change'
-
-    if (endSub.value) {
-      const currentDate = new Date()
-      const futureDate = new Date(futuresDate.value)
-
-      if (currentDate >= futureDate) {
-        toggleStatus(accountInfo.value[0])
-        endSub.value = false
-      }
-    }
-  }
-})
 </script>
+
 <style scoped>
 @import '../style/account.css';
 @import '../style/Bet.css';
