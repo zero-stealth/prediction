@@ -10,14 +10,7 @@
           draggable="false"
         />
       </a>
-      <GoogleTranslateSelect
-        class="mb-locale"
-        default-language-code="en"
-        default-page-language-code="en"
-        :fetch-browser-language="false"
-        trigger="click"
-        @select="handleGoogleTranslateSelect"
-      />
+
       <a href="https://sportypredict.com/" class="mb-locale">
         <img
           src="@/assets/logo-spp.png"
