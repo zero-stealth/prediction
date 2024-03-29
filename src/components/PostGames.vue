@@ -166,11 +166,11 @@
               class="form-g-input"
               id="teamAIcon"
               accept="image/*"
-              v-if="teamAIcon === null"
-            />
-            <img :src="teamAIcon" :alt="teamA" class="form-i-image" v-else />
-          </div>
 
+            />
+            <img v-if="teamAIcon !== null" :src="teamAIcon" :alt="teamA" class="form-i-image" />
+          </div>
+ 
           <div class="form-group">
             <label for="formationA">Formation:</label>
             <input
@@ -209,9 +209,9 @@
               class="form-g-input"
               id="leagueIcon"
               accept="image/*"
-              v-if="leagueIcon === null"
+          
             />
-            <img :src="leagueIcon" :alt="league" class="form-i-image" v-else />
+            <img :src="leagueIcon" :alt="league" class="form-i-image"    v-if="leagueIcon !== null" />
           </div>
           <div class="form-group">
             <label for="league">Match league:</label>
@@ -260,9 +260,9 @@
               class="form-g-input"
               id="teamBIcon"
               accept="image/*"
-              v-if="teamBIcon === null"
+             
             />
-            <img :src="teamBIcon" :alt="teamB" class="form-i-image" v-else />
+            <img :src="teamBIcon" :alt="teamB" class="form-i-image" v-if="teamBIcon !== null" />
           </div>
           <div class="form-group">
             <label for="formationB">Formation:</label>
@@ -293,67 +293,68 @@
       </form>
     </div>
   </div>
-</template>
-<script setup>
-import axios from 'axios'
-import { ref, watch, onMounted } from 'vue'
-import { useToast } from 'vue-toastification'
-import TeamSelector from './TeamSelector.vue'
-import ArrowIcon from '../icons/ArrowIcon.vue'
-import PostBasketball from './PostBasketball.vue'
-const SERVER_HOST = import.meta.env.VITE_SERVER_HOST
-const RAPIDAPI_KEY = import.meta.env.VITE_RAPIDAPI_KEY
-const SPORT_HOST = import.meta.env.VITE_RAPIDAPI_SPORT_HOST
-
-const teamA = ref('')
-const teamB = ref('')
-const postType = ref('Manual')
-const leagueData = ref([])
-const leagueDataA = ref([])
-const leagueDataB = ref([])
-const isLeagueOpen = ref(false)
-const isDrpOpen = ref(false)
-const isDropOpenType = ref(false)
-const category = ref(null)
-const teamAIcon = ref(null)
-const teamBIcon = ref(null)
-const leagueIcon = ref(null)
-const statistics = ref('')
-const teamAPosition = ref('')
-const teamBPosition = ref('')
-const description = ref('');
-const time = ref('')
-const league = ref('')
-const toast = useToast()
-const status = ref('')
-const formationA = ref('')
-const formationB = ref('')
-const year = ref(new Date().getFullYear() - 1)
-const teamIdA = ref('')
-const teamIdB = ref('')
-const currentDate = ref('')
-const tip = ref('')
-const url = ref(null)
-
-const handleTeamASelected = (teamId, name, logo) => {
+ </template>
+ 
+ <script setup>
+ import axios from 'axios'
+ import { ref, watch, onMounted } from 'vue'
+ import { useToast } from 'vue-toastification'
+ import TeamSelector from './TeamSelector.vue'
+ import ArrowIcon from '../icons/ArrowIcon.vue'
+ import PostBasketball from './PostBasketball.vue'
+ const SERVER_HOST = import.meta.env.VITE_SERVER_HOST
+ const RAPIDAPI_KEY = import.meta.env.VITE_RAPIDAPI_KEY
+ const SPORT_HOST = import.meta.env.VITE_RAPIDAPI_SPORT_HOST
+ 
+ const teamA = ref('')
+ const teamB = ref('')
+ const postType = ref('Manual')
+ const leagueData = ref([])
+ const leagueDataA = ref([])
+ const leagueDataB = ref([])
+ const isLeagueOpen = ref(false)
+ const isDrpOpen = ref(false)
+ const isDropOpenType = ref(false)
+ const category = ref(null)
+ const teamAIcon = ref(null)
+ const teamBIcon = ref(null)
+ const leagueIcon = ref(null)
+ const statistics = ref('')
+ const teamAPosition = ref('')
+ const teamBPosition = ref('')
+ const description = ref('');
+ const time = ref('')
+ const league = ref('')
+ const toast = useToast()
+ const status = ref('')
+ const formationA = ref('')
+ const formationB = ref('')
+ const year = ref(new Date().getFullYear() - 1)
+ const teamIdA = ref('')
+ const teamIdB = ref('')
+ const currentDate = ref('')
+ const tip = ref('')
+ const url = ref(null)
+ 
+ const handleTeamASelected = (teamId, name, logo) => {
   teamA.value = name
   teamAIcon.value = logo
   teamIdA.value = teamId
   getLeagueA(teamId)
-}
-
-const handleTeamBSelected = (teamId, name, logo) => {
+ }
+ 
+ const handleTeamBSelected = (teamId, name, logo) => {
   teamB.value = name
   teamBIcon.value = logo
   teamIdB.value = teamId
   getLeagueB(teamId)
-}
-
-const showLeague = () => {
+ }
+ 
+ const showLeague = () => {
   isLeagueOpen.value = !isLeagueOpen.value
-}
-
-const getLeagueA = async (teamId) => {
+ }
+ 
+ const getLeagueA = async (teamId) => {
   try {
     const response = await axios.get(`${SPORT_HOST}/leagues`, {
       params: {
@@ -364,21 +365,21 @@ const getLeagueA = async (teamId) => {
         'X-RapidAPI-Host': 'api-football-v1.p.rapidapi.com'
       }
     })
-
+ 
     const leaguesWithLogo = response.data.response.map((league) => ({
       ...league,
       logo: league.logo || ''
     }))
-
+ 
     leagueDataA.value.push(...leaguesWithLogo)
     showLeague()
     toast.success('League data fetched successfully')
   } catch (error) {
     toast.error('Error fetching league data')
   }
-}
-
-const getLeagueB = async (teamId) => {
+ }
+ 
+ const getLeagueB = async (teamId) => {
   try {
     const response = await axios.get(`${SPORT_HOST}/leagues`, {
       params: {
@@ -389,219 +390,235 @@ const getLeagueB = async (teamId) => {
         'X-RapidAPI-Host': 'api-football-v1.p.rapidapi.com'
       }
     })
-
+ 
     const leaguesWithLogo = response.data.response.map((league) => ({
       ...league,
       logo: league.logo || ''
     }))
-
+ 
     leagueDataB.value.push(...leaguesWithLogo)
     leagueData.value = [...leagueDataA.value, ...leagueDataB.value]
-
+ 
     showLeague()
     toast.success('League data fetched successfully')
   } catch (error) {
     toast.error('Error fetching league data')
   }
-}
-
-const setLeague = (id, name, logo) => {
-  league.value = name
-  leagueIcon.value = logo
-  leagueData.value = []
-  showLeague()
-  getTeamStatisticsA(id)
-  getTeamStatisticsB(id)
+ }
+ const setLeague = (id, name, logo) => {
+ league.value = name
+ leagueIcon.value = logo
+ leagueData.value = []
+ showLeague()
+ getTeamStatisticsA(id)
+ getTeamStatisticsB(id)
 }
 
 const getTeamStatisticsA = async (id) => {
-  try {
-    const response = await axios.get(`${SPORT_HOST}/teams/statistics`, {
-      params: {
-        league: id,
-        season: year.value,
-        team: teamIdA.value
-      },
-      headers: {
-        'X-RapidAPI-Key': RAPIDAPI_KEY,
-        'X-RapidAPI-Host': 'api-football-v1.p.rapidapi.com'
-      }
-    })
+ try {
+   const response = await axios.get(`${SPORT_HOST}/teams/statistics`, {
+     params: {
+       league: id,
+       season: year.value,
+       team: teamIdA.value
+     },
+     headers: {
+       'X-RapidAPI-Key': RAPIDAPI_KEY,
+       'X-RapidAPI-Host': 'api-football-v1.p.rapidapi.com'
+     }
+   })
 
-    statistics.value = id
-    const form = response.data.response && typeof response.data.response.form === 'string' ? response.data.response.form : '';
-    if (form.length >= 2) {
-      const formattedForm = form.slice(-5).split('').join('-'); 
-      formationA.value = formattedForm.toLowerCase();
-      console.log(formationA.value)
-    } else {
-      console.error('Form data is not available or is too short');
-    }
+   statistics.value = id
+   const form = response.data.response && typeof response.data.response.form === 'string' ? response.data.response.form : '';
+   if (form.length >= 2) {
+     const formattedForm = form.slice(-5).split('').join('-'); 
+     formationA.value = formattedForm.toLowerCase();
+     console.log(formationA.value)
+   } else {
+     console.error('Form data is not available or is too short');
+   }
 
-    toast.success('Team statistics fetched successfully')
-  } catch (error) {
-    toast.error('Error fetching team statistics')
-    console.log(error)
-  }
+   toast.success('Team statistics fetched successfully')
+ } catch (error) {
+   toast.error('Error fetching team statistics')
+   console.log(error)
+ }
 }
 
 const getTeamStatisticsB = async (id) => {
-  try {
-    const response = await axios.get(`${SPORT_HOST}/teams/statistics`, {
-      params: {
-        league: id,
-        season: year.value,
-        team:  teamIdB.value
-      },
-      headers: {
-        'X-RapidAPI-Key': RAPIDAPI_KEY,
-        'X-RapidAPI-Host': 'api-football-v1.p.rapidapi.com'
-      }
-    })
-    statistics.value = id
-    const form = response.data.response && typeof response.data.response.form === 'string' ? response.data.response.form : '';
-    if (form.length >= 2) {
-      const formattedForm = form.slice(-5).split('').join('-'); 
-      formationB.value = formattedForm.toLowerCase();
-      console.log(formationB.value)
-    } else {
-      console.error('Form data is not available or is too short');
-    }
-    toast.success('Team statistics fetched successfully')
-  } catch (error) {
-    toast.error('Error fetching team statistics')
-    console.log(error)
-  }
+ try {
+   const response = await axios.get(`${SPORT_HOST}/teams/statistics`, {
+     params: {
+       league: id,
+       season: year.value,
+       team:  teamIdB.value
+     },
+     headers: {
+       'X-RapidAPI-Key': RAPIDAPI_KEY,
+       'X-RapidAPI-Host': 'api-football-v1.p.rapidapi.com'
+     }
+   })
+   statistics.value = id
+   const form = response.data.response && typeof response.data.response.form === 'string' ? response.data.response.form : '';
+   if (form.length >= 2) {
+     const formattedForm = form.slice(-5).split('').join('-'); 
+     formationB.value = formattedForm.toLowerCase();
+     console.log(formationB.value)
+   } else {
+     console.error('Form data is not available or is too short');
+   }
+   toast.success('Team statistics fetched successfully')
+ } catch (error) {
+   toast.error('Error fetching team statistics')
+   console.log(error)
+ }
 }
 
 const showDrp = () => {
-  isDrpOpen.value = !isDrpOpen.value
+ isDrpOpen.value = !isDrpOpen.value
 }
 
 const updateUrl = (name) => {
-  category.value = name
-  showDrp()
+ category.value = name
+ showDrp()
 }
 
 const showDropType = () => {
-  isDropOpenType.value = !isDropOpenType.value
+ isDropOpenType.value = !isDropOpenType.value
 }
 const updatePostType = (type) => {
-  postType.value = type
-  showDropType()
+ postType.value = type
+ showDropType()
 }
 
 const categories = [
-  { name: 'Upcoming games', endpoint: 'predictions/create/upcoming/upcoming' },
-  { name: 'Bet of the day', endpoint: 'predictions/create/bet/betOfTheDay' },
-  { name: 'Basketball', endpoint: 'sports/create/Basketball' },
-  { name: 'Freetips', endpoint: 'predictions/create/tip/freeTip' },
-  { name: 'Tennis', endpoint: 'sports/create/Tennis' },
-  { name: 'vip', endpoint: 'predictions/create/vip' }
+ { name: 'Upcoming games', endpoint: 'predictions/create/upcoming/upcoming' },
+ { name: 'Bet of the day', endpoint: 'predictions/create/bet/betOfTheDay' },
+ { name: 'Basketball', endpoint: 'sports/create/Basketball' },
+ { name: 'Freetips', endpoint: 'predictions/create/tip/freeTip' },
+ { name: 'Tennis', endpoint: 'sports/create/Tennis' },
+ { name: 'vip', endpoint: 'predictions/create/vip' }
 ]
 
 watch(category, () => {
-  const selectedCategory = categories.find((c) => c.name === category.value)
+ const selectedCategory = categories.find((c) => c.name === category.value)
 
-  if (selectedCategory) {
-    url.value = `${SERVER_HOST}/${selectedCategory.endpoint}`
-  } else if (!category.value) {
-    toast.error('Please select game category')
-  }
+ if (selectedCategory) {
+   url.value = `${SERVER_HOST}/${selectedCategory.endpoint}`
+ } else if (!category.value) {
+   toast.error('Please select game category')
+ }
 })
 
-function handleFileUpload(event, targetRef) {
-  const file = event.target.files[0]
-  if (file) {
-    targetRef.value = file
-  }
-}
+
 
 function handleTeamALogo(event) {
-  handleFileUpload(event, teamAIcon)
+  const file = event.target.files[0];
+  if (file) {
+    const reader = new FileReader();
+    reader.onload = () => {
+      teamAIcon.value = reader.result;
+    };
+    reader.readAsDataURL(file);
+  }
 }
 
 function handleTeamBLogo(event) {
-  handleFileUpload(event, teamBIcon)
-}
-
-function handleLeagueLogo(event) {
-  handleFileUpload(event, leagueIcon)
-}
-
-const onDateChange = () => {
-  currentDate.value = formatDate(new Date(currentDate.value))
-}
-
-const updateCurrentDate = () => {
-  currentDate.value = formatDate(new Date())
-}
-
-async function handleSubmit() {
-  if (
-    teamA.value.trim() !== '' &&
-    teamAIcon.value !== null &&
-    leagueIcon.value !== null &&
-    formationA.value.trim() !== '' &&
-    teamAPosition.value.trim() !== '' &&
-    teamB.value.trim() !== '' &&
-    teamBIcon.value !== null &&
-    category.value !== null &&
-    formationB.value.trim() !== '' &&
-    teamBPosition.value.trim() !== '' &&
-    time.value.trim() !== '' &&
-    tip.value.trim() !== '' &&
-    league.value.trim() !== '' &&
-    currentDate.value.trim() !== ''
-  ) {
-    const user = JSON.parse(localStorage.getItem('token'))
-    try {
-      const formData = new FormData()
-      formData.append('teamA', teamA.value)
-      formData.append('teamAIcon', teamAIcon.value)
-      formData.append('leagueIcon', leagueIcon.value)
-      formData.append('formationA', formationA.value)
-      formData.append('teamAPosition', teamAPosition.value)
-      formData.append('teamAscore', '0')
-      formData.append('teamB', teamB.value)
-      formData.append('teamBIcon', teamBIcon.value)
-      formData.append('formationB', formationB.value)
-      formData.append('teamBPosition', teamBPosition.value)
-      formData.append('statistics', statistics.value)
-      formData.append('description', description.value);
-      formData.append('teamBscore', '0')
-      formData.append('time', time.value)
-      formData.append('status', status.value)
-      formData.append('league', league.value)
-      formData.append('date', currentDate.value)
-      formData.append('tip', tip.value)
-
-      await axios.post(`${url.value}`, formData, {
-        headers: {
-          'Content-Type': 'multipart/form-data',
-          Authorization: `Bearer ${user}`
-        }
-      })
-      toast.success('game posted')
-    } catch (err) {
-      toast.error(err)
-      console.log(err)
-    }
-  } else {
-    toast.error('No empty fields allowed')
+  const file = event.target.files[0];
+  if (file) {
+    const reader = new FileReader();
+    reader.onload = () => {
+      teamBIcon.value = reader.result;
+    };
+    reader.readAsDataURL(file);
   }
 }
 
+function handleLeagueLogo(event) {
+  const file = event.target.files[0];
+  if (file) {
+    const reader = new FileReader();
+    reader.onload = () => {
+      leagueIcon.value = reader.result;
+    };
+    reader.readAsDataURL(file);
+  }
+}
+
+const onDateChange = () => {
+ currentDate.value = formatDate(new Date(currentDate.value))
+}
+
+const updateCurrentDate = () => {
+ currentDate.value = formatDate(new Date())
+}
+
+async function handleSubmit() {
+ if (
+   teamA.value.trim() !== '' &&
+   teamAIcon.value !== null &&
+   leagueIcon.value !== null &&
+   formationA.value.trim() !== '' &&
+   teamAPosition.value.trim() !== '' &&
+   teamB.value.trim() !== '' &&
+   teamBIcon.value !== null &&
+   category.value !== null &&
+   formationB.value.trim() !== '' &&
+   teamBPosition.value.trim() !== '' &&
+   time.value.trim() !== '' &&
+   tip.value.trim() !== '' &&
+   league.value.trim() !== '' &&
+   currentDate.value.trim() !== ''
+ ) {
+   const user = JSON.parse(localStorage.getItem('token'))
+   try {
+     const formData = new FormData()
+     formData.append('teamA', teamA.value)
+     formData.append('teamAIcon', teamAIcon.value)
+     formData.append('leagueIcon', leagueIcon.value)
+     formData.append('formationA', formationA.value)
+     formData.append('teamAPosition', teamAPosition.value)
+     formData.append('teamAscore', '0')
+     formData.append('teamB', teamB.value)
+     formData.append('teamBIcon', teamBIcon.value)
+     formData.append('formationB', formationB.value)
+     formData.append('teamBPosition', teamBPosition.value)
+     formData.append('statistics', statistics.value)
+     formData.append('description', description.value);
+     formData.append('teamBscore', '0')
+     formData.append('time', time.value)
+     formData.append('status', status.value)
+     formData.append('league', league.value)
+     formData.append('date', currentDate.value)
+     formData.append('tip', tip.value)
+
+     await axios.post(`${url.value}`, formData, {
+       headers: {
+         'Content-Type': 'multipart/form-data',
+         Authorization: `Bearer ${user}`
+       }
+     })
+     toast.success('game posted')
+   } catch (err) {
+     toast.error(err)
+     console.log(err)
+   }
+ } else {
+   toast.error('No empty fields allowed')
+ }
+}
+
 onMounted(() => {
-  updateCurrentDate()
+ updateCurrentDate()
 })
 </script>
+
 <script>
 const formatDate = (date) => {
-  const day = String(date.getDate()).padStart(2, '0')
-  const month = String(date.getMonth() + 1).padStart(2, '0')
-  const year = date.getFullYear()
-  return `${day}-${month}-${year}`
+ const day = String(date.getDate()).padStart(2, '0')
+ const month = String(date.getMonth() + 1).padStart(2, '0')
+ const year = date.getFullYear()
+ return `${day}-${month}-${year}`
 }
 </script>
 

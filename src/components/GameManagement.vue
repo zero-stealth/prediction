@@ -873,24 +873,29 @@ const getBetOfTheDay = async () => {
     const response = await axios.get(
       `${SERVER_HOST}/predictions/bet/betOfTheDay/${currentDate.value}`
     )
-    // console.log(response.data)
+
     cardData.value = response.data.length > 0 ? [response.data] : []
   } catch (err) {
     toast.error(err.response.data.error)
   }
 }
-
 const getVipGames = async () => {
+    const token = JSON.parse(localStorage.getItem('token'));
   try {
     const response = await axios.get(
-      `${SERVER_HOST}/predictions/vipPredictions/vip/${currentDate.value}`
-    )
-    // console.log(response.data)
-    vipData.value = response.data.length > 0 ? [response.data] : []
+      `${SERVER_HOST}/predictions/vipPredictions/vip/${currentDate.value}`,
+      {
+        headers: {
+
+          Authorization: `Bearer ${token}`,
+        },
+      }
+    );
+    vipData.value = response.data.length > 0 ? response.data : []; // Removed unnecessary array wrapping
   } catch (err) {
     toast.error(err.response.data.error)
   }
-}
+};
 
 const getPredictions = async () => {
   try {
@@ -908,9 +913,9 @@ const getPayment = async () => {
     // const token = JSON.parse(localStorage.getItem('token'));
     const response = await axios.get(`${SERVER_HOST}/currencyPrices`)
     paymentData.value = response.data.length > 0 ? [response.data] : []
-    console.log(paymentData.value.data)
   } catch (err) {
-    toast.error(err.response.data.error)
+    toast.error( err.response.data.error)
+   
   }
 }
 
@@ -946,6 +951,7 @@ const getTennisBets = async () => {
     tennisData.value = response.data.length > 0 ? [response.data] : []
   } catch (err) {
     toast.error(err.response.data.error)
+
   }
 }
 
@@ -957,6 +963,7 @@ const getBasketballBets = async () => {
     basketBallData.value = response.data.length > 0 ? [response.data] : []
   } catch (err) {
     toast.error(err.response.data.error)
+
   }
 }
 
@@ -968,6 +975,7 @@ const getAds = async () => {
     adData.value = response.data.length > 0 ? [response.data] : []
   } catch (err) {
     toast.error(err.response.data.error)
+
   }
 }
 
@@ -979,6 +987,7 @@ const getTime = async () => {
     TimeData.value = response.data.length > 0 ? [response.data] : []
   } catch (err) {
     toast.error(err.response.data.error)
+
   }
 }
 
@@ -990,6 +999,7 @@ const getVipResult = async () => {
     vipResultData.value = response.data.length > 0 ? [response.data] : []
   } catch (err) {
     toast.error(err.response.data.error)
+
   }
 }
 
@@ -1339,7 +1349,8 @@ const deletePrediction = async (id) => {
     await getVipGames()
 
   } catch (err) {
-  toast.error(err.response.data.error)
+    toast.error(err.response.data.error)
+
 
   }
 }
@@ -1355,7 +1366,8 @@ const deleteSport = async (id) => {
     await getTennisBets()
     await getBasketballBets()
   } catch (err) {
-  toast.error(err.response.data.error)
+    toast.error(err.response.data.error)
+
 
   }
 }
@@ -1370,7 +1382,8 @@ const deleteAds = async (id) => {
     toast.success(response.data.message)
     await getAds()
   } catch (err) {
-  toast.error(err.response.data.error)
+    toast.error(err.response.data.error)
+
 
   }
 }
@@ -1385,7 +1398,7 @@ const deletePayment = async (id) => {
     toast.success(response.data.message)
     await getPayment()
   } catch (err) {
-  toast.error(err.response.data.error)
+    toast.error(err.response.data.error)
 
   }
 }
@@ -1400,7 +1413,8 @@ const deleteTime = async (id) => {
     toast.success(response.data.message)
     await getTime()
   } catch (err) {
-  toast.error(err.response.data.error)
+    toast.error(err.response.data.error)
+
 
   }
 }
@@ -1415,7 +1429,8 @@ const deleteVipResult = async (id) => {
     toast.success(response.data.message)
     await getVipResult()
   } catch (err) {
-  toast.error(err.response.data.error)
+    toast.error(err.response.data.error)
+
 
   }
 }
