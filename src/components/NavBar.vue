@@ -10,7 +10,14 @@
           draggable="false"
         />
       </a>
-
+      <GoogleTranslateSelect
+        class="mb-locale"
+        default-language-code="en"
+        default-page-language-code="en"
+        :fetch-browser-language="false"
+        trigger="click"
+        @select="handleGoogleTranslateSelect"
+      />
       <a href="https://sportypredict.com/" class="mb-locale">
         <img
           src="@/assets/logo-spp.png"
@@ -80,6 +87,7 @@
       <div class="nav-menu" @click="showMenu()" v-if="!isOpen">
         <MobileMenuIcon class="menu-icon-nav" />
       </div>
+      
       <div class="mobile-exit" v-else>
         <ExitIcon class="icon-exit" @click="showMenu()" />
       </div>
