@@ -355,7 +355,8 @@
   }
 
   .icon-exit {
-    height: 20px;
+    height: 30px;
+    padding-right:10px ;
     fill: var(--background-color);
   }
 
