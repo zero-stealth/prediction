@@ -128,7 +128,10 @@ watchEffect(() => {
 })
 
 const handleCheckout = () => {
-  const checkoutUrl = route.params.plan === 'weekly' ? 'https://buy.stripe.com/6oE4jh3oEh1R4jCeV2' : 'https://buy.stripe.com/7sI3fd3oE26X4jCaEN'
+  const checkoutUrl =
+    route.params.plan === 'weekly'
+      ? 'https://buy.stripe.com/6oE4jh3oEh1R4jCeV2'
+      : 'https://buy.stripe.com/7sI3fd3oE26X4jCaEN'
   window.open(checkoutUrl, '_blank')
   addVIPAccess()
 }
@@ -167,9 +170,22 @@ const payMpesa = () => {
 }
 
 const coinbasePay = async () => {
-  let amount = route.params.price;
-  if (['kenya', 'nigeria', 'cameroon', 'ghana', 'southA', 'tanzania', 'uganda', 'zambia', 'rwanda', 'malawi'].includes(route.params.currency)) {
-    amount = route.params.plan === 'weekly' ? 25 : 45;
+  let amount = route.params.price
+  if (
+    [
+      'kenya',
+      'nigeria',
+      'cameroon',
+      'ghana',
+      'southA',
+      'tanzania',
+      'uganda',
+      'zambia',
+      'rwanda',
+      'malawi'
+    ].includes(route.params.currency)
+  ) {
+    amount = route.params.plan === 'weekly' ? 25 : 45
   }
 
   try {
@@ -183,7 +199,7 @@ const coinbasePay = async () => {
           amount: amount,
           currency: 'USD'
         },
-        cancel_url: '', 
+        cancel_url: '',
         success_url: 'https://sportypredict.com/vip'
       },
       {
@@ -192,44 +208,46 @@ const coinbasePay = async () => {
           'X-CC-Api-Key': COINBASE_KEY
         }
       }
-    );
+    )
 
-    const hostedUrl = response.data.data.hosted_url;
-    const chargeId = response.data.data.id;
+    const hostedUrl = response.data.data.hosted_url
+    const chargeId = response.data.data.id
 
-    window.open(hostedUrl, '_blank');
-
+    window.location.href = hostedUrl
     const pollPaymentStatus = async () => {
       try {
-        const statusResponse = await axios.get(`https://api.commerce.coinbase.com/charges/${chargeId}`, {
-          headers: {
-            'X-CC-Api-Key': COINBASE_KEY
+        const statusResponse = await axios.get(
+          `https://api.commerce.coinbase.com/charges/${chargeId}`,
+          {
+            headers: {
+              'X-CC-Api-Key': COINBASE_KEY
+            }
           }
-        });
+        )
 
-        const paymentStatus = statusResponse.data.data.timeline[statusResponse.data.data.timeline.length - 1].status;
+        const paymentStatus =
+          statusResponse.data.data.timeline[statusResponse.data.data.timeline.length - 1].status
 
         if (paymentStatus === 'Completed') {
-          addVIPAccess(); 
-          window.open('https://sportypredict.com/vip', '_blank');
+          addVIPAccess()
+          window.location.href = 'https://sportypredict.com/vip'
         } else if (paymentStatus === 'Canceled') {
-          toast.error('Payment was canceled');
+          toast.error('Payment was canceled')
         } else {
-          // Wait for a few seconds before polling again
-          setTimeout(pollPaymentStatus, 5000);
+          setTimeout(pollPaymentStatus, 5000)
         }
       } catch (error) {
-        console.error(error);
-        toast.error('An error occurred while checking payment status');
+        console.error(error)
+        toast.error('An error occurred while checking payment status')
       }
-    };
+    }
 
-    pollPaymentStatus();
+    pollPaymentStatus()
   } catch (error) {
-    console.error(error);
-    toast.error('An error occurred');
+    console.error(error)
+    toast.error('An error occurred')
   }
-};
+}
 
 onMounted(async () => {
   let amount = route.params.price
@@ -313,8 +331,10 @@ const addVIPAccess = async () => {
   if (isPaid.value) {
     if (customerID.value !== null) {
       try {
-        const currentDate = new Date();
-    const formattedDate = `${currentDate.getMonth() + 1}-${currentDate.getDate()}-${currentDate.getFullYear()}`;
+        const currentDate = new Date()
+        const formattedDate = `${
+          currentDate.getMonth() + 1
+        }-${currentDate.getDate()}-${currentDate.getFullYear()}`
 
         const account = JSON.parse(localStorage.getItem('account'))
 
