@@ -68,7 +68,6 @@ const login = async () => {
         localStorage.setItem('username', username)
         localStorage.setItem('token', JSON.stringify(token))
         localStorage.setItem('paid', isPaid)
-        localStorage.setItem('admin', false)
         localStorage.setItem('id', id)
         router.push({ name: 'Vip' })
         toast.success('Welcome back!');

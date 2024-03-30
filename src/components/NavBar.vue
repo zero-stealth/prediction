@@ -63,9 +63,7 @@
           <LogoutIcon class="icon-nav l-icon" />
           Logout
         </button>
-        <button @click="goToPanel" v-if="isAdmin" class="mobile-btn btn-l btn-logout">
-          Go to panel
-        </button>
+
       </div>
       <div class="nav-btn-container" v-else>
         <GoogleTranslateSelect
@@ -94,7 +92,6 @@
     </div>
   </div>
 
-  <!-- mobile responsive -->
   <div class="mobile-bar" :class="[isOpen ? 'open' : 'close']">
     <div class="mobile-container">
       <div class="mobile-link-container">
@@ -129,9 +126,7 @@
           <LogoutIcon class="icon-nav l-icon" />
           Log out
         </button>
-        <button @click="goToPanel" v-if="isAdmin" class="mobile-btn btn-l btn-logout">
-          Go to panel
-        </button>
+
       </div>
       <div class="mobile-btn-container" v-else>
         <button @click="goSignin" class="mobile-btn btn-r">
@@ -154,7 +149,6 @@
       </div>
     </div>
   </div>
-  <!-- mobile responsive -->
 </template>
 
 <script setup>
@@ -181,15 +175,11 @@ const router = useRouter()
 const isDrpOpen = ref(false)
 const isDropOpen = ref(false)
 const authStore = useAuthStore()
-const isAdmin = ref(localStorage.getItem('admin'))
 
 const handleGoogleTranslateSelect = () => {
   // console.log(language)
 }
 
-const goToPanel = () => {
-  router.push({ name: 'Panel' })
-}
 
 const openTelegram = () => {
   window.open('https://t.me/sportypredict_tips', '_blank')
