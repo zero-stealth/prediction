@@ -74,6 +74,7 @@ const create = async () => {
       const id = response.data._id
       authStore.toggleToken(JSON.stringify(token))
       localStorage.setItem('email', email.value)
+        localStorage.setItem('admin', false)
       localStorage.setItem('token', token)
       localStorage.setItem('paid', isPaid)
       localStorage.setItem('id', id)
