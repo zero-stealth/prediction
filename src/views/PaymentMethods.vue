@@ -167,22 +167,9 @@ const payMpesa = () => {
 }
 
 const coinbasePay = async () => {
-  let amount = route.params.price
-  if (
-    [
-      'kenya',
-      'nigeria',
-      'cameroon',
-      'ghana',
-      'southA',
-      'tanzania',
-      'uganda',
-      'zambia',
-      'rwanda',
-      'malawi'
-    ].includes(route.params.currency)
-  ) {
-    amount = route.params.plan === 'weekly' ? 25 : 45
+  let amount = route.params.price;
+  if (['kenya', 'nigeria', 'cameroon', 'ghana', 'southA', 'tanzania', 'uganda', 'zambia', 'rwanda', 'malawi'].includes(route.params.currency)) {
+    amount = route.params.plan === 'weekly' ? 25 : 45;
   }
 
   try {
@@ -195,7 +182,9 @@ const coinbasePay = async () => {
         local_price: {
           amount: amount,
           currency: 'USD'
-        }
+        },
+        cancel_url: '', 
+        success_url: 'https://sportypredict.com/vip'
       },
       {
         headers: {
@@ -203,35 +192,44 @@ const coinbasePay = async () => {
           'X-CC-Api-Key': COINBASE_KEY
         }
       }
-    )
+    );
 
-    const hostedUrl = response.data.data.hosted_url
-    window.location.href = hostedUrl
-    const redirects = response.data.redirects
-    const cancel_url = redirects ? redirects.cancel_url : ''
-    const success_url = redirects ? redirects.success_url : ''
-    const will_redirect_after_success = redirects ? redirects.will_redirect_after_success : false
+    const hostedUrl = response.data.data.hosted_url;
+    const chargeId = response.data.data.id;
 
-    if (success_url && !isCancel.value) {
-      addVIPAccess()
-    } else {
-      toast.error('Payment failed')
-    }
+    window.open(hostedUrl, '_blank');
 
-    window.addEventListener('beforeunload', handleCoinbaseClose)
+    const pollPaymentStatus = async () => {
+      try {
+        const statusResponse = await axios.get(`https://api.commerce.coinbase.com/charges/${chargeId}`, {
+          headers: {
+            'X-CC-Api-Key': COINBASE_KEY
+          }
+        });
+
+        const paymentStatus = statusResponse.data.data.timeline[statusResponse.data.data.timeline.length - 1].status;
+
+        if (paymentStatus === 'Completed') {
+          addVIPAccess(); 
+          window.open('https://sportypredict.com/vip', '_blank');
+        } else if (paymentStatus === 'Canceled') {
+          toast.error('Payment was canceled');
+        } else {
+          // Wait for a few seconds before polling again
+          setTimeout(pollPaymentStatus, 5000);
+        }
+      } catch (error) {
+        console.error(error);
+        toast.error('An error occurred while checking payment status');
+      }
+    };
+
+    pollPaymentStatus();
   } catch (error) {
-    console.error(error)
-    toast.error('An error occurred')
+    console.error(error);
+    toast.error('An error occurred');
   }
-}
-
-const handleCoinbaseClose = () => {
-  if (!isPaid.value && !isCancel.value) {
-    isCancel.value = true
-    paymentStatus.value = 'cancelled'
-    toast.error('Payment failed')
-  }
-}
+};
 
 onMounted(async () => {
   let amount = route.params.price
