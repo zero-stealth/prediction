@@ -171,10 +171,10 @@ const logIn = () => {
       </div>
       <div class="pay-info" v-else-if="reveal === 'others'">
         <div class="method-head">
-          <h1>PAY USING CRYPTO</h1>
+          <h1>PAY USING SKRILL</h1>
+
         </div>
         <div class="method-pay">
-          <h1>PAY USING SKRILL</h1>
           <ul>
             <li @click="logIn()">Go to your account</li>
             <li>Use <span>contact@sportypredict.com</span></li>
