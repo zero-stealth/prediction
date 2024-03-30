@@ -102,23 +102,38 @@ const description = ref('');
 const SERVER_HOST = import.meta.env.VITE_SERVER_HOST
 
 
-function handleFileUpload(event, targetRef) {
+
+function handleTeamALogo(event) {
   const file = event.target.files[0];
   if (file) {
-    targetRef.value = file;
+    const reader = new FileReader();
+    reader.onload = () => {
+      teamAIcon.value = reader.result;
+    };
+    reader.readAsDataURL(file);
   }
 }
 
-function handleTeamALogo(event) {
-  handleFileUpload(event, teamAIcon);
-}
-
 function handleTeamBLogo(event) {
-  handleFileUpload(event, teamBIcon);
+  const file = event.target.files[0];
+  if (file) {
+    const reader = new FileReader();
+    reader.onload = () => {
+      teamBIcon.value = reader.result;
+    };
+    reader.readAsDataURL(file);
+  }
 }
 
 function handleLeagueLogo(event) {
-  handleFileUpload(event, leagueIcon);
+  const file = event.target.files[0];
+  if (file) {
+    const reader = new FileReader();
+    reader.onload = () => {
+      leagueIcon.value = reader.result;
+    };
+    reader.readAsDataURL(file);
+  }
 }
 
 async function handleSubmit() {

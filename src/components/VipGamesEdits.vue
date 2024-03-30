@@ -199,16 +199,38 @@ function handleFileUpload(event, targetRef) {
 }
 
 function handleTeamALogo(event) {
-  handleFileUpload(event, teamAIcon)
+  const file = event.target.files[0];
+  if (file) {
+    const reader = new FileReader();
+    reader.onload = () => {
+      teamAIcon.value = reader.result;
+    };
+    reader.readAsDataURL(file);
+  }
 }
 
 function handleTeamBLogo(event) {
-  handleFileUpload(event, teamBIcon)
+  const file = event.target.files[0];
+  if (file) {
+    const reader = new FileReader();
+    reader.onload = () => {
+      teamBIcon.value = reader.result;
+    };
+    reader.readAsDataURL(file);
+  }
 }
 
 function handleLeagueLogo(event) {
-  handleFileUpload(event, leagueIcon)
+  const file = event.target.files[0];
+  if (file) {
+    const reader = new FileReader();
+    reader.onload = () => {
+      leagueIcon.value = reader.result;
+    };
+    reader.readAsDataURL(file);
+  }
 }
+
 
 
 function handleSubmit() {

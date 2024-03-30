@@ -478,14 +478,6 @@ const updatePostType = (type) => {
 }
 
 
-function handleFileUpload(event, targetRef) {
-  const file = event.target.files[0]
-  if (file) {
-    targetRef.value = file
-  }
-}
-
-
 function handleTeamALogo(event) {
   const file = event.target.files[0];
   if (file) {
@@ -518,6 +510,7 @@ function handleLeagueLogo(event) {
     reader.readAsDataURL(file);
   }
 }
+
 
 const onDateChange = () => {
   currentDate.value = formatDate(new Date(currentDate.value))
