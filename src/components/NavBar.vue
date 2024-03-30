@@ -181,7 +181,7 @@ const router = useRouter()
 const isDrpOpen = ref(false)
 const isDropOpen = ref(false)
 const authStore = useAuthStore()
-const isAdmin = ref(localStorage.getItem('admin') || false)
+const isAdmin = ref(localStorage.getItem('admin'))
 
 const handleGoogleTranslateSelect = () => {
   // console.log(language)

@@ -144,8 +144,8 @@
 
 }
 
-.news-down-card:hover  {
-   padding: 10px;
+.news-down-card:hover .card-info-down  {
+   padding: 8px;
    border-radius: 12px;
    color: var(--background-color);
    background-color: var(--tertiary-color);
@@ -161,6 +161,7 @@
 
 .card-info-down {
    gap: 5px;
+   padding: 8px;
    display: flex;
    flex-direction: column;
    
