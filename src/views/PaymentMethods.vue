@@ -170,22 +170,12 @@ const payMpesa = () => {
 }
 
 const coinbasePay = async () => {
-  let amount = route.params.price
-  if (
-    [
-      'kenya',
-      'nigeria',
-      'cameroon',
-      'ghana',
-      'southA',
-      'tanzania',
-      'uganda',
-      'zambia',
-      'rwanda',
-      'malawi'
-    ].includes(route.params.currency)
-  ) {
-    amount = route.params.plan === 'weekly' ? 25 : 45
+  let amount = route.params.price;
+  if ([
+    'kenya', 'nigeria', 'cameroon', 'ghana', 'southA', 'tanzania', 'uganda',
+    'zambia', 'rwanda', 'malawi'
+  ].includes(route.params.currency)) {
+    amount = route.params.plan === 'weekly' ? 25 : 45;
   }
 
   try {
@@ -208,46 +198,25 @@ const coinbasePay = async () => {
           'X-CC-Api-Key': COINBASE_KEY
         }
       }
-    )
+    );
 
-    const hostedUrl = response.data.data.hosted_url
-    const chargeId = response.data.data.id
+    const hostedUrl = response.data.data.hosted_url;
+    window.location.href = hostedUrl;
 
-    window.location.href = hostedUrl
-    const pollPaymentStatus = async () => {
-      try {
-        const statusResponse = await axios.get(
-          `https://api.commerce.coinbase.com/charges/${chargeId}`,
-          {
-            headers: {
-              'X-CC-Api-Key': COINBASE_KEY
-            }
-          }
-        )
-
-        const paymentStatus =
-          statusResponse.data.data.timeline[statusResponse.data.data.timeline.length - 1].status
-
-        if (paymentStatus === 'Completed') {
-          addVIPAccess()
-          window.location.href = 'https://sportypredict.com/vip'
-        } else if (paymentStatus === 'Canceled') {
-          toast.error('Payment was canceled')
-        } else {
-          setTimeout(pollPaymentStatus, 5000)
-        }
-      } catch (error) {
-        console.error(error)
-        toast.error('An error occurred while checking payment status')
+    const watchPaymentStatus = () => {
+      const paymentStatus = response.data.data.timeline.status;
+      if (paymentStatus === 'COMPLETED' || paymentStatus === 'Completed') {
+        addVIPAccess();
+        window.location.href = 'https://sportypredict.com/vip';
       }
-    }
+    };
 
-    pollPaymentStatus()
+    watchEffect(watchPaymentStatus);
   } catch (error) {
-    console.error(error)
-    toast.error('An error occurred')
+    console.error(error);
+    toast.error('An error occurred');
   }
-}
+};
 
 onMounted(async () => {
   let amount = route.params.price
