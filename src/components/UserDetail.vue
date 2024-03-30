@@ -59,6 +59,7 @@
                     <option disabled value="">Choose a plan</option>
                     <option value="weekly">Weekly</option>
                     <option value="monthly">Monthly</option>
+                    <option value="no plan">No plan</option>
                   </select>
                 </div>
                 <div
@@ -166,40 +167,30 @@ const deleteAccount = async (id) => {
 }
 
 async function toggleStatus(account) {
-  if (plan.value !== '') {
-    account.status = !account.status
-    const getDate = new Date()
-      .toLocaleDateString('en-GB', {
-        year: 'numeric',
-        month: '2-digit',
-        day: '2-digit'
-      })
-      .split('/')
-      .reverse()
-      .join('/')
+  if(plan.value === '') {
+    toast.error('choose a plan')
+    return
+  }
 
-    try {
-      const response = await axios.put(`${SERVER_HOST}/auth/update/${account._id}`, {
-        paid: account.status,
-        plan: plan.value,
-        activationDate: getDate,
-        day: plan.value === 'weekly' ? 7 : 30
-      })
-      await accountsData()
-      localStorage.setItem('paid', account.status.toString())
-    } catch (err) {
-      console.log(err)
-    }
-  } else {
-    if( account.status !== false) {
-      account.status = !account.status
-      
-    } else {
-      toast.error('Choose a plan first')
+  account.status = !account.status;
 
-    }
+  try {
+    const currentDate = new Date();
+    const formattedDate = `${currentDate.getMonth() + 1}-${currentDate.getDate()}-${currentDate.getFullYear()}`;
+
+    const response = await axios.put(`${SERVER_HOST}/auth/update/${account._id}`, {
+      paid: account.status,
+      plan: plan.value,
+      activationDate: formattedDate,
+      days: plan.value === 'weekly' ? 7 : 30
+    });
+    await accountsData();
+    localStorage.setItem('paid', account.status.toString());
+  } catch (err) {
+    console.log(err);
   }
 }
+
 </script>
 <style scoped>
 @import '../style/user.css';

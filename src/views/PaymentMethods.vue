@@ -315,16 +315,15 @@ const addVIPAccess = async () => {
   if (isPaid.value) {
     if (customerID.value !== null) {
       try {
-        const getDate = new Date()
-          .toISOString()
-          .slice(0, 10)
+        const currentDate = new Date();
+    const formattedDate = `${currentDate.getMonth() + 1}-${currentDate.getDate()}-${currentDate.getFullYear()}`;
 
         const account = JSON.parse(localStorage.getItem('account'))
 
         const response = await axios.put(`${SERVER_HOST}/auth/update/${customerID.value}`, {
           paid: true,
           plan: route.params.plan,
-          activationDate: `${getDate}T00:00:00Z`,
+          activationDate: formattedDate,
           days: route.params.plan === 'weekly' ? 7 : 30
         })
         account.status = true

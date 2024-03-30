@@ -16,15 +16,16 @@
       </div>
     </div>
     <div class="search-section">
-      <div class="form-group">
-        <input
+      <input
           v-model="searchAccount"
           type="text"
-          class="form-g-input"
+          class="form-g-input searchAccount-input"
           placeholder="Search account by name"
           id="Accountname"
         />
-      </div>
+      <button @click="fetchEmails" class="btn-email">
+        copy emails
+      </button>
     </div>
     <div class="acc-m hide-ds">
       <table>
@@ -169,6 +170,18 @@ const accountData = computed(() => {
   return accountInfo.value
 })
 
+const fetchEmails = () => {
+  const gmailEmails = accountData.value.filter(account => account.email.endsWith('@gmail.com')).map(account => account.email);
+  const emailsString = gmailEmails.join(', ');
+  navigator.clipboard.writeText(emailsString)
+    .then(() => {
+      toast.success('all gmails emails copied to clipboard successfully!');
+    })
+    .catch(err => {
+      toast.error('Failed to copy emails to clipboard.');
+    });
+}
+
 const deleteAccount = async (id) => {
   try {
     const token = JSON.parse(localStorage.getItem('token'))
@@ -285,7 +298,6 @@ async function toggleStatus(account) {
       activationDate: formattedDate,
       days: plan.value === 'weekly' ? 7 : 30
     });
-console.log(response)
     await accountsData();
     localStorage.setItem('paid', account.status.toString());
   } catch (err) {

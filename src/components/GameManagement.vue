@@ -1065,7 +1065,7 @@ async function updatePayment(formData) {
       formDataa.append('monthlyPrice', formData.monthlyPrice)
     }
     const response = await axios.put(
-      `${SERVER_HOST}/single/currencyPrices/update/${paymentId.value}`,
+      `${SERVER_HOST}/currencyPrices/update/${paymentId.value}`,
       formDataa,
       {
         headers: {
@@ -1076,6 +1076,7 @@ async function updatePayment(formData) {
     )
     toast.success('payment updated')
   } catch (error) {
+    console.log(error.response.data)
    toast.error(error.response.data.error)
   }
 }
