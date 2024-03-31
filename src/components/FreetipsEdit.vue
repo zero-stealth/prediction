@@ -204,38 +204,16 @@ function handleFileUpload(event, targetRef) {
 }
 
 function handleTeamALogo(event) {
-  const file = event.target.files[0];
-  if (file) {
-    const reader = new FileReader();
-    reader.onload = () => {
-      teamAIcon.value = reader.result;
-    };
-    reader.readAsDataURL(file);
-  }
+  handleFileUpload(event, teamAIcon)
 }
 
 function handleTeamBLogo(event) {
-  const file = event.target.files[0];
-  if (file) {
-    const reader = new FileReader();
-    reader.onload = () => {
-      teamBIcon.value = reader.result;
-    };
-    reader.readAsDataURL(file);
-  }
+  handleFileUpload(event, teamBIcon)
 }
 
 function handleLeagueLogo(event) {
-  const file = event.target.files[0];
-  if (file) {
-    const reader = new FileReader();
-    reader.onload = () => {
-      leagueIcon.value = reader.result;
-    };
-    reader.readAsDataURL(file);
-  }
+  handleFileUpload(event, leagueIcon)
 }
-
 
 
 function handleSubmit() {
