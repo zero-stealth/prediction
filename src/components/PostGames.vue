@@ -166,9 +166,10 @@
               class="form-g-input"
               id="teamAIcon"
               accept="image/*"
-              v-if="teamAIcon === null"
             />
-            <img :src="teamAIcon" :alt="teamA" class="form-i-image" v-else />
+            <img :src="teamAIcon" :alt="teamA" class="form-i-image" 
+            v-if="teamAIcon !== null"
+             />
           </div>
 
           <div class="form-group">
@@ -209,9 +210,8 @@
               class="form-g-input"
               id="leagueIcon"
               accept="image/*"
-              v-if="leagueIcon === null"
             />
-            <img :src="leagueIcon" :alt="league" class="form-i-image" v-else />
+            <img :src="leagueIcon" :alt="league" class="form-i-image"  v-if="leagueIcon !== null" />
           </div>
           <div class="form-group">
             <label for="league">Match league:</label>
@@ -260,9 +260,8 @@
               class="form-g-input"
               id="teamBIcon"
               accept="image/*"
-              v-if="teamBIcon === null"
             />
-            <img :src="teamBIcon" :alt="teamB" class="form-i-image" v-else />
+            <img :src="teamBIcon" :alt="teamB" class="form-i-image" v-if="teamBIcon !== null" />
           </div>
           <div class="form-group">
             <label for="formationB">Formation:</label>
