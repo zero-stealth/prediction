@@ -36,7 +36,7 @@
       </div>
     </div>
     <div v-if="category === 'Basketball' && postType === 'Automatic'">
-  <PostBasketball/>
+      <PostBasketball />
     </div>
     <div v-if="postType === 'Automatic' && category !== 'Basketball'">
       <form @submit.prevent="handleSubmit" enctype="multipart/form-data" class="form-container">
@@ -45,7 +45,7 @@
           <TeamSelector @teamSelected="handleTeamASelected" />
           <div class="form-group">
             <label for="teamAIcon">Logo:</label>
-            <img :src="teamAIcon" :alt="teamA"  class="form-i-image" />
+            <img :src="teamAIcon" :alt="teamA" class="form-i-image" />
           </div>
           <div class="form-group">
             <label for="formationA">Formation:</label>
@@ -117,7 +117,7 @@
         </div>
         <div class="form-wrapper">
           <h1>Team B</h1>
-          <TeamSelector  @teamSelected="handleTeamBSelected" />
+          <TeamSelector @teamSelected="handleTeamBSelected" />
           <div class="form-group">
             <label for="teamBIcon">Logo:</label>
             <img :src="teamBIcon" :alt="teamB" class="form-i-image" />
@@ -138,7 +138,13 @@
           </div>
           <div class="form-group">
             <label for="description">Description</label>
-            <input v-model="description" type="text" class="form-g-input" placeholder="about game" id="description" />
+            <input
+              v-model="description"
+              type="text"
+              class="form-g-input"
+              placeholder="about game"
+              id="description"
+            />
           </div>
           <button type="submit" class="btn-f-f f-mobile">Submit</button>
         </div>
@@ -167,9 +173,7 @@
               id="teamAIcon"
               accept="image/*"
             />
-            <img :src="teamAIcon" :alt="teamA" class="form-i-image" 
-            v-if="teamAIcon !== null"
-             />
+            <img :src="teamAIcon" :alt="teamA" class="form-i-image" v-if="teamAIcon !== null" />
           </div>
 
           <div class="form-group">
@@ -211,7 +215,7 @@
               id="leagueIcon"
               accept="image/*"
             />
-            <img :src="leagueIcon" :alt="league" class="form-i-image"  v-if="leagueIcon !== null" />
+            <img :src="leagueIcon" :alt="league" class="form-i-image" v-if="leagueIcon !== null" />
           </div>
           <div class="form-group">
             <label for="league">Match league:</label>
@@ -285,7 +289,13 @@
           </div>
           <div class="form-group">
             <label for="description">Description</label>
-            <input v-model="description" type="text" class="form-g-input" placeholder="about game" id="description" />
+            <input
+              v-model="description"
+              type="text"
+              class="form-g-input"
+              placeholder="about game"
+              id="description"
+            />
           </div>
           <button type="submit" class="btn-f-f f-mobile">Submit</button>
         </div>
@@ -320,7 +330,7 @@ const leagueIcon = ref(null)
 const statistics = ref('')
 const teamAPosition = ref('')
 const teamBPosition = ref('')
-const description = ref('');
+const description = ref('')
 const time = ref('')
 const league = ref('')
 const toast = useToast()
@@ -428,13 +438,16 @@ const getTeamStatisticsA = async (id) => {
     })
 
     statistics.value = id
-    const form = response.data.response && typeof response.data.response.form === 'string' ? response.data.response.form : '';
+    const form =
+      response.data.response && typeof response.data.response.form === 'string'
+        ? response.data.response.form
+        : ''
     if (form.length >= 2) {
-      const formattedForm = form.slice(-5).split('').join('-'); 
-      formationA.value = formattedForm.toLowerCase();
+      const formattedForm = form.slice(-5).split('').join('-')
+      formationA.value = formattedForm.toLowerCase()
       console.log(formationA.value)
     } else {
-      console.error('Form data is not available or is too short');
+      console.error('Form data is not available or is too short')
     }
 
     toast.success('Team statistics fetched successfully')
@@ -450,7 +463,7 @@ const getTeamStatisticsB = async (id) => {
       params: {
         league: id,
         season: year.value,
-        team:  teamIdB.value
+        team: teamIdB.value
       },
       headers: {
         'X-RapidAPI-Key': RAPIDAPI_KEY,
@@ -458,13 +471,16 @@ const getTeamStatisticsB = async (id) => {
       }
     })
     statistics.value = id
-    const form = response.data.response && typeof response.data.response.form === 'string' ? response.data.response.form : '';
+    const form =
+      response.data.response && typeof response.data.response.form === 'string'
+        ? response.data.response.form
+        : ''
     if (form.length >= 2) {
-      const formattedForm = form.slice(-5).split('').join('-'); 
-      formationB.value = formattedForm.toLowerCase();
+      const formattedForm = form.slice(-5).split('').join('-')
+      formationB.value = formattedForm.toLowerCase()
       console.log(formationB.value)
     } else {
-      console.error('Form data is not available or is too short');
+      console.error('Form data is not available or is too short')
     }
     toast.success('Team statistics fetched successfully')
   } catch (error) {
@@ -561,19 +577,20 @@ async function handleSubmit() {
       formData.append('leagueIcon', leagueIcon.value)
       formData.append('formationA', formationA.value)
       formData.append('teamAPosition', teamAPosition.value)
-      formData.append('teamAscore', '0')
+      formData.append('teamAscore', 0)
       formData.append('teamB', teamB.value)
       formData.append('teamBIcon', teamBIcon.value)
       formData.append('formationB', formationB.value)
       formData.append('teamBPosition', teamBPosition.value)
       formData.append('statistics', statistics.value)
-      formData.append('description', description.value);
-      formData.append('teamBscore', '0')
+      formData.append('description', description.value)
+      formData.append('teamBscore', 0)
       formData.append('time', time.value)
       formData.append('status', status.value)
       formData.append('league', league.value)
       formData.append('date', currentDate.value)
       formData.append('tip', tip.value)
+      console.log(teamAIcon.value, leagueIcon.value, teamBIcon.value)
 
       await axios.post(`${url.value}`, formData, {
         headers: {

@@ -410,8 +410,8 @@
                 <th>Delete</th>
               </tr>
             </thead>
-            <tbody v-for="item in vipData">
-              <tr v-for="data in item" :key="data._id">
+            <tbody >
+              <tr v-for="data in vipData" :key="data._id">
                 <td>
                   <div class="game-tbl-img">
                     <img :src="data.leagueIcon" alt="game-p" class="game-pi" />
@@ -891,7 +891,8 @@ const getVipGames = async () => {
         },
       }
     );
-    vipData.value = response.data.length > 0 ? response.data : []; // Removed unnecessary array wrapping
+    vipData.value = response.data.length > 0 ? response.data : []; 
+    // Removed unnecessary array wrapping
   } catch (err) {
     toast.error(err.response.data.error)
   }
@@ -1151,7 +1152,7 @@ async function updateGame(formData) {
     )
     toast.success('game updated')
   } catch (error) {
-   toast.error(error.response.data.error)
+    toast.error(error.response.data.error)
   }
 }
 
@@ -1230,6 +1231,7 @@ async function updateSport(formData) {
       formDataa.append('teamA', formData.teamA)
     }
     if (formData.teamAIcon !== null) {
+      
       formDataa.append('teamAIcon', formData.teamAIcon)
     }
     if (formData.status !== '') {
@@ -1287,6 +1289,7 @@ async function updateSport(formData) {
         Authorization: `Bearer ${token}`
       }
     })
+ 
     toast.success('game updated')
   } catch (error) {
    toast.error(error.response.data.error)

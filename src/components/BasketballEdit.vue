@@ -238,7 +238,6 @@ function handleSubmit() {
       teamBIcon: teamBIcon.value,
       description:description.value
     }
-
     emit('formSubmitSport', formData)
   } catch (err) {
     toast.error('No empty fields allowed')
