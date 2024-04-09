@@ -170,12 +170,22 @@ const payMpesa = () => {
 }
 
 const coinbasePay = async () => {
-  let amount = route.params.price;
-  if ([
-    'kenya', 'nigeria', 'cameroon', 'ghana', 'southA', 'tanzania', 'uganda',
-    'zambia', 'rwanda', 'malawi'
-  ].includes(route.params.currency)) {
-    amount = route.params.plan === 'weekly' ? 25 : 45;
+  let amount = route.params.price
+  if (
+    [
+      'kenya',
+      'nigeria',
+      'cameroon',
+      'ghana',
+      'southA',
+      'tanzania',
+      'uganda',
+      'zambia',
+      'rwanda',
+      'malawi'
+    ].includes(route.params.currency)
+  ) {
+    amount = route.params.plan === 'weekly' ? 25 : 45
   }
 
   try {
@@ -198,25 +208,25 @@ const coinbasePay = async () => {
           'X-CC-Api-Key': COINBASE_KEY
         }
       }
-    );
+    )
 
-    const hostedUrl = response.data.data.hosted_url;
-    window.location.href = hostedUrl;
+    const hostedUrl = response.data.data.hosted_url
+    window.location.href = hostedUrl
 
     const watchPaymentStatus = () => {
-      const paymentStatus = response.data.data.timeline.status;
+      const paymentStatus = response.data.data.timeline.status
       if (paymentStatus === 'COMPLETED' || paymentStatus === 'Completed') {
-        addVIPAccess();
-        window.location.href = 'https://sportypredict.com/vip';
+        addVIPAccess()
+        window.location.href = 'https://sportypredict.com/vip'
       }
-    };
+    }
 
-    watchEffect(watchPaymentStatus);
+    watchEffect(watchPaymentStatus)
   } catch (error) {
-    console.error(error);
-    toast.error('An error occurred');
+    console.error(error)
+    toast.error('An error occurred')
   }
-};
+}
 
 onMounted(async () => {
   let amount = route.params.price
@@ -300,6 +310,7 @@ const addVIPAccess = async () => {
   if (isPaid.value) {
     if (customerID.value !== null) {
       try {
+        const token = JSON.parse(localStorage.getItem('token'))
         const currentDate = new Date()
         const formattedDate = `${
           currentDate.getMonth() + 1
@@ -308,6 +319,9 @@ const addVIPAccess = async () => {
         const account = JSON.parse(localStorage.getItem('account'))
 
         const response = await axios.put(`${SERVER_HOST}/auth/update/${customerID.value}`, {
+          headers: {
+            Authorization: `Bearer ${token}`
+          },
           paid: true,
           plan: route.params.plan,
           activationDate: formattedDate,
