@@ -40,13 +40,20 @@
               :formationB="formatFormation(card.formationB)"
               :time="card.time"
             >
-              <template v-slot:button>
-                <div class="Tip">
-                  <button class="btn-preview" @click="showCard(card.date, card.teamA, card.teamB)">
-                    Predictions and Preview >>
-                  </button>
-                </div>
-              </template>
+            <template v-slot:ads>
+            <div class="Preview">
+              <button class="btn-preview" @click="showCard(card.date, card.teamA, card.teamB)">
+                Match Preview >>
+              </button>
+            </div> 
+          </template
+          >
+          <template v-slot:button>
+            <div class="Tip">
+              <h4>Tip:</h4>
+              <span>{{ card.tip }}</span>
+            </div>
+          </template>
             </Card>
         </div>
       </template>
