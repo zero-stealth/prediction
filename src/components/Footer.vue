@@ -1,5 +1,5 @@
 <script setup>
-import { ref } from 'vue'
+import { ref, computed  } from 'vue'
 import Ios from '../assets/ios.png'
 import { RouterLink } from 'vue-router'
 import emailIcon from '../icons/email.vue'
@@ -23,12 +23,14 @@ const openWhatsapp = () => {
   )
 }
 
+const currentYear = computed(() => new Date().getFullYear())
+
 const openIos = () => {
   window.open('https://itunes.apple.com/app/idYOUR_APP_ID', '_blank')
 }
 
 const openTelegram = () => {
-  window.open('https://t.me/sportypredict_tips', '_blank')
+  window.open('https://t.me/sportyPredictTG', '_blank')
 }
 
 const openAndroid = () => {
@@ -159,7 +161,7 @@ const reset = () => {
       </div>
     </div>
     <div class="footer-x">
-      <span>© 2023 SportyPredict. All rights reserved</span>
+      <span>© {{ currentYear }} SportyPredict. All rights reserved</span>
     </div>
   </div>
 </template>

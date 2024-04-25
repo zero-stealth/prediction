@@ -81,7 +81,7 @@ const goPayNow = () => {
 }
 
 const openTelegram = () => {
-  window.open('https://t.me/sportypredict_tips', '_blank')
+  window.open('https://t.me/sportyPredictTG', '_blank')
 }
 
 const heroSectionStyle = {

@@ -123,7 +123,7 @@ const router = createRouter({
       name: 'NewsInfo',
       component: () => import('../views/NewsInfoView.vue'),
       meta: {
-        title: "News - Free sport news",
+        title: "News - sport news",
         description: "sportypredict offers spors news ",
       },
     
@@ -134,7 +134,7 @@ const router = createRouter({
       name: 'News',
       component: () => import('../views/NewsView.vue'),
       meta: {
-        title: "News - Free sport news",
+        title: "News - sport news",
         description: "sportypredict offers spors news ",
       },
     
